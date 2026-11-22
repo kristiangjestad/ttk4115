@@ -1,0 +1,1509 @@
+[
+ {
+  "id": "2003",
+  "dir": "Exam_2003",
+  "solDir": "Exam_2003_solution",
+  "year": 2003,
+  "kont": false,
+  "pages": 15,
+  "solPages": 11,
+  "problems": [
+   {
+    "num": 1,
+    "page": 1,
+    "endPage": 1,
+    "pct": 10,
+    "snippet": "Oppgave 1 (10 %) Anta gitt et system ẋ = Ax + Bu der \u0001 \u0002 1 0 A= , −1 2 \u0001 B= 1 α \u0002 der α er en konstant. a) For hvilke verdier av α er systemet styrbart? b) Anta α = −4. Finn en tilstandstilbakekopling som plasserer egen",
+    "solPage": 1,
+    "solEndPage": 1
+   },
+   {
+    "num": 2,
+    "page": 1,
+    "endPage": 2,
+    "pct": 25,
+    "snippet": "Oppgave 2 (25 %) a) Anta gitt en n × n-matrise A. Vis at ved diagonalisering kan denne uttrykkes på formen A = QAQ−1 , og angi hvordan matrisene A og Q kan bestemmes. ",
+    "solPage": 2,
+    "solEndPage": 4
+   },
+   {
+    "num": 3,
+    "page": 2,
+    "endPage": 2,
+    "pct": 15,
+    "snippet": "Oppgave 3 (15 %) a) Hvilke egenskaper har en minimal realisasjon? b) Er systemet deﬁnert ved transferfunksjonen G(s) = 2(1 − s) (1 + s)(1 + 4s) realiserbart? Begrunn. c) Finn en tilstandsromrealisasjon for følgende trans",
+    "solPage": 4,
+    "solEndPage": 5
+   },
+   {
+    "num": 4,
+    "page": 3,
+    "endPage": 3,
+    "pct": 20,
+    "snippet": "Oppgave 4 (20 %) Vi har et 1. ordens system på følgende form ẋ = ax + bu + v, y =x+w der x er tilstanden, u er pådraget, y er en måling, v er en ukjent forstyrrelse, og w er målestøy. Parametrene a og b er skalare k",
+    "solPage": 5,
+    "solEndPage": 6
+   },
+   {
+    "num": 5,
+    "page": 3,
+    "endPage": 4,
+    "pct": 15,
+    "snippet": "Oppgave 5 (15 %) Følgende system er gitt ẋ = −0.4x + 0.1ud + u y = x + 0.1v der x er tilstanden, ud er pådraget, y er en måling, og v og u er hvitstøyprosesser der: E[u(t)u(τ )] = Qδ(t − τ ) E[v(t)v(τ )] = Rδ(t − τ ) ",
+    "solPage": 7,
+    "solEndPage": 7
+   },
+   {
+    "num": 6,
+    "page": 4,
+    "endPage": 5,
+    "pct": 15,
+    "snippet": "Oppgave 6 (15 %) Signalet v(t) er et stasjonært signal deﬁnert ved V (s) = G(s)W (s), der w(t) er et normalfordelt hvitstøy-signal med null middelverdi og varians 1. Transferfunksjonen G(s) er deﬁnert ved G(s) = K 1 + Ts",
+    "solPage": 7,
+    "solEndPage": 11
+   }
+  ]
+ },
+ {
+  "id": "2004",
+  "dir": "Exam_2004",
+  "solDir": "Exam_2004_solution",
+  "year": 2004,
+  "kont": false,
+  "pages": 14,
+  "solPages": 6,
+  "problems": [
+   {
+    "num": 1,
+    "page": 1,
+    "endPage": 1,
+    "pct": 10,
+    "snippet": "Oppgave 1 (10 %) Anta gitt følgende system ¶µ ¶ µ ¶ µ ¶ µ x1 1 ẋ1 1 0 + u = ẋ2 −1 −3 x2 1 a) Vis at transisjonsmatrisen er µ Φ(t) = 1 4 et 0 ¶ (e−3t − et ) e−3t b) Finn en eksakt diskretisering av dette systemet med nu",
+    "solPage": 1,
+    "solEndPage": 1
+   },
+   {
+    "num": 2,
+    "page": 2,
+    "endPage": 2,
+    "pct": 25,
+    "snippet": "Oppgave 2 (25 %) a) Definer begrepet Lyapunov-stabilitet (ekvivalent med intern stabilitet) for et lineært system. b) Angi kriterier for å teste hvorvidt et gitt lineært system er Lyapunovstabilt. Kortfattet beskrivelse",
+    "solPage": 1,
+    "solEndPage": 2
+   },
+   {
+    "num": 3,
+    "page": 2,
+    "endPage": 3,
+    "pct": 40,
+    "snippet": "Oppgave 3 (40 %) Gitt følgende system ¶µ ¶ ¶µ ¶ µ µ ¶ µ v1 x1 1 0 ẋ1 0 1 , + = ẋ2 −1 −2 x2 0 1 v2 y = x1 + w, (1a) (1b) hvor w er målestøy og v1 , v2 er ukjente forstyrrelser. a) Definer begrepet observerbarhet for et",
+    "solPage": 2,
+    "solEndPage": 5
+   },
+   {
+    "num": 4,
+    "page": 3,
+    "endPage": 3,
+    "pct": 15,
+    "snippet": "Oppgave 4 (15 %) La u(t) være en hvitstøy prosess med null middelverdi og varians σu2 . a) Hva er autokorreasjonsfunksjonen og effektspektret til denne stokastiske prosessen? Begrunn hvorvidt dette er en stasjonær proses",
+    "solPage": 5,
+    "solEndPage": 5
+   },
+   {
+    "num": 5,
+    "page": 4,
+    "endPage": 4,
+    "pct": 10,
+    "snippet": "Oppgave 5 (10 %) Anta du har en prosess med følgende transferfunksjon Ke−τ s G(s) = 1 + Ts der parametrene er ukjente. a) Anta du kan bestemme inngangsignalet selv. Beskriv en metode for å identifisere tidsforsinkelsen ",
+    "solPage": 6,
+    "solEndPage": 6
+   }
+  ]
+ },
+ {
+  "id": "2008",
+  "dir": "Exam_2008",
+  "solDir": "Exam_2008_solution",
+  "year": 2008,
+  "kont": false,
+  "pages": 9,
+  "solPages": 7,
+  "problems": [
+   {
+    "num": 1,
+    "page": 1,
+    "endPage": 2,
+    "pct": 15,
+    "snippet": "Oppgave 1 (15 %) Anta gitt følgende system: Consider the following system: ẋ1 ẋ2 ! = 1 1 −1 −4 ! x1 x2 ! + 0 2 ! u NB! Det er ikke nødvendig med eksakte svar i denne oppgaven, så bruk gjerne kalkulator. NB! Exact numb",
+    "solPage": 1,
+    "solEndPage": 2
+   },
+   {
+    "num": 2,
+    "page": 2,
+    "endPage": 2,
+    "pct": 20,
+    "snippet": "Oppgave 2 (20 %) Anta gitt følgende transferfunksjonsmatrise: Consider the following transfer function matrix: G(s) = −5 s2 − 5s + 6 , s+1 s2 + s ! a) Forklar hvorfor G(s) er realiserbar. Explain why G(s) is realizable. ",
+    "solPage": 2,
+    "solEndPage": 3
+   },
+   {
+    "num": 3,
+    "page": 3,
+    "endPage": 3,
+    "pct": 20,
+    "snippet": "Oppgave 3 (20 %) a) Definer BIBO-stabilitet, Lyapunov-stabilitet (intern stabilitet), og asymptotisk stabilitet for lineære systemer. Define BIBO stability, Lyapunov stability (internal stability), and asymptotic stabili",
+    "solPage": 3,
+    "solEndPage": 4
+   },
+   {
+    "num": 4,
+    "page": 3,
+    "endPage": 4,
+    "pct": 10,
+    "snippet": "Oppgave 4 (10 %) a) Gitt et kontinuerlig tid MIMO system beskrevet av matrisene (A, B) der vi ønsker å regulere tilstanden x til en gitt referanse likevektstilstand x∗ . Forklar kort prinsippet for LQR (Linear Quadratic",
+    "solPage": 4,
+    "solEndPage": 5
+   },
+   {
+    "num": 5,
+    "page": 4,
+    "endPage": 6,
+    "pct": 35,
+    "snippet": "Oppgave 5 (35 %) a) Beskriv de karakteristiske egenskapene til den normalfordelte/Gaussiske hvitstøyproesessen, inkludert dens varians, autokorrelasjonsfuksjon, effektspektrum, stasjonæritet, og andre relevante egenskape",
+    "solPage": 5,
+    "solEndPage": 7
+   }
+  ]
+ },
+ {
+  "id": "2009",
+  "dir": "Exam_2009",
+  "solDir": "Exam_2009_solution",
+  "year": 2009,
+  "kont": false,
+  "pages": 8,
+  "solPages": 8,
+  "problems": [
+   {
+    "num": 1,
+    "page": 1,
+    "endPage": 2,
+    "pct": 20,
+    "snippet": "Oppgave 1 (20 %) Gitt Given: ẋ = Ax + bu y = Cx + Du a) La (A, B) ha styrbarhetsmatrisa: Let (A, B) have controllability matrix: C= \u0010 B AB ... An−1 B \u0011 Anta at C har full rang. Vis at dette impliserer at styrbarhetsmatr",
+    "solPage": 1,
+    "solEndPage": 2
+   },
+   {
+    "num": 2,
+    "page": 2,
+    "endPage": 3,
+    "pct": 20,
+    "snippet": "Oppgave 2 (20 %) Gitt følgende system: Given the following system: ẋ1 ẋ2 ! = 0 1 0 0 ! x1 x2 ! + 0 1 ! u a) Er systemet BIBO-stabilt? Er systemet styrbart? Forklar! Is the system BIBO-stable? Is the system controllable",
+    "solPage": 2,
+    "solEndPage": 3
+   },
+   {
+    "num": 3,
+    "page": 4,
+    "endPage": 4,
+    "pct": 35,
+    "snippet": "Oppgave 3 (35 %) Gitt et signal med autokorrelasjonsfunksjon: Consider a signal with autocorrelation function: 3 8 Rs (τ ) = exp− 4 |τ | 3 La målinga av signalet være addert med støy med autokorrelasjonsfunksjon: Let th",
+    "solPage": 3,
+    "solEndPage": 6
+   },
+   {
+    "num": 4,
+    "page": 5,
+    "endPage": 5,
+    "pct": 25,
+    "snippet": "Oppgave 4 (25 %) Gitt følgende system: Given the following system:        ẋ1 0 1 0 x1 0 1         ẋ2  =  −4 −4 0   x2  +  1 0  ẋ3 2 0 3 x3 0 0 y1 y2 ! = 1 0 0 0 1 0 !  u1 u2 !  x1    x2  ",
+    "solPage": 6,
+    "solEndPage": 8
+   }
+  ]
+ },
+ {
+  "id": "2010",
+  "dir": "Exam_2010",
+  "solDir": "Exam_2010_solution",
+  "year": 2010,
+  "kont": false,
+  "pages": 8,
+  "solPages": 11,
+  "problems": [
+   {
+    "num": 1,
+    "page": 1,
+    "endPage": 2,
+    "pct": 30,
+    "snippet": "Oppgave 1 (30 %) Gitt det andre-ordens systemet: Given the second-order system: q̈ + ω02 q = u y = q, hvor q er posisjonen til en masse i bevegelse, og ω0 er en konstant. where q is the position of a mass in motion, and ",
+    "solPage": null,
+    "solEndPage": null
+   },
+   {
+    "num": 2,
+    "page": 3,
+    "endPage": 3,
+    "pct": 20,
+    "snippet": "Oppgave 2 (20 %) a) Gitt overføringsfunksjonen: Given the transferfunction: ĝ(s) = s−1 (s2 − 1)(s + 2) Finn en tre-dimensjonal styrbar realisering ved å bruke likningene i vedlegget. Find a three-dimensional controllab",
+    "solPage": null,
+    "solEndPage": null
+   },
+   {
+    "num": 3,
+    "page": 3,
+    "endPage": 4,
+    "pct": 25,
+    "snippet": "Oppgave 3 (25 %) Ta i betrakning et eksperiment der et legeme med masse m = 1 kg slippes fra en viss høyde. Ta kun i betrakning gravitasjonskreftene, og anta at gravitasjonskonstanten g er nøyaktig kjent. Anta at initiel",
+    "solPage": null,
+    "solEndPage": null
+   },
+   {
+    "num": 4,
+    "page": 4,
+    "endPage": 5,
+    "pct": 15,
+    "snippet": "Oppgave 4 (15 %) Effektspektraltettheten (og tilsvarende autokorrelasjonen) av en Gauss-Markov prosess er gitt av: The power spectral density (and corresponding autocorrelation) of a GaussMarkov process is given by: Sx (",
+    "solPage": null,
+    "solEndPage": null
+   },
+   {
+    "num": 5,
+    "page": 5,
+    "endPage": 5,
+    "pct": 10,
+    "snippet": "Oppgave 5 (10 %) Kostfunksjonen til en lineær kvadratisk regulator er gitt av The cost function of a linear quadratic regulator is given by Z ∞ z > (t)Qz(t) + u> (t)Ru(t)dt, J(u) = 0 hvor z = M x. where z = M x. a) Forkl",
+    "solPage": null,
+    "solEndPage": null
+   }
+  ]
+ },
+ {
+  "id": "2011",
+  "dir": "Exam_2011",
+  "solDir": "Exam_2011_solution",
+  "year": 2011,
+  "kont": false,
+  "pages": 9,
+  "solPages": 9,
+  "problems": [
+   {
+    "num": 1,
+    "page": 1,
+    "endPage": 1,
+    "pct": 16,
+    "snippet": "Oppgave 1 (16 %) Forklar følgende begreper: Explain the following concepts: a) (5%) Similaritetstransformasjon. Similarity transformation. b) (6%) Kalmans kanoniske dekomposisjon. Kalman’s canonical decomposition. c) (5%",
+    "solPage": null,
+    "solEndPage": null
+   },
+   {
+    "num": 2,
+    "page": 2,
+    "endPage": 2,
+    "pct": 20,
+    "snippet": "Oppgave 2 (20 %) Anta gitt følgende system: Consider the following system:       0 0 1 0 x1 ẋ1  ẋ2  =  0 0 0   x2  +  2  u 0 x3 0 0 −1 ẋ3  a) (3%) Tegn et blokkdiagram av systemet. Draw a block diagram",
+    "solPage": null,
+    "solEndPage": null
+   },
+   {
+    "num": 3,
+    "page": 3,
+    "endPage": 5,
+    "pct": 36,
+    "snippet": "Oppgave 3 (36 %) Gitt følgende system: Consider the following system: \u0013 \u0013 \u0012 \u0013 \u0012 \u0013\u0012 \u0012 0.2 −2 1 x1 ẋ1 + w = 0.4 x2 ẋ2 0 −1 \u0013 \u0012 \u0001 x1 1 0 +v y = x2 (1) (2) der w er en ukjent forstyrrelse og v er ukjent målestøy. where w ",
+    "solPage": null,
+    "solEndPage": null
+   },
+   {
+    "num": 4,
+    "page": 5,
+    "endPage": 6,
+    "pct": 28,
+    "snippet": "Oppgave 4 (28 %) a) (5%) Anta gitt følgende måleserie med diskret-tid måling y[k] som er tatt opp under forhold der tilstanden er konstant, med sampling intervall Ts = 0.04. Forklar hvorfor det er rimelig å se på v[k",
+    "solPage": null,
+    "solEndPage": null
+   }
+  ]
+ },
+ {
+  "id": "2012",
+  "dir": "Exam_2012",
+  "solDir": "Exam_2012_solution",
+  "year": 2012,
+  "kont": false,
+  "pages": 6,
+  "solPages": 9,
+  "problems": [
+   {
+    "num": 1,
+    "page": 1,
+    "endPage": 2,
+    "pct": 20,
+    "snippet": "Oppgave 1 (20 %) Gitt systemet: Given the system \u0014 \u0015 \u0014 \u0015 −1 −1 −2 ẋ = x+ u 1 −3 −1 \u0002 \u0003 1 −2 x y = a) (9%) Transformer systemet til Jordanform: ",
+    "solPage": 1,
+    "solEndPage": 3
+   },
+   {
+    "num": 2,
+    "page": 2,
+    "endPage": 2,
+    "pct": 5,
+    "snippet": "Oppgave 2 (5 %) Finn en eksakt diskretisering av systemet nedenfor, med et tidssteg T = 1: Find an exact discretization of the system below, using a timestep of T = 1: ẋ = −2x + u, y=x Pådraget antas konstant over tids",
+    "solPage": 3,
+    "solEndPage": 3
+   },
+   {
+    "num": 3,
+    "page": 2,
+    "endPage": 3,
+    "pct": 20,
+    "snippet": "Oppgave 3 (20 %) Transferfunksjonen h(s) er gitt som: The transfer function h(s) is given as: h(s) = 7s3 + 11s2 + 19s + 27 s3 + s2 + 2s + 3 ",
+    "solPage": 3,
+    "solEndPage": 4
+   },
+   {
+    "num": 4,
+    "page": 3,
+    "endPage": 4,
+    "pct": 13,
+    "snippet": "Oppgave 4 (13 %) Gitt systemet: ẋ = Ax + Bu y = Cx a) (2%) Tegn blokkdiagrammet for systemet. Draw the block diagram for the system. b) (5%) En lineær tilstandsestimator blir brukt til å estimerere tilstandene i system",
+    "solPage": 5,
+    "solEndPage": 5
+   },
+   {
+    "num": 5,
+    "page": 4,
+    "endPage": 4,
+    "pct": 10,
+    "snippet": "Oppgave 5 (10 %) Lyapunovs ligning er: The Lyapunov equation is: AT M + MA = −N a) (10%) Bruk Lyapunovs ligning til vise at systemet nedenfor er asymptotisk stabilt. Use the Lyapunov equation to show that the system belo",
+    "solPage": 6,
+    "solEndPage": 6
+   },
+   {
+    "num": 6,
+    "page": 4,
+    "endPage": 5,
+    "pct": 12,
+    "snippet": "Oppgave 6 (12 %) Spektraltetthetsfunksjon til en stasjonær tilfeldig prosess X(t) er gitt ved: The spectral density function of a stationary random process X(t) is given by: SX ( jω) = a) (7%) Finn autokorrelasjonsfunksj",
+    "solPage": 6,
+    "solEndPage": 7
+   },
+   {
+    "num": 7,
+    "page": 5,
+    "endPage": 6,
+    "pct": 20,
+    "snippet": "Oppgave 7 (20 %) a) (10%) Gitt følgende system: Given the following system: xk+1 = 0.8xk + wk zk = xk + vk der xk er en skalar tilstand, wk en diskret hvitstøy forstyrrelse med varians Qk = 4, zk er en måling, og vk er ",
+    "solPage": 7,
+    "solEndPage": 9
+   }
+  ]
+ },
+ {
+  "id": "2013",
+  "dir": "Exam_2013",
+  "solDir": "Exam_2013_solution",
+  "year": 2013,
+  "kont": false,
+  "pages": 8,
+  "solPages": 9,
+  "problems": [
+   {
+    "num": 1,
+    "page": 2,
+    "endPage": 2,
+    "pct": 15,
+    "snippet": "Oppgave 1 (15 %) Anta gitt følgende system: Consider the following system: ẋ1 ẋ2 ! = 0 1 0 0 ! x1 x2 ! , y= \u0010 1 0 x1 x2 \u0011 ! a) (5%) Undersøk om systemet er observerbart. Investigate if the system is observable. b) (5%)",
+    "solPage": 1,
+    "solEndPage": 1
+   },
+   {
+    "num": 2,
+    "page": 2,
+    "endPage": 3,
+    "pct": 45,
+    "snippet": "Oppgave 2 (45 %) Anta gitt følgende system: Consider the following system: ẋ1 ẋ2 ! −5 2 0 1 = y = \u0010 1 0 ! \u0011 x1 x2 x1 x2 ! + ! a) (10%) Finn sprangresponsen til systemet fra u2 til y. Find the step response of the syste",
+    "solPage": 1,
+    "solEndPage": 5
+   },
+   {
+    "num": 3,
+    "page": 3,
+    "endPage": 4,
+    "pct": 20,
+    "snippet": "Oppgave 3 (20 %) Spektraltetthetsfunksjonen til en stasjonær tilfeldig prosess X(t) med null middelverdi er gitt ved: The spectral density function of a stationary random process X(t) with zero mean is given by: ",
+    "solPage": 5,
+    "solEndPage": 6
+   },
+   {
+    "num": 4,
+    "page": 4,
+    "endPage": 5,
+    "pct": 20,
+    "snippet": "Oppgave 4 (20 %) Gitt følgende system: Given the following system: xk+1 = Φk xk + wk zk = Hk xk + vk Φk = 1 1 0 1 ! , Hk = (1, 0) ",
+    "solPage": 6,
+    "solEndPage": 9
+   }
+  ]
+ },
+ {
+  "id": "2014",
+  "dir": "Exam_2014",
+  "solDir": "Exam_2014_solution",
+  "year": 2014,
+  "kont": false,
+  "pages": 10,
+  "solPages": 9,
+  "problems": [
+   {
+    "num": 1,
+    "page": 2,
+    "endPage": 2,
+    "pct": 15,
+    "snippet": "Oppgave 1 (15 %) La et system være gitt ved: Let a system be given by: \u0014 \u0015 \u0014 \u0015\u0014 \u0015 \u0014 \u0015 ẋ1 0 1 x1 0 = + u(t) ẋ2 0 1 x2 1 \u0014 \u0015 \u0002 \u0003 x1 y(t) = 1 0 x2 a) (3%) Er systemet observerbart? Is the system observable? b) (3%) Er sys",
+    "solPage": 1,
+    "solEndPage": 2
+   },
+   {
+    "num": 2,
+    "page": 3,
+    "endPage": 4,
+    "pct": 20,
+    "snippet": "Oppgave 2 (20 %) PID regulatoren vist under kan brukes til å styre et bredt utvalg av prosesser. The following PID controller may be used to control a wide variety of systems. \u0013 \u0012 KD s KI + ê(s) û(s) = KP + s τs + 1 H",
+    "solPage": 2,
+    "solEndPage": 4
+   },
+   {
+    "num": 3,
+    "page": 5,
+    "endPage": 5,
+    "pct": 15,
+    "snippet": "Oppgave 3 (15 %) Betrakt nå systemet med inngang u(t) og utgang y(t) beskrevet av differensialligningen: Consider the system with input u(t) and output y(t) described by the differential equation: ÿ(t) + 4y(t) = ü(t) ",
+    "solPage": 5,
+    "solEndPage": 5
+   },
+   {
+    "num": 4,
+    "page": 5,
+    "endPage": 5,
+    "pct": 5,
+    "snippet": "Oppgave 4 (5 %) Betrakt systemet Consider the system ẋ(t) = −3x(t) + u(t) y(t) = 2x(t) med pådrag with input ( u(t) = 1, 0, if 0 ≤ t < 1 if t ≥ 1 La x(0) = 0. Hva er utgangen y(t) ved tiden t = 2? Suppose that x(0) = 0",
+    "solPage": 5,
+    "solEndPage": 6
+   },
+   {
+    "num": 5,
+    "page": 6,
+    "endPage": 7,
+    "pct": 25,
+    "snippet": "Oppgave 5 (25 %) Betrakt systemet Consider the system ẋ(t) = −x(t) + 2w(t) z(t) = x(t) + v(t) hvor w(t) og v(t) er uavhengige stokastiske prosesser med spektraltetthet where w(t) and v(t) are independent stochastic proc",
+    "solPage": 6,
+    "solEndPage": 7
+   },
+   {
+    "num": 6,
+    "page": 7,
+    "endPage": 7,
+    "pct": 20,
+    "snippet": "Oppgave 6 (20 %) La vk være en normalfordelt hvitstøyprosess med forventningsverdi null og varians R. La en måleserie være gitt ved Let vk be a normally distributed zero-mean white-noise process with variance R. Conside",
+    "solPage": 8,
+    "solEndPage": 9
+   }
+  ]
+ },
+ {
+  "id": "2015",
+  "dir": "Exam_2015",
+  "solDir": "Exam_2015_solution",
+  "year": 2015,
+  "kont": false,
+  "pages": 10,
+  "solPages": 17,
+  "problems": [
+   {
+    "num": 1,
+    "page": 2,
+    "endPage": 2,
+    "pct": 8,
+    "snippet": "Oppgave 1 (8 %) Forklar følgende begreper: Explain the following concepts: a) (4%) Eksakt diskretisering. Exact discretization. b) (4%) Realisering. Realization. Oppgave 2 (21 %) Gitt systemet: Given the system \u0014 1 2 ẋ ",
+    "solPage": 1,
+    "solEndPage": 2
+   },
+   {
+    "num": 2,
+    "page": 2,
+    "endPage": 3,
+    "pct": 21,
+    "snippet": "Oppgave 2 (21 %) Gitt systemet: Given the system \u0014 1 2 ẋ = −3 −6 \u0002 \u0003 1 1 x y = \u0015 \u0014 x+ 1 b \u0015 u, b∈R a) (9%) Transformer systemet til Jordanform: Transform the system to Jordan form: x̂˙ = Jx̂ + B̂u y = Ĉx̂ b) (4%) Hvilk",
+    "solPage": 2,
+    "solEndPage": 5
+   },
+   {
+    "num": 3,
+    "page": 3,
+    "endPage": 3,
+    "pct": 14,
+    "snippet": "Oppgave 3 (14 %) Lyapunovs ligning er: The Lyapunov equation is: AT M + MA = −N a) (14%) Bruk Lyapunovs ligning til å vise at systemet nedenfor er asymptotisk stabilt. Use the Lyapunov equation to show that the system b",
+    "solPage": 5,
+    "solEndPage": 7
+   },
+   {
+    "num": 4,
+    "page": 3,
+    "endPage": 4,
+    "pct": 18,
+    "snippet": "Oppgave 4 (18 %) Gitt følgende system Consider the system \u0014 ẋ = y = \u0002 1 1 0 3 \u0015 1 0 \u0003 \u0014 x+ x 1 1 \u0015 u, ",
+    "solPage": 8,
+    "solEndPage": 9
+   },
+   {
+    "num": 5,
+    "page": 4,
+    "endPage": 5,
+    "pct": 17,
+    "snippet": "Oppgave 5 (17 %) Spektraltetthetsfunksjonen til en stasjonær stokastisk prosess x (t) er gitt ved: The spectral density function of a stationary random process x (t) is given by: Sx (jω) = 4 ω 4 + 5ω 2 + 4 a) (2%) Vis at",
+    "solPage": 9,
+    "solEndPage": 12
+   },
+   {
+    "num": 6,
+    "page": 5,
+    "endPage": 7,
+    "pct": 22,
+    "snippet": "Oppgave 6 (22 %) a) (2%) Skriv opp likningene for systemet det diskrete kalmanfilteret er en optimalt estimator for, og forklar hvilke antagelser som er gjort for støyen. Husk at ligningene for det diskrete kalmanfiltere",
+    "solPage": 12,
+    "solEndPage": 17
+   }
+  ]
+ },
+ {
+  "id": "2016",
+  "dir": "Exam_2016",
+  "solDir": "Exam_2016_solution",
+  "year": 2016,
+  "kont": false,
+  "pages": 12,
+  "solPages": 6,
+  "problems": [
+   {
+    "num": 1,
+    "page": 3,
+    "endPage": 4,
+    "pct": 30,
+    "snippet": "Problem 1 (30 %) A linear plant is modeled by \" ẋ1 (t) ẋ2 (t) # \" = 0 1 0 1 #\" x1 (t) x2 (t) # \" + # 0 1 u(t), y(t) = h 1 0 i \" x1 (t) x2 (t) # (1) a) (5 %) Demonstrate that plant is controllable and design a state-fee",
+    "solPage": 1,
+    "solEndPage": 2
+   },
+   {
+    "num": 2,
+    "page": 5,
+    "endPage": 5,
+    "pct": 20,
+    "snippet": "Problem 2 (20 %) PID regulators, exemplified by K u(s) = Kp + Kd s + i e(s) s \u0012 \u0013 (8) are ubiquitous in process control. The preceding equation is given in the Laplace-domain. For implementation, a time-domain formulatio",
+    "solPage": 3,
+    "solEndPage": 3
+   },
+   {
+    "num": 3,
+    "page": 6,
+    "endPage": 7,
+    "pct": 25,
+    "snippet": "Problem 3 (25 %) Modern cellular phones are equipped with accelerometers and GPS. Much improved position estimates are possible through combination of sensor data, known as sensor fusion. For simplicity, only the horizon",
+    "solPage": 4,
+    "solEndPage": 5
+   },
+   {
+    "num": 4,
+    "page": 8,
+    "endPage": 8,
+    "pct": 25,
+    "snippet": "Problem 4 (25 %) The Linear Quadratic Regulator is a powerful tool in control design. Let a simple plant be given by the low-pass filter τ ẋ(t) + x(t) = u(t) (27) Here, τ 6= 0 represents the time constant of the model, ",
+    "solPage": null,
+    "solEndPage": null
+   }
+  ]
+ },
+ {
+  "id": "2017",
+  "dir": "Exam_2017",
+  "solDir": "Exam_2017_solution",
+  "year": 2017,
+  "kont": false,
+  "pages": 13,
+  "solPages": 7,
+  "problems": [
+   {
+    "num": 1,
+    "page": 3,
+    "endPage": 4,
+    "pct": 30,
+    "snippet": "Problem 1 (30 %) Fin stabilizers are an effective way of reducing roll motion (φ) on ships, granted that the ship is traveling sufficiently fast (V > 0). The figure shown below depicts the idea in a simplified fashion. B",
+    "solPage": 1,
+    "solEndPage": 2
+   },
+   {
+    "num": 2,
+    "page": 5,
+    "endPage": 5,
+    "pct": 10,
+    "snippet": "Problem 2 (10 %) Find a minimal state-space realization of the transfer-function g(s) relating a scalar input u(s) to a vectorial output y(s) = [y1 (s), y2 (s)]T so that y(s) = g(s)u(s). \" g(s) = 1 τ s+1 τs τ s+1 # Is th",
+    "solPage": 3,
+    "solEndPage": 3
+   },
+   {
+    "num": 3,
+    "page": 5,
+    "endPage": 5,
+    "pct": 10,
+    "snippet": "Problem 3 (10 %) Let a simple dynamic system with two inputs be described by ẋ + x = u1 + u2 It will be desirable to minimize the following cost function. Z ∞ J= 0 x2 + ru21 + ru22 dt where r > 0. Identify the feedback ",
+    "solPage": 3,
+    "solEndPage": 3
+   },
+   {
+    "num": 4,
+    "page": 6,
+    "endPage": 7,
+    "pct": 20,
+    "snippet": "Problem 4 (20 %) Norbert Wiener coined the term \"Cybernetics\" in his famous book Cybernetics: Or Control and Communication in the Animal and the Machine published in 1948. In engineering cybernetics (teknisk kybernetikk)",
+    "solPage": 4,
+    "solEndPage": 4
+   },
+   {
+    "num": 5,
+    "page": 8,
+    "endPage": 9,
+    "pct": 30,
+    "snippet": "Problem 5 (30 %) GPS measurements can be used to determine static positions with high precision. An antenna system for surveying purposes is shown below. In this task, a static location x = [x1 , x2 ]T in the horizontal ",
+    "solPage": 5,
+    "solEndPage": 7
+   }
+  ]
+ },
+ {
+  "id": "2017-kont",
+  "dir": "Exam_2017_kont",
+  "solDir": "Exam_2017_kont_solution",
+  "year": 2017,
+  "kont": true,
+  "pages": 12,
+  "solPages": 6,
+  "problems": [
+   {
+    "num": 1,
+    "page": 3,
+    "endPage": 3,
+    "pct": 20,
+    "snippet": "Problem 1 (20 %) Let a first order low-pass filter and a first order high-pass filter be given respectively by gl (s) = 1 , τs + 1 gh (s) = τs τs + 1 The filters are driven by a common input signal u(s), but produce the ",
+    "solPage": 1,
+    "solEndPage": 2
+   },
+   {
+    "num": 2,
+    "page": 4,
+    "endPage": 5,
+    "pct": 30,
+    "snippet": "Problem 2 (30 %) The shaft velocity of a diesel engine can be modeled notionally by τ ẋ + x = u − d (1) Here, x represents the shaft velocity, u the throttle whereas d represents an applied load. The dynamics are quanti",
+    "solPage": 3,
+    "solEndPage": 4
+   },
+   {
+    "num": 3,
+    "page": 5,
+    "endPage": 6,
+    "pct": 20,
+    "snippet": "Problem 3 (20 %) Consider the following state-space model \" ẋ1 ẋ2 # \" = 0 1 1 0 #\" x1 x2 # \" + 1 α # u, y= h 1 β i \" x1 x2 # a) (3 %) For which values of α and β is this system uncontrollable? b) (3 %) For which values",
+    "solPage": 4,
+    "solEndPage": 5
+   },
+   {
+    "num": 4,
+    "page": 6,
+    "endPage": 8,
+    "pct": 30,
+    "snippet": "Problem 4 (30 %) Consider the measurement y given by y = Cx + v The objective is to estimate the unknown vector x, the desired estimate will be denoted x̂. Some information is known; the mean and covariance of x are give",
+    "solPage": 5,
+    "solEndPage": 6
+   }
+  ]
+ },
+ {
+  "id": "2018",
+  "dir": "Exam_2018",
+  "solDir": "Exam_2018_solution",
+  "year": 2018,
+  "kont": false,
+  "pages": 12,
+  "solPages": 7,
+  "problems": [
+   {
+    "num": 1,
+    "page": 3,
+    "endPage": 3,
+    "pct": 10,
+    "snippet": "Problem 1 (10 %) Let a second-order homogenous differential equation be given by z̈ = 0. A measurement of the process is made with y = z. You are to design a Luenberger observer capable of estimating z and ż from the me",
+    "solPage": 1,
+    "solEndPage": 1
+   },
+   {
+    "num": 2,
+    "page": 3,
+    "endPage": 3,
+    "pct": 6,
+    "snippet": "Problem 2 (6 %) Three system matrices A for use in a dynamic model ẋ = Ax are shown below. A1 = C 0 1 0 0 D , A2 = C ≠1 ≠2 2 ≠1 D A3 = , C 0 0 0 0 D What are the stability properties of the dynamics associated with each",
+    "solPage": 2,
+    "solEndPage": 2
+   },
+   {
+    "num": 3,
+    "page": 3,
+    "endPage": 3,
+    "pct": 9,
+    "snippet": "Problem 3 (9 %) Consider the system C ẋ1 ẋ2 D = C ≠1 1 1 ≠1 Find the eigenvalue matrix system. DC x1 x2 D + C 1 0 D u, y= Ë 0.5 0.5 È C x1 x2 D and the eigenvector matrix Q. Then, diagonalize the ",
+    "solPage": 2,
+    "solEndPage": 3
+   },
+   {
+    "num": 4,
+    "page": 4,
+    "endPage": 4,
+    "pct": 25,
+    "snippet": "Problem 4 (25 %) A PI cruise-control system for a car is to be designed. Let the car’s velocity v be modeled by the linear differential equation mv̇ + dv = u (1) Here, m is the car’s mass and d a positive damping constan",
+    "solPage": 3,
+    "solEndPage": 4
+   },
+   {
+    "num": 5,
+    "page": 5,
+    "endPage": 6,
+    "pct": 25,
+    "snippet": "Problem 5 (25 %) x1 Water hose v1 = kx1 TANK 1 u x2 y v2 = kx2 TANK 2 Level gauge x3 0 TANK 3 v3 = kx3 The figure shows three similar water-tanks with level xi [m] (for i = 1 . . . 3) connected by pipes. All tanks are cy",
+    "solPage": 4,
+    "solEndPage": 6
+   },
+   {
+    "num": 6,
+    "page": 7,
+    "endPage": 8,
+    "pct": 25,
+    "snippet": "Problem 6 (25 %) Many (if not most) aircraft are equipped with pitot-tubes. The picture shows where these are located on an airliner. Pitot-tubes are used to measure the airspeed u. In this task, you will combine a GPS m",
+    "solPage": 6,
+    "solEndPage": 7
+   }
+  ]
+ },
+ {
+  "id": "2019",
+  "dir": "Exam_2019",
+  "solDir": "Exam_2019_solution",
+  "year": 2019,
+  "kont": false,
+  "pages": 12,
+  "solPages": 13,
+  "problems": [
+   {
+    "num": 1,
+    "page": 3,
+    "endPage": 4,
+    "pct": 20,
+    "snippet": "Problem 1 (20 %) a) c) u1 y1 Σ1 u1 v z v u2 y2 Σ2 Σ1 − y2 Σ2 b) u1 v y1 Σ1 u2 y2 Σ2 y1 z u2 z Let two state-space systems be given respectively by Σ1 : ẋ1 = A1 x1 + B1 u1 , y1 = C1 x1 + D1 u1 (1) Σ2 : ẋ2 = A2 x2 + B2 u",
+    "solPage": 1,
+    "solEndPage": 4
+   },
+   {
+    "num": 2,
+    "page": 4,
+    "endPage": 4,
+    "pct": 15,
+    "snippet": "Problem 2 (15 %) A Kalman filter has been running on a process with two states for a while. This process is described, in part, by the matrices C= h 1 0 i , R = ρ2 (8) The filter is now in time-step k and a measurement y",
+    "solPage": 4,
+    "solEndPage": 5
+   },
+   {
+    "num": 3,
+    "page": 4,
+    "endPage": 4,
+    "pct": 15,
+    "snippet": "Problem 3 (15 %) You have been fired from your job as a control engineer due to a management that does not appreciate the beautiful art and science of control engineering. It’s time for revenge. One of the company’s prod",
+    "solPage": 5,
+    "solEndPage": 6
+   },
+   {
+    "num": 4,
+    "page": 5,
+    "endPage": 6,
+    "pct": 25,
+    "snippet": "Problem 4 (25 %) The figure illustrates a train of n + 1 carts, of which only three are shown. You may assume that n < ∞. The carts are connected with links of length ` > 0 which are attached to their rotation axes. V2 `",
+    "solPage": 6,
+    "solEndPage": 10
+   },
+   {
+    "num": 5,
+    "page": 7,
+    "endPage": 8,
+    "pct": 25,
+    "snippet": "Problem 5 (25 %) A mass-spring damper system can be described by the following equation. mẍ + dẋ + kx = f (18) We wish to estimate x and ẋ with two measurements: • An accelerometer measuring ẍ. Let uacc denote the ac",
+    "solPage": 10,
+    "solEndPage": 13
+   }
+  ]
+ },
+ {
+  "id": "2019-kont",
+  "dir": "Exam_2019_kont",
+  "solDir": "Exam_2019_kont_solution",
+  "year": 2019,
+  "kont": true,
+  "pages": 11,
+  "solPages": 8,
+  "problems": [
+   {
+    "num": 1,
+    "page": 3,
+    "endPage": 3,
+    "pct": 15,
+    "snippet": "Problem 1 (15 %) Certain systems are well described by linear models on the following form: y = Du (1) Here, y is an output vector, u an input vector and D a constant matrix of suitable dimension. a) (8 %) Assume that th",
+    "solPage": 1,
+    "solEndPage": 1
+   },
+   {
+    "num": 2,
+    "page": 3,
+    "endPage": 4,
+    "pct": 20,
+    "snippet": "Problem 2 (20 %) Let an unforced dynamic system be described by ẋ = Ax. Systems of this kind are either unstable (US) or stable in the sense of Lyapunov1 (LS). Moreover, in addition to being Lyapunov stable they may als",
+    "solPage": 2,
+    "solEndPage": 3
+   },
+   {
+    "num": 3,
+    "page": 5,
+    "endPage": 5,
+    "pct": 25,
+    "snippet": "Problem 3 (25 %) First order models T ż + z = ku, y=z (2) where T is a positive time-constant can be used to describe many industrial processes. a) (6 %) Let the input be given by: ( u(t) = 0, t < 0 1, t ≥ 0 Assume that",
+    "solPage": 3,
+    "solEndPage": 5
+   },
+   {
+    "num": 4,
+    "page": 6,
+    "endPage": 6,
+    "pct": 10,
+    "snippet": "Problem 4 (10 %) Let a monovariable2 process be described by ẋ = Ax + Bu, y = Cx (4) with a system matrix given by \" A= −1 3 0 −2 # a) (5 %) Find an input matrix B of suitable dimension with at least one non-zero entry ",
+    "solPage": 5,
+    "solEndPage": 6
+   },
+   {
+    "num": 5,
+    "page": 6,
+    "endPage": 6,
+    "pct": 15,
+    "snippet": "Problem 5 (15 %) a) (5 %) Explain briefly what the principle of separation of estimation and control tells us and how it simplifies the design of linear control systems. b) (5 %) Linear systems are, by definition, linear",
+    "solPage": 6,
+    "solEndPage": 6
+   },
+   {
+    "num": 6,
+    "page": 7,
+    "endPage": 7,
+    "pct": 15,
+    "snippet": "Problem 6 (15 %) Let a simple scalar, random and discrete process model be given by x[k + 1] = x[k] + w[k], E[w[k]] = 0, E[w[k]w[l]] = δ[k, l]Q (5) a) (5 %) Assume that E[x[0]] = 0, E[x[0]2 ] = 1 and that Q = 2. What is ",
+    "solPage": 7,
+    "solEndPage": 8
+   }
+  ]
+ },
+ {
+  "id": "2020",
+  "dir": "Exam_2020",
+  "solDir": "Exam_2020_solution",
+  "year": 2020,
+  "kont": false,
+  "pages": 19,
+  "solPages": 20,
+  "problems": [
+   {
+    "num": 9,
+    "page": 10,
+    "endPage": 11,
+    "pct": null,
+    "snippet": "Problem 9 Problem 9A or 9B was chosen at random for each student. Problem 9A a) Given the matrix A: \" 1 0 1 −2 A= # (1) Find the exact value for eAt . Show the steps you use to find it. b) Given the system: B A z\" ẋ = }",
+    "solPage": 3,
+    "solEndPage": 8
+   },
+   {
+    "num": 10,
+    "page": 12,
+    "endPage": 14,
+    "pct": null,
+    "snippet": "Problem 10 Problem 10A or 10B was chosen at random for each student. Problem 10A Given the discrete time system: A z\" x[k + 1] = B }| 0.9 −0.5 0 1 #{ G z }| #{ \" x[k] + 0 1 z\" u[k] + }| 1 0 0 1 #{ w[k] C y[k] = zh }| 1 0",
+    "solPage": 9,
+    "solEndPage": 12
+   },
+   {
+    "num": 11,
+    "page": 15,
+    "endPage": 16,
+    "pct": null,
+    "snippet": "Problem 11 Problem 11A or 11B was chosen at random for each student. Problem 11A Consider the system described by this equation: ẋ(t) = ax(t) + β(t) where β(t) is a disturbance. You have access to a measurement m(t): m(",
+    "solPage": 13,
+    "solEndPage": 16
+   },
+   {
+    "num": 12,
+    "page": 17,
+    "endPage": 19,
+    "pct": null,
+    "snippet": "Problem 12 Problem 12A or 12B was chosen at random for each student. Problem 12A Consider a system where a magnet with mass m is hovering below a stationary magnet, with the stationary magnet imposing an attractive force",
+    "solPage": 17,
+    "solEndPage": 20
+   }
+  ]
+ },
+ {
+  "id": "2020-kont",
+  "dir": "Exam_2020_kont",
+  "solDir": "Exam_2020_kont_solution",
+  "year": 2020,
+  "kont": true,
+  "pages": 4,
+  "solPages": 7,
+  "problems": []
+ },
+ {
+  "id": "2021",
+  "dir": "Exam_2021",
+  "solDir": "Exam_2021_solution",
+  "year": 2021,
+  "kont": false,
+  "pages": 11,
+  "solPages": 12,
+  "problems": [
+   {
+    "num": 1,
+    "page": 3,
+    "endPage": 3,
+    "pct": 25,
+    "snippet": "Problem 1 (25 %) Given the system: A z \" ẋ = }| −1 4 1 −1 B #{ C z }| #{ \" x+ 1 0 u, y= hz }| 1 0 i{ (1) x a) (5 %) Test the system’s controllability and observability. b) (5 %) Find the system’s transfer function. c) (",
+    "solPage": 1,
+    "solEndPage": 3
+   },
+   {
+    "num": 2,
+    "page": 4,
+    "endPage": 4,
+    "pct": 12,
+    "snippet": "Problem 2 (12 %) Given the first order system: ẋ(t) = ax(t) + u(t) (3) where a > 0. a) (6 %) Let the input be given by u = −kx. Show how to find the value of k that minimizes the object function Z ∞ J= qx(t)2 + ru(t)2 d",
+    "solPage": 4,
+    "solEndPage": 4
+   },
+   {
+    "num": 3,
+    "page": 5,
+    "endPage": 5,
+    "pct": 24,
+    "snippet": "Problem 3 (24 %) You are working on a suspension system for a car. For a single wheel, let x1 be the vertical speed (positive upwards) of the top of the spring (which is attached to the car), and x2 its vertical postitio",
+    "solPage": 5,
+    "solEndPage": 7
+   },
+   {
+    "num": 4,
+    "page": 6,
+    "endPage": 6,
+    "pct": 24,
+    "snippet": "Problem 4 (24 %) Consider a first order process that is to be controlled. The process is described by the following equation: ẋ(t) = 0.1x(t) + u(t), y(t) = x(t) (5) where u(t) is the input. a) (6 %) The output of the pr",
+    "solPage": 8,
+    "solEndPage": 10
+   },
+   {
+    "num": 5,
+    "page": 7,
+    "endPage": 7,
+    "pct": 15,
+    "snippet": "Problem 5 (15 %) a) (8 %) Given a state space system: ẋ =Ax + Bu y =Cx The observability gramian of the system is defined as: Z t Wo (t) = T eA τ CT CeAτ dτ 0 Assume that x(0) is unknown, but you know the value of y(t) ",
+    "solPage": 11,
+    "solEndPage": 12
+   }
+  ]
+ },
+ {
+  "id": "2021-kont",
+  "dir": "Exam_2021_kont",
+  "solDir": "Exam_2021_kont_solution",
+  "year": 2021,
+  "kont": true,
+  "pages": 14,
+  "solPages": 17,
+  "problems": [
+   {
+    "num": 1,
+    "page": 3,
+    "endPage": 3,
+    "pct": 30,
+    "snippet": "Problem 1 (30 %) a) (4 %) Given the system: A z\" ẋ = B }| 0 2 −1 −2 #{ C z }| #{ \" x+ 1 0 u, y= zh }| 0 1 i{ (1) x Show that the system is controllable and observable. b) (6 %) Use a similarity transform to transform th",
+    "solPage": 1,
+    "solEndPage": 5
+   },
+   {
+    "num": 2,
+    "page": 4,
+    "endPage": 4,
+    "pct": 10,
+    "snippet": "Problem 2 (10 %) The name of the course you are taking is linear systems theory. Let a time invariant system be defined by the equation ẋ(t) = F (x(t)), where x is a real vector with n elements. a) (3 %) State the two c",
+    "solPage": 6,
+    "solEndPage": 7
+   },
+   {
+    "num": 3,
+    "page": 5,
+    "endPage": 6,
+    "pct": 20,
+    "snippet": "Problem 3 (20 %) You are developing a system that tracks the movement of chickens on a horizontal surface. The system uses machine vision to pinpoint the location of each chicken every second. The measurement has uncerta",
+    "solPage": 8,
+    "solEndPage": 10
+   },
+   {
+    "num": 4,
+    "page": 7,
+    "endPage": 8,
+    "pct": 20,
+    "snippet": "Problem 4 (20 %) Your company is developing adaptive cruise control (ACC) for a car. The purpose of the ACC is to keep a constant distance between the controlled car and the car in front of it on the road. Consider a sit",
+    "solPage": 11,
+    "solEndPage": 14
+   },
+   {
+    "num": 5,
+    "page": 9,
+    "endPage": 10,
+    "pct": 20,
+    "snippet": "Problem 5 (20 %) You are still working on the ACC system. Your boss now tells you to use the following state space model for the system, where x1 (m/s) is the difference in speed between the two cars (the speed of the ca",
+    "solPage": 15,
+    "solEndPage": 17
+   }
+  ]
+ },
+ {
+  "id": "2022",
+  "dir": "Exam_2022",
+  "solDir": "Exam_2022_solution",
+  "year": 2022,
+  "kont": false,
+  "pages": 12,
+  "solPages": 12,
+  "problems": [
+   {
+    "num": 1,
+    "page": 3,
+    "endPage": 3,
+    "pct": 30,
+    "snippet": "Problem 1 (30 %) Given this system: A z\" ẋ = B }| 2 −1 −4 −1 y= #{ z }| #{ \" x+ h 1 0 i | {z } C 1 2 u (1) x a) (5 %) Show that the system is observable and controllable. b) (5 %) Find the transfer function of the syste",
+    "solPage": 1,
+    "solEndPage": 3
+   },
+   {
+    "num": 2,
+    "page": 4,
+    "endPage": 4,
+    "pct": 20,
+    "snippet": "Problem 2 (20 %) A noise process has been modelled as β(s) = H(s)w(s) where E[w(t)] = 0, the autocorrelation function for w(t) is Rw (τ ) = δ(τ ), and H(s) = s+1 (s + 2)(s + 3) (3) a) (5 %) What kind of process is w(t)? ",
+    "solPage": 4,
+    "solEndPage": 5
+   },
+   {
+    "num": 3,
+    "page": 5,
+    "endPage": 6,
+    "pct": 24,
+    "snippet": "Problem 3 (24 %) When fermenting beer, yeast is metabolizing sugar in the wort and producing ethanol. The reduction in sugar content causes the density of the wort to decrease, and the addition of ethanol causes a furthe",
+    "solPage": 6,
+    "solEndPage": 8
+   },
+   {
+    "num": 4,
+    "page": 7,
+    "endPage": 7,
+    "pct": 10,
+    "snippet": "Problem 4 (10 %) a) (5 %) You want to control the following system: ẋ = ax + u, y=x (5) with a control law on the form u = −kx. Use LQR with Q = R = 1 to find the value of k as a function of a. Show that the closed-loop",
+    "solPage": 9,
+    "solEndPage": 10
+   },
+   {
+    "num": 5,
+    "page": 8,
+    "endPage": 8,
+    "pct": 16,
+    "snippet": "Problem 5 (16 %) The following questions go into your experiences with the helicopter lab. If any of the questions concern tests for which you don’t have direct experience, you should speculate based on your knowledge of",
+    "solPage": 11,
+    "solEndPage": 12
+   }
+  ]
+ },
+ {
+  "id": "2023",
+  "dir": "Exam_2023",
+  "solDir": "Exam_2023_solution",
+  "year": 2023,
+  "kont": false,
+  "pages": 18,
+  "solPages": 15,
+  "problems": [
+   {
+    "num": 1,
+    "page": 3,
+    "endPage": 3,
+    "pct": 6,
+    "snippet": "Problem 1 (6 %) Given the following continuous time system: \" −2 0 −1 1 ẋ = y= Is this system: a) Not controllable, not observable b) Controllable, not observable c) Observable, not controllable d) Both controllable and",
+    "solPage": 1,
+    "solEndPage": 1
+   },
+   {
+    "num": 2,
+    "page": 4,
+    "endPage": 4,
+    "pct": 6,
+    "snippet": "Problem 2 (6 %) Given the following matrix: \" A= 2 3 1 0 # (1) What is the value of the upper left element of the matrix exponential eAt ? Hint 1: eAt equals the inverse Laplace transform of (sI − A)−1 . Hint 2: Another ",
+    "solPage": 2,
+    "solEndPage": 2
+   },
+   {
+    "num": 3,
+    "page": 5,
+    "endPage": 5,
+    "pct": 6,
+    "snippet": "Problem 3 (6 %) Given the following continuous time system : A z }| B { z  }| { −1 0 a 1 0     ẋ =  0 0 2  x +  0 1  u, 0 0 0 0 0 Is this system: a) Internally unstable b) Exponentially stable c) Marginally ",
+    "solPage": 3,
+    "solEndPage": 3
+   },
+   {
+    "num": 4,
+    "page": 6,
+    "endPage": 6,
+    "pct": 6,
+    "snippet": "Problem 4 (6 %) For the following system: ẋ(t) = 0.5x(t) + u(t) with a control law on the form u(t) = −kx(t) + kr r0 where r0 is a constant reference value, which set of control parameters will ensure the fastest conver",
+    "solPage": 4,
+    "solEndPage": 4
+   },
+   {
+    "num": 5,
+    "page": 7,
+    "endPage": 7,
+    "pct": 6,
+    "snippet": "Problem 5 (6 %) Given the continuous time system: \" ẋ = 1 −1 ω 0 # \" x+ 1 0 h # u, where ω ̸= 0. Using a state feedback u = − k1 k2 the closed-loop system’s poles in -1 and -0.5? a) k1 = 2 and k2 = 0.5 ω − 0.5 b) k1 = 2",
+    "solPage": 5,
+    "solEndPage": 5
+   },
+   {
+    "num": 6,
+    "page": 8,
+    "endPage": 8,
+    "pct": 6,
+    "snippet": "Problem 6 (6 %) Given the two continuous time systems: \" ẋ = \" ż = −1 −1 0 −2 # −1 0 1 −2 # \" x+ \" z+ 1 0 # 1 0 # u1 , y1 = h 1 0 i x u2 , y2 = h 0 1 i z Are these systems: a) Unrelated b) Algebraically equivalent c) Z",
+    "solPage": 6,
+    "solEndPage": 6
+   },
+   {
+    "num": 7,
+    "page": 9,
+    "endPage": 9,
+    "pct": 6,
+    "snippet": "Problem 7 (6 %) You need to model a noise process that has the spectral density function S(ω) = 2 k 2. ω +ω0 2 Which of the following state space models, given a unity white noise input, will output a signal with the spe",
+    "solPage": 7,
+    "solEndPage": 7
+   },
+   {
+    "num": 8,
+    "page": 9,
+    "endPage": 10,
+    "pct": 25,
+    "snippet": "Problem 8 (25 %) You are working on the following system: \" ẋ = −0.5 α 0 1 y= h # \" x+ 1 0 i 0 1 # u (2) x where the coefficient α can take on different values depending on the load on the system. a) Test whether it is ",
+    "solPage": 8,
+    "solEndPage": 10
+   },
+   {
+    "num": 9,
+    "page": 11,
+    "endPage": 12,
+    "pct": 20,
+    "snippet": "Problem 9 (20 %) You are working on estimation and control of an electric motor whose speed x(t) follows this equation: ẋ(t) = −0.1x(t) + u(t) (3) where u(t) is the input voltage and the unit of time is seconds. a) You ",
+    "solPage": 11,
+    "solEndPage": 12
+   },
+   {
+    "num": 10,
+    "page": 13,
+    "endPage": 13,
+    "pct": 8,
+    "snippet": "Problem 10 (8 %) Consider an LTI system given by the equations: ẋ = Ax + Bu (8) y = Cx Its dual system is given by: ż = AT z + CT ū (9) ȳ = BT z Show that the dual system is observable if and only if the original sys",
+    "solPage": 13,
+    "solEndPage": 13
+   },
+   {
+    "num": 11,
+    "page": 14,
+    "endPage": 14,
+    "pct": 12,
+    "snippet": "Problem 11 (12 %) The following questions go into your experiences with the helicopter lab. If any of the questions concern tests for which you don’t have direct experience, you should speculate based on your knowledge o",
+    "solPage": 14,
+    "solEndPage": 15
+   }
+  ]
+ },
+ {
+  "id": "2024",
+  "dir": "Exam_2024",
+  "solDir": "Exam_2024_solution",
+  "year": 2024,
+  "kont": false,
+  "pages": 18,
+  "solPages": 17,
+  "problems": [
+   {
+    "num": 1,
+    "page": 3,
+    "endPage": 3,
+    "pct": 4,
+    "snippet": "Problem 1 (4 %) Given the following discrete time system:     0 −2 1 0     x[k + 1] =  −1 1 0  x[k] +  1  u[k] 1 1 1 1 y[k] = h Is this system: a) Not controllable, not observable b) Controllable, not observa",
+    "solPage": 1,
+    "solEndPage": 1
+   },
+   {
+    "num": 2,
+    "page": 4,
+    "endPage": 4,
+    "pct": 5,
+    "snippet": "Problem 2 (5 %) Given the following continuous time system : A z \" ẋ = }| 1 2 2 −2 B #{ x+ Is this system: a) Internally stable and BIBO stable b) Internally stable, not BIBO stable c) Internally unstable but BIBO stabl",
+    "solPage": 2,
+    "solEndPage": 2
+   },
+   {
+    "num": 3,
+    "page": 5,
+    "endPage": 5,
+    "pct": 5,
+    "snippet": "Problem 3 (5 %) Given the following matrix: \" A= 3 1 −1 5 # The matrix can be transformed into either diagonal form (Λ = Q−1 AQ) or Jordan form (J = Q−1 AQ). Which values of Λ, Q versus J, Q are correct? \" 4 0 0 4 # 4 0 ",
+    "solPage": 3,
+    "solEndPage": 4
+   },
+   {
+    "num": 4,
+    "page": 6,
+    "endPage": 6,
+    "pct": 6,
+    "snippet": "Problem 4 (6 %) Given a continuous time system: ẋ = Ax + Bu, y = Cx Which of the following statements are true (note: more than one may be true): a) The system can be diagonalized provided the A matrix is invertible. b)",
+    "solPage": 5,
+    "solEndPage": 5
+   },
+   {
+    "num": 5,
+    "page": 7,
+    "endPage": 7,
+    "pct": 4,
+    "snippet": "Problem 5 (4 %) Given the continuous time system: \" ẋ = 1 −2 0 ω # \" x+ 0 1 h # u, where ω ̸= 0. Using a state feedback u = − k1 k2 the closed-loop system’s poles in -1 and -2? a) k1 = −1 and k2 = ω + 4 b) k1 = −1 and k",
+    "solPage": 6,
+    "solEndPage": 6
+   },
+   {
+    "num": 6,
+    "page": 8,
+    "endPage": 8,
+    "pct": 5,
+    "snippet": "Problem 6 (5 %) Given the two continuous time systems: \" ẋ = \" ż = 1 4 −1 2 # 3 6 −1 0 # \" x+ \" z+ 1 1 # −1 1 u1 , y1 = h # u2 , y2 = Are these systems: a) Unrelated b) Algebraically equivalent c) Zero-state equivalent",
+    "solPage": 7,
+    "solEndPage": 7
+   },
+   {
+    "num": 7,
+    "page": 9,
+    "endPage": 9,
+    "pct": 6,
+    "snippet": "Problem 7 (6 %) Given a system governed by the following differential equation: ẍ(t) − 3ẋ(t) + ax(t) = u(t) If the input u(t) is a random signal with zero mean and power spectral density Su (jω) = A, what is the power ",
+    "solPage": 8,
+    "solEndPage": 8
+   },
+   {
+    "num": 8,
+    "page": 10,
+    "endPage": 10,
+    "pct": 5,
+    "snippet": "Problem 8 (5 %) Consider the following discrete time system: \" x[k + 1] = 1 2 1 0 # \" # The system state at time step 0 is x0 = \" x[k] + 1 0 # u[k] 1 . Find the sequence of inputs u[0] and u[1] 0 \" that will make the sta",
+    "solPage": 9,
+    "solEndPage": 9
+   },
+   {
+    "num": 9,
+    "page": 11,
+    "endPage": 11,
+    "pct": 20,
+    "snippet": "Problem 9 (20 %) You are designing the controller for an electrical vehicle. With x representing the speed of the vehicle, a simplified model for the speed is: ẋ(t) = −0.1x(t) + u(t) + d(t) where u(t) is the controller ",
+    "solPage": 10,
+    "solEndPage": 11
+   },
+   {
+    "num": 10,
+    "page": 12,
+    "endPage": 12,
+    "pct": 20,
+    "snippet": "Problem 10 (20 %) You want to track and predict the development of a stock market index based on its daily value. With x1 being the current value of the index and x2 being the current trend of the index, we define a stat",
+    "solPage": 12,
+    "solEndPage": 14
+   },
+   {
+    "num": 11,
+    "page": 13,
+    "endPage": 14,
+    "pct": 20,
+    "snippet": "Problem 11 (20 %) A Segway can be modelled in a simplified way as an inverted pendulum linearized for small angles, and with the electrical motor providing a force affecting the angular speed directly. The Segway’s contr",
+    "solPage": 15,
+    "solEndPage": 17
+   }
+  ]
+ },
+ {
+  "id": "2024-kont",
+  "dir": "Exam_2024_kont",
+  "solDir": "Exam_2024_kont_solution",
+  "year": 2024,
+  "kont": true,
+  "pages": 12,
+  "solPages": 13,
+  "problems": [
+   {
+    "num": 1,
+    "page": 3,
+    "endPage": 3,
+    "pct": 28,
+    "snippet": "Problem 1 (28 %) Given this system: A z\" ẋ = }| 4 0 2 2 y= B #{ z }| #{ \" 2 0 x+ h 1 0 i | {z } C u (1) x a) (4 %) Show that the system is controllable but not observable. b) (5 %) Test the BIBO stability of the system ",
+    "solPage": 1,
+    "solEndPage": 3
+   },
+   {
+    "num": 2,
+    "page": 4,
+    "endPage": 5,
+    "pct": 20,
+    "snippet": "Problem 2 (20 %) You are monitoring the position of a drifter in the ocean. For most of the time it drifts with the current at 250 m depth. Every 4 hours, it floats up to the surface where its GPS measures its position, ",
+    "solPage": 4,
+    "solEndPage": 6
+   },
+   {
+    "num": 3,
+    "page": 6,
+    "endPage": 6,
+    "pct": 20,
+    "snippet": "Problem 3 (20 %) You are designing the controller for the cruise control of a car. Let x(t) be the speed of the car. The following model describes how the speed changes with time: ẋ(t) = −0.1x(t) + u(t) + w(t) where u(t",
+    "solPage": 7,
+    "solEndPage": 9
+   },
+   {
+    "num": 4,
+    "page": 7,
+    "endPage": 7,
+    "pct": 20,
+    "snippet": "Problem 4 (20 %) Given the system: ẋ(t) = −2x(t) + 2w(t) (3) y(t) = x(t) + v(t) where w(t) and v(t) are independent stochastic processes with autocorrelations Rw (τ ) = δ(τ ), Rv (τ ) = 2δ(τ ) a) (4 %) What type of stoc",
+    "solPage": 10,
+    "solEndPage": 11
+   },
+   {
+    "num": 5,
+    "page": 8,
+    "endPage": 8,
+    "pct": 12,
+    "snippet": "Problem 5 (12 %) The following questions are related to the helicopter lab. If any of the questions concern tests for which you don’t have direct experience, you should speculate based on your knowledge of the theory and",
+    "solPage": 12,
+    "solEndPage": 13
+   }
+  ]
+ },
+ {
+  "id": "2025-kont",
+  "dir": "Exam_2025_kont",
+  "solDir": "Exam_2025_kont_solution",
+  "year": 2025,
+  "kont": true,
+  "pages": 15,
+  "solPages": 15,
+  "problems": [
+   {
+    "num": 1,
+    "page": 3,
+    "endPage": 3,
+    "pct": 5,
+    "snippet": "Problem 1 (5 %) Given the following continuous time system : A z \" ẋ = }| −2 1 0 1 B #{ x+ Is this system: a) Internally stable and BIBO stable b) Internally stable, not BIBO stable c) Internally unstable but BIBO stabl",
+    "solPage": 1,
+    "solEndPage": 1
+   },
+   {
+    "num": 2,
+    "page": 4,
+    "endPage": 4,
+    "pct": 5,
+    "snippet": "Problem 2 (5 %) Given the following matrix: \" A= 3 2 −2 −2 # What is the value of the upper left element of the matrix exponential eAt ? Hint 1: eAt equals the inverse Laplace transform of (sI − A)−1 . Hint 2: Another ap",
+    "solPage": 2,
+    "solEndPage": 2
+   },
+   {
+    "num": 3,
+    "page": 5,
+    "endPage": 5,
+    "pct": 5,
+    "snippet": "Problem 3 (5 %) For the following system: 1 ẋ(t) = 2x(t) + u(t) 2 with a control law on the form u(t) = −kx(t) + kr r0 where r0 is a constant reference value, which set of control parameters will ensure the fastest conv",
+    "solPage": 3,
+    "solEndPage": 3
+   },
+   {
+    "num": 4,
+    "page": 6,
+    "endPage": 6,
+    "pct": 5,
+    "snippet": "Problem 4 (5 %) Given the two continuous time systems: \" ẋ = \" ż = 1 2 −1 2 # 2 −1 1 0 # \" x+ \" z+ 1 0 # 1 0 # u1 , y1 = h 0 1 i x u2 , y2 = h 1 1 i z Are these systems: a) Unrelated b) Algebraically equivalent c) Zero",
+    "solPage": 4,
+    "solEndPage": 4
+   },
+   {
+    "num": 5,
+    "page": 7,
+    "endPage": 7,
+    "pct": 19,
+    "snippet": "Problem 5 (19 %) Given this system: A z\" ẋ = }| B 4 −6 1 0 y= #{ z }| #{ \" 2 0 x+ h 1 0 i | {z } C u (1) x a) (4 %) Show that the system is controllable and observable. b) (4 %) Test the BIBO stability of the system. c)",
+    "solPage": 5,
+    "solEndPage": 7
+   },
+   {
+    "num": 6,
+    "page": 8,
+    "endPage": 8,
+    "pct": 11,
+    "snippet": "Problem 6 (11 %) Given the following system: ẋ = 3x + u, y=x You are to design LQR controllers on the form u = −kx. a) (3 %) What is the LQR feedback gain k for the LQR parameters q = 2 and r = 1? b) (3 %) What is the l",
+    "solPage": 8,
+    "solEndPage": 9
+   },
+   {
+    "num": 7,
+    "page": 9,
+    "endPage": 9,
+    "pct": 18,
+    "snippet": "Problem 7 (18 %) You are working on the controller for a robot lawn mower. One part of the control system is concerned with estimating the forward movement of the mower for the purpose of detecting when it hits a barrier",
+    "solPage": 10,
+    "solEndPage": 11
+   },
+   {
+    "num": 8,
+    "page": 10,
+    "endPage": 10,
+    "pct": 20,
+    "snippet": "Problem 8 (20 %) You are to design a PI cruise control system for a car. Let the car’s velocity v be modelled by the linear differential equation mv̇ + dv = u (5) where m is the car’s mass and d is a positive damping con",
+    "solPage": 12,
+    "solEndPage": 14
+   },
+   {
+    "num": 9,
+    "page": 11,
+    "endPage": 11,
+    "pct": 12,
+    "snippet": "Problem 9 (12 %) In the laboratory assignments, when controlling the helicopter using measurements from the IMU unit, you experimented with state estimation both in the form of a Luenberger observer and a Kalman filter. ",
+    "solPage": 14,
+    "solEndPage": 15
+   }
+  ]
+ }
+]
