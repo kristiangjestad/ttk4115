@@ -38,10 +38,7 @@ function Prioritert() {
                 <Countdown long />
               </div>
               <h1 className="display m-0 text-[44px] sm:text-[64px]">Hva du bør gjøre først</h1>
-              <p className="lede mt-5 mb-0">
-                Alle 25 eksamenssett fra 2003 til 2025 er delt inn i {total} oppgavetyper og rangert etter hvor ofte de kommer igjen. Eksamenene fra
-                2021 og senere (Morten O. Alver) veier tyngst. Innenfor hvert nivå står det viktigste først.
-              </p>
+              <p className="lede mt-5 mb-0">25 eksamenssett, {total} oppgavetyper, rangert etter hvor ofte de kommer igjen.</p>
               <div className="mt-6 flex items-center gap-3 text-[13px]">
                 <div className="progress max-w-[280px] flex-1">
                   <div style={{ width: `${(doneCount / total) * 100}%`, background: 'var(--ok)' }} />
@@ -61,7 +58,7 @@ function Prioritert() {
           {/* ── Eksamensanatomi ── */}
           <section className="mt-10">
             <div className="eyebrow mb-3" style={{ color: 'var(--muted)' }}>
-              Slik ser eksamen ut · 4 timer · hjelpemiddel D
+              Eksamen · 4 t · hjelpemiddel D
             </div>
             <div className="flex h-2.5 overflow-hidden rounded-full">
               <div style={{ width: '33%', background: 'var(--t1)' }} />
@@ -69,9 +66,9 @@ function Prioritert() {
               <div style={{ width: '14%', background: 'var(--t3)' }} />
             </div>
             <div className="mt-4 grid gap-5 text-[13.5px] sm:grid-cols-3">
-              <Anatomy color="var(--t1)" title="Flervalg" pct="~33 %" text="4–8 oppgaver à 4–6 %. Samme typer hvert år med nye tall." link={{ to: '/flervalg', label: 'Drill flervalg' }} />
-              <Anatomy color="var(--ink)" title="Lange oppgaver" pct="~53 %" text="Tilstandsrom fra a til å, LQR med referanse og integralvirkning, Kalman for hånd." />
-              <Anatomy color="var(--t3)" title="Helikopterlab" pct="12–16 %" text="Tekstspørsmål om hva du gjorde og observerte i laben." link={{ to: '/formelark', label: 'Se formelarket' }} />
+              <Anatomy color="var(--t1)" title="Flervalg" pct="~33 %" text="Samme typer hvert år, nye tall." link={{ to: '/flervalg', label: 'Drill' }} />
+              <Anatomy color="var(--ink)" title="Lange oppgaver" pct="~53 %" text="Tilstandsrom, LQR, Kalman for hånd." />
+              <Anatomy color="var(--t3)" title="Helikopterlab" pct="12–16 %" text="Tekstsvar om laben." link={{ to: '/formelark', label: 'Formelark' }} />
             </div>
           </section>
 
@@ -90,7 +87,7 @@ function Prioritert() {
             })}
             <label className="done-toggle ml-auto">
               <input type="checkbox" checked={hydrated && hideDone} onChange={(e) => setHideDone(e.target.checked)} />
-              Skjul de du har gjort
+              Skjul gjort
             </label>
           </div>
 
@@ -108,7 +105,7 @@ function Prioritert() {
                   <span className="faint text-[13px]">{list.length} typer</span>
                 </div>
                 <p className="lede mt-2 mb-4 text-[14.5px]">{tierInfo[tier].blurb}</p>
-                <DrillButton topic={first} problems={problems} label={`Gjør oppgavene i «${tierInfo[tier].name}»`} tier={tier} />
+                <DrillButton topic={first} problems={problems} label="Start" tier={tier} />
                 <ol className="rows mt-6">
                   {shown.map((t) => (
                     <TopicRow
@@ -125,7 +122,7 @@ function Prioritert() {
                       }}
                     />
                   ))}
-                  {shown.length === 0 && <li className="muted py-6 text-center text-sm">Alt på dette nivået er gjort.</li>}
+                  {shown.length === 0 && <li className="muted py-6 text-center text-sm">Alt gjort.</li>}
                 </ol>
               </section>
             )
@@ -133,13 +130,13 @@ function Prioritert() {
 
           <section className="mt-16 text-center">
             <div className="display text-[30px]">Alt er gjort?</div>
-            <p className="muted mt-2">Ta en av de nyeste eksamenene på tid, under ekte forhold.</p>
+            <p className="muted mt-2">Ta et nytt sett på tid.</p>
             <div className="mt-4 flex justify-center gap-2">
               <Link to="/eksamen/$exam" params={{ exam: '2024' }} className="btn btn-primary">
-                Eksamen 2024 på tid
+                2024
               </Link>
               <Link to="/eksamen/$exam" params={{ exam: '2025-kont' }} className="btn">
-                Kont 2025 på tid
+                Kont 2025
               </Link>
             </div>
           </section>
@@ -274,10 +271,10 @@ function TopicRow({
           )}
           <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-[13px]">
             <button onClick={() => setOpen(!open)} className="linkbtn">
-              {open ? 'Skjul metode ↑' : 'Slik løser du den ↓'}
+              {open ? 'Skjul ↑' : 'Metode ↓'}
             </button>
             <Link to="/oppgave/$exam/$num" params={{ exam: o.exam, num: String(o.num) }} search={{ tema: t.id }} className="font-semibold no-underline" style={{ color: 'var(--accent)' }}>
-              {prog.ok + prog.again > 0 ? 'Fortsett å øve' : 'Øv på eksamensoppgavene'} →
+              Øv →
             </Link>
             <div className="seg ml-auto" role="group" aria-label="Hvor godt kan du dette?">
               {CONF.map((c) => (
@@ -313,7 +310,7 @@ function TopicNote({ id, initial }: { id: string; initial: string }) {
   return (
     <label className="mt-4 block text-[13px]">
       <span className="eyebrow" style={{ color: 'var(--muted)' }}>
-        Mitt notat
+        Notat
       </span>
       <textarea
         value={v}
@@ -322,7 +319,7 @@ function TopicNote({ id, initial }: { id: string; initial: string }) {
           updateTopicMeta(id, { note: e.target.value })
         }}
         rows={2}
-        placeholder="Huskeregler, egne feil, ting du vil spørre om…"
+        placeholder="Huskeregler, egne feil …"
         className="input mt-1.5"
       />
     </label>

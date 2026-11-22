@@ -31,7 +31,7 @@ export function MCAnswer({
   }
   return (
     <div className="card mt-4 p-4">
-      <div className="mb-2 text-sm font-bold">{multi ? 'Velg alle som stemmer' : 'Ditt svar'}</div>
+      <div className="mb-2 text-sm font-bold">{multi ? 'Velg alle riktige' : 'Svar'}</div>
       <div className="flex flex-wrap gap-2">
         {q.options.map((o) => {
           const sel = picked.includes(o)
@@ -68,7 +68,7 @@ export function MCAnswer({
       </div>
       {checked && (
         <p className="mb-0 font-semibold" style={{ color: ok ? 'var(--ok)' : 'var(--bad)' }}>
-          {ok ? 'Riktig!' : `Feil – riktig svar er ${q.answer.map((a) => a + ')').join(' og ')}.`} Se løsningsforslaget for utregningen.
+          {ok ? 'Riktig!' : `Feil – ${q.answer.map((a) => a + ')').join(' og ')}.`}
         </p>
       )}
     </div>

@@ -27,20 +27,20 @@ export const tierInfo: Record<Tier, { name: string; blurb: string }> = {
   1: {
     name: 'Må kunne',
     blurb:
-      'Har kommet på nesten hver eneste eksamen siden 2021, ofte som flervalg med nye tall. Dette er grunnmuren – lær alle, i rekkefølge.',
+      'På nesten hver eksamen siden 2021. Lær alle, i rekkefølge.',
   },
   2: {
     name: 'Sannsynlig',
     blurb:
-      'Dukker opp på omtrent annenhver eksamen, eller er en del av de store oppgavene (Kalman/LQR) som alltid kommer. Ta dem når nivå 1 sitter.',
+      'Omtrent annenhver eksamen. Ta dem når nivå 1 sitter.',
   },
   3: {
     name: 'Bør gjøre',
-    blurb: 'Vanlig drill. Kommer innimellom, gjerne som en deloppgave. Raskt å lære når du kan nivå 1–2.',
+    blurb: 'Kommer innimellom, ofte som deloppgave.',
   },
   4: {
     name: 'Hvis du har tid',
-    blurb: 'Perifert eller ikke gitt de siste årene. Skum gjennom metoden, ikke bruk tid på å regne.',
+    blurb: 'Ikke gitt de siste årene. Bare skum metoden.',
   },
 }
 

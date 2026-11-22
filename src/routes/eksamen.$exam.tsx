@@ -109,7 +109,7 @@ function Eksamen() {
             <button
               className="btn"
               onClick={() => {
-                if (confirm('Avbryte forsøket? Det lagres som ikke fullført.')) finish(false)
+                if (confirm('Avbryte? Lagres som ikke fullført.')) finish(false)
               }}
             >
               Avbryt
@@ -118,13 +118,12 @@ function Eksamen() {
         )}
         {exam.solDir && !timer && (
           <button className="btn ml-auto" onClick={() => setView(view === 'losning' ? 'oppgaver' : 'losning')}>
-            {view === 'losning' ? 'Vis oppgavene' : 'Vis løsningsforslaget'}
+            {view === 'losning' ? 'Oppgaver' : 'Fasit'}
           </button>
         )}
       </div>
       <p className="muted text-sm">
-        Hjelpemiddel D: ingen trykte eller håndskrevne hjelpemidler, enkel kalkulator. Formelarket ligger bakerst i settet. Timeren fortsetter selv om du
-        lukker fanen – bruk Pause hvis du tar en pause.
+        Hjelpemiddel D, enkel kalkulator. Formelark bakerst. Timeren går selv om du lukker fanen.
       </p>
       {myRuns.length > 0 && (
         <div className="card mb-4 p-3 text-sm">

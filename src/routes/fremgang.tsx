@@ -72,9 +72,7 @@ function Fremgang() {
     <main className="wrap py-10">
       <div className="eyebrow mb-3">Lagret lokalt</div>
         <h1 className="display mt-0 mb-3 text-[40px] sm:text-[52px]">Min fremgang</h1>
-      <p className="lede mt-0 mb-8 text-[15px]">
-        Alt lagres lokalt i denne nettleseren ({(dbSizeBytes() / 1024).toFixed(1)} kB). Bruk eksport for å ta det med til en annen nettleser.
-      </p>
+      <p className="lede mt-0 mb-8 text-[15px]">{(dbSizeBytes() / 1024).toFixed(1)} kB i nettleseren.</p>
 
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         <Stat label="Oppgaver klart" value={okList.length} />
@@ -137,7 +135,7 @@ function Fremgang() {
       <section className="card mt-4 p-4">
         <h2 className="mt-0 mb-3 text-[17px] font-bold tracking-tight">Øv igjen ({againList.length})</h2>
         {againList.length === 0 ? (
-          <p className="muted m-0 text-sm">Ingen oppgaver er merket «Øv igjen».</p>
+          <p className="muted m-0 text-sm">Ingen.</p>
         ) : (
           <ul className="m-0 grid gap-1 pl-5 text-sm">
             {againList.map(([k, r]) => {
@@ -230,9 +228,7 @@ function Fremgang() {
 
       <section className="card mt-4 p-4">
         <h2 className="mt-0 mb-3 text-[17px] font-bold tracking-tight">Sikkerhetskopi</h2>
-        <p className="muted mt-0 text-sm">
-          Data ligger i localStorage og kan forsvinne hvis du tømmer nettleserdata. Eksporter en fil innimellom, og importer den på en annen maskin.
-        </p>
+        <p className="muted mt-0 text-sm">Forsvinner hvis du tømmer nettleserdata. Eksporter innimellom.</p>
         <div className="flex flex-wrap gap-2">
           <button
             className="btn btn-primary"
@@ -261,7 +257,7 @@ function Fremgang() {
               if (!f) return
               try {
                 const json = JSON.parse(await f.text())
-                if (!confirm('Importere? Dette erstatter all fremgang i denne nettleseren.')) return
+                if (!confirm('Importere? Erstatter all fremgang.')) return
                 importDb(json)
                 setMsg('Importert.')
               } catch {
@@ -273,7 +269,7 @@ function Fremgang() {
             className="btn"
             style={{ color: 'var(--bad)' }}
             onClick={() => {
-              if (confirm('Slette ALL fremgang i denne nettleseren? Dette kan ikke angres.')) {
+              if (confirm('Slette ALL fremgang? Kan ikke angres.')) {
                 resetDb()
                 setMsg('Alt er slettet.')
               }

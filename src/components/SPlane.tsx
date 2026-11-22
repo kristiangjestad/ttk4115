@@ -77,14 +77,14 @@ export function SPlane({ topics, isDone }: { topics: Topic[]; isDone: (id: strin
       </svg>
       <figcaption className="mt-2 text-[13px]">
         {stable ? (
-          <span style={{ color: 'var(--ok)', fontWeight: 600 }}>Alle poler i venstre halvplan – systemet er asymptotisk stabilt. Klar for eksamen.</span>
+          <span style={{ color: 'var(--ok)', fontWeight: 600 }}>Alle poler i VHP – stabil.</span>
         ) : (
           <span className="muted">
             <strong style={{ color: 'var(--accent)' }}>{unstable}</strong> {unstable === 1 ? 'pol' : 'poler'} i høyre halvplan
             {tier1Left > 0 ? (
               <>
                 {' '}
-                · {tier1Left} av dem er «Må kunne»
+                · {tier1Left} i nivå 1
               </>
             ) : (
               ' · nivå 1 er stabilt'

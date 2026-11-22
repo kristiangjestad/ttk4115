@@ -9,14 +9,9 @@ export function TopicDetail({ t, compact = false }: { t: Topic; compact?: boolea
   const h = useHydrated()
   return (
     <div className="method mt-4 grid gap-4">
-      {!compact && (
-        <Tex as="p" className="serif m-0 border-l-2 pl-3 text-[15px] italic" >
-          {t.why}
-        </Tex>
-      )}
       <div>
         <div className="eyebrow mb-2" style={{ color: 'var(--ink)' }}>
-          Slik gjør du
+          Metode
         </div>
         <ol className="m-0 grid gap-1.5 pl-5">
           {t.method.map((m, i) => (
@@ -51,7 +46,7 @@ export function TopicDetail({ t, compact = false }: { t: Topic; compact?: boolea
       {!compact && (
         <div>
           <div className="eyebrow mb-2" style={{ color: 'var(--muted)' }}>
-            Gitt på eksamen
+            Gitt
           </div>
           <div className="flex flex-wrap gap-1.5">
             {t.occ.map((s) => {

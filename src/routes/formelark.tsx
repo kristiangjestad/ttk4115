@@ -29,12 +29,9 @@ function Formelark() {
     <main className="wrap py-10">
       <div className="eyebrow mb-3">Vedlagt på eksamen</div>
         <h1 className="display mt-0 mb-3 text-[40px] sm:text-[52px]">Formelark</h1>
-      <p>
-        Dette arket ligger bakerst i alle eksamenene siden 2021 (her fra kont 2025). Lær deg hva som står der, så du vet hva du <em>ikke</em> trenger å
-        pugge.
-      </p>
+      <p className="muted">Bakerst i alle sett siden 2021.</p>
       <div className="card mb-6 p-4">
-        <h2 className="mt-0 mb-3 text-[17px] font-bold tracking-tight">Står IKKE på arket – må pugges</h2>
+        <h2 className="mt-0 mb-3 text-[17px] font-bold tracking-tight">Ikke på arket – pugg</h2>
         <ul className="method m-0 grid gap-1.5 pl-5 text-sm">
           {notOnSheet.map((s, i) => (
             <Tex key={i} as="li">{s}</Tex>

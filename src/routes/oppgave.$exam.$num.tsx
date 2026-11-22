@@ -85,7 +85,7 @@ function Oppgave() {
         <div className="card mb-6 flex flex-wrap items-center gap-x-4 gap-y-3 p-3 pl-4">
           <div className="w-full min-w-0 sm:w-auto sm:flex-1">
             <div className="eyebrow">
-              Øver på · {idx + 1} av {seq.length}
+              {idx + 1} / {seq.length}
             </div>
             <Link to="/" hash={topic.id} className="serif text-[16px] font-semibold no-underline" style={{ color: 'var(--fg)' }}>
               <Tex>{topic.title}</Tex>
@@ -162,7 +162,7 @@ function Oppgave() {
 
           <Pages dir={exam.dir} from={p.page} to={p.endPage} alt={`${examLabel(exam.id)} oppgave ${p.num}`} />
           <p className="faint mt-2 text-xs">
-            Oppgaven kan starte et stykke ned på første side. <Link to="/eksamen/$exam" params={{ exam: exam.id }}>Se hele settet</Link>
+            <Link to="/eksamen/$exam" params={{ exam: exam.id }}>Hele settet</Link>
           </p>
 
           {showSol && (
@@ -177,11 +177,11 @@ function Oppgave() {
                 <Pages dir={exam.solDir} from={p.solPage} to={p.solEndPage ?? p.solPage} alt="Løsningsforslag" />
               ) : exam.solDir ? (
                 <>
-                  <p className="muted text-sm">Fant ikke akkurat denne oppgaven i løsningsforslaget. Her er hele løsningsforslaget:</p>
+                  <p className="muted text-sm">Hele løsningsforslaget:</p>
                   <Pages dir={exam.solDir} from={1} to={exam.solPages} alt="Løsningsforslag" />
                 </>
               ) : (
-                <p className="muted">Det finnes ikke noe løsningsforslag for denne eksamenen.</p>
+                <p className="muted">Ingen løsningsforslag.</p>
               )}
             </section>
           )}
@@ -201,7 +201,7 @@ function Oppgave() {
           <div className="actionbar fixed inset-x-0 bottom-0 z-20 border-t p-3 lg:static lg:rounded-[14px] lg:border lg:p-4" style={{ background: 'var(--surface)', borderColor: 'var(--line)' }}>
             <div className="mx-auto grid max-w-[880px] grid-cols-[1fr_auto_auto] gap-2 lg:grid-cols-2">
               <button className="btn btn-primary lg:col-span-2" onClick={toggleSol}>
-                {showSol ? 'Skjul løsningsforslag' : 'Vis løsningsforslag'} <kbd className="hidden sm:inline">L</kbd>
+                {showSol ? 'Skjul fasit' : 'Fasit'} <kbd className="hidden sm:inline">L</kbd>
               </button>
               <button
                 className="btn"
@@ -221,7 +221,7 @@ function Oppgave() {
               </button>
             </div>
             <div className="faint mt-2 hidden text-center text-[11px] lg:block">
-              <kbd>L</kbd> løsning · <kbd>←</kbd> <kbd>→</kbd> forrige/neste
+              <kbd>L</kbd> fasit · <kbd>←</kbd> <kbd>→</kbd>
             </div>
           </div>
 
@@ -229,7 +229,7 @@ function Oppgave() {
             <div className="card p-4">
               <button onClick={() => setShowMethod(!showMethod)} className="linkbtn flex w-full items-center text-[13.5px]">
                 <span className="eyebrow" style={{ color: 'var(--ink)' }}>
-                  Metode og formler
+                  Metode
                 </span>
                 <span className="ml-auto">{showMethod ? '↑' : '↓'}</span>
               </button>
@@ -278,7 +278,7 @@ function ProblemPanel({ k }: { k: string }) {
       ) : null}
       <label className="block">
         <span className="eyebrow" style={{ color: 'var(--muted)' }}>
-          Notat til oppgaven
+          Notat
         </span>
         <textarea
           value={note}
@@ -287,7 +287,7 @@ function ProblemPanel({ k }: { k: string }) {
             updateProblem(k, (r) => ({ ...r, note: e.target.value }))
           }}
           rows={4}
-          placeholder="Hva gikk galt? Hva må du huske neste gang?"
+          placeholder="Hva gikk galt?"
           className="input mt-1.5"
         />
       </label>

@@ -32,7 +32,7 @@ export function ContinueCard() {
         ↺
       </div>
       <div className="min-w-0 flex-1" style={{ minWidth: 220 }}>
-        <div className="eyebrow">Fortsett der du slapp · {ago(last.at)}</div>
+        <div className="eyebrow">Sist · {ago(last.at)}</div>
         <div className="serif mt-0.5 text-[17px] font-semibold">
           {examShort(last.exam)}, oppgave {last.num}
           {topic && (
@@ -49,9 +49,8 @@ export function ContinueCard() {
               <strong>{st}</strong> {st === 1 ? 'dag' : 'dager'} på rad
             </>
           ) : (
-            'start en ny streak i dag'
+            '0 dager på rad'
           )}{' '}
-          · <Link to="/fremgang">Min fremgang</Link>
         </div>
       </div>
       <Link

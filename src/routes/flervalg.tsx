@@ -76,28 +76,25 @@ function Flervalg() {
         <div className="eyebrow mb-3">18 oppgaver · 2023–2025</div>
         <h1 className="display mt-0 mb-3 text-[40px] sm:text-[52px]">Flervalgsdrill</h1>
         <div className="grid items-center gap-8 sm:grid-cols-[1fr_auto]">
-          <p className="lede m-0">
-            Alle {mcQuestions.length} flervalgsoppgavene fra 2023, 2024 og kont 2025 i tilfeldig rekkefølge, med fasit fra løsningsforslagene. Typene
-            kommer igjen hvert år med nye tall – klarer du disse, har du rundt en tredjedel av eksamen i boks.
-          </p>
+          <p className="lede m-0">Tilfeldig rekkefølge. Typene kommer igjen hvert år – omtrent en tredjedel av eksamen.</p>
           <ScoreRing right={hydrated ? right : 0} total={mcQuestions.length} />
         </div>
         {hydrated && (
           <p className="muted mt-4 mb-5 text-[13px]">
-            {tried} forsøkt · {history.length} svar totalt{lastRuns ? ` · sist øvd ${ago(lastRuns.at)}` : ''}
+            {tried} forsøkt{lastRuns ? ` · sist ${ago(lastRuns.at)}` : ''}
           </p>
         )}
         <div className="mt-5 flex flex-wrap gap-2">
           {hydrated && session?.paused && session.i < session.order.length && (
             <button className="btn btn-accent" onClick={() => setSession({ ...session, paused: false })}>
-              Fortsett økten ({session.i + 1}/{session.order.length})
+              Fortsett ({session.i + 1}/{session.order.length})
             </button>
           )}
           <button className={hydrated && session?.paused ? 'btn' : 'btn btn-accent'} onClick={() => start(false)}>
-            Start alle {mcQuestions.length}
+            Alle {mcQuestions.length}
           </button>
           <button className="btn" onClick={() => start(true)}>
-            Bare de jeg ikke har klart ({mcQuestions.length - (hydrated ? right : 0)})
+            Ikke klart ({mcQuestions.length - (hydrated ? right : 0)})
           </button>
           {hydrated && tried > 0 && (
             <button
@@ -110,7 +107,7 @@ function Flervalg() {
             </button>
           )}
         </div>
-        <h2 className="mt-10 mb-3 text-[17px] font-bold tracking-tight">Etter oppgavetype</h2>
+        <h2 className="mt-10 mb-3 text-[17px] font-bold tracking-tight">Per type</h2>
         <ol className="rows">
           {[...byTopic.entries()].map(([tid, qs]) => {
             const t = topics.find((x) => x.id === tid)!
@@ -162,7 +159,7 @@ function Flervalg() {
         </h1>
         <div className="flex gap-2">
           <button className="btn btn-primary" onClick={() => start(true)}>
-            Ta de jeg bommet på
+            Ta feilene
           </button>
           <button className="btn" onClick={() => setSession(null)}>
             Tilbake
@@ -211,7 +208,7 @@ function Flervalg() {
               setShowSol(!showSol)
             }}
           >
-            {showSol ? 'Skjul' : 'Vis'} løsningsforslag
+            {showSol ? 'Skjul fasit' : 'Fasit'}
           </button>
           <button
             className="btn btn-primary"

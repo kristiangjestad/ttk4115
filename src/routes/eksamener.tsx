@@ -22,10 +22,7 @@ function Eksamener() {
     <main className="wrap py-10">
       <div className="eyebrow mb-3">25 sett · 2003–2025</div>
       <h1 className="display mt-0 mb-4 text-[40px] sm:text-[52px]">Gamle eksamener</h1>
-      <p className="lede mt-0">
-        Nyeste først. Settene fra 2021 og senere har samme emneansvarlige som i år og ligner mest på det du får. Før 2016 er de på norsk og engelsk.
-        Kont 2020 var en Inspera-eksamen uten oppgavetekst i PDF-en.
-      </p>
+      <p className="lede mt-0">2021 og senere ligner mest på årets.</p>
 
       <div className="mt-10 grid gap-10">
         {exams.map((e) => {
@@ -41,20 +38,20 @@ function Eksamener() {
                     samme foreleser
                   </span>
                 )}
-                {!e.solDir && <span className="chip">uten løsningsforslag</span>}
+                {!e.solDir && <span className="chip">uten fasit</span>}
                 {ok > 0 && (
                   <span className="chip" style={{ background: 'var(--ok-soft)', color: 'var(--ok)' }}>
-                    {ok}/{e.problems.length} klart
+                    {ok}/{e.problems.length}
                   </span>
                 )}
-                {taken && <span className="chip">✓ tatt på tid</span>}
+                {taken && <span className="chip">✓ på tid</span>}
                 {running && (
                   <span className="chip" style={{ background: 'var(--accent-soft)', color: 'var(--accent)' }}>
                     ● pågår
                   </span>
                 )}
                 <Link to="/eksamen/$exam" params={{ exam: e.id }} className="btn btn-sm ml-auto">
-                  {running ? 'Fortsett på tid' : 'Ta hele på tid'}
+                  {running ? 'Fortsett' : 'På tid'}
                 </Link>
               </div>
               {e.problems.length > 0 && (

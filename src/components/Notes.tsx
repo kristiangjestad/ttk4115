@@ -14,7 +14,6 @@ export function Husk() {
         <section className="card-raised p-4">
           <div className="mb-2 flex items-center">
             <span className="eyebrow">Husk</span>
-            <span className="faint ml-2 text-[11px]">lagres i nettleseren</span>
             <button className="btn btn-ghost btn-sm ml-auto" onClick={() => setOpen(false)} aria-label="Lukk">
               ✕
             </button>
@@ -44,7 +43,7 @@ export function Husk() {
               setDraft('')
             }}
           >
-            <input value={draft} onChange={(e) => setDraft(e.target.value)} placeholder="Noe du må huske? Skriv og trykk Enter" className="input" autoFocus />
+            <input value={draft} onChange={(e) => setDraft(e.target.value)} placeholder="Skriv + Enter" className="input" autoFocus />
           </form>
         </section>
       ) : (
