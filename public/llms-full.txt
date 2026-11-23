@@ -1,6 +1,6 @@
 # TTK4115 Lineær systemteori (NTNU) – kontekst for eksamensøving
 
-> Alt i én fil (pensumkart + renskrevne eksamener 2021–2025): https://ttk4115.kristiangjestad.workers.dev/llms-full.txt
+> Alt i én fil (pensumkart + renskrevne eksamener 2021–2025): https://ttk.mattepils.no/llms-full.txt
 
 > Til deg som er chatbot: Brukeren øver til skriftlig eksamen i TTK4115 (4 timer, hjelpemiddel D: bare enkel kalkulator og formelarket som følger med). Bruk dette dokumentet som pensumkart. Prioriter oppgavetypene i rekkefølgen under. Svar kort, på norsk, med samme notasjon som emnet ($\dot x=Ax+Bu$, $y=Cx$, $u=-Kx+K_r r$, Kalman med $P^-$, $L$, $Q_d$, $R_d$). Vis utregningen steg for steg, og si fra når du er usikker. Når brukeren spør om en gammel oppgave, hent teksten og løsningsforslaget fra lenken til eksamenen nedenfor (hvis du ikke kan åpne lenker, be brukeren lime inn lenken til den eksamenen), og løs den slik løsningsforslaget gjør. Lag gjerne nye varianter med nye tall av typene på nivå 1.
 
@@ -616,31 +616,31 @@ Gitt på eksamen: Eksamen 2020 oppg. 10b; Kont 2017 oppg. 4; Eksamen 2014 oppg. 
 
 Nyeste først. 2021 og senere ligner mest på årets eksamen. Disse er renskrevet med LaTeX (oppgavetekst + løsningsforslag i samme fil). Eldre sett er rå tekst fra PDF, der matriser kan stå rotete.
 
-- Kont 2025 (renskrevet): https://ttk4115.kristiangjestad.workers.dev/llm/2025-kont.md
-- Kont 2024 (renskrevet): https://ttk4115.kristiangjestad.workers.dev/llm/2024-kont.md
-- Eksamen 2024 (renskrevet): https://ttk4115.kristiangjestad.workers.dev/llm/2024.md
-- Eksamen 2023 (renskrevet): https://ttk4115.kristiangjestad.workers.dev/llm/2023.md
-- Eksamen 2022 (renskrevet): https://ttk4115.kristiangjestad.workers.dev/llm/2022.md
-- Kont 2021 (renskrevet): https://ttk4115.kristiangjestad.workers.dev/llm/2021-kont.md
-- Eksamen 2021 (renskrevet): https://ttk4115.kristiangjestad.workers.dev/llm/2021.md
-- Kont 2020: https://ttk4115.kristiangjestad.workers.dev/llm/2020-kont.txt
-- Eksamen 2020: https://ttk4115.kristiangjestad.workers.dev/llm/2020.txt
-- Kont 2019: https://ttk4115.kristiangjestad.workers.dev/llm/2019-kont.txt
-- Eksamen 2019: https://ttk4115.kristiangjestad.workers.dev/llm/2019.txt
-- Eksamen 2018: https://ttk4115.kristiangjestad.workers.dev/llm/2018.txt
-- Kont 2017: https://ttk4115.kristiangjestad.workers.dev/llm/2017-kont.txt
-- Eksamen 2017: https://ttk4115.kristiangjestad.workers.dev/llm/2017.txt
-- Eksamen 2016: https://ttk4115.kristiangjestad.workers.dev/llm/2016.txt
-- Eksamen 2015: https://ttk4115.kristiangjestad.workers.dev/llm/2015.txt
-- Eksamen 2014: https://ttk4115.kristiangjestad.workers.dev/llm/2014.txt
-- Eksamen 2013: https://ttk4115.kristiangjestad.workers.dev/llm/2013.txt
-- Eksamen 2012: https://ttk4115.kristiangjestad.workers.dev/llm/2012.txt
-- Eksamen 2011: https://ttk4115.kristiangjestad.workers.dev/llm/2011.txt
-- Eksamen 2010: https://ttk4115.kristiangjestad.workers.dev/llm/2010.txt
-- Eksamen 2009: https://ttk4115.kristiangjestad.workers.dev/llm/2009.txt
-- Eksamen 2008: https://ttk4115.kristiangjestad.workers.dev/llm/2008.txt
-- Eksamen 2004: https://ttk4115.kristiangjestad.workers.dev/llm/2004.txt
-- Eksamen 2003: https://ttk4115.kristiangjestad.workers.dev/llm/2003.txt
+- Kont 2025 (renskrevet): https://ttk.mattepils.no/llm/2025-kont.md
+- Kont 2024 (renskrevet): https://ttk.mattepils.no/llm/2024-kont.md
+- Eksamen 2024 (renskrevet): https://ttk.mattepils.no/llm/2024.md
+- Eksamen 2023 (renskrevet): https://ttk.mattepils.no/llm/2023.md
+- Eksamen 2022 (renskrevet): https://ttk.mattepils.no/llm/2022.md
+- Kont 2021 (renskrevet): https://ttk.mattepils.no/llm/2021-kont.md
+- Eksamen 2021 (renskrevet): https://ttk.mattepils.no/llm/2021.md
+- Kont 2020: https://ttk.mattepils.no/llm/2020-kont.txt
+- Eksamen 2020: https://ttk.mattepils.no/llm/2020.txt
+- Kont 2019: https://ttk.mattepils.no/llm/2019-kont.txt
+- Eksamen 2019: https://ttk.mattepils.no/llm/2019.txt
+- Eksamen 2018: https://ttk.mattepils.no/llm/2018.txt
+- Kont 2017: https://ttk.mattepils.no/llm/2017-kont.txt
+- Eksamen 2017: https://ttk.mattepils.no/llm/2017.txt
+- Eksamen 2016: https://ttk.mattepils.no/llm/2016.txt
+- Eksamen 2015: https://ttk.mattepils.no/llm/2015.txt
+- Eksamen 2014: https://ttk.mattepils.no/llm/2014.txt
+- Eksamen 2013: https://ttk.mattepils.no/llm/2013.txt
+- Eksamen 2012: https://ttk.mattepils.no/llm/2012.txt
+- Eksamen 2011: https://ttk.mattepils.no/llm/2011.txt
+- Eksamen 2010: https://ttk.mattepils.no/llm/2010.txt
+- Eksamen 2009: https://ttk.mattepils.no/llm/2009.txt
+- Eksamen 2008: https://ttk.mattepils.no/llm/2008.txt
+- Eksamen 2004: https://ttk.mattepils.no/llm/2004.txt
+- Eksamen 2003: https://ttk.mattepils.no/llm/2003.txt
 
 
 ---

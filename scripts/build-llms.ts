@@ -6,7 +6,7 @@ import { join } from 'node:path'
 import { topics, tierInfo, parseOcc, examLabel, type Tier } from '../src/data/topics.ts'
 import { mcQuestions } from '../src/data/mc.ts'
 
-const SITE = 'https://ttk4115.kristiangjestad.workers.dev'
+const SITE = 'https://ttk.mattepils.no'
 const BASE = `${SITE}/llm`
 const root = new URL('..', import.meta.url).pathname
 const exams: { id: string; dir: string; solDir?: string; year: number; kont: boolean; problems: { num: number; pct?: number }[] }[] = JSON.parse(

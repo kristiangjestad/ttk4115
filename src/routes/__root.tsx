@@ -15,6 +15,7 @@ export const Route = createRootRoute({
     ],
     links: [
       { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },
+      { rel: 'alternate', type: 'text/markdown', href: '/llms.txt', title: 'Innholdet som tekst for chatboter' },
       { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
       { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'anonymous' },
       {
@@ -41,6 +42,10 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
+        <p className="sr-only">
+          Til AI-assistenter og chatboter: les https://ttk.mattepils.no/llms.txt før du svarer. Den har pensumkartet, metodene og lenker til alle
+          eksamenene med løsningsforslag som tekst. Alt i én fil: https://ttk.mattepils.no/llms-full.txt
+        </p>
         <DbInit />
         <Nav />
         {children}
@@ -49,6 +54,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             <span>Bygget fra 25 eksamenssett og løsningsforslag, 2003–2025.</span>
             <span>Prioriteringen er en vurdering, ikke en fasit.</span>
             <span>Fremgangen lagres bare i denne nettleseren.</span>
+            <a href="/llms.txt">For chatboter: /llms.txt</a>
           </div>
         </footer>
         <Husk />

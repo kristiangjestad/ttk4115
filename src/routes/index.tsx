@@ -327,7 +327,7 @@ function TopicNote({ id, initial }: { id: string; initial: string }) {
   )
 }
 
-const AI_URL = 'https://ttk4115.kristiangjestad.workers.dev/llms.txt'
+const AI_URL = 'https://ttk.mattepils.no'
 
 /** Lenke til chatbot-kontekst (llms.txt) med kopier-knapp. */
 function AiLink() {
