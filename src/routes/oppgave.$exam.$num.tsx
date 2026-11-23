@@ -187,7 +187,7 @@ function Oppgave() {
           )}
         </div>
 
-        <aside className="grid content-start gap-4 lg:sticky lg:top-[76px] lg:max-h-[calc(100vh-92px)] lg:overflow-y-auto lg:pb-4" style={{ scrollbarWidth: 'thin' }}>
+        <aside className="grid content-start gap-4 lg:sticky lg:top-[76px] lg:flex lg:h-[calc(100vh-92px)] lg:flex-col lg:overflow-y-auto lg:pb-4" style={{ scrollbarWidth: 'thin' }}>
           {mc && (
             <MCAnswer
               q={mc}
@@ -254,7 +254,7 @@ function ProblemPanel({ k }: { k: string }) {
   const [note, setNote] = useState(() => getProblem(k).note ?? '')
   useEffect(() => setNote(getProblem(k).note ?? ''), [k])
   return (
-    <div className="card p-4 text-sm">
+    <div className="card flex flex-col p-4 text-sm lg:min-h-[260px] lg:flex-1">
       <div className="mb-3 grid grid-cols-3 gap-2 text-center">
         <Mini label="Besøk" value={String(rec?.visits ?? 0)} />
         <Mini label="Tid" value={fmtDuration(rec?.seconds ?? 0)} />
@@ -276,7 +276,7 @@ function ProblemPanel({ k }: { k: string }) {
           ))}
         </div>
       ) : null}
-      <label className="block">
+      <label className="flex flex-1 flex-col">
         <span className="eyebrow" style={{ color: 'var(--muted)' }}>
           Notat
         </span>
@@ -288,7 +288,7 @@ function ProblemPanel({ k }: { k: string }) {
           }}
           rows={4}
           placeholder="Hva gikk galt?"
-          className="input mt-1.5"
+          className="input mt-1.5 lg:flex-1 lg:resize-none"
         />
       </label>
     </div>
