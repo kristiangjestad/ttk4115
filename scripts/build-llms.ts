@@ -1,12 +1,13 @@
 // Lager public/llms.txt (kontekst for en chatbot) og public/llm/<eksamen>.txt.
 // Kjør: node scripts/build-llms.ts [tekst-mappe]
 // Uten tekst-mappe lages bare llms.txt; eksamenstekstene som allerede ligger i public/llm beholdes.
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs'
+import { readFileSync, writeFileSync, mkdirSync, existsSync, copyFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { topics, tierInfo, parseOcc, examLabel, type Tier } from '../src/data/topics.ts'
 import { mcQuestions } from '../src/data/mc.ts'
 
-const BASE = 'https://raw.githubusercontent.com/kristiangjestad/ttk4115/main/public/llm'
+const SITE = 'https://ttk4115.kristiangjestad.workers.dev'
+const BASE = `${SITE}/llm`
 const root = new URL('..', import.meta.url).pathname
 const exams: { id: string; dir: string; solDir?: string; year: number; kont: boolean; problems: { num: number; pct?: number }[] }[] = JSON.parse(
   readFileSync(join(root, 'src/data/exams.json'), 'utf8'),
@@ -36,12 +37,19 @@ if (tekst) {
   }
 }
 
+// ── Renskrevne eksamener (content/eksamener/<id>.md) ──
+const cleanDir = join(root, 'content/eksamener')
+const isClean = (id: string) => existsSync(join(cleanDir, `${id}.md`))
+for (const e of exams) if (isClean(e.id)) copyFileSync(join(cleanDir, `${e.id}.md`), join(outDir, `${e.id}.md`))
+
 // ── llms.txt ──
-const link = (id: string) => `${BASE}/${id}.txt`
+const link = (id: string) => `${BASE}/${id}.${isClean(id) ? 'md' : 'txt'}`
 const L: string[] = []
 L.push(`# TTK4115 Lineær systemteori (NTNU) – kontekst for eksamensøving
 
-> Til deg som er chatbot: Brukeren øver til skriftlig eksamen i TTK4115 (4 timer, hjelpemiddel D: bare enkel kalkulator og formelarket som følger med). Bruk dette dokumentet som pensumkart. Prioriter oppgavetypene i rekkefølgen under. Svar kort, på norsk, med samme notasjon som emnet ($\\dot x=Ax+Bu$, $y=Cx$, $u=-Kx+K_r r$, Kalman med $P^-$, $L$, $Q_d$, $R_d$). Vis utregningen steg for steg, og si fra når du er usikker. Når brukeren spør om en gammel oppgave, hent teksten og løsningsforslaget fra lenken til eksamenen nedenfor, og løs den slik løsningsforslaget gjør. Lag gjerne nye varianter med nye tall av typene på nivå 1.
+> Alt i én fil (pensumkart + renskrevne eksamener 2021–2025): ${SITE}/llms-full.txt
+
+> Til deg som er chatbot: Brukeren øver til skriftlig eksamen i TTK4115 (4 timer, hjelpemiddel D: bare enkel kalkulator og formelarket som følger med). Bruk dette dokumentet som pensumkart. Prioriter oppgavetypene i rekkefølgen under. Svar kort, på norsk, med samme notasjon som emnet ($\\dot x=Ax+Bu$, $y=Cx$, $u=-Kx+K_r r$, Kalman med $P^-$, $L$, $Q_d$, $R_d$). Vis utregningen steg for steg, og si fra når du er usikker. Når brukeren spør om en gammel oppgave, hent teksten og løsningsforslaget fra lenken til eksamenen nedenfor (hvis du ikke kan åpne lenker, be brukeren lime inn lenken til den eksamenen), og løs den slik løsningsforslaget gjør. Lag gjerne nye varianter med nye tall av typene på nivå 1.
 
 ## Eksamensformat (2023–2025, emneansvarlig Morten O. Alver)
 
@@ -79,13 +87,20 @@ for (const q of mcQuestions) {
   L.push(`- ${examLabel(q.exam)} oppg. ${q.num}: ${q.answer.join(' og ')} (${t.title})`)
 }
 
-L.push('\n## Eksamener med løsningsforslag (ren tekst)\n')
-L.push('Nyeste først. 2021 og senere ligner mest på årets eksamen.\n')
+L.push('\n## Eksamener med løsningsforslag\n')
+L.push('Nyeste først. 2021 og senere ligner mest på årets eksamen. Disse er renskrevet med LaTeX (oppgavetekst + løsningsforslag i samme fil). Eldre sett er rå tekst fra PDF, der matriser kan stå rotete.\n')
 for (const e of exams.slice().sort((a, b) => b.year - a.year || Number(b.kont) - Number(a.kont))) {
   if (!existsSync(join(outDir, `${e.id}.txt`))) continue
-  L.push(`- ${examLabel(e.id)}${e.solDir ? '' : ' (uten løsningsforslag)'}: ${link(e.id)}`)
+  L.push(`- ${examLabel(e.id)}${isClean(e.id) ? ' (renskrevet)' : ''}${e.solDir ? '' : ' (uten løsningsforslag)'}: ${link(e.id)}`)
 }
 L.push('')
 
 writeFileSync(join(root, 'public/llms.txt'), L.join('\n'))
 console.log('llms.txt:', L.join('\n').length, 'tegn')
+
+// ── llms-full.txt: alt i én fil, for chatboter som ikke følger lenker ──
+const full = [L.join('\n'), '\n---\n\n# Renskrevne eksamener 2021–2025\n']
+for (const e of exams.slice().sort((a, b) => b.year - a.year || Number(b.kont) - Number(a.kont)))
+  if (isClean(e.id)) full.push(readFileSync(join(cleanDir, `${e.id}.md`), 'utf8'), '\n---\n')
+writeFileSync(join(root, 'public/llms-full.txt'), full.join('\n'))
+console.log('llms-full.txt:', full.join('\n').length, 'tegn')

@@ -1,0 +1,1473 @@
+# TTK4115 Lineær systemteori (NTNU) – kontekst for eksamensøving
+
+> Alt i én fil (pensumkart + renskrevne eksamener 2021–2025): https://ttk4115.kristiangjestad.workers.dev/llms-full.txt
+
+> Til deg som er chatbot: Brukeren øver til skriftlig eksamen i TTK4115 (4 timer, hjelpemiddel D: bare enkel kalkulator og formelarket som følger med). Bruk dette dokumentet som pensumkart. Prioriter oppgavetypene i rekkefølgen under. Svar kort, på norsk, med samme notasjon som emnet ($\dot x=Ax+Bu$, $y=Cx$, $u=-Kx+K_r r$, Kalman med $P^-$, $L$, $Q_d$, $R_d$). Vis utregningen steg for steg, og si fra når du er usikker. Når brukeren spør om en gammel oppgave, hent teksten og løsningsforslaget fra lenken til eksamenen nedenfor (hvis du ikke kan åpne lenker, be brukeren lime inn lenken til den eksamenen), og løs den slik løsningsforslaget gjør. Lag gjerne nye varianter med nye tall av typene på nivå 1.
+
+## Eksamensformat (2023–2025, emneansvarlig Morten O. Alver)
+
+- ~33 %: 4–8 flervalgsoppgaver à 4–6 %. Samme typer hvert år med nye tall.
+- ~53 %: 2–3 lange oppgaver: tilstandsrom fra a til å, LQR med referanse og integralvirkning, Kalmanfilter for hånd.
+- 12–16 %: tekstspørsmål om helikopterlabben (2022, 2023, kont 2024, kont 2025; ikke ordinær 2024).
+- Formelarket (4 sider bakerst i settet) har: løsningsformelen for $x(t)$ og $x[k]$, $\mathcal C$ og $\mathcal O$, realisering på styrbar kanonisk form, LQR-kriteriet med Riccati-likningen og $u=-R^{-1}B^TPx$, Lyapunov-likningen, Kalmanfilteret (diskret og kontinuerlig), autokorrelasjon og spektraltetthet, Laplace-par og andregradsformelen. Stabilitetskriterier, rangtesten (full rang), $K_r$-formelen, integralvirkning, diskretisering ($A_d$, $B_d$, van Loan) og Bryson står IKKE der.
+
+## Prioritert liste: 33 oppgavetyper
+
+
+### Nivå 1: Må kunne
+
+På nesten hver eksamen siden 2021. Lær alle, i rekkefølge.
+
+#### 1. Diskret Kalmanfilter – ett steg for hånd
+
+Typisk oppgave: Gitt $\hat x[0], P[0], Q_d, R_d$ og en måling $y[1]$: regn ut $L[1]$, $\hat x[1]$ og $P[1]$.
+
+Hvorfor viktig: Kommer på hver eneste eksamen siden 2019, nesten alltid med 2×2-modellen posisjon/hastighet $A=\begin{bmatrix}1&1\\0&1\end{bmatrix}$, $C=[1\;0]$. Ordinær 2024, kont 2024, kont 2025, 2022 og kont 2021 er samme oppgave med nye tall.
+
+Metode:
+1. **Sjekk hvor du starter.** Er $\hat x[0], P[0]$ a posteriori (etter måling) må du først predikere: $\hat x^-[1]=A\hat x[0]+Bu[0]$, $P^-[1]=AP[0]A^T+Q_d$.
+2. **Kalman-gain:** $L = P^-C^T\,(CP^-C^T+R_d)^{-1}$. Med skalar måling er $CP^-C^T+R_d$ et tall – bare del på det. For $C=[1\;0]$: $L=\dfrac{1}{P^-_{11}+R}\begin{bmatrix}P^-_{11}\\P^-_{21}\end{bmatrix}$.
+3. **Oppdater estimat:** $\hat x[1]=\hat x^-[1]+L\,(y[1]-C\hat x^-[1])$. Innovasjonen $y-C\hat x^-$ er ett tall.
+4. **Oppdater kovarians:** $P=(I-LC)P^-$ (kortformen, raskest for hånd) – Joseph-formen på arket gir det samme med optimal $L$.
+5. **Neste steg (om de spør):** $\hat x^-[2]=A\hat x[1]+Bu[1]$, $P^-[2]=AP[1]A^T+Q_d$.
+6. Standardavvik oppgitt? Variansen er kvadratet: «± 5» → $P_{11}=25$, «σ = 10 m» → $R=100$.
+
+Feller:
+- Glemme prediksjonssteget før første måling (de fleste feil skjer her).
+- Bruke standardavvik i stedet for varians i $P$ eller $R$.
+- Uavhengige initialverdier ⇒ $P[0]$ diagonal.
+
+Formelark: Ja – hele algoritmen (steg 1–4) står på formelarket.
+
+Gitt på eksamen: Kont 2025 oppg. 7ab; Eksamen 2024 oppg. 10c; Kont 2024 oppg. 2b; Eksamen 2022 oppg. 3b; Kont 2021 oppg. 3e; Eksamen 2020 oppg. 10c; Eksamen 2019 oppg. 2; Kont 2019 oppg. 6b; Eksamen 2017 oppg. 5; Eksamen 2013 oppg. 4a; Eksamen 2012 oppg. 7a
+
+#### 2. Styrbarhet og observerbarhet (rangtest)
+
+Typisk oppgave: Er systemet styrbart/observerbart? For hvilke parameterverdier mister det styrbarhet?
+
+Hvorfor viktig: Står på hver eneste eksamen siden 2003. Siden 2023 er den oppgave 1 (flervalg), og i tillegg deloppgave a) i den store tilstandsromsoppgaven.
+
+Metode:
+1. $\mathcal C=[B\;AB\;\cdots\;A^{n-1}B]$, $\mathcal O=[C;\,CA;\,\dots;\,CA^{n-1}]$.
+2. For $n=2$ med én inngang/utgang: kvadratisk matrise ⇒ regn determinanten. $\det\neq0$ ⇔ full rang.
+3. For $n=3$: regn $AB$ og $A^2B$ (eller $CA$, $CA^2$), sett opp 3×3, sjekk determinant eller se etter lineært avhengige rader/kolonner.
+4. Parameter (α, β): sett $\det\mathcal C=0$ og løs for parameteren.
+5. Diskret tid: nøyaktig samme test – $A$ er bare $A_d$.
+6. Rask sjekk: diagonal $A$ med distinkte egenverdier ⇒ styrbar ⇔ ingen rad i $B$ er null; observerbar ⇔ ingen kolonne i $C$ er null.
+
+Feller:
+- Flervalg: les alternativene nøye – «Controllable, not observable» vs «Observable, not controllable».
+- Ikke-styrbar betyr ikke ustabil – sjekk stabiliserbarhet separat.
+
+Formelark: Ja – $\mathcal C$ og $\mathcal O$ står på arket. Testen (full rang) må du kunne.
+
+Gitt på eksamen: Kont 2025 oppg. 5a; Eksamen 2024 oppg. 1 (flervalg); Kont 2024 oppg. 1a; Eksamen 2023 oppg. 1 (flervalg); Eksamen 2022 oppg. 1a; Eksamen 2021 oppg. 1a; Kont 2021 oppg. 1a; Kont 2021 oppg. 4c; Eksamen 2020 oppg. 10a; Eksamen 2020 oppg. 12a; Eksamen 2019 oppg. 5b; Kont 2019 oppg. 4; Kont 2017 oppg. 3ab; Eksamen 2016 oppg. 1ac; Eksamen 2015 oppg. 4a; Eksamen 2014 oppg. 1ab; Eksamen 2013 oppg. 1a; Eksamen 2012 oppg. 1cd; Eksamen 2011 oppg. 3a; Eksamen 2008 oppg. 2c; Eksamen 2004 oppg. 3a; Eksamen 2003 oppg. 1a
+
+#### 3. Intern stabilitet vs. BIBO-stabilitet
+
+Typisk oppgave: Er systemet internt (asymptotisk/marginalt) stabilt? Er det BIBO-stabilt?
+
+Hvorfor viktig: Flervalg på 2023, 2024 og kont 2025 (alltid med «Internt ustabilt men BIBO-stabilt» som riktig eller fristende svar), og deloppgave i nesten alle lange oppgaver.
+
+Metode:
+1. **Intern stabilitet (kontinuerlig):** egenverdier til $A$. Alle $\text{Re}\,\lambda<0$ ⇒ asymptotisk stabil. $\text{Re}\,\lambda\le0$ og egenverdier på imaginæraksen er *enkle* (Jordanblokk 1×1) ⇒ marginalt stabil. Ellers ustabil.
+2. **Diskret tid:** samme, men med $|\lambda|<1$ (asymptotisk) og $|\lambda|=1$ enkle (marginal).
+3. **BIBO:** regn $G(s)=C(sI-A)^{-1}B+D$, forkort fellesfaktorer. BIBO ⇔ alle poler i $G(s)$ har $\text{Re}<0$.
+4. Asymptotisk stabil ⇒ alltid BIBO. Omvendt gjelder bare når realiseringen er minimal (styrbar + observerbar).
+5. Klassiker: ustabil egenverdi som er ustyrbar eller uobserverbar forsvinner i $G(s)$ ⇒ **internt ustabil, men BIBO-stabil**.
+6. Øvre triangulær $A$: egenverdiene står på diagonalen. 2×2: $\lambda^2-\text{tr}(A)\lambda+\det A=0$.
+7. Dobbel egenverdi i 0: sjekk om $A=0$ (marginal) eller Jordanblokk $\begin{bmatrix}0&1\\0&0\end{bmatrix}$ (ustabil, $x$ vokser som $t$).
+
+Feller:
+- Marginalt stabil ≠ BIBO-stabil: en pol i 0 i $G(s)$ gir ubegrenset utgang for et sprang.
+- Symmetrisk negativ definitt $A$ ⇒ alle egenverdier reelle og negative ⇒ asymptotisk stabil (2024 opg. 4).
+
+Formelark: Nei – kriteriene må pugges.
+
+Gitt på eksamen: Kont 2025 oppg. 1 (flervalg); Kont 2025 oppg. 5b; Eksamen 2024 oppg. 2 (flervalg); Eksamen 2024 oppg. 4 (flervalg); Eksamen 2024 oppg. 10a; Kont 2024 oppg. 1b; Kont 2024 oppg. 2a; Eksamen 2023 oppg. 3 (flervalg); Eksamen 2022 oppg. 1c; Eksamen 2022 oppg. 3d; Eksamen 2021 oppg. 3a; Kont 2021 oppg. 3c; Kont 2021 oppg. 4b; Eksamen 2020 oppg. 12a; Eksamen 2019 oppg. 3; Kont 2019 oppg. 2; Eksamen 2018 oppg. 2; Eksamen 2015 oppg. 2bd; Eksamen 2014 oppg. 3c; Eksamen 2013 oppg. 1c; Eksamen 2012 oppg. 1b; Eksamen 2011 oppg. 2b; Eksamen 2009 oppg. 2a; Eksamen 2008 oppg. 3; Eksamen 2004 oppg. 2; Eksamen 2003 oppg. 2cd
+
+#### 4. Polplassering med $u=-Kx$
+
+Typisk oppgave: Finn $K$ slik at $A-BK$ får gitte egenverdier (f.eks. −1 og −2).
+
+Hvorfor viktig: Flervalg i 2023 og 2024 (2×2 med parameter ω), deloppgave c) i den store tilstandsromsoppgaven i 2021, 2022, kont 2024 og kont 2025.
+
+Metode:
+1. Ønsket karakteristisk polynom: $(s-\lambda_1)(s-\lambda_2)$, f.eks. $(s+1)(s+2)=s^2+3s+2$.
+2. Sett $K=[k_1\;k_2]$, regn $A-BK$ og $\det(sI-(A-BK))$.
+3. Sammenlign koeffisienter og løs for $k_1,k_2$.
+4. Flervalg: det går ofte raskere å sette inn hvert alternativ og sjekke $\text{tr}(A-BK)=\lambda_1+\lambda_2$ og $\det(A-BK)=\lambda_1\lambda_2$.
+5. Styrbar kanonisk form (2021): $K$ leses rett ut av koeffisientdifferansen, og transformeres tilbake med $K=\bar K P^{-1}$ når $x=P\bar x$.
+
+Feller:
+- Fortegn: $u=-Kx$ ⇒ lukket sløyfe er $A-BK$, ikke $A+BK$.
+- Bare mulig for vilkårlige poler hvis $(A,B)$ er styrbar – si det!
+- Kont 2024: poler langt til venstre ⇒ store pådrag/metning – «kan vi bruke dette i praksis?»
+
+Formelark: Nei.
+
+Gitt på eksamen: Kont 2025 oppg. 5c; Eksamen 2024 oppg. 5 (flervalg); Kont 2024 oppg. 1cd; Eksamen 2023 oppg. 5 (flervalg); Eksamen 2022 oppg. 1d; Eksamen 2021 oppg. 1cd; Eksamen 2020 oppg. 9cd; Eksamen 2019 oppg. 3; Kont 2017 oppg. 3c; Eksamen 2016 oppg. 1a; Eksamen 2015 oppg. 4b; Eksamen 2014 oppg. 1c; Eksamen 2012 oppg. 3c; Eksamen 2011 oppg. 2d; Eksamen 2003 oppg. 1b
+
+#### 5. Referansefølging: $u=-Kx+K_r r$
+
+Typisk oppgave: Finn $K_r$ slik at $y\to r_0$ stasjonært / hvilken $(k,k_r)$ gir raskest konvergens?
+
+Hvorfor viktig: Flervalg i 2023 og kont 2025 (identisk oppgave med nye tall), del a) i 20 %-oppgavene i 2024 og kont 2024, del e) i 2022.
+
+Metode:
+1. Lukket sløyfe: $\dot x=(A-BK)x+BK_r r_0$. Stasjonært: $0=(A-BK)x_\infty+BK_rr_0$.
+2. $y_\infty=-C(A-BK)^{-1}BK_r\,r_0$. Krev $y_\infty=r_0$ ⇒ $$K_r=\big[-C(A-BK)^{-1}B\big]^{-1}$$
+3. Skalar $\dot x=ax+bu$: $K_r=\dfrac{k b-a}{b}$, dvs. $k_r = k - a/b$. For $b=1$: $k_r=k-a$.
+4. «Raskest konvergens»: lukket-sløyfe-pol $a-bk$ skal være mest negativ, *og* $k_r$ må stemme med formelen over. Sjekk begge!
+
+Feller:
+- Flervalgsalternativene har alltid ett med størst $k$ men feil $k_r$ – det er feil svar.
+- Med en ukjent konstant forstyrrelse gir $K_r$ alene stasjonært avvik ⇒ trenger integralvirkning (se «Integralvirkning»).
+
+Formelark: Nei.
+
+Gitt på eksamen: Kont 2025 oppg. 3 (flervalg); Eksamen 2024 oppg. 9a; Kont 2024 oppg. 3b; Eksamen 2023 oppg. 4 (flervalg); Eksamen 2022 oppg. 1e; Eksamen 2021 oppg. 4ab; Eksamen 2020 oppg. 9e; Eksamen 2013 oppg. 2c
+
+#### 6. Spektraltetthet og hvit støy
+
+Typisk oppgave: Finn $S_y(\omega)$ når hvit støy filtreres gjennom $H(s)$ / hvilken modell gir gitt $S(\omega)$?
+
+Hvorfor viktig: Flervalg i 2023 og 2024, egen oppgave i 2022 og kont 2024, deloppgave i 2021 og kont 2025. Har kommet på 14 eksamener totalt.
+
+Metode:
+1. Hvit støy: $R_w(\tau)=q\,\delta(\tau)$ ⇔ $S_w(\omega)=q$ (flat). Null middelverdi, uendelig varians, ukorrelert med seg selv ved alle $\tau\neq0$.
+2. **Hovedformelen:** $y=H(s)w$ ⇒ $S_y(\omega)=H(j\omega)H(-j\omega)\,S_w(\omega)=|H(j\omega)|^2S_w$.
+3. Fra ODE: $\ddot x-3\dot x+ax=u$ ⇒ $H(s)=\dfrac1{s^2-3s+a}$ ⇒ $|H(j\omega)|^2=\dfrac{1}{(a-\omega^2)^2+9\omega^2}$.
+4. Tilstandsrom til spektrum: $H(s)=C(sI-A)^{-1}B$ (+D). Eks: $\dot x=-\omega_0x+ku,\ y=x$ ⇒ $S_y=\dfrac{k^2}{\omega^2+\omega_0^2}$.
+5. **Formfilter (baklengs):** $S(\omega)=\dfrac{c}{\omega^2+a^2}$ ⇒ $H(s)=\dfrac{\sqrt c}{s+a}$ (polene i venstre halvplan).
+6. Autokorrelasjon ↔ spektrum: $\sigma^2e^{-\beta|\tau|}$ ⇔ $\dfrac{2\sigma^2\beta}{\omega^2+\beta^2}$ (Gauss–Markov). Varians $=R(0)$.
+7. To uavhengige bidrag (f.eks. $y=x+v$): spektrene adderes, $S_y=S_x+S_v$.
+
+Feller:
+- Glemme $q$ (intensiteten) eller kvadratet på forsterkningen $k$.
+- Spektraltetthet er alltid reell og ≥ 0 – alternativer med $j\omega$ i er feil.
+
+Formelark: Delvis – $S_y=H(j\omega)H(-j\omega)q$ står på arket. Fourierpar for $e^{-\beta|\tau|}$ gjør ikke.
+
+Gitt på eksamen: Kont 2025 oppg. 6c; Eksamen 2024 oppg. 7 (flervalg); Kont 2024 oppg. 4abc; Eksamen 2023 oppg. 7 (flervalg); Eksamen 2022 oppg. 2ab; Eksamen 2021 oppg. 3b; Eksamen 2015 oppg. 5ab; Eksamen 2014 oppg. 5abc; Eksamen 2013 oppg. 3ab; Eksamen 2012 oppg. 6; Eksamen 2010 oppg. 4; Eksamen 2009 oppg. 3a; Eksamen 2004 oppg. 4ac; Eksamen 2003 oppg. 6
+
+#### 7. Algebraisk ekvivalens, nulltilstands-ekvivalens, duale systemer
+
+Typisk oppgave: Gitt to tilstandsrommodeller: er de urelaterte, algebraisk ekvivalente, nulltilstands-ekvivalente eller duale?
+
+Hvorfor viktig: Nøyaktig samme flervalgsoppgave i 2023, 2024 og kont 2025 – bare nye matriser. Gratis poeng hvis du har en fast rekkefølge.
+
+Metode:
+1. **1. Dual?** Sjekk om $A_2=A_1^T$, $B_2=C_1^T$, $C_2=B_1^T$. Raskest – gjør den først.
+2. **2. Algebraisk ekvivalent** ($\bar A=PAP^{-1}$ osv.) krever samme egenverdier: sammenlign $\text{tr}(A)$ og $\det(A)$. Ulike ⇒ ikke ekvivalente.
+3. **3. Nulltilstands-ekvivalent** ⇔ samme transferfunksjon $G(s)$. Regn begge. Like $G(s)$ men ulik dimensjon/ulike egenverdier ⇒ «zero-state equivalent but not algebraically equivalent».
+4. Samme dimensjon, samme $G(s)$ og begge minimale ⇒ algebraisk ekvivalente.
+5. Ulike $G(s)$ og ikke dual ⇒ «Unrelated».
+6. Tips: $G(s)$ er bestemt av Markov-parametrene $D, CB, CAB, \dots$ og karakteristisk polynom. For 2×2 med $D=0$: like $CB$, $CAB$, $\text{tr}A$ og $\det A$ ⇒ samme $G(s)$.
+
+Feller:
+- Algebraisk ekvivalent ⇒ alltid også nulltilstands-ekvivalent (men ikke omvendt).
+
+Formelark: Nei.
+
+Gitt på eksamen: Kont 2025 oppg. 4 (flervalg); Eksamen 2024 oppg. 6 (flervalg); Eksamen 2023 oppg. 6 (flervalg); Eksamen 2021 oppg. 1e; Kont 2021 oppg. 1g
+
+#### 8. Egenverdier/-vektorer, diagonal-, Jordan- og modalform
+
+Typisk oppgave: Transformer systemet til diagonal- (eller Jordan-) form: finn $\Lambda$/$J$ og $Q$.
+
+Hvorfor viktig: Flervalg i 2024, deloppgave i kont 2024, kont 2025, kont 2021 og 2020. Har kommet på 14 eksamener.
+
+Metode:
+1. Egenverdier: $\det(\lambda I-A)=0$. Egenvektorer: løs $(A-\lambda I)q=0$.
+2. $Q=[q_1\;q_2]$, $\Lambda=Q^{-1}AQ$ ($AQ=Q\Lambda$). Nytt system: $\bar A=\Lambda$, $\bar B=Q^{-1}B$, $\bar C=CQ$.
+3. **Dobbel egenverdi:** færre egenvektorer enn multiplisitet ⇒ Jordanform $J=\begin{bmatrix}\lambda&1\\0&\lambda\end{bmatrix}$. Generalisert egenvektor: $(A-\lambda I)q_2=q_1$.
+4. **Komplekse egenverdier $\sigma\pm j\omega$:** modalform $\begin{bmatrix}\sigma&\omega\\-\omega&\sigma\end{bmatrix}$ med $Q=[\text{Re}\,q\;\;\text{Im}\,q]$ – alle koeffisienter reelle (kont 2021, kont 2025).
+5. Flervalg: sjekk $AQ=QJ$ direkte for hvert alternativ – raskere enn å regne selv.
+
+Feller:
+- Ved Jordanform: rekkefølgen i $Q$ betyr noe – $q_1$ er egenvektoren, $q_2$ den generaliserte.
+
+Formelark: Nei.
+
+Gitt på eksamen: Kont 2025 oppg. 5d; Eksamen 2024 oppg. 3 (flervalg); Kont 2024 oppg. 1f; Eksamen 2023 oppg. 8d; Kont 2021 oppg. 1b; Eksamen 2020 oppg. 9b; Eksamen 2018 oppg. 3; Eksamen 2015 oppg. 2a; Eksamen 2013 oppg. 1b; Eksamen 2012 oppg. 1a; Eksamen 2010 oppg. 1b; Eksamen 2009 oppg. 1bc; Eksamen 2008 oppg. 1a; Eksamen 2003 oppg. 2ab
+
+#### 9. Matriseeksponentialen $e^{At}$
+
+Typisk oppgave: Finn $e^{At}$ (eller ett element av den) eksakt.
+
+Hvorfor viktig: Flervalg i 2023 og kont 2025 (samme oppgave: «øvre venstre element av $e^{At}$»), egen deloppgave i kont 2021 og 2020.
+
+Metode:
+1. **Metode 1 (Cayley–Hamilton, 2×2):** $e^{At}=\beta_0I+\beta_1A$. Løs $e^{\lambda_it}=\beta_0+\beta_1\lambda_i$ for begge egenverdiene.
+2.   Øvre venstre element: $\beta_0+\beta_1a_{11}$.
+3.   Dobbel egenverdi: bruk i tillegg den deriverte, $te^{\lambda t}=\beta_1$.
+4. **Metode 2 (Laplace):** $e^{At}=\mathcal L^{-1}\{(sI-A)^{-1}\}$, delbrøkoppspalt hvert element.
+5. **Metode 3 (diagonal):** $e^{At}=Qe^{\Lambda t}Q^{-1}$.
+6. Triangulær $A$ med dobbel egenverdi 0, f.eks. $\begin{bmatrix}0&1\\0&0\end{bmatrix}$: $e^{At}=I+At$ (rekken stopper).
+7. Flervalg-sjekk: $e^{A\cdot0}=I$ ⇒ øvre venstre element må bli 1 ved $t=0$. Det stryker ofte halve alternativene.
+
+Formelark: Nei – men løsningsformelen $x(t)=e^{At}x(0)+\int e^{A(t-\tau)}Bu\,d\tau$ står der.
+
+Gitt på eksamen: Kont 2025 oppg. 2 (flervalg); Eksamen 2023 oppg. 2 (flervalg); Kont 2021 oppg. 5a; Eksamen 2020 oppg. 9a; Eksamen 2010 oppg. 1cd; Eksamen 2008 oppg. 1b; Eksamen 2004 oppg. 1a; Eksamen 2003 oppg. 2f
+
+#### 10. Utvidet tilstandsrom for Kalmanfilter (bias, last, farget støy)
+
+Typisk oppgave: Sett opp en utvidet modell slik at forstyrrelse/bias kan estimeres, og angi $Q_d$ og $R_d$.
+
+Hvorfor viktig: Del av Kalmanoppgaven i 2021, 2022, 2023, kont 2021 og kont 2024. Kalmanfilteret krever hvit støy – alt som ikke er hvitt må inn som en tilstand.
+
+Metode:
+1. **Saktevarierende last/bias (random walk):** $d[k+1]=d[k]+w_d[k]$ ⇒ legg $d$ til som tilstand: $\begin{bmatrix}x\\d\end{bmatrix}[k+1]=\begin{bmatrix}a&1\\0&1\end{bmatrix}\begin{bmatrix}x\\d\end{bmatrix}[k]+\dots$
+2. **Gauss–Markov-bias:** $\sigma[k+1]=0.9\sigma[k]+v_2[k]$ ⇒ tilstand med egenverdi 0.9. Målingen blir $y=x+\sigma+v_1$ ⇒ $C=[1\;1]$.
+3. **Farget støy med spektrum $S(\omega)$:** finn formfilter $H(s)$ (se «Spektraltetthet»), realiser det ($A_\beta,B_\beta,C_\beta$) og legg filtertilstandene inn: $\begin{bmatrix}\dot x\\\dot x_\beta\end{bmatrix}=\begin{bmatrix}A&GC_\beta\\0&A_\beta\end{bmatrix}\begin{bmatrix}x\\x_\beta\end{bmatrix}+\begin{bmatrix}0\\B_\beta\end{bmatrix}w$.
+4. $Q_d$ = kovariansen til den hvite støyen som driver hver tilstand (diagonal hvis uavhengige). $R_d$ = variansen til den hvite målestøyen.
+5. Kjent ikke-null middelverdi i en forstyrrelse (kont 2024 d): flytt middelverdien inn som et kjent pådrag $Bu$, og la variansen rundt den gå i $Q_d$.
+
+Feller:
+- Bias i målingen påvirker $C$, ikke $A$. Bias i prosessen påvirker $A$.
+
+Formelark: Nei.
+
+Gitt på eksamen: Kont 2024 oppg. 2d; Eksamen 2023 oppg. 9b; Eksamen 2022 oppg. 2d; Eksamen 2021 oppg. 5b; Kont 2021 oppg. 5d; Eksamen 2020 oppg. 11; Eksamen 2016 oppg. 3; Eksamen 2003 oppg. 5d
+
+#### 11. Tolke Kalmanfilteret (gain, Q/R, dropout, deteksjon)
+
+Typisk oppgave: Forklar hvorfor $L$ er liten/stor, hva som skjer med $P$ ved dropout, når filteret er optimalt, sannsynlighet fra $P$.
+
+Hvorfor viktig: Kalmanoppgavene avsluttes nesten alltid med én forklaringsdel (2020, 2022, 2024, kont 2021, kont 2025). Lette poeng hvis du har stikkordene klare.
+
+Metode:
+1. **Optimalitet:** lineær modell, $w$ og $v$ hvite, null middelverdi, Gaussiske, ukorrelerte med hverandre og med $x[0]$; kjente $Q_d,R_d$.
+2. **Liten $L$:** $P^-$ liten i forhold til $R$ ⇒ filteret stoler mer på modellen enn på målingen. Stor $R$ ⇒ mindre gain.
+3. **Øke et diagonalelement i $Q_d$:** mindre tillit til modellen for den tilstanden ⇒ større gain, raskere men mer støyfylt estimat.
+4. **Dropout (ingen måling):** hopp over korreksjon, $P^-$ vokser ($P^-=APA^T+Q$) for hvert steg ⇒ første nye måling får stor gain og stort hopp.
+5. **Stasjonær gain:** $(A,C)$ detekterbar og $(A,\sqrt Q)$ stabiliserbar ⇒ $P$ og $L$ konvergerer.
+6. **Sannsynlighet:** $x_1\sim\mathcal N(\hat x_1,P_{11})$ – tegn normalfordelingskurven, skraver arealet under grensen (2024 d).
+7. **Avviksdeteksjon:** se på innovasjonen $y-C\hat x^-$ i forhold til $\sqrt{CP^-C^T+R}$; mer enn ~2–3 σ ⇒ noe uventet skjedde (kont 2025 c).
+8. **Hvorfor estimator i stedet for å derivere målingen:** derivasjon forsterker støy; modellen filtrerer støy og gir estimater av umålte tilstander.
+
+Formelark: Nei.
+
+Gitt på eksamen: Kont 2025 oppg. 7c; Eksamen 2024 oppg. 10bd; Eksamen 2022 oppg. 3c; Kont 2021 oppg. 3d; Kont 2021 oppg. 5e; Eksamen 2020 oppg. 10cd; Eksamen 2015 oppg. 6; Eksamen 2003 oppg. 5bc
+
+#### 12. LQR for 1. ordens system (analytisk Riccati)
+
+Typisk oppgave: $\dot x=ax+bu$, $J=\int qx^2+ru^2\,dt$: finn $k$. Hva skjer når $r\to\infty$? Stabilt for alle $a$?
+
+Hvorfor viktig: Kommer på annenhver eksamen (2021, 2022, kont 2024, kont 2025) og er nesten ordrett lik hver gang.
+
+Metode:
+1. Riccati skalar: $2ap+q-\dfrac{b^2p^2}{r}=0$ ⇒ $$p=\frac{r}{b^2}\Big(a+\sqrt{a^2+\tfrac{b^2q}{r}}\Big)$$ (velg positiv rot).
+2. $k=\dfrac{bp}{r}=\dfrac{a+\sqrt{a^2+b^2q/r}}{b}$.
+3. Lukket sløyfe: $a-bk=-\sqrt{a^2+b^2q/r}<0$ ⇒ **alltid stabil**, uansett fortegn på $a$.
+4. Bare forholdet $q/r$ betyr noe (kont 2024 a).
+5. $r\to\infty$ (dyrt pådrag): stabilt $a<0$ ⇒ $k\to0$; ustabilt $a>0$ ⇒ $k\to 2a/b$ (speiler polen til $-a$).
+6. Usikker $a$ (2021 b), $b=1$: ekte $a'\le1.5a$ ⇒ $a'-k=a'-a-\sqrt{a^2+q/r}\le0.5a-\sqrt{a^2+q/r}<0$ ⇒ alltid stabil.
+
+Formelark: Ja – Riccatiligningen og $u=-R^{-1}B^TPx$ står på arket.
+
+Gitt på eksamen: Kont 2025 oppg. 6ab; Kont 2024 oppg. 3a; Eksamen 2022 oppg. 4a; Eksamen 2021 oppg. 2; Kont 2019 oppg. 1a; Kont 2017 oppg. 2a; Eksamen 2017 oppg. 3; Eksamen 2016 oppg. 4
+
+#### 13. LQR med matriser og tuning (Q, R, Bryson)
+
+Typisk oppgave: Gitt (deler av) $P$: regn $K=R^{-1}B^TP$. Hvordan endre $Q$/$R$ for å gjøre regulatoren raskere/roligere?
+
+Hvorfor viktig: I 2023 (gitt $P$, finn $K$), 2024 (Segway, off-diagonal i $P$ oppgitt), kont 2021 (Bryson og tuning). Pluss lab-spørsmål om LQR.
+
+Metode:
+1. $K=R^{-1}B^TP$. Med $B=[0;b]$ er det bare andre rad av $P$ som trengs: $K=\tfrac{b}{r}[p_{21}\;p_{22}]$.
+2. Oppgitt bare noe av $P$: sett inn i Riccati $A^TP+PA+Q-PBR^{-1}B^TP=0$ element for element og løs for resten (velg positiv definitt løsning).
+3. Verifisere en gitt $P$: sett inn i Riccati og sjekk ≈ 0.
+4. **Tuning:** større $Q_{ii}$ ⇒ tilstand $i$ straffes mer ⇒ raskere regulering av den. Større $R$ ⇒ mindre pådrag, roligere og tregere.
+5. **Brysons regel:** $Q_{ii}=1/x_{i,\max}^2$, $R_{jj}=1/u_{j,\max}^2$. Garanterer *ikke* $|u|\le u_{\max}$ – det er bare en startverdi for tuning.
+6. LQR med $Q>0$ og $(A,B)$ stabiliserbar ⇒ lukket sløyfe alltid asymptotisk stabil.
+
+Formelark: Ja – $J$, Riccati og $u=-R^{-1}B^TPx$. Bryson står ikke.
+
+Gitt på eksamen: Eksamen 2024 oppg. 11ab; Eksamen 2023 oppg. 8b; Kont 2021 oppg. 1f; Kont 2021 oppg. 5c; Kont 2017 oppg. 2a; Eksamen 2013 oppg. 2c; Eksamen 2010 oppg. 5; Eksamen 2009 oppg. 2b; Eksamen 2008 oppg. 4
+
+#### 14. Helikopterlab-spørsmål
+
+Typisk oppgave: Forklar hva du observerte i laben: PD/LQR, integralvirkning, IMU, Luenberger vs. Kalman, $Q_d$-tuning, ulineariteter.
+
+Hvorfor viktig: Egen oppgave på 12–16 % i 2022, 2023, kont 2024 og kont 2025. Spørsmålene går igjen nesten ordrett.
+
+Metode:
+1. **Poler langt til venstre (PD, lab 1):** modellen sier raskere, men i praksis: metning av motorene, umodellert dynamikk (motor, forsinkelse), støy forsterkes, oscillasjon/ustabilitet.
+2. **Integralvirkning (lab 2):** fjerner stasjonært avvik fra konstante forstyrrelser og modellfeil (f.eks. feil likevektspådrag). Ulemper: tregere, mer oversving, integrator-windup. Tunes via vekten på integraltilstandene i $Q$.
+3. **Hvorfor estimator med IMU (lab 3):** IMU måler vinkelhastigheter (gyro) og akselerasjon – ikke alle tilstander direkte, og målingene er støyfylte med bias. Estimatoren rekonstruerer tilstandene og filtrerer støy.
+4. **Luenberger vs. Kalman:** Luenberger – poler velges for hånd, ingen eksplisitt støymodell, tuning via polplassering. Kalman – gain beregnes optimalt fra $Q_d,R_d$, tidsvarierende gain, gir kovarians $P$ (usikkerhet), tuning via støykovarianser som kan måles (R) og justeres (Q). Begge kan brukes i kontinuerlig og diskret tid.
+5. **$Q_d$ diagonal:** større element ⇒ mindre tillit til modellen for den tilstanden ⇒ estimatet følger målingene mer (raskere, mer støy).
+6. **Ulinearitet:** linearisert rundt likevekt – store vinkler, $\sin/\cos$-ledd, motor-/thrust-ulinearitet, kobling mellom akser ⇒ dårligere ytelse langt fra likevekt.
+7. **Encoder-feil:** kvantisering (uniform fordeling, varians $\Delta^2/12$), evt. offset ved oppstart – ikke perfekt.
+
+Formelark: Nei.
+
+Gitt på eksamen: Kont 2025 oppg. 9; Kont 2024 oppg. 5; Eksamen 2023 oppg. 11; Eksamen 2022 oppg. 5
+
+
+### Nivå 2: Sannsynlig
+
+Omtrent annenhver eksamen. Ta dem når nivå 1 sitter.
+
+#### 15. Integralvirkning og stasjonært avvik
+
+Typisk oppgave: Konstant forstyrrelse gir stasjonært avvik – sett opp utvidet system med integraltilstand og vis at avviket forsvinner.
+
+Hvorfor viktig: Del b) i 2024 opg. 9, c–d) i kont 2024 opg. 3, steady-state-analysen i 2024 opg. 11 og kont 2021 opg. 5 – pluss lab-spørsmål.
+
+Metode:
+1. Ny tilstand $\dot z=r-y$ (eller $y-r$). Utvidet system: $\begin{bmatrix}\dot x\\\dot z\end{bmatrix}=\begin{bmatrix}A&0\\-C&0\end{bmatrix}\begin{bmatrix}x\\z\end{bmatrix}+\begin{bmatrix}B\\0\end{bmatrix}u+\begin{bmatrix}0\\1\end{bmatrix}r$.
+2. Regulator $u=-K_xx-K_zz$ (velg fortegn konsistent). Stasjonært: $\dot z=0$ ⇒ $y=r$ uansett konstant forstyrrelse – så lenge lukket sløyfe er stabil.
+3. Stasjonært avvik uten integralvirkning: sett $\dot x=0$ med $d=d_0$ og løs for $x_\infty$ – avviket er proporsjonalt med $d_0$.
+4. Alternativ (kont 2024 d): estimer forstyrrelsen med en observer/Kalman (utvidet modell) og kompenser i foroverkoblingen.
+
+Gitt på eksamen: Eksamen 2024 oppg. 9b; Eksamen 2024 oppg. 11cd; Kont 2024 oppg. 3cd; Kont 2021 oppg. 5b; Eksamen 2022 oppg. 5b (lab); Eksamen 2023 oppg. 11a (lab)
+
+#### 16. Realisering: styrbar kanonisk form og minimal realisering
+
+Typisk oppgave: Finn en (minimal) tilstandsromrealisering av $G(s)$ / hvilken kanonisk form er dette?
+
+Hvorfor viktig: Kommer på 15 eksamener totalt. Nyere: 2021, 2022, 2023 (gjenkjenne form), kont 2021, kont 2025.
+
+Metode:
+1. Skriv $G(s)=G(\infty)+G_{sp}(s)$ ($D=G(\infty)$, polynomdivisjon hvis teller har samme grad som nevner).
+2. Nevner $d(s)=s^r+\alpha_1s^{r-1}+\dots+\alpha_r$ (monisk!). Teller $N_1s^{r-1}+\dots+N_r$.
+3. SISO styrbar kanonisk: $A=\begin{bmatrix}-\alpha_1&-\alpha_2&\cdots\\1&0&\cdots\\0&1&\cdots\end{bmatrix}$, $B=[1;0;\dots]$, $C=[N_1\;N_2\;\dots]$ – formelen står på arket.
+4. Minimal ⇔ styrbar og observerbar ⇔ dimensjonen = grad av $G(s)$ etter forkorting. Forkort felles faktorer først!
+5. Tilstandsrom med flere tilstander enn den minimale realiseringen (kont 2021 d): de «ekstra» modusene er ikke-styrbare eller ikke-observerbare.
+
+Formelark: Ja – den generelle formelen for styrbar kanonisk form står på arket.
+
+Gitt på eksamen: Kont 2025 oppg. 8c; Eksamen 2023 oppg. 8d; Eksamen 2022 oppg. 2c; Eksamen 2021 oppg. 1c; Kont 2021 oppg. 4d; Kont 2019 oppg. 3b; Eksamen 2017 oppg. 2; Kont 2017 oppg. 1; Eksamen 2016 oppg. 2; Eksamen 2014 oppg. 3a; Eksamen 2012 oppg. 3ab; Eksamen 2010 oppg. 2; Eksamen 2009 oppg. 4bc; Eksamen 2008 oppg. 2abd; Eksamen 2003 oppg. 3
+
+#### 17. Transferfunksjon fra tilstandsrom
+
+Typisk oppgave: Finn $G(s)=C(sI-A)^{-1}B+D$ (ofte som del av BIBO/ekvivalens).
+
+Hvorfor viktig: Egen deloppgave i 2021, 2022 og kont 2025, men trengs i tillegg i alle BIBO- og ekvivalensoppgaver.
+
+Metode:
+1. 2×2: $(sI-A)^{-1}=\dfrac{1}{\det(sI-A)}\begin{bmatrix}s-a_{22}&a_{12}\\a_{21}&s-a_{11}\end{bmatrix}$.
+2. Med $C=[1\;0]$ og $B=[1;0]$ trenger du bare element (1,1): $\dfrac{s-a_{22}}{\det(sI-A)}$.
+3. Uobserverbar/ustyrbar del (2021 e): de modusene forkortes bort – du kan droppe dem før du regner.
+4. Lukket sløyfe med PI: $G_{cl}=\dfrac{K(s)G(s)}{1+K(s)G(s)}$.
+
+Formelark: Ja – $G(s)=C(sI-A)^{-1}B+D$.
+
+Gitt på eksamen: Kont 2025 oppg. 8a; Eksamen 2022 oppg. 1b; Eksamen 2021 oppg. 1b; Eksamen 2018 oppg. 4a; Eksamen 2009 oppg. 4a
+
+#### 18. Forventning og varians gjennom et system med hvit støy
+
+Typisk oppgave: Vis at $\dot m_x=a\,m_x$ og $\dot C_x=2aC_x+q$ / regn middel og varians av $x[2]$.
+
+Hvorfor viktig: Del c–d) i 2021 opg. 4 og 2024 opg. 9 er nesten identiske. Diskret variant i kont 2019.
+
+Metode:
+1. Kontinuerlig: $\dot x=ax+w$, $E[w(t)w(\tau)]=q\delta(t-\tau)$.
+2. Middelverdi: ta forventning ⇒ $\dot m_x=a\,m_x$ ⇒ $m_x(t)=e^{at}m_x(0)$.
+3. Varians: $x(t)=e^{at}x(0)+\int_0^te^{a(t-\tau)}w(\tau)d\tau$. Deriver $C_x=E[(x-m)^2]$ ⇒ $\dot C_x=2aC_x+q$.
+4. Delta-trikset: $\int_0^t\delta(t-\tau)d\tau=\tfrac12$ (impulsen ligger på integrasjonsgrensen) – det er her $\tfrac12$ kommer fra.
+5. Med forsterkning: $\dot x=ax+bw$ ⇒ $\dot C_x=2aC_x+b^2q$. Generelt $\dot P=AP+PA^T+GQG^T$.
+6. Diskret: $m[k+1]=am[k]$, $P[k+1]=a^2P[k]+Q$.
+
+Formelark: Nei (bare Kalman-versjonen med $-PC^TR^{-1}CP$-leddet).
+
+Gitt på eksamen: Eksamen 2024 oppg. 9cd; Eksamen 2021 oppg. 4cd; Kont 2019 oppg. 6a; Eksamen 2015 oppg. 5c; Eksamen 2013 oppg. 3c; Eksamen 2004 oppg. 4b
+
+#### 19. Korte bevis: dualitet, PBH, gramian, linearitet
+
+Typisk oppgave: Vis at dualt system er observerbart ⇔ originalt styrbart / PBH-testen / $W_o$ inverterbar ⇒ $x(0)$ kan finnes.
+
+Hvorfor viktig: Hver ordinære eksamen 2021–2023 hadde ett kort bevis (8–15 %). De er korte når du har sett dem én gang.
+
+Metode:
+1. **Dualitet (2023):** $\mathcal O_{\text{dual}}=[B^T;B^TA^T;\dots]=\mathcal C^T$, og $\text{rank}(M^T)=\text{rank}(M)$. Ferdig.
+2. **PBH (2022):** anta $A^Tv=\lambda v$ og $B^Tv=0$. Da $B^T(A^T)^kv=\lambda^kB^Tv=0$ for alle $k$ ⇒ $\mathcal C^Tv=0$ ⇒ $\mathcal C$ ikke full rang. Motsigelse.
+3. **Observerbarhetsgramian (2021):** $y=Ce^{At}x_0$. Multipliser med $e^{A^Tt}C^T$ og integrer: $\int_0^{t_1}e^{A^T\tau}C^Ty\,d\tau=W_o(t_1)x_0$ ⇒ $x_0=W_o^{-1}(\ldots)$.
+4. **$W_o$ inverterbar for alle $t>0$** ⇔ systemet er observerbart (2022 f).
+5. **Linearitet:** additivitet $G(u_1+u_2)=G(u_1)+G(u_2)$ og homogenitet $G(\alpha u)=\alpha G(u)$. $F(G(x))$ lineær, $F(x)G(x)$ ikke.
+6. **Separasjonsprinsippet:** med $e=x-\hat x$ blir lukket sløyfe blokktriangulær $\begin{bmatrix}A-BK&BK\\0&A-LC\end{bmatrix}$ ⇒ egenverdiene er de til $A-BK$ og $A-LC$ hver for seg.
+
+Gitt på eksamen: Eksamen 2023 oppg. 10; Eksamen 2022 oppg. 4b; Eksamen 2022 oppg. 1f; Eksamen 2021 oppg. 5a; Kont 2021 oppg. 2; Kont 2021 oppg. 1e; Kont 2019 oppg. 5; Eksamen 2009 oppg. 1a
+
+#### 20. Luenberger-observer og estimeringsfeil
+
+Typisk oppgave: Sett opp observeren, feildynamikken, og finn $L$ som gir gitte poler for $A-LC$.
+
+Hvorfor viktig: Fast innslag frem til 2021 (13 eksamener). Nyere eksamener spør heller om Luenberger vs. Kalman, men oppsettet trengs.
+
+Metode:
+1. $\dot{\hat x}=A\hat x+Bu+L(y-C\hat x)$. Feil $e=x-\hat x$: $\dot e=(A-LC)e$.
+2. Polplassering: $\det(sI-(A-LC))$ = ønsket polynom, løs for $L=[l_1;l_2]$. (Dual av $K$-design: $L^T$ for $(A^T,C^T)$.)
+3. Mulig ⇔ $(A,C)$ observerbar. Tommelfinger: observerpoler 2–6 ganger raskere enn reguleringspolene.
+4. For raske poler ⇒ stor $L$ ⇒ forsterker målestøy (2003 opg. 4: transferfunksjon fra målestøy til estimat).
+
+Gitt på eksamen: Eksamen 2021 oppg. 3d; Kont 2021 oppg. 1cd; Eksamen 2020 oppg. 11ab; Eksamen 2019 oppg. 5c; Eksamen 2018 oppg. 1; Kont 2017 oppg. 3d; Eksamen 2016 oppg. 1c; Eksamen 2015 oppg. 4b; Eksamen 2012 oppg. 4; Eksamen 2011 oppg. 3b; Eksamen 2004 oppg. 3b; Eksamen 2003 oppg. 4
+
+#### 21. Eksakt diskretisering (ZOH), Euler og Van Loan
+
+Typisk oppgave: Vis at $x[k+1]=e^{aT}x[k]+\frac{b}{a}(e^{aT}-1)u[k]$ / hva skjer med stabiliteten for stor $T$?
+
+Hvorfor viktig: Del a) i 2023 opg. 9, kont 2021 opg. 3, 2020 opg. 12.
+
+Metode:
+1. $A_d=e^{AT}$, $B_d=\int_0^Te^{A\tau}d\tau\,B$. Hvis $A$ inverterbar: $B_d=A^{-1}(e^{AT}-I)B$.
+2. Skalar $\dot x=ax+bu$: $A_d=e^{aT}$, $B_d=\frac ba(e^{aT}-1)$. Eks: $a=-0.1,b=1$ ⇒ $B_d=10(1-e^{-0.1T})$.
+3. Eksakt diskretisering bevarer stabilitet for alle $T$: $|e^{\lambda T}|<1$ ⇔ $\text{Re}\lambda<0$.
+4. Euler: $A_d=I+AT$ ⇒ ustabil for stor $T$ selv om kontinuerlig er stabil (egenverdi $1+\lambda T$ utenfor enhetssirkelen).
+5. Van Loan (støykovarians $Q_d$): sett opp $\begin{bmatrix}-A&GQG^T\\0&A^T\end{bmatrix}T$, ta matriseeksponential. Hvorfor gir én kontinuerlig støy kovarians i flere tilstander? Fordi den integreres gjennom dynamikken i løpet av samplingsintervallet.
+
+Gitt på eksamen: Eksamen 2023 oppg. 9a; Kont 2021 oppg. 3ab; Eksamen 2020 oppg. 12b; Eksamen 2012 oppg. 2; Eksamen 2004 oppg. 1b
+
+#### 22. PI/PID-regulator på tilstandsromform
+
+Typisk oppgave: Cruise control $m\dot v+dv=u$ med PI: lukket-sløyfe transferfunksjon, tilstandsrom, plassér polene i $-\omega_b$.
+
+Hvorfor viktig: Kont 2025 opg. 8 er ordrett lik 2018 opg. 4. PID-realisering også i 2016 og 2014.
+
+Metode:
+1. PI: $K(s)=K_P+\frac{K_I}{s}$ ⇒ én tilstand (integratoren), egenverdi i 0.
+2. Tilstander $x=[v;\;z]$ med $\dot z=r-v$: $u=K_P(r-v)+K_Iz$.
+3. $\dot v=\frac1m(-dv+K_P(r-v)+K_Iz)$, $\dot z=r-v$ ⇒ $A=\begin{bmatrix}-\frac{d+K_P}{m}&\frac{K_I}{m}\\-1&0\end{bmatrix}$.
+4. Karakteristisk polynom $s^2+\frac{d+K_P}{m}s+\frac{K_I}{m}=(s+\omega_b)^2$ ⇒ $K_P=2m\omega_b-d$, $K_I=m\omega_b^2$.
+5. Ren PID ($K_Ds$) er ikke propper ⇒ kan ikke realiseres. Med filter $\frac{K_Ds}{\tau s+1}$ går det.
+
+Gitt på eksamen: Kont 2025 oppg. 8; Eksamen 2018 oppg. 4; Kont 2019 oppg. 3b; Eksamen 2016 oppg. 2; Eksamen 2014 oppg. 2
+
+#### 23. Stabiliserbarhet og parameteravhengig regulator
+
+Typisk oppgave: Finnes det en stabiliserende $K$ for alle verdier av α? Finn $K=[f(\alpha)\;1]$ som stabiliserer for alle α.
+
+Hvorfor viktig: 2023 opg. 8 a og c, kont 2017.
+
+Metode:
+1. Stabiliserbar ⇔ alle ustyrbare moduser er stabile. Sjekk $\det\mathcal C$ som funksjon av parameteren; der den er 0, finn den ustyrbare egenverdien.
+2. PBH-variant: $\text{rank}[A-\lambda I\;\;B]=n$ for alle $\lambda$ med $\text{Re}\lambda\ge0$.
+3. Parameteravhengig $K$: regn karakteristisk polynom for $A-BK$, krev positive koeffisienter (2. orden: $\text{tr}<0$ og $\det>0$).
+4. Detekterbarhet er det duale: alle uobserverbare moduser stabile.
+
+Gitt på eksamen: Eksamen 2023 oppg. 8ac; Kont 2017 oppg. 3d; Eksamen 2011 oppg. 2d
+
+#### 24. Kontinuerlig Kalmanfilter – skalar Riccati og stasjonær P
+
+Typisk oppgave: Vis at $\dot P=-4P-\tfrac12P^2+4$ og finn stasjonær $P$.
+
+Hvorfor viktig: Kont 2024 opg. 4 (nesten identisk med 2014 opg. 5 og 2009 opg. 3).
+
+Metode:
+1. $\dot P=AP+PA^T+GQG^T-PC^TR^{-1}CP$. Skalar: $\dot P=2aP+g^2q-\frac{c^2}{r}P^2$.
+2. Stasjonær: sett $\dot P=0$, løs andregradsligningen, velg **positiv** rot.
+3. Gain $L=PC^TR^{-1}$.
+
+Formelark: Ja – kontinuerlig Kalman-Riccati og «sett $\dot P=0$» står på arket.
+
+Gitt på eksamen: Kont 2024 oppg. 4de; Eksamen 2014 oppg. 5d; Eksamen 2009 oppg. 3bc; Eksamen 2003 oppg. 5a
+
+#### 25. Vurdere støyantakelser fra en figur
+
+Typisk oppgave: Histogram og autokorrelasjon av målefeil: er støyen hvit, Gaussisk, null middelverdi, med riktig $R$?
+
+Hvorfor viktig: 2022 opg. 3e og 2023 opg. 9c – samme type figur begge år.
+
+Metode:
+1. **Null middelverdi:** histogrammet sentrert i 0.
+2. **Gaussisk:** klokkeformet histogram.
+3. **Hvit:** autokorrelasjonen er (nesten) null for alle lag ≠ 0 – bare en topp i 0.
+4. **Varians:** autokorrelasjonen ved lag 0 er variansen direkte – sammenlign med antatt $R$.
+5. Tydelig korrelasjon ved lag ≠ 0 ⇒ farget støy ⇒ må modelleres som en tilstand (se «Utvidet tilstandsrom»).
+
+Gitt på eksamen: Eksamen 2023 oppg. 9c; Eksamen 2022 oppg. 3e; Kont 2024 oppg. 5b; Eksamen 2011 oppg. 4ab
+
+
+### Nivå 3: Bør gjøre
+
+Kommer innimellom, ofte som deloppgave.
+
+#### 26. Lyapunov-ligningen
+
+Typisk oppgave: Løs $A^TM+MA=-N$ (ofte $N=I$) og avgjør stabilitet ut fra om $M>0$.
+
+Hvorfor viktig: Fast frem til 2016; sist i 2021 opg. 3c.
+
+Metode:
+1. Sett $M=\begin{bmatrix}m_1&m_2\\m_2&m_3\end{bmatrix}$ (symmetrisk), multipliser ut, få 3 lineære ligninger.
+2. Asymptotisk stabil ⇔ unik løsning $M$ positiv definitt: $m_1>0$ og $\det M>0$.
+
+Formelark: Ja – selve ligningen. Kriteriet ($M>0$) må du kunne.
+
+Gitt på eksamen: Eksamen 2021 oppg. 3c; Eksamen 2016 oppg. 1b; Eksamen 2015 oppg. 3; Eksamen 2014 oppg. 1d; Eksamen 2012 oppg. 5; Eksamen 2008 oppg. 3d; Eksamen 2003 oppg. 2e
+
+#### 27. Diskret tid: inputsekvens og antall steg
+
+Typisk oppgave: Finn $u[0],u[1]$ som tar $x[0]$ til ønsket $x[2]$ / hvor mange steg trengs for å bestemme $x[0]$?
+
+Hvorfor viktig: 2024 opg. 8 og 2020 opg. 10a.
+
+Metode:
+1. $x[2]=A^2x[0]+ABu[0]+Bu[1]$ ⇒ $[AB\;\;B]\begin{bmatrix}u[0]\\u[1]\end{bmatrix}=x[2]-A^2x[0]$. Løs 2×2-systemet.
+2. Observerbarhet i diskret tid: $n$ målinger (steg) er nok til å bestemme $x[0]$ når $\mathcal O$ har full rang.
+
+Formelark: Ja – $x[k]=A^kx[0]+\sum A^{k-1-m}Bu[m]$.
+
+Gitt på eksamen: Eksamen 2024 oppg. 8; Eksamen 2020 oppg. 10a
+
+#### 28. Modellering og linearisering
+
+Typisk oppgave: Sett opp tilstandsrommodell fra fysikk / linearisér rundt likevekt.
+
+Hvorfor viktig: Kont 2021 (ACC), 2020 (magnet), 2017, 2018 (tanker), 2019.
+
+Metode:
+1. Likevekt: sett $\dot x=0$, løs for $x^*,u^*$.
+2. Jacobi: $A=\partial f/\partial x$, $B=\partial f/\partial u$ i $(x^*,u^*)$. Nye variabler $\delta x=x-x^*$.
+3. Tolk resultatet: lineær modell gjelder bare nær likevekten.
+
+Gitt på eksamen: Kont 2021 oppg. 4a; Eksamen 2020 oppg. 12a; Eksamen 2019 oppg. 4; Eksamen 2019 oppg. 5a; Eksamen 2018 oppg. 5; Eksamen 2017 oppg. 1; Eksamen 2017 oppg. 4
+
+#### 29. Tidsrespons fra løsningsformelen
+
+Typisk oppgave: Finn $y(t)$ for sprang/initialverdi, impulsrespons.
+
+Hvorfor viktig: Eldre eksamener (2013–2019).
+
+Metode:
+1. $x(t)=e^{at}x(0)+\int_0^te^{a(t-\tau)}bu(\tau)d\tau$. Sprang: $\frac ba(e^{at}-1)$.
+2. Impulsrespons: $g(t)=Ce^{At}B+D\delta(t)$.
+
+Gitt på eksamen: Kont 2019 oppg. 3a; Eksamen 2014 oppg. 4; Eksamen 2014 oppg. 3b; Eksamen 2013 oppg. 2a
+
+#### 30. Sammenkobling av systemer (serie, parallell, tilbakekobling)
+
+Typisk oppgave: Finn $(A',B',C',D')$ for koblede systemer / legg til aktuator-dynamikk.
+
+Hvorfor viktig: 2019 opg. 1, 2020 opg. 12c.
+
+Metode:
+1. Stable tilstandene $[x_1;x_2]$, skriv ut hver ligning med koblingene ($u_2=y_1$ for serie osv.), les av blokkmatrisene.
+
+Gitt på eksamen: Eksamen 2019 oppg. 1; Eksamen 2020 oppg. 12c
+
+
+### Nivå 4: Hvis du har tid
+
+Ikke gitt de siste årene. Bare skum metoden.
+
+#### 31. Kalmans kanoniske dekomposisjon
+
+Typisk oppgave: Finn $T$ som splitter systemet i styrbar og ustyrbar del.
+
+Hvorfor viktig: Kont 2021 opg. 4e og 2011.
+
+Metode:
+1. Velg de første kolonnene i $T$ som lineært uavhengige kolonner fra $\mathcal C$, fyll ut med vilkårlige vektorer til $T$ er inverterbar.
+
+Gitt på eksamen: Kont 2021 oppg. 4e; Eksamen 2011 oppg. 1b
+
+#### 32. Extended Kalman Filter
+
+Typisk oppgave: Sett opp EKF for en ulineær modell.
+
+Hvorfor viktig: Pensum (uke 45), men ikke gitt som regneoppgave siden 2012.
+
+Metode:
+1. Prediker med den ulineære modellen: $\hat x^-[k+1]=f(\hat x[k],u[k])$.
+2. Lineariser rundt estimatet: $A_k=\partial f/\partial x|_{\hat x[k]}$, $C_k=\partial h/\partial x|_{\hat x^-[k]}$, og bruk dem i $P$- og $L$-ligningene.
+3. Innovasjonen bruker $h(\hat x^-)$, ikke $C\hat x^-$.
+
+Gitt på eksamen: Eksamen 2012 oppg. 7b
+
+#### 33. Utledninger: rekursiv minste kvadrat, dekorrelering av støy
+
+Typisk oppgave: Utled optimal $K$ i $\hat x=m+K(y-Cm)$ / skriv korrelert $Gw$ som $\tilde G\tilde w$ med uavhengige komponenter.
+
+Hvorfor viktig: Kont 2017, 2014 og 2020 opg. 10b.
+
+Metode:
+1. Dekorrelering: faktoriser $Q=SS^T$ (Cholesky eller egenverdier) ⇒ $w=S\tilde w$ med $E[\tilde w\tilde w^T]=I$, $\tilde G=GS$.
+2. Rekursivt gjennomsnitt: $\hat x_{k+1}=\hat x_k+\frac1{k+2}(z_{k+1}-\hat x_k)$, $P_k=R/(k+1)$.
+
+Gitt på eksamen: Eksamen 2020 oppg. 10b; Kont 2017 oppg. 4; Eksamen 2014 oppg. 6
+
+
+## Fasit flervalg (fra løsningsforslagene)
+
+- Eksamen 2023 oppg. 1: c (Styrbarhet og observerbarhet (rangtest))
+- Eksamen 2023 oppg. 2: d (Matriseeksponentialen $e^{At}$)
+- Eksamen 2023 oppg. 3: a (Intern stabilitet vs. BIBO-stabilitet)
+- Eksamen 2023 oppg. 4: b (Referansefølging: $u=-Kx+K_r r$)
+- Eksamen 2023 oppg. 5: b (Polplassering med $u=-Kx$)
+- Eksamen 2023 oppg. 6: a (Algebraisk ekvivalens, nulltilstands-ekvivalens, duale systemer)
+- Eksamen 2023 oppg. 7: e (Spektraltetthet og hvit støy)
+- Eksamen 2024 oppg. 1: b (Styrbarhet og observerbarhet (rangtest))
+- Eksamen 2024 oppg. 2: d (Intern stabilitet vs. BIBO-stabilitet)
+- Eksamen 2024 oppg. 3: d (Egenverdier/-vektorer, diagonal-, Jordan- og modalform)
+- Eksamen 2024 oppg. 4: b og e (Intern stabilitet vs. BIBO-stabilitet)
+- Eksamen 2024 oppg. 5: d (Polplassering med $u=-Kx$)
+- Eksamen 2024 oppg. 6: b (Algebraisk ekvivalens, nulltilstands-ekvivalens, duale systemer)
+- Eksamen 2024 oppg. 7: f (Spektraltetthet og hvit støy)
+- Kont 2025 oppg. 1: c (Intern stabilitet vs. BIBO-stabilitet)
+- Kont 2025 oppg. 2: b (Matriseeksponentialen $e^{At}$)
+- Kont 2025 oppg. 3: f (Referansefølging: $u=-Kx+K_r r$)
+- Kont 2025 oppg. 4: a (Algebraisk ekvivalens, nulltilstands-ekvivalens, duale systemer)
+
+## Eksamener med løsningsforslag
+
+Nyeste først. 2021 og senere ligner mest på årets eksamen. Disse er renskrevet med LaTeX (oppgavetekst + løsningsforslag i samme fil). Eldre sett er rå tekst fra PDF, der matriser kan stå rotete.
+
+- Kont 2025 (renskrevet): https://ttk4115.kristiangjestad.workers.dev/llm/2025-kont.md
+- Kont 2024 (renskrevet): https://ttk4115.kristiangjestad.workers.dev/llm/2024-kont.md
+- Eksamen 2024 (renskrevet): https://ttk4115.kristiangjestad.workers.dev/llm/2024.md
+- Eksamen 2023 (renskrevet): https://ttk4115.kristiangjestad.workers.dev/llm/2023.md
+- Eksamen 2022 (renskrevet): https://ttk4115.kristiangjestad.workers.dev/llm/2022.md
+- Kont 2021 (renskrevet): https://ttk4115.kristiangjestad.workers.dev/llm/2021-kont.md
+- Eksamen 2021 (renskrevet): https://ttk4115.kristiangjestad.workers.dev/llm/2021.md
+- Kont 2020: https://ttk4115.kristiangjestad.workers.dev/llm/2020-kont.txt
+- Eksamen 2020: https://ttk4115.kristiangjestad.workers.dev/llm/2020.txt
+- Kont 2019: https://ttk4115.kristiangjestad.workers.dev/llm/2019-kont.txt
+- Eksamen 2019: https://ttk4115.kristiangjestad.workers.dev/llm/2019.txt
+- Eksamen 2018: https://ttk4115.kristiangjestad.workers.dev/llm/2018.txt
+- Kont 2017: https://ttk4115.kristiangjestad.workers.dev/llm/2017-kont.txt
+- Eksamen 2017: https://ttk4115.kristiangjestad.workers.dev/llm/2017.txt
+- Eksamen 2016: https://ttk4115.kristiangjestad.workers.dev/llm/2016.txt
+- Eksamen 2015: https://ttk4115.kristiangjestad.workers.dev/llm/2015.txt
+- Eksamen 2014: https://ttk4115.kristiangjestad.workers.dev/llm/2014.txt
+- Eksamen 2013: https://ttk4115.kristiangjestad.workers.dev/llm/2013.txt
+- Eksamen 2012: https://ttk4115.kristiangjestad.workers.dev/llm/2012.txt
+- Eksamen 2011: https://ttk4115.kristiangjestad.workers.dev/llm/2011.txt
+- Eksamen 2010: https://ttk4115.kristiangjestad.workers.dev/llm/2010.txt
+- Eksamen 2009: https://ttk4115.kristiangjestad.workers.dev/llm/2009.txt
+- Eksamen 2008: https://ttk4115.kristiangjestad.workers.dev/llm/2008.txt
+- Eksamen 2004: https://ttk4115.kristiangjestad.workers.dev/llm/2004.txt
+- Eksamen 2003: https://ttk4115.kristiangjestad.workers.dev/llm/2003.txt
+
+
+---
+
+# Renskrevne eksamener 2021–2025
+
+# Kont 2025 (august) – TTK4115 Lineær systemteori
+
+Renskrevet oppgavetekst og løsningsforslag (Morten O. Alver). 4 timer, hjelpemiddel D. Prosent er vekt på eksamen.
+
+## Oppgave 1 (5 %) – flervalg
+
+$$\dot x=\begin{bmatrix}-2&1\\0&1\end{bmatrix}x+\begin{bmatrix}1\\0\end{bmatrix}u,\qquad y=\begin{bmatrix}1&1\end{bmatrix}x$$
+
+Er systemet: a) internt stabilt og BIBO-stabilt, b) internt stabilt, ikke BIBO-stabilt, c) internt ustabilt men BIBO-stabilt, d) ustabilt i begge betydninger?
+
+**Løsning.** $A$ er triangulær, så egenverdiene er $-2$ og $1$. Siden $1>0$ er systemet internt ustabilt.
+
+$$g(s)=C(sI-A)^{-1}B=\frac{1}{(s+2)(s-1)}\begin{bmatrix}1&1\end{bmatrix}\begin{bmatrix}s-1&1\\0&s+2\end{bmatrix}\begin{bmatrix}1\\0\end{bmatrix}=\frac{s-1}{(s+2)(s-1)}=\frac{1}{s+2}$$
+
+Eneste pol er $-2$, så systemet er BIBO-stabilt. **Svar: c).**
+
+## Oppgave 2 (5 %) – flervalg
+
+$A=\begin{bmatrix}3&2\\-2&-2\end{bmatrix}$. Hva er øvre venstre element i $e^{At}$?
+a) $4e^{2t}+e^{-t}$, b) $\tfrac13(4e^{2t}-e^{-t})$, c) $\tfrac13e^{-2t}+e^{t}$, d) $\tfrac13(e^{-2t}+e^{-t})$, e) $3e^{2t}-2e^{-t}$.
+
+**Løsning.** Egenverdier $\lambda_1=-1$, $\lambda_2=2$. Tilpass $h(\lambda)=\beta_0+\beta_1\lambda$ til $e^{\lambda t}$:
+$\beta_0-\beta_1=e^{-t}$, $\beta_0+2\beta_1=e^{2t}$ ⇒ $\beta_1=\tfrac13(e^{2t}-e^{-t})$, $\beta_0=\tfrac13(e^{2t}+2e^{-t})$.
+$e^{At}=\beta_0I+\beta_1A$, øvre venstre element: $\beta_0+3\beta_1=\tfrac13(4e^{2t}-e^{-t})$. **Svar: b).**
+
+## Oppgave 3 (5 %) – flervalg
+
+$\dot x=2x+\tfrac12u$, $u=-kx+k_rr_0$ med konstant $r_0$. Hvilke parametre gir raskest konvergens av $x$ mot $r_0$ for alle startverdier?
+a) $k=4,k_r=1$ b) $k=5,k_r=2.5$ c) $k=5,k_r=1$ d) $k=6,k_r=3$ e) $k=7,k_r=3.5$ f) $k=6,k_r=2$
+
+**Løsning.** Likevekt med $x=r_0$: $2r_0+\tfrac12(-kr_0+k_rr_0)=0$ ⇒ $k_r=k-4$. Lukket sløyfe $\dot x=(2-\tfrac k2)x+\tfrac{k_r}{2}r_0$ krever $k>4$, og større $k$ gir raskere konvergens. Bare c) og f) har riktig $k_r$, og f) har størst $k$. **Svar: f).**
+
+## Oppgave 4 (5 %) – flervalg
+
+$$\dot x=\begin{bmatrix}1&2\\-1&2\end{bmatrix}x+\begin{bmatrix}1\\0\end{bmatrix}u_1,\ y_1=\begin{bmatrix}0&1\end{bmatrix}x;\qquad \dot z=\begin{bmatrix}2&-1\\1&0\end{bmatrix}z+\begin{bmatrix}1\\0\end{bmatrix}u_2,\ y_2=\begin{bmatrix}1&1\end{bmatrix}z$$
+
+Er de: a) urelaterte, b) algebraisk ekvivalente, c) nulltilstandsekvivalente men ikke algebraisk ekvivalente, d) duale?
+
+**Løsning.** Ikke duale, fordi systemmatrisene ikke er transponerte av hverandre.
+$g_x(s)=\dfrac{1}{s^2-3s+4}\begin{bmatrix}0&1\end{bmatrix}\begin{bmatrix}s-2&2\\-1&s-1\end{bmatrix}\begin{bmatrix}1\\0\end{bmatrix}=\dfrac{-1}{s^2-3s+4}$,
+$g_z(s)=\dfrac{1}{s^2-2s+1}\begin{bmatrix}1&1\end{bmatrix}\begin{bmatrix}s&-1\\1&s-2\end{bmatrix}\begin{bmatrix}1\\0\end{bmatrix}=\dfrac{s+1}{s^2-2s+1}$.
+Ulike transferfunksjoner ⇒ verken nulltilstands- eller algebraisk ekvivalente. **Svar: a).**
+
+## Oppgave 5 (19 %)
+
+$$\dot x=\underbrace{\begin{bmatrix}4&-6\\1&0\end{bmatrix}}_{A}x+\underbrace{\begin{bmatrix}2\\0\end{bmatrix}}_{B}u,\qquad y=\underbrace{\begin{bmatrix}1&0\end{bmatrix}}_{C}x$$
+
+**a) (4 %) Vis at systemet er styrbart og observerbart.**
+$\mathcal C=[B\ AB]=\begin{bmatrix}2&8\\0&2\end{bmatrix}$, triangulær med full rang ⇒ styrbart. $\mathcal O=\begin{bmatrix}C\\CA\end{bmatrix}=\begin{bmatrix}1&0\\4&-6\end{bmatrix}$, inverterbar ⇒ observerbart.
+
+**b) (4 %) Test BIBO-stabilitet.**
+$g(s)=\dfrac{1}{s^2-4s+6}\begin{bmatrix}1&0\end{bmatrix}\begin{bmatrix}s&-6\\1&s-4\end{bmatrix}\begin{bmatrix}2\\0\end{bmatrix}=\dfrac{2s}{s^2-4s+6}$.
+Polene er $s=2\pm\sqrt2\,j$, med positiv realdel ⇒ ikke BIBO-stabilt.
+
+**c) (5 %) Finn $u=-Kx$ som gir egenverdier i $-1$ og $-2$.**
+$K=[k_1\ k_2]$: $A-BK=\begin{bmatrix}4-2k_1&-6-2k_2\\1&0\end{bmatrix}$, karakteristisk polynom $\lambda^2+(2k_1-4)\lambda+6+2k_2$.
+Ønsket: $(\lambda+1)(\lambda+2)=\lambda^2+3\lambda+2$ ⇒ $k_1=\tfrac72$, $k_2=-2$.
+
+**d) (6 %) Sett systemet på diagonalform (gi bare uttrykkene for $\bar B$, $\bar C$). Hint: $AQ=Q\Lambda$. Finnes det en ekstra transformasjon som gir en mer nyttig kanonisk form?**
+$\lambda^2-4\lambda+6=0$ ⇒ $\lambda_{1,2}=2\pm\sqrt2\,j$. Egenvektorer fra $(A-\lambda_iI)v_i=0$: $v_1=\begin{bmatrix}2+\sqrt2j\\1\end{bmatrix}$, $v_2=\begin{bmatrix}2-\sqrt2j\\1\end{bmatrix}$.
+$\Lambda=\operatorname{diag}(2+\sqrt2j,\ 2-\sqrt2j)$, $Q=[v_1\ v_2]$. Med $z=Q^{-1}x$: $\dot z=\Lambda z+\underbrace{Q^{-1}B}_{\bar B}u$, $y=\underbrace{CQ}_{\bar C}z$.
+Komplekse egenverdier gir komplekse koeffisienter og tilstander, noe som er uønsket. Transformer videre til **modalform**: realdelen på diagonalen, imaginærdelen med $+$ over og $-$ under diagonalen: $\bar A=\begin{bmatrix}2&\sqrt2\\-\sqrt2&2\end{bmatrix}$. Da er alt reelt.
+
+## Oppgave 6 (11 %)
+
+$\dot x=3x+u$, $y=x$. LQR-regulator $u=-kx$.
+
+**a) (3 %) $k$ for $q=2$, $r=1$?**
+Riccati: $3p+3p+2-p^2=0$ ⇒ $p=3+\tfrac12\sqrt{44}=6.317$ (positiv rot). $k=pb/r=6.317$.
+
+**b) (3 %) Grensen for $k$ når $r\to\infty$ ($q=2$)?**
+$6p+2-p^2/r=0$ ⇒ $p=r\big(3+\tfrac12\sqrt{36+8/r}\big)$, $k=p/r=3+\tfrac12\sqrt{36+8/r}\ \to\ 3+3=6$.
+(Merk: med uendelig dyrt pådrag speiles den ustabile polen $3$ til $-3$, så $k\to6$.)
+
+**c) (5 %) Målestøy: $y=x+n$, $u=-ky$, $n$ hvit med $R_n(\tau)=\delta(\tau)$. Finn $S_x(\omega)$ som funksjon av $k$.**
+$\dot x=(3-k)x-kn$ ⇒ $H(s)=\dfrac{x(s)}{n(s)}=-\dfrac{k}{s+k-3}$.
+$S_x(\omega)=H(j\omega)H(-j\omega)S_n=\dfrac{k^2}{\omega^2+(k-3)^2}$.
+
+## Oppgave 7 (18 %) – Kalmanfilter, robotgressklipper
+
+$x[k+1]=(1-\alpha)x[k]+\beta[k]u[k]+w[k]$ (fart framover), $w$ hvit gaussisk med varians $q$. Måling av framhjulets fart: $y[k]=x[k]+v[k]$, $v$ hvit med varians $r$.
+
+**a) (4 %) Skriv uttrykkene for $\hat x^-[k+1]$, $P^-[k+1]$ og Kalman-gain.**
+$A=1-\alpha$, $B=\beta[k]$, $C=1$:
+$\hat x^-[k+1]=(1-\alpha)\hat x[k]+\beta[k]u[k]$, $P^-[k+1]=(1-\alpha)^2P[k]+q$, $L[k]=\dfrac{P^-[k]}{P^-[k]+r}$.
+
+**b) (8 %) $\alpha=0.1$, $\beta=1$, $q=0.12$, $r=0.1$, $\hat x[0]=1$, $P[0]=0.5$, $u=0.15$, $y[1]=1.2$, $y[2]=1.3$. Vis at $\hat x^-[3]\approx1.29$ og $P^-[3]\approx0.17$.**
+Steg 1: $\hat x^-[1]=0.9\cdot1+0.15=1.05$, $P^-[1]=0.81\cdot0.5+0.12=0.525$, $L[1]=0.525/0.625=0.84$,
+$\hat x[1]=1.05+0.84(1.2-1.05)=1.176$, $P[1]=(1-0.84)^2\cdot0.525+0.84^2\cdot0.1=0.084$.
+Steg 2: $\hat x^-[2]=0.9\cdot1.176+0.15=1.2084$, $P^-[2]=0.81\cdot0.084+0.12=0.188$, $L[2]=0.188/0.288=0.6528$,
+$\hat x[2]=1.2084+0.6528(1.3-1.2084)=1.2682$, $P[2]=(1-0.6528)^2\cdot0.188+0.6528^2\cdot0.1=0.0653$.
+Steg 3: $\hat x^-[3]=0.9\cdot1.2682+0.15=1.2914$, $P^-[3]=0.81\cdot0.0653+0.12=0.1729$. ✓
+
+**c) (6 %) Foreslå et kriterium for å oppdage at klipperen er hindret (glatt, traff noe). Hvis $y[3]=0.15$, har det skjedd?**
+Priorestimatet $\hat x^-$, $P^-$ beskriver farten hvis ingenting uventet har skjedd. Sammenlign avviket $y-\hat x^-$ med standardavviket til prioren, og si for eksempel at avvik over 2.5 standardavvik betyr hindring.
+$y[3]=0.15$: avvik $1.29-0.15=1.14$, $\sqrt{0.17}\approx0.41$ ⇒ omtrent 2.8 standardavvik. Det er rimelig å anta at noe har skjedd. Målingen er 1.5 målestøy-standardavvik fra 0, så klipperen har trolig bremset kraftig, men ikke stoppet helt.
+
+## Oppgave 8 (20 %) – PI-cruisekontroll
+
+Bil: $m\dot v+dv=u$, $d>0$. PI-regulator $u(s)=K(s)(r(s)-v(s))$, $K(s)=\dfrac{K_Ps+K_I}{s}$.
+
+**a) (5 %) Transferfunksjon fra $r$ til $v$.**
+$v=\dfrac{1}{ms+d}u$ ⇒ $(ms^2+(K_P+d)s+K_I)v=(K_Ps+K_I)r$ ⇒ $T(s)=\dfrac{K_Ps+K_I}{ms^2+(K_P+d)s+K_I}$.
+
+**b) (5 %) Hvor mange tilstander trengs for å realisere $K(s)$? Egenverdi(er) til PI-regulatoren?**
+Nevneren har orden 1 ⇒ én tilstand. Egenverdien er $0$ (integrator).
+
+**c) (5 %) Skriv systemet på formen $\dot x=Ax+br$, $v=cx$, med $v$ som første tilstand.**
+$x=\begin{bmatrix}v\\u_I\end{bmatrix}$, $u=K_P(r-v)+u_I$, $\dot u_I=K_I(r-v)$:
+$$\begin{bmatrix}\dot v\\\dot u_I\end{bmatrix}=\begin{bmatrix}-\frac{d+K_P}{m}&\frac1m\\-K_I&0\end{bmatrix}\begin{bmatrix}v\\u_I\end{bmatrix}+\begin{bmatrix}\frac{K_P}{m}\\K_I\end{bmatrix}r,\qquad v=\begin{bmatrix}1&0\end{bmatrix}x$$
+Andre realiseringer kan også være riktige. Styrbar kanonisk form fra $T(s)$ har ikke $v$ som første tilstand og gir halv uttelling.
+
+**d) (5 %) Velg $K_P$, $K_I$ slik at lukket sløyfe får polene $\lambda_1=\lambda_2=-\omega_b$.**
+Polene er $\lambda=\frac{1}{2m}\big(-(K_P+d)\pm\sqrt{(K_P+d)^2-4mK_I}\big)$. For en dobbel pol må rota være null, og $\frac{K_P+d}{2m}=\omega_b$ ⇒ $K_P=2m\omega_b-d$. Da gir $(2m\omega_b)^2-4mK_I=0$ at $K_I=m\omega_b^2$.
+
+## Oppgave 9 (12 %) – helikopterlab
+
+Når du styrte helikopteret med IMU-målinger, brukte du både Luenberger-observer og Kalmanfilter.
+
+**a) (6 %) Hovedgrunnene til at vi bruker tilstandsestimering?** Minst to av disse godt forklart gir full uttelling:
+- Tilstander som ikke kan måles, estimeres fra modell og målingene vi har.
+- Målinger er støyete, og estimatoren filtrerer.
+- Når data mangler (utfall, kommunikasjonsfeil), predikerer modellen videre.
+- Redundante målinger kan kombineres for robusthet.
+
+**b) (6 %) Viktigste forskjeller mellom Luenberger med polplassering og Kalmanfilter (tuning, ytelse, mm.)?**
+- Luenberger har statisk gain valgt ved polplassering. Kalman har dynamisk gain som minimerer summen av estimeringsfeilvariansene.
+- Kalman-gain bestemmes av statistikken til forstyrrelser ($Q_d$) og målestøy ($R_d$), antatt hvite.
+- $R_d$ kan ofte settes ut fra analyse av målestøyen, mens den «sanne» $Q_d$ er vanskelig å vite. Derfor brukes $Q_d$ som tuningparameter: diagonalelementene styrer hvor mye filteret stoler på modell kontra måling for hver tilstand.
+- Gain går mot en stasjonær verdi. Men hvis målinger mangler, vokser $P[k]$ og gain øker, slik at nye målinger vektes mer.
+- Når alle tilstander måles, er posteriori-estimatet en vekting mellom prior og måling. Med $Q_d\to\infty$ blir estimatet lik målingen, og målestøyen forsterkes ikke. Med Luenberger kan støyen forsterkes hvis polene til $A-LC$ legges for langt til venstre.
+- Det er **feil** å si at Luenberger er for kontinuerlig tid og Kalman for diskret tid. Begge kan brukes i begge.
+
+
+---
+
+# Kont 2024 (13. august) – TTK4115 Lineær systemteori
+
+Renskrevet oppgavetekst og løsningsforslag (Morten O. Alver). 4 timer, hjelpemiddel D. Prosent er vekt på eksamen. Ingen flervalg dette settet.
+
+## Oppgave 1 (28 %) – tilstandsrom fra a til å
+
+$$\dot x=\underbrace{\begin{bmatrix}4&0\\2&2\end{bmatrix}}_{A}x+\underbrace{\begin{bmatrix}2\\0\end{bmatrix}}_{B}u,\qquad y=\underbrace{\begin{bmatrix}1&0\end{bmatrix}}_{C}x\tag{1}$$
+
+**a) (4 %) Vis at systemet er styrbart, men ikke observerbart.**
+$\mathcal C=[B\ AB]=\begin{bmatrix}2&8\\0&4\end{bmatrix}$ er triangulær og inverterbar ⇒ styrbart. $\mathcal O=\begin{bmatrix}1&0\\4&0\end{bmatrix}$ har en nullkolonne ⇒ ikke observerbart.
+
+**b) (5 %) Test BIBO-stabilitet.**
+$g(s)=\dfrac{1}{(s-4)(s-2)}\begin{bmatrix}1&0\end{bmatrix}\begin{bmatrix}s-2&0\\2&s-4\end{bmatrix}\begin{bmatrix}2\\0\end{bmatrix}=\dfrac{2}{s-4}$, med pol i $+4$ ⇒ ikke BIBO-stabilt.
+
+**c) (5 %) Finn $K$ i $u=-Kx$ som gir egenverdier i $-1$ og $-2$.**
+$A-BK=\begin{bmatrix}4-2k_1&-2k_2\\2&2\end{bmatrix}$, karakteristisk polynom $\lambda^2+(2k_1-6)\lambda+4k_2-4k_1+8$. Sett lik $\lambda^2+3\lambda+2$ ⇒ $k_1=4.5$, $k_2=3$, altså $K=[4.5\ \ 3]$.
+
+**d) (4 %) Kan regulatoren fra c) brukes i praksis?**
+Nei. Systemet er ikke observerbart, så vi har ikke tilgang til $x$, og vi kan heller ikke estimere $x$ med en estimator (det krever observerbarhet).
+
+**e) (4 %) Foreslå en annen måte å få tilstandene til en ønsket verdi $x_r$ ved tid $t_1$. Vil det fungere i praksis?**
+Systemet er styrbart, så styrbarhets-gramianen kan brukes til å beregne et pådrag som fører systemet til $x_r$ ved $t_1$. Det krever eksakt modell og kjent starttilstand. Siden systemet er internt ustabilt, vil det neppe fungere i praksis.
+
+**f) (6 %) Sett systemet på diagonalform (eller Jordanform hvis det ikke går).**
+Triangulær ⇒ $\lambda_1=2$, $\lambda_2=4$.
+$(A-2I)q_1=\begin{bmatrix}2&0\\2&0\end{bmatrix}q_1=0$ ⇒ $q_1=\begin{bmatrix}0\\1\end{bmatrix}$. $(A-4I)q_2=\begin{bmatrix}0&0\\2&-2\end{bmatrix}q_2=0$ ⇒ $q_2=\begin{bmatrix}1\\1\end{bmatrix}$.
+$x=Q\bar x$ med $Q=\begin{bmatrix}0&1\\1&1\end{bmatrix}$, $Q^{-1}=\begin{bmatrix}-1&1\\1&0\end{bmatrix}$:
+$\Lambda=Q^{-1}AQ=\begin{bmatrix}2&0\\0&4\end{bmatrix}$, $\bar B=Q^{-1}B=\begin{bmatrix}-2\\2\end{bmatrix}$, $\bar C=CQ=\begin{bmatrix}0&1\end{bmatrix}$.
+
+## Oppgave 2 (20 %) – Kalmanfilter, havdrifter
+
+En drifter følger strømmen på 250 m dyp og kommer opp hver 4. time for å måle posisjonen med GPS. Modell øst–vest med tidssteg 4 timer:
+$$\begin{bmatrix}x_1[k+1]\\x_2[k+1]\end{bmatrix}=\begin{bmatrix}1&1\\0&1\end{bmatrix}\begin{bmatrix}x_1[k]\\x_2[k]\end{bmatrix}+\begin{bmatrix}w_1[k]\\w_2[k]\end{bmatrix},\qquad y[k]=x_1[k]+v[k]\tag{2}$$
+Målestøyen har standardavvik 10 m. $E[ww^T]=\begin{bmatrix}100&0\\0&500\end{bmatrix}\delta[k,l]$, $E[vv]=100\,\delta[k,l]$. ($w_1$ er strømvariasjon ved overflaten, $w_2$ er endring i strømfart på 250 m.)
+
+**a) (5 %) Sjekk intern stabilitet. Hva beskriver modellen når $w=0$?**
+Egenverdien 1 er dobbel. $(A-I)q=\begin{bmatrix}0&1\\0&0\end{bmatrix}q=0$ ⇒ bare $q=[1\ 0]^T$, altså en 2×2 Jordanblokk ⇒ **ustabil**. Uten forstyrrelser holder farten seg konstant og posisjonen endres lineært: drifteren fortsetter med samme fart.
+
+**b) (5 %) $\hat x[0]=[0\ \ 1000]^T$ (m, m per 4 t), $P[0]=\begin{bmatrix}100&0\\0&900\end{bmatrix}$, måling $y[1]=800$. Finn a priori- og a posteriori-estimatet av strømfarten ved tid 1.**
+$\hat x^-[1]=A\hat x[0]=\begin{bmatrix}1000\\1000\end{bmatrix}$.
+$P^-[1]=AP[0]A^T+Q=\begin{bmatrix}1000&900\\900&900\end{bmatrix}+\begin{bmatrix}100&0\\0&500\end{bmatrix}=\begin{bmatrix}1100&900\\900&1400\end{bmatrix}$.
+$L[1]=\dfrac{1}{1100+100}\begin{bmatrix}1100\\900\end{bmatrix}=\begin{bmatrix}0.9167\\0.75\end{bmatrix}$.
+$\hat x[1]=\begin{bmatrix}1000\\1000\end{bmatrix}+L(800-1000)=\begin{bmatrix}816.7\\850\end{bmatrix}$.
+Fart: a priori 1000, a posteriori 850 m per 4 timer.
+
+**c) (5 %) Andre feilkilder enn $v$ og $w$?**
+- Strømfart og -retning varierer innenfor hvert 4-timersintervall, så drifteren kan ha reist lenger (og fortere) enn observasjonene viser.
+- Dybden kan være mindre enn 250 m, og da driver den grunnere.
+
+**d) (5 %) Overflatestrømmen kan estimeres fra vind og havmodeller, slik at $w_1$ får kjent forventning $d[k]$. Avviket fra $d[k]$ har varians 200. Hvordan endrer du modellen?**
+$w_1[k]=d[k]+w_3[k]$, der $w_3$ er hvit med middelverdi null. Da blir $d$ et kjent pådrag:
+$$x[k+1]=\begin{bmatrix}1&1\\0&1\end{bmatrix}x[k]+\begin{bmatrix}1\\0\end{bmatrix}d[k]+\begin{bmatrix}w_3[k]\\w_2[k]\end{bmatrix}$$
+Forstyrrelsene antas fortsatt uavhengige. Med ny varians for posisjonsforstyrrelsen gir løsningsforslaget $Q=\begin{bmatrix}100&0\\0&200\end{bmatrix}$. (Merk: oppgaveteksten sier at variansen til $w_1$-avviket er 200. Det tilsier $Q_{11}=200$ og $Q_{22}=500$ uendret, så løsningsforslaget ser ut til å ha byttet om elementene.)
+
+## Oppgave 3 (20 %) – cruisekontroll, LQR, referanse, integralvirkning
+
+$\dot x=-0.1x+u+w$ ($x$ er fart, $w$ er forstyrrelse fra vind og vei), $u=-kx+k_rr_x$.
+
+**a) (5 %) Finn $k$ med LQR ($Q=q$, $R=r$). Vis at bare forholdet $q/r$ påvirker $k$.**
+Riccati: $-0.2p+q-p^2/r=0$ ⇒ $p^2+0.2rp-rq=0$ ⇒ $p=r\big(-0.1+\sqrt{0.01+q/r}\big)$ (positiv rot).
+$k=r^{-1}p=-0.1+\sqrt{0.01+q/r}$, så $q$ og $r$ inngår bare som $q/r$.
+
+**b) (5 %) Med $r_x=r_0$ konstant og $w=0$: finn $k_r$ slik at $x\to r_0$.**
+LQR garanterer stabilitet. Likevekt i $x=r_0$: $-0.1r_0-kr_0+k_rr_0=0$ ⇒ $k_r=k+0.1$.
+
+**c) (5 %) Vis at en langsomt varierende $w$ gir et stasjonært avvik proporsjonalt med $w$.**
+$-(0.1+k)x_\infty+(k+0.1)r_0+w=0$ ⇒ $x_\infty=r_0+\dfrac{w}{k+0.1}$.
+
+**d) (5 %) $x$ måles, $w$ ikke. Hvilke to måter kan fjerne avviket? Gi likningene for én av dem.**
+1. **Integralvirkning:** $\dot\gamma=r-x$,
+$\begin{bmatrix}\dot x\\\dot\gamma\end{bmatrix}=\begin{bmatrix}-0.1&0\\-1&0\end{bmatrix}\begin{bmatrix}x\\\gamma\end{bmatrix}+\begin{bmatrix}1\\0\end{bmatrix}u+\begin{bmatrix}0\\1\end{bmatrix}r+\begin{bmatrix}1\\0\end{bmatrix}w$, $u=-[k\ \ -k_i]\begin{bmatrix}x\\\gamma\end{bmatrix}+k_rr$.
+2. **Estimator for $x$ og $w$** (Luenberger med $w$ som konstant tilstand):
+$\begin{bmatrix}\dot{\hat x}\\\dot{\hat w}\end{bmatrix}=\begin{bmatrix}-0.1&1\\0&0\end{bmatrix}\begin{bmatrix}\hat x\\\hat w\end{bmatrix}+\begin{bmatrix}1\\0\end{bmatrix}u+L\Big(y-\begin{bmatrix}1&0\end{bmatrix}\begin{bmatrix}\hat x\\\hat w\end{bmatrix}\Big)$, og så foroverkobling $u=-k\hat x+k_rr-\hat w$.
+
+## Oppgave 4 (20 %) – stokastiske prosesser, kontinuerlig Kalman
+
+$\dot x=-2x+2w$, $y=x+v$. $w$ og $v$ er uavhengige med $R_w(\tau)=\delta(\tau)$, $R_v(\tau)=2\delta(\tau)$.
+
+**a) (4 %) Hva slags prosesser er $w$ og $v$, og hvilke egenskaper har de?**
+Hvit støy: autokorrelasjonen er en deltafunksjon, middelverdien er null, variansen er uendelig (i kontinuerlig tid) og prosessene er stasjonære.
+
+**b) (4 %) Finn $S_w$ og $S_v$.** (Hint: $\mathcal F\{f\}=\int f(t)e^{-j\omega t}dt$.)
+$S_w=\int\delta(\tau)e^{-j\omega\tau}d\tau=1$, $S_v=2$.
+
+**c) (4 %) Finn stasjonær $S_y(j\omega)$.**
+$G(s)=\dfrac{2}{s+2}$ (fra $w$ til $x$). $S_y=G(j\omega)G(-j\omega)S_w+S_v=\dfrac{4}{\omega^2+4}+2$.
+
+**d) (4 %) Kontinuerlig Kalmanfilter med $Q=1$, $R=2$. Vis at $\dot P=-4P-\tfrac12P^2+4$.**
+Fra formelarket: $\dot P=AP+PA^T+GQG^T-PC^TR^{-1}CP$ med $A=-2$, $G=2$, $C=1$ ⇒ $\dot P=-4P+4-\tfrac12P^2$.
+
+**e) (4 %) Finn stasjonær $P$.**
+$-\tfrac12P^2-4P+4=0$ ⇒ $P=-4\pm2\sqrt6$. $P\ge0$ ⇒ $P=2\sqrt6-4\approx0.90$.
+
+## Oppgave 5 (12 %) – helikopterlab
+
+Hvis du ikke har testet akkurat dette selv, skal du resonnere ut fra teorien og labben.
+
+**a) (6 %) Laben bruker en linearisert modell. Beskriv én måte det virkelige systemet er ulineært på, og hvordan det kan påvirke regulatorytelsen.** Eksempler:
+- **Motormetning:** skyvekraften er omtrent lineær i spenningen, men bare opp til maks. I Lab 1 (pitch) med poler langt inn i venstre halvplan ber regulatoren om mer skyvekraft enn motorene kan gi, og helikopteret avviker tydelig og kan bli ustabilt.
+- **Pitchvinkelens effekt på skyvkraftretning:** vertikal komponent $\propto\cos(\text{pitch})$, horisontal $\propto\sin(\text{pitch})$, linearisert for små vinkler. Pitch blir ofte stor, og da overvurderer modellen løftet, slik at elevasjonen synker fordi regulatoren ber om for lite skyvkraft.
+- **Elevasjonsvinkelen:** påvirker også vertikal komponent (mindre synlig). I tillegg blir armens horisontale lengde, og dermed momentarmen, større ved positiv og mindre ved negativ elevasjon. Det gir mer løft ved negativ og mindre ved positiv elevasjon. I Lab 2 uten integralvirkning legger helikopteret seg derfor rundt elevasjon 0, og elevasjonsrate-regulatoren ser ut som den styrer elevasjonen.
+
+**b) (6 %) Encoderne brukes som nøyaktige målinger (i motsetning til den støyete IMU-en). Er de helt nøyaktige? Hvordan ville du modellert feilen statistisk?**
+Nei. En encoder teller digitale «tikk», så oppløsningen er begrenset til en vinkel $\delta$ per tikk. Den sanne verdien kan ligge hvor som helst i intervallet, og ingen verdier er mer sannsynlige enn andre ⇒ uniform fordeling. Hvis målingen tilsvarer midten av intervallet, er den sanne verdien $\sim U(y-\tfrac\delta2,\ y+\tfrac\delta2)$ og målefeilen $\sim U(-\tfrac\delta2,\ \tfrac\delta2)$.
+
+
+---
+
+# Eksamen 2024 (3. desember) – TTK4115 Lineær systemteori
+
+Renskrevet oppgavetekst og løsningsforslag (Morten O. Alver). 4 timer, hjelpemiddel D. Prosent er vekt på eksamen. Ingen helikopterlab-oppgave dette året.
+
+## Oppgave 1 (4 %) – flervalg
+
+$$x[k+1]=\begin{bmatrix}-2&1&0\\-1&1&0\\1&1&1\end{bmatrix}x[k]+\begin{bmatrix}0\\1\\1\end{bmatrix}u[k],\qquad y[k]=\begin{bmatrix}0&1&0\end{bmatrix}x[k]$$
+
+a) ikke styrbart, ikke observerbart, b) styrbart, ikke observerbart, c) observerbart, ikke styrbart, d) begge, e) trenger mer informasjon.
+
+**Løsning.** $\mathcal C=[B\ AB\ A^2B]=\begin{bmatrix}0&1&-1\\1&1&0\\1&2&4\end{bmatrix}$ har full rang. $\mathcal O=\begin{bmatrix}0&1&0\\-1&1&0\\1&0&0\end{bmatrix}$ har ikke full rang. **Svar: b).**
+
+## Oppgave 2 (5 %) – flervalg
+
+$$\dot x=\begin{bmatrix}1&2\\2&-2\end{bmatrix}x+\begin{bmatrix}1\\0\end{bmatrix}u,\qquad y=\begin{bmatrix}1&0\end{bmatrix}x$$
+
+a) internt stabilt og BIBO-stabilt, b) internt stabilt, ikke BIBO, c) internt ustabilt men BIBO-stabilt, d) ustabilt i begge betydninger.
+
+**Løsning.** $\lambda^2+\lambda-6=0$ ⇒ $\lambda=-3,\ 2$, altså internt ustabilt.
+$g(s)=\dfrac{1}{(s+3)(s-2)}\begin{bmatrix}1&0\end{bmatrix}\begin{bmatrix}s+2&2\\2&s-1\end{bmatrix}\begin{bmatrix}1\\0\end{bmatrix}=\dfrac{s+2}{(s+3)(s-2)}$, med pol i $2$ ⇒ ikke BIBO. **Svar: d).**
+
+## Oppgave 3 (5 %) – flervalg
+
+$A=\begin{bmatrix}3&1\\-1&5\end{bmatrix}$ kan transformeres til diagonalform $\Lambda=Q^{-1}AQ$ eller Jordanform $J=Q^{-1}AQ$. Hvilket par er riktig?
+a) $\Lambda=\operatorname{diag}(4,4)$, $Q=\begin{bmatrix}1&1\\1&-1\end{bmatrix}$; b) $\Lambda=\operatorname{diag}(4,4)$, $Q=\begin{bmatrix}1&1\\1&1\end{bmatrix}$; c) $\Lambda=\operatorname{diag}(4,4)$, $Q=\begin{bmatrix}0&1\\1&0\end{bmatrix}$;
+d) $J=\begin{bmatrix}4&1\\0&4\end{bmatrix}$, $Q=\begin{bmatrix}1&1\\1&2\end{bmatrix}$; e) $J$ som d), $Q=\begin{bmatrix}1&-2\\1&1\end{bmatrix}$; f) $J$ som d), $Q=\begin{bmatrix}1&2\\1&1\end{bmatrix}$.
+
+**Løsning.** $\lambda^2-8\lambda+16=0$ ⇒ $\lambda=4$ (dobbel). $(A-4I)q=\begin{bmatrix}-1&1\\-1&1\end{bmatrix}q=0$ ⇒ $q=\begin{bmatrix}1\\1\end{bmatrix}$, og det finnes ingen flere uavhengige egenvektorer ⇒ Jordanform $J=\begin{bmatrix}4&1\\0&4\end{bmatrix}$.
+Generalisert egenvektor fra $AQ=QJ$, kolonne 2: $(A-4I)v=q$ ⇒ for eksempel $v=\begin{bmatrix}1\\2\end{bmatrix}$ (også $\begin{bmatrix}-2\\-1\end{bmatrix}$ fungerer). $Q=[q\ v]=\begin{bmatrix}1&1\\1&2\end{bmatrix}$. **Svar: d).**
+
+## Oppgave 4 (6 %) – flervalg, flere kan være riktige
+
+$\dot x=Ax+Bu$, $y=Cx$. Hvilke påstander stemmer?
+a) Systemet kan diagonaliseres forutsatt at $A$ er inverterbar.
+b) Systemet kan bare være asymptotisk stabilt hvis $A$ er inverterbar.
+c) $A$ må være inverterbar for at systemet skal ha en løsning i tidsdomenet.
+d) Hvis $A$ ikke er inverterbar, er systemet marginalt stabilt.
+e) Hvis $A$ er symmetrisk og negativ definitt, er systemet asymptotisk stabilt.
+
+**Løsning.** a) Feil, inverterbarhet sier ingenting om diagonaliserbarhet. b) Riktig, ikke-inverterbar betyr en egenverdi i 0, som gir marginalt stabilt eller ustabilt. c) Feil. d) Feil, systemet kan være ustabilt (Jordanblokk i 0). e) Riktig, symmetrisk gir reelle egenverdier og negativ definitt gir at alle er negative. **Svar: b) og e).**
+
+## Oppgave 5 (4 %) – flervalg
+
+$$\dot x=\begin{bmatrix}1&-2\\0&\omega\end{bmatrix}x+\begin{bmatrix}0\\1\end{bmatrix}u,\qquad y=\begin{bmatrix}1&0\end{bmatrix}x,\quad \omega\ne0$$
+
+Med $u=-[k_1\ k_2]x$: hvilke verdier gir lukket-sløyfe-poler i $-1$ og $-2$?
+a) $k_1=-1$, $k_2=\omega+4$; b) $k_1=-1$, $k_2=\omega-4$; c) $k_1=-3$, $k_2=\omega-4$; d) $k_1=-3$, $k_2=\omega+4$; e) $k_1=-3/\omega$, $k_2=\omega+4$; f) $k_1=-3/\omega$, $k_2=\omega-4$.
+
+**Løsning.** $A-BK=\begin{bmatrix}1&-2\\-k_1&\omega-k_2\end{bmatrix}$, med karakteristisk polynom $\lambda^2+(k_2-\omega-1)\lambda+\omega-k_2-2k_1$. Sett lik $\lambda^2+3\lambda+2$: $k_2=\omega+4$, $k_1=\tfrac12(\omega-k_2-2)=-3$. **Svar: d).**
+
+## Oppgave 6 (5 %) – flervalg
+
+$$\dot x=\begin{bmatrix}1&4\\-1&2\end{bmatrix}x+\begin{bmatrix}1\\1\end{bmatrix}u_1,\ y_1=\begin{bmatrix}1&0\end{bmatrix}x;\qquad \dot z=\begin{bmatrix}3&6\\-1&0\end{bmatrix}z+\begin{bmatrix}-1\\1\end{bmatrix}u_2,\ y_2=\begin{bmatrix}1&2\end{bmatrix}z$$
+
+a) urelaterte, b) algebraisk ekvivalente, c) nulltilstandsekvivalente men ikke algebraisk ekvivalente, d) duale.
+
+**Løsning.** Ikke duale. $g_1(s)=\dfrac{1}{s^2-3s+6}\begin{bmatrix}1&0\end{bmatrix}\begin{bmatrix}s-2&4\\-1&s-1\end{bmatrix}\begin{bmatrix}1\\1\end{bmatrix}=\dfrac{s+2}{s^2-3s+6}$, og $g_2(s)=\dfrac{1}{s^2-3s+6}\begin{bmatrix}1&2\end{bmatrix}\begin{bmatrix}s&6\\-1&s-3\end{bmatrix}\begin{bmatrix}-1\\1\end{bmatrix}=\dfrac{s+2}{s^2-3s+6}$.
+Samme transferfunksjon, og begge er minimale: $-2$ er ikke rot i nevneren (koprim), og nevnerens orden er lik antall tilstander. Da er de algebraisk ekvivalente. **Svar: b).**
+
+## Oppgave 7 (6 %) – flervalg
+
+$\ddot x-3\dot x+ax=u$, der $u$ har middelverdi null og spektraltetthet $S_u=A$. Hva er $S_x$?
+a) $\dfrac{A}{\omega^4+a^2}$ b) $\dfrac{A}{\omega^4+(9+2a)\omega^2+a^2}$ c) $\dfrac{A}{\omega^4-a^2}$ d) $\dfrac{A}{\omega^4+9\omega^2+a^2}$ e) $\dfrac{A}{\omega^4+(9-2a)j\omega+a^2}$ f) $\dfrac{A}{\omega^4+(9-2a)\omega^2+a^2}$
+
+**Løsning.** $g(s)=\dfrac{1}{s^2-3s+a}$. $S_x=g(j\omega)g(-j\omega)A=\dfrac{A}{(-\omega^2-3j\omega+a)(-\omega^2+3j\omega+a)}=\dfrac{A}{\omega^4+(9-2a)\omega^2+a^2}$. **Svar: f).**
+
+## Oppgave 8 (5 %)
+
+$x[k+1]=\begin{bmatrix}1&2\\1&0\end{bmatrix}x[k]+\begin{bmatrix}1\\0\end{bmatrix}u[k]$, $x[0]=\begin{bmatrix}1\\0\end{bmatrix}$. Finn $u[0]$, $u[1]$ slik at $x[2]=\begin{bmatrix}5\\4\end{bmatrix}$.
+
+**Løsning.** $x[2]=A^2x[0]+[AB\ \ B]\begin{bmatrix}u[0]\\u[1]\end{bmatrix}$, med $A^2=\begin{bmatrix}3&2\\1&2\end{bmatrix}$, $AB=\begin{bmatrix}1\\1\end{bmatrix}$.
+$\begin{bmatrix}u[0]\\u[1]\end{bmatrix}=\begin{bmatrix}1&1\\1&0\end{bmatrix}^{-1}\Big(\begin{bmatrix}5\\4\end{bmatrix}-\begin{bmatrix}3\\1\end{bmatrix}\Big)=\begin{bmatrix}0&1\\1&-1\end{bmatrix}\begin{bmatrix}2\\3\end{bmatrix}=\begin{bmatrix}3\\-1\end{bmatrix}$. Altså $u[0]=3$, $u[1]=-1$.
+
+## Oppgave 9 (20 %) – elbil, referanse, integralvirkning, støy
+
+$\dot x=-0.1x+u+d$ ($x$ er fart, $d$ er ukjent forstyrrelse).
+
+**a) (5 %) Med $d=0$: design $u=-kx+k_rr$ med lukket-sløyfe-egenverdi $-1$ og $x\to r_0$ for konstant referanse.**
+$\dot x=(-0.1-k)x+k_rr_0$ ⇒ $k=0.9$. Likevekt: $-x_\infty+k_rr_0=0$ ⇒ $k_r=1$. Altså $u=-0.9x+r$.
+
+**b) (5 %) Legg til integralvirkning. Vis at $x\to r_0$ når $r=r_0$ og $d=d_0$ er konstante.**
+$x_I=\int(r-x)\,dt$ ⇒ $\dot x_I=r-x$. Utvidet system:
+$$\begin{bmatrix}\dot x\\\dot x_I\end{bmatrix}=\begin{bmatrix}-0.1&0\\-1&0\end{bmatrix}\begin{bmatrix}x\\x_I\end{bmatrix}+\begin{bmatrix}1\\0\end{bmatrix}u+\begin{bmatrix}1\\0\end{bmatrix}d+\begin{bmatrix}0\\1\end{bmatrix}r$$
+Med $u=-0.9x+k_Ix_I+r$: $\begin{bmatrix}\dot x\\\dot x_I\end{bmatrix}=\begin{bmatrix}-1&k_I\\-1&0\end{bmatrix}\begin{bmatrix}x\\x_I\end{bmatrix}+\begin{bmatrix}1\\0\end{bmatrix}d+\begin{bmatrix}1\\1\end{bmatrix}r$.
+Likevekt: $\dot x_I=0$ ⇒ $x_\infty=r_0$. Stabilitet: $\lambda^2+\lambda+k_I=0$ ⇒ $\lambda=\tfrac12(-1\pm\sqrt{1-4k_I})$, som er asymptotisk stabilt for alle $k_I>0$.
+
+**c) (5 %) $x(0)$ kjent, $u=0$, $E[d]=0$, $E[d(t)d(t+\tau)]=2\delta(\tau)$. Finn $E[x(t)]$.**
+$x(t)=e^{-0.1t}x(0)+\int_0^te^{-0.1(t-\tau)}d(\tau)d\tau$ ⇒ $E[x(t)]=e^{-0.1t}x(0)$, fordi $E[d]=0$.
+
+**d) (5 %) Samme antakelser, $x(0)=0$: finn differensiallikningen for variansen $\dot C_x$.**
+$\dot C_x=E[2x\dot x]=-0.2C_x+2E[x(t)d(t)]$. Sett inn løsningen for $x(t)$: $2\int_0^te^{-0.1(t-\tau)}\underbrace{E[d(\tau)d(t)]}_{2\delta(t-\tau)}d\tau$. Deltaimpulsen ligger i enden av integrasjonsintervallet og gir derfor halv vekt: $2\cdot0.5\cdot2=2$.
+$$\dot C_x=-0.2C_x+2$$
+
+## Oppgave 10 (20 %) – Kalmanfilter, børsindeks
+
+$x=[x_1\ x_2]^T$ (indeksverdi, trend), $x[k+1]=\begin{bmatrix}1&1\\0&1\end{bmatrix}x[k]+w[k]$.
+
+**a) (5 %) Sjekk intern stabilitet og forklar hva det betyr for indeksen.**
+Triangulær med egenverdi 1 med multiplisitet 2. Matrisen er allerede en 2×2 Jordanblokk ⇒ **ustabil**. Uten støy vokser indeksen ubegrenset med konstant rate hvis trenden er positiv, og synker tilsvarende (også under null) hvis den er negativ.
+
+**b) (5 %) Daglig måling er forventningsrett med målefeil $d[k]$, $E[d[k]d[l]]=4\delta[k,l]$. Hvilke krav må $w[k]$ oppfylle for at Kalmanfilteret skal være optimalt?**
+$w$ må være hvit støy med middelverdi null og $E[w[k]w[l]^T]=Q\delta[k,l]$ ($Q$ positiv definitt), og uavhengig av målestøyen.
+
+**c) (5 %) $Q_w=\begin{bmatrix}1&0\\0&4\end{bmatrix}$, $x_1[0]=100\pm5$, $x_2[0]=5\pm2$ (uavhengige), måling $y[1]=104$. Finn $\hat x[1]$.**
+Startverdiene er posteriori ved tid 0: $\hat x[0]=\begin{bmatrix}100\\5\end{bmatrix}$, $P[0]=\begin{bmatrix}25&0\\0&4\end{bmatrix}$ (varians er standardavvik i annen).
+$\hat x^-[1]=\begin{bmatrix}105\\5\end{bmatrix}$, $P^-[1]=AP[0]A^T+Q_w=\begin{bmatrix}29&4\\4&4\end{bmatrix}+\begin{bmatrix}1&0\\0&4\end{bmatrix}=\begin{bmatrix}30&4\\4&8\end{bmatrix}$.
+$L[1]=\dfrac{1}{30+4}\begin{bmatrix}30\\4\end{bmatrix}=\begin{bmatrix}0.8824\\0.1176\end{bmatrix}$.
+$\hat x[1]=\begin{bmatrix}105\\5\end{bmatrix}+L(104-105)=\begin{bmatrix}104.12\\4.88\end{bmatrix}$.
+
+**d) (5 %) Gitt $P[1]=\begin{bmatrix}3.53&0.47\\0.47&7.53\end{bmatrix}$: illustrer med en tegning sannsynligheten for at indeksen er under 103 ved tid 1.**
+Tegn normalfordelingen med middelverdi $104.12$ og standardavvik $\sqrt{3.53}=1.88$, og skraver arealet under kurven til venstre for 103. Det arealet er sannsynligheten.
+
+## Oppgave 11 (20 %) – Segway, LQR
+
+Invertert pendel linearisert for små vinkler:
+$$\begin{bmatrix}\dot\theta\\\ddot\theta\end{bmatrix}=\begin{bmatrix}0&1\\\tfrac12&0\end{bmatrix}\begin{bmatrix}\theta\\\dot\theta\end{bmatrix}+\begin{bmatrix}0\\-1\end{bmatrix}u+\begin{bmatrix}0\\-1\end{bmatrix}d$$
+($\theta=0$ er oppreist, $d$ er at brukeren lener seg.)
+
+**a) (6 %) LQR $u=-K[\theta\ \dot\theta]^T$ med $Q=I$, $R=1$. (Du kan bruke at off-diagonal-elementet i $P$ er 1.618.)**
+Riccati $A^TP+PA+Q-PBR^{-1}B^TP=0$ med $P=\begin{bmatrix}p_1&p_2\\p_2&p_3\end{bmatrix}$ gir:
+$p_2^2-p_2-1=0$, $p_2p_3-p_1-0.5p_3=0$, $p_3^2-2p_2-1=0$.
+$p_2=1.618$ ⇒ $p_3=\pm2.058$ ⇒ $p_1=\pm2.301$. $P$ må være positiv definitt, så vi velger de positive verdiene: $P=\begin{bmatrix}2.301&1.618\\1.618&2.058\end{bmatrix}$.
+$K=R^{-1}B^TP=\begin{bmatrix}0&-1\end{bmatrix}P=\begin{bmatrix}-1.618&-2.058\end{bmatrix}$.
+
+**b) (4 %) Regulatoren oppleves som for treg. Hvordan endrer du $Q$?**
+Øk første diagonalelement, som straffer vinkelavvik og gir raskere respons. Å øke det andre (vinkelhastighet) gir heller tregere respons, siden det straffer endringen som trengs for å rette opp vinkelen.
+
+**c) (5 %) Brukeren lener seg, $d=d_0>0$ lenge. Finn stasjonær $\theta$ med $K=[-1\ \ -2]$.**
+$A-BK=\begin{bmatrix}0&1\\-\tfrac12&-2\end{bmatrix}$. Stasjonært: $\dot\theta=0$, og $0=-\tfrac12\theta-2\dot\theta-d_0$ ⇒ $\theta=-2d_0$.
+
+**d) (5 %) Hva betyr det stasjonære avviket for Segwayen? Anbefaler du endringer?**
+Motoren skyver hele tiden ($u=2d_0$), så Segwayen akselererer kontinuerlig med mindre luftmotstanden kompenserer. Hvis brukeren lener seg til motoren ikke henger med, kan den tippe. Integralvirkning fjerner det stasjonære avviket, men om det gjør farten lettere eller vanskeligere å styre for brukeren, må testes. Ulike svar godtas så lenge resonnementet holder.
+
+
+---
+
+# Eksamen 2023 (19. desember) – TTK4115 Lineær systemteori
+
+Renskrevet oppgavetekst og løsningsforslag (Morten O. Alver). 4 timer, hjelpemiddel D. Prosent er vekt på eksamen.
+
+## Oppgave 1 (6 %) – flervalg
+
+$$\dot x=\begin{bmatrix}-2&0\\-1&1\end{bmatrix}x+\begin{bmatrix}0\\1\end{bmatrix}u,\qquad y=\begin{bmatrix}0&1\end{bmatrix}x$$
+
+a) ikke styrbart, ikke observerbart, b) styrbart, ikke observerbart, c) observerbart, ikke styrbart, d) begge, e) trenger mer informasjon.
+
+**Løsning.** Vi måler $x_2$, som påvirkes av $x_1$ ⇒ observerbart. Pådraget virker på $x_2$, men $x_2$ påvirker ikke $x_1$ ⇒ ikke styrbart. Det bekreftes av $\mathcal C=\begin{bmatrix}0&0\\1&1\end{bmatrix}$ (rang 1) og $\mathcal O=\begin{bmatrix}0&1\\-1&1\end{bmatrix}$ (rang 2). **Svar: c).**
+
+## Oppgave 2 (6 %) – flervalg
+
+$A=\begin{bmatrix}2&3\\1&0\end{bmatrix}$. Øvre venstre element i $e^{At}$?
+a) $3e^{3t}+e^{-t}$ b) $\tfrac23e^{-3t}+\tfrac12e^{t}$ c) $\tfrac14e^{3t}+\tfrac34e^{t}$ d) $\tfrac34e^{3t}+\tfrac14e^{-t}$ e) $3e^{-3t}-e^{t}$
+
+**Løsning.** $\lambda_1=3$, $\lambda_2=-1$. $\beta_0+3\beta_1=e^{3t}$, $\beta_0-\beta_1=e^{-t}$ ⇒ $\beta_1=\tfrac14(e^{3t}-e^{-t})$, $\beta_0=\tfrac14e^{3t}+\tfrac34e^{-t}$.
+Øvre venstre element i $\beta_0I+\beta_1A$: $\beta_0+2\beta_1=\tfrac34e^{3t}+\tfrac14e^{-t}$. **Svar: d).**
+
+## Oppgave 3 (6 %) – flervalg
+
+$$\dot x=\begin{bmatrix}-1&0&a\\0&0&2\\0&0&0\end{bmatrix}x+\begin{bmatrix}1&0\\0&1\\0&0\end{bmatrix}u,\qquad y=\begin{bmatrix}1&0&0\end{bmatrix}x$$
+
+a) internt ustabilt, b) eksponentielt stabilt, c) marginalt stabilt, d) stabilitetsegenskapene avhenger av $a$.
+
+**Løsning.** Triangulær ⇒ egenverdier $-1$ og $0$ (dobbel). For $\lambda=0$ gir $Aq=0$ at $q_3=0$ (rad 2) og dermed $q_1=0$ (rad 1). Altså bare én uavhengig egenvektor, $q=[0\ 1\ 0]^T$, som gir en Jordanblokk ⇒ ustabilt for alle $a$. **Svar: a).**
+
+## Oppgave 4 (6 %) – flervalg
+
+$\dot x=0.5x+u$, $u=-kx+k_rr_0$. Hvilke parametre gir raskest konvergens mot $r_0$ for alle startverdier?
+a) $k=2.5,k_r=3$ b) $k=2,k_r=1.5$ c) $k=-2,k_r=1.5$ d) $k=3,k_r=3$ e) $k=1.5,k_r=1$ f) $k=-1.5,k_r=-2$
+
+**Løsning.** Likevekt i $r_0$ krever $k_r=k-0.5$, som stemmer for b), e) og f). f) er ustabil ($0.5-k=2>0$), og b) er raskere enn e). **Svar: b).**
+
+## Oppgave 5 (6 %) – flervalg
+
+$$\dot x=\begin{bmatrix}1&-1\\\omega&0\end{bmatrix}x+\begin{bmatrix}1\\0\end{bmatrix}u,\qquad y=\begin{bmatrix}1&0\end{bmatrix}x,\quad\omega\ne0$$
+
+$u=-[k_1\ k_2]x$. Hvilke verdier gir poler i $-1$ og $-0.5$?
+a) $k_1=2$, $k_2=\frac{0.5}{\omega}-0.5$; b) $k_1=2.5$, $k_2=\frac{0.5}{\omega}-1$; c) $k_1=2.5$, $k_2=-0.5$; d) $k_1=\frac{0.5}{\omega}$, $k_2=1$; e) $k_1=-\frac{0.5}{\omega}$, $k_2=2.5$.
+
+**Løsning.** $A-BK=\begin{bmatrix}1-k_1&-1-k_2\\\omega&0\end{bmatrix}$, karakteristisk polynom $\lambda^2+(k_1-1)\lambda+\omega(1+k_2)$. Ønsket: $\lambda^2+1.5\lambda+0.5$ ⇒ $k_1=2.5$, $k_2=\frac{0.5}{\omega}-1$. **Svar: b).**
+
+## Oppgave 6 (6 %) – flervalg
+
+$$\dot x=\begin{bmatrix}-1&-1\\0&-2\end{bmatrix}x+\begin{bmatrix}1\\0\end{bmatrix}u_1,\ y_1=\begin{bmatrix}1&0\end{bmatrix}x;\qquad \dot z=\begin{bmatrix}-1&0\\1&-2\end{bmatrix}z+\begin{bmatrix}1\\0\end{bmatrix}u_2,\ y_2=\begin{bmatrix}0&1\end{bmatrix}z$$
+
+a) urelaterte, b) algebraisk ekvivalente, c) nulltilstandsekvivalente men ikke algebraisk ekvivalente, d) duale.
+
+**Løsning.** $g_x(s)=\dfrac{s+2}{s^2+3s+2}$ og $g_z(s)=\dfrac{1}{s^2+3s+2}$ er ulike. Systemene er heller ikke duale, siden $A_x^T\ne A_z$ (og $B$, $C$ passer ikke). **Svar: a).**
+
+## Oppgave 7 (6 %) – flervalg
+
+Du skal modellere en støyprosess med $S(\omega)=\dfrac{k^2}{\omega^2+\omega_0^2}$. Hvilken modell gir dette med hvit støy med enhetsintensitet inn?
+a) $\dot x=-\omega_0x+u$, $y=k^2x$; b) $\dot x=-\omega_0x+ku$, $y=x+u$; c) $\dot x=-\omega_0x$, $y=kx+u$; d) $\dot x=-\omega_0x+ku$, $y=kx$; e) $\dot x=-\omega_0x+u$, $y=kx$.
+
+**Løsning.** $g(s)=\dfrac{k}{s+\omega_0}$ oppfyller $g(j\omega)g(-j\omega)=S(\omega)$. Realisering: $A=-\omega_0$, $B=1$, $C=k$, $D=0$. (d gir $k^2/(s+\omega_0)$, som er for stor.) **Svar: e).**
+
+## Oppgave 8 (25 %) – stabiliserbarhet, LQR, parameteravhengig regulator, transformasjon
+
+$$\dot x=\begin{bmatrix}-0.5&\alpha\\0&1\end{bmatrix}x+\begin{bmatrix}0\\1\end{bmatrix}u,\qquad y=\begin{bmatrix}1&0\end{bmatrix}x\tag{2}$$
+der $\alpha$ avhenger av lasten.
+
+**a) Test om det for alle $\alpha\in\mathbb R$ finnes en tilbakekobling som gjør lukket sløyfe asymptotisk stabil.**
+$\mathcal C=[B\ AB]=\begin{bmatrix}0&\alpha\\1&1\end{bmatrix}$ ⇒ styrbart for $\alpha\ne0$.
+For $\alpha=0$ har lukket sløyfe egenverdiene $\lambda_1=-0.5$ og $\lambda_2=1-k_2$. Velg $k_2>1$. Systemet er da ikke styrbart, men **stabiliserbart**. Konklusjon: det kan stabiliseres for alle $\alpha$.
+
+**b) $\alpha=1$, LQR med $Q=I$, $R=1$. Verifiser at $P\approx\begin{bmatrix}0.8473&0.3908\\0.3908&2.6678\end{bmatrix}$ er positiv definitt løsning, og finn $K$.**
+Innsatt i $A^TP+PA+Q-PBR^{-1}B^TP$:
+$\begin{bmatrix}-0.4236&-0.1954\\1.2381&3.0587\end{bmatrix}+\begin{bmatrix}-0.4236&1.2381\\-0.1954&3.0587\end{bmatrix}+I-\begin{bmatrix}0.1527&1.0427\\1.0427&7.1173\end{bmatrix}\approx0$.
+Positiv definitt: $p_{11}>0$ og $\det P=0.8473\cdot2.6678-0.3908^2=2.108>0$.
+$K=R^{-1}B^TP=[0.3908\ \ 2.6678]$.
+
+**c) Finn en skalar funksjon $f(\alpha)$ slik at $K=[f(\alpha)\ \ 1]$ gir asymptotisk stabilitet for alle $\alpha\ne0$.**
+$A-BK=\begin{bmatrix}-0.5&\alpha\\-f(\alpha)&0\end{bmatrix}$ ⇒ $\lambda^2+0.5\lambda+\alpha f(\alpha)=0$. Asymptotisk stabil ⇔ $\alpha f(\alpha)>0$.
+$f=0$ gir egenverdiene $-0.5$ og $0$, altså bare marginal stabilitet. $f=1/\alpha$ gir $\lambda=-0.25\pm\tfrac12\sqrt{3.75}\,j$, som er stabilt, men gir enorme gain når $|\alpha|$ er liten. Kompromiss: $f(\alpha)=\dfrac{1}{\operatorname{sgn}(\alpha)\max(|\alpha|,0.1)}$, som til gjengjeld gir treg konvergens når $\alpha\to0$. Andre valg kan også fungere.
+
+**d) $\alpha=1$: transformer med $x=T\bar x$, $T=\begin{bmatrix}1&2\\0&3\end{bmatrix}$. Hvilken kanonisk form får du?**
+$T^{-1}=\begin{bmatrix}1&-2/3\\0&1/3\end{bmatrix}$. $\bar A=T^{-1}AT=\begin{bmatrix}-0.5&0\\0&1\end{bmatrix}$, $\bar B=T^{-1}B=\begin{bmatrix}-2/3\\1/3\end{bmatrix}$, $\bar C=CT=[1\ \ 2]$. Dette er **diagonalform** (kolonnene i $T$ er egenvektorer).
+
+## Oppgave 9 (20 %) – diskretisering, utvidet Kalman-modell, støyanalyse
+
+Elektrisk motor: $\dot x=-0.1x+u$ ($x$ er turtall, $u$ er spenning, tid i sekunder).
+
+**a) Vis at eksakt diskretisering med nullteordens hold og periode $T$ er $x[k+1]=e^{-0.1T}x[k]+10(1-e^{-0.1T})u[k]$.**
+$x[k+1]=e^{-0.1T}x[k]+\int_0^Te^{-0.1(T-\tau)}d\tau\;u[k]$, og $\int_0^Te^{-0.1(T-\tau)}d\tau=\big[10e^{-0.1(T-\tau)}\big]_0^T=10(1-e^{-0.1T})$.
+
+**b) $T=10$ s: $x[k+1]=0.37x[k]+6.3u[k]+d[k]$, $y=x+v$, $E[v^2]=R=0.01$. Lasten følger $d[k+1]=d[k]+w[k]$, $E[w^2]=q$. Sett opp et utvidet system for å estimere $x$ og $d$ med Kalmanfilter.**
+$$\begin{bmatrix}x[k+1]\\d[k+1]\end{bmatrix}=\begin{bmatrix}0.37&1\\0&1\end{bmatrix}\begin{bmatrix}x[k]\\d[k]\end{bmatrix}+\begin{bmatrix}6.3\\0\end{bmatrix}u[k]+\bar w[k],\qquad y[k]=\begin{bmatrix}1&0\end{bmatrix}\begin{bmatrix}x\\d\end{bmatrix}+v[k],\qquad Q=\begin{bmatrix}0&0\\0&q\end{bmatrix}$$
+
+**c) En kollega logger 2000 målefeil $v[k]$ mot en mer nøyaktig sensor (figur: middelverdi, histogram, autokorrelasjon). Diskuter antakelsene om $v$.**
+- **Gaussisk:** histogrammet ser normalfordelt ut, så antakelsen stemmer.
+- **Middelverdi null:** middelverdien ser ut til å være rundt 0.02. Med 2000 målinger er det en reell positiv bias, så antakelsen brytes.
+- **Hvit:** autokorrelasjonen er nær 0 for alle ikke-null-lag, så støyen er (nesten) hvit.
+- **$R=0.01$** (standardavvik 0.1): autokorrelasjonen ved lag 0 er et direkte estimat av variansen og er omtrent 0.01, så antakelsen stemmer.
+
+## Oppgave 10 (8 %) – dualitet
+
+$\dot x=Ax+Bu$, $y=Cx$, med dualt system $\dot z=A^Tz+C^T\bar u$, $\bar y=B^Tz$. Vis at det duale systemet er observerbart hvis og bare hvis det opprinnelige er styrbart.
+
+**Løsning.** Styrbart ⇔ $\mathcal C_{orig}=[B\ AB\ \cdots\ A^{n-1}B]$ har full rang. Det duale har
+$\mathcal O_{dual}=\begin{bmatrix}B^T\\B^TA^T\\\vdots\\B^T(A^T)^{n-1}\end{bmatrix}=\mathcal C_{orig}^T$.
+Rangen er lik for en matrise og dens transponerte ⇒ $\operatorname{rank}\mathcal O_{dual}=\operatorname{rank}\mathcal C_{orig}$. ∎
+
+## Oppgave 11 (12 %) – helikopterlab
+
+Hvis du ikke har testet akkurat dette selv, skal du resonnere ut fra teorien og labben.
+
+**a) Hvordan påvirket integralvirkningen i Lab 2 systemet? Ytelse før og etter, og eventuelle problemer.**
+- Uten integralvirkning: stasjonære avvik, særlig i elevasjonsrate. Umodellerte effekter gjør at helikopteret stiger eller synker mot horisontal stilling når referansen for elevasjonsrate er 0.
+- Med integralvirkning: avviket fjernes, og helikopteret holder elevasjonen bedre. Ofte bedre ytelse og respons generelt.
+- Problem: **integrator wind-up**, for eksempel ved høy elevasjon der motorene er nær metning og ikke klarer å følge referansene, slik at integratorene vokser og helikopteret oppfører seg rart. Også oppsamlet feil ved oppstart, mens helikopteret løftes mot likevekt.
+
+**b) Viktigste forskjeller mellom Luenberger-observer og Kalmanfilter (tuning, ytelse, mm.)?**
+- Luenberger har statisk gain fra polplassering. Kalman har dynamisk gain som minimerer summen av feilvariansene.
+- Kalman-gain bestemmes av $Q_d$ (forstyrrelser) og $R_d$ (målestøy), antatt hvite.
+- $R_d$ kan ofte måles, mens $Q_d$ er vanskelig å vite og brukes derfor som tuningparameter: diagonalelementene styrer vektingen mellom modell og måling per tilstand.
+- Gain går mot en stasjonær verdi. Når målinger mangler, vokser $P[k]$, og nye målinger vektes mer.
+- Når alle tilstander måles og $Q_d\to\infty$, går estimatet mot målingen, og støyen forsterkes ikke. Med Luenberger kan støyen forsterkes hvis polene til $A-LC$ legges for langt til venstre.
+- **Feil** å si at Luenberger er for kontinuerlig og Kalman for diskret tid. Begge kan brukes i begge.
+
+
+---
+
+# Eksamen 2022 (12. desember) – TTK4115 Lineær systemteori
+
+Renskrevet oppgavetekst og løsningsforslag (Morten O. Alver). 4 timer, hjelpemiddel D. Prosent er vekt på eksamen. Ingen flervalg dette settet.
+
+## Oppgave 1 (30 %) – tilstandsrom fra a til å
+
+$$\dot x=\underbrace{\begin{bmatrix}2&-1\\-4&-1\end{bmatrix}}_{A}x+\underbrace{\begin{bmatrix}1\\2\end{bmatrix}}_{B}u,\qquad y=\underbrace{\begin{bmatrix}1&0\end{bmatrix}}_{C}x\tag{1}$$
+
+**a) (5 %) Vis at systemet er observerbart og styrbart.**
+$\mathcal C=[B\ AB]=\begin{bmatrix}1&0\\2&-6\end{bmatrix}$ og $\mathcal O=\begin{bmatrix}1&0\\2&-1\end{bmatrix}$ har begge full rang.
+
+**b) (5 %) Finn transferfunksjonen fra $u$ til $y$.**
+$G(s)=\dfrac{1}{(s-2)(s+1)-4}\begin{bmatrix}1&0\end{bmatrix}\begin{bmatrix}s+1&-1\\-4&s-2\end{bmatrix}\begin{bmatrix}1\\2\end{bmatrix}=\dfrac{s-1}{s^2-s-6}$.
+
+**c) (5 %) Sjekk intern stabilitet.**
+Systemet er styrbart og observerbart (minimalt), så det holder å se på polene: $s^2-s-6=(s+2)(s-3)$ gir pol i $3$ ⇒ ustabilt.
+
+**d) (5 %) Finn $K$ i $u=-Kx$ som gir egenverdier i $-1$ og $-2$.**
+$A-BK=\begin{bmatrix}2-k_1&-1-k_2\\-4-2k_1&-1-2k_2\end{bmatrix}$, karakteristisk polynom $s^2+(k_1+2k_2-1)s-k_1-8k_2-6$.
+Ønsket $s^2+3s+2$ ⇒ $k_1=-2k_2+4$ og $-k_1-8k_2-6=2$ ⇒ $k_2=-2$, $k_1=8$. $K=[8\ \ -2]$.
+(Sjekk: $A-BK=\begin{bmatrix}-6&1\\-20&3\end{bmatrix}$ har spor $-3$ og determinant $2$.)
+
+**e) (5 %) Med $u=-Kx+K_rr_0$: finn $K_r$ slik at $y\to r_0$ (uttrykt med $K$ og systemmatrisene). Anta at $K$ stabiliserer.**
+Likevekt: $Ax_\infty+B(-Kx_\infty+K_rr_0)=0$ ⇒ $x_\infty=(BK-A)^{-1}BK_rr_0$, $y_\infty=C(BK-A)^{-1}BK_rr_0$.
+$$K_r=\big[C(BK-A)^{-1}B\big]^{-1}$$
+
+**f) (5 %) Observerbarhets-gramianen $W_o(t)=\int_0^te^{A^T\tau}C^TCe^{A\tau}d\tau$. Er den inverterbar for noen eller alle $t>0$?**
+At $W_o(t)$ er inverterbar for alle $t>0$ er nødvendig og tilstrekkelig for observerbarhet. Systemet er observerbart (a), så gramianen er inverterbar for **alle** $t>0$.
+
+## Oppgave 2 (20 %) – formingsfilter for støy
+
+Støyprosessen $\beta(s)=H(s)w(s)$ med $E[w]=0$, $R_w(\tau)=\delta(\tau)$ og $H(s)=\dfrac{s+1}{(s+2)(s+3)}$.
+
+**a) (5 %) Hva slags prosess er $w$? Finn $S_w(\omega)$.** (Hint: $\hat f(\omega)=\int f(\tau)e^{-j\omega\tau}d\tau$.)
+Hvit støy. $S_w=\int\delta(\tau)e^{-j\omega\tau}d\tau=1$ (deltafunksjonen «plukker ut» integranden i $\tau=0$).
+
+**b) (5 %) Finn $S_\beta(\omega)$.**
+$S_\beta=H(j\omega)H(-j\omega)=\dfrac{\omega^2+1}{(\omega^2+4)(\omega^2+9)}=\dfrac{\omega^2+1}{\omega^4+13\omega^2+36}$.
+
+**c) (5 %) Gi en realisering av $H(s)$ på styrbar kanonisk form.**
+$H(s)=\dfrac{s+1}{s^2+5s+6}$ ⇒ $\dot x_\beta=\underbrace{\begin{bmatrix}-5&-6\\1&0\end{bmatrix}}_{A_\beta}x_\beta+\underbrace{\begin{bmatrix}1\\0\end{bmatrix}}_{B_\beta}w$, $\beta=\underbrace{\begin{bmatrix}1&1\end{bmatrix}}_{C_\beta}x_\beta$.
+
+**d) (5 %) Prosessen $\dot x=ax+bu+\beta$, $y=x$. Sett opp et utvidet system med $u$ som inngang, $w$ som forstyrrelse og $y$ som utgang.**
+$x_a=\begin{bmatrix}x\\x_\beta\end{bmatrix}$:
+$$\dot x_a=\begin{bmatrix}a&C_\beta\\0&A_\beta\end{bmatrix}x_a+\begin{bmatrix}b\\0\end{bmatrix}u+\begin{bmatrix}0\\B_\beta\end{bmatrix}w,\qquad y=\begin{bmatrix}1&0&0\end{bmatrix}x_a$$
+Øvre høyre blokk er hvordan $\beta$ virker på $x$. $u$ virker bare på $x$, og $w$ bare på filtertilstandene.
+
+## Oppgave 3 (24 %) – Kalmanfilter, ølgjæring
+
+Tettheten i vørteren måles hver time i «punkter» (cirka 80 ved start og 10 når gjæringen er ferdig). Målestøyen er hvit og gaussisk med standardavvik 2.
+
+**a) (3 %) Modellen er $x[k+1]=\begin{bmatrix}1&-1\\0&1\end{bmatrix}x[k]+w[k]$, $y=x_1+v$, $E[ww^T]=Q\delta$, $E[vv]=2^2\delta$. Hvilken tilstand er reduksjonsraten, og hvilken enhet har den?**
+$x_2$: den trekkes fra $x_1$ hvert tidssteg og påvirkes ikke av $x_1$. Enhet: punkter/time.
+
+**b) (6 %) $\hat x[0]=[80\ \ 0.2]^T$, $P[0]=\operatorname{diag}(0.2,0.2)$, $Q=\operatorname{diag}(0.01,0.1)$, $y[1]=78.5$. Vis at $L[1]=[0.093\ \ -0.0454]^T$ og finn $\hat x[1]$.**
+$\hat x^-[1]=\begin{bmatrix}79.8\\0.2\end{bmatrix}$. $P^-[1]=AP[0]A^T+Q=\begin{bmatrix}0.4&-0.2\\-0.2&0.2\end{bmatrix}+Q=\begin{bmatrix}0.41&-0.2\\-0.2&0.3\end{bmatrix}$.
+$L[1]=\dfrac{1}{0.41+4}\begin{bmatrix}0.41\\-0.2\end{bmatrix}=\begin{bmatrix}0.093\\-0.0454\end{bmatrix}$ ✓.
+$\hat x[1]=\begin{bmatrix}79.8\\0.2\end{bmatrix}+L(78.5-79.8)=\begin{bmatrix}79.679\\0.259\end{bmatrix}$.
+
+**c) (5 %) Første element i $L[1]$ er bare 0.093. Forklar hvorfor.**
+$P^-[1]$ er liten sammenliknet med $R_d=4$. Målestøyen er altså stor i forhold til usikkerheten i priorestimatet, så filteret stoler mest på prior. Det skyldes særlig initialiseringen. Over mange steg får $Q$ større innflytelse på $P$.
+
+**d) (5 %) Reduksjonsraten avtar selv omtrent eksponentielt. Hvilket tall i modellen endrer du, i hvilken retning? Påvirker det intern stabilitet?**
+Sett nedre høyre element i $A$ til $\gamma\in(0,1)$, slik at $x_2$ avtar eksponentielt mot 0.
+Original: $(\lambda-1)^2=0$, dobbel egenverdi på enhetssirkelen med Jordanblokk ⇒ ustabil (konstant reduksjonsrate gjør at $x_1$ synker uten grense).
+Ny: $(\lambda-1)(\lambda-\gamma)=0$, én egenverdi på enhetssirkelen og én innenfor ⇒ **marginalt stabil**. $x_1$ går mot en stasjonær verdi.
+
+**e) (5 %) En kollega måler 10000 ganger på en væske med kjent tetthet og viser fordelingen av målefeilen i en figur. Kan figuren verifisere antakelsene om målestøyen?**
+- Middelverdi null: ser riktig ut.
+- Gaussisk med standardavvik 2: fordelingen ser normal ut, og standardavviket kan godt være 2.
+- Hvit: kan **ikke** verifiseres fra en fordeling. Det krever autokorrelasjon eller spektraltetthet over tid.
+
+## Oppgave 4 (10 %) – skalar LQR og PBH-test
+
+**a) (5 %) $\dot x=ax+u$, $y=x$, $u=-kx$, LQR med $Q=R=1$. Finn $k(a)$ og vis at lukket sløyfe er stabil for alle $a$.**
+Riccati: $2ap+1-p^2=0$ ⇒ $p=a+\sqrt{a^2+1}$ (positiv). $k=p=a+\sqrt{a^2+1}$.
+$\dot x=(a-k)x=-\sqrt{a^2+1}\,x$, med negativ egenverdi for alle $a$ ⇒ eksponentielt stabil.
+
+**b) (5 %) PBH-testen: $(A,B)$ er bare styrbar hvis ingen egenvektor til $A^T$ ligger i nullrommet til $B^T$. Vis dette.** (Hint: full rang betyr at ingen $v\ne0$ gir $\mathcal C^Tv=0$.)
+$\mathcal C^Tv=\begin{bmatrix}B^Tv\\B^TA^Tv\\\vdots\\B^T(A^T)^{n-1}v\end{bmatrix}$. Hvis $A^Tv=\lambda v$, blir dette $\begin{bmatrix}B^Tv\\\lambda B^Tv\\\vdots\\\lambda^{n-1}B^Tv\end{bmatrix}$. Hvis i tillegg $B^Tv=0$, er $\mathcal C^Tv=0$ med $v\ne0$ ⇒ ikke styrbar. ∎
+
+## Oppgave 5 (16 %) – helikopterlab
+
+Hvis du ikke har testet akkurat dette selv, skal du resonnere ut fra teorien og labben.
+
+**a) (4 %) Lab 1, PD-regulator for pitch med reelle egenverdier: hva skjedde da egenverdiene ble flyttet langt til venstre? Stemte det med modellen?**
+Modellen lover stadig raskere respons, men i praksis begynner helikopteret å oscillere og bli ustabilt når egenverdiene blir store. Årsaker: begrenset propellkraft (metning), tidsforsinkelser og modellfeil fra linearisering og forenklinger.
+
+**b) (4 %) Lab 2, LQR med integralvirkning: hvordan tuner du hvor sterk integralvirkningen er?**
+Systemet utvides med to integratortilstander, og LQR løses for det utvidede systemet. Med diagonal $Q$ bestemmer diagonalelementene for integratortilstandene hvor mye de straffes. Høyere verdier gir sterkere integralvirkning.
+
+**c) (4 %) Lab 3, styring på IMU-målinger (akselerometer og gyro) i stedet for encoderne: hvorfor er en tilstandsestimator viktig?**
+IMU-målingene er støyete, så direkte tilstandstilbakekobling fungerer dårlig. En godt tunet estimator gir mye mindre støyete estimater. Den estimerer også tilstander som ikke måles direkte.
+
+**d) (4 %) Lab 4, diskret Kalmanfilter med diagonal $Q_d$: hva skjer når du øker eller senker et diagonalelement?**
+Hvert diagonalelement er variansen til forstyrrelsen på én tilstand. Økes det, øker også variansen i $P$ for den tilstanden, og filteret vekter priorestimatet mindre og målingene mer. Da undertrykkes målestøyen mindre for den tilstanden. Senkes det, skjer det motsatte.
+
+
+---
+
+# Kont 2021 (17. august) – TTK4115 Lineær systemteori
+
+Renskrevet oppgavetekst og løsningsforslag (Morten O. Alver). 4 timer, hjelpemiddel D. Prosent er vekt på eksamen. Ingen flervalg og ingen helikopterlab-oppgave dette settet.
+
+## Oppgave 1 (30 %) – tilstandsrom, modalform, observer, separasjon, Bryson, ekvivalens
+
+$$\dot x=\underbrace{\begin{bmatrix}0&2\\-1&-2\end{bmatrix}}_{A}x+\underbrace{\begin{bmatrix}1\\0\end{bmatrix}}_{B}u,\qquad y=\underbrace{\begin{bmatrix}0&1\end{bmatrix}}_{C}x\tag{1}$$
+
+**a) (4 %) Er systemet styrbart og observerbart?**
+$\mathcal C=[B\ AB]=\begin{bmatrix}1&0\\0&-1\end{bmatrix}$ og $\mathcal O=\begin{bmatrix}0&1\\-1&-2\end{bmatrix}$ har begge rang 2, så systemet er begge deler.
+
+**b) (6 %) Bruk en similaritetstransformasjon til diagonal-, Jordan- eller modalform slik at alle koeffisientene blir reelle. Vis stegene.**
+$\lambda^2+2\lambda+2=0$ ⇒ $\lambda=-1\pm j$, et komplekst par, så vi velger **modalform**.
+Egenvektorer: $v_{1,2}=\begin{bmatrix}2\\-1\pm j\end{bmatrix}$ (ikke unike). $Q=[v_1\ v_2]$, og deretter den modale matrisen $M=\begin{bmatrix}1/2&-j/2\\1/2&j/2\end{bmatrix}$, slik at $x=QM\bar x$.
+$\bar A=M^{-1}Q^{-1}AQM=\begin{bmatrix}-1&1\\-1&-1\end{bmatrix}$ (realdelen på diagonalen, $\pm$ imaginærdelen utenfor), $\bar B=\begin{bmatrix}1/2\\1/2\end{bmatrix}$, $\bar C=[-1\ \ 1]$.
+(Snarvei: $QM=\begin{bmatrix}2&0\\-1&1\end{bmatrix}$, altså $[\operatorname{Re}v_1\ \ \operatorname{Im}v_1]$.)
+
+**c) (4 %) Bare $y$ måles, så du bruker en observer $\tilde x$ med gain $L$. Skriv likningene for $\tilde x$ og for feilen $e=x-\tilde x$.**
+$\dot{\tilde x}=A\tilde x+Bu+L(y-C\tilde x)$, og $\dot e=(A-LC)e$.
+
+**d) (4 %) Hvilken $L$ gir feildynamikk med poler i $p_1$ og $p_2$?**
+$L=[l_1\ l_2]^T$: $\det(\lambda I-(A-LC))=\lambda^2+(2+l_2)\lambda+2-l_1$. Ønsket: $\lambda^2-(p_1+p_2)\lambda+p_1p_2$ ⇒ $l_1=2-p_1p_2$, $l_2=-(p_1+p_2)-2$.
+
+**e) (4 %) Med $u=-K\tilde x$: vis at polene til $x$ kan velges uavhengig av polene til feilen.**
+$\dot x=Ax-BK(x-e)=(A-BK)x+BKe$:
+$$\begin{bmatrix}\dot x\\\dot e\end{bmatrix}=\begin{bmatrix}A-BK&BK\\0&A-LC\end{bmatrix}\begin{bmatrix}x\\e\end{bmatrix}$$
+Systemmatrisen er blokktriangulær, så egenverdiene er egenverdiene til $A-BK$ pluss egenverdiene til $A-LC$ (**separasjonsprinsippet**).
+
+**f) (4 %) LQR med Brysons regel: maks akseptabelt $x_1=0.5$, $x_2=1$, $u=2$. Garanterer regulatoren $|u|\le2$?**
+$Q=\operatorname{diag}(1/0.5^2,\ 1/1^2)=\operatorname{diag}(4,1)$, $R=1/2^2=0.25$.
+Nei. $u=-Kx$ skalerer lineært med $x$, så for store nok $x$ blir $|u|>2$.
+
+**g) (4 %) Er systemet under algebraisk ekvivalent, nulltilstandsekvivalent eller urelatert til (1)?**
+$$\dot x=\begin{bmatrix}-2&-2&0\\1&0&0\\0&1&0\end{bmatrix}x+\begin{bmatrix}1\\0\\0\end{bmatrix}u,\qquad y=\begin{bmatrix}0&-1&0\end{bmatrix}x$$
+Det har tre tilstander og kan derfor ikke være algebraisk ekvivalent. Det står på styrbar kanonisk form: $g(s)=\dfrac{-s}{s^3+2s^2+2s}=-\dfrac{1}{s^2+2s+2}$.
+For (1): $g(s)=\dfrac{1}{s^2+2s+2}\begin{bmatrix}0&1\end{bmatrix}\begin{bmatrix}s+2&2\\-1&s\end{bmatrix}\begin{bmatrix}1\\0\end{bmatrix}=-\dfrac{1}{s^2+2s+2}$. Samme transferfunksjon ⇒ **nulltilstandsekvivalent**.
+
+## Oppgave 2 (10 %) – linearitet
+
+$\dot x=F(x)$, $x\in\mathbb R^n$.
+
+**a) (3 %) Hvilke to krav må $F$ oppfylle for at systemet skal være lineært?**
+Additivitet: $F(x_1+x_2)=F(x_1)+F(x_2)$. Homogenitet: $F(\alpha x)=\alpha F(x)$. Til sammen gir de superposisjon.
+
+**b) (4 %) $F$ og $G$ er lineære. Er $F(G(x))$ og $F(x)G(x)$ lineære?**
+$F\circ G$: $F(G(\alpha x_1+\beta x_2))=F(\alpha G(x_1)+\beta G(x_2))=\alpha F(G(x_1))+\beta F(G(x_2))$ ⇒ **lineær**.
+$F\cdot G$: $F(\alpha x)G(\alpha x)=\alpha^2F(x)G(x)\ne\alpha F(x)G(x)$ ⇒ **ikke lineær**.
+
+**c) (3 %) Gi tre grunner til at linearitet er nyttig for dynamiske systemer.**
+Superposisjon (for eksempel å dele i nulltilstands- og nullinngangsrespons), stabilitet kan avgjøres globalt, styrbarhet og observerbarhet gjelder globalt, og egenverdianalyse gjør polplassering og LQR mulig.
+
+## Oppgave 3 (20 %) – Kalmanfilter, kyllingsporing
+
+Maskinsyn finner posisjonen til en kylling hvert sekund, med normalfordelt hvit målestøy (standardavvik $\alpha$ per akse). Farten følger $\dot s=-0.2s+w$.
+
+**a) (4 %) Finn eksakt diskretisering med tidssteg 0.5 s ($w$ konstant innenfor hvert intervall).**
+$s[k+1]=e^{-0.2T}s[k]+\int_0^Te^{-0.2\alpha}d\alpha\;w[k]=e^{-0.2T}s[k]+\tfrac{1}{0.2}(1-e^{-0.2T})w[k]$.
+$T=0.5$: $s[k+1]=0.9048\,s[k]+0.4758\,w[k]$.
+
+**b) (4 %) Med posisjonen $\dot p=s$ og hvit gaussisk $w$ gir Van Loan ($T=0.5$, $\sigma=0.5$, $\alpha=0.25$):**
+$x[k+1]=\begin{bmatrix}1&0.4758\\0&0.9048\end{bmatrix}x[k]+w[k]$, $y=[1\ 0]x+v$, $Q=\begin{bmatrix}0.0097&0.0283\\0.0283&0.1133\end{bmatrix}$, $r=0.125$.
+**Hvorfor påvirker $w[k]$ begge tilstandene, når den kontinuerlige modellen bare har forstyrrelse på $s$?**
+Fordi $\dot p=s$: i løpet av intervallet $T$ påvirker forstyrrelsen farten, som igjen endrer posisjonen. Diskretiseringen fanger denne indirekte effekten.
+
+**c) (4 %) Vurder intern stabilitet. Hva betyr det for kyllingen?**
+$(\lambda-1)(\lambda-0.9048)=0$ gir én egenverdi i 1 (enkel) og én innenfor enhetssirkelen ⇒ **marginalt stabil**. (Løsningsforslaget skriver «lik 0», men egenverdien er 1.) Uten forstyrrelser avtar farten mot 0, og posisjonen går mot en sluttposisjon som avhenger av start, generelt ikke 0.
+
+**d) (4 %) Hvorfor bruke modell og Kalmanfilter i stedet for å derivere posisjonsmålingene direkte? (Minst to grunner.)**
+- Fart regnet ut fra støyete posisjoner blir svært støyete. Filteret gir bedre fartsestimat.
+- Siden farten brukes i prediksjonen, blir også posisjonsestimatet bedre enn målingene.
+- Modellen kan brukes til korte prediksjoner.
+
+**e) (4 %) $\hat x[0]=[0\ \ 0.2]^T$, $P[0]=\operatorname{diag}(0.5,\ 0.1)$, $y[1]=0.12$. Finn Kalman-gain og $\hat x[1]$.**
+$\hat x^-[1]=\begin{bmatrix}0.0952\\0.181\end{bmatrix}$, $P^-[1]=AP[0]A^T+Q=\begin{bmatrix}0.5323&0.0714\\0.0714&0.1952\end{bmatrix}$.
+$L[1]=\dfrac{1}{0.5323+0.125}\begin{bmatrix}0.5323\\0.0714\end{bmatrix}=\begin{bmatrix}0.8098\\0.1086\end{bmatrix}$.
+$\hat x[1]=\hat x^-[1]+L(0.12-0.0952)=\begin{bmatrix}0.1153\\0.1837\end{bmatrix}$.
+
+## Oppgave 4 (20 %) – adaptiv cruisekontroll (ACC), dekomponering
+
+$x_1$ er vår fart minus fartsgrensen, $x_2$ er fartsavviket til bilen foran, og $x_3$ er avstanden. $m=1000$ kg. Bilen foran har kraftavvik $-ax_2+d$, med $a=0.1$. Utgang: avstanden.
+
+**a) (4 %) Vis at modellen er**
+$$\dot x=\begin{bmatrix}0&0&0\\0&-a/m&0\\-1&1&0\end{bmatrix}x+\begin{bmatrix}1/m\\0\\0\end{bmatrix}u+\begin{bmatrix}0\\1/m\\0\end{bmatrix}d,\qquad y=\begin{bmatrix}0&0&1\end{bmatrix}x\tag{10}$$
+Newton: $\dot x_1=\tfrac1m((u+\rho)-\rho)=\tfrac um$ og $\dot x_2=\tfrac1m(-ax_2+d)$, der luftmotstanden $\rho$ faller bort. $\dot x_3=x_2-x_1$.
+
+**b) (4 %) Intern stabilitet? Kan BIBO-stabilitet avgjøres fra egenverdiene alene?**
+Triangulær ⇒ egenverdi $-a/m$ og $0$ (dobbel). $Av=0$ har bare løsningen $v=[0\ 0\ 1]^T$, altså en 2×2 Jordanblokk ⇒ **ustabil**.
+BIBO kan ikke avgjøres fra egenverdiene når systemet er internt ustabilt: det kan være BIBO-stabilt likevel (dette systemet er det ikke). Asymptotisk stabil ⇒ BIBO, men ikke omvendt.
+
+**c) (4 %) Vis at systemet er observerbart, men ikke styrbart. Hva med praktisk observerbarhet når $a\in[0.01,0.1]$?**
+$\mathcal O=\begin{bmatrix}0&0&1\\-1&1&0\\0&-a/m&0\end{bmatrix}$ har full rang for $a\ne0$. $\mathcal C=\begin{bmatrix}1/m&0&0\\0&0&0\\0&-1/m&0\end{bmatrix}$ har rang 2 ⇒ ikke styrbart (vi kan ikke påvirke bilen foran).
+$a/m\in[10^{-5},10^{-4}]$ gjør $\mathcal O$ nesten singulær (dårlig kondisjonstall). Systemet er observerbart i teorien, men i praksis er det vanskelig å estimere alle tilstander, og vanskeligere jo mindre $a$ er.
+
+**d) (4 %) Transferfunksjonen fra $u$ til $y$ er $g(s)=-\dfrac1m\cdot\dfrac{s+a/m}{s^3+\frac am s^2}$. Gi en minimal realisering på styrbar kanonisk form. Hvorfor har den andre styrbarhet og et annet antall tilstander enn originalen?**
+Faktoren $(s+a/m)$ forkortes (brøken er ikke koprim): $g(s)=-\dfrac1m\cdot\dfrac1{s^2}$.
+$\dot z=\begin{bmatrix}0&0\\1&0\end{bmatrix}z+\begin{bmatrix}1\\0\end{bmatrix}u$, $y=[0\ \ -1/m]z$. Dette er to tilstander og minimalt. Originalen har en ustyrbar del (bilen foran), som ikke synes i $g(s)$.
+
+**e) (4 %) Uendelig mange $T$ gir dekomponeringen $\begin{bmatrix}\dot x_c\\\dot x_{\bar c}\end{bmatrix}=\begin{bmatrix}\bar A_c&\bar A_{12}\\0&\bar A_{\bar c}\end{bmatrix}\begin{bmatrix}x_c\\x_{\bar c}\end{bmatrix}+\begin{bmatrix}\bar B_c\\0\end{bmatrix}u$. Forklar hvordan $T$ finnes, og gi et eksempel.**
+Bruk de lineært uavhengige kolonnene i $\mathcal C$ som de første kolonnene i $T$, og fyll ut med kolonner som gjør $T$ inverterbar. $\bar x=T^{-1}x$, $\bar A=T^{-1}AT$. Eksempel:
+$T=\begin{bmatrix}1/m&0&0\\0&0&1/m\\0&-1/m&0\end{bmatrix}$.
+
+## Oppgave 5 (20 %) – ACC med LQR, integralvirkning og farget støy
+
+Ny modell: $x_1$ er fartsforskjell (bilen foran minus vår), $x_2$ er avstand minus referanseavstand $d_0$:
+$$\dot x=\begin{bmatrix}0&0\\1&0\end{bmatrix}x+\begin{bmatrix}-1/m\\0\end{bmatrix}u+\begin{bmatrix}1/m\\0\end{bmatrix}d,\qquad y=\begin{bmatrix}0&1\end{bmatrix}x+v$$
+
+**a) (4 %) Finn $e^{At}$ eksakt. Vis stegene.**
+$e^{At}=\beta_0I+\beta_1A$. $\lambda=0$ er dobbel, så vi bruker funksjonsverdi og derivert: $h(0)=\beta_0=1$, $h'(0)=\beta_1=te^{0}=t$.
+$e^{At}=I+tA=\begin{bmatrix}1&0\\t&1\end{bmatrix}$.
+
+**b) (4 %) LQR med integralvirkning på avstandsavviket: sett opp den utvidede modellen.**
+$z=[x_1\ x_2\ \gamma]^T$ med $\dot\gamma=x_2$:
+$$\dot z=\begin{bmatrix}0&0&0\\1&0&0\\0&1&0\end{bmatrix}z+\begin{bmatrix}-1/m\\0\\0\end{bmatrix}u+\begin{bmatrix}1/m\\0\\0\end{bmatrix}d,\qquad y=\begin{bmatrix}0&1&0\end{bmatrix}z+v$$
+Vekten på $\gamma$ i $Q$ styrer hvor sterk integralvirkningen blir.
+
+**c) (4 %) Med $Q=I_3$ og $r=0.01$: hva endrer du for å få mykere akselerasjoner?**
+Øk $r$, så straffes pådraget mer. Det samme kan oppnås ved å senke alle elementene i $Q$, siden bare forholdet teller.
+
+**d) (4 %) Forstyrrelsen $d$ er ikke hvit, men stasjonær med $S_d(\omega)=\dfrac{q_d^2\omega_0^2}{\omega^2+\omega_0^2}$. Hvordan modifiserer du modellen?**
+Formingsfilter: $H(s)=\dfrac{q_d\omega_0}{s+\omega_0}$ gir $H(j\omega)H(-j\omega)=S_d$. Realisering: $\dot z=-\omega_0z+w$, $d=q_d\omega_0z$, der $w$ er hvit med enhetsintensitet. Utvidet modell:
+$$\begin{bmatrix}\dot x_1\\\dot x_2\\\dot z\end{bmatrix}=\begin{bmatrix}0&0&q_d\omega_0/m\\1&0&0\\0&0&-\omega_0\end{bmatrix}\begin{bmatrix}x_1\\x_2\\z\end{bmatrix}+\begin{bmatrix}-1/m\\0\\0\end{bmatrix}u+\begin{bmatrix}0\\0\\1\end{bmatrix}w,\qquad y=\begin{bmatrix}0&1&0\end{bmatrix}x+v$$
+
+**e) (4 %) Diskret Kalmanfilter: når går gain mot en stasjonær verdi? Øker eller minker gain hvis standardavviket til målingen øker?**
+Gain går mot en stasjonær verdi når $w$ og $v$ er stasjonære. Større målestøy gjør målingen mindre pålitelig, så gain-koeffisientene **minker**.
+
+
+---
+
+# Eksamen 2021 (4. desember) – TTK4115 Lineær systemteori
+
+Renskrevet oppgavetekst og løsningsforslag (Morten O. Alver). 4 timer, hjelpemiddel D. Prosent er vekt på eksamen. Ingen flervalg og ingen helikopterlab-oppgave dette settet.
+
+## Oppgave 1 (25 %) – tilstandsrom, styrbar kanonisk form, ekvivalens
+
+$$\dot x=\underbrace{\begin{bmatrix}-1&4\\1&-1\end{bmatrix}}_{A}x+\underbrace{\begin{bmatrix}1\\0\end{bmatrix}}_{B}u,\qquad y=\underbrace{\begin{bmatrix}1&0\end{bmatrix}}_{C}x\tag{1}$$
+
+**a) (5 %) Test styrbarhet og observerbarhet.**
+$\mathcal C=\begin{bmatrix}1&-1\\0&1\end{bmatrix}$, $\mathcal O=\begin{bmatrix}1&0\\-1&4\end{bmatrix}$. Begge har full rang, så systemet er styrbart og observerbart.
+
+**b) (5 %) Finn transferfunksjonen.**
+$\hat g(s)=\dfrac{1}{(s-1)(s+3)}\begin{bmatrix}1&0\end{bmatrix}\begin{bmatrix}s+1&4\\1&s+1\end{bmatrix}\begin{bmatrix}1\\0\end{bmatrix}=\dfrac{s+1}{s^2+2s-3}$.
+
+**c) (5 %) Transformasjonen til styrbar form er $x=P\bar x$ med $P=\mathcal C\bar{\mathcal C}^{-1}$. Sett systemet på styrbar kanonisk form og finn $\bar K$ som gir poler i $-1$ og $-2$.**
+Leses rett ut av transferfunksjonen: nevnerkoeffisientene med motsatt fortegn i første rad av $\bar A$, tellerkoeffisientene i $\bar C$:
+$\dot{\bar x}=\begin{bmatrix}-2&3\\1&0\end{bmatrix}\bar x+\begin{bmatrix}1\\0\end{bmatrix}u$, $y=\begin{bmatrix}1&1\end{bmatrix}\bar x$.
+$\bar A-\bar B\bar K=\begin{bmatrix}-2-k_1&3-k_2\\1&0\end{bmatrix}$. Ønsket $\lambda^2+3\lambda+2$ ⇒ første rad lik $[-3\ \ -2]$ ⇒ $k_1=1$, $k_2=5$, altså $\bar K=[1\ \ 5]$.
+
+**d) (5 %) Finn tilsvarende gain for det opprinnelige systemet.**
+$\dot{\bar x}=(\bar A-\bar B\bar K)\bar x$ med $\bar x=P^{-1}x$ gir $\dot x=(P\bar AP^{-1}-P\bar B\,\bar KP^{-1})x$ ⇒ $K=\bar KP^{-1}$.
+$\bar{\mathcal C}=\begin{bmatrix}1&-2\\0&1\end{bmatrix}$ ⇒ $P=\mathcal C\bar{\mathcal C}^{-1}=\begin{bmatrix}1&-1\\0&1\end{bmatrix}\begin{bmatrix}1&2\\0&1\end{bmatrix}=\begin{bmatrix}1&1\\0&1\end{bmatrix}$, $P^{-1}=\begin{bmatrix}1&-1\\0&1\end{bmatrix}$.
+$K=[1\ \ 5]P^{-1}=[1\ \ 4]$. (Sjekk: $A-BK=\begin{bmatrix}-2&0\\1&-1\end{bmatrix}$ har egenverdiene $-2$ og $-1$.)
+
+**e) (5 %) Er systemet under nulltilstandsekvivalent med (1)? Tips: det har en uobserverbar del.**
+$$\dot x=\begin{bmatrix}-2&1&0\\3&0&0\\1&0&-1\end{bmatrix}x+\begin{bmatrix}1\\1\\-1\end{bmatrix}u,\qquad y=\begin{bmatrix}1&0&0\end{bmatrix}x\tag{2}$$
+$x_3$ er uobserverbar og påvirker ikke $x_1$, $x_2$, så den kan fjernes: $\dot x=\begin{bmatrix}-2&1\\3&0\end{bmatrix}x+\begin{bmatrix}1\\1\end{bmatrix}u$, $y=[1\ 0]x$.
+$\hat g(s)=\dfrac{1}{(s-1)(s+3)}\begin{bmatrix}1&0\end{bmatrix}\begin{bmatrix}s&1\\3&s+2\end{bmatrix}\begin{bmatrix}1\\1\end{bmatrix}=\dfrac{s+1}{s^2+2s-3}$. Samme transferfunksjon ⇒ **nulltilstandsekvivalent**.
+
+## Oppgave 2 (12 %) – skalar LQR og robusthet
+
+$\dot x=ax+u$, $a>0$.
+
+**a) (6 %) Vis hvordan du finner $k$ i $u=-kx$ som minimerer $J=\int_0^\infty qx^2+ru^2\,dt$ ($q,r>0$).**
+LQR. Riccati: $2ap+q-p^2/r=0$ ⇒ $p=r\big(a+\sqrt{a^2+q/r}\big)$ (positiv rot). $k=p/r=a+\sqrt{a^2+q/r}$.
+
+**b) (6 %) Den virkelige $a_0$ kan være opptil 50 % høyere eller lavere enn $a$. Kan lukket sløyfe bli ustabil (for vilkårlige positive $q$, $r$)?**
+$\dot x=\big(a_0-a-\sqrt{a^2+q/r}\big)x$. Verste tilfelle er $q\to0$ eller $r\to\infty$, der rota går mot $a$, slik at polen går mot $a_0-2a$. Med $a_0\in[0.5a,\ 1.5a]$ ligger polen i $[-1.5a,\ -0.5a]$, altså alltid stabil. **Nei.**
+
+## Oppgave 3 (24 %) – bilfjæring
+
+$x_1$ er vertikal fart (positiv opp) og $x_2$ er posisjonen til toppen av fjæren. Nettokraften er $-k(x_2-w)$, der $w$ er posisjonen til bunnen av fjæren (ujevnheter i veien, ukjent forstyrrelse).
+
+**a) (6 %) Med $w$ som inngang og $x_2$ som utgang: er systemet BIBO-stabilt? Fungerer fjæringen i praksis?**
+$m\dot x_1=-kx_2+kw$, $\dot x_2=x_1$: $\dot x=\begin{bmatrix}0&-k/m\\1&0\end{bmatrix}x+\begin{bmatrix}k/m\\0\end{bmatrix}w$, $y=[0\ 1]x$.
+$g(s)=\dfrac{k/m}{s^2+k/m}$, med poler $\pm j\sqrt{k/m}$ på imaginæraksen ⇒ **ikke BIBO-stabil**. Systemet oscillerer, og $w$ nær resonansfrekvensen gir oscillasjoner som vokser. Det fungerer dårlig.
+
+**b) (6 %) Demper $-dx_1$ legges til: $\dot x=\begin{bmatrix}-d&-k\\1&0\end{bmatrix}x+\begin{bmatrix}k\\0\end{bmatrix}w$, $y=[0\ 1]x$. $w$ er hvit med $S_w=\alpha$. Finn $S_y$ for $k=1$, $d=2$.**
+(Merk fra løsningsforslaget: modellen burde hatt $d/m$ og $k/m$, men løsningen bruker den gitte modellen.)
+$g(s)=\dfrac{1}{(s+1)^2}$ ⇒ $S_y=g(j\omega)g(-j\omega)\alpha=\dfrac{\alpha}{(\omega^2+1)^2}=\dfrac{\alpha}{\omega^4+2\omega^2+1}$.
+
+**c) (6 %) Bruk Lyapunov-likningen $A^TM+MA=-N$ til å teste intern stabilitet ($k=1$, $d=2$).**
+Velg $N=I$ og $M=\begin{bmatrix}m_1&m_2\\m_2&m_3\end{bmatrix}$:
+$A^TM+MA=\begin{bmatrix}-4m_1+2m_2&-2m_2+m_3-m_1\\-2m_2+m_3-m_1&-2m_2\end{bmatrix}=-I$ ⇒ $m_2=\tfrac12$, $m_1=\tfrac12$, $m_3=\tfrac32$.
+$M=\begin{bmatrix}1/2&1/2\\1/2&3/2\end{bmatrix}$ har ledende hovedminorer $\tfrac12$ og $\tfrac12$, så den er positiv definitt ⇒ **asymptotisk stabil**.
+
+**d) (6 %) Sett opp en Luenberger-observer for $x_1$, $x_2$, og likningen for estimeringsfeilen.**
+$\dot{\hat x}=\begin{bmatrix}-d&-k\\1&0\end{bmatrix}\hat x+\begin{bmatrix}l_1\\l_2\end{bmatrix}\big(y-[0\ 1]\hat x\big)$ ($w$ er ukjent og tas ikke med).
+$\dot e=\dot x-\dot{\hat x}=\begin{bmatrix}-d&-k-l_1\\1&-l_2\end{bmatrix}e+\begin{bmatrix}k\\0\end{bmatrix}w$.
+
+## Oppgave 4 (24 %) – referanse og stokastisk analyse
+
+$\dot x=0.1x+u$, $y=x$.
+
+**a) (6 %) Design $u=k_rr-ky$ slik at $y\to r$ stasjonært. Vis stegene.**
+$\dot x=(0.1-k)x+k_rr$. Velg polen i $-1$ ⇒ $k=1.1$. Likevekt i $x=r_0$: $k_r=k-0.1=1$.
+
+**b) (6 %) Skriv tilstandslikningen for avviket $z=y-r$.**
+$\dot z=\dot x-\dot r=(0.1-k)(z+r)+(k-0.1)r-\dot r=(0.1-k)z-\dot r$.
+
+**c) (6 %) $r=0$, $k=1.1$. Det faktiske pådraget er $u_0=u+\beta$, der $\beta$ er hvit med $E[\beta(t)\beta(\tau)]=q\,\delta(t-\tau)$. Vis at $\dot m_x=-m_x$.**
+$\dot x=-x+\beta$ ⇒ $x(t)=e^{-t}x_0+\int_0^te^{-(t-\tau)}\beta(\tau)d\tau$ ⇒ $m_x=e^{-t}E[x_0]$ (fordi $E[\beta]=0$) ⇒ $\dot m_x=-m_x$.
+
+**d) (6 %) Vis at variansen oppfyller $\dot C_x=-2C_x+q$.** (Hint: $\int_0^t\delta(t-\tau)d\tau=\int_0^\infty\Theta(t-\tau)\delta(t-\tau)d\tau$ med $\Theta(0)=\tfrac12$.)
+$\dot C_x=E[2(x-m_x)(\dot x-\dot m_x)]=-2C_x+2E[(x-m_x)\beta(t)]$.
+$E[(x-m_x)\beta(t)]=\int_0^te^{-(t-\tau)}E[\beta(\tau)\beta(t)]d\tau$ (leddene med $x_0$ faller bort på grunn av kausalitet) $=\int_0^te^{-(t-\tau)}q\,\delta(t-\tau)d\tau=\tfrac12q$, fordi deltaimpulsen ligger i integrasjonsgrensen.
+⇒ $\dot C_x=-2C_x+q$. ∎
+
+## Oppgave 5 (15 %) – gramian og utvidet Kalman-modell
+
+**a) (8 %) $\dot x=Ax+Bu$, $y=Cx$, $W_o(t)=\int_0^te^{A^T\tau}C^TCe^{A\tau}d\tau$. $x(0)$ er ukjent, $y$ kjent på $[0,t_1]$, og $u=0$. Vis at $x(0)$ kan finnes hvis $W_o(t_1)$ er inverterbar.**
+$y(t)=Ce^{At}x(0)$. Premultipliser med $e^{A^Tt}C^T$ og integrer fra 0 til $t_1$:
+$\int_0^{t_1}e^{A^T\tau}C^Ty(\tau)d\tau=W_o(t_1)\,x(0)$ ⇒ $x(0)=W_o^{-1}(t_1)\int_0^{t_1}e^{A^T\tau}C^Ty(\tau)d\tau$.
+
+**b) (7 %) $x[k+1]=1.2x[k]+u[k]+w[k]$, $y[k]=x[k]+\sigma[k]+v_1[k]$, $E[ww]=\delta$, $E[v_1v_1]=0.1\delta$. Målebiasen følger $\sigma[k+1]=0.9\sigma[k]+v_2[k]$, $E[v_2v_2]=0.2\delta$, og alle er uavhengige. Sett opp modellen for Kalmanfilteret og gi $Q_d$, $R_d$.**
+Biasen er farget, ikke hvit, så den må inn som tilstand:
+$$\begin{bmatrix}x[k+1]\\\sigma[k+1]\end{bmatrix}=\begin{bmatrix}1.2&0\\0&0.9\end{bmatrix}\begin{bmatrix}x[k]\\\sigma[k]\end{bmatrix}+\begin{bmatrix}1\\0\end{bmatrix}u[k]+\begin{bmatrix}w[k]\\v_2[k]\end{bmatrix},\qquad y[k]=\begin{bmatrix}1&1\end{bmatrix}\begin{bmatrix}x[k]\\\sigma[k]\end{bmatrix}+v_1[k]$$
+$Q_d=\begin{bmatrix}1&0\\0&0.2\end{bmatrix}$, $R_d=0.1$.
+
+
+---

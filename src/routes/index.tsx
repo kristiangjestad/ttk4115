@@ -47,6 +47,7 @@ function Prioritert() {
                   {doneCount} av {total} gjort{next ? ` · neste: nr. ${topics.indexOf(next) + 1}` : ''}
                 </span>
               </div>
+              <AiLink />
             </div>
             <div className="card-raised p-3">
               <SPlane topics={topics} isDone={isDone} />
@@ -323,5 +324,31 @@ function TopicNote({ id, initial }: { id: string; initial: string }) {
         className="input mt-1.5"
       />
     </label>
+  )
+}
+
+const AI_URL = 'https://ttk4115.kristiangjestad.workers.dev/llms.txt'
+
+/** Lenke til chatbot-kontekst (llms.txt) med kopier-knapp. */
+function AiLink() {
+  const [copied, setCopied] = useState(false)
+  return (
+    <div className="muted mt-3 flex flex-wrap items-center gap-2 text-[13px]">
+      <span>Til chatbot:</span>
+      <button
+        className="btn btn-sm"
+        onClick={() => {
+          navigator.clipboard?.writeText(AI_URL).then(() => {
+            setCopied(true)
+            setTimeout(() => setCopied(false), 1500)
+          })
+        }}
+      >
+        {copied ? 'Kopiert ✓' : 'Kopier lenke'}
+      </button>
+      <a href="/llms.txt" target="_blank" rel="noreferrer">
+        llms.txt
+      </a>
+    </div>
   )
 }
