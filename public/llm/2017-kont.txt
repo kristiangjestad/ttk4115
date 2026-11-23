@@ -1,0 +1,768 @@
+# Kont 2017 – TTK4115 Lineær systemteori
+
+Tekst hentet automatisk fra PDF. Matriser og brøker kan stå rotete over flere linjer.
+
+## Oppgavetekst
+
+Department of Engineering Cybernetics
+
+Examination paper for TTK4115 Linear Systems Theory
+
+Academic contact during examination: Morten D. Pedersen
+
+Examination date: 12. August 2017
+Examination time (from–to): 09:00–13:00
+Permitted examination support material: D: No printed or handwritten material allowed. Specific
+simple calculator allowed.
+
+Other information:
+Note that no parts of this problem assume that you have solved any of the previous parts. The given
+information from previous parts should be sufficient to move on.
+
+You may answer in English or Norwegian.
+
+Language: English
+Number of pages: 6
+Number pages enclosed: 4
+
+                                                                                     Checked by:
+
+                                                               Date           Signature
+
+TTK4115 Linear Systems Theory - 12. August 2017                                    Page 1 of 6
+
+Problem 1 (20 %)
+
+Let a first order low-pass filter and a first order high-pass filter be given respectively by
+                                           1                         τs
+                             gl (s) =           ,       gh (s) =
+                                         τs + 1                    τs + 1
+The filters are driven by a common input signal u(s), but produce the two outputs
+yl (s) = gl (s)u(s) and yh (s) = gh (s)u(s).
+
+a) (2 %) Find a state-space realization for the system taking u(t) as input and producing
+      y(t) = yl (t) as output.
+
+b) (3 %) Find a state-space realization for the system taking u(t) as input and producing
+      y(t) = yh (t) as output.
+
+c) (3 %) Find a state-space realization for the system taking u(t) as input and producing
+      y(t) = yl (t) + yh (t) as output.
+
+d) (5 %) Find a minimal state-space realization for the system taking u(t) as input and
+      producing the vector y(t) = [yl (t), yh (t)]T as output.
+
+e) (7 %) Consider the following state-space model with ωb > 0.
+
+        ẋ = Ax + bu,     y = Cx + du
+                                                                    ωb2
+                                                                                       
+                 "               #            "         #                 0            0
+                      0   1                         0
+           A=                        ,   b=                 ,   C= 0    2ωb  ,   d= 0 
+                                                                                      
+                        2
+                     −ωb −2ωb                       1
+                                                                    −ωb2 −2ωb          1
+
+Identify the transfer-function g(s) so that y(s) = g(s)u(s). Let y = [y1 , y2 , y3 ]T .
+What kind of filtering action is applied to u on each of the output channels? The image
+presented on the next page serves as a visual hint!
+
+Page 2 of 6                         TTK4115 Linear Systems Theory - 12. August 2017
+
+Problem 2 (30 %)
+The shaft velocity of a diesel engine can be modeled notionally by
+
+                                     τ ẋ + x = u − d                                  (1)
+
+Here, x represents the shaft velocity, u the throttle whereas d represents an applied load.
+The dynamics are quantified by a dimensionless time-constant τ .
+
+a) (8 %) Suppose that LQR is used to tune a simple controller u = −kx where the
+      feedback proportional to k minimizes the cost function
+                                         Z ∞n           o
+                                    J=        qx2 + ru2 dt
+                                          0
+
+     Let x(0) = 1 with d = 0. Draw a sketch comparing the responses in x(t) with the
+     following tunings:
+
+     A q = 1 and r = 1.
+     B q = 100 and r = 1.
+     C q = 1 and r = 100.
+     D q = 100 and r = 100.
+
+     Label your graphs with the appropriate letter. You do not need to compute x(t)
+     explicitely. Your sketch only needs to capture the qualitative differences between
+     the tunings A through D.
+
+TTK4115 Linear Systems Theory - 12. August 2017                                                                    Page 3 of 6
+
+b) (10 %) Let xr denote a constant shaft velocity reference. Stationary deviations from
+     this reference are undesirable, integral effect is therefore to be used. The LQR will
+     be employed to minimize the cost function
+                                    Z ∞                             Z t
+                                                         2                          2    0        2
+                            J=             qp (x − xr ) + qi                 (x − xr ) dt + u             dt               (2)
+                                    0                                    0
+
+     In order to find the optimal gain matrix K, the Riccati equation must be solved.
+
+                                        AT P + PA + Q − PBR−1 BT P = 0
+
+     Find a set of matrices A, B, Q, R, consistent with the model (1) and cost function
+     (2). (Scalars count as 1 × 1 matrices).
+
+c) (12 %) The engine manufacturer indicates that it is in fact u̇ that ought to be limited
+      rather than the input u itself. (The motor prefers to run at a steady speed). Taking
+      this advice leads to the cost function
+                                               Z ∞n                                 o
+                                          J=             qp (x − xr )2 + u̇2 dt                                            (3)
+                                                 0
+
+     As before, the Riccati equation must be solved.
+
+                                        AT P + PA + Q − PBR−1 BT P = 0
+
+     Find a set of matrices A, B, Q, R, consistent with the model (1) and cost function
+     (3). (Scalars count as 1 × 1 matrices).
+
+Problem 3 (20 %)
+Consider the following state-space model
+              "         #       "         #"         #       "       #                            "            #
+                  ẋ1               0 1        x1                1                  h         i       x1
+                            =                            +               u,    y=       1 β
+                  ẋ2               1 0        x2                α                                    x2
+
+a) (3 %) For which values of α and β is this system uncontrollable?
+
+b) (3 %) For which values of α and β is this system unobservable?
+
+c) (5 %) Let α = 0. Find the constants k1 and k2 in the feedback u = −(k1 x1 + k2 x2 )
+      so that the eigenvalues in closed loop are λ1 = λ2 = −1.
+
+Page 4 of 6                          TTK4115 Linear Systems Theory - 12. August 2017
+
+d) (9 %) Suppose now that x = [x1 , x2 ]T cannot be measured directly, but only through
+      y.
+
+        • Explain how state-feedback can be implemented if you can only measure y
+          and not x.
+        • Explain why the value β = 1 is problematic if you can only measure y and
+          not x.
+        • With β = 1, identify k so that the output-feedback u = −ky results in the
+          closed-loop poles λ1 = λ2 = −1.
+
+Problem 4 (30 %)
+
+Consider the measurement y given by
+
+                                       y = Cx + v
+
+The objective is to estimate the unknown vector x, the desired estimate will be denoted
+x̂. Some information is known; the mean and covariance of x are given by
+
+                         E[x] = m,     E[(x − m)(x − m)T ] = Q
+
+The measurement noise v satisfies
+
+                                E[v] = 0,   E[vvT ] = R
+
+It is assumed that x and v are completely uncorrelated.
+
+Since the problem is linear, it is reasonable to assume that the estimate can be obtained
+from the general formula
+                                    x̂ = m + K(y − Cm)                                 (4)
+The first term centers the estimate on the mean, the second term allows variations about
+the mean. The measurement error will be denoted
+
+                                        e = x − x̂
+
+Note that the matrix K is left undetermined for now.
+
+TTK4115 Linear Systems Theory - 12. August 2017                             Page 5 of 6
+
+a) (5 %) Show that the estimate x̂ is unbiased, that is
+
+                                          E[e] = 0
+
+     Make sure to show your work.
+
+b) (10 %) Show that the covariance matrix of the estimate error P is given by
+
+                        P = E[eeT ] = (I − KC)Q(I − KC)T + KRKT                      (5)
+
+     Make sure to show your work.
+
+c) (10 %) The mean-square error (MSE) is given by the formula
+
+                                               E[e2i ] = tr(P)
+                                          X
+                                  MSE =
+                                           i
+
+     where ei is the error associated with the i’th estimate x̂i . The trace operator is
+     used to extract the MSE from P. Now, the MSE is to be minimized by selecting
+     the as of yet undetermined matrix K. This leads to an optimal estimate for x̂
+     when (4) is used.
+     The following matrix derivatives are supplied
+
+         ∂                ∂
+           tr(X) = I,       tr(AXT ) = A,
+        ∂X               ∂X
+                                  ∂                        ∂
+                                     tr(XA) = AT ,           tr(XAXT ) = XAT + XA
+                                 ∂X                       ∂X
+
+     When the objective is to minimize the MSE, the best choice for K is found from
+     the relation
+                                        ∂MSE
+                                              =0
+                                          ∂K
+     Show that the optimal choice is given by
+
+                                 K = QCT (CQCT + R)−1                                (6)
+
+Page 6 of 6                          TTK4115 Linear Systems Theory - 12. August 2017
+
+d) (5 %) Let a simple measurement model be given by
+                                           "       #        "        #
+                                               1                v1
+                                      y=               x+
+                                               1                v2
+
+The unknown scalar x satisfies E[x] = 0 and E[x2 ] = q = σ 2 . The zero-mean noise vector
+v = [v1 , v2 ]T is equipped with the covariance matrix
+                                               "         #
+                                                   1 0
+                                       R=                                               (7)
+                                                   0 2
+
+It is seen that the second element in v = [v1 , v2 ]T is more "noisy" than the first.
+
+Compute the optimal blending matrix K, see (6). This matrix will have two elements
+K = [k1 , k2 ].
+
+With m = 0 (due to E[x] = 0) the estimate reads as
+
+                                          x̂ = Ky
+
+The two elements of y both measure x, but the elements in K are not necessarily the
+same. Noting (7), explain why this could be the case. (Informal insights are sufficient).
+
+TTK4115 Linear Systems Theory - 12. August 2017                          Page i of iv
+
+Formula sheet
+
+Solutions
+
+                                           Z t
+                     x(t) = eAt x(0) +           eA(t−τ ) Bu(τ )dτ
+                                            0
+                                           k−1
+                     x[k] = Ak x[0] +            Ak−1−m Bu[m]
+                                           X
+
+                                        m=0
+
+Controllability/Observability
+
+                      C = [B, AB, A2 B, · · · , An−1 B]
+                                   
+                              C
+                           CA 
+                                   
+                                  2 
+                             CA
+                          
+                      O = 
+                                   
+                              ..   
+                                .
+                                    
+                                   
+                                CAn−1
+
+Realization
+
+         G(s) = C(sI − A)−1 B + D
+         G(s) = G(∞) + Gsp (s)
+          d(s) = sr + α1 sr−1 + · · · + αr−1 s + αr
+                     1
+        Gsp (s) =      [N sr−1 + N2 sr−2 + · · · + Nr−1 s + Nr ]
+                   d(s) 1
+                                                                    
+                      −α1 Ip −α2 Ip · · · −αr−1 Ip −αr Ip           Ip
+                   
+                      Ip      0       ···      0        0   
+                                                             
+                                                                   0 
+                                                                      
+                        0      Ip      ···      0        0   x +  0 u
+                                                                    
+              ẋ = 
+                   
+                        ..      ..     ..       ..       ..  
+                                                                   .. 
+                                                                      
+                                          .
+                   
+                         .       .               .        .
+                                                             
+                                                                 . 
+                        0       0    ···          Ip         0       0
+              y = [ N1 N2 · · · Nr−1 Nr ]x + G(∞)u
+
+Page ii of iv                         TTK4115 Linear Systems Theory - 12. August 2017
+
+LQR
+
+       Z ∞
+  J=         xT (t)Qx(t) + uT (t)Ru(t) dt
+        0
+                            AT P + PA + Q − PBR−1 BT P = 0
+                                                                     u(t) = −R−1 BT Px(t)
+
+Lyapunov equation
+
+                                     AT M + MA = −N
+
+Kalman filtering (Discrete time)
+
+Process model
+
+                x[k + 1] = Ad x[k] + Bd u[k] + w[k],      y[k] = Cx[k] + v[k]
+
+The noise and disturbance are unbiased (E[v[k]] = 0, E[w[k]] = 0) and white
+
+                    E[v[k]v[l]T ] = δ[k, l]Rd ,   E[w[k]w[l]T ] = δ[k, l]Qd
+
+Algorithm Initialize at x̂− [0] = E[x(0)] and P− [0] = E[(x[0] − x̂− [0])(x[0] − x̂− [0])T ].
+Compute recursively:
+
+   1. L[k] = P− [k]CT (CP− [k]CT + Rd )−1
+
+   2. x̂[k] = x̂− [k] + L[k](y[k] − Cx̂− [k])
+
+   3. P[k] = (I − L[k]C)P− [k](I − L[k]C)T + L[k]Rd L[k]T
+
+   4. x̂− [k + 1] = Ad x̂[k] + Bd u[k],   P− [k + 1] = Ad P[k]AT
+                                                               d + Qd
+
+TTK4115 Linear Systems Theory - 12. August 2017                              Page iii of iv
+
+Kalman filtering (Continuous time)
+
+Process model
+                          ẋ = Ax + Bu + Gw,         y = Cx + v
+The noise and disturbance are unbiased (E[v(t)] = 0, E[w(t)] = 0) and white
+
+                E[v(t)v(τ )T ] = δ(t − τ )R,   E[w(τ )w(t)T ] = δ(t − τ )Q
+
+Optimal gain     The Kalman gain is given by L(t) = P(t)CT R−1 where
+
+                       Ṗ = AP + PAT + GQGT − PCT R−1 CP
+
+Set Ṗ = 0 to find stationary gain.
+
+Stationary processes
+
+Autocorrelation and power spectral density
+
+                     Ru (τ ) = E[u(t)u(t + τ )],   Su (ω) = F{Ru (τ )}
+
+With y(s) = H(s)w(s) where E[w(t)] = 0 and Rw (τ ) = δ(τ )q it holds that
+
+                                 Sy (ω) = H(ω)H(−ω)q
+
+Page iv of iv                      TTK4115 Linear Systems Theory - 12. August 2017
+
+Laplace transform pairs
+
+                           f (t)        ⇐⇒        F (s)
+
+                          δ(t)         ⇐⇒        1
+                                                 1
+                             1         ⇐⇒
+                                                 s
+                                                   1
+                          e−at         ⇐⇒
+                                                 s+a
+                                                 1
+                             t         ⇐⇒
+                                                 s2
+                                                 2
+                            t2         ⇐⇒
+                                                 s3
+                                                      1
+                      te−at            ⇐⇒
+                                                 (s + a)2
+                                                    ω
+                      sin ωt           ⇐⇒
+                                                 s2 + ω 2
+                                                    s
+                     cos ωt            ⇐⇒
+                                                 s2 + ω 2
+
+## Løsningsforslag
+
+Solution Suggestion
+                      Exam - TTK4115 Linear System Theory
+                               12. August, 2017
+
+                                                  August 8, 2017
+
+Problem 1
+A first order low-pass filter and a first order high-pass filter are given respectively by
+                                                    1                         τs
+                                       gl (s) =          ,       gh (s) =
+                                                  τs + 1                    τs + 1
+The filters are driven by a common input signal u(s), but produce the two outputs yl (s) = gl (s)u(s) and
+yh (s) = gh (s)u(s).
+
+a) A state-space realization for the transfer function gl (s) is to be found. Since the plant is first order, the
+     realization must be on the general form
+
+                                             ẋ = ax + bu,          y = cx + du                              (1)
+
+      A Laplace transform here gives
+                                                  y       ds + (bc − da)
+                                                    (s) =                                                    (2)
+                                                  u           s−a
+      Comparison leads to the equations
+                                                1                                  1
+                                             a=− ,               d = 0,     bc =                             (3)
+                                                τ                                  τ
+      Setting c = 1, a state-space realization follows as
+                                                        1   1
+                                                  ẋ = − x + u,             y=x                              (4)
+                                                        τ   τ
+      Recall that state-space realizations are not unique!
+b) Proceeding in a similar manner, for gh (s) one must have
+                                              1
+                                           a=− ,         d = 1,           bc − da = 0                        (5)
+                                              τ
+      Setting c = −1, one has b = 1/τ and hence
+                                                  1   1
+                                            ẋ = − x + u,                 y =u−x                             (6)
+                                                  τ   τ
+
+                                                             1
+
+c) This question asks for a realization of gl (s) + gh (s). Now verify that
+                                                                      1      τs
+                                        gl (s) + gh (s) =                 +       =1                                   (7)
+                                                                    τs + 1 τs + 1
+     Our realization is thus
+                                                                y=u                                                    (8)
+
+d) We are asked to find a minimal state-space realization for the transfer-function
+                                                       1
+                                               gl (s)
+                                                       = τ s+1τs                                                       (9)
+                                              gh (s)        τ s+1
+
+     It is seen that this transfer-function is first-order, and one state will suffice. (Using two would render
+     the model non-minimal). A general description for the state-space realization is thus
+
+                                             ẋ = ax + bu,                  y = cx + du                               (10)
+
+     where c and d are 2 × 1 vectors. Taking a Laplace-transform leads to
+
+                                                                ds + (cb − da)
+                                               y(s) =                                                                 (11)
+                                                                    s−a
+     Clearly, a = −1/τ and hence
+                                                                            0
+                                                            d=                                                        (12)
+                                                                            1
+
+     Since τ (cb − da) = [1, 0]T it must hold that τ cb = [1, −1]T . Choosing b = 1/τ leads to c = [1, −1]T
+     and the realization
+                                          1     1             1          0
+                                    ẋ = − x + u, y =               x+       u                         (13)
+                                          τ     τ            −1          1
+
+e) This task asks for the transfer-function of the following state-space model
+
+        ẋ = Ax + bu,    y = Cx + du
+                                                                                                ωb2
+                                                                                                                   
+                                                                                                   0            0
+                                    0         1                                 0
+                             A=                             ,    b=                     ,   C= 0     2ωb  ,   d= 0 
+                                   −ωb2      −2ωb                               1
+                                                                                               −ωb2   −2ωb          1
+
+     It is well known that the general formula reads as g(s) = C(sI − A)−1 b + d. Here, one finds that
+
+          ωb2
+                                                                 
+                   0                       −1        0
+
+         0                 s       −1              0
+                  2ωb                             + 0 
+                           ωb2
+                       
+                                  s + 2ωb           1
+         −ωb2     −2ωb                                  1
+                                             2                                         
+                                             ωb    0                               0
+                               1          0                 s + 2ω b  1     0
+                        = 2                       2ωb                           + 0 
+                         s + 2ωb s + ωb2        2              −ωb2    s     1
+                                            −ωb −2ωb                                   1
+                                                     2
+                                                                                                ωb2
+                                                                                                
+                                                   ωb                0
+                                  1                                               1
+                         = 2              2
+                                                 2ωb s      + 0 =
+                                                                            2              2
+                                                                                              2ωb s                 (14)
+                            s + 2ωb s + ωb                2
+                                              −(2ωb s + ωb )         1     s  + 2ω b s + ωb     s2
+
+     It is seen that the outputs y represent, in descending order, a low-pass filter, a band-pass filter and
+     finally a high-pass filter.
+
+                                                                2
+
+Problem 2
+A diesel engine model is supplied as
+                                                                  τ ẋ + x = u − d                                                   (15)
+
+a) This task examines the response of the diesel engine under LQR control. The following functional is
+    minimized with state-feedback              Z ∞n           o
+                                          J=         qx2 + ru2 dt
+                                                                           0
+      A number of different tunings are considered.
+      A q = 1 and r = 1.
+      B q = 100 and r = 1.
+      C q = 1 and r = 100.
+      D q = 100 and r = 100.
+
+      The response will be on the form x(t) = e−at x0 . It is seen that A and D will result in similar responses.
+      Tuning C will imply a slower decay of x compared to A and D, whereas B will result in a faster decay.
+b) In order to use the LQR with the cost objective given below, a state-space description of the error-state
+     x̃ = x − xr and its integral x̃˙ i = x − xr must be found.
+                                       Z ∞                     Z t
+                               J=            qp (x − xr )2 + qi     (x − xr )2 dt0 + u2 dt              (16)
+                                               0                                            0
+
+      One now has                                                 Z ∞n                     o
+                                                       J=             qp x̃2 + qi x̃2i + u2 dt                                       (17)
+                                                                   0
+      Since xr is constant, the error state x̃ can be modeled by
+
+                                                                  τ x̃˙ + x̃ = u − d − xr                                            (18)
+
+      The integral effect follows as                                                       Z t
+                                                       x̃˙ i = x̃       ⇒ x̃i =                     (x − xr ) dt0                    (19)
+                                                                                            0
+      Gathering definitions leads to an augmented state-space model
+                                                             A                                       B
+                                                   z         }|        {                      z }| {
+                                    x̃˙                − τ1                                        1
+
+                                                                   0             x̃                          1          d + xr
+                                               =                                           +          τ   u−                         (20)
+                                   x̃˙ i                 1         0            x̃i                   0      τ            0
+
+      The associated cost-matrices are found as
+
+                                                                               qp     0
+                                                             Q=                                 ,     R=1                            (21)
+                                                                               0      qi
+
+c) In this task, the trick is to define
+                                                                                    u̇ = v                                           (22)
+      Using the error-state from the previous task leads to the cost-function
+                                                 Z ∞n               o
+                                             J=         qp x̃2 + v 2 dt                                                              (23)
+                                                                           0
+
+                                                                                3
+
+     The associated state-space model reads as
+                                                        A                                      B
+                                               z        }|        {                z }| {
+                                 x̃˙               − τ1      1
+
+                                                                          x̃            0        1 d + xr
+                                           =                 τ                     +          v−                                         (24)
+                                 u̇                 0        0            u             1        τ   0
+
+     The associated cost-matrices are found as
+
+                                                                     qp        0
+                                                        Q=                             ,       R=1                                       (25)
+                                                                     0         0
+
+Problem 3
+The following state-space model is to be examined
+
+                         ẋ1       0 1      x1     1                                                                          x1
+                              =                  +     u,                                          y=       1       β
+                         ẋ2       1 0      x2     α                                                                            x2
+
+a) The controllability matrix is readily computed as
+
+                                                                                             1    α
+                                                    C=           b       Ab        =                                                     (26)
+                                                                                               α    1
+
+     When det(C) = 0, the matrix ceases to have full rank. Verify that
+
+                                                                 det(C) = 1 − α2                                                         (27)
+
+     Therefore; the system is controllable for all β and α 6= ±1.
+b) The observability matrix is readily computed as
+
+                                                   c     1                                          β
+                                          O=          =                                                                                  (28)
+                                                 cA      β                                          1
+
+     When det(O) = 0, the matrix ceases to have full rank. Verify that
+
+                                                                 det(O) = 1 − β 2                                                        (29)
+
+     Therefore; the system is observable for all α and β 6= ±1.
+c) With α = 0 the state dynamics read as
+
+                                      ẋ1     0                           1            x1                   1
+                                           =                                                       +                u
+                                      ẋ2     1                           0            x2                   0
+
+     In order to place poles, define k = [k1 , k2 ]. With u = −kx one has
+
+                                                                  −k1 1 − k2
+                                  ẋ = (A − bk)x, A − bk =                                                                               (30)
+                                                                   1      0
+
+     The eigenvalues of the closed-loop system matrix may be found as solutions to the characteristic
+     equation
+                                            λ + k1 k2 − 1
+                        |λI − (A − bk)| =                 = λ2 + λk1 + 1 − k2 = 0               (31)
+                                              −1     λ
+     Comparison to the desired result (λ + 1)2 = λ2 + 2λ + 1 = 0 implies that k1 = 2 and k2 = 2.
+
+                                                                         4
+
+d)    • State-feedback can be implemented with an observer x̂˙ = Ax̂ + bu + l(y − ŷ) generating an estimate
+          of the state x̂ based on the measurement y. This requires that the plant is observable.
+        • With β = 1, the plant is unobservable. This implies that one cannot identify x using an observer.
+          State-feedback is therefore difficult.
+        • The plant is now
+
+                                 ẋ1               0    1        x1               1                                    x1
+                                           =                              +               u,   y=        1   1
+                                 ẋ2               1    0        x2               α                                      x2
+
+          Inserting u = −ky leads to the closed-loop dynamics
+
+                                                                                                       −k            1−k
+                           ẋ = Ax − bky = (A − kbc)x,                            A − kbc =                                       (32)
+                                                                                                     1 − kα          −kα
+
+          The eigenvalues of the matrix A − kbc solve
+
+              λ+k       k−1
+                                  = (λ + k)(λ + kα) − (k − 1)(kα − 1) = λ2 + λk(α + 1) + k(α + 1) − 1 = 0 (33)
+             kα − 1    λ + kα
+
+          Yet again comparing to the desired polynomial (λ + 1)2 = λ2 + 2λ + 1 = 0 implies
+                                                                                                2
+                                                        k(α + 1) = 2              ⇒k=                                             (34)
+                                                                                               α+1
+          Verify that this also gives
+                                                        2(α + 1)
+                                                       k(α + 1) − 1 =
+                                                                 −1=1                                                             (35)
+                                                         α+1
+          Sometimes, one can proceed without observability!
+
+Problem 4
+The measurement problem given below is considered.
+
+                                                            y = Cx + v
+
+a) The estimate x̂ is indeed unbiased. The estimation error e is given by
+
+                         e = x − x̂ = x − (m + K(y − Cm)) = (I − KC)(x − m) − Kv
+
+     With E[x] = m, one finds that
+
+                                           E[e] = (I − KC)E[x − m] − KE[v] = 0                                                    (36)
+
+b) The covariance matrix of e is found as follows: first identify the outer product
+
+        eeT = [(I − KC)(x − m) − Kv][(I − KC)(x − m) − Kv]T
+      = (I − KC)(x − m)(x − m)T (I − KC)T − Kv(x − m)T (I − KC)T − (I − KC)(x − m)vT KT + KvvT KT
+                                                                                                (37)
+
+     The expectancy of the outer product follows as
+
+        E[eeT ] = (I − KC)E[(x − m)(x − m)T ](I − KC)T + KE[vvT ]KT
+                                                       − KE[v(x − m)T ](I − KC)T − (I − KC)E[(x − m)vT ]KT                        (38)
+
+                                                                      5
+
+     Since x and v are uncorrelated and E[v] = 0 it follows that
+
+                                       E[v(x − m)T ] = 0,               E[(x − m)vT ] = 0                                 (39)
+
+     Using the supplied data, one is left with
+
+                                      E[eeT ] = (I − KC)Q(I − KC)T + KRKT                                                 (40)
+
+c) The mean-square error is to be minimized. This is achieved by solving
+
+                                                        ∂tr(P)
+                                                               =0                                                         (41)
+                                                         ∂K
+     Expanding and rearranging P gives
+
+                               P = Q − (QCT KT + KCQ) + K(CQCT + R)KT                                                     (42)
+
+     Differentiating the trace with respect to K gives
+
+                                          ∂tr(P)
+                                                 = −2QCT + 2K(CQCT + R)                                                   (43)
+                                           ∂K
+     Setting the derivative equal to zero one finds that
+
+                                                K = QCT (CQCT + R)−1                                                      (44)
+
+d) A simple measurement model is given by
+                                                            c
+                                                       z }| {
+
+                                                         1          v1
+                                                    y=         x+                                                         (45)
+                                                         1          v2
+
+     The blending matrix follows from
+
+                                                K = QCT (CQCT + R)−1                                                      (46)
+
+     In this case,
+                                                2               1                    1       0
+                                       Q=σ ,          c=                ,   R=                                            (47)
+                                                                1                    0       2
+     Therefore                                                                  −1
+                                                                                                 σ2
+
+                             2                   1     1               1   0
+                                               σ2
+
+                      K=σ         1   1                         +                        =            2
+                                                                                                              2   1       (48)
+                                                  1     1               0   2                2 + 3σ
+     It is seen that the first element in y contributes more to the estimate x̂. This is natural since the
+     second element is more noisy! The optimal estimator can be said to ”trust” the better measurement
+     more.
+
+                                                            6

@@ -1,0 +1,628 @@
+# Kont 2020 – TTK4115 Lineær systemteori
+
+Tekst hentet automatisk fra PDF. Matriser og brøker kan stå rotete over flere linjer.
+
+## Oppgavetekst
+
+Department of Engineering Cybernetics
+
+Examination paper for TTK4115 Linear Systems Theory
+
+Examination date: 06.08.2020
+
+Examination time (from-to): 09:00-13:00
+
+Permitted examination support material: A / All support material is allowed
+
+Academic contact during examination: Morten D. Pedersen
+
+Technical support during examination: Orakel support services
+
+OTHER INFORMATION
+
+Saving: Answers written in Inspera Assessment are automatically saved every 15 seconds.
+If you are working in another program remember to save your answer regularly.
+
+Cheating/Plagiarism: The exam is an individual, independent work. Examination aids are
+permitted. All submitted answers will be subject to plagiarism control. Read more about
+cheating and plagiarism here.
+
+ABOUT SUBMISSION
+
+File upload: All files must be uploaded before the examination time expires.
+       How to create PDF documents
+       Remove personal information from the file(s) you want to upload
+
+NB! You are responsible to ensure that you upload the correct file(s) for all questions. Check
+the file(s) you have uploaded by clicking “Download” when viewing the question. All files can
+be removed or replaced as long as the test is open.
+
+Your answer will be submitted automatically when the examination time expires and
+the test closes, if you have answered at least one question. This will happen even if you do
+not click “Submit and return to dashboard” on the last page of the question set. You can
+reopen and edit your answer as long as the test is open. If no questions are answered by the
+time the examination time expires, your answer will not be submitted.
+
+Withdrawing from the exam: If you become ill or wish to submit a blank test/withdraw from
+the exam for another reason, go to the menu in the top right-hand corner and click “Submit
+blank”. This cannot be undone, even if the test is still open.
+
+Accessing your answer post-submission: You will find your answer in Archive when the
+examination time has expired.
+
+                  Continuation exam - TTK4115
+                      Contact person: Morten Dinhoff Pedersen
+                morten.d.pedersen@ntnu.no, tel.: +47 41602135
+                                             06.08.2020
+
+1 Introduction
+This exam is a case-study in applied linear control system design. The process under consideration is
+a computer-controlled two-tank system which is equipped with one controllable valve and a level gauge
+measurement device. Your task is to find appropriate parameters in a simple control/estimation program,
+and then motivate your answer.
+
+2 System description
+Consider the tank system shown in the figure on the next page.
+The tanks are filled with distilled water and have a constant cross-section with a base-area denoted by
+A. The inflow to TANK 1 may be controlled directly by a valve and is denoted by u. The level in TANK
+2 is measured by a level gauge and is denoted by y. Both tanks are equipped with a tap at the bottom.
+These taps are similar. The volumetric flow through a tap v is linearly related to the level of the tank.
+A simple computer can be used to control the inflow valve to TANK 1 and to estimate the level of TANK
+1, which is not measured directly.
+The computer accepts two inputs:
+Level gauge measurement - TANK 2 denoted by y[m] and given in units of meters.
+Reference level - TANK 2 denoted by r[m] and given in units of meters. The reference is set manually
+     by a dial.
+The computer generates two outputs:
+Inflow valve opening - TANK 1 denoted by u[m3 /s] and given in units of cubic-metres per second.
+Level estimate - TANK 1 denoted by ẑ[m] and given in units of metres. The estimate is shown on a
+     display.
+
+                                                   1
+
+                        u[m3 /s]
+
+            VALVE
+                                                       TANK 1
+
+                                                                                       TAP MODEL
+                                                                                         v1 = kz
+                                                                                         v2 = ky
+                                                                                          k = 0.1[m2 /s]
+                                        z[m]
+                                                       v1 [m3 /s]
+                                                                             TAP 1
+
+                        Base area: A1 = 0.5[m2 ]                                                   TANK 2
+                                                           LEVEL GAUGE
+
+                                                                                       y[m]
+
+                                                                                                      v2 [m3 /s]
+                                                                                                                   TAP 2
+
+                                                                  Base area: A2 = 1.0[m2 ]
+
+        y           r              u
+                                              ẑ = . . .
+
+        Inputs                         Outputs
+                        COMPUTER
+
+The computer control system operates at 1[kHz], i.e. a sample-time of
+
+                                                                         ∆t = 0.001[s]                                      (1)
+
+At each time-step k, the following general program is executed.
+                                                           A                                      B
+                                                z       }|               {
+                                                                              {
+                                                                                             z
+                                                                                                 }|
+                              x1 [k + 1]       a11 a12    x1 [k]      b11 b12      y[k]
+                                           =                      +                                                        (2a)
+                              x2 [k + 1]       a21 a22    x2 [k]      b21 b22      r[k]
+
+                                    u[k]       c11 c12    x1 [k]      d11 d12      y[k]
+                                           =                      +                                                        (2b)
+                                    ẑ[k]      c21 c22    x2 [k]      d21 d22      r[k]
+                                             |    {z   }            |    {z    }
+                                                           C                                      D
+
+The computer can be programmed by choosing the values in the four matrices A, B, C and D.
+
+                                                                                   2
+
+                                        %% Parameters
+
+                                        A1 = 0.5;
+                                        A2 = 1;
+                                        k = 0.1;
+3 Specification
+                                      %% State feedback
+The computer is to be programmed to achieve the following goals:
+                                      K = [0.85 4.05]; F = 5;
+  • Approximate the following Laplace-domain behavior for the level in TANK 2 with a suitable closed-
+     loop controller.                 %% Estimation
+                                                     1
+                                        y(s) ≃ 2            r(s)                                 (3a)
+                                      A = [-k/A1s +0;2s +k/A2
+                                                          1      -k/A2];
+                                      B = [1/A1; 0];
+  • Display the approximate level of TANK  1 on1];
+                                      C = [0     the display by using an estimator.
+
+                                                 z ≃ ẑ
+                                        L = [96.04;19.7];                                           (3b)
+
+4 Delivery                              %% Output feedback
+
+                                        Ad = [0.8014 -3.9421; 0.0038 0.1239];
+You are to deliver two items at the end of the exam:
+                                        Bd = [3.24 0.9; 0.8697 0.0026];
+                                        Cd = [-K;
+A program (50%) Determine a set of matrices      A, B,1 0];
+                                                        C and D for the program (2) that makes the
+                                        Ddthe
+     system satisfy the specifications in    = previous
+                                               [0 F; 0section.
+                                                         0];   Supply the matrices in the following
+     format.
+
+                                        %% Program parameters
+
+                                        A = [ 1 2; 3 4];
+                                        B = [ 5 6; 7 8];
+                                        C = [ 9 10;11 12];
+                                        D = [13 14;15 16];
+
+     Your score will be determined based on the performance of your parameters in a simulation study.
+A documentation (50%) Detail your control/estimation system with reference to theory. Items to
+     include are
+        • Modeling, including controllability and observability.
+        • State-feedback + reference-feedforward design in continuous time.
+        • Estimator design in continuous time using suitable rules-of-thumb.
+        • Output-feedback control synthesis in continuous time.
+        • Discretization.
+     Your score will be determined based on the quality of the documentation. Brief and concise de-
+     scriptions are preferable.
+
+5 Hints
+   • The tank system can be modeled using conservation of volume.
+   • Design the controller and estimator in continuous time - then discretize.
+   • Do not forget the separation principle.
+   • Euler discretization ẋ(t) ≈ (x[k + 1] − x[k])/∆t with t = k∆t is warranted due to the fast sampling
+     time.
+
+                                                   3
+
+## Løsningsforslag
+
+Continuation exam - TTK4115
+                      Contact person: Morten Dinhoff Pedersen
+                morten.d.pedersen@ntnu.no, tel.: +47 41602135
+                                             06.08.2020
+
+1 Introduction
+This exam is a case-study in applied linear control system design. The process under consideration is
+a computer-controlled two-tank system which is equipped with one controllable valve and a level gauge
+measurement device. Your task is to find appropriate parameters in a simple control/estimation program,
+and then motivate your answer.
+
+2 System description
+Consider the tank system shown in the figure on the next page.
+The tanks are filled with distilled water and have a constant cross-section with a base-area denoted by
+A. The inflow to TANK 1 may be controlled directly by a valve and is denoted by u. The level in TANK
+2 is measured by a level gauge and is denoted by y. Both tanks are equipped with a tap at the bottom.
+These taps are similar. The volumetric flow through a tap v is linearly related to the level of the tank.
+A simple computer can be used to control the inflow valve to TANK 1 and to estimate the level of TANK
+1, which is not measured directly.
+The computer accepts two inputs:
+Level gauge measurement - TANK 2 denoted by y[m] and given in units of meters.
+Reference level - TANK 2 denoted by r[m] and given in units of meters. The reference is set manually
+     by a dial.
+The computer generates two outputs:
+Inflow valve opening - TANK 1 denoted by u[m3 /s] and given in units of cubic-metres per second.
+Level estimate - TANK 1 denoted by ẑ[m] and given in units of metres. The estimate is shown on a
+     display.
+
+                                                   1
+
+                        u[m3 /s]
+
+            VALVE
+                                                       TANK 1
+
+                                                                                       TAP MODEL
+                                                                                         v1 = kz
+                                                                                         v2 = ky
+                                                                                          k = 0.1[m2 /s]
+                                        z[m]
+                                                       v1 [m3 /s]
+                                                                             TAP 1
+
+                        Base area: A1 = 0.5[m2 ]                                                   TANK 2
+                                                           LEVEL GAUGE
+
+                                                                                       y[m]
+
+                                                                                                      v2 [m3 /s]
+                                                                                                                   TAP 2
+
+                                                                  Base area: A2 = 1.0[m2 ]
+
+        y           r              u
+                                              ẑ = . . .
+
+        Inputs                         Outputs
+                        COMPUTER
+
+The computer control system operates at 1[kHz], i.e. a sample-time of
+
+                                                                         ∆t = 0.001[s]                                      (1)
+
+At each time-step k, the following general program is executed.
+                                                           A                                      B
+                                                z       }|               {
+                                                                              {
+                                                                                             z
+                                                                                                 }|
+                              x1 [k + 1]       a11 a12    x1 [k]      b11 b12      y[k]
+                                           =                      +                                                        (2a)
+                              x2 [k + 1]       a21 a22    x2 [k]      b21 b22      r[k]
+
+                                    u[k]       c11 c12    x1 [k]      d11 d12      y[k]
+                                           =                      +                                                        (2b)
+                                    ẑ[k]      c21 c22    x2 [k]      d21 d22      r[k]
+                                             |    {z   }            |    {z    }
+                                                           C                                      D
+
+The computer can be programmed by choosing the values in the four matrices A, B, C and D.
+
+                                                                                   2
+
+                                        %% Parameters
+
+                                        A1 = 0.5;
+                                        A2 = 1;
+                                        k = 0.1;
+3 Specification
+                                      %% State feedback
+The computer is to be programmed to achieve the following goals:
+                                      K = [0.85 4.05]; F = 5;
+  • Approximate the following Laplace-domain behavior for the level in TANK 2 with a suitable closed-
+     loop controller.                 %% Estimation
+                                                     1
+                                        y(s) ≃ 2            r(s)                                 (3a)
+                                      A = [-k/A1s +0;2s +k/A2
+                                                          1      -k/A2];
+                                      B = [1/A1; 0];
+  • Display the approximate level of TANK  1 on1];
+                                      C = [0     the display by using an estimator.
+
+                                                 z ≃ ẑ
+                                        L = [96.04;19.7];                                           (3b)
+
+4 Delivery                              %% Output feedback
+
+                                        Ad = [0.8014 -3.9421; 0.0038 0.1239];
+You are to deliver two items at the end of the exam:
+                                        Bd = [3.24 0.9; 0.8697 0.0026];
+                                        Cd = [-K;
+A program (50%) Determine a set of matrices      A, B,1 0];
+                                                        C and D for the program (2) that makes the
+                                        Ddthe
+     system satisfy the specifications in    = previous
+                                               [0 F; 0section.
+                                                         0];   Supply the matrices in the following
+     format.
+
+                                        %% Program parameters
+
+                                        A = [ 1 2; 3 4];
+                                        B = [ 5 6; 7 8];
+                                        C = [ 9 10;11 12];
+                                        D = [13 14;15 16];
+
+     Your score will be determined based on the performance of your parameters in a simulation study.
+A documentation (50%) Detail your control/estimation system with reference to theory. Items to
+     include are
+        • Modeling, including controllability and observability.
+        • State-feedback + reference-feedforward design in continuous time.
+        • Estimator design in continuous time using suitable rules-of-thumb.
+        • Output-feedback control synthesis in continuous time.
+        • Discretization.
+     Your score will be determined based on the quality of the documentation. Brief and concise de-
+     scriptions are preferable.
+
+5 Hints
+   • The tank system can be modeled using conservation of volume.
+   • Design the controller and estimator in continuous time - then discretize.
+   • Do not forget the separation principle.
+   • Euler discretization ẋ(t) ≈ (x[k + 1] − x[k])/∆t with t = k∆t is warranted due to the fast sampling
+     time.
+
+                                                   3
+
+6 Solution manual
+
+6.1 Modeling
+
+The tanks may be modeled using conservation of volume. It is therefore true that
+                                      d                              d
+                                         (A1 z) = u − v1 ,              (A2 y) = v1 − v2                   (4)
+                                      dt                             dt
+
+Let x1 , z and x2 , y. Inserting the model for the taps, one finds that
+
+                                          A1 ẋ1 = u − kx1 ,     A2 ẋ2 = kx1 − kx2                        (5)
+
+In a matrix format, this is
+                                                         A                                      b
+                                            z
+                                                        }|           {                z    }| {
+                               ẋ1       −k/A1     0                         x1                1/A1
+                                          =                                           +               u    (6)
+                               ẋ2        k/A2 −k/A2                         x2                  0
+
+                                              x1
+                                     y= 0 1                                                                (7)
+                                       | {z } x2
+                                                  c
+
+We note that the system is controllable from the input since the controllability matrix has full rank.
+
+                                                    1/A1 −k/(A21 )
+
+                              C = b Ab =                                                               (8)
+                                                      0     k/(A1 A2 )
+
+Moreover, the system is observable from the output since the observability matrix has full rank.
+
+                                          c          0        1
+                                  O=           =                                                           (9)
+                                         cA        k/A2 −k/A2
+
+Control and estimation is thus possible.
+
+6.2 State feedback
+
+Assuming that the full state is available for feedback, let a state-feedback + reference-feedforward con-
+troller be given by:
+                                                  k
+                                                 }| {
+                                                           x1
+                                             z
+                                      u = − k1 k2                + fr                                (10)
+                                                           x2
+Inserting this controller into the model of the plant gives the following closed-loop dynamics.
+                                                      A0 =A−bk                                      b0
+                                    z
+                                             }|         {      z }| {
+                          ẋ1      −(k + k1 )/A1 −k2 /A1      x1     f /A1
+                               =                                  +         r                             (11)
+                          ẋ2          k/A2       −k/A2       x2        0
+
+                                        x1
+                              y= 0 1                                                                      (12)
+                                 | {z } x2
+                                              c
+
+Converting this description to the Laplace-domain, one finds that
+
+                                     y(s) = H(s)r(s),          H(s) = c(sI − A0 )−1 b0                    (13)
+
+                                                                 4
+
+where
+                                                                                  −1
+                   0 −1 0
+                                             s + (k + k1 )/A1       k2 /A1
+                                                                         f /A1
+  H(s) = c(sI − A )     b = 0 1
+                                                    −k/A2           s + k/A20
+
+                                  s + k/A2        −k2 /A1          f /A1
+                             0 1
+                                        k/A2    s + (k + k1 )/A1        0
+                         =
+                                        k+k             kk     k(k+k )
+                                 s2 + A1 1 + Ak2 s + A1 A22 + A1 A21
+                                                                                               fk
+                                                                                              A1 A2
+                                                                       =                                                 (14)
+                                                                           s2 +         k+k1  k
+                                                                                         A1 + A2       s + k(k+k 1 +k2 )
+                                                                                                              A1 A2
+
+Comparison to the specification yields the following control settings.
+
+                        A1 A2                             A1 A2                        A1
+                   f=         ,   k2 = −(k + k1 ) +             ,     k1 = 2A1 − k 1 +                                     (15)
+                         k                                 k                           A2
+
+Numerical values for the parameters are readily derived by inserting the stated quantities.
+
+                                       f = 5,       k1 = 0.85,      k2 = 4.05                                              (16)
+
+If the control system was to be implemented in continuous time with full state-feedback, the case study
+would conclude here.
+Before proceeding, it is noted that the bandwidth of the closed-loop system with full state-feedback is
+given by
+                                               ωb = 1                                              (17)
+This number is also equal to the negative real part of the closed loop-poles.
+
+6.3 Estimator design
+
+A Luenberger observer is applicable since the plant is observable from the output. Denoting the estimate
+with the customary hat, this type of observer may be given on the general form:
+                                                                                              
+           ˙x̂1
+
+                      −k/A1      0         x̂1       1/A1           l1                x̂1 
+                  =                             +             u+          y− 0 1                    (18)
+           x̂˙ 2       k/A2 −k/A2          x̂2          0           l2       | {z } x̂2
+                                                                                               
+                    |       {z         }          | {z }         | {z }           c
+                             A                                b                l
+
+Let e = x − x̂ so that the error-dynamics may be written as
+
+                                  ė1      −k/A1       −`1     e1
+                                       =                                                                                   (19)
+                                  ė2      k/A2 −k/A2 − `2     e2
+                                         |         {z       }
+                                                          A−lc
+
+Now, the characteristic polynomial of the preceding system is found as
+
+                                                        k2
+
+                                      k    k                   kl2   kl1
+  ∆(λ) = |λ − (A − lc)| = λ2 +           +    + l2 λ +       +     +
+                                      A1   A2          A1 A2   A1    A2
+                                                                  = λ2 + 0.1l1 + λ(l2 + 0.3) + 0.2l2 + 0.02                (20)
+
+Using the rule-of-thumb that the estimator is to be 10-20 times faster than the closed-loop system (under
+full state-feedback), let the following characteristic polynomial serve as the desired one.
+
+                                  ∆0 (λ) = (λ + 10)2 = λ2 + 20λ + 100                                                      (21)
+
+Comparison shows that the following observer gains will achieve the desired result, viz.
+
+                                               l1 = 96.04,    l2 = 19.7                                                    (22)
+
+                                                          5
+
+The algorithm to estimate z with ẑ = x1 follows as
+                   x̂˙ 1
+
+                              −k/A1        −`1         x̂1     1/A1        l1
+                          =                                 +         u+        y                                                 (23)
+                   x̂˙ 2      k/A2 −k/A2 − `2          x̂2       0         l2
+                            |          {z           }         | {z }     | {z }
+                                                             A−lc                                       b              l
+
+                                                           x̂1
+                                 ẑ =       1    0                                                                                (24)
+                                                             x̂2
+
+Output-feedback in continuous time
+
+The separation principle tells us that the state-feedback and estimator designs may be undertaken indi-
+vidually, and then combined into a certainty equivalence controller.
+                                                                              k
+                                                                                      {
+                                                                                           x̂1
+                                                                    z        }|
+                                                     u=−                 k1        k2            + fr                             (25)
+                                                                                           x̂2
+Expressing u in terms of the state and reference in the estimator equation yields the following output-
+feedback controller, viz.
+                                                     A−bk−lc
+                                 z             }|             {
+                  x̂˙ 1
+
+                                  −(k + k1 )/A1 −`1 − k2 /A1       x̂1     f /A1        l1
+                              =                                         +          r+        y                                    (26)
+                  x̂˙ 2               k/A2         −k/A2 − `2      x̂2        0         l2
+
+                                             x̂1
+                            u = −k1 −k2                + fr                                                                       (27)
+                                                 x̂2
+This is a continuous time output-feedback controller that will satisfy the control specification. The
+estimation specification is satisfied by letting the display value be given by
+
+                                                            x̂1
+                                          z = x̂1 = 1 0                                           (28)
+                                                                x̂2
+
+Combining these relations into one continuous-time dynamic system yields
+                                                              Ac                                                 Bc
+                                  z                          }|                             {        z        }|    {
+                    x̂˙ 1
+
+                           −(k + k1 )/A1 −`1 − k2 /A1    x̂1                                                l1   f /A1      y
+                       =                                       +                                                                  (29)
+                    x̂˙ 2      k/A2        −k/A2 − `2    x̂2                                                l2      0       r
+
+                   u       −k1 −k2       x̂1       0 f     y
+                       =                      +                                                                                   (30)
+                   ẑ       1     0      x̂2       0 0     r
+                         |    {z      }         | {z }
+                                                Cc                                      Dc
+
+The parameters in the system are:
+                                                                         A1 = 0.500                                               (31)
+                                                                         A2 = 1.000                                               (32)
+                                                                              k = 0.100                                           (33)
+                                                                              f = 5.000                                           (34)
+                                                                          k1 = 0.850                                              (35)
+                                                                          k2 = 4.050                                              (36)
+                                                                          l1 = 96.04                                              (37)
+                                                                          l2 = 19.70                                              (38)
+
+Discretization
+
+The general form of the discretized system reads as
+                                                         x[k + 1] = Ad x[k] + Bd u[k]                                             (39)
+                                                                   y[k] = Cd x[k] + Dd u[k]                                       (40)
+
+                                                                                    6
+
+where
+                                x̂1 (k∆t)                        y(k∆t)                        u(k∆t)
+                   x[k] =                       ,   u[k] =                    ,   y[k] =                             (41)
+                                x̂2 (k∆t)                        r(k∆t)                        ẑ(k∆t)
+Assuming that the measurement y and the reference r are relatively constant over one time-step implies
+that exact discretization is possible. The parameters in the program thus become
+
+                                            Ad = exp(∆tAc )                                                          (42)
+                                                 Z ∆t
+                                            Bd =      exp(αAc )Bc dα                                                 (43)
+                                                      0
+                                            Cd = Cc                                                                  (44)
+                                            Dd = Dc                                                                  (45)
+
+Since the sampling time ∆t is very small, the following first order (Euler) expansions in ∆t are useful:
+
+                                      ∂exp(∆tAc )
+                Ad ≈ exp(0 · Ac ) + ∆t                  = I + ∆tAc                                                   (46)
+                                         ∂∆t       ∆t=0
+                     Z 0                          Z ∆t
+                                              ∂
+                Bd ≈     exp(αAc )Bc dα + ∆t           exp(αAc )Bc dα                                 = ∆tBc         (47)
+                      0                      ∂∆t 0
+                                                                                               ∆t=0
+
+6.4 Summary
+
+The algorithm can be programmed succesfully with the following matrices:
+
+                   1 0              −(k + k1 )/A1 −`1 − k2 /A1       0.9981                            −0.1041
+            Ad =            + ∆t                                =                                                    (48)
+                   0 1                  k/A2       −k/A2 − `2        0.0001                             0.9802
+
+                       l f /A1          0.0960 0.0100
+            Bd = ∆t 1               =                                                                                (49)
+                       l2     0         0.0197     0
+
+                   −k1 −k2            −0.85 −4.05
+            Cd =                  =                                                                                  (50)
+                     1      0            1       0
+
+                   0 f           0 5
+            Dd =            =                                                                                        (51)
+                   0 0           0 0
+
+                                                       A1 = 0.500                                                    (52)
+                                                       A2 = 1.000                                                    (53)
+                                                          k = 0.100                                                  (54)
+                                                           f = 5.000                                                 (55)
+                                                          k1 = 0.850                                                 (56)
+                                                          k2 = 4.050                                                 (57)
+                                                          l1 = 96.04                                                 (58)
+                                                          l2 = 19.70                                                 (59)
+                                                       ∆t = 0.001                                                    (60)
+
+                                                                 7

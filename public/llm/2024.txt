@@ -1,0 +1,1234 @@
+# Eksamen 2024 – TTK4115 Lineær systemteori
+
+Tekst hentet automatisk fra PDF. Matriser og brøker kan stå rotete over flere linjer.
+
+## Oppgavetekst
+
+Department of Engineering Cybernetics
+
+Examination paper for TTK4115 Linear Systems Theory
+
+Academic contact during examination: Morten O. Alver
+
+Examination date: 3 Dec 2024
+Examination time (from–to): 09:00–13:00
+Permitted examination support material: D: No printed or handwritten material allowed. Specific
+simple calculator allowed.
+
+Other information:
+
+  1. Note that no parts of this exam assume that you have solved any of the previous parts.
+     The given information from previous parts should be sufficient to move on.
+
+  2. You may answer in Norwegian or English. Du kan svare på norsk eller engelsk.
+
+Language: English
+Number of pages: 12
+Number pages enclosed: 4
+
+                                                                                      Checked by:
+
+                                                                Date           Signature
+
+TTK4115 Linear Systems Theory - 3 Dec 2024                            Page 1 of 12
+
+Problem 1 (4 %)
+
+Given the following discrete time system:
+                                                               
+                                   −2 1 0            0
+                      x[k + 1] =  −1 1 0  x[k] +  1  u[k]
+                                                    
+                                    1 1 1            1
+                                           h           i
+                                  y[k] =       0 1 0       x[k]
+
+Is this system:
+
+a) Not controllable, not observable
+
+b) Controllable, not observable
+
+c) Observable, not controllable
+
+d) Both controllable and observable
+
+e) Need more information to determine
+
+Page 2 of 12                                TTK4115 Linear Systems Theory - 3 Dec 2024
+
+Problem 2 (5 %)
+
+Given the following continuous time system :
+                                A                 B
+                           z
+                           "    }|    #{        z }| #{
+                                                "                        C
+                                                                    zh   }|    i{
+                               1 2                1
+                    ẋ =                   x+             u,   y=        1 0        x
+                               2 −2               0
+
+Is this system:
+
+a) Internally stable and BIBO stable
+
+b) Internally stable, not BIBO stable
+
+c) Internally unstable but BIBO stable
+
+d) Unstable in both senses
+
+TTK4115 Linear Systems Theory - 3 Dec 2024                             Page 3 of 12
+
+Problem 3 (5 %)
+
+Given the following matrix:                         "          #
+                                                        3 1
+                                               A=
+                                                        −1 5
+
+The matrix can be transformed into either diagonal form (Λ = Q−1 AQ) or Jordan form
+(J = Q−1 AQ). Which values of Λ, Q versus J, Q are correct?
+
+         "         #             "              #
+             4 0                     1 1
+a) Λ =                 and Q =
+             0 4                     1 −1
+         "         #             "          #
+             4 0                     1 1
+b) Λ =                 and Q =
+             0 4                     1 1
+         "         #             "         #
+             4 0                     0 1
+c) Λ =                 and Q =
+             0 4                     1 0
+         "         #             "         #
+             4 1                     1 1
+d) J =                 and Q =
+             0 4                     1 2
+         "         #             "             #
+             4 1                     1 −2
+e) J =                 and Q =
+             0 4                     1 1
+         "         #             "         #
+             4 1                     1 2
+f) J =                 and Q =
+             0 4                     1 1
+
+Page 4 of 12                            TTK4115 Linear Systems Theory - 3 Dec 2024
+
+Problem 4 (6 %)
+
+Given a continuous time system:
+
+                               ẋ = Ax + Bu,    y = Cx
+
+Which of the following statements are true (note: more than one may be true):
+
+a) The system can be diagonalized provided the A matrix is invertible.
+
+b) The system can only be asymptotically stable if the A matrix is invertible.
+
+c) The A matrix must be invertible for the system to have a time domain solution.
+
+d) If the A matrix is non-invertible, the system is marginally stable.
+
+e) If the A matrix is symmetric and negative definite, the system is asymptotically
+      stable.
+
+TTK4115 Linear Systems Theory - 3 Dec 2024                                               Page 5 of 12
+
+Problem 5 (4 %)
+
+Given the continuous time system:
+                           "          #        "       #
+                               1 −2                0                 h         i
+                    ẋ =                  x+               u,   y=       1 0       x
+                               0 ω                 1
+                                                   h            i
+where ω ̸= 0. Using a state feedback u = − k1 k2                    x, which values of k1 and k2 place
+the closed-loop system’s poles in -1 and -2?
+
+a) k1 = −1 and k2 = ω + 4
+
+b) k1 = −1 and k2 = ω − 4
+
+c) k1 = −3 and k2 = ω − 4
+
+d) k1 = −3 and k2 = ω + 4
+
+e) k1 = − ω3 and ω + 4
+
+f) k1 = − ω3 and k2 = ω − 4
+
+Page 6 of 12                                        TTK4115 Linear Systems Theory - 3 Dec 2024
+
+Problem 6 (5 %)
+
+Given the two continuous time systems:
+                            "          #        "        #
+                                1 4                  1                         h         i
+                     ẋ =                  x+                u1 ,       y1 =       1 0       x
+                                −1 2                 1
+                            "          #        "            #
+                                3 6                 −1                             h         i
+                     ż =                  z+                    u2 ,    y2 =          1 2       z
+                                −1 0                 1
+
+Are these systems:
+
+a) Unrelated
+
+b) Algebraically equivalent
+
+c) Zero-state equivalent but not algebraically equivalent
+
+d) Dual systems
+
+TTK4115 Linear Systems Theory - 3 Dec 2024                                 Page 7 of 12
+
+Problem 7 (6 %)
+
+Given a system governed by the following differential equation:
+
+                                ẍ(t) − 3ẋ(t) + ax(t) = u(t)
+
+If the input u(t) is a random signal with zero mean and power spectral density Su (jω) =
+A, what is the power spectral density of x(t)?
+
+                  A
+a) Sx (jω) =    4   2
+               ω +a
+
+                     A
+b) Sx (jω) =    4        2  2
+               ω +(9+2a)ω +a
+                    2
+                A
+c) Sx (jω) =    4  2
+               ω −a
+                        2
+                  A
+d) Sx (jω) =    4   2  2
+               ω +9ω +a
+                            2
+                     A
+e) Sx (jω) =    4           2
+               ω +(9−2a)jω+a
+
+                     A
+f) Sx (jω) =    4        2  2
+               ω +(9−2a)ω +a
+
+Page 8 of 12                               TTK4115 Linear Systems Theory - 3 Dec 2024
+
+Problem 8 (5 %)
+
+Consider the following discrete time system:
+                                      "         #            "       #
+                                          1 2                    1
+                         x[k + 1] =                 x[k] +               u[k]
+                                          1 0                    0
+
+                                          "     #
+                                              1
+The system state at time step 0 is x0 =         . Find the sequence of inputs u[0] and u[1]
+                                              0
+                                                        "        #
+                                                             5
+that will make the state after two steps be x[2] =             .
+                                                             4
+
+TTK4115 Linear Systems Theory - 3 Dec 2024                                      Page 9 of 12
+
+Problem 9 (20 %)
+
+You are designing the controller for an electrical vehicle. With x representing the speed
+of the vehicle, a simplified model for the speed is:
+
+                               ẋ(t) = −0.1x(t) + u(t) + d(t)
+
+where u(t) is the controller input and d(t) is an unknown disturbance.
+
+a) (5%) Assume that d(t) = 0. You want the speed to follow a reference speed r(t).
+     Design a controller on the form u(t) = −kx(t) + kr r(t) that gives a closed-loop
+     eigenvalue of −1, and makes the speed approach the reference value asymptotically
+     when the reference is a constant r0 .
+
+b) (5%) Set up the system to add integral action to your controller. Show that the speed
+     will approach the reference value asymptotically when the reference is a constant
+     r0 and the disturbance has a constant value d(t) = d0 .
+
+c) (5%) Assume now that the initial value x(0) is known, u(t) = 0 and that d(t) is a
+     random distubance such that
+
+                             E[d(t)] = 0,    E[d(t)d(t + τ )] = 2δ(τ )
+
+      Derive the equation for the expectation value E[x(t)] of the speed as a function of
+      time.
+
+d) (5%) Under the same assumptions as in c), derive the differential equation for the
+     variance of x(t) (Ċx (t) = . . . ). Assume for simplicity that x(0) = 0 and E[x(t)] = 0.
+
+Page 10 of 12                                 TTK4115 Linear Systems Theory - 3 Dec 2024
+
+Problem 10 (20 %)
+
+You want to track and predict the development of a stock market index based on its
+daily value. With x1 being the current value of the index and x2 being the current trend
+                                               h              iT
+of the index, we define a state vector x =         x1 x2           .
+
+A simple model of the system’s day-by-day changes is as follows:
+                                          "            #
+                                              1 1
+                             x[k + 1] =                    x[k] + w[k]
+                                              0 1
+                h              iT
+where w[k] = w1 [k] w2 [k]          is a disturbance process affecting the value and trend
+of the market index.
+
+a) (5%) Check the internal stability of the model. Explain what the result means in
+     terms of the behaviour of the market index.
+
+b) (5%) We can check the value of the index at any time, but it varies within the day.
+     Assume that your daily “measurement” of the index is an unbiased representation
+     of the values of that day, but with a measurement error that can be modelled as a
+     white noise process d[k] with E[d[k] · d[k + m]] = 4 · δ[k, m].
+      If the disturbance process w[k] satisifies some conditions, the discrete time Kalman
+      filter is an optimal estimator of the process. What are those conditions?
+
+c) (5%) Assume that the disturbance process satisfies the " conditions
+                                                                  #      mentioned in b),
+                                                            1 0
+     and let the disturbance covariance matrix be Qw =              . Let your initial esti-
+                                                            0 4
+     mate at time 0 be that x1 [0] = 100 ± 5 (expectation value and standard deviation),
+     x2 [0] = 5 ± 2, and you initially assume that these are independent of each other.
+      Then you measure the index as 104 at time 1. Calculate the a posteriori estimate
+      x[1].
+                                                   "                   #
+                                               3.53 0.47
+d) (5%) The a posteriori estimate P[1] =                   . Illustrate with a drawing
+                                               0.47 7.53
+     how to find the probability, according to the Kalman filter, of the true index value
+     being lower than 103 at time 1.
+
+TTK4115 Linear Systems Theory - 3 Dec 2024                                                          Page 11 of 12
+
+Problem 11 (20 %)
+
+A Segway can be modelled in a simplified way as an inverted pendulum linearized for
+small angles, and with the electrical motor providing a force affecting the angular speed
+directly. The Segway’s controller makes sure the angle is close to 0 by using the motor
+to compensate as the user leans forwards or backwards. In that way the controller both
+prevents the Segway from falling, and adjusts the speed depending on how the user leans.
+
+                             Figure 1: Sketch of Segway and θ angle
+
+Assume that the following model describes the system:
+                    "        #       "         #"        #       "        #        "        #
+                        θ̇               0 1        θ                 0                0
+                                 =       1                   +                u+                d
+                        θ̈               2 0        θ̇               −1                −1
+
+where θ is the angle (0 meaning the Segway is in the upright position), u is the input from
+the motor, and d is a disturbance representing the effect of the user leaning forwards or
+backwards.
+
+a) (6%) The Segway needs a controller that drives the angle θ and the angular
+                                                                           " speed
+                                                                               #
+                                                                            θ
+     towards 0. Design an LQR state feedback controller on the form u = −K       us-
+                                                                            θ̇
+                                               "             #
+                                        1 0
+     ing the weighting matrices Q =            and R = 1. (To simplify the calculation
+                                        0 1
+     you can use the fact that the off diagonal elements of P equal 1.618.)
+
+Page 12 of 12                            TTK4115 Linear Systems Theory - 3 Dec 2024
+
+b) (4%) If you were testing the controller from a) and users reported that the controller
+     seemed too slow, how would you try to fix this by modifying the Q matrix? Explain
+     your reasoning.
+
+c) (5%) Consider a case where the user is leaning, such that d(t) = d0 >h 0 for a long
+                                                                                    i
+     time. Find the steady state value of θ. Use the controller gain K = −1 −2 .
+
+d) (5%) When we get a steady state deviation in θ as shown in c), discuss what this
+     means for the performance of the Segway. Would you recommend changes to the
+     controller?
+
+TTK4115 Linear Systems Theory - 3 Dec 2024                               Page i of iv
+
+Formula sheet
+
+Solutions
+
+                                           Z t
+                     x(t) = eAt x(0) +           eA(t−τ ) Bu(τ )dτ
+                                            0
+                                           k−1
+                     x[k] = Ak x[0] +            Ak−1−m Bu[m]
+                                           X
+
+                                           m=0
+
+Controllability/Observability
+
+                      C = [B, AB, A2 B, · · · , An−1 B]
+                                   
+                              C
+                           CA 
+                                   
+                                  2 
+                             CA
+                          
+                      O = 
+                                   
+                              ..   
+                                .
+                                    
+                                   
+                                CAn−1
+
+Realization
+
+         G(s) = C(sI − A)−1 B + D
+         G(s) = G(∞) + Gsp (s)
+          d(s) = sr + α1 sr−1 + · · · + αr−1 s + αr
+                     1
+        Gsp (s) =      [N sr−1 + N2 sr−2 + · · · + Nr−1 s + Nr ]
+                   d(s) 1
+                                                                    
+                      −α1 Ip −α2 Ip · · · −αr−1 Ip −αr Ip           Ip
+                   
+                      Ip      0       ···      0        0   
+                                                             
+                                                                   0 
+                                                                      
+                        0      Ip      ···      0        0   x +  0 u
+                                                                    
+              ẋ = 
+                   
+                        ..      ..     ..       ..       ..  
+                                                                   .. 
+                                                                      
+                                          .
+                   
+                         .       .               .        .
+                                                             
+                                                                 . 
+                        0      0     ···          Ip         0       0
+              y = [ N1 N2 · · ·    Nr−1 Nr ]x + G(∞)u
+
+Page ii of iv                               TTK4115 Linear Systems Theory - 3 Dec 2024
+
+LQR
+
+       Z ∞
+  J=         xT (t)Qx(t) + uT (t)Ru(t) dt
+        0
+                            AT P + PA + Q − PBR−1 BT P = 0
+                                                                     u(t) = −R−1 BT Px(t)
+
+Lyapunov equation
+
+                                     AT M + MA = −N
+
+Kalman filtering (Discrete time)
+
+Process model
+
+                x[k + 1] = Ad x[k] + Bd u[k] + w[k],      y[k] = Cx[k] + v[k]
+
+The noise and disturbance are unbiased (E[v[k]] = 0, E[w[k]] = 0) and white
+
+                    E[v[k]v[l]T ] = δ[k, l]Rd ,   E[w[k]w[l]T ] = δ[k, l]Qd
+
+Algorithm Initialize at x̂− [0] = E[x(0)] and P− [0] = E[(x[0] − x̂− [0])(x[0] − x̂− [0])T ].
+Compute recursively:
+
+   1. L[k] = P− [k]CT (CP− [k]CT + Rd )−1
+
+   2. x̂[k] = x̂− [k] + L[k](y[k] − Cx̂− [k])
+
+   3. P[k] = (I − L[k]C)P− [k](I − L[k]C)T + L[k]Rd L[k]T
+
+   4. x̂− [k + 1] = Ad x̂[k] + Bd u[k],   P− [k + 1] = Ad P[k]AT
+                                                               d + Qd
+
+TTK4115 Linear Systems Theory - 3 Dec 2024                                   Page iii of iv
+
+Kalman filtering (Continuous time)
+
+Process model
+                          ẋ = Ax + Bu + Gw,         y = Cx + v
+The noise and disturbance are unbiased (E[v(t)] = 0, E[w(t)] = 0) and white
+
+                E[v(t)v(τ )T ] = δ(t − τ )R,   E[w(τ )w(t)T ] = δ(t − τ )Q
+
+Optimal gain     The Kalman gain is given by L(t) = P(t)CT R−1 where
+
+                       Ṗ = AP + PAT + GQGT − PCT R−1 CP
+
+Set Ṗ = 0 to find stationary gain.
+
+Stationary processes
+
+Autocorrelation and power spectral density
+
+                     Ru (τ ) = E[u(t)u(t + τ )],   Su (ω) = F{Ru (τ )}
+
+With y(s) = H(s)w(s) where E[w(t)] = 0 and Rw (τ ) = δ(τ )q it holds that
+
+                                 Sy (ω) = H(ȷω)H(−ȷω)q
+
+Page iv of iv                      TTK4115 Linear Systems Theory - 3 Dec 2024
+
+Laplace transform pairs
+
+                           f (t)   ⇐⇒         F (s)
+
+                          δ(t)     ⇐⇒         1
+                                              1
+                             1     ⇐⇒
+                                              s
+                                                1
+                          e−at     ⇐⇒
+                                              s+a
+                                              1
+                             t     ⇐⇒
+                                              s2
+                                              2
+                            t2     ⇐⇒
+                                              s3
+                                                   1
+                        te−at      ⇐⇒
+                                              (s + a)2
+                                                 ω
+                       sin ωt      ⇐⇒
+                                              s2 + ω 2
+                                                 s
+                       cos ωt      ⇐⇒
+                                              s2 + ω 2
+
+Solution of second degree equation
+                                                       q
+                  2                           −b ±      b2 − 4ac
+                ax + bx + c = 0    =⇒    x=
+                                                       2a
+
+## Løsningsforslag
+
+Solution Suggestion
+   Exam - TTK4115 Linear System Theory
+                             Morten Omholt Alver
+
+                                  3. December 2024
+
+Problem 1
+Given the following discrete time system:
+                                                  
+                                    −2 1 0           0
+                      x[k + 1] =  −1 1 0  x[k] +  1  u[k]
+                                     1 1 1           1
+
+                                  y[k] =       0 1 0       x[k]
+
+Is this system:
+a) Not controllable, not observable
+b) Controllable, not observable
+c) Observable, not controllable
+d) Both controllable and observable
+e) Need more information to determine
+Controllability matrix:                      
+                                       0 1 −1
+                                   C= 1 1 0 
+                                       1 2 4
+Observability matrix:                          
+                                          0 1 0
+                                   O =  −1 1 0 
+                                         1 0 0
+The controllability matrix has full rank, while the observability matrix does not. The
+system is controllable but not observable, so b) is correct.
+
+                                                1
+
+Problem 2
+Given the following continuous time system :
+                                  A                       B
+                             z
+                                 }|        {      z }| {
+                                                                                     C
+                                 1 2                  1
+                                                                           z }| {
+                      ẋ =                       x+         u,           y= 1 0 x
+                                 2 −2                 0
+
+Is this system:
+a) Internally stable and BIBO stable
+b) Internally stable, not BIBO stable
+c) Internally unstable but BIBO stable
+d) Unstable in both senses
+To check internal stability, we look at the eigenvalues of A:
+
+                                        λ − 1 −2
+                      |λI − A| =                                       = λ2 + λ − 6 = 0                    (1)
+                                         −2 λ + 2
+
+                          1       √
+                     λ = (−1 ± 1 + 24) =⇒ λ1 = −3, λ2 = 2                                                  (2)
+                          2
+With a positive real eigenvalue, the system is internally unstable.
+To check BIBO stability, we compute the transfer function:
+                                                                                          −1
+                                       −1                              s − 1 −2                    1
+              g(s) = C(λI − A)
+
+                                            B=           1 0                                               (3)
+                                                                        −2 s + 2                   0
+
+                   1                               s+2  2                   1               s+2
+           =                  1 0                                                     =                    (4)
+             (s + 3)(s − 2)                           2  s−1                  0           (s + 3)(s − 2)
+The transfer function has a positive real pole, so the system is not BIBO stable.
+Therefore, d) is correct.
+
+                                                          2
+
+Problem 3
+Given the following matrix:
+                                                 3 1
+                                       A=                                             (5)
+                                                −1 5
+
+The matrix can be transformed into either diagonal form (Λ = Q−1 AQ) or Jordan form
+(J = Q−1 AQ). Which values of Λ, Q versus J, Q are correct?
+
+            4 0               1 1
+a) Λ =             and Q =
+            0 4               1 −1
+
+           4 0                1 1
+b) Λ =             and Q =
+           0 4                1 1
+
+           4 0                0 1
+c) Λ =             and Q =
+           0 4                1 0
+
+          4 1                1 1
+d) J =            and Q =
+          0 4                1 2
+
+          4 1                1 −2
+e) J =            and Q =
+          0 4                1 1
+
+          4 1                1 2
+f) J =            and Q =
+          0 4                1 1
+We first check the eigenvalues of A:
+
+                                   λ − 3 −1
+                      |λI − A| =                    = λ2 − 8λ + 16 = 0                (6)
+                                     1   λ−5
+
+                               1      √
+                           λ = (8 ± 64 − 64) =⇒ λ = 4                                 (7)
+                               2
+There is one eigenvalue with multiplicity 2. We then check the eigenvectors:
+
+                                     (A − λI)q = 0                                    (8)
+
+                                    1 −1            0
+                                             q=                                       (9)
+                                    1 −1            0
+
+                                  1
+A valid eigenvector is therefore     , and there are no other linearly independent eigen-
+                                  1
+vectors. This means the matrix can be transformed into Jordan form, and we have:
+
+                                            4 1
+                                      J=                                             (10)
+                                            0 4
+
+                                                3
+
+Our eigenvector forms the first column of the Q matrix. To find the second we use this
+relation to find the generalized eigenvector v:
+
+                                      AQ = QJ                                     (11)
+
+                                                            4 1
+                              Aq Av       =       q v                             (12)
+                                                                0 4
+For the second column we have that:
+
+                                    Av = 4v + q                                    (13)
+
+                              3 1          4 0             1
+                                      −             v=                             (14)
+                             −1 5          0 4             1
+
+                                   −1 1            1
+                                            v=                                     (15)
+                                   −1 1            1
+
+             −2              1
+Both v =          and v =        satisfy the equation. If we choose the second alterna-
+             −1              2
+
+                   1 1
+tive, we get Q =         , showing that alternative d) is correct.
+                   1 2
+
+                                              4
+
+Problem 4
+Given a continuous time system:
+
+                                ẋ = Ax + Bu,    y = Cx
+
+Which of the following statements are true (note: more than one may be true):
+a) The system can be diagonalized provided the A matrix is invertible.
+b) The system can only be asymptotically stable if the A matrix is invertible.
+c) The A matrix must be invertible for the system to have a time domain solution.
+d) If the A matrix is non-invertible, the system is marginally stable.
+e) If the A matrix is symmetric and negative definite, the system is asymptotically
+      stable.
+Taking the alternatives in turn:
+a) False. Invertibility does not determine whether the matrix can be diagonalized.
+b) True. If the matrix is not invertible it means at least one of its eigenvalues is 0. An
+     eigenvalue in 0 means the systems is either marginally stable or unstable.
+c) False. The system has a time domain solution regardless of the invertibility of A.
+d) False. The system can have one or more eigenvalues in 0 and be unstable.
+e) True. A symmetric matrix has only real eigenvalues, and if A is also negative definite,
+     all eigenvalues are real and negative.
+The correct ones are therefore b) and e).
+
+                                            5
+
+Problem 5
+Given the continuous time system:
+
+                           1 −2         0
+                    ẋ =            x+     u,       y=       1 0       x
+                           0 ω          1
+
+where ω ̸= 0. Using a state feedback u = − k1 k2 x, which values of k1 and k2 place
+the closed-loop system’s poles in -1 and -2?
+a) k1 = −1 and k2 = ω + 4
+b) k1 = −1 and k2 = ω − 4
+c) k1 = −3 and k2 = ω − 4
+d) k1 = −3 and k2 = ω + 4
+e) k1 = − ω3 and ω + 4
+f) k1 = − ω3 and k2 = ω − 4
+The desired poles are in -1 and -2 which means that we want the characteristic polynomial
+of the closed-loop system to be:
+
+                               (λ + 1)(λ + 2) = λ2 + 3λ + 2
+
+The closed-loop system as a function of k1 and k2 is:
+
+                    1 −2           0                   1    −2
+             ẋ =            x−          k1 k2 x =                   x              (16)
+                    0 ω            1                    −k1 ω − k2
+
+The characteristic polynomial becomes:
+
+                λ−1     2
+                                      = λ2 + (k2 − ω − 1)λ + ω − k2 − 2k1           (17)
+                 k1 λ − ω + k2
+
+To match this with the desired characteristic polynomial, we get these equations:
+
+                              k2 − ω − 1 = 3 =⇒ k2 = ω + 4                          (18)
+                                                  1
+                       ω − k2 − 2k1 = 2 =⇒ k1 = (ω − k2 − 2)                        (19)
+                                                  2
+                              1
+                          k1 = (ω − (ω + 4) − 2) =⇒ k1 = −3                         (20)
+                              2
+Therefore, d) is correct.
+
+                                            6
+
+Problem 6
+Given the two continuous time systems:
+
+                           1 4         1
+                   ẋ =           x+      u1 , y1 = 1 0 x
+                          −1 2         1
+
+                           3 6         −1
+                   ż =           z+        u2 , y2 = 1 2 z
+                          −1 0          1
+
+Are these systems:
+a) Unrelated
+b) Algebraically equivalent
+c) Zero-state equivalent but not algebraically equivalent
+d) Dual systems
+We can see immediately that they are not dual systems, as their system matrices are not
+transposes of each other. To investigate the other options, we compute their transfer
+functions:
+                s − 1 −4 −1 1
+
+                                                  1             s−2      4        1
+g1 (s) = 1 0                                = 2             1 0
+                    1     s−2           1     s − 3s + 6              −1 s −  1      1
+
+                            1                  1           s+2
+                    = 2               s−2 4          = 2
+                      s − 3s + 6                  1     s − 3s + 6
+                             −1
+               s − 3 −6            −1           1                s   6        −1
+g2 (s) = 1 2                                = 2             1 2
+                    1      s          1      s − 3s + 6             −1 s − 3       1
+
+                          1                   −1            s+2
+                  = 2               s − 2 2s           = 2
+                     s − 3s + 6                   1        s − 3s + 6
+Both systems have the same transfer function. We can also see that they are minimal
+realizations: -2 is not a root of the transfer function denominator, meaning it is a coprime
+fraction, and the order of the denominator equals the number of states. Therefore, the
+systems are algebraically equivalent, and (b) is correct.
+
+                                             7
+
+Problem 7
+Given a system governed by the following differential equation:
+                                               ẍ(t) − 3ẋ(t) + ax(t) = u(t)
+If the input u(t) is a random signal with zero mean and power spectral density Su (jω) =
+A, what is the power spectral density of x(t)?
+
+                    A
+a) Sx (jω) =      4   2
+                 ω +a
+                       A
+b) Sx (jω) =      4        2  2
+                 ω +(9+2a)ω +a
+                      2
+                  A
+c) Sx (jω) =      4  2
+                 ω −a
+                          2
+                    A
+d) Sx (jω) =      4   2  2
+                 ω +9ω +a
+                              2
+                       A
+e) Sx (jω) =      4           2
+                 ω +(9−2a)jω+a
+                       A
+f) Sx (jω) =      4        2  2
+                 ω +(9−2a)ω +a
+
+We start by setting up a state space system, defining two states x1 = x and x2 = ẋ.
+This gives the following two equations:
+                                                                ẋ1 = x2
+                                                    ẋ2 = −ax1 + 3x2 + u
+And with the output y = x1 , the state space system becomes:
+                                               A                   B
+                                         z    }|      {      z }| {                C
+                                               0 1                0            z }| {
+                                  ẋ =                      x+          u,   y= 1 0 x
+                                              −a 3                1
+The transfer function of this system is:
+                                                                       1
+                                                       g(s) =      2
+                                                                 s − 3s + a
+
+With the white noise signal u(t) on the input, the spectral density of the output y(t)
+can be calculated as:
+                                                       A
+           Sy (jω) = g(jω)g(−jω)A =
+                                      ((jω) − 3jω + a)((−jω)2 + 3jω + a)
+                                           2
+
+                                                   A                                       A
+                 =            2                             2                =
+                      (−ω − 3jω + a)(−ω + 3jω + a)                               ω + (9 − 2a)ω 2 + a2
+                                                                                  4
+
+f) is correct.
+
+                                                                   8
+
+Problem 8
+Consider the following discrete time system:
+
+                                       1 2            1
+                         x[k + 1] =           x[k] +     u[k]
+                                       1 0            0
+
+                                           1
+The system state at time step 0 is x0 =        . Find the sequence of inputs u[0] and u[1]
+                                           0
+
+                                                     5
+that will make the state after two steps be x[2] =       .
+                                                     4
+The state after two steps is given by:
+
+                                  x[2] = Ax[1] + Bu[1]
+
+                                                 2                      u[0]
+             = A(Ax[0] + Bu[0]) + Bu[1] = A x[0] +         AB B
+                                                                          u[1]
+
+                                3 2   1       1 1       u[0]
+                       x[2] =            +
+                                1 2   0       1 0       u[1]
+                                     −1
+                           u[0]     1 1                3
+                                 =            x[2] −
+                           u[1]     1 0                1
+Inverting the matrix and inserting the desired value for x[2], we get:
+
+                          u[0]        0 1        2         3
+                                 =                    =
+                          u[1]        1 −1       3        −1
+
+So the appropriate sequence is u[0] = 3 and u[1] = −1.
+
+                                             9
+
+Problem 9
+You are designing the controller for an electrical vehicle. With x representing the speed
+of the vehicle, a simplified model for the speed is:
+                             ẋ(t) = −0.1x(t) + u(t) + d(t)
+where u(t) is the controller input and d(t) is an unknown disturbance.
+a) Assume that d(t) = 0. You want the speed to follow a reference speed r(t). Design a
+     controller on the form u(t) = −kx(t) + kr r(t) that gives a closed-loop eigenvalue
+     of −1, and makes the speed approach the reference value asymptotically when the
+     reference is a constant r0 .
+     The equation for the closed-loop system with the given controller form, no distur-
+     bance and constant reference is:
+                                   ẋ = (−0.1 − k)x + kr r0
+     To get a closed-loop eigenvalue of -1 we choose k = 0.9.
+     The asymptotic value of x is found by looking at the equilibrium point (ẋ = 0):
+                   ẋ = 0 =⇒ (−0.1 − 0.9)x∞ + kr r0 = 0 =⇒ x∞ = kr r0
+     Choosing kr = 1 makes the speed approach the reference value asymptotically.
+     In conclusion, our controller is: u(t) = −0.9x(t) + r(t)
+b) Set up the system to add integral action to your controller. Show that the speed will
+     approach the reference value asymptotically when the reference is a constant r0 and
+     the disturbance has a constant value d(t) = d0
+     To get integral action we need to add a state integrating the deviation:
+                              Z T
+                         xI =     r(t) − x(t)dt =⇒ ẋI = r(t) − x(t)
+                               0
+
+     We can then set up an augmented system:
+
+              ẋ       −0.1 0      x       1         1          0
+                  =                    +     u(t) +     d(t) +     r(t)
+             ẋI        −1 0      xI       0         0          1
+     Using the controller u(t) = −0.9x(t) + kI xI (t) + r(t), the system becomes:
+
+                      ẋ       −1 kI       x           1            1
+                           =                     +         d(t) +       r(t)
+                     ẋI       −1 0        xI          0            1
+     Now, when r(t) = r0 and d(t) = d0 , the equilibrium point of the augmented system
+     is defined by:
+
+                        ẋ               −x∞ + kI xI,∞ + d0 + r0 = 0
+                             = 0 =⇒
+                       ẋI               x∞ = r0
+
+                                           10
+
+     Which shows that the equilibrium point has x∞ at the reference value r0 .
+     Asymptotic convergence also requires the system to be stable. The eigenvalues of
+     the augmented system are given by:
+                      λ + 1 −kI                    1      p
+                                    = 0 =⇒ λ = (−1 ± 1 − 4kI )
+                        1     λ                    2
+     We can see that any positive choice of kI will give asymptotic stability.
+c) Assume now that the initial value x(0) is known, u(t) = 0 and that d(t) is a random
+     distubance such that
+                             E[d(t)] = 0,        E[d(t)d(t + τ )] = 2δ(τ )
+     Derive the equation for the expectation value E[x(t)] of the speed as a function of
+     time.
+     We use the general solution for LTI systems as a starting point:
+                                               Z t
+                          x(t) = e−0.1t x(0) +     e−0.1(t−τ ) d(τ )dτ
+                                                       0
+     Taking the expectation value:
+                                                           Z t
+                                         −0.1t
+                         E[x(t)] = E[e           x(0) +          e−0.1(t−τ ) d(τ )dτ ]
+                                                            0
+                                            Z t
+                  E[x(t)] = e−0.1t x(0) +      e−0.1(t−τ ) E[d(τ )] dτ = e−0.1t x(0)
+                                             0             | {z }
+                                                                    =0
+
+d) Under the same assumptions as in c), derive the differential equation for the variance
+    of x(t) (Ċx (t) = . . . ). Assume for simplicity that x(0) = 0 and E[x(t)] = 0.
+     The variance is defined as Cx = E[(x(t) − E[x(t)]2 ], and since we are assuming
+     zero-mean, we can simplify it to Cx = E[x(t)2 ]. To get how Cx changes with time,
+     we need to differentiate it:
+      Ċx (t) = E[ẋ(t) · x(t) + x(t) · ẋ(t)] = E[2x(t) · ẋ(t)] = E[2x(t) · (−0.1x(t) + d(t))]
+                  = −0.2E[x(t)2 ] + 2E[x(t)d(t)] = −0.2Cx (t) + 2E[x(t)d(t)]
+     We can then replace x(t) factor by the time domain solution of the system:
+                                             Z t
+                   Ċx (t) = −0.2Cx (t) + 2E      e−0.1(t−τ ) d(τ )dτ · d(t)
+                                                      0
+                                             Z t
+                          = −0.2Cx (t) + 2         e−0.1(t−τ ) E[d(τ )d(t)] dτ
+                                                 0             |   {z     }
+                                                                     =2δ(t−τ )
+     The integral is over a delta function whose impulse happens at the end of the
+     integration range (τ = t), so it resolves into 0.5 times the integrand evaluated at
+     t = τ:
+                    Ċx (t) = −0.2Cx (t) + 2e−0.1·0 0.5 · 2 = −0.2Cx (t) + 2
+
+                                                 11
+
+Problem 10
+You want to track and predict the development of a stock market index based on its daily
+value. With x1 being the current value of the index and x2 being the current trend of the
+                                             T
+index, we define a state vector x = x1 x2        .
+A simple model of the system’s day-by-day changes is as follows:
+
+                                        1 1
+                           x[k + 1] =          x[k] + w[k]
+                                        0 1
+                          T
+where w[k] = w1 [k] w2 [k]    is a disturbance process affecting the value and trend of
+the market index.
+a) Check the internal stability of the model. Explain what the result means in terms of
+     the behaviour of the market index.
+     The A matrix is triangular, so we can see directly that it has an eigenvalue in
+     1 with multiplicity 2. For discrete time systems, this means that the system is
+     either marginally stable or unstable, depending on the eigenvectors. This system
+     has only this repeated eigenvalue, and since there is a 1 in the upper right of the
+     A matrix, it is already in Jordan form with a 2x2 Jordan block. Therefore, the
+     system is unstable.
+     This means that in the absence of any input or noise, if the initial stock market
+     index and trend are both positive, the index will grow unboundedly at a constant
+     rate. If the initial trend is negative, the index will likewise go downwards at a
+     constant rate - even past 0 and into negative values.
+b) We can check the value of the index at any time, but it varies within the day. Assume
+    that your daily “measurement” of the index is an unbiased representation of the
+    values of that day, but with a measurement error that can be modelled as a white
+    noise process d[k] with E[d[k] · d[l]] = 4 · δ[k, l]. If the disturbance process w[k]
+    satisifies some conditions, the discrete time Kalman filter is an optimal estimator
+    of the process. What are those conditions?
+     The process w[k] must be a zero-mean white noise process satisfying E[w[k] ·
+     w[l]T ] = Q · δ[k, l], where Q is a positive definite covariance matrix.
+     In addition, w[k] must be independent of v[k].
+c) Assume that the disturbance process satisfies theconditions
+                                                             mentioned in b), and let
+                                                      1 0
+     the disturbance covariance matrix be Qw =               . Let your initial estimate
+                                                      0 4
+     at time 0 be that x1 [0] = 100 ± 5 (expectation value and standard deviation),
+     x2 [0] = 5 ± 2, and you initially assume that these are independent of each other.
+     Then you measure the index as 104 at time 1. Calculate the a posteriori estimate
+     x[1].
+
+                                           12
+
+     The initial estimate we are given at time 0 plays the role of the posterior estimate
+     at time 0:
+                                                 100
+                                       x̂[0] =
+                                                  5
+
+     We have been given variances of 52 and 22 for the states, respectively, and as the
+     initial estimates are independent we get this initial covariance matrix:
+
+                                               25 0
+                                     P[0] =
+                                                0 4
+
+     We can then calculate the a priori estimates at time 1:
+
+                             −        1 1      100        105
+                           x̂ [1] =                   =
+                                      0 1       5           5
+                                                           T
+           −           1 1        25 0                1 1                    1 0                     105                  30 4
+         P [1] =                                                     +                       =                    =
+                       0 1        0 4                 0 1                    0 4                      5                   4 8
+     Then we calculate the Kalman gain at time 1:
+                                                                                                                                         −1
+               −       T     −        T               −1           30 4              1                              30 4           1
+     L[1] = P [1]C (CP [1]C +Rd )                          =                                         1 0                                     +4
+                                                                   4 8               0                                4 8            0
+                                                              −1
+                       30                       30                         1           30                  0.8824
+               =                  1 0                      +4            =                           =
+                       4                          4                          34           4                  0.1176
+     Then we are ready to compute the a posteriori estimate:
+
+               −                  −         105     0.8824              105
+     x̂[1] = x̂ [1] + L[1](y − Cx̂ [1]) =        +           (104 − 1 0         )
+                                             5      0.1176                 5
+
+                                      105                  0.8824                    104.12
+                              =                   −                          =
+                                       5                   0.1176                     4.88
+
+                                         3.53 0.47
+d) The a posteriori estimate P[1] =                  . Illustrate with a drawing how to
+                                         0.47 7.53
+     find the probability, according to the Kalman filter, of the true index value being
+     lower than 103 at time 1.
+     Our posterior estimate of the index at time 1 is 104.12 (but the particular value is
+     not important as long √as the illustration makes sense). The standard deviation of
+     the estimation error is 3.53 = 1.88. Figure 1 illustrates the estimated probability
+     density function for the index, and the red area indicates the probability of the
+     real index being lower than 103.
+
+                                                           13
+
+Figure 1: Illustration of probability of the index being lower than 103. The integral of
+          the probability density function over the red area gives the probability.
+
+                                          14
+
+Problem 11
+A Segway can be modelled in a simplified way as an inverted pendulum linearized for
+small angles, and with the electrical motor providing a force affecting the angular speed
+directly. The Segway’s controller makes sure the angle is close to 0 by using the motor
+to compensate as the user leans forwards or backwards. In that way the controller both
+prevents the Segway from falling, and adjusts the speed depending on how the user leans.
+
+                         Figure 2: Sketch of Segway and θ angle
+
+Assume that the following model describes the system:
+
+                      θ̇     0 1       θ         0          0
+                         = 1                +         u+        d
+                      θ̈     2 0       θ̇       −1         −1
+
+where θ is the angle (0 meaning the Segway is in the upright position), u is the input from
+the motor, and d is a disturbance representing the effect of the user leaning forwards or
+backwards.
+a) The Segway needs a controller that drives the angle θ and the angular speed
+                                                                              towards
+                                                                          θ
+     0. Design an LQR state feedback controller on the form u = −K            using the
+                                                                          θ̇
+
+                                 1 0
+     weighting matrices Q =             and R = 1. (To simplify the calculation you can
+                                 0 1
+     use the fact that the off diagonal elements of P equal 1.618.)
+     To find the LQR gain, we first need to solve the Riccati equation. We name the
+     coefficients of P as p1 , p2 and p3 :
+
+                             AT P + PA + Q − PBR−1 BT P = 0
+
+                                            15
+
+                      0 12
+
+                              p1 p2       p1 p2     0 1     1                        0
+                                      +             1    +
+                      1 0     p2 p3       p2 p3     2 0     0                        1
+
+                        p1 p2     0           p1 p2       0                        0
+                    −                    0 −1            =
+                        p2 p3    −1               p2 p3     0                        0
+
+                              0.5p2 0.5p3       0.5p2 p1      1 0
+                                            +             +
+                               p1     p2        0.5p3 p2      0 1
+
+                                    p1 p2     0 0         0 0
+                                −                     =
+                                    p2 p3     p2 p3       0 0
+
+                                                            p22 p2 p3
+
+                         1 + p2   p1 + 0.5p3                                        0 0
+                                                   −                        =
+                       p1 + 0.5p3  1 + 2p2                 p2 p3 p23                0 0
+     This gives three equations:
+                                         p22 − p2 − 1 = 0
+                                      p2 p3 − p1 − 0.5p3 = 0
+                                         p23 − 2p2 − 1 = 0
+     Since the value p2 = 1.618 was given, we can ignore the first equation and enter
+     the value into first the third equation:
+
+                                p23 − 2 · 1.618 − 1 = 0 =⇒ ±2.0582
+
+     Then we use the two alternative values of p3 in the second equation:
+
+               1.618 · (±2.0582) − p1 − 0.5 · (±2.0582) = 0 =⇒ p1 = ±2.3011
+
+     For P to be positive definite, we must choose the positive value for p1 (which means
+     p3 also has the positive value):
+
+                                           2.301 1.618
+                                     P=
+                                           1.618 2.058
+
+     We can then calculate the LQR gain:
+
+                 −1 T               2.301 1.618
+          K = R B P = 0 −1                            = −1.618 −2.058
+                                        1.618 2.058
+
+b) If you were testing the controller from a) and users reported that the controller seemed
+      too slow, how would you try to fix this by modifying the Q matrix? Explain your
+      reasoning.
+     I could adjust the Q matrix by changing either one or both of its diagonal values.
+     The first diagonal value weights deviation in the angle, so increasing this is likely to
+     get faster responses. The second diagonal value weights deviation in the derivative
+
+                                             16
+
+     of the angle, so increasing it is likely to get a more sluggish reponse since sufficient
+     change to the angular speed is needed in order to make the angle converge rapidly.
+     Therefore, my first choice would be to increase the first diagonal element.
+c) Consider a case where the user is leaning, such that d(t) = d0 > 0 for a long
+                                                                                time.
+     Find the steady state value of θ. Use the controller gain K = −1 −2 .
+     The equation for the closed-loop system is:
+
+                θ̇        0 1       θ        0                  0
+                     = 1               −             −1 −2 x +        d0
+                θ̈        2 0       θ̇      −1                   −1
+
+                                         0      1             θ                0
+                                =                                      −               d0
+                                        − 21   −2             θ̇               1
+
+     At steady state, θ̇ = θ̈ = 0, so:
+
+                                    0           1        θ                 0
+                                                                   =               d0
+                                   − 12        −2        θ̇                1
+
+     which implies:
+                                                θ = −2d0
+                                                     θ̇ = 0
+
+d) When we get a steady state deviation in θ as shown in c), discuss what this means for
+    the performance of the Segway. Would you recommend changes to the controller?
+     A steady state deviation in θ means that the motor is continually pushing (u =
+     −Kx = 2d0 ) to compensate for the leaning user. This will lead to a continual
+     acceleration of the Segway, unless the air resistance fully compensates for the
+     steady state force. If the user keeps leaning until the motor can’t keep up, the
+     Segway might end up tipping over, so it seems necessary to have a controller that
+     can remove steady state deviation, at least at high speeds.
+     Including integral effect would remove the steady state deviation. However, it is
+     hard to predict whether this would improve the performance as experienced by the
+     user, or if it would make it hard to control the speed. Testing will be crucial to
+     find a good controller design and tuning.
+     A range of answers are acceptable here as long as the reasoning is sound.
+
+                                                    17

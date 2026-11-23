@@ -1,0 +1,1189 @@
+# Kont 2021 – TTK4115 Lineær systemteori
+
+Tekst hentet automatisk fra PDF. Matriser og brøker kan stå rotete over flere linjer.
+
+## Oppgavetekst
+
+Department of Engineering Cybernetics
+
+Examination paper for TTK4115 Linear Systems Theory
+
+Academic contact during examination: Morten O. Alver
+
+Examination date: August 2021
+Examination time (from–to): 09:00–13:00
+Permitted examination support material: A: All printed and hand-written support material is allowed.
+All calculators are allowed.
+
+Other information:
+
+  1. Note that no parts of this exam assume that you have solved any of the previous parts.
+     The given information from previous parts should be sufficient to move on.
+  2. You may answer in Norwegian or English. Du kan svare på norsk eller engelsk.
+  3. Note that this was a digital home exam where students had free access to software and writ-
+     ten/online sources.
+
+Language: English
+Number of pages: 8
+Number pages enclosed: 4
+
+                                                                                      Checked by:
+
+                                                                Date           Signature
+
+TTK4115 Linear Systems Theory - August 2021                                                            Page 1 of 8
+
+Problem 1 (30 %)
+
+a) (4 %) Given the system:
+                                       A                 B
+                                z"    }|     #{        z }| #{
+                                                       "                         C
+                                                                           zh    }|   i{
+                                      0  2               1
+                         ẋ =                     x+             u,   y=        0 1        x                   (1)
+                                     −1 −2               0
+
+     Show that the system is controllable and observable.
+
+b) (6 %) Use a similarity transform to transform the system in Eq. (1) into either
+      diagonal, Jordan or modal form. Choose a form so that all matrix coefficients of
+      the transformed system are real valued. Show the steps of your calculations, and
+      give the system matrices of the transformed system.
+
+c) (4 %) The system in Eq. (1) is to be controlled using a state feedback. Since y is
+      the only available measurement, you will use an observer to estimate x. Let the
+      estimated state vector be denoted x̃, and the observer feedback gain L. Write the
+      differential equations for x̃ and for the estimation error e = x − x̃.
+
+d) (4 %) For the observer in c), you want to place the poles of the estimation error
+      dynamics in p1 and p2 . Which value for L will achieve this?
+
+e) (4 %) You will control the system in Eq. (1) with the observer from c) using a
+      control feedback u = Kx̃. Show that the poles of the dynamics of x can be chosen
+      independently of those for the estimation error.
+
+f) (4 %) An LQR controller is to be designed for the system in Eq. (1). Find the Q
+      and R values for LQR by using Bryson’s rule given "maximum acceptable" values
+      of 0.5 for x1 , 1 for x2 and 2 for u. Will the resulting controller guarantee that
+      |u| ≤ 2? Justify your answer.
+
+g) (4 %) Is the system
+                                                          
+                         −2 −2 0        1                                  h                   i
+                  ẋ =  1  0 0  x +  0  u,                        y=        0 −1 0             x
+                                       
+                         0  1 0         0
+
+     algebraically equivalent or zero-state equivalent to the system in Eq. (1), or are
+     the systems unrelated?
+
+Page 2 of 8                             TTK4115 Linear Systems Theory - August 2021
+
+Problem 2 (10 %)
+
+The name of the course you are taking is linear systems theory. Let a time invariant
+system be defined by the equation ẋ(t) = F (x(t)), where x is a real vector with n
+elements.
+
+a) (3 %) State the two conditions on the function F for the system to be linear.
+
+b) (4 %) If F and G are functions satisfying the linearity conditions, are the following
+      two compositions linear?
+
+        1. z = (F G)(x) = F (G(x))
+        2. z = (F · G)(x) = F (x)G(x)
+
+c) (3 %) Give three reasons why linearity is a useful property in the context of dynamical
+      systems.
+
+TTK4115 Linear Systems Theory - August 2021                                         Page 3 of 8
+
+Problem 3 (20 %)
+
+You are developing a system that tracks the movement of chickens on a horizontal surface.
+The system uses machine vision to pinpoint the location of each chicken every second.
+The measurement has uncertainty that can be modelled as a normally distributed white
+noise process with a standard deviation of α along each axis. For simplicity, we will here
+consider the tracking of a single chicken (which is not close to the edges of the available
+area) in one dimension.
+
+Based on chicken behaviour studies, you assume that the chicken’s speed [m/s] develops
+as the following process:
+
+                                       ṡ = −0.2s + w                                       (2)
+
+where w is a random disturbance.
+
+a) (4 %) Find an exact discretization of Eq. (2) with time step 0.5 s. You can as-
+      sume that w is constant within each sampling interval. Show the steps of your
+      calculations.
+
+b) (4 %) If we add the position p to the model with the following equation:
+
+                                                 ṗ = s                                     (3)
+
+     so x = [ p s ]T , and assume that w(t) is a gaussian white noise term, we find
+     the following exact discretization using Van Loan’s method and setting T = 0.5,
+     σ = 0.5 and α = 0.25:
+                                                  A
+                                          z"      }|          #{
+                                               1 0.4758
+                             x[k + 1] =                             x[k] + w[k]             (4)
+                                               0 0.9048
+                                           h           i
+                                  y[k] =       1 0         x[k] + v[k]
+
+                        E[w[k]T w[l]] = δ[k, l]Q,          E[v[k]v[l]] = δ[k, l]r
+                                  "                         #
+                                      0.0097 0.0283
+                             Q=                                 ,     r = 0.125
+                                      0.0283 0.1133
+     In this model, w[k] gives disturbances affecting both states in x[k]. Why is this
+     the case, when the continuous time model contains only a single disturbance on
+     the state s(t)?
+
+c) (4 %) Evaluate the internal stability of the discrete time system of Eq. (4). How do
+      you interpret the result in terms of the movement of the chicken?
+
+Page 4 of 8                           TTK4115 Linear Systems Theory - August 2021
+
+d) (4 %) You are planning to use a Kalman filter and the discrete time model of Eq. (4)
+      to estimate the position and speed. Your boss asks you why you are using a model
+      and estimator when you could simply use the position measurements directly, and
+      derive the speed from the changes in position.
+     Explain briefly why your approach is superior (there are at least two reasons).
+
+e) (4 %) A Kalman filter is set up based on the discrete time model Eq. (4). Assume
+      the following initial value and covariance matrix:
+                                              "         #
+                                                   0
+                                     x[0] =                                            (5)
+                                                  0.2
+                                              "             #
+                                                  0.5 0
+                                    P[0] =                                             (6)
+                                                   0 0.1
+
+     At time 1, the system measures the value y[1] = 0.12. Calculate the value of the
+     Kalman gain and the a posteriori estimate of x[1].
+     You can use your computer to make the calculations, but you must show all the
+     steps and equations involved.
+
+TTK4115 Linear Systems Theory - August 2021                                            Page 5 of 8
+
+Problem 4 (20 %)
+
+Your company is developing adaptive cruise control (ACC) for a car. The purpose of
+the ACC is to keep a constant distance between the controlled car and the car in front
+of it on the road.
+
+Consider a situation where both cars are driving at close to the speed limit. Define a
+state vector consisting of x1 (the deviation of our car’s speed from the speed limit; m/s),
+x2 (the deviation of the car in front’s speed from the speed limit; m/s) and x3 (the
+distance between the cars; m).
+
+Assume that both cars have a weight m = 1000 kg and that the input force and a constant
+air resistance force (ρ) are the only forces affecting the speed of the cars. Define the
+input u (N) as the deviation of our car’s input force from the equilibrium value (which
+balances ρ).
+
+We are not in control of the car in front, so we model its driver’s input force as a
+disturbance d (N). We assume that it tends to keep near the speed limit by including
+a force proportional to its speed deviation x2 with proportionality constant −a (where
+a > 0). The output of the system should be the distance between the two cars.
+
+a) (4 %) Show that the state space model for the system is as follows:
+                                     A                             B              G
+                        z         }|            {       z   }|   {   z   }|   {
+                 ẋ1       0   0  0     x1      1/m         0
+                ẋ2  =  0 −a/m 0   x2  +  0  u +  1/m  d                             (7)
+                                                      
+                 ẋ3       −1  1  0     x3       0          0
+                                 C                
+                          hz    }|        i{     x1
+                     y=        0 0 1            x2                                           (8)
+                                                   
+                                                 x3
+
+Page 6 of 8                                       TTK4115 Linear Systems Theory - August 2021
+
+b) (4 %) Evaluate the internal stability of the system. Is it possible to determine the
+      BIBO stability of the system based on the eigenvalues alone? Why/why not?
+
+c) (4 %) Show that the system is observable but not controllable. Assuming the param-
+      eter a is in the interval 0.01 − 0.1, can you elaborate on the practical observability
+      of the system?
+
+d) (4 %) The transfer function from the input u to the output (the distance between
+      the cars) is:
+                                                    a
+                                           1   s+ m
+                                  g(s) = − · 3     a 2
+                                                                                (9)
+                                          m s +m      s
+      Give a minimal realization of the transfer function on the controllable canonical
+      form. Why is the controllability and the number of states in this realization dif-
+      ferent from the original state space system?
+
+e) (4 %) There exists an infinite number of transformation matrices T that bring the
+      system of Eq. (7) on a form where the system matrix can be decomposed as follows
+      (omitting the disturbance term):
+                          "          #       "               #"         #       "         #
+                              ẋc                Āc Ā12         xc                B̄c
+                                         =                                  +                 u   (10)
+                              ẋc̄                0   Āc̄        xc̄                0
+
+      where xc are controllable states and xc̄ are uncontrollable ones. Explain how such a
+      T matrix is found, and give an example. You do not need to do the transformation
+      itself (hint: you will need the controllability matrix).
+
+TTK4115 Linear Systems Theory - August 2021                                                                Page 7 of 8
+
+Problem 5 (20 %)
+
+You are still working on the ACC system. Your boss now tells you to use the following
+state space model for the system, where x1 (m/s) is the difference in speed between
+the two cars (the speed of the car in front minus the speed of ours) and x2 (m) is the
+distance between them minus the reference distance d0 of the ACC:
+                                         A                             B                    G
+                 "         #       z"    }|   #{ "        #       z
+                                                                  "    }|    #{        z"   }|    #{
+                     ẋ1                0 0          x1               −1/m                  1/m
+                               =                              +                   u+                   d          (11)
+                     ẋ2                1 0          x2                 0                    0
+                                        C       "  #
+                                   zh   }|    i{ x
+                                                      1
+                           y=           0 1                   +v                                                  (12)
+                                                     x2
+
+where the input u is the accelerating or decelerating net force of our car, the disturbance
+d the net force of the car in front, and m = 1000 kg is the mass of each car. The output
+y represents the car’s radar measurement of the distance to the car in front minus the
+reference distance, and v is the measurement noise.
+
+a) (4 %) The ACC system will run model predictions forward in time as a safety mea-
+      sure. For this purpose, find the exact value of the matrix eAt . Show the steps you
+      use to find the value.
+
+b) (4 %) You are to design a controller for the ACC using LQR. To avoid stationary
+      deviations, the controller should include a term proportional to the integrated
+      deviation of the distance between the cars from the reference distance. Set up an
+      augmented state space model that makes this possible.
+
+c) (4 %) You are tuning the LQR controller set up in b). Assume that your current Q
+      and r values are I3 and 0.01, respectively. Which coefficient(s) would you change
+      in what direction to make the accelerations made by the controller more gentle?
+
+d) (4 %) The states of the system are to be estimated using a Kalman filter. The
+      disturbance d represents the accelleration or decelleration force directed by the
+      driver in front, which is not well modelled by a white noise process. Assume that
+      the disturbance is a stationary random process with spectral density function equal
+      to:
+                                                  q2ω2
+                                        Sd (ω) = 2 d o 2                             (13)
+                                                ω + ω0
+     where qd > 0 and ω0 > 0 are parameters.
+     Show how you modify the state space system in Eq. (11) to account for the
+     properties of the disturbance.
+
+Page 8 of 8                             TTK4115 Linear Systems Theory - August 2021
+
+e) (4 %) After discretization of the model, the discrete time Kalman filter is used to
+      calculate the observer gain for the system. Under what conditions will the observer
+      gain approach a stationary value? Will the absolute values of the coefficients of the
+      observer gain increase or decrease if the standard deviation of the measurement is
+      increased?
+
+TTK4115 Linear Systems Theory - August 2021                             Page i of iv
+
+Formula sheet
+
+Solutions
+
+                                          Z t
+                     x(t) = eAt x(0) +          eA(t−τ ) Bu(τ )dτ
+                                           0
+                                          k−1
+                     x[k] = Ak x[0] +           Ak−1−m Bu[m]
+                                          X
+
+                                          m=0
+
+Controllability/Observability
+
+                      C = [B, AB, A2 B, · · · , An−1 B]
+                                   
+                              C
+                           CA 
+                                   
+                                  2 
+                             CA
+                          
+                      O = 
+                                   
+                              ..   
+                                .
+                                    
+                                   
+                               CAn−1
+
+Realization
+
+         G(s) = C(sI − A)−1 B + D
+         G(s) = G(∞) + Gsp (s)
+         d(s) = sr + α1 sr−1 + · · · + αr−1 s + αr
+                    1
+       Gsp (s) =      [N sr−1 + N2 sr−2 + · · · + Nr−1 s + Nr ]
+                  d(s) 1
+                                                                   
+                     −α1 Ip −α2 Ip · · · −αr−1 Ip −αr Ip           Ip
+                  
+                     Ip      0       ···      0        0   
+                                                            
+                                                                  0 
+                                                                     
+                       0      Ip      ···      0        0   x +  0 u
+                                                                   
+             ẋ = 
+                  
+                       ..      ..     ..       ..       ..  
+                                                                  .. 
+                                                                     
+                                         .
+                  
+                        .       .               .        .
+                                                            
+                                                                . 
+                       0       0    ···          Ip         0       0
+              y = [ N1 N2 · · ·    Nr−1 Nr ]x + G(∞)u
+
+Page ii of iv                              TTK4115 Linear Systems Theory - August 2021
+
+LQR
+
+       Z ∞
+  J=         xT (t)Qx(t) + uT (t)Ru(t) dt
+        0
+                            AT P + PA + Q − PBR−1 BT P = 0
+                                                                     u(t) = −R−1 BT Px(t)
+
+Lyapunov equation
+
+                                     AT M + MA = −N
+
+Kalman filtering (Discrete time)
+
+Process model
+
+                x[k + 1] = Ad x[k] + Bd u[k] + w[k],      y[k] = Cx[k] + v[k]
+
+The noise and disturbance are unbiased (E[v[k]] = 0, E[w[k]] = 0) and white
+
+                    E[v[k]v[l]T ] = δ[k, l]Rd ,   E[w[k]w[l]T ] = δ[k, l]Qd
+
+Algorithm Initialize at x̂− [0] = E[x(0)] and P− [0] = E[(x[0] − x̂− [0])(x[0] − x̂− [0])T ].
+Compute recursively:
+
+   1. L[k] = P− [k]CT (CP− [k]CT + Rd )−1
+
+   2. x̂[k] = x̂− [k] + L[k](y[k] − Cx̂− [k])
+
+   3. P[k] = (I − L[k]C)P− [k](I − L[k]C)T + L[k]Rd L[k]T
+
+   4. x̂− [k + 1] = Ad x̂[k] + Bd u[k],   P− [k + 1] = Ad P[k]AT
+                                                               d + Qd
+
+TTK4115 Linear Systems Theory - August 2021                                  Page iii of iv
+
+Kalman filtering (Continuous time)
+
+Process model
+                          ẋ = Ax + Bu + Gw,         y = Cx + v
+The noise and disturbance are unbiased (E[v(t)] = 0, E[w(t)] = 0) and white
+
+                E[v(t)v(τ )T ] = δ(t − τ )R,   E[w(τ )w(t)T ] = δ(t − τ )Q
+
+Optimal gain     The Kalman gain is given by L(t) = P(t)CT R−1 where
+
+                       Ṗ = AP + PAT + GQGT − PCT R−1 CP
+
+Set Ṗ = 0 to find stationary gain.
+
+Stationary processes
+
+Autocorrelation and power spectral density
+
+                     Ru (τ ) = E[u(t)u(t + τ )],   Su (ω) = F{Ru (τ )}
+
+With y(s) = H(s)w(s) where E[w(t)] = 0 and Rw (τ ) = δ(τ )q it holds that
+
+                                 Sy (ω) = H(ȷω)H(−ȷω)q
+
+Page iv of iv                      TTK4115 Linear Systems Theory - August 2021
+
+Laplace transform pairs
+
+                           f (t)     ⇐⇒        F (s)
+
+                          δ(t)      ⇐⇒         1
+                                               1
+                             1      ⇐⇒
+                                               s
+                                                 1
+                          e−at      ⇐⇒
+                                               s+a
+                                               1
+                             t      ⇐⇒
+                                               s2
+                                               2
+                            t2      ⇐⇒
+                                               s3
+                                                    1
+                        te−at       ⇐⇒
+                                               (s + a)2
+                                                  ω
+                       sin ωt       ⇐⇒
+                                               s2 + ω 2
+                                                  s
+                       cos ωt       ⇐⇒
+                                               s2 + ω 2
+
+Solution of second degree equation
+                                                        q
+                  2                            −b ±      b2 − 4ac
+                ax + bx + c = 0    =⇒     x=
+                                                        2a
+
+## Løsningsforslag
+
+Solution Suggestion
+   Exam - TTK4115 Linear System Theory
+            17. August, 2021
+                                            MOA
+
+                                    17. August, 2021
+
+Problem 1A
+a) Given the system:
+                                     A                 B
+                              z    }|     {      z }| {            C
+                                   0  2               1
+                                                                   z }| {
+                       ẋ =                     x+          u,   y= 0 1 x          (1)
+                                   −1 −2              0
+
+     Investigate whether the system is controllable and observable.
+     To test controllability, we compute the controllability matrix:
+
+                                                   1 0
+                                C = B AB =                                         (2)
+                                                     0 −1
+
+     which has a rank of 2, showing that the system is controllable.
+     To test observability, we compute the observability matrix:
+
+                                       C          0     1
+                                O=           =                                     (3)
+                                      CA         −1 −2
+
+     which has a rank of 2, showing that the system is observable.
+b) Use a similarity transform to transform the system in Eq. (1) into either diagonal,
+     Jordan or modal form. Choose a form so that all matrix coefficients of the trans-
+     formed system are real valued. Show the steps of your calculations, and give the
+     system matrices of the transformed system.
+     We start by finding the eigenvalues of A:
+
+                                           λ −2
+                         |λI − A| =                        = λ2 + 2λ + 2 = 0       (4)
+                                           1 λ+2
+
+                                                  1
+
+which gives eigenvalues λ1 = −1 + i and λ2 = −1 − i. Since the eigenvalues are
+a complex conjugated pair, we choose the modal form to get real valued matrix
+coefficients.
+Corresponding eigenvectors are found as:
+
+                                2                2
+                     v1 =             , v2 =
+                             −1 + i            −1 − i
+
+Note:
+     theeigenvectors are not unique,so other choices may also be correct, e.g.
+  −1 ± i
+          .
+    1
+The system can then be diagonalized by the matrix Q composed of the eigenvectors.
+Q and its inverse are as follows:
+
+                                      2       2
+                              Q=
+                                    −1 + i −1 − i
+
+                  −1      1         −1 − i −2                       1         1 − i −2i
+                Q      =                                          =
+                         −4i         1−i    2                       4         1 + i 2i
+
+To get to the modal form we need to do an additional transformation using the
+modal matrix M. M and its inverse are as follows:
+                                    1
+                                         − 2i
+
+                              M= 1    2
+                                           i
+                                                     2            2
+
+                                                 i       i
+
+                                 1                                        1 1
+                           M−1 = i               2       2        =
+                                    2
+                                             − 12        1
+                                                         2                i −i
+
+We can now introduce the transformed system whose state vector x̄ relates to x
+by:
+                                 x = QMx̄
+The transformed system is:
+
+                              ẋ = QMx̄˙ = AQMx̄ + Bu
+                                        Ā                                    B̄
+                                z    }|    {     z  }|   {
+                          x̄˙ = M−1 Q−1 AQM x̄ + M−1 Q−1 B u
+                                                         C̄
+                                             z }| {
+                                         y = CQM x̄
+where
+                                         1
+                 −1    −1                    2       0                 2 0                     −1 1
+         Ā = M       Q     AQM =            1                A                        =
+                                             2       1                −1 1                     −1 −1
+
+                                                 2
+
+     which we expect from the modal form that puts the real values of the eigenvalues
+     along the diagonal and the positive/negative imaginary parts along the super and
+     sub diagonals.
+                                                          1
+
+                                   B̄ = M−1 Q−1 B =       2
+                                                          1
+                                                          2
+
+                                   C̄ = CQM =         −1 1
+
+c) The system in Eq. (1) is to be controlled using a state feedback. Since y is the only
+     available measurement, you will use an observer to estimate x. Let the estimated
+     state vector be denoted x̃, and the observer feedback gain L. Write the differential
+     equations for x̃ and for the estimation error e = x − x̃.
+     The estimate x̃ must be updated according to the system dynamics with an ad-
+     ditional term correcting for the deviation between y and the estimated output
+     Cx̃:
+                   x̃˙ = Ax̃ + Bu + L(y − Cx̃) = (A − LC)x̃ + Bu + Ly
+     The equation for the estimation error is:
+
+                      ė = ẋ − x̃˙ = Ax + Bu − (A − LC)x̃ − Bu − Ly
+
+                              = (A − LC)(x − x̃) = (A − LC)e                          (5)
+
+d) For the observer in c), you want to place the poles of the estimation error dynamics
+     in p1 and p2 . Which value for L will achieve this?
+     The poles of the estimation error are the poles of the matrix A − LC, where we
+     define L = [ l1 l2 ]T . To get the poles p1 and p2 , we want the characteristic
+     polynomial to be:
+
+                          (λ − p1 )(λ − p2 ) = λ2 − (p1 + p2 )λ + p1 p2
+
+     The characteristic polynomial of A − LC is:
+
+                                      λ   l1 − 2
+                |λI − (A − LC)| =                      = λ2 + (2 + l2 )λ + 2 − l1
+                                      1 λ + 2 + l2
+
+     By comparing the coefficients, we find these expressions for l1 and l2 :
+
+                                         l1 = 2 − p1 p2
+
+                                      l2 = −(p1 + p2 ) − 2
+
+e) You will control the system in Eq. (1) with the observer from c) using a control feed-
+     back u = Kx̃. Show that the poles of the dynamics of x can be chosen independently
+     of those for the estimation error.
+
+                                            3
+
+     With the given control feedback, the equation for x becomes:
+
+                   x = Ax − BKx̃ = Ax − BK(x − e) = (A − BK)x + BKe
+
+     Setting up the full system for x and e, we get:
+
+                              ẋ      A − BK       BK      x
+                                  =
+                              ė         0       A − LC    e
+
+     Due to the block triangular structure of the system matrix of the combined system,
+     its eigenvalues include those of the matrix A − BK and those of A − LC. We can
+     therefore choose the poles of the observer separately from the poles of the feedback
+     controlled system.
+f) An LQR controller is to be designed for the system in Eq. (1). Find the Q and R
+     values for LQR by using Bryson’s rule given ”maximum acceptable” values of 0.5
+     for x1 , 1 for x2 and 2 for u. Will the resulting controller guarantee that |u| ≤ 2?
+     Justify your answer.
+     Bryson’s rule of thumb is that element i along the diagonal of Q is set equal to
+     1/x2mi where xmi is the maximum acceptable value of the state xi . The R matrix
+     is set up similarly using the maximum acceptable values of the inputs. With the
+     values we were given, this results in:
+
+                                         4 0
+                                 Q=            , R = 0.25
+                                         0 1
+
+     The controller does not guarantee that |u| ≤ 2. The LQR algorithm results in a
+     feedback gain K ̸= 0, and the control input is u = −Kx. The input scales linearly
+     with x, so for sufficiently large x coefficients |u| will be greater than 2.
+g) Is the system
+                                    
+                           −2 −2 0     1
+                    ẋ =  1  0 0 x + 0  u,
+                                                      y=       0 −1 0       x
+                           0  1 0      0
+
+     algebraically equivalent or zero-state equivalent to the system in Eq. (1), or are
+     the systems unrelated?
+     Since this system has three states, it cannot be algebraically equivalent to the
+     system in Eq. (1). To evaluate zero-state equivalence we need to compare their
+     transfer functions. One way to find the transfer function of this system is by
+     recognizing that it has the structure of the controllable canonical form. We can
+     therefore read the coefficients of the transfer function’s numerator from C, and
+     those of the denumerator from the first row of A:
+                                         −s            1
+                            g(s) =   3     2     =− 2
+                                     s + 2s + 2s   s + 2s + 2
+
+                                           4
+
+The transfer function of the system in Eq. (1) is found as follows:
+                                                                           −1
+                                  −1                           s −2               1
+             g(s) = C(sI − A)          B=          0 1
+                                                                 1 s+2              0
+
+                   1                         s+2 2             1             1
+           =   2                0 1                                      =− 2
+               s + 2s + 2                       −1 s             0         s + 2s + 2
+
+Since the two systems have the same transfer function, they are zero-state equiv-
+alent.
+
+                                               5
+
+Problem 2
+The name of the course you are taking is linear systems theory. Let a time invariant
+system be defined by the equation ẋ(t) = F (x(t)), where x is a real vector with n elements.
+a) State the two conditions on the function F for the system to be linear.
+      The first condition is called additivity, and can be defined as follows:
+
+                                 F (x1 + x2 ) = F (x1 ) + F (x2 )
+
+      The second condition is called homogeneity, and can be defined as follows:
+
+                                         F (αx) = αF (x)
+
+      A function that satisfies both conditions also satisfies superposition:
+
+                              F (αx1 + βx2 ) = αF (x1 ) + βF (x2 )
+
+b) If F and G are functions satisfying the linearity conditions, are the following two
+      compositions linear?
+        1. z = (F G)(x) = F (G(x))
+        2. z = (F · G)(x) = F (x)G(x)
+      We use the superposition property to test F G first:
+
+                             F G(αx1 + βx2 ) = F (G(αx1 + βx2 ))
+
+      Since G satisfies superposition, we have:
+
+                           F G(αx1 + βx2 ) = F (αG(x1 ) + βG(x2 ))
+
+      Since F satisfies superposition, we have:
+
+             F G(αx1 + βx2 ) = αF (G(x1 )) + βF (G(x2 )) = αF G(x1 ) + βF G(x2 )
+
+      which shows that F G is also linear.
+      For F · G, we check the homogeneity condition:
+
+                                  (F · G)(αx) = F (αx)G(αx)
+
+      Since both F and G satisfy homogeneity, we have:
+
+                           (F · G)(αx) = α2 F (x)G(x) ̸= α(F · G)(x)
+
+      Since the homogeneity condition is not satisfied, (F · G) is not linear.
+
+                                             6
+
+c) Give three reasons why linearity is a useful property in the context of dynamical
+     systems.
+     Some relevant points:
+        • Linearity implies that the time-domain response of a system can be found as
+          a superposition of inputs and initial values, thereby for instance allowing us
+          to separate the zero-state response and the zero-input response.
+        • Linearity makes it simple to determine stability properties globally.
+        • Linearity allows global determination of observability and controllability.
+        • Linearity allows eigenvalue analysis and the ability to design controllers using
+          pole placement or LQR.
+
+                                            7
+
+Problem 3A
+You are developing a system that tracks the movement of chickens on a horizontal sur-
+face. The system uses machine vision to pinpoint the location of each chicken every
+second. The measurement has uncertainty that can be modelled as a normally distributed
+white noise process with a standard deviation of α along each axis. For simplicity, we
+will here consider the tracking of a single chicken (which is not close to the edges of the
+available area) in one dimension. Based on chicken behaviour studies, you assume that
+the chicken’s speed [m/s] develops as the following process:
+
+                                              ṡ = −0.2s + w                                        (6)
+
+where w is a random disturbance.
+a) Find an exact discretization of Eq. (6) with time step 0.5 s. You can assume that w
+     is constant within each sampling interval. Show the steps of your calculations.
+     Define the time step T and the step number k, so t = T k at time step k. We
+     find the exact discretization by using the time domain solution from time step k
+     to k + 1 with s[k] as initial value, treating w as the input to the system:
+                                                       Z (k+1)T
+                       s[k + 1] = e−0.2T s[k] +                   e−0.2[(k+1)T −τ ] w(τ )dτ
+                                                           kT
+
+     Now we do a change of variables in the integral with α = (k + 1)T − τ . The lower
+     integration limit becomes T since τ = kT =⇒ α = T . The upper limit becomes
+     0 since τ = (k + 1)T =⇒ α = 0. Since dα = −dτ the integrand switches sign, but
+     we then reverse the integration limits and switch the sign back. By the assumption
+     that w(t) is constant throughout the sampling interval, we can denote it as w[k]
+     and put it outside the integration:
+
+                                                                                       1 −0.2α T
+                                       Z T
+                      −0.2T                   −0.2α                   −0.2T
+       s[k + 1] = e           s[k] +          e       dα w[k] = e             s[k] + − e          w[k]
+                                         0                                            0.2       0
+
+                                                            1
+                                   = e−0.2T s[k] +             (1 − e−0.2T )w[k]
+                                                           0.2
+     For T = 0.5 we get:
+
+                                   s[k + 1] = 0.9048s[k] + 0.4748w[k]
+
+b) If we add the position p to the model with the following equation:
+
+                                                       ṗ = s                                       (7)
+
+     so x = [ p s ]T , and assume that w(t) is a gaussian white noise term, we find
+     the following exact discretization using Van Loan’s method and setting T = 0.5,
+
+                                                       8
+
+     σ = 0.5 and α = 0.25:
+                                                    A
+                                          z
+                                                }|     {
+                                               1 0.4758
+                             x[k + 1] =                    x[k] + w[k]
+                                               0 0.9048
+
+                                  y[k] =       1 0          x[k] + v[k]
+
+                       E[w[k]T w[l]] = δ[k, l]Q, E[v[k]v[l]] = δ[k, l]r
+
+                                  0.0097 0.0283
+                          Q=                       , r = 0.125
+                                  0.0283 0.1133
+     In this model, w[k] gives disturbances affecting both states in x[k]. Why is this the
+     case, when the continuous time model contains only a single disturbance on the
+     state s(t)?
+     The disturbance in the continuous time model affects only the s state directly.
+     However, since ṗ = s, the speed in turn affects the position p. When computing
+     the exact discretization of the model, we find the changes over a time interval T .
+     In any such interval, there will be an indirect effect of the disturbance on p through
+     s, and this effect is quantified in the disturbance term w[k] in the discrete time
+     model.
+c) Evaluate the internal stability of the discrete time system of Eq. (). How do you
+     interpret the result in terms of the movement of the chicken?
+     To evaluate internal stability, we find the eigenvalues of the A matrix:
+
+                              λ − 1 −0.4758
+                |λI − A| =                                   = (λ − 1)(λ − 0.9048) = 0
+                                0   λ − 0.9048
+
+     The system has one eigenvalue equal to 0, and another with absolute value less
+     than 1, so the system is marginally stable.
+     In terms of the movements of the chicken, marginal stability means that the
+     chicken, in the absence of disturbances, will not asymptotically approach the 0
+     position with 0 speed. The position and speed will be bounded, although they do
+     not both approach 0.
+     Say the chicken starts out in a given position with a given speed. In the absence
+     of disturbances, the chicken’s speed will gradually be reduced, and asymptotically
+     approach 0. The position will change as a function of the speed, until it approaches
+     a final position when the speed approaches 0. The final position depends on the
+     initial position and speed, and will generally be different from 0.
+d) You are planning to use a Kalman filter and the discrete time model from b) to
+     estimate the position and speed. Your boss asks you why you are using a model
+     and estimator when you could simply use the position measurements directly, and
+
+                                                9
+
+     derive the speed from the changes in position. Explain briefly why your approach
+     is superior (there are at least two reasons).
+     Your approach is superior for the following reasons:
+       • Speed estimates derived from uncertain position measurements will be quite
+         noisy. The Kalman filter setup will estimate the speed more accurately.
+       • Since speed is also estimated and used in updating the position, the position
+         estimates from the Kalman filter are likely to be more accurate than the
+         measurements themselves.
+       • The model kan be used to make short term predictions of the chicken’s move-
+         ments.
+e) A Kalman filter is set up based on the discrete time model from b). Assume the
+     following initial value and covariance matrix:
+
+                                               0
+                                     x[0] =                                   (8)
+                                              0.2
+
+                                              0.5 0
+                                     P[0] =                                   (9)
+                                               0 0.1
+
+     At time 1, the system measures the value y[1] = 0.12. Calculate the value of the
+     Kalman gain and the a posteriori estimate of x[1]. You can use your computer to
+     make the calculations, but you must show all the steps and equations involved.
+     First we need to calculate the a priori estimates x− [1] and P− [1]:
+
+                    −                  1 0.4758        0         0.0952
+                   x [1] = Ax[0] =                          =
+                                       0 0.9048       0.2         0.181
+
+                                   1 0.4758    0.5 0         1      0       0.0097 0.0283
+     P− [1] = AP[0]AT +Q =                                               +
+                                   0 0.9048     0 0.1     0.4758 0.9048     0.0283 0.1133
+
+                                         0.5323 0.0714
+                                     =
+                                         0.0714 0.1952
+     Then we calculate the Kalman gain L[1]:
+
+                                                                  0.8098
+                     L[1] = P− [1]CT (CP− [1]CT + R)−1 =
+                                                                  0.1086
+
+     Using the Kalman gain and the measurement at time 1, we find the a posteriori
+     estimate:
+
+             −                −         0.0952     0.8098                      0.1153
+     x[1] = x [1]+L[1](y[1]−Cx [1]) =           +           (0.12−0.0952) =
+                                         0.181     0.1086                      0.1837
+
+                                           10
+
+Problem 4A
+Your company is developing adaptive cruise control (ACC) for a car. The purpose of
+the ACC is to keep a constant distance between the controlled car and the car in front of
+it on the road.
+Consider a situation where both cars are driving at close to the speed limit. Define a state
+vector consisting of x1 (the deviation of our car’s speed from the speed limit; m/s), x2
+(the deviation of the car in front’s speed from the speed limit; m/s) and x3 (the distance
+between the cars; m).
+
+Assume that both cars have a weight m = 1000 kg and that the input force and a constant
+air resistance force (ρ) are the only forces affecting the speed of the cars. Define the input
+u (N) as the deviation of our car’s input force from the equilibrium value (which balances
+ρ).
+We are not in control of the car in front, but make the assumption that the deviation of
+its input force from the equilibrium value is the sum of a disturbance d (N) and a term
+proportional to its current speed deviation with proportionality constant −a (where we
+assume a = 0.1). The output of the system should be the distance between the two cars.
+a) Show that the state space model for the system is as follows:
+                                 A                          B              G
+                     z     }|       {       z }| {
+                                                       z }| {
+                                                         
+              ẋ1        0     0     0      x1     1/m     0
+             ẋ2  =  0 −a/m 0   x2  +  0  u +  1/m  d                          (10)
+              ẋ3        −1    1     0      x3      0      0
+                           C          
+                      z   }|   { x1
+                  y = 0 0 1  x2                                                        (11)
+                                    x3
+
+      Using Newton’s second law we can set up the equations for the acceleration of the
+      two cars. Since the air resistance is assumed to be a constant ρ, the equilibrium
+      force for the input is for both cars equal to ρ. The equation for the acceleration of
+      ”our” car (x˙1 ) is:
+                                        1                    1
+                               x˙1 (t) = ((u(t) + ρ) − ρ) = u(t)
+                                        m                    m
+
+                                             11
+
+     Similarly, for the car in front:
+                          1                              1
+                 x˙2 (t) =  ((−ax2 (t) + w(t) + ρ) − ρ) = (−ax2 (t) + d(t))
+                          m                              m
+     In both these equations, the parameter ρ disappears because the input is defined
+     as the part of the input needed in addition to compensating for the air restance ρ.
+     The rate of change of the distance x3 equals the difference between the speeds of
+     the two cars:
+                                   x˙3 (t) = x2 (t) − x1 (t)
+     Put on matrix form, this matches the system that we were to find.
+b) Evaluate the internal stability of the system. Is it possible to determine the BIBO
+     stability of the system based on the eigenvalues alone? Why/why not?
+     As the system matrix is triangular, we see directly that the system has one eigen-
+     value at −a/m and a two times repeated eigenvalue at 0. Since the eigenvalue at
+     0 is repeated, the requirement for marginal stability is that there are no Jordan
+     blocks larger than 1x1 associated with these eigenvalues. This is the case if there
+     is more than one linearly independent solution v to the equation:
+                                                      
+                                         0      0    0
+                              Av =  0 −a/m 0  v = 0
+                                        −1      1    0
+                          T
+     Here, v = 0 0 1          is one solution, and there are no other solutions that are
+     linearly independent. Therefore, the matrix does not have a full set of linearly
+     independent eigenvectors, so the Jordan form of the system matrix will contain a
+     2x2 Jordan block, ruling out marginal stability. The system is unstable.
+     If a system is asymptotically stable, this implies BIBO stability. However, we
+     cannot determine BIBO stability from the eigenvalues alone in the case that the
+     system is internally unstable. A system can be BIBO stable despite being internally
+     unstable. (This system is not BIBO stable, although students are not asked to
+     answer that.)
+c) Show that the system is observable but not controllable. Assuming the parameter a
+     is in the interval 0.01 − 0.1, can you elaborate on the practical observability of the
+     system?
+     We compute the observability and controllability matrices for the system:
+                                                           
+                                  C           0       0    1
+                        O =  CA  =  −1             1    0 
+                                CAA           0 −a/m 0
+                                                            
+                                  B          1/m        0    0
+                        C =  AB  =  0                0    0 
+                                AAB            0     −1/m 0
+
+                                            12
+
+     The observability matrix has full rank (provided a ̸= 0), while the controllability
+     matrix has only rank 2, which means that the system is observable but not con-
+     trollable. It makes intuitive sense that the system is not controllable, since our
+     input cannot affect the speed of the car in front of us.
+     The characteristic polynomial of the observability matrix is λ3 − λ2 − a/m, and
+     a/m is in the interval 10−5 − 10−4 . If the constant coefficient were 0, the matrix
+     would be singular. Since it is very small, the system is very close to being singular.
+     It is observable in theory, but we can expect it to be very hard to estimate all
+     states in practice (with imperfect model and/or measurements). The smaller a is,
+     the harder practical observability will be.
+     The argument can also be based on the condition number of the observability
+     matrix.
+d) The transfer function from the input u to the output (the distance between the cars)
+     is:                                              a
+                                            1    s+ m
+                                   g(s) = − · 3                                    (12)
+                                            m s + a s2
+                                                        m
+     Give a minimal realization of the transfer function on the controllable canonical
+     form. Why is the controllability and the number of states in this realization different
+     from the original state space system?
+                                                                            a
+     The transfer function is not a coprime fraction, since the factor (s + m ) appears
+     both in the numerator and denominator. Therefore, we remove the common factor:
+                                                  a
+                                         1    s+ m      1 1
+                              g(s) = −     · 3   a  2 =− · 2                           (13)
+                                         m s + s        m s
+                                                 m
+
+     The realization on controllable canonical form has two state variables, and is found
+     directly based on the coefficients of the transfer function:
+
+                               z˙1        0 0      z1        1
+                                     =                   +        u
+                               z˙2        1 0      z2        0
+
+                                                    z1
+                                   y = 0 −1/m
+                                                        z2
+
+     This realization and the original system are two realizations of the same transfer
+     function, but only this realiation is minimal. We can control the state vector z
+     using the input u, but the original system contains additional elements that are
+     not controllable from the input.
+e) There exists an infinite number of transformation matrices T that bring the system
+     of Eq. (10) on a form where the system matrix can be decomposed as follows:
+
+                            ẋc      Āc Ā12     xc       B̄c
+                                  =                    +         u                (14)
+                            ẋc̄      0   Āc̄    xc̄       0
+
+                                            13
+
+where xc are controllable states and xc̄ are uncontrollable ones. Explain how such a
+T matrix is found, and give an example. You do not need to do the transformation
+itself (hint: you will need the controllability matrix).
+The transformation to the decomposed form is x̄ = T−1 x, Ā = T−1 TA. The
+transformation matrix is constructed by using the maximum set of linearly inde-
+pendent columns of C, and filling in the remaining columns to make T invertivble:
+                                                     
+                                   1/m     0      0
+                          T= 0            0     1/m                        (15)
+                                    0    −1/m     0
+
+The first two columns are the first two columns from C, and the last one is chosen
+to make T invertible. We could have chosen any non-zero value for the middle
+element of the last column, but choose 1/m to avoid a high condition number and
+make Ā look nicer.
+
+                                     14
+
+Problem 5
+You are still working on the ACC system. Your boss now tells you to use the following
+state space model for the system, where x1 (m/s) is the difference in speed between the
+two cars (the speed of the car in front minus the speed of ours) and x2 (m) is the distance
+between them minus the reference distance d0 of the ACC:
+                                       A                     B                   G
+                               z }| {      z }| {    z }| {
+                     ẋ1           0 0      x1     −1/m        1/m
+                               =                +         u+          d               (16)
+                     ẋ2           1 0      x2       0          0
+                                      C
+                             z }| {
+                                        x1
+                           y= 0 1            +v                                       (17)
+                                        x2
+
+where the input u is the accelerating or decelerating net force of our car, the disturbance
+d the net force of the car in front, and m = 1000 kg is the mass of each car. The output
+y represents the car’s radar measurement of the distance to the car in front minus the
+reference distance, and v is the measurement noise.
+a) The ACC system will run model predictions forward in time as a safety measure. For
+     this purpose, find the exact value of the matrix eAt . Show the steps you use to find
+     the value.
+     There are several ways to find eAt . One way is to realize that (as a consequence
+     of the Cayley-Hamilton theorem) it can be written as a polynomial function:
+
+                                             eAt = f (A) = β0 I + β1 A
+
+     We need to find the coefficients β0 and β1 , and Theorem 3.5 in the Chen book
+     gives the recipe: we define the scalar function h(λ) = β0 + β1 λ, and choose the
+     coefficients so h(λ) is equal to f (λ) on the spectrum of A.
+     A has the eigenvalue λ1 = 0 with a multiplicity of 2, giving us two equations to
+     find the coefficients:
+
+                           h(0) = β0 + β1 · 0 = f (0) = e0 = 1 =⇒ β0 = 1
+
+                       dh(λ)          df (λ)
+                               = β1 =          = t · e0 = t =⇒ β1 = t
+                        dλ λ=0          dλ λ=0
+     We then use the coefficients to find eAt :
+
+                                      At                                   1 0
+                                  e        = f (A) = 1 · I + t · A =
+                                                                           t 1
+
+b) You are to design a controller for the ACC using LQR. To avoid stationary devia-
+     tions, the controller should include a term proportional to the integrated deviation
+
+                                                      15
+
+     of the distance between the cars from the reference distance. Set up an augmented
+     state space model that makes this possible.
+     LQR is used to design a controller on the form u = −Kx. To include integral effect,
+     we need to augment the state vector with a new state that tracks the integral of
+     the deviation in distance. We call the augmented state vector z, and the new state
+     value γ:                                      
+                                                 x1
+                                         z =  x2 
+                                                 γ
+     Since γ should integrate the deviation in distance given by x2 , the equation for the
+     augmented state space system becomes:
+                                                                   
+                  ẋ1        0 0 0        x1         −1/m              1/m
+                ẋ2  =  1 0 0   x2  +            0    u +  0 d              (18)
+                   γ̇        0 1 0         γ            0               0
+
+                      y = 0 1 0 +v                                                    (19)
+
+     LQR can be applied to this system, with the weighting of the third state in the Q
+     matrix affecting the strength of the integral effect.
+c) You are tuning the LQR controller set up in b). Assume that your current Q and r
+     values are I3 and 0.01, respectively. Which coefficient(s) would you change in what
+     direction to make the accelerations made by the controller more gentle?
+     The acceleration of the car is given by the controller input u. If we increase
+     the value of r, the LRQ optimization will punish the input more strongly in the
+     object function, resulting in more gentle accelerations. (Since Q and r give relative
+     weightings, reducing all values of Q will achieve the same effect.)
+d) The states of the system are to be estimated using a Kalman filter. The disturbance
+     d represents the accelleration or decelleration force directed by the driver in front,
+     which is not well modelled by a white noise process. Assume that the disturbance
+     is a stationary random process with spectral density function equal to:
+
+                                                   qd2 ωo2
+                                       Sd (ω) =                                       (20)
+                                                  ω 2 + ω02
+
+     where qd > 0 and ω0 > 0 are parameters.
+     Show how you modify the state space system in Eq. (25) to account for the prop-
+     erties of the disturbance.
+     We model the disturbance as the output of a filter that takes zero-mean white
+     noise of unit intensity as its input. The following relation holds:
+
+                                    Sd (ω) = H(jω)H(−jω)                              (21)
+
+                                            16
+
+     where H(jω) is the fourier transform of the filter’s impulse response. By inspecting
+     Sw (ω) we can see that the form H(jω) = qd ω0 /(jω + ω0 ) matches:
+
+                                     qd ω0    qd ω0    q2ω2
+                  H(jω)H(−jω) =            ·         = 2 d o 2 = Sd (ω)              (22)
+                                    jω + ω0 −jω + ω0  ω + ω0
+
+     The Laplace transform of the impulse response is equal to the Fourier transform
+     with s = jω for stable systems, so for our filter it is:
+                                                  qd ω0
+                                        H(s) =                                       (23)
+                                                 s + ω0
+
+     Using the controllable canonical form, we realize this filter as:
+
+                           ż(t) = −ω0 z(t) + w(t),   d(t) = qd ω0 z(t)              (24)
+
+     where w(t) is a zero mean white noise signal with unit intensity.
+     We now augment the original system, adding the z state for the filter and repre-
+     senting the d disturbance by the output of the filter:
+                                                             
+                ẋ1        0 0 qd ω0 /m       x1          −1/m        0
+               ẋ2  =  1 0        0      x2 +
+                                                          0   u + 0 w
+                                                                                (25)
+                 ż        0 0     −ω0        z             0         1
+
+                    y = 0 1 0 +v                                                 (26)
+
+     which is on an appropriate form for the Kalman filter.
+e) After discretization of the model, the discrete time Kalman filter is used to calculate
+     the observer gain for the system. Under what conditions will the observer gain
+     approach a stationary value? Will the absolute values of the coefficients of the
+     observer gain increase or decrease if the standard deviation of the measurement is
+     increased?
+     If the random process w (the white noise process that is the input to the z state)
+     and the measurement noise v are stationary, the Kalman filter gain will approach
+     a stationary value.
+     The Kalman filter weights the measurement noise against the model uncertainty
+     (which depends on the properties of w). If the standard deviation of the mea-
+     surement increases, the observer gain coefficients are reduced due to the higher
+     uncertainty of the measurement.
+
+                                            17

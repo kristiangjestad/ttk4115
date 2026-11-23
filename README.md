@@ -9,6 +9,8 @@ Alle eksamenssett fra 2003 til 2025 er delt inn i 33 oppgavetyper. De er rangert
 - **Gamle eksamener:** hver oppgave for seg med løsningsforslag, eller hele settet med fire timers nedtelling.
 - **Fremgang:** statistikk, notater og eksport/import.
 
+- **Til chatbot:** `public/llms.txt` er kontekst du kan lime inn som lenke i en chatbot. Lag den på nytt med `npm run llms` (krever `../tekst`).
+
 All tilstand lagres i nettleseren (localStorage). Se `src/lib/db.ts` for hva som lagres.
 
 ## Kjøre lokalt

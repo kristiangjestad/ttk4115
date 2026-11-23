@@ -1,0 +1,839 @@
+# Eksamen 2021 – TTK4115 Lineær systemteori
+
+Tekst hentet automatisk fra PDF. Matriser og brøker kan stå rotete over flere linjer.
+
+## Oppgavetekst
+
+Department of Engineering Cybernetics
+
+Examination paper for TTK4115 Linear Systems Theory
+
+Academic contact during examination: Morten O. Alver
+
+Examination date: 4. December 2021
+Examination time (from–to): 09:00–13:00
+Permitted examination support material: D: No printed or handwritten material allowed. Specific
+simple calculator allowed.
+
+Other information:
+
+  1. Note that no parts of this exam assume that you have solved any of the previous parts.
+     The given information from previous parts should be sufficient to move on.
+
+  2. You may answer in Norwegian or English. Du kan svare på norsk eller engelsk.
+
+Language: English
+Number of pages: 5
+Number pages enclosed: 4
+
+                                                                                      Checked by:
+
+                                                                Date           Signature
+
+TTK4115 Linear Systems Theory - 4. December 2021                                                     Page 1 of 5
+
+Problem 1 (25 %)
+
+Given the system:
+                                 A                 B
+                            z
+                            "    }|    #{        z }| #{
+                                                 "                            C
+                                −1 4               1                     hz   }|    i{
+                     ẋ =                   x+             u,       y=        1 0        x                   (1)
+                                1 −1               0
+
+a) (5 %) Test the system’s controllability and observability.
+
+b) (5 %) Find the system’s transfer function.
+
+c) (5 %) The transformation of a system into controllable form is defined by x = Px̄,
+      where x is the original state vector and P = C · C¯−1 . C is the controllability matrix
+      of the original system, and C¯ that of the controllable form system.
+      Transform the system of Eq. (1) into controllable canonical form, and find a
+      feedback gain matrix K̄ that places the system’s poles in -1 and -2.
+
+d) (5 %) Find the appropriate feedback gain for the original system based on K̄.
+
+e) (5 %) Check if the system
+                                                             
+                           −2 1 0         1                                    h             i
+                    ẋ =  3 0 0  x +  1  u,                          y=        1 0 0         x           (2)
+                                         
+                           1 0 −1        −1
+
+      is zero-state equivalent to the system of Eq. (1). You can simplify the computation
+      of the transfer function by recognizing it has an unobservable part.
+
+Page 2 of 5                         TTK4115 Linear Systems Theory - 4. December 2021
+
+Problem 2 (12 %)
+
+Given the first order system:
+                                      ẋ(t) = ax(t) + u(t)                        (3)
+where a > 0.
+
+a) (6 %) Let the input be given by u = −kx. Show how to find the value of k that
+      minimizes the object function
+                                Z ∞
+                         J=           qx(t)2 + ru(t)2 dt,    q > 0,   r>0
+                                0
+
+     for any initial value of the system.
+
+b) (6 %) Eq. (3) is a model of a real system to be controlled. However, the value of
+      a is uncertain. The corresponding value a0 in the real system may be up to 50
+      % higher or lower than a. With a feedback controller designed using the method
+      above (considering any positive values of q and r), can the feedback controlled
+      system turn out to be unstable? Explain your reasoning.
+
+TTK4115 Linear Systems Theory - 4. December 2021                                           Page 3 of 5
+
+Problem 3 (24 %)
+
+You are working on a suspension system for a car. For a single wheel, let x1 be the
+vertical speed (positive upwards) of the top of the spring (which is attached to the car),
+and x2 its vertical postition. We define x2 = 0 as the position where the spring force
+balances out the downward force of gravity from the car. This force equals mg, where m
+is the part of the car’s weight resting on this wheel, and g is the graviational constant.
+We assume the spring force to be equal to mg − kx2 , where k > 0 is a spring constant,
+so the net force on the car equals −kx2 .
+
+When the car is moving, it will encounter irregularities in the ground. Let w(t) be
+the vertical position of the bottom end of the spring, and consider this an unknown
+disturbance. The spring force can now be calculated as mg − k(x2 − w).
+
+a) (6 %) With w as input and x2 as output, is the system BIBO stable? Do you expect
+      the suspension system to work well in practice?
+
+b) (6 %) The suspension is modified with a damping element that imposes a force −dx1
+      (proportional to the vertical speed), where d > 0 is a constant. The state space
+      system for the suspension now looks like this:
+                              "           #        "       #
+                                  −d −k                k                 h         i
+                       ẋ =                   x+               w,   y=       0 1       x           (4)
+                                   1  0                0
+
+     If the disturbance w is a white noise signal with spectral density function Sw (jω) =
+     α, what is the spectral density function of the output y? Use parameter values
+     k = 1 and d = 2.
+
+c) (6 %) Use the Lyapunov equation (AT M + MA = −N) to test the internal stability
+      of the suspension system of Eq. (4). Use parameter values k = 1 and d = 2.
+
+d) (6 %) Set up the equation for a Luenberger observer that estimates the values of x1
+      and x2 for the system of Eq. (4). Give also the equation for the estimation error.
+
+Page 4 of 5                         TTK4115 Linear Systems Theory - 4. December 2021
+
+Problem 4 (24 %)
+
+Consider a first order process that is to be controlled. The process is described by the
+following equation:
+                           ẋ(t) = 0.1x(t) + u(t), y(t) = x(t)                       (5)
+where u(t) is the input.
+
+a) (6 %) The output of the process should follow a time varying reference signal r(t).
+      Design a controller on the form u(t) = kr r(t) − ky(t) that makes y(t) approach r(t)
+      in steady state (if r(t) stays constant, y(t) should approach r(t) asymptotically).
+      Show the steps you use to find the controller parameters.
+
+b) (6 %) Write the state equation for the closed-loop system’s deviation from the refer-
+      ence: z(t) = y(t) − r(t).
+
+c) (6 %) Assume now that the reference r(t) = 0 for all t, and use k = 1.1 in the feedback
+      controller. You discover that the control input to the process is imprecise, so the
+      actual input is u0 (t) = u(t) + β(t), where β(t) is a zero-mean white noise process
+      with autocorrelation function Aβ (t, τ ) = E[β(t)β(τ )] = δ(t − τ )q.
+     Let the expectation value of x(t) be denoted mx (t). Show that ṁx (t) = −mx (t).
+
+d) (6 %) Let the variance of x(t) be denoted Cx (t). Show that Ċx (t) = −2Cx (t) + q.
+     Hint: when an integrand contains a delta function whose argument becomes 0 at
+     the integration limit, use
+                           Z t                   Z ∞
+                                 δ(t − τ )dτ =         Θ(t − τ )δ(t − τ )dτ
+                            0                    0
+
+     with the convention that Θ(t) equals 0 if t < 0, 21 if t = 0 and 1 if t > 0.
+
+TTK4115 Linear Systems Theory - 4. December 2021                                      Page 5 of 5
+
+Problem 5 (15 %)
+
+a) (8 %) Given a state space system:
+
+                                          ẋ =Ax + Bu
+                                          y =Cx
+
+     The observability gramian of the system is defined as:
+                                             Z t     T
+                                  Wo (t) =         eA τ CT CeAτ dτ
+                                              0
+
+     Assume that x(0) is unknown, but you know the value of y(t) for t in the interval
+     [0, t1 ]. You also know that u(t) = 0 for t in the interval [0, t1 ].
+     Show that it is possible to find the value of x(0) if Wo (t1 ) is invertible.
+
+b) (7 %) Given a discrete time system:
+
+                                x[k + 1] = 1.2x[k] + u[k] + w[k]
+                                    y[k] = x[k] + σ[k] + v1 [k]
+
+     where w[k] and v1 [k] are Gaussian disturbances with
+
+                       E[w[k]w[l]] = δ[k, l],       E[v1 [k]v1 [l]] = 0.1 · δ[k, l]
+
+     The measurement bias σ[k] has been found to vary according to the random process
+
+                                   σ[k + 1] = 0.9σ[k] + v2 [k]
+
+     where v2 [k] is a Gaussian random variable with E[v2 [k]v2 [l]] = 0.2 · δ[k, l]. You also
+     know that v1 [k], v2 [k] and w[k] are mutually independent.
+     You plan to use a Kalman filter to estimate x[k]. Show how you will set up
+     your system model to satisfy the requirements of the Kalman filter, and give the
+     appropriate values for Qd and Rd .
+
+TTK4115 Linear Systems Theory - 4. December 2021                         Page i of iv
+
+Formula sheet
+
+Solutions
+
+                                           Z t
+                     x(t) = eAt x(0) +           eA(t−τ ) Bu(τ )dτ
+                                            0
+                                           k−1
+                     x[k] = Ak x[0] +            Ak−1−m Bu[m]
+                                           X
+
+                                           m=0
+
+Controllability/Observability
+
+                      C = [B, AB, A2 B, · · · , An−1 B]
+                                   
+                              C
+                           CA 
+                                   
+                                  2 
+                             CA
+                          
+                      O = 
+                                   
+                              ..   
+                                .
+                                    
+                                   
+                                CAn−1
+
+Realization
+
+         G(s) = C(sI − A)−1 B + D
+         G(s) = G(∞) + Gsp (s)
+          d(s) = sr + α1 sr−1 + · · · + αr−1 s + αr
+                     1
+        Gsp (s) =      [N sr−1 + N2 sr−2 + · · · + Nr−1 s + Nr ]
+                   d(s) 1
+                                                                    
+                      −α1 Ip −α2 Ip · · · −αr−1 Ip −αr Ip           Ip
+                   
+                      Ip      0       ···      0        0   
+                                                             
+                                                                   0 
+                                                                      
+                        0      Ip      ···      0        0   x +  0 u
+                                                                    
+              ẋ = 
+                   
+                        ..      ..     ..       ..       ..  
+                                                                   .. 
+                                                                      
+                                          .
+                   
+                         .       .               .        .
+                                                             
+                                                                 . 
+                        0      0     ···          Ip         0       0
+              y = [ N1 N2 · · ·    Nr−1 Nr ]x + G(∞)u
+
+Page ii of iv                       TTK4115 Linear Systems Theory - 4. December 2021
+
+LQR
+
+       Z ∞
+  J=         xT (t)Qx(t) + uT (t)Ru(t) dt
+        0
+                            AT P + PA + Q − PBR−1 BT P = 0
+                                                                     u(t) = −R−1 BT Px(t)
+
+Lyapunov equation
+
+                                     AT M + MA = −N
+
+Kalman filtering (Discrete time)
+
+Process model
+
+                x[k + 1] = Ad x[k] + Bd u[k] + w[k],      y[k] = Cx[k] + v[k]
+
+The noise and disturbance are unbiased (E[v[k]] = 0, E[w[k]] = 0) and white
+
+                    E[v[k]v[l]T ] = δ[k, l]Rd ,   E[w[k]w[l]T ] = δ[k, l]Qd
+
+Algorithm Initialize at x̂− [0] = E[x(0)] and P− [0] = E[(x[0] − x̂− [0])(x[0] − x̂− [0])T ].
+Compute recursively:
+
+   1. L[k] = P− [k]CT (CP− [k]CT + Rd )−1
+
+   2. x̂[k] = x̂− [k] + L[k](y[k] − Cx̂− [k])
+
+   3. P[k] = (I − L[k]C)P− [k](I − L[k]C)T + L[k]Rd L[k]T
+
+   4. x̂− [k + 1] = Ad x̂[k] + Bd u[k],   P− [k + 1] = Ad P[k]AT
+                                                               d + Qd
+
+TTK4115 Linear Systems Theory - 4. December 2021                             Page iii of iv
+
+Kalman filtering (Continuous time)
+
+Process model
+                          ẋ = Ax + Bu + Gw,         y = Cx + v
+The noise and disturbance are unbiased (E[v(t)] = 0, E[w(t)] = 0) and white
+
+                E[v(t)v(τ )T ] = δ(t − τ )R,   E[w(τ )w(t)T ] = δ(t − τ )Q
+
+Optimal gain     The Kalman gain is given by L(t) = P(t)CT R−1 where
+
+                       Ṗ = AP + PAT + GQGT − PCT R−1 CP
+
+Set Ṗ = 0 to find stationary gain.
+
+Stationary processes
+
+Autocorrelation and power spectral density
+
+                     Ru (τ ) = E[u(t)u(t + τ )],   Su (ω) = F{Ru (τ )}
+
+With y(s) = H(s)w(s) where E[w(t)] = 0 and Rw (τ ) = δ(τ )q it holds that
+
+                                 Sy (ω) = H(ω)H(−ω)q
+
+Page iv of iv                 TTK4115 Linear Systems Theory - 4. December 2021
+
+Laplace transform pairs
+
+                           f (t)     ⇐⇒        F (s)
+
+                          δ(t)      ⇐⇒         1
+                                               1
+                             1      ⇐⇒
+                                               s
+                                                 1
+                          e−at      ⇐⇒
+                                               s+a
+                                               1
+                             t      ⇐⇒
+                                               s2
+                                               2
+                            t2      ⇐⇒
+                                               s3
+                                                    1
+                        te−at       ⇐⇒
+                                               (s + a)2
+                                                  ω
+                       sin ωt       ⇐⇒
+                                               s2 + ω 2
+                                                  s
+                       cos ωt       ⇐⇒
+                                               s2 + ω 2
+
+Solution of second degree equation
+                                                        q
+                  2                            −b ±      b2 − 4ac
+                ax + bx + c = 0    =⇒     x=
+                                                        2a
+
+## Løsningsforslag
+
+Solution Suggestion
+   Exam - TTK4115 Linear System Theory
+            4. December, 2021
+                                                  MOA
+
+                                       December 7, 2021
+
+Problem 1
+Given the system:
+                                   A                      B
+                            z    }|     {      z }| {
+                                                                                     C
+                                 −1 4              1
+                                                                                z }| {
+                     ẋ =                     x+         u,                   y= 1 0 x                            (1)
+                                  1 −1             0
+
+a) Test the system’s controllability and observability.
+     The controllability matrix for the system is:
+
+                                                                            1 −1
+                                   C=         B AB                    =
+                                                                              0 1
+
+     The observability matrix is:
+
+                                                   C                      1 0
+                                       O=                         =
+                                                  CA                      −1 4
+
+     Both matrices have full rank, so the system is both controllable and observable.
+b) Find the system’s transfer function.
+     The transfer function is found as:
+                                                                                                 −1
+                                        −1                                  s + 1 −4                    1
+                 ĝ(s) = C(sI − A)           B=           1 0
+                                                                               −1 s + 1                   0
+
+                       1                            s+1  4                         1                 s+1
+               =                  1 0                                                         =    2
+                 (s − 1)(s + 3)                        1  s+1                        0            s + 2s − 3
+
+                                                          1
+
+c) The transformation of a system into controllable form is defined by x = Px̄, where
+     x is the original state vector and P = C · C¯−1 . C is the controllability matrix of the
+     original system, and C¯ that of the controllable form system. Transform the system
+     of Eq. (1) into controllable canonical form, and find a feedback gain matrix K̄ that
+     places the system’s poles in -1 and -2.
+      We can write out the controllable form of the system directly based on the coeffi-
+      cients of its transfer function (negative coefficients of the denominator go into the
+      first row of Ā, and the coefficients of the numerator go into C̄):
+                                       Ā                   B̄
+                                z     }| {    z }| {                               C̄
+                                     −2 3          1
+                                                                         z }| {
+                         ẋ =                x+          u,            y= 1 1 x
+                                      1 0          0
+
+      The value of Ā − B̄K̄ is:
+                                                −2 − k1 3 − k2
+                                                   1      0
+
+      The characteristic polynomial we want for the closed loop system is (λ+1)(λ+2) =
+      λ2 + 3λ + 2, so we want the upper coefficients of Ā − B̄K̄ to be -3 and -2:
+                                       −2 − k1 = −3 =⇒ k1 = 1
+                                        3 − k2 = −2 =⇒ k2 = 5
+
+d) Find the appropriate feedback gain for the original system based on K̄.
+      To find the appropriate gain for the original system, we set up the equation for
+      the transformed feedback controlled system, and transform it back to the original
+      state vector based on x = Px̄ =⇒ x̄ = P−1 x:
+                                                x̄˙ = (Ā − B̄K̄)x̄
+                                        P−1 ẋ = (Ā − B̄K̄)P−1 x
+                                                    A
+                                                    B                  K
+                                            z }| { z}|{ z }| {
+                                                −1          −1
+                                      ẋ = (PĀP − PB̄ K̄P )x
+      To compute K we need to find P:
+                                       −1
+                 ¯−1    1 −1       1 −2         1 −1    1 2     1 1
+          P=C·C =                            =               =
+                        0 1        0 1          0 1     0 1     0 1
+                                         −1
+                             −1       1 1       1 −1
+                            P =              =
+                                      0 1       0 1
+      Then we kan find the value of K:
+
+                                       −1                         1 −1
+                         K = K̄P            =       1 5                        =       1 4
+                                                                    0 1
+
+                                                        2
+
+e) Check if the system
+                                       
+                         −2 1 0         1
+                  ẋ =  3 0 0  x +  1  u,                       y=        1 0 0         x   (2)
+                         1 0 −1        −1
+
+     is zero-state equivalent to the system of Eq. (1). You can simplify the computation
+     of the transfer function by recognizing it has an unobservable part.
+     The third state of this system is not directly observable, and it doesn’t affect any of
+     the two first states. It will therefore be zero-state equivalent to a system containing
+     only the first two states:
+
+                                 −2 1             1
+                         ẋ =              x+         u, y = 1 0 x                       (3)
+                                   3 0            1
+
+     The transfer function is:
+                                                                   −1
+                                                       s + 2 −1             1
+                             ĝ(s) =       1 0
+                                                          −3    s             1
+
+                         1                             s  1         1               s+1
+                 =                  1 0                                       =   2
+                   (s − 1)(s + 3)                        3 s+2        1           s + 2s − 3
+     So the system is zero-state equivalent to the system of Eq. (1).
+
+                                                     3
+
+Problem 2
+Given the first order system:
+                                    ẋ(t) = ax(t) + u(t)                             (4)
+where a > 0.
+a) Let the input be given by u = −kx. Show how to find the value of k that minimizes
+     the object function
+                             Z ∞
+                         J=      qx(t)2 + ru(t)2 dt, q > 0, r > 0
+                                0
+
+     for any initial value of the system.
+     The problem asks for the LQR optimal feedback controller. To find the value of
+     k we first need to find the positive solution of the Riccati equation given in the
+     formula sheet:
+                                   p2 b2
+                        2ap + q −         = 0 =⇒ p2 − 2arp − qr = 0
+                                    r
+                                  q
+                        1
+                                                              q
+                                         2 2                      2
+                    p=       2ar ± 4a r + 4qr = r a ± a + q/r
+                        2
+     The expression
+                  under
+                      q the square      root is always positive. We choose the positive
+     root: p = r a +     a2 + q/r .
+
+     We can then set the value of k as:
+                                      p
+                                           q
+                                  k = = a + a2 + q/r
+                                      r
+
+b) Eq. (4) is a model of a real system to be controlled. However, the value of a is
+     uncertain. The corresponding value a0 in the real system may be up to 50 % higher
+     or lower than a. With a feedback controller designed using the method above (con-
+     sidering any positive values of q and r), can the feedback controlled system turn
+     out to be unstable? Explain your reasoning.
+     The system is naturally unstable (a > 0), but the LRQ controller will always
+     ensure a stable feedback loop (in the absence of modelling errors). The equation
+     of the real system with feedback control is:
+                                                       q
+                      ẋ(t) = a0 x(t) + bu(t) = a0 − a − a2 + q/r x(t)
+
+     The “worst case” with respect to stability is if we choose not to weigh the system
+     state in the LQR optimization (q → 0), or we let the cost of the input approach
+     infinity (r → ∞). Both result in the expression below the square root approaching
+     a2 . The pole of the system at these limits becomes a0 − 2a. Given the uncertainty
+     of a0 , the pole will be within the interval [−0.5a, −1.5a]. The closed loop system
+     is stable over the entire interval.
+
+                                             4
+
+Problem 3
+You are working on a suspension system for a car. For a single wheel, let x1 be the
+vertical speed (positive upwards) of the top of the spring (which is attached to the car),
+and x2 its vertical postition. We define x2 = 0 as the position where the spring force
+balances out the downward force of gravity from the car. This force equals mg, where m
+is the part of the car’s weight resting on this wheel, and g is the graviational constant.
+We assume the spring force to be equal to mg − kx2 , where k > 0 is a spring constant,
+so the net force on the car equals −kx2 .
+When the car is moving, it will encounter irregularities in the ground. Let w(t) be
+the vertical position of the bottom end of the spring, and consider this an unknown
+disturbance. The spring force can now be calculated as mg − k(x2 − w).
+a) With w as input and x2 as output, is the system BIBO stable? Do you expect the
+    suspension system to work well in practice?
+     We first set up the state equation for the system. Since x1 is vertical speed and x2
+     vertical position, ẋ2 = x1 . Using Newton’s 2nd law, and the fact that the upper
+     end of the spring is pushed downwards by gravity from the car and upwards by
+     the spring force, we know that mẋ1 = mg − k(x2 − w) − mg = −kx2 + kw.
+     Treating w(t) as an input, this gives the following system:
+
+                           0 −k/m             k/m
+                    ẋ =                x+            w, y = 0 1 x                                (5)
+                           1     0              0
+     The transfer function from w to y is:
+                                                                 −1
+                             −1                         s k/m           k/m               k/m
+          g(s) = C(sI − A)        B=       0 1                                      =   2
+                                                         −1  s             0s + k/m
+                                                                                      q
+                                                                                         k
+     Since k > 0, the transfer function has a complex conjugated pair of poles in ± m      j.
+     The system is not BIBO stable, as that requires all poles to be in the left half plane.
+     For the suspension, this means that a bounded input could result in an unbounded
+     output, which is problematic for the practical use of the suspension. The system
+     is oscillatory, and if w varies near the resonance frequency of the suspension, the
+     oscillations will get amplified.
+b) The suspension is modified with a damping element that imposes a force −dx1 (pro-
+     portional to the vertical speed), where d > 0 is a constant. The state space system
+     for the suspension now looks like this:
+
+                               −d −k            k
+                       ẋ =               x+        w, y = 0 1 x                      (6)
+                                1    0          0
+     If the disturbance w is a white noise signal with spectral density function Sw (jω) =
+     α, what is the spectral density function of the output y? Use parameter values k = 1
+     and d = 2.
+
+                                                 5
+
+     Note: the model given here is wrong, as the coefficients with d and k
+     should be divided by m. The solution here is based on the given system,
+     not the correct one. Note also: No points will be deducted for students
+     who make the same error in their answer to a).
+     Treating w as an input, the transfer function from w to y is:
+                                           s + 2 1 −1 1
+
+                           g(s) = 0 1
+                                               −1 s         0
+
+                          1                s −1         1           1
+                 =                   0 1                       =
+                    (s + 1)(s + 1)            1 s+2       0        (s + 1)2
+     When a signal with spectral density Sw (ω) is filtered through a system with transfer
+     function g(s), the spectral density of the output can be calculated as:
+
+                               Sy (jω) = g(jω)g(−jω)Sw (jω)
+
+     For our system:
+                    1          1                            α                           α
+     Sy (jω) =          2·            2 ·α =       2             2             =
+                 (jω + 1) (−jω + 1)            (−ω + 2ωj + 1)(−ω − 2ωj + 1)        ω + 2ω 2 + 1
+                                                                                    4
+
+c) Use the Lyapunov equation (AT M + MA = −N) to test the internal stability of the
+     suspension system of Eq. (6). Use parameter values k = 1 and d = 2.
+     We can choose any positive definite 2x2 matrix N, so for simplicity we choose I2 .
+     We further define:
+                                            m1 m2
+                                    M=
+                                            m2 m3
+     Inserting these into the Lyapunov equation we get:
+
+            T                  −4m1 + 2m2     −2m2 + m3 − m1     −1 0
+         A M + MA =                                           =
+                            −2m2 + m3 − m1          −2m2         0 −1
+
+     We can then resolve m1 = m2 = 1/2 and m3 = 3/2, so:
+                                         1 1
+                                   M = 21 23
+                                                   2   2
+
+     The leading principal minors of M are 1/2 and 1/2, so M is positive definite.
+     Therefore, we can conclude that the system is asymptotically stable.
+d) Set up the equation for a Luenberger observer that estimates the values of x1 and x2
+     for the system of Eq. (6). Give also the equation for the estimation error.
+     The equation for the observer is:
+
+                       ˙x̂ = −d −k x̂ + l1 (y − 0 1 x̂)
+
+                               1    0      l2
+
+                                               6
+
+where we do not include the disturbance term as the value of w is unknown.
+The equation for the estimation error is:
+
+                             ˙      −d −k − l1       k
+                   ė = ẋ − x̂ =                e+     w
+                                     1    −l2        0
+
+(It is also OK to use the previously given parameter values here.)
+
+                                     7
+
+Problem 4
+Consider a first order process that is to be controlled. The process is described by the
+following equation:
+                          ẋ(t) = 0.1x(t) + u(t), y(t) = x(t)                        (7)
+where u(t) is the input.
+a) The output of the process should follow a time varying reference signal r(t). Design a
+     controller on the form u(t) = kr r(t) − ky(t) that makes y(t) approach r(t) in steady
+     state (if r(t) stays constant, y(t) should approach r(t) asymptotically). Show the
+     steps you use to find the controller parameters.
+      The equation for the closed loop system is:
+                                   ẋ(t) = (0.1 − k)x(t) + kr r(t)
+      The eigenvalue of the closed loop system is 0.1 − k. Any negative pole will make
+      the system internally stable, so we choose k = 1.1 to place the pole in -1.
+      We then need to choose kr to ensure that the steady state solution approaches
+      the reference. Denote the steady state reference value r0 . We can choose kr by
+      requiring that the equilibrium point of the closed loop system is in x = r0 :
+                                                             (k − 0.1)x
+                ẋ = (0.1 − k)x + kr r0 = 0 =⇒ kr =                     = k − 0.1 = 1
+                                                                 r0
+
+b) Write the state equation for the closed-loop system’s deviation from the reference:
+    z(t) = y(t) − r(t).
+      Since y(t) = x(t) we can write that z(t) = x(t)−r(t), and derive the state equation
+      as follows:
+                       ż(t) = ẋ(t) − ṙ(t) = (0.1 − k)x(t) + kr r(t) − ṙ(t)
+             = (0.1 − k)(z(t) + r(t)) + (k − 0.1)r(t) − ṙ(t) = (0.1 − k)z(t) − ṙ(t)
+
+c) Assume now that the reference r(t) = 0 for all t, and use k = 1.1 in the feedback
+     controller. You discover that the control input to the process is imprecise, so the ac-
+     tual input is u0 (t) = u(t) + β(t), where β(t) is a zero-mean white noise process with
+     autocorrelation function Aβ (t, τ ) = E[β(t)β(τ )] = δ(t − τ )q. Let the expectation
+     value of x(t) be denoted mx (t). Show that ṁx (t) = −mx (t).
+      Taking the feedback control and the imprecise input into account, the system can
+      now be written as:
+                           ẋ(t) = 0.1x(t) − 1.1x(t) + β(t) = −x(t) + β(t)
+      The time domain solution is:
+                                                   Z t
+                                          −t
+                                 x(t) = e x0 +           e−(t−τ ) β(τ )dτ
+                                                    0
+
+                                               8
+
+     where x(t), x0 and β(t) are random variables.
+                                  Z t                            Z t
+                            −t          −(t−τ )
+     mx (t) = E[x(t)] = E e x0 +       e        β(τ )dτ = e E[x0 ]+ e−(t−τ ) E[β(τ )]dτ
+                                                           −t
+                                           0                                           0
+
+     Since E[β(τ )] = 0, this simplifies to
+
+                                               mx (t) = e−t E[x0 ]
+
+     Differentiating this equation gives:
+
+                                     ṁx (t) = −e−t E[x0 ] = −mx (t)
+
+     which we were asked to show.
+d) Let the variance of x(t) be denoted Cx (t). Show that Ċx (t) = −2Cx (t)+q. Hint: when
+     an integrand contains a delta function whose argument becomes 0 at the integration
+     limit, use             Z   t             Z             ∞
+                                    δ(t − τ )dτ =               Θ(t − τ )δ(t − τ )dτ
+                            0                           0
+     with the convention that Θ(t) equals 0 if t < 0, 21 if t = 0 and 1 if t > 0.
+     The variance Cx (t) is defined as:
+
+                                       Cx (t) = E[(x(t) − mx (t))2 ]
+
+     Which means the derivative can be written as (now omitting the explicit depen-
+     dence on t to simplify the notation):
+
+                                      Ċx = E[2(x − mx )(ẋ − ṁx )]
+
+     Substituting the expressions we have for ẋ and ṁx , we get:
+
+          Ċx = E[2(x − mx )(−x + β + mx )] = −2E[(x − mx )2 ] + 2E[(x − mx )β]            (8)
+
+     The first term can be identified as −2Cx , but the second term requires a closer
+     look:
+                                          Z t
+                                      −t         −(t−τ )            −t
+           E[(x(t) − mx (t))β] = E e x0 +       e        β(τ )dτ − e E[x0 ] β(t)
+                                                                0
+                                         Z t
+                  = e−t E[x0 β(t)] +            e−(t−τ ) E[β(τ )β(t)]dτ − e−t E[x0 β(t)]
+                                           0
+     The first and last terms cancel each other out, but are also each equal to 0 because
+     of causality (the values of β(t) for t ∈ [0, t) cannot affect the initial value x0 . The
+     expectation value E(β(τ )β(t)] in the integral is by definition the autocorrelation
+     Aβ (t, τ ) of β(t), which was given as δ(t − τ )q:
+                                                  Z t
+                           E[(x(t) − mx (t))β] =      e−(t−τ ) δ(t − τ )dτ
+                                                                    0
+
+                                                    9
+
+The value of an integral with a delta function in its integrand is generally equal
+to the remainder of the integrand at the point where the argument to the delta
+function is 0. However, here this point coincides with the upper integration limit,
+so we use the suggested convention:
+                                  Z ∞
+                                                                      1
+            E[(x(t) − mx (t))β] =     e−(t−τ ) Θ(t − τ )δ(t − τ )qdτ = q
+                                   0                                  2
+
+Using that result in Eq. 8, we get the expression we were asked to show:
+
+                               Ċx (t) = −2Cx (t) + q
+
+                                     10
+
+Problem 5
+a) Given a state space system:
+
+                                             ẋ =Ax + Bu
+                                             y =Cx
+
+     The observability gramian of the system is defined as:
+                                        Z t T
+                               Wo (t) =    eA τ CT CeAτ dτ
+                                                0
+
+     Assume that x(0) is unknown, but you know the value of y(t) for t in the interval
+     [0, t1 ]. You also know that u(t) = 0 for t in the interval [0, t1 ]. Show that it is
+     possible to find the value of x(0) if Wo (t1 ) is invertible.
+     The equation for the system’s zero-input response is:
+
+                                           y(t) = CeAt x(0)
+                                                                               T
+     Inspired by the format of the gramian, we premultiply by eA t CT on both sides:
+                                   T                      T
+                              eA t CT y(t) = eA t CT CeAt x(0)
+
+     We then integrate both sides from 0 to t1 , and put the constant value x(0) outside
+     the integral:
+                   Z t1 T                 Z t
+                                                 1   T
+
+                          A τ T                     A τ T    Aτ
+                        e    C y(τ )dτ =           e   C Ce dτ x(0)
+                      0                               0
+
+     We then recognize that the integral on the right side is identical to the gramian
+     Wo (t1 ). If the gramian is invertible, the initial value can be found as:
+                                                Z t1 T
+                             x(0) = Wo−1 (t1 )       eA τ CT y(τ )dτ
+                                                     0
+
+b) Given a discrete time system:
+
+                                 x[k + 1] = 1.2x[k] + u[k] + w[k]
+                                        y[k] = x[k] + σ[k] + v1 [k]
+
+     where w[k] and v1 [k] are Gaussian disturbances with
+
+                      E[w[k]w[l]] = δ[k, l],         E[v1 [k]v1 [l]] = 0.1 · δ[k, l]
+
+     The measurement bias σ[k] has been found to vary according to the random process
+
+                                       σ[k + 1] = 0.9σ[k] + v2 [k]
+
+                                                11
+
+where v2 [k] is a Gaussian random variable with E[v2 [k]v2 [l]] = 0.2 · δ[k, l]. You
+also know that v1 [k], v2 [k] and w[k] are mutually independent. You plan to use a
+Kalman filter to estimate x[k]. Show how you will set up your system model to
+satisfy the requirements of the Kalman filter, and give the appropriate values for
+Qd and Rd .
+The random disturbance w[k] is Gaussian white as required by the Kalman filter,
+as is the measurement noise v1 [k]. The measurement bias needs to be handled
+by augmenting the system. We add σ[k] as a state variable, let v2 [k] be a second
+disturbance signal and express the output as a function of the augmented state
+vector:
+
+        x[k + 1]      1.2 0         x[k]     1            1 0        w[k]
+                  =                       +      u[k] +
+        σ[k + 1]       0 0.9        σ[k]     0            0 1        v2 [k]
+
+                                                  x[k]
+                         y[k] =       1 1                      + v1 [k]
+                                                    σ[k]
+The disturbance and measurement covariance matrices are set based on the given
+variances of the random signals:
+
+                                   1 0
+                          Qd =             , Rd = 0.1
+                                   0 0.2
+
+                                       12

@@ -1,0 +1,934 @@
+# Eksamen 2013 – TTK4115 Lineær systemteori
+
+Tekst hentet automatisk fra PDF. Matriser og brøker kan stå rotete over flere linjer.
+
+## Oppgavetekst
+
+Side 1 av 8
+        Norges teknisk- naturvitenskapelige universitet
+        Institutt for teknisk kybernetikk
+
+Eksamen - TTK 4115 Lineær systemteori
+Exam - TTK 4115 Linear System Theory
+
+Faglig kontakt / contact person:
+Navn: Tor Arne Johansen
+Tlf.: 917 22 765
+
+Eksamensdato / date of exam: 18. Desember 2013
+Eksamenstid / time of exam: 15:00 – 19:00
+Hjelpemidler: D - Ingen trykte eller håndskrevne hjelpemidler tillatt. Bestemt, enkel
+kalkulator tillatt.
+Supporting materials: D - No printed or handwritten material allowed. Specific,
+simple calculator allowed.
+
+Annen informasjon:
+
+Språk / language: Norsk / English
+Antall sider / number of pages: 8
+
+Merk at ingen deloppgave avhenger av at du har greid å løse noen av de andre
+deloppgavene. Oppgitt informasjon fra tidligere deloppgaver skal være tilstrekkelig
+for å komme videre.
+Note that no parts of this problem assume that you have solved any of the of previous
+parts. The given information from previous parts should be sufficient to move on.
+
+                                                                     Kontrollert av:
+
+                                                     9.12.2013
+                                                        Dato               Sign
+
+                                                                                           Side 2 av 8
+
+Oppgave 1 (15 %)
+ Anta gitt følgende system:
+ Consider the following system:
+
+                      !             !            !                                     !
+                ẋ1           0 1           x1                                  x1
+                          =                           ,        y=       1 0
+                ẋ2           0 0           x2                                    x2
+
+ a) (5%)
+ Undersøk om systemet er observerbart.
+ Investigate if the system is observable.
+ b) (5%)
+ Bruk en similaritetstransformasjon for å transformere systemet til en diagonal
+ form, hvis mulig.
+ Use a similarity transform to transform the system to a diagonal form, if
+ possible.
+ c) (5%)
+ Undersøk om systemet er Lyapunov-stabilt.
+ Investigate if the system is stable in the sense of Lyapunov.
+
+Oppgave 2 (45 %)
+ Anta gitt følgende system:
+ Consider the following system:
+
+                      !                     !              !              !            !
+                ẋ1               −5 2                x1            0 2           u1
+                          =                                    +
+                ẋ2               0 1                 x2            1 0           u2
+                                                      !
+                                               x1
+                      y =         1 0
+                                                 x2
+
+ a) (10%)
+ Finn sprangresponsen til systemet fra u2 til y.
+ Find the step response of the system from u2 to y
+ b) (5%)
+ Vis at systemet er styrbart.
+ Show that the system is controllable.
+
+                                                                       Side 3 av 8
+
+ c) (10%)
+ Forsterkningsmatrisen K for en tilstandstilbakekopling beregnes med LQ-metoden
+ gitte vektmatriser Q og R:
+ The gain matrix K for a state feedback is found by the LQ method with given
+ weight matrices Q and R:
+                                   !                 !                 !
+                  0.0884 2.5239                5 0               1 0
+          K=                           , Q=              , R=
+                  0.7003 0.1768                0 1               0 1
+ Finn en foroverkopling fra en referanse r for utgangen y, som sikrer null
+ stasjonært avvik mellom r og y. Tegn et blokkdiagram for systemet med
+ LQ-regulatoren og foroverkoplingen.
+ Find a feed-forward from a reference r for the output y, which ensures zero
+ stationary error between r and y. Draw a block diagram for the system with
+ the LQ controller and feed-forward.
+ d) (5%)
+ Hva er egenverdiene til systemet med LQ-regulatoren?
+ What are the eigenvalues of the system with the LQ controller?
+ e) (5%)
+ Hvordan ville du endret vektmatrisene i LQ-regulatoren for å få hurtigere
+ respons i y? Dvs. hvilke elementer i disse matrisene ville du økt eller redusert?
+ How would you change the weight matrices in the LQ controller to get a faster
+ response in y? I.e. which elements in these matrices would you increase or
+ decrease?
+ f) (10%)
+ Anta LQ-regulatoren bruker tilbakekopling fra tilstander estimert med en
+ observer med polplassering. Tegn et blokkdiagram for systemet med LQ-
+ regulatoren og observeren, og foreslå hvordan polene til observeren kan velges.
+ Hvordan påvirker tilstandsestimatoren stabiliteten til regulatoren?
+ Assume the LQ controller uses state feedback from estimated states from an
+ observer using pole placement. Draw a block diagram of the system with the LQ
+ controller and the observer, and suggest how the poles of the observer can be
+ chosen. How does the state estimator influence the stability of the controller?
+
+Oppgave 3 (20 %)
+ Spektraltetthetsfunksjonen til en stasjonær tilfeldig prosess X(t) med null mid-
+ delverdi er gitt ved:
+ The spectral density function of a stationary random process X(t) with zero
+ mean is given by:
+
+                                                                    Side 4 av 8
+
+                                 SX (ω) = 0.1
+
+ a) (5%)
+ Beregn autokorrelasjonsfunksjonen RX (τ ).
+ Calculate the autocorrelation function RX (τ ).
+ b) (5%)
+ Hva kalles prosessen X(t), og hvilke karakteristiske egenskaper har den?
+ What is the name of the process X(t), and which characteristic properties does
+ it have?
+ c) (10%)
+ Anta en ny tilfeldig prosess Y (t) defineres ved at X(t) filtreres med følgende
+ filter:
+ Let a new random process Y (t) be defined by filtering of X(t) through the
+ following filter:
+
+                                               1
+                                  G(s) =
+                                               s
+
+ Beregn middelverdi og varians til den nye prosessen Y (t). Er det en stasjonær
+ prosess? Hvilket navn har prosessen Y (t)?
+ Calculate the mean and variance of the new process Y (t). Is it a stationary
+ process? What is the name of the process Y (t)?
+
+Oppgave 4 (20 %)
+ Gitt følgende system:
+ Given the following system:
+
+                               xk+1 = Φk xk + wk
+                                 zk = Hk xk + vk
+
+                                       !
+                                 1 1
+                        Φk =               ,       Hk = (1, 0)
+                                 0 1
+
+                                                                          Side 5 av 8
+
+                                             !
+                                     0 0
+                           Qk =                  ,   Rk = 0.2
+                                     0 4
+
+der xk = (x1,k , x2,k )T er tilstandsvektoren, wk en diskret hvitstøy forstyrrelse
+med kovariansmatrise Qk , zk er en skalar måling, og vk er diskret hvit målestøy
+med varians Rk .
+where xk = (x1,k , x2,k )T is the state vector, wk is discrete white noise distur-
+bance with covariance matrix Qk , zk is a scalar measurement, and vk is discrete
+white measurement noise with variance Rk .
+
+Anta følgende initialbetingelser:
+Assume the following initial conditions:
+
+                                     !                          !
+                               0.2                     0.2 0
+                      x̂−
+                        0 =              ,   P0− =
+                               0.1                      0 0.4
+
+a) (10%)
+Beregn Kalman-filter estimatene x̂0 , x̂1 , x̂2 basert på følgende målinger: z0 =
+0.5, z1 = 1.0, z2 = 1.3.
+Compute the Kalman filter estimates x̂0 , x̂1 , x̂2 based on the following measure-
+ments: z0 = 0.5, z1 = 1.0, z2 = 1.3.
+
+Anta i det videre at den lineære måleligningen ovenfor erstattes med følgende
+ulineære ligning:
+Assume the linear measurement equation above is replaced by the following
+nonlinear equation:
+
+                              zk = x1,k + x32,k + vk
+
+b) (10%)
+Bruk utvidet Kalman-filter tilå beregne estimatene x̂0 , x̂1 , x̂2 basert på følgende
+målinger: z0 = 0.5, z1 = 1.0, z2 = 1.3.
+Use the Extended Kalman filter to compute the estimates x̂0 , x̂1 , x̂2 based on
+the following measurements: z0 = 0.5, z1 = 1.0, z2 = 1.3.
+
+                                                                      Side 6 av 8
+
+Vedlegg til eksamen (noen nyttige formler og uttrykk):
+Appendix to the exam (some useful formulas and expressions):
+
+                                   Z t
+                    At
+          x(t) = e x(0) +                eA(t−τ ) Bu(τ )dτ
+                                    0
+                                   k−1
+         x(k) = Ak x(0) +                Ak−1−m Bu(m)
+                                   X
+
+                                   m=0
+                  adj(A)
+          A−1   =
+                  det(A)
+                   n
+                   X
+       det(A) =          aij cij
+                   i=1
+       adj(A) = {cij }T
+           cij = (−1)i+j det(Aij ) (kofaktor), Aij = submatrix to A
+
+           C = (B, AB, A2 B, · · · , An−1 B)
+                        
+                   C
+                CA 
+                        
+                       2 
+                        
+                CA
+           O =          
+                   ..   
+               
+                    .   
+                         
+                     CAn−1
+        G(s) = C(sI − A)−1 B + D
+        G(s) = G(∞) + Gsp (s)
+         d(s) = sr + α1 sr−1 + · · · + αr−1 s + αr
+                    1
+       Gsp (s) =       [N1 sr−1 + N2 sr−2 + · · · + Nr−1 s + Nr ]
+                  d(s)
+                                                                      
+                     −α1 Ip −α2 Ip · · · −αr−1 Ip −αr Ip             Ip
+                       Ip       0     ···       0        0         0 
+                                                                      
+                  
+                                                                      
+             ẋ =  0
+                               Ip    ···       0        0   x +  0 u
+                                                                        
+                       ..       ..   ..        ..        ..  
+                                                                    ... 
+                                                                        
+                  
+                        .        .      .       .         .  
+                                                                       
+                       0        0     ···      Ip        0           0
+            y = [ N1 N2 · · · Nr−1 Nr ]x + G(∞)u
+
+                                                                              Side 7 av 8
+
+LQ-controller:
+                              Z ∞
+                   J(u) =            xT (t)Qx(t) + uT (t)Ru(t) dt
+                               0
+
+                           u = Kx(t),       K = −R−1 B T P
+
+             AT P + AP − P BR−1 B T P + Q = 0,                P = PT > 0
+
+Discrete-time Kalman filter:
+
+        xk+1 = Φk xk + wk
+           z k = Hk x k + v k
+                 (
+           T       Qk , i = k
+     E[wk wi ] =
+                   0,     i 6= k
+                       (
+                           Rk , i = k
+      E[vk viT ]   =
+                           0,   i=6 k
+     E[wk viT ] = 0, ∀i, k
+          P− k  = E[e−    −T
+                      k ek ]
+          Pk = E[ek eTk ] = (I − Kk Hk )P−             T         T
+                                         k (I − Kk Hk ) + Kk Rk Kk
+                                                    −1
+            Kk = P−  T      − T
+                  k Hk Hk P k Hk + R k
+
+          P−            T
+           k+1 = Φk Pk Φk + Qk
+
+Auto-correlation:
+
+    RX (τ ) = E[X(t)X(t + τ )] (Stationary process)
+ RX (t1 , t2 ) = E[X(t1 )X(t2 )] (Non-stationary process)
+      Y (s) = G(s)U (s) ⇒
+                                      Z t2 Z t1
+  Ry (t1 , t2 ) = E[y(t1 )y(t2 )] =               g(ξ)g(η)E [u(t1 − ξ)u(t2 − η)] dξdη
+                                        0   0
+
+                                                   Side 8 av 8
+
+Laplace transform pairs:
+
+                           f (t)   ⇐⇒   F (s)
+
+                                        1
+                             1     ⇐⇒
+                                        s
+                                           1
+                       e−at        ⇐⇒
+                                        s+a
+                                        1
+                             t     ⇐⇒
+                                        s2
+                                        2
+                            t2     ⇐⇒
+                                        s3
+                                             1
+                       te−at       ⇐⇒
+                                        (s + a)2
+                                            ω
+                      sin ωt       ⇐⇒
+                                        s2 + ω 2
+                                            s
+                      cos ωt       ⇐⇒
+                                        s + ω2
+                                         2
+
+## Løsningsforslag
+
+Solution Suggestion
+                     Exam - TTK4115 Linear System Theory
+                              December 18, 2013
+
+Problem 1
+a) The observability matrix is given by
+                                                    C    1      0
+                                             O=        =           ,
+                                                   CA    0      1
+   where the matrices A and C are given by
+
+                                        0 1
+                                  A=                  and      C= 1        0 .
+                                        0 0
+   Because the observability matrix has full column rank, i.e. rank(O) = 2 = n, we conclude that the system
+   is observable.
+b) The eigenvalues of A can be calculated from the characteristic polynomial of A, which is given by
+                                                          −λ    1
+                                          det(A − λI) =           = λ2 .
+                                                           0   −λ
+   The eigenvalues of A are equal to the roots the characteristic polynomial of A. Hence, we obtain the
+   eigenvalue λ = 0 with multiplicity 2. The corresponding eigenvectors can be obtained from the kernel of
+   the matrix (A − λI):
+
+                                                 0 1                        1
+                           ker(A − λI) = ker                  =⇒      q=       ,
+                                                 0 0                        0
+   where q is the corresponding eigenvector. Note that A has only one eigenvector associated with λ.
+   Because the eigenvalue λ of A has multiplicity 2, and A has only one eigenvector associated with λ, the
+   eigenvalues of A are not (all) distinct. Therefore, the system cannot be transformed into a diagonal form
+   using a similarity transformation.
+c) The system is (marginally) stable in the sense of Lyapunov, if and only if all the eigenvalues of A have
+   negative or zero real parts and all the Jordan blocks corresponding to eigenvalues with zero real parts are
+   1 × 1. We observe that A is a Jordan block of size 2 × 2 with eigenvalue λ = 0 (which implies a zero real
+   part). Therefore, the system is not stable in the sense of Lyapunov.
+
+Problem 2
+a) Before we find the step response of the system from u2 to y, we first determine its transfer function
+   matrix. The system can be written in the form
+                                              ẋ(t) = Ax(t) + Bu(t)
+                                              y(t) = Cx(t),
+
+                                                      1
+
+   with
+                                              x1 (t)                     u1 (t)
+                                      x(t) =                     u(t) =
+                                              x2 (t)                     u2 (t)
+   and where the matrices A, B and C are given by
+
+                               −5 2              0           2
+                         A=           ,    B=                              and        C= 1   0 .
+                                0 1              1           0
+
+   In the Laplace domain, the input-output relation of the system is given by
+
+                                                y(s) = H(s)u(s).
+
+   where the transfer function matrix is given by
+
+                                   H(s) = C(sI − A)−1 B
+
+                                               s + 5 −2 −1 0 2
+                                        = 1 0
+                                                    0   s−1     1 0
+                                                  1       2
+                                               s+5 (s+5)(s−1) 0 2
+                                        = 1 0              1
+                                                   0     s−1
+                                                                 1 0
+                                          h              i
+                                               2       2
+                                        = (s+5)(s−1)  s+5 .
+
+   Hence, we have
+                                                  2                  2
+                                   y(s) =                  u1 (s) +     u2 (s).
+                                            (s + 5)(s − 1)          s+5
+   For the step response from u2 to y, we have
+                                                                                    1
+                                       u1 (s) = 0        and             u2 (s) =     .
+                                                                                    s
+   Therefore, y(s) is given by
+                                                   2      2      2
+                                      y(s) =            =   −         .
+                                               s(s + 5)   5s 5(s + 5)
+   By transforming this expression to the time domain, we obtain the step response
+
+                                            2     1     2         1        2 2
+                       y(t) = L−1 {y(s)} = L−1        − L−1             = − e−5t
+                                            5     s     5       s+5        5 5
+
+   for all t ≥ 0.
+
+b) The controllability matrix is given by
+
+                                                     0             2     2   −10
+                                      C= B       AB =                               .
+                                                       1             0     1    0
+
+   Because the controllability matrix has full row rank, i.e. rank(C) = 2 = n, we conclude that the system
+   is controllable.
+c) The control input for the system with LQ controller and feed-forward is given by
+
+                                     u(t) =     −Kx(t) +        Pr(t)    ,
+                                                | {z }          | {z }
+                                              LQ controller feed-forward
+
+                                                         2
+
+where P is a matrix that should be defined. With this control input, the system equations are given by
+
+                                      ẋ(t) = (A − BK)x(t) + BPr(t)
+                                      y(t) = Cx(t).
+
+In the Laplace domain, the relation between the reference r and the output y is given by
+
+                                             y(s) = G(s)r(s),
+
+with
+                                    G(s) = C(sI − A + BK)−1 BP.
+If the stationary error between r and y is zero, then y converges to r as time goes to infinity for every
+constant reference r. Assuming that r is constant, i.e., r(t) = rc for all t, where rc is a constant, we have
+                                                                    rc
+                                      r(s) = L{r(t)} = rc L{1} =       .
+                                                                    s
+Using the finite value theorem, we obtain
+
+       lim y(t) = lim sy(s) = lim sG(s)r(s) = lim C(sI − A + BK)−1 BPrc = −C(A − BK)−1 BPrc .
+       t→∞      s→0          s→0              s→0
+
+Let the matrix P be given by
+                                                           p1
+                                                 P=           .
+                                                           p2
+We get
+               lim y(t) = −C(A − BK)−1 BPrc
+              t→∞
+                                                           −1
+                                −5 2        0 2 0.0884 2.5239         0            2 p1
+                        =− 1 0            −                                                r
+                                     0 1      1 0 0.7003 0.1768         1            0 p2 c
+                                                  −1
+                                −6.4006 1.6464        0 2 p1
+                        =− 1 0                                  r
+                                  −0.0884 −1.5239       1 0 p2 c
+
+                                −0.1539 −0.1663 0 2 p1
+                        =− 1 0                                r
+                                   0.0089 −0.6466 1 0 p2 c
+
+                                            p1
+                        = − −0.1663 −0.3079       r
+                                               p2 c
+                       = (0.1663p1 + 0.3079p2 )rc .
+If the stationary error between r and y is zero, we have
+
+                                               lim y(t) = rc .
+                                               t→∞
+
+Therefore, we require that
+                                         0.1663p1 + 0.3079p2 = 1.
+Any values of p1 and p2 that fulfill this condition ensure that the stationary error between r and y is
+zero. For instance, if we choose p1 = 0, then it follows that p2 = 3.2481 satisfies this condition. The
+corresponding feed-forward is given by
+
+                                                      0
+                                          Pr(t) =          r(t).
+                                                   3.2481
+
+A block diagram of the system with LQ controller and feed-forward is given in Fig. 1.
+
+                                                      3
+
+                                 +      u(t)            +           R     x(t)
+               r(t)        P                        B                             C         y(t)
+                                  −                     +
+
+                                                                    A
+
+                                                        K
+
+                 Fig. 1: Block diagram of the system with LQ controller and feed-forward.
+
+d) The eigenvalues of the system with LQ controller are the eigenvalues of the closed-loop system matrix
+   A − BK. The eigenvalues of A − BK can be calculated from the characteristic polynomial of A − BK,
+   which is given by
+
+                                          −6.4006 − λ         1.6464
+                 det(A − BK − λI) =                                     = λ2 + 7.9245λ + 9.8994.
+                                           −0.0884          −1.5239 − λ
+
+   The eigenvalues of A are equal to the roots the characteristic polynomial of A. Hence, we obtain the
+   eigenvalues                           √
+                                −7.9245 ± 7.92452 − 4 · 9.8994
+                         λ1,2 =                                 = −3.9622 ± 2.4083,
+                                              2
+   which can alternatively be written as
+
+                                      λ1 = −1.5539      and       λ2 = −6.3706.
+
+e) We note that, from the output equation of the system, it follows that y = x1 . The cost function that is
+   minimized to obtain the LQ controller is given by
+                                           Z t
+                                 JLQR =        xT (t)Qx(t) + uT (t)Ru(t)dt.
+                                                0
+
+   To obtain a faster response in y, we can put more weight on the cost of deviation of the state x1 . We
+   can do this by increasing the first element on the diagonal of Q. Moreover, by looking at the equation
+   for the dynamics of the system, we see that the input u1 mainly influences x2 , while the input u2 only
+   influences x1 . Therefore, we can also get a faster response in y if we put less weight on the cost of the
+   input u2 (allow for a larger input u2 ). We can do this by decreasing the second element on the diagonal
+   of R.
+f) We consider an observer of the following form:
+                                      ˙
+                                      x̂(t) = Ax̂ + Bu(t) + L(y(t) − Cx̂(t)).
+
+   The control law is now given by
+                                               u(t) = −Kx̂(t) + Pr(t),
+   A block diagram of the system with LQ controller and observer is given in Fig. 2. The poles of the
+   observer are the eigenvalues of the matrix A − LC. As a rule of thumb, the poles of the observer should
+   be chosen 5 to 10 faster than the fastest pole of the closed-loop system. The fastest pole of the closed-loop
+   system is λ2 = −6.3706. This implies that the real part of the poles of the observer should be chosen
+
+                                                        4
+
+                         +             u(t)         +           R     x(t)
+        r(t)       P                           B                               C               y(t)
+                          −                          +
+
+                                                                A
+
+                                                                                         +
+                                                                L
+                                                                                     −
+
+                                                    +    +      R     x̂(t)
+                                                                      x(t)
+                                               B                               C
+                                                     +
+
+                                                                A
+
+                                        K
+
+                  Fig. 2: Block diagram of the system with LQ controller and observer.
+
+   between approximately -64 and -32. By introducing the estimation error e = x − x̂, the system with LQ
+   controller and observer can be written as
+
+                                ẋ(t)      A − BK       −BK   x(t)   BP
+                                       =                           +       r(t)
+                                ė(t)         0       A − LC e(t)     0
+
+                                                x(t)
+                                  y(t) = C 0              .
+                                                   e(t)
+   Because the system matrix has a block-triangular form, the eigenvalues of the system are equal to the
+   eigenvalues of blocks on the diagonal of the matrix, i.e., the eigenvalues of the system are equal to the
+   eigenvalues of A − BK and the eigenvalues of A − LC. Therefore, the poles of the LQ controller (i.e.
+   the eigenvalues of A − BK) are not affected by the observer. (The observer only adds two new poles
+   to the system (i.e. the eigenvalues of A − LC) without affecting two ”old” poles that correspond to the
+   controller.) In the literature, this is known as the separation property/theorem.
+
+Problem 3
+a) The autocorrelation function RX (τ ) can be obtained from the inverse Fourier transform of the spectral
+   density function SX (ω):
+
+                               RX (τ ) = F −1 {SX (ω)} = 0.1F −1 {1} = 0.1δ(τ ),
+
+   where δ is the Dirac function.
+b) The process X(t) is a white-noise process. It is characterized by a constant spectral density function.
+                                                                                2
+   Moreover, its mean is zero (i.e. µX = 0) and its variance is infinite (i.e. σX = ∞).
+c) The impulse-response function of the filter can be obtained from its transfer function via the inverse
+   Laplace transform:
+                                                    −1  1
+                                           G(t) = L         = 1,
+                                                        s
+
+                                                     5
+
+   for t ≥ 0. The output Y (t) of the filter is given by
+                                                              Z t
+                                                    Y (t) =         G(τ )X(t − τ )dτ.
+                                                               0
+
+   The mean µY (t) of the process Y (t) is obtained as follows:
+                                Z t                   Z t                         Z t
+         µY (t) = E [Y (t)] = E      G(τ )X(t − τ )dτ =       G(τ )E[X(t − τ )]dτ =     µX dτ = µX t.
+                                           0                              0                   0
+
+   Because the process X(t) has zero mean (i.e. µX = 0), we have
+
+                                                               µY (t) = 0.
+
+   Hence, Y (t) is a zero-mean process. The variance σY2 (t) of the process Y (t) is given by
+                                               Z t                     Z t
+
+                      σY (t) = E Y 2 (t) = E        G(τ1 )X(t − τ1 )dτ1     G(τ2 )X(t − τ2 )dτ2
+                                                  0                      0
+                                Z t         Z t
+                             =E       G(τ2 )     G(τ1 )X(t − τ1 )X(t − τ2 )dτ1 dτ2
+                                       0              0
+                                Z t            Z t
+                            =         G(τ2 )         G(τ1 )E [X(t − τ1 )X(t − τ2 )] dτ1 dτ2
+                                 0              0
+                                Z t            Z t
+                            =     G(τ2 )    G(τ1 )RX (τ2 − τ1 )dτ1 dτ2
+                                 0        0
+                                  Z tZ t
+                            = 0.1        δ(τ2 − τ1 )dτ1 dτ2
+                                   0   0
+                                  Z t
+                            = 0.1     1dτ2
+                                       0
+                            = 0.1t.
+
+   A random process is said to be stationary if the density functions describing the process are invariant
+   under a translation of time. Consequently, properties such as the mean and the variance of the process
+   do not change over time if the process is stationary. Because the variance σY (t) changes over time, the
+   process Y (t) is not stationary. We note that the filter is an integrator. An integrated white-noise process
+   is called a Wiener (or Brownian-motion) process. Because X(t) is a white-noise process, Y (t) is a Wiener
+   process.
+
+Problem 4
+a) The Kalman filter estimates x̂0 , x̂1 , x̂2 are obtained by repeating the following steps:
+
+   Step 1: Compute the Kalman gain
+
+                                               Kk = P−  T      − T
+                                                     k Hk (Hk Pk Hk + Rk )
+                                                                          −1
+
+   Step 2: Update the estimate
+                                                     x̂k = x̂−                 −
+                                                             k + Kk (zk − Hk x̂k )
+
+   Step 3: Update the error covariance
+
+                                     Pk = (I − Kk Hk )P−             T         T
+                                                       k (I − Kk Hk ) + Kk Rk Kk
+
+                                                                    6
+
+Step 4: Project ahead to k + 1
+                                            x̂−
+                                              k+1 = Φk x̂k
+                                           P−            T
+                                            k+1 = Φk Pk Φk + Qk
+
+For k = 0, we obtain:
+                                                                          −1
+                                            0.2 0     1        0.2 0    1             0.5
+      K0 = P−  T      − T
+            0 H0 (H0 P0 H0 + R0 )
+                                  −1
+                                     =                     1 0                + 0.2   =
+                                             0 0.4 0               0 0.4 0               0
+
+                                       0.2     0.5            0.2      0.35
+       x̂0 = x̂−                 −
+               0 + K0 (z0 − H0 x̂0 ) = 0.1 +        0.5 − 1 0         =
+                                                0                0.1     0.1
+      P0 = (I − K0 H0 )P−              T
+                         0 (I − K0 H0 ) + K0 R0 K0
+                                                   T
+
+               1 0      0.5       0.2 0          1 0     0.5      T     0.5
+          =           −       1 0                       −       1 0     +       0.2 0.5              0
+               0 1       0               0 0.4     0 1      0                0
+
+             0.1 0
+          =
+              0 0.4
+
+        −             1 1 0.35         0.45
+      x̂1 = Φ0 x̂0 =               =
+                      0 1 0.1           0.1
+
+        −           T           1 1 0.1 0         1 0     0 0     0.5 0.4
+      P1 = Φ0 P0 Φ0 + Q0 =                             +        =
+                                0 1      0 0.4 1 1        0 4     0.4 4.4
+Subsequently, for k = 1, we get:
+                                                                              −1
+                                             0.5 0.4 1          0.5 0.4 1                 0.7143
+    K1 = P− 1 HT
+               1 (H  P
+                    1 1
+                       − T
+                        H 1  +  R 1 )−1
+                                         =                1   0                 +  0.2    =
+                                             0.4 4.4 0            0.4 4.4 0                 0.5714
+
+                                       0.45     0.7143             0.45       0.8429
+    x̂1 = x̂−                 −
+            1 + K1 (z1 − H1 x̂1 ) =           +         1− 1 0              =
+                                        0.1     0.5714                0.1       0.4143
+    P1 = (I − K1 H1 )P−                T
+                         1 (I − K1 H1 ) + K1 R1 K1
+                                                    T
+
+             1 0        0.8429        0.5 0.4        1 0     0.8429     T
+        =           −            1 0                        −          1 0
+             0 1        0.4143             0.4 4.4     0 1     0.4143
+
+             0.8429                           0.1429 0.1143
+          +           0.2 0.8429 0.4143 =
+             0.4143                             0.1143 4.1714
+
+                    1 1 0.8429           1.2571
+    x̂−
+      2 = Φ1 x̂1 = 0 1               =
+                             0.4143      0.4143
+
+      −           T             1 1 0.1429 0.1143 1 0            0 0     4.5429         4.2857
+    P 2 = Φ1 P 1 Φ1 + Q 1 =                                   +        =
+                                0 1 0.1143 4.1714 1 1            0 4     4.2857         8.1714
+Finally, for k = 2, we obtain:
+                                                                                     −1
+                                           4.5429 4.2857 1           4.5429 4.2857 1
+   K2 = P−  T      − T
+         2 H2 (H2 P2 H2 + R2 )
+                               −1
+                                  =                           1     0                    + 0.2
+                                           4.2857 8.1714 0             4.2857 8.1714 0
+
+            0.9578
+       =
+            0.9036
+
+                                       1.2571    0.9578              1.2571    1.2982
+    x̂2 = x̂−                 −
+            2 + K2 (z2 − H2 x̂2 ) =           +           1.3 − 1   0          =
+                                       0.4143    0.9036                0.4143    0.4530
+To summarize, we have obtained:
+
+                           0.35                  0.8429                    1.2982
+                    x̂0 =         ,       x̂1 =              and    x̂2 =           .
+                            0.1                  0.4143                    0.4530
+
+                                                     7
+
+b) The system can be written in the following form:
+
+                                                   xk+1 = f (xk ) + wk
+                                                     zk = h(xk ) + vk
+
+   with
+                                 f (xk ) = Φk xk       and        h(xk ) = x1,k + x32,k .
+   The extended Kalman filter estimates x̂0 , x̂1 , x̂2 are obtained by repeating the following steps:
+
+   Step 1: Compute the Kalman gain
+
+                                                dh
+                                        Hk =               = 1         3x̂22,k
+                                               dxk xk =x̂−
+                                                              k
+
+                                        Kk = P−  T      − T
+                                              k Hk (Hk Pk Hk + Rk )
+                                                                   −1
+
+   Step 2: Update the estimate
+                                           x̂k = x̂−                −
+                                                   k + Kk (zk − h(x̂k ))
+
+   Step 3: Update the error covariance
+
+                                 Pk = (I − Kk Hk )P−             T         T
+                                                   k (I − Kk Hk ) + Kk Rk Kk
+
+   Step 4: Project ahead to k + 1
+                                              x̂−
+                                                k+1 = Φk x̂k
+                                             P−            T
+                                              k+1 = Φk Pk Φk + Qk
+
+   For k = 0, we obtain:
+
+   H0 = 1 0.03
+                                                                              −1
+                                         0.2 0      1            0.2 0      1             0.4996
+   K0 = P−  T      − T
+         0 H0 (H0 P0 H0 + R0 )
+                              −1
+                                 =                        1 0.03                  + 0.2   =
+                                          0 0.4 0.03                0 0.4 0.03              0.0300
+
+                                    0.2     0.4996                 0.3494
+    x̂0 = x̂−                −
+            0 + K0 (z0 − h(x̂0 )) = 0.1 + 0.0300 (0.5 − 0.2010) = 0.1090
+
+   P0 = (I − K0 H0 )P−                T
+                        0 (I − K0 H0 ) + K0 R0 K0
+                                                    T
+
+            1 0        0.4996            0.2 0          1 0      0.4996         T
+       =           −            1 0.03                         −           1 0.03
+            0 1        0.0300                 0 0.4       0 1      0.0300
+
+            0.4996                             0.1001 −0.0060
+         +           0.2 0.4996 0.0300 =
+            0.0300                              −0.0060 0.3996
+
+                   1 1 0.3494            0.4583
+   x̂−
+     1 = Φ  x̂
+           0 0 =                   =
+                   0 1 0.1090            0.1090
+
+                               1 1      0.1001 −0.0060 1 0            0 0     0.4877 0.3936
+   P−1 = Φ  P  Φ
+           0 0 0
+                 T
+                    + Q 0  =                                      +         =
+                               0 1 −0.0060 0.3996           1 1       0 4     0.3936 4.3996
+
+                                                          8
+
+Subsequently, for k = 1, we get:
+
+ H1 = 1 0.0356
+                                                                                                        −1
+                                            0.4877 0.3936       1                  0.4877 0.3936    1
+K1 = P−  1 H T
+             1 (H    P
+                   1 1
+                       − T
+                        H1  +   R 1 )−1
+                                         =                              1  0.0356                           + 0.2
+                                            0.3936 4.3996 0.0356                     0.3936 4.3996 0.0356
+
+        0.6956
+    =
+        0.7629
+
+                                       0.4583     0.6956                  0.8342
+x̂1 = x̂−
+        1  + K    (z
+                1 1   − h(x̂ −
+                             1 )) =            +          (1 − 0.4596) =
+                                       0.1090     0.7629                  0.5212
+P1 = (I − K1 H1 )P−                T
+                     1 (I − K1 H1 ) + K1 R1 K1
+                                                T
+
+         1 0        0.6956              0.4877 0.3936       1 0    0.6956            T
+    =           −            1 0.0356                              −          1 0.0356
+         0 1        0.7629                  0.3936 4.3996     0 1    0.7629
+
+         0.6956                           0.1387 0.0108
+      +           0.2 0.6956 0.7629 =
+         0.7629                             0.0108 3.9798
+
+                1 1 0.8342           1.3554
+x̂−
+  2 = Φ1 x̂1 = 0 1               =
+                         0.5212      0.5212
+
+  −           T             1 1 0.1387 0.0108 1 0             0 0     4.1402 3.9906
+P 2 = Φ1 P 1 Φ1 + Q 1 =                                    +       =
+                            0 1 0.0108 3.9798 1 1             0 4     3.9906 7.9798
+
+Finally, for k = 2, we obtain:
+
+               H2 = 1 0.8151
+
+                                                         4.1402 3.9906        1
+             K2 = P−  T      − T
+                   2 H2 (H2 P2 H2 + R2 )
+                                        −1
+                                           =
+                                                         3.9906 7.9798 0.8151
+                                                                    −1
+                                     4.1402 3.9906          1                  0.4579
+                    · 1 0.8151                                      + 0.2     =
+                                       3.9906 7.9798 0.8151                      0.6500
+
+                                                    1.3554     0.4579                     1.2652
+              x̂2 = x̂−
+                      2  + K 2 (z 2 − h(x̂ −
+                                           2 )) =           +          (1.3 − 1.4970) =
+                                                    0.5212     0.6500                     0.3932
+
+To summarize, we have obtained:
+
+                          0.3494                 0.8342                        1.2652
+                   x̂0 =          ,       x̂1 =                and      x̂2 =          .
+                          0.1090                 0.5212                        0.3932
+
+                                                    9

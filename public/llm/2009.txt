@@ -1,0 +1,895 @@
+# Eksamen 2009 – TTK4115 Lineær systemteori
+
+Tekst hentet automatisk fra PDF. Matriser og brøker kan stå rotete over flere linjer.
+
+## Oppgavetekst
+
+Side 1 av 8
+        Norges teknisk- naturvitenskapelige universitet
+        Institutt for teknisk kybernetikk
+
+Faglig kontakt / contact person:
+Navn: Esten Ingar Grøtli
+Tlf.: 920 99 036
+
+Eksamen - TTK 4115 Lineær systemteori
+Exam - TTK 4115 Linear system theory
+
+                   11. desember 2009, 09:00 – 13:00
+Hjelpemidler: D - Ingen trykte eller håndskrevne hjelpemidler tillatt. Bestemt, enkel
+kalkulator tillatt.
+
+Supporting materials: D - No printed or handwritten material allowed. Specific,
+simple calculator allowed.
+
+   Oppgave 1 (20 %)
+     Gitt
+     Given:
+
+                                        ẋ = Ax + bu
+                                        y = Cx + Du
+
+     a)
+     La (A, B) ha styrbarhetsmatrisa:
+     Let (A, B) have controllability matrix:
+
+                               C=       B AB ... An−1 B
+
+     Anta at C har full rang. Vis at dette impliserer at styrbarhetsmatrisa C til det
+     ekvivalente systemet (A = P AP −1 , B = P B), hvor P er similaritetstransfor-
+     masjonen, også har full rang.
+
+                                                                               Side 2 av 8
+
+ Assume that C has full rank. Show that this implies that the controllability
+ matrix C of the equivalent system (A = P AP −1 , B = P B), with P being the
+ equivalence transformation, also has full rank.
+
+ b)
+ La:
+ Let:                                                     !
+                                           −1 −1
+                                    A=
+                                           −4 2
+ Finn egenverdiene og tilhørende egenvektorer til A.
+ Find the eigenvalues and the corresponding eigenvectors of A.
+ c)
+ La:
+ Let:
+                            !
+                        0
+                B=              , C=       1 0       , D=         0 0
+                        1
+
+ Transformer systemet til diagonalform, ved hjelp av similaritetstransformasjo-
+ nen x = P x.
+ Transform the system to diagonal form, by using the equivalence transforma-
+ tion x = P x.
+ d)
+ Anta konstant pådrag u ≡ 1. Hva blir løsningen y(t) for t = 1 når x(0) = x0 ?
+ Unngå integral i svaret.
+ Assume a constant input u ≡ 1. What is the solution y(t) at t = 1 when
+ x(0) = x0 ? Avoid using integrals in the answer.
+
+Oppgave 2 (20 %)
+ Gitt følgende system:
+ Given the following system:
+
+                            !                !            !            !
+                      ẋ1              0 1           x1            0
+                                =                             +            u
+                      ẋ2              0 0           x2            1
+
+ a)
+ Er systemet BIBO-stabilt? Er systemet styrbart? Forklar!
+ Is the system BIBO-stable? Is the system controllable? Explain!
+
+                                                                      Side 3 av 8
+
+b)
+La α, β, γ være positive konstanter. Vi ønsker å minimere kostfunksjonen:
+Let α, β, γ be positive constants. We wish to minimize the cost function:
+                          Z te
+                     J=             αx21 + βx22 + γu2 dt,    te > 0           (1)
+                            0
+
+La x = (x1 , x2 )T . Skriv kostfunksjonen på formen:
+Let x = (x1 , x2 )T . Write the cost function on the form:
+                            Z te
+                       J=            xT Qx + uT Rudt,       te > 0            (2)
+                                0
+
+Hva blir Q? Hva blir R? Hvilken effekt har det å øke henholdsvis α, β og γ?
+What is Q? What is R? What is the effect of increasing α, β and γ, respec-
+tively?
+c)
+La te i (2) være endelig. Blir den resulterende regulatoren fra å løse optimalis-
+eringsproblemet tidsvarierende eller tidsinvariant? Forklar!
+Let te in (2) be finite. Will the resulting controller from solving the optimiza-
+tion problem be timevarying or timeinvariant? Explain!
+d)
+La α = β = γ = 1 i (1). Gitt en positiv semidefinitt matrise:
+Let α = β = γ = 1 in (1). Given a positive semidefinite matrix:
+                                                    !
+                                          p11 p12
+                                P =                     .
+                                          p12 p22
+
+Finn den stasjonære verdien av P ved å løse Ricatti-likningen:
+Find the stationary value of P by solving the Ricatti equation:
+
+                      0 = P A + AT P + Q − P BR−1 B T P
+
+e)
+Bruk P fra forrige oppgave til å vise at systemet med tilbakekobling u =
+−R−1 B T P x er asymptotisk stabilt.
+Use P from the previous exercise to show that the system with feedback u =
+−R−1 B T P x is asymptotically stable.
+
+                                                                    Side 4 av 8
+
+Oppgave 3 (35 %)
+ Gitt et signal med autokorrelasjonsfunksjon:
+ Consider a signal with autocorrelation function:
+                                        8      3
+                              Rs (τ ) = exp− 4 |τ |
+                                        3
+ La målinga av signalet være addert med støy med autokorrelasjonsfunksjon:
+ Let the measurement of the signal be corrupted with additive noise with auto-
+ correlation function:
+                                Rn (τ ) = 4δ(τ )
+ a)
+ Vis at systemet kan skrives som:
+ Show that the system can be written as:
+                                        3
+                               ẋ = − x + 2u
+                                        4
+                               z = x + v,
+ hvor u er enhets hvit støy og v er hvit støy med kovariansparameter R = 4.
+ where u is unity white noise and v is white noise with covariance parameter
+ R = 4.
+ b)
+ Et kontinuerlig Kalman filter skal designes for systemet. Vis at kovariansfeil-
+ matrisen tilfredsstiller:
+ A continuous Kalman filter is to be designed for the system. Show that the
+ error covariance matrix satisfies:
+                                    1      3
+                             Ṗ = − P 2 − P + 4
+                                    4      2
+ c)
+ La P (0) = 0. Bestem P (t). (Avhenging av hvordan du velger å løse oppgaven,
+ kan du finne det nyttig å vite at a2 + 6a − 16 = (a + 8)(a − 2) eller at
+ cos ix = cosh x = 1/2(ex + e−x ) og at −i sin ix = sinh x = 1/2(ex − e−x )).
+ Let P (0) = 0. Find P (t). (Depending on your solution method, you might find
+ it useful to know that a2 + 6a − 16 = (a + 8)(a − 2) or that cos ix = cosh x =
+ 1/2(ex + e−x ) and that −i sin ix = sinh x = 1/2(ex − e−x )).
+ d)
+ Hva blir Kalman-forsterkninga K i det stasjonære tilfellet?
+ What is the Kalman gain K in the stationary case?
+
+                                                                                   Side 5 av 8
+
+Oppgave 4 (25 %)
+ Gitt følgende system:
+ Given the following system:
+
+                                                                  
+             ẋ1        0 1 0      x1       0 1                                   !
+                                                                             u1
+            ẋ2  =  −4 −4 0   x2  +  1 0 
+                                         
+                                                                             u2
+             ẋ3        2 0 3      x3       0 0
+                                                      
+                    !                     !     x1
+               y1                 1 0 0
+                        =                      x2 
+                                                  
+               y2                 0 1 0
+                                                x3
+
+ a)
+ Finn overføringsfunksjonsmatrisa G(s) til systemet.
+ Find the transfer function matrix G(s) of the system.
+ b)
+ Bruk likningene i vedlegget til å finne en annen realisering (Am , Bm , Cm , Dm )
+ av G(s).
+ Use the equations in the appendix to find another realization (Am , Bm , Cm , Dm )
+ of G(s).
+ c)
+ Gitt:
+ Given:
+
+                        !                      !                     !                      !
+           0  1                       0 1                      1 0                    0 0
+ Am1 =                      , Bm1 =                , Cm1 =               , Dm1 =
+           −4 −4                      1 0                      0 1                    0 1
+
+ Er (Am1 , Bm1 , Cm1 , Dm1 ) også en realisering av G(s)? Hvorfor/Hvorfor ikke?
+ Is (Am1 , Bm1 , Cm1 , Dm1 ) also a realization of G(s)? Why/Why not?
+
+                                                                      Side 6 av 8
+
+Vedlegg til eksamen (noen nyttige formler og uttrykk):
+Appendix to the exam (some useful formulas and expressions):
+
+                                    Z t
+                     At
+          x(t) = e x(0) +                 eA(t−τ ) Bu(τ )dτ
+                                     0
+                                    k−1
+         x(k) = Ak x(0) +                 Ak−1−m Bu(m)
+                                    X
+
+                                    m=0
+                  adj(A)
+          A−1   =
+                  det(A)
+                    n
+                    X
+       det(A) =           aij cij
+                    i=1
+       adj(A) = {cij }T
+           cij = (−1)i+j det(Aij ) (kofaktor), Aij = submatrix to A
+
+           C = (B AB A2 B · · · An−1 B)
+                       
+                   C
+                CA 
+                       
+                      2 
+                       
+                CA
+           O =         
+                  ..   
+               
+                   .   
+                        
+                      CAn−1
+         G(s)   = C(sI − A)−1 B + D
+         G(z)   = C(zI − A)−1 B + D
+         G(s)   = G(∞) + Gsp (s)
+         d(s)   = sr + α1 sr−1 + · · · + αr−1 s + αr
+                    1
+       Gsp (s) =       [N1 sr−1 + N2 sr−2 + · · · + Nr−1 s + Nr ]
+                  d(s)
+                                                                      
+                     −α1 Ip −α2 Ip · · · −αr−1 Ip −αr Ip             Ip
+                       Ip       0       ···      0       0         0 
+                                                                      
+                  
+                                                                      
+             ẋ = 
+                      0        Ip      ···      0       0   x +  0 u
+                                                                        
+                       ..       ..     ...       ..      ..  
+                                                                    ... 
+                                                                        
+                  
+                        .        .                .       .  
+                                                                       
+                       0        0       ···      Ip      0           0
+            y = [ N1 N2 · · · Nr−1 Nr ]x + G(∞)u
+
+                                                                                     Side 7 av 8
+
+ Discrete-time Kalman filter:
+
+           xk+1 = Φk xk + wk
+              z k = Hk x k + v k
+                    (
+              T       Qk , i = k
+        E[wk wi ] =
+                      0,     i 6= k
+                                  (
+                                      Rk , i = k
+         E[vk viT ]       =
+                                      0,   i=6 k
+        E[wk viT ] = 0, ∀i, k
+             P− k  = E[e−    −T
+                         k ek ]
+             Pk = E[ek eTk ] = (I − Kk Hk )P−             T         T
+                                            k (I − Kk Hk ) + Kk Rk Kk
+                                                          −1
+                 Kk = P−  T      − T
+                       k Hk Hk P k Hk + R k
+
+                P−            T
+                 k+1 = Φk Pk Φk + Qk
+
+ Continuous-time Kalman filter:
+
+                 ẋ           =       Fx + Gu
+                 z            =       Hx + v
+                T
+     E[u(t)u(τ ) ]            =       Qδ(t − τ )
+     E[v(t)v(τ )T ]           =       Rδ(t − τ )
+     E[u(t)v(τ )T ]           =       0
+                K             =       PHT R−1
+                Ṗ            =       FP + PFT − PHT R−1 HP + GQGT ,           P(0) = P0
+
+ Auto-correlation:
+
+   RX (τ )      =   E[X(t)X(t + τ )] (Stationary process)
+RX (t1 , t2 )   =   E[X(t1 )X(t2 )] (Non-stationary process)
+     Y (s)      =   G(s)U (s) ⇒
+Ry (t1 , t2 )   =   E[y(t1 )y(t2 )]
+                    Z t2 Z t1
+                =                     g(ξ)g(η)E [u(t1 − ξ)u(t2 − η)] dξdη (Transient analysis)
+                      0       0
+
+                                                   Side 8 av 8
+
+Laplace transform pairs:
+
+                           f (t)   ⇐⇒   F (s)
+
+                                        1
+                             1     ⇐⇒
+                                        s
+                                           1
+                       e−at        ⇐⇒
+                                        s+a
+                                        1
+                             t     ⇐⇒
+                                        s2
+                                        2
+                            t2     ⇐⇒
+                                        s3
+                                             1
+                       te−at       ⇐⇒
+                                        (s + a)2
+                                            ω
+                      sin ωt       ⇐⇒
+                                        s2 + ω 2
+                                            s
+                      cos ωt       ⇐⇒
+                                        s + ω2
+                                         2
+
+## Løsningsforslag
+
+Solution Suggestion
+                   Exam - TTK4115 Linear System Theory
+                            December 11, 2009
+                                         EIG (2009-12-14)
+
+Problem 1
+ a) The proof is similar to the proof of Theorem 6.2 in Chen. The controllability matrix of C¯ of the
+    transformed system is:
+                            C¯ = B̄ ĀB̄ · · · Ān−1 B̄
+
+                                   h                             n−1     i
+                               = P B P AP −1 P B · · · P AP −1        PB
+                               = P B P AP −1 P B · · · P An−1 P −1 P B
+
+                               = P B AB · · · An−1 B
+
+                                =   PC
+    Since the rank of a matrix will not change after pre- or postmultiplication by a nonsingular matrix,
+    and P is nonsingular, the rank of C¯ is equal to the rank of C. Since C was assumed to have full rank,
+            ¯
+    so will C.
+ b) To find the eigenvalues of A, we solve the equation det (λI − A) = 0. We find that
+                                                              λ+1        1
+                                      det (λI − A)       =
+                                                               4        λ−2
+                                                         = λ2 − λ − 6
+                                                         =   (λ + 2) (λ − 3)
+    The eigenvalues are therefore λ1 = −2 and λ2 = 3.The eigenvector q1 = (q11 , q12 )> corresponding to
+    λ1 is found by solving (A − λ1 I) q1 = 0. Since
+
+                                        1 −1 q11         q11 − q12
+                                                      =                ,
+                                       −4 4       q12   −4q11 + 4q12
+                                                                                         >
+    we can pick q1 = (1, 1)> . In a similar manner we find the eigenvector q2 = (1/4, −1) , corresponding
+    to λ2 .
+ c) As announced on the exam D should be taken as D = 0. The transformed system can be written as
+                                              x̄˙ =       Āx̄ + B̄u
+                                              y   =       C̄ x̄ + D̄u
+    where Ā = P AP −1 , B̄ = P B, C̄ = CP −1 and D̄ = D. We define Q := q1       q2 and take P = Q−1 .
+
+    We find that
+                                                         4    1
+
+                                               P =       5    5     .
+                                                         4
+                                                         5   − 54
+
+                                                     1
+
+    Performing the matrix calculations gives
+
+                                                          −2 0          1/5
+                                           x̄˙ =                 x̄ +         u
+                                                           0 3         −4/5
+                                                         1 41 x̄
+
+                                           y       =
+
+ d) Using the formula in the appendix, we find that
+                               −2t                  Z t  −2(t−τ )
+                               e         0                 e               0       1/5
+                   x̄ (t) =                  x̄ (0) +                                    u (τ ) dτ
+                                 0     e3t             0      0        e3(t−τ ) −4/5
+                                             Z t
+                               x̄1 (0) e−2t            1/5e−2(t−τ )
+
+                          =                    +                      u (τ ) dτ
+                                x̄2 (0) e3t        0   −4/5e3(t−τ )
+
+    Since y (t) = (1, 1/4) x̄ (t), and u ≡ 1, we get that for x0 = (x10 , x20 )> ,
+
+                                                  1 1 −2(1−τ )      1 1 3(1−τ )
+                                                    Z                 Z
+           y (1)   = x̄1 (0) e−2 + 1/4x̄2 (0) e3 +      e      dτ −        e     dτ
+                                                  5 0               5 0
+                                                1 1 −2(1−τ )       1 1 3(1−τ )
+                                                  Z                 Z
+                                   1
+                   = x̄1 (0) e−2 + x̄2 (0) e3 +       e      dτ −       e      dτ
+                                   4            5                  5 0
+                                               0
+                        4       1       −2     1 4         4     3  1 1 1 −2          1 1 3 1
+                   =      x10 + x20 e +            x10 − x20 e +           − e      −     e −
+                        5       5              4 5         5        5 2 2             5 3     3
+
+                        4 −2 1 3             1 −2               1        1      1
+                                                e − e3 x20 − e−2 − e3 +
+
+                   =      e + e x10 +
+                        5        5           5                 10       15      6
+
+Problem 2
+ a) With output y = x1 , the system has transferfunction
+                                                                        1
+                                                         G (s) =           ,
+                                                                        s2
+    that is, two poles in the origin. By Theorem 5.3 in Chen, the system is not BIBO stable. The system
+    is controllable, since the controllability matrix
+
+                                                          0 1
+                                              C = B AB =
+                                                            1 0
+
+    has full rank.
+
+ b) By comparing the terms we find that
+
+                                                       α        0
+                                                   Q=               ,     R = γ.
+                                                        0       β
+
+    Increasing α and β penalizes the state varialbles x1 and x2 , respectively. Increasing γ penalizes the
+    control efforts.
+ c) The resulting controll will be timevarying, since te is finite.
+
+ d) We find that
+                                     0      1              0                           1   0
+                                 A=            ,       B=     ,         R = 1,     Q=
+                                     0      0              1                           0   1
+
+                                                            2
+
+    Inserting into the Ricatti equation, we find that.
+                                    T                                     T
+              p11 p12 0 1           0 1       p11 p12     1 0         p11 p12 0 0            p11   p12
+                                +                      +          −
+              p12 p22 0 0           0 0       p12 p22     0 1         p12 p22 1 1            p12   p22
+                                                     2
+                         0 p11         0     0     1 0         p12      p12 p22       0 0
+                                  +              +       −                        =
+                         0 p12        p11 p12      0 1        p12 p22    p222         0 0
+    or
+                                      1 − p212
+
+                                                   p11 − p12 p22         0 0
+                                                                      =          .
+                                   p11 − p12 p22 −p222 + 2p12 + 1        0 0
+    We have the following equation
+
+                                                      1 − p212     =      0
+                                                2
+                                              −p22 + 2p12 + 1      =      0
+                                                  p11 − p12 p22    =      0
+
+    The first equation implies that p12 ± 1. If p12 = −1, we find from the second equation that p22 = ±i.
+    We are only interested
+                 √         in real
+                                 √solutions, so p12 = 1. Inserting p12 = 1 into the
+                                                                                √ second equation, we find
+                                                                                                      √
+    that p22 = ± 3. For√p22 = 3, we get from the last equation that p11 = 3, were as for p22 = − 3,
+    we get that p11 = − 3. Possible solutions are therefore
+                                       √                     √
+                                          3 √1                  − 3      1
+                                                                         √
+                                   P =               or P =                   .
+                                         1      3                 1    − 3
+
+    We are only interested in the positive (semi-) definite solution, so
+                                                    √
+                                                        3 √1
+                                               P =
+                                                       1      3
+
+ e) The optimal control is                                    √
+                                                 u=− 1          3 x.
+    The closed-loop system is
+                                                                          √
+
+                                                0 1        0
+                                        ẋ   =        x−      1            3 x
+                                                0 0        1
+
+                                                 0    1
+                                                      √
+                                             =             x
+                                                −1 − 3
+                                                                                √
+    The characteristic polynomical of the closed-loop system is ∆ (λ) = λ λ + 3 + 1. By solving ∆ (λ) =
+                            √
+    0, we find that λ = − 21 3 ± 12 i. The eigenvalues are in the left hand plane, and therefore the system
+    is asymptotically stable.
+
+Problem 3
+ a) Realizing that the process signal is on the form
+
+                                                 Rs (τ ) = σ 2 e−β|τ |
+
+    with mean-square value σ 2 = 8/3 and time constant 1/β = 4/3, we recongnize the process as a
+    Gauss-Markov process, which power spectral desity function is
+                                                             2σ 2 β
+                                                 Ss (s) =             .
+                                                            −s2 + β 2
+
+                                                       3
+
+  The noise signal should be recognized as white noise, with spectral amplitude A = 4. The corresponding
+  power spectral function is
+                                                Sn (s) = A.
+  Spectral factorization gives
+
+                                        Ss (s)    = S + (s) · S − (s)
+                                                    q            q
+                                                       2 83 43     2 38 34
+                                                  =            ·
+                                                     s + 34 −s + 43
+                                                       2          2
+                                                  =       3 ·
+                                                    s + 4 −s + 43
+
+  S + (s) is the shaping filter from the unity white noise input u to the state x, so
+
+                                                 X (s)     2
+                                                       =
+                                                 U (s)   s + 43
+  or
+                                                     3
+                                                X s+          = 2U,
+                                                     4
+  which it time-domain becomes
+                                                  3
+                                           ẋ = − x + 2u
+                                                  4
+  Since the additve measurement is white, no augmentation of the state vector is required, and the
+  measurement is
+                                              z = x + v.
+  Since u is unity white noise, Q = 1 and since v is white noise of amplitude 4, R = 4.
+b) Comparing the state model with the model in the appendix, we recognize that G = 2, H = 1 and
+   F = − 43 . Inserting for H, F, Q and R into the differential Ricatti equation gives:
+
+                                                    1     3
+                                              Ṗ = − P 2 − P + 4.
+                                                    4     2
+
+c) We rewrite
+                                                 1
+                                                   P 2 + 6P − 16
+
+                                        Ṗ    = −
+                                                 4
+                                                 1
+                                              = − (P + 8) (P − 2) .
+                                                 4
+
+  We write Ṗ = dP/dt, and spearate the variables:
+
+                                                   dP           1
+                                                             = − dt,                                 (1)
+                                             (P + 8) (P − 2)    4
+
+  Note that,
+
+                           dP                  1    dP (P + 8)        dP (P − 2)
+                                        =                         −
+                     (P + 8) (P − 2)           10 (P + 8) (P − 2) (P + 8) (P − 2)
+
+                                               1    dP         dP
+                                        =                 −
+                                               10 (P − 2) (P + 8)
+
+                                                      4
+
+Inserting into (1), rearranging terms and taking the integral of both sides, gives
+                              Z P (t)            Z P (t)
+                                                                     5 t
+                                                                      Z
+                                         dP                 dP
+                                               −                  =−      1dt
+                               P (t0 ) (P − 2)    P (t0 ) (P + 8)    2 t0
+
+Calculating the integrals, gives
+                                                                                      5
+             ln (P (t) − 2) − ln (P (t0 ) − 2) − ln (P (t) + 8) + ln (P (t0 ) − 8) = − (t − t0 ) ,
+                                                                                      2
+                                           P (t) − 2 P (t0 ) + 8    5
+                                =⇒ ln                            = − (t − t0 ) ,
+                                           P (t) + 8 P (t0 ) − 2    2
+                                           P (t) − 2 P (t0 ) + 8      5
+                                      =⇒                         = e− 2 (t−t0 ) .
+                                           P (t) + 8 P (t0 ) − 2
+Solving for P (t) gives.
+                                                           P (t0 )+8      −5
+                                                   2                       2 (t−t0 )
+                                                           P (t0 )−2 + 4e
+                                       P (t) =             P (t0 )+8     −5
+                                                                          2 (t−t0 )
+                                                           P (t0 )−2 − e
+
+Inserting P (t0 ) = P (0) = 0, gives
+                                                                         −5
+
+                                                                 2 −4 + 4e 2 t
+                                           P (t)       =                   −5
+                                                                −4 − e 2 t
+                                                                   −5
+
+                                                                1−e 2 t
+                                                       =      8     −5    .                              (2)
+                                                                4+e 2 t
+Another possibility is to transform the nonlinear differential Ricatti equation into a system of linear
+equations. Assume that P can be written on product form P = XZ −1 with Z (0) = I. Then the X
+and Z satisfy
+
+                                Ẋ     =    F X + GQGT Z,                   X (0) = P0
+                                              T        −1              >
+                                 Ż    =    H R             HX − F Z,           Z (0) = I.
+
+Inserting for F, G, Q, H and R we get
+                                                            3
+                                              Ẋ        = − X + 4Z
+                                                            4
+                                                          1   3
+                                               Ż       =   X+ Z
+                                                          4   4
+or by Laplace transform
+                                     3                                                     4Z (s) + P0
+                     X (s) · s − P0 + X (s)             =        4Z (s) =⇒ X (s) =
+                                     4                                                        s + 34
+                                      3                          1                  1 + 41 X (s)
+                       Z (s) · s − 1 − Z (s)            =          X (s) =⇒ Z (s) =
+                                      4                          4                     s − 34
+
+Solving for X (s) and Z (s), we get after some intermediate calculations that:
+
+                                                                 P0 s + 4 − P0 43
+                                           X (s)        =                  2
+                                                                   s2 − 45
+                                                                 s + 14 (P0 + 3)
+                                           Z (s)        =                   2
+                                                                   s2 − 54
+
+                                                             5
+
+    To use the Laplace table in the appendix we rewrite
+                                                      P0 s + 5i 4         3
+
+                                                              4 5i 4 − P0 4
+                                        X (s)    =                     2
+                                                            s2 + 54 i
+
+                                                          5 4
+                                                      s + 4i  (P0 + 3)
+                                        Z (s)    =       20i
+                                                                   2
+                                                         s2 + 54 i
+
+    and find that
+
+                                          5    4            3       5
+                          x (t) = P0 cos it +        4 − P0     sin it
+                                          4    5i           4       4
+                                  P0  5 t      5
+                                                     2           3
+
+                                                                          5        5
+
+                                              −
+                                =       e4 + e 4 +t
+                                                            4 − P0      e 4 t − e− 4 t
+                                   2                    5          4
+                                   1 5t                 1 −5t
+                                =    e 4 (4P0 + 32) + e 4 (4P0 − 8)
+                                  20                    5
+    and that
+                                            5     4                 5
+                           z (t)   =    cos it +        (P0 + 3) sin it
+                                            4    20i                4
+                                        1  5t    − 45 t
+                                                             1           5        5
+
+                                   =       e +e
+                                             4             +    (P0 + 3) e 4 t − e− 4 t
+                                        2                    10
+                                         1             5      1             5
+                                   =       (P0 + 8) e −4 t
+                                                                (P0 − 2) e− 4 t
+                                        10                   10
+    Using that P = XZ −1 , and P (0) = 0, we get that
+                                              1 54 t                    5
+                                              20 e   (4P0 + 32) + 51 e− 4 t (4P0 − 8)
+                                P (t)   =      1             5     1             − 45 t
+                                                             4t −
+                                               10 (P0 + 8) e      10 (P0 − 2) e
+                                                5          5
+
+                                             8 e 4 t − e− 4 t e− 54 t
+                                        =     5            5
+
+                                                                −5t
+                                               4e 4 t + e− 4 t e 4
+                                                        5
+
+                                             8 1 − e− 2 t
+                                        =              5
+
+                                                4 + e− 2 t
+
+    (The introduction of exp (−5/4t) / exp (5/4t) in the second to last equation were made to get P (t) at
+    the same form as in (2).
+ d) The Kalman gain in the stationary case is K∞ = P∞ H > R−1 , where P∞ = limt→∞ P (t) is found using
+    the answer in the previous exercise or by solving the algebraic Ricatti equation:
+                                                 1
+                                            0 = − (P∞ + 8) (P∞ − 2) .
+                                                 4
+    The positive solution P∞ = 2, gives K∞ = 1/2.
+
+Problem 4
+ a) The transfer function matrix is given as
+                                                                −1
+                                            G (s) = C(sI − A) B + D.
+                                                     |   {z   }
+                                                            Ω
+
+                                                       6
+
+Since D is the zero matrix, and since most of the elements of B and C are zero, we only need to
+calculate some of the elments of Ω to find G (s):
+                                                                   
+                                                 ω     ω12 ω13    0 1
+                                        1 0 0  11
+
+                          G (s) =                   ω21 ω22 ω23  1 0
+                                        0 1 0
+                                                    ω31 ω32 ω33    0 0
+
+                                        ω12 ω11
+                                  =
+                                        ω22 ω21
+Using the formula in the appendix
+                                                                       i+j
+                                          cji       (−1) det [sI − A]ji
+                             ωij =                =
+                                     det (sI − A)       |(sI − A)|
+where [sI − A]ji is the submatrix you get by removing row j and column i of sI − A. First we find
+that
+                                                                
+                                            s 0 0        0   1 0
+                             sI − A = 0 s 0 − −4 −4 0
+                                           0 0 s         2   0 3
+                                                          
+                                             s   −1     0
+                                      =  4 s+4         0 
+                                           −2    0     s−3
+                                                                                      2
+and that det (sI − A) = s(s + 4)(s − 3) + 4(s − 3) = (s − 3) (s + 2) . Furthermore,
+                                                           3       −1         0
+                                                 (−1)
+                                                                    0        s−3
+                                      ω12   =                                     2
+                                                  (s − 3) (s + 2)
+                                                      s−3
+                                            =                                 2
+                                                 (s − 3) (s + 2)
+                                                    1
+                                            =            2,
+                                                 (s + 2)
+
+                                                       2       s+4            0
+                                                (−1)
+                                                                0            s−3
+                                     ω11    =                                     2
+                                                  (s − 3) (s + 2)
+                                                 s+4
+                                            =                  2
+                                                (s + 2)
+
+                                                           4        s         0
+                                                 (−1)
+                                                                   −2        s−3
+                                      ω22   =                                     2
+                                                  (s − 3) (s + 2)
+                                                    s
+                                            =                      2
+                                                 (s + 2)
+
+                                                           3        4         0
+                                                 (−1)
+                                                                   −2        s−3
+                                      ω21   =                                     2
+                                                  (s − 3) (s + 2)
+                                                   −4
+                                            =                      2
+                                                 (s + 2)
+
+                                                 7
+
+   Hence,
+                                                         1   1    s+4
+                                         G (s) =          2
+                                                   (s + 2) s       −4
+
+b) To keep the notation consistent with the one in the appendix, we define Ĝ (s) = G (s). We find that
+                                                             2
+                                        d (s) = (s + 2) = s2 + 4s + 4.
+
+   Comparing with the expression in the appendix, d (s) = sr + α1 sr−1 + · · · + αr−1 s + αr , we find that
+   r = 2, α1 = 4 and α2 = 4. Ĝ (s) is strictly proper, hence Ĝ∞ (s) = 0, and Ĝsp (s) = Ĝ (s). We can
+   express Ĝsp (s) as                                               
+                                                                
+                                                1   0 1      1 4 
+                                   Ĝsp (s) =              s+       .
+                                              d (s)  1 0      0 −4 
+                                                    
+                                                     | {z }   | {z }
+                                                             N1     N2
+
+   We end up with the following realization using the equations in the appendix:
+                                                                     
+                                         −4 0 −4 0                 1 0
+                                        0 −4 0 −4
+                                                             x + 0 1 u
+                                                                       
+                               ẋ =   1      0    0     0      0 0
+                                          0    1    0     0        0 0
+
+                                         0 1 1 4
+                               y =                      x
+                                         1 0 0 −4
+
+c) No, (Am1 , Bm1 , Cm1 , Dm1 ) is no realization of G (s), which can be seen from these calculations:
+                                                         −1
+                       Gm1 (s)    = Cm1 (sI − Am1 ) Bm1 + Dm1
+                                                −1
+                                     1 0 s −1           0 1       0 0
+                                  =                           +
+                                     0 1 4 s+4          1 0       0 1
+
+                                         1      1 0 s+4 1 0 1             0         0
+                                  =                                     +
+                                      2
+                                    s + 4s + 4  0  1     4   s   1  0     0         1
+
+                                         1      1 s+4       0 0
+                                  =                       +
+                                      2
+                                    s + 4s + 4   s   4      0 1
+
+                                             0 0
+                                  = G (s) +
+                                             0 1
+                                  6= G (s)
+
+                                                     8

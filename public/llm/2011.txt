@@ -1,0 +1,826 @@
+# Eksamen 2011 – TTK4115 Lineær systemteori
+
+Tekst hentet automatisk fra PDF. Matriser og brøker kan stå rotete over flere linjer.
+
+## Oppgavetekst
+
+Side 1 av 9
+        N ORGES TEKNISK - NATURVITENSKAPELIGE UNIVERSITET
+        I NSTITUTT FOR TEKNISK KYBERNETIKK
+
+Faglig kontakt / contact person:
+Navn: Esten Grøtli
+Tlf.: 920 99 036
+
+ Eksamen - TTK 4115 Lineær systemteori
+ Exam - TTK 4115 Linear systems theory
+
+                   21. desember 2011, 15:00 – 19:00
+Hjelpemidler: D - Ingen trykte eller håndskrevne hjelpemidler tillatt. Bestemt, enkel
+kalkulator tillatt.
+
+Supporting materials: D - No printed or handwritten material allowed. Specific, simple
+calculator allowed.
+
+   Merk at ingen deloppgave avhenger av at du har greid å løse noen av de andre de-
+loppgavene. Oppgitt informasjon fra tidligere deloppgaver skal være tilstrekkelig for å
+komme videre.
+Note that no parts of this problem assume that you have solved any of the of previous
+parts. The given information from previous parts should be sufficient to move on.
+
+   Oppgave 1 (16 %)
+      Forklar følgende begreper:
+      Explain the following concepts:
+      a) (5%)
+      Similaritetstransformasjon.
+      Similarity transformation.
+      b) (6%)
+      Kalmans kanoniske dekomposisjon.
+      Kalman’s canonical decomposition.
+      c) (5%)
+      Minimal realisering.
+      Minimal realization.
+
+                                                                        Side 2 av 9
+
+Oppgave 2 (20 %)
+ Anta gitt følgende system:
+ Consider the following system:
+
+                                       
+                   ẋ1       0 1 0     x1       0
+                  ẋ2  =  0 0 0   x2  +  2  u
+                   ẋ3       0 0 −1    x3       0
+
+ a) (3%)
+ Tegn et blokkdiagram av systemet.
+ Draw a block diagram of the system.
+ b) (5%)
+ Undersøk om systemet er internt stabilt (dvs. Lyapunov stabilt eller marginalt sta-
+ bilt).
+ Investigate if the system is internally stable (i.e. Lyapunov stable or marginally
+ stable).
+ c) (5%)
+ Undersøk om systemet er styrbart.
+ Investigate if the system is controllable.
+ d) (7%)
+ Forklar hvorfor systemet er stabiliserbart, og velg en tilstandstilbakekopling som
+ plasserer egenverdiene til systemet i λ1 = −1, λ2 = −2, λ3 = −3.
+ Explain why the system is stabilizable, and choose a state feedback that places the
+ eigenvalues of the system at λ1 = −1, λ2 = −2, λ3 = −3.
+
+                                                                           Side 3 av 9
+
+Oppgave 3 (36 %)
+ Gitt følgende system:
+ Consider the following system:
+
+                    ẋ1          −2 1       x1     0.2
+                           =                    +        w                         (1)
+                    ẋ2           0 −1      x2     0.4
+
+                                     x1
+                        y =     1 0         +v                                     (2)
+                                       x2
+
+ der w er en ukjent forstyrrelse og v er ukjent målestøy.
+ where w is an unknown disturbance and v is unknown measurement noise.
+ a) (4%)
+ Vis at systemet er observerbart.
+ Show that the system is observable.
+ b) (6%)
+ Vis at forsterkningsmatrisa i en tilstandsestimator (observer) som har poler i λ1 =
+ −10 og λ2 = −12 er gitt ved:
+ Show that the gain matrix of a state estimator (observer) with poles at λ1 = −10
+ and λ2 = −12 is given by:
+
+                                               19
+                                    L =
+                                               99
+
+ der A, B,C er implisitt gitt av (1)-(2) ovenfor, og tilstandsestimatoren er gitt ved:
+ where A, B,C are implicitly given by (1)-(2) above, and the state estimator is given
+ by:
+
+                                x̂˙ = Ax̂ + L (y −Cx̂)
+
+ c) (9%)
+ Vis at effekten av målestøy v på tilstandsestimatene x̂1 og x̂2 kan beskrives av
+ følgende overføringsfunksjoner som også er gjengitt i kurver på neste side:
+ Show that the effect of the measurement noise v on the state estimates x̂1 and x̂2 can
+ be described by the following transfer functions that are also given by the curves at
+ the next page:
+             x̂1              s + 6.21                  1 + 0.16s
+                 (s) = 19                  = 0.98
+              v           (s + 10)(s + 12)        (1 + 0.1s)(1 + 0.08s)
+             x̂2                s+2                      1 + 0.5s
+                 (s) = 99                  = 1.65
+              v           (s + 10)(s + 12)        (1 + 0.1s)(1 + 0.08s)
+
+                                                                            Side 4 av 9
+
+d) (4%)
+Anta at målestøyen v(t) i noen tilfeller inneholder en dominerende komponent
+v(t) = 0.2 sin(200t). Anslå eller beregn (basert på formlene eller figurene i del
+c)) med hvilken faktor denne støykomponenten reduseres i estimatene av x1 og x2 .
+Assume that the measurement noise v(t) in some cases contains a dominant compo-
+nent v(t) = 0.2 sin(200t). Estimate or calculate (based on the formulas or figures
+in part c)) the factor this noise component is reduced by in the estimate of x1 and
+x2 .
+e) (5%)
+Anta systemet har en konstant ukjent forstyrrelse w. Diskuter (gjerne uten bereg-
+ninger) hvilken effekt denne har på nøyaktigheten av estimatene x̂1 og x̂2 .
+Assume the system has a constant unknown disturbance w. Discuss (calculations
+not needed) the effect of the disturbance on the accuracy of the estimates x̂1 and x̂2 .
+f) (3%)
+Foreslå (med begrunnelse) hvordan estimatoren ovenfor kan initialiseres.
+Suggest (and justify) how the above estimator can be initialized.
+
+                                                                          Side 5 av 9
+
+ g) (5%)
+ Diskuter (uten beregninger) effekten av å velge poler lenger til venstre i venstre
+ halvplan. Diskusjonen bør omfatte endringer i ytelse og implementasjon på grunn
+ av diskretisering, målestøy (anta v(t) kan ha vilkårlig effektspektrum) og konstant
+ forstyrrelse w.
+ Discuss (without calculations) the effect if the poles are chosen further to the left
+ in the left half-plane. The discussion should include changes in performance and
+ implementation due to discretization, measurement noise (assume v(t) may have
+ any power spectral density function) and constant disturbance w.
+
+Oppgave 4 (28 %)
+ a) (5%)
+ Anta gitt følgende måleserie med diskret-tid måling y[k] som er tatt opp under
+ forhold der tilstanden er konstant, med sampling intervall Ts = 0.04. Forklar hvor-
+ for det er rimelig å se på v[k] som (diskret) hvit støy sekvens, og gi et begrunnet
+ anslag for autokorrelasjonsfunksjonen og variansen.
+ Assume the following measurement series of the discrete-time measurement y[k]
+ is recorded under conditions when the state is constant, with sampling interval
+ Ts = 0.04. Explain why it is reasonable to assume v[k] is a (discrete) white noise
+ sequence, and suggest an estimate for its autocorrelation function and variance.
+
+ b) (3%)
+ Kan du si hvorvidt måleserien ovenfor kommer fra en stasjonær tilfeldig prosess?
+ Could you conclude whether the above measurement series is the output of a stationary
+ random process?
+
+                                                                             Side 6 av 9
+
+c) (10%)
+Gitt følgende system:
+Consider the following system:
+
+            x1 [k + 1]          0.8 −0.2        x1 [k]     0.2
+                          =                              +       w[k]
+            x2 [k + 1]           0   0.7        x2 [k]     0.4
+
+                                       x1 [k]
+                     y[k] =    1 0.1                + v[k]
+                                         x2 [k]
+
+der w[k] er en kjent forstyrrelse og v[k] er ukjent målestøy med samme statistiske
+egenskaper som i del a). Beskriv hvordan en diskret-tid Kalman-filter algoritme kan
+benyttes for å estimere tilstandene i systemet dersom w[k] er en sakte tidsvarierende
+ukjent forstyrrelse (Hint: Hvordan modelleres en slik forstyrrelse?). Ta med den
+augmenterte modellen og de viktiste formlene.
+where w[k] is an unknown disturbance and v[k] is unknown measurement noise with
+the same statistical properties as part a). Describe how a diskrete-time Kalman-
+filter algorithm can be used to estimate the system states if w[k] is a slowly time-
+varying unknown disturbance (Hint: How to model such a disturbance?). Include
+the augmented model and main formulas.
+d) (10%)
+Forklar hovedideen bak et utvidet Kalman filter for å estimere tilstanden til et
+ulineært system, med utgangspunk i diskret tid ordinært Kalman-filter. Beskriv
+hvilke tiltak du vil foreslå for å få god numerisk robust implementasjon og initialis-
+ering av utvidet Kalman-filter (extended Kalman-filter) for sikre konvergens og
+stabilitet.
+Describe the main idea behind an extended Kalman filter for estimating the state
+of a nonlinear system, based on the discrete time ordinary Kalman filter. Sug-
+gest means for numerically robust implementation and initialization of an extended
+Kalman filter to ensure convergence and stability.
+
+                                                                            Side 7 av 9
+
+Vedlegg til eksamen (noen nyttige formler og uttrykk):
+Appendix to the exam (some useful formulas and expressions):
+
+                                   Z t
+                      At
+           x(t) = e x(0) +               eA(t−τ) Bu(τ)dτ
+                                    0
+                                   k−1
+           x(k) = Ak x(0) + ∑ Ak−1−m Bu(m)
+                                   m=0
+                     ad j(A)
+           A−1 =
+                     det(A)
+                      n
+        det(A) =     ∑ ai j ci j
+                     i=1
+        ad j(A) = {ci j }T
+             ci j = (−1)i+ j det(Ai j ) (kofaktor), Ai j = submatrix to A
+
+             C = (B AB A2 B · · · An−1 B)
+                          
+                      C
+                  CA 
+                          
+                  CA2 
+             O =          
+                     ..   
+                      .   
+                    CA n−1
+
+          G(s) = C(sI − A)−1 B + D
+          G(z) = C(zI − A)−1 B + D
+          G(s) = G(∞) + Gsp (s)
+          d(s) = sr + α1 sr−1 + · · · + αr−1 s + αr
+                     1
+        Gsp (s) =       [N1 sr−1 + N2 sr−2 + · · · + Nr−1 s + Nr ]
+                   d(s)
+                                                                       
+                      −α1 Ip −α2 Ip · · · −αr−1 Ip −αr Ip              Ip
+                    Ip
+                                 0      ···        0         0   
+                                                                      0 
+                                                                         
+              ẋ = 
+                        0       Ip      ···        0         0 x+
+                                                                   
+                                                                      0 u
+                                                                          
+                        ..       ..     ..         ..        ..     .. 
+                         .        .        .        .         .     . 
+                         0        0      ···       Ip         0        0
+              y = [ N1 N2 · · · Nr−1 Nr ]x + G(∞)u
+
+                                                                                  Side 8 av 9
+
+Discrete-time Kalman filter:
+
+              xk+1 = Φk xk + wk
+                 zk = Hk xk + vk
+
+                 T        Qk , i = k
+          E[wk wi ] =
+                          0, i 6= k
+
+                          Rk , i = k
+           E[vk vTi ] =
+                          0, i 6= k
+           E[wk vTi ] = 0, ∀i, k
+                P−          − −T
+                   k = E[ek ek ]
+                   Pk = E[ek eTk ] = (I − Kk Hk )P−             T         T
+                                                  k (I − Kk Hk ) + Kk Rk Kk
+                                                 −1
+                   Kk = P−   T         − T
+                         k Hk Hk Pk Hk + Rk
+               P−            T
+                k+1 = Φk Pk Φk + Qk
+
+Continuous-time Kalman filter:
+
+                   ẋ        =   Fx + Gu
+                    z        =   Hx + v
+                  T
+        E[u(t)u(τ) ]         =   Qδ (t − τ)
+        E[v(t)v(τ)T ]        =   Rδ (t − τ)
+        E[u(t)v(τ)T ]        =   0
+                  K          =   PHT R−1
+                   Ṗ        =   FP + PFT − PHT R−1 HP + GQGT ,          P(0) = P0
+
+Auto-correlation:
+
+   RX (τ)      =   E[X(t)X(t + τ)] (Stationary process)
+RX (t1 ,t2 )   =   E[X(t1 )X(t2 )] (Non-stationary process)
+     Y (s)     =   G(s)U(s) ⇒
+Ry (t1 ,t2 )   =   E[y(t1 )y(t2 )]
+                   Z t2 Z t1
+               =               g(ξ )g(η)E [u(t1 − ξ )u(t2 − η)] dξ dη (Transient analysis)
+                     0   0
+
+                                                      Side 9 av 9
+
+Laplace transform pairs:
+
+                              f (t)   ⇐⇒   F(s)
+
+                                           1
+                                1     ⇐⇒
+                                           s
+                                             1
+                            e−at      ⇐⇒
+                                           s+a
+                                           1
+                                t     ⇐⇒
+                                           s2
+                                           2
+                               t2     ⇐⇒
+                                           s3
+                                               1
+                           te−at      ⇐⇒
+                                           (s + a)2
+                                              ω
+                           sin ωt     ⇐⇒
+                                           s + ω2
+                                            2
+                                               s
+                       cos ωt         ⇐⇒
+                                           s + ω2
+                                            2
+
+## Løsningsforslag
+
+Norges teknisk- naturvitenskapelige universitet
+        Institutt for teknisk kybernetikk
+
+                  TTK 4115 Linear System Theory
+                       Exam Fall 2011 – Solution Suggestion
+Question 1 (16%)
+   Explain the following concepts:
+    (a) (5%) Similarity transformation.
+
+          Solution: The similarity transformation tranforms objects to similar objects. The
+          similarity transformation is a linear change of coordinates where the original ob-
+          ject’s representation is expressed with respect to different bases. Consider x ∈
+          Rn×1 . The representation of x with respect to the basis {q1 , q2 , . . . , qn } is x̄ and,
+          with Q = [q1 , q2 , . . . , qn ], the similarity transform is
+
+                                                  x = Qx̄ .
+
+          The state equations
+
+                                               ẋ = Ax + Bu
+                                               y = Cx + Du
+
+          can be written with respect to the basis {q1 , q2 , . . . , qn } as
+
+                                               x̄˙ = Āx̄ + B̄u
+                                               y = C̄x̄ + D̄u
+
+          where
+
+                  Ā = QAQ−1 ,            B̄ = QB ,           C̄ = CQ−1 ,          D̄ = D .
+
+          The two representations are similar, meaning that they have the same eigenvalues.
+          The similarity transformation can be used to express a system’s representation
+          with respect to different bases which may result in a more feasible realization for
+          analysis and control purposes. It is important to note that the transfer function of
+          a system is invariant with respect to a similarity transformation.
+
+    (b) (6%) Kalman’s canonical decomposition.
+
+          Solution: Every state-space equation can be transformed, by an equivalence trans-
+          formation, into four subspace equations, namely a controllable and observable, a
+          controllable and not observable, a not controllable and observable, and a neither
+          controllable nor observable subsystem. The controllable and observable subsystem
+          is zero-state equivalent to the original state-space equation and they have the same
+          transfer function.
+
+    (c) (5%) Minimal realization.
+
+          Solution: A transfer function g (s) is realizable if there exists a state-space equa-
+          tion that has g (s) as its transfer function. g (s) is realizable if and only if g (s)
+          is a proper rational function. Minimal realizations are the realizations with the
+          smallest possible dimension. A realization (A, b, c, d) is a minimal realization if
+          and only if
+
+             • (A, b) is controllable and (A, c) is observable, or
+
+             • dim A = deg g (s) = N (s) /D (s) where N (s) and D (s) are coprime factors
+               (they have no common factors)
+
+Question 2 (20%)
+   Consider the following system:
+                                             
+                               ẋ1     0 1 0    x1      0
+                             ẋ2  = 0 0 0  x2  + 2 u
+                               ẋ3     0 0 −1   x3      0
+    (a) (3%) Draw a block diagram of the system.
+
+                         u                         1      x2      1        x1
+                               2
+                                                   s              s
+
+                                                   1      x3
+                                                                 −
+                                                   s
+
+          Solution:
+
+    (b) (5%) Investigate if the system is internally stable (i.e. Lyapunov stable or marginally
+        stable).
+
+          Solution: The characteristic polynomial is λ2 (λ + 1). The eigenvalues are 0, 0,
+          and -1. Since is a double eigenvalue at the origin, the system is not asymptotically
+          stable. The system is in Jordan-form and thus the minimal polynomial can be
+          found to be λ2 (λ + 1). The eigenvalue in the origin is not a simple root of the
+          minimal polynomial and therefore, the system is neither marginally stable.
+
+    (c) (5%) Investigate if the system is controllable.
+
+          Solution: The controllability matrix is
+                                                          
+                                                     0 2 0
+                                   C = B AB A2 B = 2 0 0 .
+
+                                                     0 0 0
+
+          The rank of the controllability matrix is 2 which is not full rank; thus the system
+          is not controllable.
+
+                                            Page 2
+
+(d) (7%) Explain why the system is stabilizable, and choose a state feedback that places
+    the eigenvalues of the system at λ1 = −1, λ2 = −2, λ3 = −3.
+
+      Solution: Every uncontrollable state equation can be transformed into a control-
+      lable and a not controllable subspace equation by Kalman’s decomposition
+
+                               ẋc     Ac A12      xc      bc
+                                    =                  +      u
+                               ẋc̄     0 Ac̄      xc̄     0
+      where (Ac , bc ) is controllable. If furthermore Ac̄ is stable, the system is stabiliz-
+      able. Here, the system is already in the form of Kalman’s decomposition with
+
+                x1                          0 1                                     0
+         xc =          , xc̄ = x3 , Ac =          , A12 = 02×1 , Ac̄ = −1 , bc =        .
+                x2                          0 0                                     2
+      It is easy to verify that (Ac , bc ) is controllable and that Ac is stable. Thus, the
+      system is stabilizable. Choosing the feedback control
+
+                                                        xc
+                                       u = − kc kc̄
+                                                          xc̄
+      the closed-loop system becomes
+
+                            ẋc    Ac − bc kc A12 − bc kc̄   xc
+                                 =
+                            ẋc̄       0          Ac̄        xc̄
+      The eigenvalues of the system are given by the union of the eigenvalues of (Ac − bc kc )
+      and Ac̄ (block triangular matrix). With kc = (k1 , k2 ) the characteristic polyno-
+      mial is
+                            λ3 + (1 + 2k2 ) λ2 + (2k1 + 2k2 ) λ + 2k1
+      Comparing the coefficients to
+                        (λ − λ1 ) (λ − λ2 ) (λ − λ3 ) = λ3 + 6λ2 + 11λ + 6
+      it follows that the feedback controller gains are
+
+                                 kc = 3 2.5       kc̄ arbitrary .
+      Alternatively, note that the eigenvalue of the uncontrollable subsystem (x3 dynam-
+      ics) is at λ1 = −1 and cannot be changed by feedback. The discussion may thus be
+      limited to the controllable subsystem
+                                          ẋc = Ac xc + bc u
+      and the task to find a feedback control to place its eigenvalues at λ2 and λ3 . Choos-
+      ing
+                                           u = −kc xc
+      results in the closed-loop system
+                                      ẋc = (Ac − bc kc ) xc .
+      With kc = (k1 , k2 ) the characteristic polynomial is
+                                          λ2 + 2k2 λ + 2k1
+      Comparing the coefficients to
+                                (λ − λ2 ) (λ − λ3 ) = λ2 + 5λ + 6
+      it follows that the feedback controller gains are
+
+                                         kc = 3 2.5 .
+
+                                          Page 3
+
+Question 3 (36%)
+   Consider the following system:
+
+                               ẋ1     −2 1    x1   0.2
+                                    =             +     w                                   (1)
+                               ẋ2      0 −1   x2   0.4
+
+                                           x1
+                                   y= 1 0      +v                                           (2)
+                                            x2
+
+   where w is an unknown disturbance and v is unknown measurement noise.
+    (a) (4%) Show that the system is observable.
+
+         Solution: The observability matrix is
+
+                                          C       1 0
+                                   O=          =         .
+                                         CA       −2 1
+
+         O has full rank and thus the system is observable.
+
+   (b) (6%) Show that the gain matrix of a state estimator (observer) with poles at λ1 = −10
+       and λ2 = −12 is given by:
+                                                   19
+                                            L=
+                                                   99
+       where A, B, C are implicitly given by (1)–(2) above, and the state estimator is given
+       by:
+                                  x̂˙ = Ax̂ + L (y − Cx̂) + Bw .
+
+         Solution: Rewrite the observer as
+
+                                         x̂˙ = (A − LC) x̂ + Ly .
+
+         With L = (l1 , l2 ) the characteristic polynomial of (A − LC) is
+
+                             λ + 2 + l1 −1
+                      det                        = λ2 + (l1 + 3) λ + l1 + l2 + 2 .
+                                 l2      λ+1
+
+         Comparing the coefficients to
+
+                                  (λ − λ1 ) (λ − λ2 ) = λ2 + 22λ + 120
+
+         it follows that the gain matrix of the state observer is L = (19 , 99)> .
+
+    (c) (9%) Show that the effect of the measurement noise v on the state estimates x̂1 and x̂2
+        can be described by the following transfer functions that are also given by the curves
+        at the next page:
+                      x̂1              s + 6.21                   1 + 0.16s
+                          (s) = 19                   = 0.98
+                       v           (s + 10) (s + 12)        (1 + 0.1s) (1 + 0.08s)
+                      x̂2                s+2                       1 + 0.5s
+                          (s) = 99                   = 1.65
+                       v           (s + 10) (s + 12)        (1 + 0.1s) (1 + 0.08s)
+
+                                            Page 4
+
+      Solution: The state observer is
+
+                                x̂˙ = (A − LC) x̂ + L (Cx + v) .
+
+      Taking the Laplace transform results in
+
+                        sx̂ (s) = (A − LC) x̂ (s) + L (Cx (s) + v (s)) .
+
+      The transfer matrix from the measurement noise to the state is
+                     x̂
+                        (s) = (sI − A + LC)−1 L
+                     v
+                                             −1
+                                s + 21 −1           19
+                            =
+                                  99    s+1         99
+
+                                        1             s+1        1     19
+                            =
+                              (s + 21) (s + 1) + 99 −99 s + 21         99
+
+                                      1           19 (s + 6.21)
+                            =                                      .
+                              (s + 10) (s + 12)    99 (s + 2)
+
+      And consequently:
+              x̂1              s + 6.21
+                  (s) = 19
+               v           (s + 10) (s + 12)
+                                        1
+
+                                6.21 6.21  s+1                    1 + 0.16s
+                      = 19     1
+                                              1
+                                                    = 0.98
+                           10 10 s + 1 12 12 s + 1          (1 + 0.1s) (1 + 0.08s)
+              x̂2                s+2
+                  (s) = 99
+               v           (s + 10) (s + 12)
+                                   2 21 s + 1
+
+                                                                   1 + 0.5s
+                      = 99     1
+                                              1
+                                                    = 1.65                        .
+                           10 10 s + 1 12 12 s + 1          (1 + 0.1s) (1 + 0.08s)
+
+(d) (4%) Assume that the measurement noise v (t) in some cases contains a dominant
+    component v (t) = 0.2 sin (200t). Estimate or calculate (based on the formulas or
+    figures in part c)) the factor this noise component is reduced by in the estimate of x1
+    and x2 .
+
+      Solution: With ω = 200 the gains of the transfer functions can be computed to
+                           s
+                x̂1                  (19ω + 118) (−19ω + 118)
+                    (ω) =
+                 v           (ω + 10) (−ω + 10) (ω + 12) (−ω + 12)
+                           s
+                                  192 ω 2 + 1182
+                         =                             ≈ 0.09476 = −20.47 dB
+                             (ω 2 + 102 ) (ω 2 + 122 )
+                           s
+                x̂2                  (99ω + 198) (−99ω + 198)
+                    (ω) =
+                 v           (ω + 10) (−ω + 10) (ω + 12) (−ω + 12)
+                           s
+                                  992 ω 2 + 1982
+                         =                             ≈ 0.4935 = −6.134 dB .
+                             (ω 2 + 102 ) (ω 2 + 122 )
+
+                                        Page 5
+
+         Alternatively, the gains can be read directly from the Bode plots.
+
+   (e) (5%) Assume the system has a constant unknown disturbance w. Discuss (calculations
+       not needed) the effect of this disturbance on the accuracy of the estimates x̂1 and x̂2 .
+
+         Solution: Define the estimation error e = x − x̂. Then the error dynamics is
+
+                             ė = ẋ − x̂˙ = Ax + Bw − Ax̂ − L (y − Cx̂)
+                               = (A − LC) e + Bw − Lv .
+
+         Taking the Laplace transform and disregarding the measurement noise v yields
+                                                                w̄
+                                    e (s) = (sI − A + LC)−1 B      .
+                                                                s
+         where w (s) = w̄s since w is a constant disturbance. Applying the final value
+         theorem results in
+
+                             lim e (t) = lim se (s) = (−A + LC)−1 Bw̄ .
+                             t→∞         s→0
+
+         Consequently, the constant disturbance w results in a constant bias of the estimates
+         x̂1 and x̂2 .
+         Note that calculations are not needed for this problem as long as the reasoning is
+         sufficient and leads to the correct conclusion.
+
+    (f) (3%) Suggest (and justify) how the above estimator can be initialized.
+
+         Solution: The error dynamics are globally exponentially stable (linear system,
+         all eigenvalues have negative real parts). So the initialization will not affect the
+         overall stability of the observer. However, from a performance perspective, an
+         initialization close to the true state values will result in a better performance.
+
+   (g) (5%) Discuss (without calculations) the effect if the observer poles are chosen further
+       to the left in the left half-plane. The discussion should include changes in performance
+       and implementation due to discretization, measurement noise (assume v (t) may have
+       any power spectral density function) and constant disturbance w.
+
+         Solution: Choosing the observer poles further to the left in the left half-plane
+         will result in a higher bandwidth of the observer. This lead to faster decaying
+         error dynamics and thus better performance. However, a higher bandwidth also
+         increases the sensitivity with respect to noise. As can be seen from the sub-problem
+         (e), the constant bias of the estimates due to the constant disturbance is inversely
+         proportional to the observer gains. Increasing the observer gains and consequently
+         choosing the observer poles further to the left in the left half-plane will reduce the
+         constant bias.
+
+Question 4   (28%)
+   (a) (5%) Assume the following measurement series of the discrete-time measurement y [k]
+       is recorded under conditions when the state is constant, with sampling interval Ts =
+
+                                           Page 6
+
+   0.04. Explain why it is reasonable to assume v [k] is a (discrete) white noise sequence,
+   and suggest an estimate for the autocorrelation function and variance of v [k].
+
+     Solution: A white noise sequence is defined as sequence of zero-mean, uncorre-
+     lated random variables. Since the measurement sequence is recorded when the
+     state is constant, it is reasonable to conclude that the mean of the noise sequence
+     is zero and the variance equal to the measurement series’ variance.
+     The mean and the standard deviation of the measurement series can be roughly
+     estimated as 0.7 and 0.1, respectively. Consequently, the variance of the noise
+     sequence is Var (V ) = σV2 = 0.01. The autocorrelation function for a white noise
+     sequence is
+                                        RV [m] = Aδ [m]
+     where δ [m] is the Kronecker delta. The following holds
+
+                                  RV [0] = A = E V 2 .
+
+     The last equality is due to v [k] being a stationary process. The mean-square value
+     of the process v [k] can be computed to
+
+                                Var (V ) = E V 2 − (E (V ))2 .
+
+     With Var (V ) = 0.01 and E (V ) = 0 it follows that A = E V 2 = 0.01.
+
+(b) (3%) Could you conclude whether the above measurement series is the output of a
+    stationary random process or not?
+
+     Solution: A stationary random process is characterized by the fact that the sta-
+     tistical properties of the process do not depend on time. As a consequence, for a
+     stationary random process, the parameters like mean value and variance do not
+     change with time. From the measurement series shown in the figure it is reasonable
+     to assume that the mean and the variance do not change in time, at least for the
+     time window shown. That leads to the conclusion that the process is most probably
+     stationary. Note however that generally, a infinite time series of the measurement
+     would be needed to determine conclusively whether a random process is stationary
+     or not.
+
+(c) (10%) Consider the following system:
+
+                     x1 [k + 1]      0.8 −0.2     x1 [k]     0.2
+                                  =                       +      w [k]
+                     x2 [k + 1]       0   0.7     x2 [k]     0.4
+
+                                          x1 [k]
+                                y = 1 0.1            + v [k]
+                                             x2 [k]
+
+   where w [k] is a disturbance and v [k] is measurement noise. Describe how a discrete-
+   time Kalman-filter algorithm can be used to estimate the system states if w [k] is a
+   slowly time-varying disturbance (Hint: How to model such a disturbance?). Include
+   the augmented model and the main formulas.
+
+     Solution: Since w [k] is a slowly time-varying disturbance, the system has to be
+     augmented with one additional state. The disturbance can be modelled as a Gaus-
+
+                                      Page 7
+
+sian random-walk process, that is
+
+                             w [k + 1] = w [k] + w̄ [k]
+
+where w̄ [k] is a white noise sequence. Including the disturbance w [k] as an addi-
+tional state x3 [k], the the augmented model is
+                                        Φk
+                        z       }|      {          
+             x1 [k + 1]      0.8 −0.2 0.2       x1 [k]   0
+            x2 [k + 1] =  0     0.7 0.4 x2 [k] + 0 w̄ [k]
+             x3 [k + 1]       0     0    1      x3 [k]   1
+                                             
+                                       x1 [k]
+                        y = 1 0.1 0 x2 [k] + v [k] .
+                           |    {z    } x [k]
+                                H        3
+                                    k
+
+Note that in case it cannot be assumed that the measurement noise is a white
+noise sequence, the model has to be augmented with the correlated part of the
+measurement noise as well.
+The main formulas for the Kalman-filter are:
+
+   • Compute the Kalman gain:
+                                                       −1
+                           K k = P−
+                                  k H>
+                                     k   H P
+                                          k k
+                                             − >
+                                              H k + R k
+
+   • Update estimate with measurement yk :
+
+                              x̂k = x̂−               −
+
+                                      k + Kk y − Hk x̂k
+
+   • Compute error covariance for updated estimate:
+                                                     >
+                    Pk = (I − Kk Hk ) P−                       >
+                                       k (I − Kk Hk ) + Kk Rk Kk
+
+   • Project ahead:
+
+                                 x̂k+1 = Φk x̂k
+                                P−            >
+                                 k+1 = Φk Pk Φk + Qk
+
+with
+                                                  
+                                          0 0 0
+                                  Qk = 0 0 0 
+                                          0 0 qk
+                                        (
+                             h       i   qk , i = k
+                           E w̄k w̄i> =
+                                         0 , i 6= k
+                                        (
+                              h      i   Rk , i = k
+                            E vk vi> =
+                                         0,    i 6= k
+                             h       i
+                           E w̄k vi> = 0 ∀k, i .
+
+                                 Page 8
+
+(d) (10%) Describe the main idea behind an extended Kalman-filter for estimating the
+    state of a nonlinear system, based on the discrete-time ordinary Kalman-filter. Suggest
+    means for numerically robust implementation and initialization of an extended Kalman-
+    filter to ensure convergence and stability.
+
+      Solution: The main idea behind an extended Kalman-filter (EKF) is to linearize
+      the nonlinear system about the current state estimate and then to consequently
+      implement a linear Kalman-filter.
+      Means for a numerically robust implementation and initialization of the EKF are:
+
+         • Use double precision floating point computations.
+
+         • Ensure symmetric Pk
+
+              – Use a symmetric update formula.
+              – Make Pk symmetric at each sample.
+              – Use symmetric factorization methods (UD-factorization or “square root
+                factors”).
+
+         • Choose Q positive definite rather than positive semidefinite to avoid singular
+           or negative definite Pk .
+
+         • Divide the prediction step in several “integration steps”.
+
+         • Good initialization of P−
+                                   0 is important to avoid numerical round-off errors.
+
+         • Good initialization of x−
+                                   0 is essential to avoid large linearization errors ini-
+           tially.
+
+                                       Page 9

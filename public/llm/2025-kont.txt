@@ -1,0 +1,1090 @@
+# Kont 2025 – TTK4115 Lineær systemteori
+
+Tekst hentet automatisk fra PDF. Matriser og brøker kan stå rotete over flere linjer.
+
+## Oppgavetekst
+
+Department of Engineering Cybernetics
+
+Examination paper for TTK4115 Linear Systems Theory
+
+Academic contact during examination: Morten O. Alver
+
+Examination date: XX Aug 2025
+Examination time (from–to): 09:00–13:00
+Permitted examination support material: D: No printed or handwritten material allowed. Specific
+simple calculator allowed.
+
+Other information:
+
+  1. Note that no parts of this exam assume that you have solved any of the previous parts.
+     The given information from previous parts should be sufficient to move on.
+
+  2. You may answer in Norwegian or English. Du kan svare på norsk eller engelsk.
+
+Language: English
+Number of pages: 9
+Number pages enclosed: 4
+
+                                                                                      Checked by:
+
+                                                                Date           Signature
+
+TTK4115 Linear Systems Theory - XX Aug 2025                                              Page 1 of 9
+
+Problem 1 (5 %)
+
+Given the following continuous time system :
+                                A                 B
+                           z
+                           "    }|    #{        z" }| #{                  C
+                               −2 1                1
+                                                                     zh   }|    i{
+                    ẋ =                   x+              u,   y=        1 1        x
+                               0 1                 0
+
+Is this system:
+
+a) Internally stable and BIBO stable
+
+b) Internally stable, not BIBO stable
+
+c) Internally unstable but BIBO stable
+
+d) Unstable in both senses
+
+Page 2 of 9                           TTK4115 Linear Systems Theory - XX Aug 2025
+
+Problem 2 (5 %)
+
+Given the following matrix:              "           #
+                                             3   2
+                                   A=
+                                             −2 −2
+
+What is the value of the upper left element of the matrix exponential eAt ?
+
+Hint 1: eAt equals the inverse Laplace transform of (sI − A)−1 .
+
+Hint 2: Another approach is to find eAt as β0 I + β1 A, where the β coefficients are found
+by matching the polynomial β0 + λβ1 to eλt for the eigenvalues of A.
+
+a) 4e2t + e−t
+
+b) 31 (4e2t − e−t )
+
+c) 31 e−2t + et
+
+d) 13 (e−2t + e−t )
+
+e) 3e2t − 2e−t
+
+TTK4115 Linear Systems Theory - XX Aug 2025                                Page 3 of 9
+
+Problem 3 (5 %)
+
+For the following system:
+                                                1
+                                 ẋ(t) = 2x(t) + u(t)
+                                                2
+with a control law on the form
+
+                                 u(t) = −kx(t) + kr r0
+
+where r0 is a constant reference value, which set of control parameters will ensure the
+fastest convergence of x(t) toward r0 for any initial value of x?
+
+a) k = 4 and kr = 1
+
+b) k = 5 and kr = 2.5
+
+c) k = 5 and kr = 1
+
+d) k = 6 and kr = 3
+
+e) k = 7 and kr = 3.5
+
+f) k = 6 and kr = 2
+
+Page 4 of 9                                 TTK4115 Linear Systems Theory - XX Aug 2025
+
+Problem 4 (5 %)
+
+Given the two continuous time systems:
+                            "          #        "       #
+                                1 2                 1                     h         i
+                     ẋ =                  x+               u1 ,   y1 =       0 1       x
+                                −1 2                0
+                            "          #        "       #
+                                2 −1                1                     h         i
+                     ż =                  z+               u2 ,   y2 =       1 1       z
+                                1 0                 0
+
+Are these systems:
+
+a) Unrelated
+
+b) Algebraically equivalent
+
+c) Zero-state equivalent but not algebraically equivalent
+
+d) Dual systems
+
+TTK4115 Linear Systems Theory - XX Aug 2025                               Page 5 of 9
+
+Problem 5 (19 %)
+
+Given this system:
+                                          A                     B
+                                    z"    }|      #{        z }| #{
+                                                            "
+                                         4 −6                   2
+                             ẋ =                      x+             u            (1)
+                                         1 0                    0
+                                              h         i
+                                         y=       1 0       x
+                                              |   {z    }
+                                                  C
+
+a) (4 %) Show that the system is controllable and observable.
+
+b) (4 %) Test the BIBO stability of the system.
+
+c) (5 %) Design a controller on the form u = −Kx that places the eigenvalues of the
+      closed-loop system in -1 and -2.
+
+d) (6 %) Put the system in Eq. (1) on diagonal form. You do not have to calculate
+      the transformed B̄ and C̄ matrices, just give the expressions to calculate them.
+      Hint: The key relation in diagonalization is AQ = QΛ where Q contains the
+      eigenvectors and Λ contains the eigenvalues along its diagonal.
+     Is there an additional transformation that might be done in this case to put the
+     system on a more useful canonical form?
+
+Page 6 of 9                           TTK4115 Linear Systems Theory - XX Aug 2025
+
+Problem 6 (11 %)
+
+Given the following system:
+
+                                  ẋ = 3x + u,   y=x
+
+You are to design LQR controllers on the form u = −kx.
+
+a) (3 %) What is the LQR feedback gain k for the LQR parameters q = 2 and r = 1?
+
+b) (3 %) What is the limit for the LQR feedback gain k if we let the input cost approach
+      infinity (q = 2 and r → ∞)?
+
+c) (5 %) Assume now that there is measurement noise, so the measurement equation is
+      now:
+                                       y =x+n                                  (2)
+     The control law is now expressed as u = −ky.
+     If n is a zero-mean white noise signal with autocorrelation function Rn (τ ) = δ(τ ),
+     what is the power spectral density function Sx (ω) for the state variable x(t)? The
+     answer should be expressed as a function of the feedback gain k.
+
+TTK4115 Linear Systems Theory - XX Aug 2025                                  Page 7 of 9
+
+Problem 7 (18 %)
+
+You are working on the controller for a robot lawn mower. One part of the control
+system is concerned with estimating the forward movement of the mower for the purpose
+of detecting when it hits a barrier or is hindered by slippery conditions.
+
+The mower has two motor powered wheels in the back, and one wheel that rolls freely
+in the front.
+
+A discrete-time model for the forward speed can be set up as:
+
+                        x[k + 1] = (1 − α)x[k] + β[k]u[k] + w[k]                      (3)
+
+where x[k] is the forward speed, α describes the rate at which the mower loses speed
+due to friction, u[k] represents the input provided by the motor, β[k] represents the
+effect of ground conditions such as slope, and w[k] is a zero-mean Gaussian white noise
+disturbance with variance q.
+
+The speed of the front wheel is measured as y[k]:
+
+                                    y[k] = x[k] + v[k]                                (4)
+
+where v[k] is zero-mean Gaussian white noise with variance r.
+
+a) (4 %) We can use the Kalman filter to estimate x[k]. Write the expressions for this
+      particular system to calculate:
+
+       • x̂− [k + 1] as a function of x̂[k]
+       • P − [k + 1] as a function of P [k]
+       • The Kalman gain
+
+b) (8 %) Assume that α = 0.1, β[k] = 1, q = 0.12 and r = 0.1. Let the Kalman filter’s
+      initial values be x̂[0] = 1 and P [0] = 0.5, and let u[k] = 0.15.
+     The first two measurements are y[1] = 1.2 and y[2] = 1.3. Show that x̂− [3] ≈ 1.29
+     and P − [3] ≈ 0.17.
+
+c) (6 %) Suggest a general criterion for detecting that the mower has been hindered by
+      an unexpected event (such as slippery conditions or hitting a barrier) based on the
+      Kalman filter estimates and the measurement.
+     If the measurement at time 3 is y[3] = 0.15, discuss whether you can assume such
+     an event has occurred.
+
+Page 8 of 9                           TTK4115 Linear Systems Theory - XX Aug 2025
+
+Problem 8 (20 %)
+You are to design a PI cruise control system for a car. Let the car’s velocity v be
+modelled by the linear differential equation
+
+                                      mv̇ + dv = u                                    (5)
+
+where m is the car’s mass and d is a positive damping constant. A throttle u serves as
+the control input.
+
+Let r denote the reference velocity. The PI controller can be given as this transfer
+function relation:
+                                                          KP s + K I
+                    u(s) = K(s)(r(s) − v(s)),    K(s) =                               (6)
+                                                              s
+
+a) (5 %) Find the transfer function from reference r(s) to velocity v(s) when (6) is used
+      to control (5).
+
+b) (5 %) How many states are necessary for the realization of (6)? What are the eigen-
+      value(s) of the PI-controller when expressed in the time-domain?
+
+c) (5 %) Express (5) and (6) on state-space form:
+
+                                   ẋ = Ax + br,     v = cx                           (7)
+
+     The state vector x must have v as its first element.
+
+d) (5 %) Use the parameters KP and KI in the PI-controller (6) to place the poles of
+      the closed-loop plant at
+                                λ1 = −ωb , λ2 = −ωb                              (8)
+     The answer is to be given as analytical expressions for the controller parameters.
+
+TTK4115 Linear Systems Theory - XX Aug 2025                               Page 9 of 9
+
+Problem 9 (12 %)
+
+In the laboratory assignments, when controlling the helicopter using measurements from
+the IMU unit, you experimented with state estimation both in the form of a Luenberger
+observer and a Kalman filter.
+
+a) (6 %) What are the main reasons that we use state estimation in control systems?
+
+b) (6 %) What are the most important differences between using a Luenberger observer
+      with pole placement, and using a Kalman filter? Comment on the tuning process,
+      estimator performance, and other aspects you would like to include.
+
+TTK4115 Linear Systems Theory - XX Aug 2025                             Page i of iv
+
+Formula sheet
+
+Solutions
+
+                                          Z t
+                     x(t) = eAt x(0) +          eA(t−τ ) Bu(τ )dτ
+                                           0
+                                          k−1
+                     x[k] = Ak x[0] +           Ak−1−m Bu[m]
+                                          X
+
+                                          m=0
+
+Controllability/Observability
+
+                      C = [B, AB, A2 B, · · · , An−1 B]
+                                   
+                              C
+                           CA 
+                                   
+                                  2 
+                      O =   CA
+                          
+                                   
+                               ..   
+                                .
+                                   
+                                   
+                               CAn−1
+
+Realization
+
+         G(s) = C(sI − A)−1 B + D
+         G(s) = G(∞) + Gsp (s)
+         d(s) = sr + α1 sr−1 + · · · + αr−1 s + αr
+                    1
+       Gsp (s) =      [N sr−1 + N2 sr−2 + · · · + Nr−1 s + Nr ]
+                  d(s) 1
+                                                                   
+                     −α1 Ip −α2 Ip · · · −αr−1 Ip −αr Ip           Ip
+                  
+                     Ip      0       ···      0        0   
+                                                            
+                                                                  0 
+                                                                     
+             ẋ =     0      Ip      ···      0        0   x +  0 u
+                                                                   
+                  
+                       ..      ..     ..       ..       ..  
+                                                                  .. 
+                                                                     
+                        .       .        .      .        .        . 
+                                                           
+                                                           
+                       0      0     ···          Ip         0       0
+              y = [ N1 N2 · · ·   Nr−1 Nr ]x + G(∞)u
+
+Page ii of iv                             TTK4115 Linear Systems Theory - XX Aug 2025
+
+LQR
+
+       Z ∞
+  J=         xT (t)Qx(t) + uT (t)Ru(t) dt
+        0
+                            AT P + PA + Q − PBR−1 BT P = 0
+                                                                     u(t) = −R−1 BT Px(t)
+
+Lyapunov equation
+
+                                     AT M + MA = −N
+
+Kalman filtering (Discrete time)
+
+Process model
+
+                x[k + 1] = Ad x[k] + Bd u[k] + w[k],      y[k] = Cx[k] + v[k]
+
+The noise and disturbance are unbiased (E[v[k]] = 0, E[w[k]] = 0) and white
+
+                    E[v[k]v[l]T ] = δ[k, l]Rd ,   E[w[k]w[l]T ] = δ[k, l]Qd
+
+Algorithm Initialize at x̂− [0] = E[x(0)] and P− [0] = E[(x[0] − x̂− [0])(x[0] − x̂− [0])T ].
+Compute recursively:
+
+   1. L[k] = P− [k]CT (CP− [k]CT + Rd )−1
+
+   2. x̂[k] = x̂− [k] + L[k](y[k] − Cx̂− [k])
+
+   3. P[k] = (I − L[k]C)P− [k](I − L[k]C)T + L[k]Rd L[k]T
+
+   4. x̂− [k + 1] = Ad x̂[k] + Bd u[k],   P− [k + 1] = Ad P[k]AT
+                                                               d + Qd
+
+TTK4115 Linear Systems Theory - XX Aug 2025                                  Page iii of iv
+
+Kalman filtering (Continuous time)
+
+Process model
+                          ẋ = Ax + Bu + Gw,         y = Cx + v
+The noise and disturbance are unbiased (E[v(t)] = 0, E[w(t)] = 0) and white
+
+                E[v(t)v(τ )T ] = δ(t − τ )R,   E[w(τ )w(t)T ] = δ(t − τ )Q
+
+Optimal gain     The Kalman gain is given by L(t) = P(t)CT R−1 where
+
+                       Ṗ = AP + PAT + GQGT − PCT R−1 CP
+
+Set Ṗ = 0 to find stationary gain.
+
+Stationary processes
+
+Autocorrelation and power spectral density
+
+                     Ru (τ ) = E[u(t)u(t + τ )],   Su (ω) = F {Ru (τ )}
+
+With y(s) = H(s)w(s) where E[w(t)] = 0 and Rw (τ ) = δ(τ )q it holds that
+
+                                 Sy (ω) = H(ȷω)H(−ȷω)q
+
+Page iv of iv                      TTK4115 Linear Systems Theory - XX Aug 2025
+
+Laplace transform pairs
+
+                           f (t)      ⇐⇒        F (s)
+
+                          δ(t)       ⇐⇒         1
+                                                1
+                             1       ⇐⇒
+                                                s
+                                                  1
+                          e−at       ⇐⇒
+                                                s+a
+                                                1
+                             t       ⇐⇒
+                                                s2
+                                                2
+                            t2       ⇐⇒
+                                                s3
+                                                     1
+                        te−at        ⇐⇒
+                                                (s + a)2
+                                                   ω
+                       sin ωt        ⇐⇒
+                                                s2 + ω 2
+                                                   s
+                       cos ωt        ⇐⇒
+                                                s2 + ω 2
+
+Solution of second degree equation
+                                                         q
+                  2                             −b ±      b2 − 4ac
+                ax + bx + c = 0     =⇒     x=
+                                                         2a
+
+## Løsningsforslag
+
+Solution Suggestion
+   Exam - TTK4115 Linear System Theory
+                                    Morten Omholt Alver
+
+                                              XX Aug 2025
+
+Problem 1
+Given the following continuous time system :
+                                     A                  B
+                               z
+                                   }| {    z }| {
+                                                                          C
+                                   −2 1        1
+                                                                        z }| {
+                        ẋ =              x+         u,               y= 1 1 x
+                                   0 1         0
+
+Is this system:
+a) Internally stable and BIBO stable
+b) Internally stable, not BIBO stable
+c) Internally unstable but BIBO stable
+d) Unstable in both senses
+For internal stability, we need to check the eigenvalues of A. As the matrix is triangular,
+the eigenvalues -2 and 1 can be read straight from the diagonal, and since one eigenvalue
+is real and positive, the system is not internally stable.
+For BIBO stability, we need to calculate the system’s transfer function:
+                                                                                −1
+                                         −1                        s + 2 −1            1
+                  g(s) = C(sI − A)            B=       1 1                                       (1)
+                                                                       0   s−1           0
+
+                                 1              s−1    1     1
+                    g(s) =                  1 1                                                  (2)
+                           (s + 2)(s − 1)          0   s+2     0
+
+                                1              s−1        1
+                        =                  1 1          =                                        (3)
+                          (s + 2)(s − 1)           0       s+2
+The transfer function has only one pole in -2, so the system is BIBO stable. Therefore,
+c) is correct.
+
+                                                        1
+
+Problem 2
+Given the following matrix:
+                                                3  2
+                                      A=                                             (4)
+                                               −2 −2
+
+What is the value of the upper left element of the matrix exponential eAt ?
+a) 4e2t + e−t
+b) 31 (4e2t − e−t )
+
+c) 13 e−2t + et
+
+d) 31 (e−2t + e−t )
+
+e) 3e2t − 2e−t
+If we solve based on fitting a matrix polynomial, we start by finding that A has two
+eigenvalues, λ1 = −1 and λ2 = 2. The function we want to find is f (A) = eAt , and its
+scalar version is f (λ) = eλt . We fit the polynomial h(λ) = β0 + β1 λ to f (λ) for both
+eigenvalues to find the β coefficients:
+
+                              β0 − β1 = e−t =⇒ β0 = e−t + β1
+                                                                 1
+             β0 + 2β1 = e2t =⇒ e−t + β1 + 2β1 = e2t =⇒ β1 = (e2t − e−t )
+                                                                 3
+                                   1              1
+                         β0 = e−t + (e2t − e−t ) = (e2t + 2e−t )
+                                   3              3
+Using these coefficients, we can find eAt as h(A):
+
+                                      h(A) = β0 I + β1 A
+
+The upper left element becomes:
+                            1                   1              1
+                  β0 + 3β1 = (e2t + 2e−t ) + 3 · (e2t − e−t ) = (4e2t − e−t )
+                            3                   3              3
+
+b) is correct.
+
+                                               2
+
+Problem 3
+For the following system:
+                                                 1
+                                  ẋ(t) = 2x(t) + u(t)
+                                                 2
+with a control law on the form
+
+                                 u(t) = −kx(t) + kr r0
+
+where r0 is a constant reference value, which set of control parameters will ensure the
+fastest convergence of x(t) toward r0 for any initial value of x?
+a) k = 4 and kr = 1
+b) k = 5 and kr = 2.5
+c) k = 5 and kr = 1
+d) k = 6 and kr = 3
+e) k = 7 and kr = 3.5
+f) k = 6 and kr = 2
+We first consider the feedforward term. At equilibrium (ẋ = 0), we require that x = r0 :
+
+                  1                      k k
+             2r0 + (−kr0 + kr r0 ) = (2 − + r )r0 = 0 =⇒ kr = k − 4                   (5)
+                  2                      2  2
+We now want to find the conditions for the feedback term. The equation for the closed-
+loop system is:
+                                           k         k
+                               ẋ(t) = (2 − )x(t) + r r0                           (6)
+                                           2         2
+For the system to converge, k must be greater than 4 (ensuring the eigenvalue of the
+closed-loop system is negative), and higher values give faster convergence.
+Only alternatives c) and f) have the correct feedforward value, and of these, f) has the
+highest k and therefore gives the fastest convergence. f) is correct.
+
+                                           3
+
+Problem 4
+Given the two continuous time systems:
+
+                           1 2         1
+                   ẋ =           x+     u1 ,                    y1 =       0 1       x
+                          −1 2         0
+
+                          2 −1         1
+                   ż =           z+     u2 ,                    y2 =       1 1       z
+                          1 0          0
+
+Are these systems:
+a) Unrelated
+b) Algebraically equivalent
+c) Zero-state equivalent but not algebraically equivalent
+d) Dual systems
+We can see that the two systems are not dual systems, since their system matrices are
+not transposes of each other. To check for other types of equivalency, we first check the
+transfer functions of the two systems:
+                                                                                 −1
+                                  −1                           s − 1 −2                 1
+               gx (s) = C(sI − A)      B=          0 1                                            (7)
+                                                                   1   s−2                0
+
+                      1                s−2      2        1          −1
+              = 2              0 1                             = 2                       (8)
+                s − 3s + 4                −1 s − 1         0      s − 3s + 4
+                  s − 2 1 −1 1
+
+                                                  1             s −1            1
+  gz (s) = 1 1                             = 2              1 1                          (9)
+                      −1 s             0      s − 2s + 1             1 s−2         0
+                                             s+1
+                                       = 2                                              (10)
+                                          s − 2s + 1
+The transfer functions are different, so the systems are neither algebraically or zero-state
+equivalent. Therefore, a) is correct.
+
+                                                   4
+
+Problem 5
+Given this system:
+                                               A                 B
+                                      z
+                                          }| {    z }| {
+                                          4 −6         2
+                               ẋ =              x+          u                                     (11)
+                                          1 0          0
+
+                                          y= 1 0 x
+                                             | {z }
+                                                    C
+
+a) Show that the system is controllable and observable.
+     The controllability matrix is as follows:
+
+                                                                       2 8
+                                 C=           B AB           =
+                                                                         0 2
+
+     The matrix is triangular and therefore has full rank, so the system is controllable.
+     The observability matrix is as follows:
+
+                                          C      1 0
+                                O=            =
+                                         CA      4 −6
+
+     The matrix is lower triangular and therefore invertible, so the system is observable.
+b) Test the BIBO stability of the system.
+     To investigate BIBO stability, we need to find the system’s transfer function:
+                                                                                  −1
+                                          −1                           s−4 6             2
+                     g(s) = C(sI − A)          B=       1 0                                        (12)
+                                                                          −1 s             0
+
+                                  1            s −6
+                                                        2
+                          = 2            1 0                                                       (13)
+                            s − 4s + 6         1 s − 4    0
+
+                               1             2        2s
+                         = 2            s −6      = 2                                              (14)
+                           s − 4s + 6          0     s − 4s + 6
+     The transfer function has a zero in s = 0. We now find its poles:
+                            1    √                 √        √
+                         s = (4 ± 16 − 4 · 6) = 2 ± −2 = 2 ± 2j                                    (15)
+                            2
+     The transfer function has a complex conjugated pair of poles with real value 2.
+     Therefore, the system is not BIBO stable.
+c) Design a controller on the form u = −Kx that places the eigenvalues of the closed-
+     loop system in -1 and -2.
+
+                                                   5
+
+     If we define K =        k1 k2 , the closed-loop system can be written as:
+
+                                                 4 − 2k1 −6 − 2k2
+                            ẋ = (A − BK)x =                         x                (16)
+                                                    1        0
+
+     The characteristic polynomial of the closed-loop system matrix is:
+
+                     λ − 4 + 2k1 6 + 2k2
+                                                        = λ2 + (2k1 − 4)λ + 6 + 2k2   (17)
+                         −1         λ
+
+     We are asked to put eigenvalues in -1 and -2, meaning that the closed-loop system
+     matrix should have a characteristic polynomial equal to (λ+1)(λ+2) = λ2 +3λ+2.
+     Matching coefficients, we find that:
+                                                                   7
+                                      2k1 − 4 = 3 =⇒ k1 =                             (18)
+                                                                   2
+                                      6 + 2k2 = 2 =⇒ k2 = −2                          (19)
+
+d) Put the system in Eq. (11) on diagonal form. You do not have to calculate the
+     transformed B̄ and C̄ matrices, just give the expressions to calculate them. Hint:
+     The key relation in diagonalization is AQ = QΛ where Q contains the eigenvectors
+     and Λ contains the eigenvalues along its diagonal.
+     Is there an additional transformation that might be done in this case to put the
+     system on a more useful canonical form?
+     We start by finding the eigenvalues of A:
+
+                                           λ−4 6
+                            |λI − A| =                      = λ2 − 4λ + 6 = 0         (20)
+                                            −1 λ
+                      1     √                         √              √
+                λ = (4 ± 16 − 24) =⇒ λ1 = 2 + 2j, λ2 = 2 − 2j                    (21)
+                      2
+     The eigenvector for λ1 is found by the relation Av1 = λ1 v1 =⇒ (A − λ1 I)v1 = 0:
+                                    √
+                                 2 − 2j        −6√
+                                                        v1 = 0                   (22)
+                                    1      −2 − 2j
+
+     We can
+         √ see from the second row, and confirm from the first row, that v1 =
+       2 + 2j
+                 is a valid eigenvector.
+          1
+     The eigenvector for λ2 :
+                                          √
+                                      2+    −6√2j
+                                                      v2 = 0                          (23)
+                                    1    −2 + 2j
+                                     √
+                                   2 − 2j
+     Similarly, we see that v2 =            is a valid eigenvector.
+                                      1
+
+                                                    6
+
+Gathering eigenvalues and eigenvectors we get the following matrices:
+                     √                             √       √
+                  2 + 2j       0√                2 + 2j 2 − 2j
+          Λ=                          , Q=                                    (24)
+                     0      2 − 2j                   1        1
+
+We can now use the key relation given above to find the transformed system:
+
+                           AQ = QΛ =⇒ A = QΛQ−1                               (25)
+
+This relation allows us to transform the system from:
+
+                                ẋ = Ax + Bu,            y = Cx               (26)
+
+to
+                           ẋ = QΛQ−1 x + Bu,              y = Cx             (27)
+                          −1             −1         −1
+                      Q        ẋ = ΛQ        x+Q        Bu,    y = Cx        (28)
+                                                          −1
+Introducing the transformed state vector z = Q                 x, we get:
+
+                                              B̄                C̄
+                                     z }| {
+                           ż = Λz + Q−1 B u,
+                                                             z}|{
+                                                         y = CQ z             (29)
+
+We have already calculated Λ, and this equation gives the recipe for calculating
+the B̄ and C̄ matrices of the transformed system.
+The rationale for the second part of the question is that this system has complex
+eigenvalues, leading to complex-valued coefficients in the matrices for the trans-
+formed system, which in turn leads to the state vector taking on complex values.
+This is not desirable. We can make a second transform to get to the modal form
+where the real value of the eigenvalues is put along the diagonal of the system
+matrix, and the imaginary part is put in the superdiagonal with a positive sign
+and in the subdiagonal with a negative sign. In the modal form, all matrix coef-
+ficients and the states become real-valued. For this system, the system matrix in
+the modal form would be:
+                                            p
+                                        2       (2)
+                             Ā =     p                                       (30)
+                                     − (2)      2
+
+                                              7
+
+Problem 6
+Given the following system:
+
+                                   ẋ = 3x + u,   y=x
+
+You are to design LQR controllers on the form u = −kx.
+a) What is the LQR feedback gain k for the LQR parameters q = 2 and r = 1?
+     We start by setting up the Riccati equation with a = 3 and b = c = 1:
+
+                                     3p + 3p + 2 − p2 = 0                             (31)
+                                                  1     √
+                         p2 − 6p − 2 = 0 =⇒ p = (6 ± 36 + 8)                  (32)
+                                                  2
+                                                          √
+     Choosing the positive p value, we get that p = 3 + 12 44 = 6.317. We can then
+     calculate the feedback gain k = pr = 6.317.
+b) What is the limit for the LQR feedback gain k if we let the input cost approach infinity
+    (q = 2 and r → ∞)?
+     To solve the problem in this case we first need to express k as a function of r. The
+     Riccati equation is now:
+                                                   p2
+                                    3p + 3p + 2 −     =0                              (33)
+                                                    r
+                                  p2 − 6rp − 2r = 0                                   (34)
+                               q                    r       !
+                         1           2              1       8
+                      p=    6r ± 36r + 8r = r 3 ±      36 +                           (35)
+                         2                          2       r
+     Choosing the positive p value, we get that:
+                                               r        !
+                                             1        8
+                                 p=r 3+          36 +                                 (36)
+                                             2        r
+
+     The feedback gain r is:
+                                                    r         !
+                                    p           1         8
+                                  k= =       3+      36 +                             (37)
+                                    r           2         r
+
+     We can now see that as r → ∞, the second term under the square root approaches
+     zero, so:
+                                           1√
+                                  k →3+        36 = 6                          (38)
+                                           2
+
+                                            8
+
+c) Assume now that there is measurement noise, so the measurement equation is now:
+
+                                              y =x+n                                     (39)
+
+     The control law is now expressed as u = −ky.
+     If n is a zero-mean white noise signal with autocorrelation function Rn (τ ) = δ(τ ),
+     what is the power spectral density function Sx (ω) for the state variable x(t)? The
+     answer should be expressed as a function of the feedback gain k.
+     To calculate Sx (ω), we need to find the transfer function from n to x. The feedback
+     controlled system can be written as:
+
+                                ẋ = 3x − k(x + n) = (3 − k)x − kn                       (40)
+
+     In the Laplace domain this becomes:
+
+                sx̂(s) = (3 − k)x̂(s) − kn̂(s) =⇒ (s + k − 3)x̂(s) = −kn̂(s)             (41)
+
+     The transfer function becomes:
+                                              x̂(s)      k
+                                   H(s) =           =−                                   (42)
+                                              n̂(s)    s+k−3
+
+     When the input to an LTI system with transfer function H(s) is white noise with
+     power spectral density Sn (ω) = 1, the power spectral density on the output (x in
+     this case) is found by:
+                                  Sx (ω) = H(jω)H(−jω)                            (43)
+     Therefore, in this case:
+
+                                                                           k2
+
+                         k                   k
+      Sx (ω) = −                   · −                     =                             (44)
+                     jω + k − 3          −jω + k − 3           (jω + k − 3)(−jω + k − 3)
+
+                                         k2                         k2
+                 =                                          =                            (45)
+                     ω 2 + jω(k − 3) − jω(k − 3) + (k − 3)2   ω 2 + (k − 3)2
+
+                                               9
+
+Problem 7
+You are working on the controller for a robot lawn mower. One part of the control
+system is concerned with estimating the forward movement of the mower for the purpose
+of detecting when it hits a barrier or is hindered by slippery conditions. The mower has
+two motor powered wheels in the back, and one wheel that rolls freely in the front.
+A discrete-time model for the forward speed can be set up as:
+
+                        x[k + 1] = (1 − α)x[k] + β[k]u[k] + w[k]                   (46)
+
+where x[k] is the forward speed, α describes the rate at which the mower loses speed
+due to friction, u[k] represents the input provided by the motor, β[k] represents the
+effect of ground conditions such as slope, and w[k] is a zero-mean Gaussian white noise
+disturbance with variance q.
+The speed of the front wheel is measured as y[k]:
+
+                                     y[k] = x[k] + v[k]                            (47)
+
+where v[k] is zero-mean Gaussian white noise with variance r.
+a) We can use the Kalman filter to estimate x[k]. Write the expressions for this partic-
+    ular system to calculate:
+        • x̂− [k + 1] as a function of x̂[k]
+        • P − [k + 1] as a function of P [k]
+        • The Kalman gain
+     The (scalar) system matrices are A = 1 − α, B = β[k] and C = 1.
+     Prediction step:
+                               x̂− [k + 1] = (1 − α)x̂[k] + β[k]u[k]               (48)
+                                 P − [k + 1] = (1 − α)2 P [k] + q                  (49)
+     Kalman gain:
+                                                      P − [k]
+                                        L[k] =                                     (50)
+                                                    P − [k] + r
+
+b) Assume that α = 0.1, β[k] = 1, q = 0.12 and r = 0.1. Let the Kalman filter’s initial
+     values be x̂[0] = 1 and P [0] = 0.5, and let u[k] = 0.15.
+     The first two measurements are y[1] = 1.2 and y[2] = 1.3. Show that x̂− [3] ≈ 1.29
+     and P − [3] ≈ 0.17.
+     Time step 1:
+                         x̂− [1] = 0.9x̂[0] + u[0] = 0.9 · 1 + 0.15 = 1.05         (51)
+                                P − [1] = 0.92 P [0] + 0.12 = 0.525                (52)
+
+                                               10
+
+                                                    0.525
+                                        L[1] =               = 0.84                     (53)
+                                                 0.525 + 0.1
+          x̂[1] = x̂− [1] + L[1](y[1] − x̂− [1]) = 1.05 + 0.84 · (1.2 − 1.05) = 1.176   (54)
+                         2   −             2                2             2
+       P [1] = (1 − L[1]) P [1] + L[1] r = (1 − 0.84) · 0.525 + 0.84 · 0.1 = 0.084 (55)
+
+     Time step 2:
+                                 x̂− [2] = 0.9 · 1.176 + 0.15 = 1.2084                  (56)
+                                    −            2
+                                  P [2] = 0.9 0.084 + 0.12 = 0.188                      (57)
+                                                  0.188
+                                     L[2] =                = 0.6528                     (58)
+                                               0.188 + 0.1
+                       x̂[2] = 1.2084 + 0.6528 · (1.3 − 1.2084) = 1.2682                (59)
+                     P [2] = (1 − 0.6528)2 · 0.188 + 0.65282 · 0.1 = 0.0653             (60)
+
+     Time step 3:
+                                 x̂− [3] = 0.9 · 1.2682 + 0.15 = 1.2914                 (61)
+                                 P − [3] = 0.92 0.0653 + 0.12 = 0.1729                  (62)
+     Which was what we were asked to show.
+c) Suggest a general criterion for detecting that the mower has been hindered by an
+     unexpected event (such as slippery conditions or hitting a barrier) based on the
+     Kalman filter estimates and the measurement.
+     If the measurement at time 3 is y[3] = 0.15, discuss whether you can assume such
+     an event has occurred.
+     The Kalman filter estimates give us a prior probability distribution for the speed,
+     valid for the case where no hindrance has occurred. The measurement gives the
+     actual speed, although with uncertainty corresponding to a standard deviation of
+     0.1.
+     The measurement should represent an unexpected reduction in speed, so it makes
+     sense to compare the deviation to the uncertainty of the prior. A simple crite-
+     rion might be to consider deviations greater than e.g. 2.5 standard deviations to
+     represent an unexpected hindrance.
+     If the measurement at time 3 equals 0.15, the deviation from the √
+                                                                      prior estimate is
+     1.29−0.15 = 1.14. The standard deviation of the prior estimate is 0.17 ≈ 0.41, so
+     the measurement is almost 2.8 standard deviations away from the prior estimate. It
+     seems reasonable to assume that an unexpected event has happened. Considering
+     measurement noise, the value is 1.5 standard deviations away from 0, so it seems
+     most likely the mower has slowed down suddently, but not stopped completely.
+
+                                                  11
+
+Problem 8
+You are to design a PI cruise control system for a car. Let the car’s velocity v be modelled
+by the linear differential equation
+
+                                        mv̇ + dv = u                                   (63)
+
+where m is the car’s mass and d is a positive damping constant. A throttle u serves as
+the control input.
+Let r denote the reference velocity. The PI controller can be given as this transfer
+function relation:
+                                                           KP s + K I
+                      u(s) = K(s)(r(s) − v(s)),   K(s) =                               (64)
+                                                               s
+a) Find the transfer function from reference r(s) to velocity v(s) when (64) is used to
+     control (63).
+      Laplace transforming the car model gives:
+                                                               1
+                         (ms + d)v(s) = u(s) =⇒ v(s) =              u(s)               (65)
+                                                             ms + d
+      Inserting the expression for the controller gives:
+                       1     K s + KI                K s + KI
+            v(s) =          · P       (r(s) − v(s)) = P 2     (r(s) − v(s))            (66)
+                     ms + d     s                     ms + ds
+      Which leads to:
+
+                        (ms2 + (KP + d)s + KI )v(s) = (KP s + KI )r(s)                 (67)
+
+      The transfer function is found as:
+                                      v(s)       KP s + KI
+                            T (s) =        =   2                                       (68)
+                                      r(s)   ms + (KP + d)s + KI
+
+b) How many states are necessary for the realization of (64)? What are the eigen-
+    value(s) of the PI-controller when expressed in the time-domain?
+      As the denominator is of order 1, one state is sufficient to realize the controller.
+      The single eigenvalue equals 0.
+c) Express (63) and (64) on state-space form:
+
+                                      ẋ = Ax + br,    v = cx                          (69)
+
+      The state vector x must have v as its first element.
+
+                                             12
+
+     Let the state vector be defined as
+
+                                                        v
+                                           x=                                               (70)
+                                                        uI
+
+     We can write the PI controller with its P and I components separated:
+                                                                         KI
+                 u(s) = uP (s) + uI (s) = KP (r(s) − v(s)) +                (r(s) − v(s))   (71)
+                                                                         s
+     For the I component, we see that:
+
+                                    suI (s) = KI (r(s) − v(s))                              (72)
+
+     which means that in the time domain
+
+                                    u̇I (t) = KI (r(t) − v(t))                              (73)
+
+     The equation for the speed v is:
+                                  d   1    d + KP    1    K
+                      v̇(t) = −     v+ u=−        v + uI + P r                              (74)
+                                  m   m       m      m     m
+     Collecting both equations into the full state space system, we get:
+                               d+K        1
+                                                       K
+                           v̇     − mP m            v         m
+                                                               P
+                                                         +        r                         (75)
+                          u̇I      −KI       0      uI        KI
+
+                                                              v
+                                      v=       1 0                                          (76)
+                                                                uI
+
+     Since state space representations are not unique, other variations can be equally
+     correct.
+     A valid state space representation can also be found by realizing T (s) directly,
+     for instance on the controllable canonical form. This form does not fulfill the
+     requirement of having v as the first element of the state vector, but can be awarded
+     half score.
+d) Use the parameters KP and KI in the PI-controller (64) to place the poles of the
+     closed-loop plant at
+                               λ1 = −ωb , λ2 = −ωb                             (77)
+     The answer is to be given as analytical expressions for the controller parameters.
+     There are several ways to solve this, but let’s use the transfer function as a starting
+     point. The transfer function is given in Eq. (68). Solving for its poles, we get:
+
+                             1
+                                                q
+                        λ=      (−(KP + d) ± (KP + d)2 − 4mKI )                         (78)
+                            2m
+
+                                               13
+
+     Since we won’t two equal poles, the expression under the square root must equal
+     zero, and:
+                              KP + d
+                                      = ωb =⇒ KP = 2mωb − d                         (79)
+                                2m
+     Inserting this value for KP into the expression under the square root and requiring
+     it to be zero, we get:
+
+                       (2mωb − d + d)2 − 4mKI = 0 =⇒ KI = mωb2                       (80)
+
+Problem 9
+In the laboratory assignments, when controlling the helicopter using measurements from
+the IMU unit, you experimented with state estimation both in the form of a Luenberger
+observer and a Kalman filter.
+a) What are the main reasons that we use state estimation in control systems?
+     There are several reasons that can be pointed out:
+        • Unmeasurable states: In many real-world systems, not all internal states
+          can be directly measured. State estimators use available noisy or incomplete
+          measurements, combined with a mathematical model of the system, to infer
+          the values of these unmeasurable states.
+        • Noisy measurements: Sensor measurements are inherently noisy and can
+          be corrupted by errors or interference. State estimation acts as a filter, pro-
+          cessing these noisy measurements to provide a more accurate and reliable
+          estimate of the system’s true state than any single measurement could offer.
+        • Handling missing data: In some cases, sensor data might be temporarily
+          unavailable due to communication failures, sensor malfunctions, or network
+          issues. State estimation algorithms can often bridge these gaps by using the
+          system model and previous estimates to predict the current state.
+        • Redundant measurements: By incorporating redundant measurements,
+          state estimation can improve overall robustness and reliability.
+     For full score, at least two of these points should be covered in a good way.
+b) What are the most important differences between using a Luenberger observer with
+    pole placement, and using a Kalman filter? Comment on the tuning process, esti-
+    mator performance, and other aspects you would like to include.
+     There are several differences that can be pointed out:
+        • The Luenberger uses a static estimator gain chosen based on pole placement,
+          while the Kalman filter uses a dynamic estimator gain chosen based on min-
+          imizing the sum of the estimation error variances.
+
+                                          14
+
+  • The Kalman gain is chosen based on the statistical properties of the sys-
+    tem disturbances (specified using the Qd matrix) and the measurement noise
+    (specified using the Rd matrix), both of which are assumed to be white noise
+    processes.
+  • Since Rd can often be set based on analysing the measurement noise, while
+    the “true” value of Qd is hard to assess, Qd is typically used as a tuning
+    parameter. By tuning elements along the diagonal of Qd we can affect the
+    Kalman filter’s relative weighting of state estimates vs. measurements for
+    individual model states.
+  • The dynamic nature of the Kalman gain is not always important, since it will
+    approach a stationary value. However, if measurements arrive at irregular
+    intervals (measurements not being available at all time steps), the covariance
+    matrix P[k] will change accordingly, indicating increasing uncertainty as time
+    goes by without available measurements, and this will lead to the estimator
+    dynamically changing the Kalman gain to put more emphasis on measure-
+    ments after the estimator has gone for some time without measurements.
+  • In the case where you measure all the model states, the Kalman filter com-
+    putes posterior estimates that are a weighting between prior estimates and
+    the measurements, and if you let the elements of Qd approach infinity (indi-
+    cating a highly noisy process) the extreme case is that the posterior estimates
+    become equal to the measurements. The measurement noise will not be am-
+    plified, which can happen with a Luenberger observer of A − LC are placed
+    too far into the left half plane. Note that this distinction is not quite as clear
+    in the case where you measure only a subset of the states.
+It is not correct to state that the Luenberger is used in continuous time and the
+Kalman filter in discrete time, since both estimator types can be used in both
+cases.
+
+                                      15

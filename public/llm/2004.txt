@@ -1,0 +1,833 @@
+# Eksamen 2004 – TTK4115 Lineær systemteori
+
+Tekst hentet automatisk fra PDF. Matriser og brøker kan stå rotete over flere linjer.
+
+## Oppgavetekst
+
+Side 1 av 7
+        Norges teknisk- naturvitenskapelige universitet
+        Institutt for teknisk kybernetikk
+
+Faglig kontakt under eksamen:
+Navn: Johannes Tjønnås
+Tlf.: 408 25 940
+
+                    Eksamen
+            TTK 4115 Lineær systemteori
+
+                              18. desember 2004
+                               Tid: 0900 – 1300
+Hjelpemidler: D - Ingen trykte eller håndskrevne hjelpemidler tillatt. Bestemt, enkel
+kalkulator tillatt.
+
+   Oppgave 1 (10 %)
+     Anta gitt følgende system
+                     µ     ¶    µ       ¶µ    ¶ µ ¶
+                       ẋ1         1 0     x1    1
+                              =                +    u
+                       ẋ2        −1 −3    x2    1
+
+     a) Vis at transisjonsmatrisen er
+                                    µ                             ¶
+                                                 et         0
+                          Φ(t) =      1
+                                          4
+                                              (e−3t − et ) e−3t
+
+     b) Finn en eksakt diskretisering av dette systemet med nullteordens hold-
+     eelement på inngangen (ZOH) for samplingintervallet T = 0.25 s.
+
+                                                                    Side 2 av 7
+
+Oppgave 2 (25 %)
+ a) Definer begrepet Lyapunov-stabilitet (ekvivalent med intern stabilitet) for
+ et lineært system.
+
+ b) Angi kriterier for å teste hvorvidt et gitt lineært system er Lyapunov-
+ stabilt. Kortfattet beskrivelse er tilstrekkelig.
+
+ c) Definer begrepet BIBO-stabilitet for et lineært system.
+
+ d) Angi kriterier for å teste hvorvidt et gitt lineært system er BIBO-stabilt.
+ Kortfattet beskrivelse er tilstrekkelig.
+
+ e) Anta gitt følgende system
+                             µ       ¶    µ    ¶
+                               −1 0         1
+                      ẋ =             x+        u
+                               0.5 2        −1
+                      y = x1
+
+ Undersøk stabilitetsegenskapene (både Lyapunov-stabilitet og BIBO-stabilitet)
+ til dette systemet.
+
+Oppgave 3 (40 %)
+ Gitt følgende system
+            µ     ¶    µ        ¶µ    ¶ µ     ¶µ    ¶
+              ẋ1         0   1    x1     1 0    v1
+                     =                 +              ,                    (1a)
+              ẋ2        −1 −2     x2     0 1    v2
+                  y = x1 + w,                                              (1b)
+
+ hvor w er målestøy og v1 , v2 er ukjente forstyrrelser.
+
+ a) Definer begrepet observerbarhet for et lineært system, og vis at systemet
+ ovenfor er observerbart.
+
+ b) Finn en observer for dette systemet som kan benyttes for å beregne et
+ tilstandsestimat x̂. Forsterkningsmatrisen L skal velges slik at polene skal
+ plasseres i -5 og -8.
+
+ Vi definerer estimeringsfeilen x̃ = x̂ − x og får følgende system:
+         µ ¶          µ                 ¶µ ¶ µ             ¶     µ ¶
+            ẋ          A        0          x           I           0
+            ˙x̃   =                               +          v+       w
+                         0 A − LC           x̃          −I         L
+
+                                                                       Side 3 av 7
+
+ c) Hvilken effekt vil en konstant forstyrrelse på v1 ha på estimeringsfeilen x̃1
+ og x̃2 ? Hva kan gjøres for å redusere effekten av en slik forstyrrelse?
+
+ d) Transferfunksjonene fra målestøyen w til estimeringsfeilen x̃1 og x̃2 er gitt
+ ved:
+                 x̃1         11s + 39     x̃2         17s − 11
+                     (s) = 2            ,     (s) = 2           .
+                 w        s + 13s + 40    w        s + 13s + 40
+ Diskuter på grunnlag av dette hvilken effekt målestøyen har. Hva kan gjøres
+ for å redusere effekten av målestøy.
+ Anta i det etterfølgende at målestøyen w og forstyrrelsen v er begge normal-
+ fordelt hvit støy med null middelverdi. Kovariansmatrisen til målestøyen w(t)
+ er W = 35, og kovariansmatrisen til forstyrrelsesvektoren v(t) er
+                                      µ        ¶
+                                         10 0
+                               V =
+                                          0 2
+
+ e) Sett opp det kontinuerlige Kalman-filteret for (1a)-(1b).
+ f ) Stasjonær løsning til Riccati-ligninga oppgis til å være
+                                   µ                 ¶
+                                      10.21 −3.51
+                           P =
+                                      −3.51 2.17
+ Beregn stasjonært Kalman-filter, dvs. stasjonær verdi for forsterkningsma-
+ trisen, og sammenlign effekten av målestøy for dette filteret med observeren
+ beregnet ovenfor.
+
+Oppgave 4 (15 %)
+ La u(t) være en hvitstøy prosess med null middelverdi og varians σu2 .
+ a) Hva er autokorreasjonsfunksjonen og effektspektret til denne stokastiske
+ prosessen? Begrunn hvorvidt dette er en stasjonær prosess eller ikke.
+ b) La ẋ(t) = u(t). Finn forventningsverdi og varians til x(t). Begrunn
+ hvorvidt dette er en stasjonær prosess eller ikke.
+ c) Finn en spektralfaktorisering av følgende effektspektrum
+                                            ω2 + 1
+                               Sx (jω) =             .
+                                           ω 2 + 100
+
+                                                                   Side 4 av 7
+
+Oppgave 5 (10 %)
+ Anta du har en prosess med følgende transferfunksjon
+
+                                      Ke−τ s
+                               G(s) =
+                                      1 + Ts
+ der parametrene er ukjente.
+
+ a) Anta du kan bestemme inngangsignalet selv. Beskriv en metode for å
+ identifisere tidsforsinkelsen τ fra et eksperiment.
+
+ b) Anta du ikke kan bestemme inngangsignalet selv, men at dette kan ses
+ på som et tilfeldig stasjonært signal. Beskriv en metode for å identifisere
+ tidsforsinkelsen τ fra et eksperiment.
+
+                                                                 Side 5 av 7
+
+Vedlegg til eksamen (Noen nyttige formler og uttrykk)
+
+                         Z t
+                At
+      x(t) = e x(0) +          eA(t−τ ) Bu(τ )dτ
+                          0
+                         k−1
+                         X
+     x(k) = Ak x(0) +          Ak−1−m Bu(m)
+                         m=0
+            adj(A)
+      A−1 =
+            det(A)
+            Xn
+   det(A) =    aij cij
+                i=1
+   adj(A) = {cij }T
+       cij = (−1)i+j det(Aij ) (kofaktor), Aij = undermatrise til A
+
+        C = (B AB A2 B · · · An−1 B)
+                     
+                C
+             CA 
+                     
+                  2 
+        O =  CA 
+               ..    
+                .    
+                  n−1
+              CA
+     G(s)   = C(sI − A)−1 B + D
+     G(z)   = C(zI − A)−1 B + D
+     G(s)   = G(∞) + Gsp (s)
+     d(s)   = sr + α1 sr−1 + · · · + αr−1 s + αr
+                1
+   Gsp (s) =       [N1 sr−1 + N2 sr−2 + · · · + Nr−1 s + Nr ]
+              d(s)
+                                                                
+                 −α1 Ip −α2 Ip · · · −αr−1 Ip −αr Ip            Ip
+               Ip          0       ···      0        0       0 
+                                                                
+               0           Ip      ···      0        0 x + 
+                                                                  
+         ẋ =                                                 0 u
+                   ..       ..      ...      ..       ..     .. 
+                    .        .                .        .     . 
+                    0       0       ···      Ip       0         0
+        y = [ N1 N2 · · ·         Nr−1 Nr ]x + G(∞)u
+
+                                                                          Side 6 av 7
+
+ Diskret Kalman-filter:
+            xk+1 = Φk xk + wk
+               zk = Hk xk + vk
+                      ½
+                T       Qk , i = k
+        E[wk wi ] =
+                        0,   i 6= k
+                      ½
+                        Rk , i = k
+         E[vk viT ] =
+                        0,   i 6= k
+         E[wk viT ] = 0, ∀i, k
+              P− k  = E[e−     −T
+                          k ek ]
+              Pk = E[ek eTk ] = (I − Kk Hk )P−             T         T
+                                             k (I − Kk Hk ) + Kk Rk Kk
+                                ¡           ¢−1
+              Kk = P−        T    − T
+                        k Hk Hk Pk Hk + Rk
+            P−k+1 = Φk Pk Φk + Qk
+
+ Kontinuerlig Kalman filter:
+                 ẋ      =   Fx + Gu
+                 z       =   Hx + v
+                T
+     E[u(t)u(τ ) ]       =   Qδ(t − τ )
+     E[v(t)v(τ )T ]      =   Rδ(t − τ )
+     E[u(t)v(τ )T ]      =   0
+                K        =   PHT R−1
+                Ṗ       =   FP + PFT − PHT R−1 HP + GQGT ,         P(0) = P0
+ Autokorrelasjon:
+   RX (τ )      = E[X(t)X(t + τ )] (Stajonær prosess)
+RX (t1 , t2 )   = E[X(t1 )X(t2 )] (Ikke stajonær prosess)
+     Y (s)      = G(s)U (s) ⇒
+Ry (t1 , t2 )   = E[y(t1 )y(t2 )]
+                  Z t2 Z t1
+                =           g(ξ)g(η)E [u(t1 − ξ)u(t2 − η)] dξdη (Transient analyse)
+                     0   0
+
+ Minste kvadraters estimering:
+                                                           1
+Objektfunksjonsverdi i minste.k.estim. :         V (θ̄) = (YN − ΦN θ̄)T (YN − ΦN θ̄)
+                                                           2
+                    Kovariansmatrise for θ̂ :    σe (ΦN ΦN )−1
+                                                    2   T
+
+                                                           2
+                              Estimat av σe2 :   σ̂e2 =       V (θ̂)
+                                                         N −p
+
+                                                  Side 7 av 7
+
+Noen enkle Laplace-transformer:
+
+                       f (t)      ⇐⇒   F (s)
+
+                                       1
+                         1        ⇐⇒
+                                       s
+                                          1
+                       e−at       ⇐⇒
+                                       s+a
+                                       1
+                          t       ⇐⇒
+                                       s2
+                                       2
+                         t2       ⇐⇒
+                                       s3
+                                            1
+                      te−at       ⇐⇒
+                                       (s + a)2
+                                           ω
+                     sin ωt       ⇐⇒
+                                       s + ω2
+                                        2
+                                           s
+                     cos ωt       ⇐⇒
+                                       s + ω2
+                                        2
+
+                                                                    Page 1 of 7
+       Norges teknisk- naturvitenskapelige universitet
+       Institutt for teknisk kybernetikk
+
+Contact under the exam:
+Name: Johannes Tjønnås
+Tlf.: 408 25 940
+
+                      Exam
+              TTK 4115 Lineær systems
+
+                           18. December 2004
+                           Time: 0900 – 1300
+Supporting materials: D - No printed or handwritten material allowed. Specific,
+simple calculator allowed.
+
+   Exercise 1 (10 %)
+     Given the following system
+                     µ     ¶    µ       ¶µ    ¶ µ ¶
+                       ẋ1         1 0     x1    1
+                              =                +    u
+                       ẋ2        −1 −3    x2    1
+
+     a) Show that the transition matrix is given by
+                                   µ                   ¶
+                                           et       0
+                         Φ(t) =       1 −3t
+                                      4
+                                        (e − et ) e−3t
+
+     b) Find an exact discretization of the system when a zero hold is used on
+     the input. Let the sampling interval be T = 0.25 s.
+
+                                                                   Page 2 of 7
+
+Exercise 2 (25 %)
+ a) Define the term Lyapunov-stability (equivalent with internal stability) for
+ a linear system.
+
+ b) State methods to test if a given linear system is Lyapunov-stable. Brief
+ description is enough.
+
+ c) Define the term BIBO-stability for a linear system.
+
+ d) State methods to test if a given linear system is BIBO-stable. Brief de-
+ scription is enough.
+
+ e) Given the following system
+                             µ       ¶    µ    ¶
+                               −1 0         1
+                      ẋ =             x+        u
+                               0.5 2        −1
+                      y = x1
+
+ Is the system Lyapunov-stable? Is the system BIBO-stable?
+
+Exercise 3 (40 %)
+ Given the following system:
+           µ      ¶      µ       ¶µ    ¶ µ     ¶µ    ¶
+              ẋ1           0 1     x1     1 0    v1
+                     =                  +              ,                    (1a)
+              ẋ2          −1 −2    x2     0 1    v2
+                  y = x1 + w,                                               (1b)
+
+ where w is measurement noise and v1 , v2 are unknown disturbances.
+
+ a) Define the term observability for a linear system, and show that the system
+ above is observable.
+
+ b) Find an observer that can be used to calculate a state estimate x̂ for this
+ system. Choose the gain matrix L such that the two poles are placed in -5
+ and -8.
+
+ We define the estimation error x̃ = x̂ − x and get the following system:
+         µ ¶         µ               ¶µ ¶ µ             ¶     µ ¶
+           ẋ           A      0           x         I           0
+                 =                             +          v+          w
+           x̃˙          0 A − LC           x̃       −I           L
+
+                                                                   Page 3 of 7
+
+ c) What effect will a constant disturbance on v1 have on the estimation error
+ x̃1 and x̃2 ? What can be done to reduce the effect of such a disturbance?
+ d) The transfer functions from the measurement noise w to the estimations
+ error x̃1 and x̃2 is given by:
+               x̃1         11s + 39      x̃2         17s − 11
+                   (s) = 2            ,      (s) = 2           .
+               w        s + 13s + 40     w        s + 13s + 40
+ Based on this, discuss the effect the measurement noise have on the system.
+ What can be done to reduce the effect of measurement noise?
+ In the following, let the measurement noise w and the disturbance v be Gaus-
+ sian white noise with zero mean. The covariance matrix for the measurement
+ noise w(t) is W = 35, and the covariance matrix for the disturbance v(t) is
+                                      µ        ¶
+                                        10 0
+                               V =
+                                         0 2
+
+ e) Write down the continuous Kalman-filter for (1a)-(1b).
+ f ) The stationary solution to the Riccati equation is
+                                 µ                 ¶
+                                    10.21 −3.51
+                          P =                        .
+                                    −3.51 2.17
+ Calculate the stationary Kalman-filter, that is, the stationary matrix gain.
+ Compare the effect of measurement noise for the Kalman filter with the ob-
+ server above.
+
+Exercise 4 (15 %)
+ Let u(t) be a white noise process with zero mean and variance σu2 .
+ a) What is the autocorrelation function and the power spectral density func-
+ tion for the process? Is this a stationary process? Justify your answer.
+ b) Let ẋ(t) = u(t). Find the mean and the variance for x(t). Is this a
+ stationary process? Justify your answer.
+ c) Find a spectral factorization of the following power spectral density func-
+ tion:
+                                          ω2 + 1
+                             Sx (jω) = 2         .
+                                        ω + 100
+
+                                                                 Page 4 of 7
+
+Exercise 5 (10 %)
+ Assume that a process has the following transfer function:
+
+                                     Ke−τ s
+                              G(s) =
+                                     1 + Ts
+ where the parameters are unknown.
+
+ a) Assume that you can freely choose the input signal. Describe a method
+ to determine the time delay τ from an experiment.
+
+ b) Assume that you cannot choose the input signal, but that the input can
+ be viewed as a random stationary signal. Describe a method to determine the
+ time delay τ from an experiment.
+
+                                                                 Page 5 of 7
+
+Attachments to the exam (Some useful formulas and expressions)
+
+                         Z t
+                At
+     x(t) = e x(0) +           eA(t−τ ) Bu(τ )dτ
+                          0
+                         k−1
+                         X
+     x(k) = Ak x(0) +          Ak−1−m Bu(m)
+                         m=0
+            adj(A)
+     A−1 =
+            det(A)
+            Xn
+   det(A) =    aij cij
+                i=1
+   adj(A) = {cij }T
+       cij = (−1)i+j det(Aij ) (co-factor), Aij = sub-matrix of A
+
+       C = (B AB A2 B · · · An−1 B)
+                    
+               C
+            CA 
+                    
+                 2 
+       O =  CA 
+              ..    
+               .    
+                 n−1
+             CA
+     G(s)   = C(sI − A)−1 B + D
+     G(z)   = C(zI − A)−1 B + D
+     G(s)   = G(∞) + Gsp (s)
+     d(s)   = sr + α1 sr−1 + · · · + αr−1 s + αr
+                1
+   Gsp (s) =       [N1 sr−1 + N2 sr−2 + · · · + Nr−1 s + Nr ]
+              d(s)
+                                                                
+                 −α1 Ip −α2 Ip · · · −αr−1 Ip −αr Ip            Ip
+               Ip          0       ···      0        0       0 
+                                                                
+               0           Ip      ···      0        0 x + 
+                                                                  
+         ẋ =                                                 0 u
+                   ..       ..      ...      ..       ..     .. 
+                    .        .                .        .     . 
+                    0       0       ···      Ip       0         0
+        y = [ N1 N2 · · ·         Nr−1 Nr ]x + G(∞)u
+
+                                                                            Page 6 of 7
+
+  Discrete Kalman-filter:
+             xk+1 = Φk xk + wk
+                zk = Hk xk + vk
+                       ½
+                 T       Qk , i = k
+         E[wk wi ] =
+                         0,   i 6= k
+                       ½
+                         Rk , i = k
+          E[vk viT ] =
+                         0,   i 6= k
+         E[wk viT ] = 0, ∀i, k
+              P− k  = E[e−     −T
+                          k ek ]
+              Pk = E[ek eTk ] = (I − Kk Hk )P−             T         T
+                                             k (I − Kk Hk ) + Kk Rk Kk
+                                ¡           ¢−1
+              Kk = P−        T    − T
+                        k Hk Hk Pk Hk + Rk
+            P−k+1 = Φk Pk Φk + Qk
+
+  Continuous Kalman filter:
+                  ẋ     =    Fx + Gu
+                  z      =    Hx + v
+                 T
+      E[u(t)u(τ ) ]      =    Qδ(t − τ )
+      E[v(t)v(τ )T ]     =    Rδ(t − τ )
+      E[u(t)v(τ )T ]     =    0
+                 K       =    PHT R−1
+                 Ṗ      =    FP + PFT − PHT R−1 HP + GQGT ,          P(0) = P0
+  Autocorrelation:
+   RX (τ )      = E[X(t)X(t + τ )] (Stationary process)
+RX (t1 , t2 )   = E[X(t1 )X(t2 )] (Non-stationary process)
+     Y (s)      = G(s)U (s) ⇒
+Ry (t1 , t2 )   = E[y(t1 )y(t2 )]
+                  Z t2 Z t1
+                =           g(ξ)g(η)E [u(t1 − ξ)u(t2 − η)] dξdη (Transient analyzes)
+                     0   0
+
+  Least squares estimation:
+                                                           1
+   Objective function in least squares :         V (θ̄) = (YN − ΦN θ̄)T (YN − ΦN θ̄)
+                                                           2
+                 Covariance matrix for θ̂ :      σe (ΦN ΦN )−1
+                                                    2   T
+
+                                                           2
+                             Estimate of σe2 :   σ̂e2 =       V (θ̂)
+                                                         N −p
+
+                                                  Page 7 of 7
+
+Some simple Laplace transforms:
+
+                       f (t)      ⇐⇒   F (s)
+
+                                       1
+                         1        ⇐⇒
+                                       s
+                                          1
+                      e−at        ⇐⇒
+                                       s+a
+                                       1
+                          t       ⇐⇒
+                                       s2
+                                       2
+                         t2       ⇐⇒
+                                       s3
+                                            1
+                      te−at       ⇐⇒
+                                       (s + a)2
+                                           ω
+                     sin ωt       ⇐⇒
+                                       s + ω2
+                                        2
+                                           s
+                     cos ωt       ⇐⇒
+                                       s + ω2
+                                        2
+
+## Løsningsforslag
+
+Side 1 av 6
+   Norges teknisk- naturvitenskapelige universitet
+   Institutt for teknisk kybernetikk
+
+          Løsning til eksamen
+       TTK 4115 Lineær systemteori
+Oppgave 1 (10 %)
+ a) Antar initialtilstander lik null og benytter Laplace transformasjon:
+                                                             1
+                                                                    0
+
+                                                          s−1
+          H(s) = L      −1
+                             (sI − A)    −1
+                                              =L  −1
+                                                            −1      1
+                                                        (s−1)(s+3) s+3
+
+                              et            0
+                  = 1 −3t            t      −3t .
+                        4
+                          (e     − e   )  e
+
+ b)
+
+                                               1.28   0
+                  Ad   = Φ(∆t) = Φ(0.25) =                 ,
+                                              −0.20 0.47
+
+                                           0.28
+                  Bd   = A (Ad − I)B =
+                          −1
+                                                  .
+                                           0.15
+
+Oppgave 2 (25 %)
+ a) Systemet ẋ = Ax er Lyapunov stabilt hvis enhver endelig initialtilstand
+ x(0) eksiterer en begrenset respons.
+
+ b) Systemet ẋ = Ax er Lyapunov stabilt hvis og bare hvis
+
+   1. alle egenverdiene til A har ikke-positive realdeler og alle egenverdier med
+      Re(λi ) = 0 er enkle røtter av det minimale polynomet av A.
+   2. alle egenverdiene til A har ikke-positive realdeler og alle egenverdier med
+      Re(λi ) = 0 og algebraisk multiplisitet qi ≥ 2 har rank(A − λi I) = n − qi ,
+      hvor n er dimensjonen til x.
+   3. alle egenverdiene til A har ikke-positive realdeler og alle egenverdier med
+      Re(λi ) = 0 har en assosiert Jordan blokk av orden 1.
+
+                                                                       Side 2 av 6
+
+ c) Systemet
+
+                                 ẋ = Ax + Bu,
+                                 y = Cx + Du,
+
+ er BIBO stabilt hvis enhver begrenset input u eksiterer en bundet respons y(t),
+ altså ky(t)k ≤ K, ∀t ≥ t0 for enhver ku(t)k ≤ k.
+
+ d) Systemet
+
+                                 ẋ = Ax + Bu,
+                                 y = Cx + Du,
+
+ er BIBO stabilt hvis og bare hvis alle polene til transferfunksjonen YU (s) = H(s)
+ har alle polene in venstre halvplan.
+
+ e) Egenverdiene til A er λ1 = 2 og λ2 = −1 og dermed er systemet ikke
+ internt(Lyapunov)-stabilt. Transferfunksjonen blir
+                                                      1
+                   H(s) = L−1 C(sI − A)−1 B =             ,
+                                                      s+1
+ som har pol p = −1 og dermed er systemet BIBO-stabilt.
+
+Oppgave 3 (40 %)
+ a) Systemet
+
+                                 ẋ = Ax + Bu
+                                 y = Cx + Du
+
+ er observerbart hvis det for enhver ukjent initialtilstand x(0) eksisterer en
+ endelig tid t1 > 0 slik at kjennskap til signalet u og utgangen y i tidsrommet
+ [0, t1 ] er tilstrekkelig til å bestemme x(0) entydig.
+ Observerbarhetsmatrisen blir
+
+                                 C      1 0
+                              O=     =        ,
+                                 CA     0 1
+
+ rank(O) = 2 = n ⇒ systemet er observerbart.
+
+                                                                        Side 3 av 6
+
+b) Vi skal plassere polene til A − LC i −5 og −8. Vi har
+
+                 |sI − A + LC| = s2 + (l1 + 2)s + 2l1 + l2 + 1,
+
+og
+                         (s + 5)(s + 8) = s2 + 13s + 40,
+som gir l1 = 11 og l2 = 17.
+
+c) Første ligning er kun modellen. Lukket sløyfe estimat er x̂˙ = Ax̂+L(Cx+
+w − C x̂). Vi får da
+
+        x̃˙ = x̂˙ − ẋ = Ax̂ + L(Cx + w − C x̂) − Ax − Iv
+            = (A − LC)(x̂ − x) − Iv + Lw = (A − LC)x̃ − Iv + Lw.
+
+Vi setter nå w = 0 og v2 = 0 og finner transferfunksjonen fra v1 til x̃1 og x̃2 .
+                                          −s−2
+              x̃1                          v
+                  = −(sI − A + LC) I 1 = s +13s+40
+                                                    2
+                                     −1
+                                                        18    v1
+              x̃2                          0       s2 +13s+40
+
+Vi ser ved hjelp av sluttverditeoremet at etimeringsfeilen blir konstant for
+begge tilstandene.
+For å unngå dette kan estimatormodellen augmenteres med v̂˙ 1 = 0 slik at
+forstyrrelsen blir estimert. Videre tar vi med v1 som en tilstand i modellen
+vår.
+
+d) Skal finne transferfunksjonene x̃w1 (s) og x̃w2 (s). Setter v = 0 og får
+                                                 11s+39
+               x̃1                                   2 +13s+40
+                   = (sI − A + LC) Lw = s 17s−11
+                                      −1
+                                                               w
+               x̃2                                  s2 +13s+40
+
+Vi ser at målestøyen har innvirkning på estimeringsfeilen. Estimatoren virker
+som et lavpass filter for x̃1 /w og som et båndpass rundt ca 6 rad/s for x̃2 /w.
+Valget av L-matrisen bestemmer hvilke frekvenser som slipper ”gjennom” es-
+timatoren og kan dermed velges slik at ønskede frekvenser dempes.
+
+e) Vi skriver systemet på følgende form:
+
+                                 ẋ = Ax + Iv,
+                                 y = Cx + w,
+
+hvor matrisene er definert ved
+
+                                0  1
+                        A=             ,C = 1 0 .
+                               −1 −2
+
+                                                                  Side 4 av 6
+
+Kalmanfilteret er gitt ved:
+
+                    Ṗ = AP + P AT − P C T W −1 CP + V,
+                 P (0) = P0 ,
+
+hvor matrisene er gitt ved
+
+                                  10 0
+                              V =        , W = 35.
+                                   0 2
+
+Klamanfilterforsterkningen er gitt ved
+
+                                 K = P C T W −1 .
+
+f ) Vi setter
+                                T        T
+                    AP + P  A − P C W    CP + V = 0 ⇒
+                                             −1
+
+            0   1    p11 p12       p    p     0 −1
+                               + 11 12               −
+           −1 −2 p12 p22           p12 p22 1 −2
+
+           1 p11 p12 1          p11 p12       10 0       0 0
+                           1 0               +         =
+          35 p12 p22 0              p12 p22      0 2       0 0
+
+Vi har benyttet at løsningen til Riccati-ligningen er symmetrisk. Vi får tre
+ligninger:
+
+                                  p2
+                                − 11 + 2p12 + 10 = 0,
+                                   35
+                        p11 p12
+                      −         − p11 − 2p12 + p22 = 0,
+                          35
+                             p2
+                         − 12 − 2p12 − 4p22 + 2 = 0,
+                             35
+Etter mye regning kommer en frem til at den positivt definitte løsningen er
+
+                                10.21 −3.51
+                         P =                   .
+                                −3.51 2.17
+
+Kalmanfilter-forsterkningen blir da:
+
+                         1 10.21 −3.51 1     0.29
+                  K=                      =          .
+                        35 −3.51 2.17   0    −0.10
+
+                                                                                              Side 5 av 6
+
+ Regner vi ut transferfunksjonen fra målestøyen til estimeringsfeilen i dette
+ tilfellet får vi:
+                                              0.29s+0.48
+                     x̃1                         2 +2.29s+1.48
+                         = (sI − A + KC) Kw = s−0.10s−0.29
+                                        −1
+                                                               w
+                     x̃2                        s2 +2.29s+1.48
+
+ For lave frekvenser ser vi at målestøyen dempes mer enn sammenlignet med
+ observeren. Vi har også kvittet oss med båndpasseffekten vi hadde med ob-
+ serveren.
+
+Oppgave 4 (15 %)
+ a) En hvitstøyprosess er stasjonær.
+ Autokorrelasjonsfunksjonen til u(t) er:
+
+                                          Ru (τ ) = σu2 δ(τ ),
+
+ og effektspekteret er:
+                                              Su (jω) = σu2 .
+
+ b) Vi starter med å finne forventningsverdien:
+                             Z t         Z t
+               E[x(t)] = E        u(τ )dτ =    E [u(τ )] dτ = 0
+                                          0                 0
+
+ Variansen blir:
+
+      Var(x(t)) = E (x(t) − E[x(t)])2 = E[x(t)2 ]
+
+                    Z t         Z t        Z tZ t
+                = E      u(τ )dτ     u(υ)dυ =          E[u(τ )u(υ)]dτ dυ
+                      0           0            0    0
+                  Z tZ t                   Z tZ t
+                =        Ru (τ − υ)dτ dυ =        σu2 δ(τ − υ)dτ dυ
+                          0   0                                 0   0
+
+ Så når τ = υ
+                              Z tZ t                                Z t
+              Var(x(t)) =                     σu2 δ(τ − υ)dτ dυ =           σu2 dυ = σu2 t.
+                                  0   0                                 0
+
+ Som vi ser er variansen avhengig av t og prosessen er dermed ikke stasjonær.
+ c)
+                       s + 1 −s + 1                        s+1
+           Sx (s) =         ·        = G(s)G(−s) ⇒ G(s) =        .
+                      s + 10 −s + 10                      s + 10
+
+                                                                        Side 6 av 6
+
+Oppgave 5 (10 %)
+ Gitt transferfunksjonen
+                                          K
+                               G(s) =          e−τ s .
+                                        1 + Ts
+ a) Her har vi to klare alternativer la Y (s) = G(s)U (s) eller Y (s) = G(s)D(s),
+ hvor U (s) og D(s) er hendholdvis sprang- og impuls-input.
+
+    • Vi starter med sprang, la amplituden være lik 1, altså U (s) = 1s . Invers
+      Laplace av Y (s) gir:
+
+                                      1            t−τ
+
+                  y(t) = L  −1
+                                 G(s)     = K 1 − e− T µ(t − τ )
+                                      s
+
+      hvor µ(t − τ ) er enhetssprang i t = τ . Altså, tidsforsinkelsen leses av der
+      responsen blir forskjellig fra null.
+    • For impulsrespons tar vi inverstransformen av G(s) for å finne y(t)
+
+                                                K − t−τ
+                        y(t) = L−1 {G(s)} =       e T µ(t − τ )
+                                                T
+      Tilsvarende finner vi tidsforsinkelsen når responsen blir ulik null.
+
+ b) Se på krysskorrelasjonen mellom inngang og utgang. Krysskorrelasjonen
+ er gitt av
+                           Ryu (τ ) = E[y(t)u(t + τ )]
+ som vi kan finne ved et måleforsøk. Tiden Ry u(τ ) oppnår sitt maksimum
+ indikerer tidsforsinkelsen.

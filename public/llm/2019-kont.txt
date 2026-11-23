@@ -1,0 +1,734 @@
+# Kont 2019 – TTK4115 Lineær systemteori
+
+Tekst hentet automatisk fra PDF. Matriser og brøker kan stå rotete over flere linjer.
+
+## Oppgavetekst
+
+Department of Engineering Cybernetics
+
+Examination paper for TTK4115 Linear Systems Theory
+
+Academic contact during examination: Morten D. Pedersen
+
+Examination date: 10. August 2019
+Examination time (from–to): 09:00–13:00
+Permitted examination support material: D: No printed or handwritten material allowed. Specific
+simple calculator allowed.
+
+Other information:
+
+  1. Note that no parts of this exam assume that you have solved any of the previous parts.
+     The given information from previous parts should be sufficient to move on.
+
+  2. You may answer in Norwegian or English. Du kan svare på norsk eller engelsk.
+
+Language: English
+Number of pages: 5
+Number pages enclosed: 4
+
+                                                                                      Checked by:
+
+                                                                Date           Signature
+
+TTK4115 Linear Systems Theory - 10. August 2019                               Page 1 of 5
+
+Problem 1 (15 %)
+
+Certain systems are well described by linear models on the following form:
+                                             y = Du                                    (1)
+Here, y is an output vector, u an input vector and D a constant matrix of suitable
+dimension.
+
+a) (8 %) Assume that the input and output in (1) are scalar so that we may write
+                                               y = Du
+        Here, D is also a scalar.
+        Suppose now that y is to be placed close to a reference r in such a way that the
+        following quadratic cost function is minimized:
+                                         J = Q(y − r)2 + Ru2
+        Here, Q and R are positive numbers.
+        Derive an analytical expression for K in the linear feedforward law u = Kr so that
+        J is minimized.
+        What happens to y given the feedforward law u = Kr when Q is made very large
+        with respect to R? What happens when R is made very large with respect to Q?
+
+b) (7 %) Consider the general model (1). The task is now to place the output vector y
+      at the reference vector r by minimizing the generalized cost function:
+                                     J = (y − r)T Q(y − r) + uT Ru
+        Here, Q and R are both positive definite and symmetric.
+        Derive an analytical expression for K in the multivariable linear feedforward law
+        u = Kr so that J is minimized.
+
+Problem 2 (20 %)
+
+Let an unforced dynamic system be described by ẋ = Ax. Systems of this kind are
+either unstable (US) or stable in the sense of Lyapunov1 (LS). Moreover, in addition to
+being Lyapunov stable they may also be asymptotically stable (AS).
+
+Consider the following systems (next page) and decide whether they are US, LS or in
+fact LS + AS.
+  1
+      Also known as marginally stable.
+
+Page 2 of 5   TTK4115 Linear Systems Theory - 10. August 2019
+
+A)
+                      A = −1
+
+B)
+                      A=1
+
+C)
+                      A=0
+
+D)                        "          #
+                              0 0
+                  A=
+                              0 0
+
+E)                        "          #
+                              0 0
+                  A=
+                              1 0
+
+F)                    "              #
+                              −1 0
+                 A=
+                               0 1
+
+G)                    "              #
+                               0 1
+                 A=
+                              −1 0
+
+H)                    "              #
+                              −1 1
+                 A=
+                               0 0
+
+I)                                      
+                    1 2 3
+                A= 0 4 5 
+                         
+                    0 0 6
+
+J)                                          
+                    −1 0  0
+              A =  −2 −4 0 
+                            
+                    −3 −5 −6
+
+TTK4115 Linear Systems Theory - 10. August 2019                                  Page 3 of 5
+
+Problem 3 (25 %)
+
+First order models
+                                   T ż + z = ku,     y=z                                 (2)
+where T is a positive time-constant can be used to describe many industrial processes.
+
+a) (6 %) Let the input be given by:
+                                                (
+                                                    0, t < 0
+                                       u(t) =
+                                                    1, t ≥ 0
+
+      Assume that the system is initialized at z(0) = 2 and that T = k = 1. Find y(t)
+      for t ≥ 0 and sketch the solution.
+
+b) (7 %) PI-controllers are often used to govern first order processes. Let such a con-
+      troller be given by
+                                              1
+
+                             u(s) = Kp 1 +          (r(s) − y(s))                   (3)
+                                             Ti s
+      Here, r is a scalar reference signal.
+      Put (2) and (3) on state-space form ẋ = Ax+br with y = cx. Your answer should
+      be supplied as a matrix A, a column-vector b and a row vector c. Ensure that the
+      realization is minimal.
+
+c) (6 %) Many industrial processes are equipped with noisy sensors. An estimator can
+      be used to filter the measurements. Write the equation for a Luenberger estimator
+      ẑ˙ = . . . capable of estimating the state z in (2). Select the observer gain ` so that
+      the estimator dynamics have a pole at λ = −1.
+
+d) (6 %) An LQR controller with integral effect is to be designed for (2) so that the
+      state z is asymptotically stable about the origin. Explain how you would augment
+      the state-dynamics T ż + z = u and choose the cost-function J to achieve this
+      aim. Your answer should be supplied as an augmented state-space model ẋaug =
+      Aaug xaug + baug u as well as examples of matrices Q and R for use with the LQR
+      cost-function.
+
+Page 4 of 5                         TTK4115 Linear Systems Theory - 10. August 2019
+
+Problem 4 (10 %)
+
+Let a monovariable2 process be described by
+
+                                 ẋ = Ax + Bu,   y = Cx                               (4)
+
+with a system matrix given by
+                                         "          #
+                                             −1 3
+                                    A=
+                                             0 −2
+
+a) (5 %) Find an input matrix B of suitable dimension with at least one non-zero entry
+      so that the plant (4) is made uncontrollable. Demonstrate that your choice of B
+      is correct mathematically.
+
+b) (5 %) Find an output matrix C of suitable dimension with at least one non-zero
+      entry so that the plant (4) is made unobservable. Demonstrate that your choice
+      of C is correct mathematically.
+
+Problem 5 (15 %)
+
+a) (5 %) Explain briefly what the principle of separation of estimation and control tells
+      us and how it simplifies the design of linear control systems.
+
+b) (5 %) Linear systems are, by definition, linear. Let y = G(u) describe a linear map G
+      taking the variable u into y. Give a mathematical description of the two properties
+      that must be satisfied for G to be linear.
+
+c) (5 %) Produce an example of a) a linear time-invariant system, b) a linear time-
+      varying system and finally c) a nonlinear system. Your answer should be supplied
+      in the form of three ordinary differential equations.
+
+  2
+      Scalar input and output.
+
+TTK4115 Linear Systems Theory - 10. August 2019                                Page 5 of 5
+
+Problem 6 (15 %)
+
+Let a simple scalar, random and discrete process model be given by
+
+             x[k + 1] = x[k] + w[k],   E[w[k]] = 0,   E[w[k]w[l]] = δ[k, l]Q           (5)
+
+a) (5 %) Assume that E[x[0]] = 0, E[x[0]2 ] = 1 and that Q = 2. What is the mean and
+      variance of x[2]?
+
+b) (10 %) Let y[k] = x[k] + v[k] describe a measurement of the state where the noise
+     satisfies E[v[k]] = 0 and E[v[k]v[l]] = δ[k, l]R.
+     Assume that the state satisfies E[x[0]] = 0, E[x[0]2 ] = 1, that Q = 2 and that
+     R = 3. Given the measurements y[0] = 1, y[1] = 2 and y[2] = 1, recover the
+     Kalman-filter state estimate x̂[2]. Also, recover the covariance matrix P [2] and
+     explain the meaning of this variable.
+     For computational ease, feel free to round all numbers to three decimal places.
+
+TTK4115 Linear Systems Theory - 10. August 2019                          Page i of iv
+
+Formula sheet
+
+Solutions
+
+                                           Z t
+                     x(t) = eAt x(0) +           eA(t−τ ) Bu(τ )dτ
+                                            0
+                                           k−1
+                     x[k] = Ak x[0] +            Ak−1−m Bu[m]
+                                           X
+
+                                        m=0
+
+Controllability/Observability
+
+                      C = [B, AB, A2 B, · · · , An−1 B]
+                                   
+                              C
+                           CA 
+                                   
+                                  2 
+                             CA
+                          
+                      O = 
+                                   
+                              ..   
+                                .
+                                    
+                                   
+                                CAn−1
+
+Realization
+
+         G(s) = C(sI − A)−1 B + D
+         G(s) = G(∞) + Gsp (s)
+          d(s) = sr + α1 sr−1 + · · · + αr−1 s + αr
+                     1
+        Gsp (s) =      [N sr−1 + N2 sr−2 + · · · + Nr−1 s + Nr ]
+                   d(s) 1
+                                                                    
+                      −α1 Ip −α2 Ip · · · −αr−1 Ip −αr Ip           Ip
+                   
+                      Ip      0       ···      0        0   
+                                                             
+                                                                   0 
+                                                                      
+                        0      Ip      ···      0        0   x +  0 u
+                                                                    
+              ẋ = 
+                   
+                        ..      ..     ..       ..       ..  
+                                                                   .. 
+                                                                      
+                                          .
+                   
+                         .       .               .        .
+                                                             
+                                                                 . 
+                        0       0    ···          Ip         0       0
+              y = [ N1 N2 · · · Nr−1 Nr ]x + G(∞)u
+
+Page ii of iv                         TTK4115 Linear Systems Theory - 10. August 2019
+
+LQR
+
+       Z ∞
+  J=         xT (t)Qx(t) + uT (t)Ru(t) dt
+        0
+                            AT P + PA + Q − PBR−1 BT P = 0
+                                                                     u(t) = −R−1 BT Px(t)
+
+Lyapunov equation
+
+                                     AT M + MA = −N
+
+Kalman filtering (Discrete time)
+
+Process model
+
+                x[k + 1] = Ad x[k] + Bd u[k] + w[k],      y[k] = Cx[k] + v[k]
+
+The noise and disturbance are unbiased (E[v[k]] = 0, E[w[k]] = 0) and white
+
+                    E[v[k]v[l]T ] = δ[k, l]Rd ,   E[w[k]w[l]T ] = δ[k, l]Qd
+
+Algorithm Initialize at x̂− [0] = E[x(0)] and P− [0] = E[(x[0] − x̂− [0])(x[0] − x̂− [0])T ].
+Compute recursively:
+
+   1. L[k] = P− [k]CT (CP− [k]CT + Rd )−1
+
+   2. x̂[k] = x̂− [k] + L[k](y[k] − Cx̂− [k])
+
+   3. P[k] = (I − L[k]C)P− [k](I − L[k]C)T + L[k]Rd L[k]T
+
+   4. x̂− [k + 1] = Ad x̂[k] + Bd u[k],   P− [k + 1] = Ad P[k]AT
+                                                               d + Qd
+
+TTK4115 Linear Systems Theory - 10. August 2019                              Page iii of iv
+
+Kalman filtering (Continuous time)
+
+Process model
+                          ẋ = Ax + Bu + Gw,         y = Cx + v
+The noise and disturbance are unbiased (E[v(t)] = 0, E[w(t)] = 0) and white
+
+                E[v(t)v(τ )T ] = δ(t − τ )R,   E[w(τ )w(t)T ] = δ(t − τ )Q
+
+Optimal gain     The Kalman gain is given by L(t) = P(t)CT R−1 where
+
+                       Ṗ = AP + PAT + GQGT − PCT R−1 CP
+
+Set Ṗ = 0 to find stationary gain.
+
+Stationary processes
+
+Autocorrelation and power spectral density
+
+                     Ru (τ ) = E[u(t)u(t + τ )],   Su (ω) = F{Ru (τ )}
+
+With y(s) = H(s)w(s) where E[w(t)] = 0 and Rw (τ ) = δ(τ )q it holds that
+
+                                 Sy (ω) = H(ω)H(−ω)q
+
+Page iv of iv                      TTK4115 Linear Systems Theory - 10. August 2019
+
+Laplace transform pairs
+
+                           f (t)        ⇐⇒        F (s)
+
+                          δ(t)         ⇐⇒        1
+                                                 1
+                             1         ⇐⇒
+                                                 s
+                                                   1
+                          e−at         ⇐⇒
+                                                 s+a
+                                                 1
+                             t         ⇐⇒
+                                                 s2
+                                                 2
+                            t2         ⇐⇒
+                                                 s3
+                                                      1
+                      te−at            ⇐⇒
+                                                 (s + a)2
+                                                    ω
+                      sin ωt           ⇐⇒
+                                                 s2 + ω 2
+                                                    s
+                     cos ωt            ⇐⇒
+                                                 s2 + ω 2
+
+## Løsningsforslag
+
+Solution Suggestion
+    Exam - TTK4115 Linear System Theory
+             10. August, 2019
+                                  MDP
+                         September 16, 2019
+
+Problem 1
+ • The following static model is given:
+                                     y = Du
+   We are to minimize the cost function given by J = Q(y − r)2 + Ru2 .
+   Inserting the model into the cost function yields
+           J = Q(Du − r)2 + Ru2 = (QD2 + R)u2 − 2QDur + Qr2                  (1)
+   Differentiating J with respect to u and setting the result equal to zero
+   yields an equation for the optimal input.
+                       ∂J
+                          = 2(QD2 + R)u − 2QDr = 0                           (2)
+                       ∂u
+   It follows that
+                                                QD
+                           u = Kr,       K=                                  (3)
+                                              QD2 + R
+   When Q is much larger than R the feedforward gain tends to K ≈ D−1
+   which inverts the linear relation so that y = DKr ≈ r. On the other
+   hand, a large R yields K ≈ 0 and hence y ≈ 0.
+ • The general multivariable case can be treated in much the same manner
+   as the monovariable case.
+      ∂J    ∂ n                                o
+         =      (Du − r)T Q(Du − r) + uT Ru
+      ∂u   ∂u
+                   ∂ n T T                                  o
+               =       u (D QD + R)u − 2rT QDu + rT Qr
+                  ∂u
+                                    = 2uT (DT QD + R) − 2rT QD = 0 (4)
+   Transposing this relation and solving for u yields the general formula.
+                     u = Kr,    K = (DT QD + R)−1 DT Q                       (5)
+
+                                     1
+
+Problem 2
+An unforced dynamic system is described by ẋ = Ax. We are to decide whether
+the following system matrices give unstable (US), Lyapunov stable (LS) or
+asymptotically stable (LS + AS) dynamics.
+
+A)
+                                      A = −1
+     The eigenvalue is negative; the dynamics are LS + AS.
+B)
+                                      A=1
+     The eigenvalue is positive; the dynamics are US.
+C)
+                                      A=0
+     This is a Jordan block of dimension 1 with a (non-repeated) eigenvalue at
+     the origin: the system is LS.
+
+D)
+                                              0   0
+                                  A=
+                                              0   0
+     Here, there are two poles at the origin. But, both are contained in Jordan
+     blocks of dimension 1. The system is LS.
+E)
+                                              0   0
+                                  A=
+                                              1   0
+     This matrix appears in the formula ẋ = Ax. Let a similarity transform
+     that swaps rows for columns be applied with
+
+                                        0 1
+                                 T=                                      (6)
+                                        1 0
+
+     Letting x0 = Tx one finds that
+
+                               ẋ0 = TAT−1 x = A0 x                                        (7)
+
+     Noting that T−1 = T, one finds that
+
+              0       −1     0 1       0          0        0   1               0   1
+            A = TAT =                                                  =                   (8)
+                             1 0       1          0        1   0               0   0
+
+     This is a Jordan block of dimension 2 with a repeated eigenvalue at the
+     origin. The system is US.
+
+                                      2
+
+F)
+                                             −1     0
+                                    A=
+                                             0      1
+     The eigenvalues of a triangular matrix are found on the diagonal, which
+     yields λ1 = −1 and λ2 = 1 in this case. Due to the latter eigenvalue, the
+     system is US.
+G)
+                                             0      1
+                                    A=
+                                             −1     0
+     The eigenvalues of this system are imaginary since
+
+                                λ   −1
+                  |λI − A| =                 = λ2 + 1 = (λ − i)(λ + i)     (9)
+                                1   λ
+
+     The real parts of these eigenvalues are found at the origin. Since the
+     complex eigenvalues are unrepeated, the system is LS.
+H)
+                                             −1     1
+                                    A=
+                                             0      0
+     The eigenvalues of a triangular matrix are found on the diagonal, which
+     yields λ1 = −1 and λ2 = 0 in this case. Since both eigenvalues have a
+     non-positive real part, the system is LS.
+I)                                                   
+                                     1          2   3
+                                 A= 0          4   5 
+                                     0          0   6
+     The eigenvalues 1, 4, 6 makes this system US.
+J)                                                        
+                                     −1         0        0
+                               A =  −2        −4        0 
+                                     −3        −5       −6
+     The eigenvalues −1, −4, −6 makes this system LS + AS.
+
+Problem 3
+We consider the system
+                            T ż + z = ku,        y=z                    (10)
+where T is a positive time-constant.
+
+                                         3
+
+a) The input is now given by:
+
+                                                    0,   t<0
+                                      u(t) =
+                                                    1,   t≥0
+     We are to assume that the system is initialized at z(0) = 2 and that
+     T = k = 1. The general solution formula (from the appendix) is given by
+                                       Z t
+                      x(t) = eAt x0 +      eA(t−τ ) Bu(τ )dτ            (11)
+                                                    0
+
+     With z = x, A = −1/T and B = k/T , it follows that
+                                       k t −(t−τ )/T
+                                        Z
+                             −t/T
+                    z(t) = e      z0 +     e         u(τ )dτ                  (12)
+                                       T 0
+     For a constant input u(t) = u0 , it holds that
+                                Z t                                     Z t τ /T
+                            k                                              e
+        z(t) = e−t/T z0 +      e−(t−τ )/T u0 dτ = e−t/T z0 + ku0 e−t/T           dτ
+                            T0                                           0   T
+                               Z t                                             it
+                                    d h τ /T i                           h
+        = e−t/T z0 + ku0 e−t/T          e      dτ = e−t/T z0 + ku0 e−t/T eτ /T
+                                 0 dt                                            0
+                                       h         i
+                  −t/T            −t/T    t/T         −t/T
+              =e       z0 + ku0 e       e     −1 =e        (z0 − ku0 ) + ku0 (13)
+
+     Inserting numerical values shows that the output y = z is given by
+                                         y(t) = e−t + 1                       (14)
+
+b) A PI-controller is supplied as
+
+                                           1
+                            u(s) = Kp 1 +        (r(s) − y(s))                (15)
+                                          Ti s
+     The transfer function of the plant is readily found to be
+                                                     k
+                                      y(s) =              u(s)                (16)
+                                                   Ts + 1
+     Combining these expressions and solving for y (given r) yields the strictly-
+     proper closed-loop transfer function:
+                                             kKp    kKp
+                                              T s + Ti T
+                                y(s) =        1+kK       kK
+                                                            r(s)              (17)
+                                         s2 + T p s + T Tp
+                                                          i
+
+     Now using the realization formula in the appendix, one finds that
+            "                    #
+                1+kK        kK
+              − T p − T Tp                  1
+                                                       h             i
+                                                          kKp   kKp
+       A=                    i     , b=         , c=       T    Ti T
+                                                                              (18)
+                  1         0               0
+
+     This realization is not unique. It is, however, minimal. This is the case
+     since the highest exponent in the transfer function is equal to the number
+     of states.
+
+                                               4
+
+c) An estimator is to be designed for (10), which is now recast as
+                                               1   k
+                                         ż = − z + u,            y=z                      (19)
+                                               T   T
+     In the general case, a Luenberger observer comes on the form x̂˙ = Ax̂ +
+     Bu + L(y − Cx̂). Specializing this equation to the present case, we have
+                                            1    k
+                                     ẑ˙ = − ẑ + u + `(y − ẑ)                            (20)
+                                            T    T
+     The error dynamics of this observer are given by
+
+             ˙ = − 1 z + k u − − 1 ẑ + k u + `(y − ẑ) = − 1 + ` (z − ẑ)
+      (ż − ẑ)
+                   T     T         T      T                     T
+                                                                           (21)
+                                       ˙ = −(z − ẑ) and hence an observer pole
+     Setting ` = 1 − 1/T yields (ż − ẑ)
+     at λ = −1.
+d) An LQR controller with integral effect is to be designed for (10) so that the
+    state z is asymptotically stable about the origin. Let an integrator state
+    ζ be governed by ζ̇ = z. Then,
+                            1                  k
+                        ż       −T 0          z
+                             =                     + T u                    (22)
+                        ζ̇         1    0      ζ̇       0
+
+     Here,
+
+                                                       − T1
+                                                                                k
+                            z                                 0                     T
+               xaug =                ,    Aaug =                      ,   baug =           (23)
+                            ζ̇                          1     0                      0
+
+     The cost criterion can now be given as
+                                 Z ∞
+                             J=       xT Qx + Rv 2 dt                                      (24)
+                                              0
+
+     Here, R is a positive number whilst Q is an arbitrary positive definite
+     symmetric matrix, for example Q = diag(qz , qζ ). Increasing the latter
+     entry on the diagonal will increase the integral gain, as desired.
+
+Problem 4
+A monovariable process is described by
+
+                                 ẋ = Ax + Bu,           y = Cx                            (25)
+
+with a system matrix given by
+
+                                                  −1    3
+                                         A=                                                (26)
+                                                   0   −2
+
+                                                  5
+
+a) Inspection of A reveals that the second state can affect the first, but not
+     vice-versa. Choosing the input matrix so that u only perturbs the first
+     state should lead to an uncontrollable plant. To this end, let
+
+                                            1
+                                    B=                                    (27)
+                                            0
+
+     The controllability matrix reads as
+
+                                                        1    −1
+                           C=       B    AB       =                         (28)
+                                                          0     0
+
+     Since the two rows/colums are linearly dependent, C is not full rank and
+     the system is therefore uncontrollable.
+b) Relying on the reasoning in the previous sub-task, one could choose the
+    measurement matrix C so that only the second state is visible in the
+    output y. Since changes in the first state will not be visible in the second
+    state, the system should be unobservable. To this end, let
+
+                                 C= 0 1                                      (29)
+
+     The observability matrix reads as
+
+                                   C       0                   1
+                           O=           =                                   (30)
+                                  CA       0                  −2
+
+     Since the two rows/colums are linearly dependent, O is not full rank and
+     the system is therefore unobservable.
+
+Problem 5
+a) The separation principle, as applied to LTI systems, shows that the eigen-
+    values under full state feedback are retained when state estimates from
+    a Luenberger estimator are used to replace the true states. Moreover,
+    the eigenvalues of the observer can be chosen independently of the state
+    feedback. This property is useful since one can, in principle, design the
+    feedback controller and estimator one by one.
+b) Linear relations are additive and homogenous. Let α denote a scalar. Being
+     linear, the relation G satisfies
+
+                              G(u) + G(v) = G(u + v)                        (31)
+                                        αG(u) = G(αu)                       (32)
+
+c) An LTI system is exemplified by ẋ = −x, an LTV system by ẋ = −t2 x whilst
+     a nonlinear system is given by ẋ = −x3 .
+
+                                          6
+
+Problem 6
+A simple scalar, random and discrete process model is given by
+
+         x[k + 1] = x[k] + w[k],     E[w[k]] = 0,    E[w[k]w[l]] = δ[k, l]Q    (33)
+
+a) It is assumed that E[x[0]] = 0, E[x[0]2 ] = 1 and that Q = 2. Using (33), the
+      mean of x[k] is found as
+
+      E[x[k]] = E[x[k −1]+w[k −1]] = E[x[k −1]]+E[w[k −1]] = E[x[k −1]] (34)
+
+     Now, this implies E[x[k +1]] = E[x[k]] and hence E[x[2]] = 0 with E[x[0]] =
+     0.
+     The variance of x[k] follows from
+
+        E[x[k]2 ] = E[(x[k − 1] + w[k − 1])2 ]
+                      = E[x[k − 1]2 ] + 2E[w[k − 1]x[k − 1]] + E[w[k − 1]2 ]   (35)
+
+     Since w[k] is uncorrelated with x[k], the second term vanishes and one is
+     left with
+                             E[x[k]2 ] = E[x[k − 1]2 ] + Q               (36)
+     This recursion is solved by E[x[k]2 ] = kQ + E[x[0]2 ]. Hence E[x[2]2 ] =
+     2 · 2 + 1 = 5.
+b) A measurement model y[k] = x[k] + v[k] with E[v[k]] = 0 and E[v[k]v[l]] =
+    δ[k, l]R is now supplied. We are also given the measurements y[0] = 1,
+    y[1] = 2 and y[2] = 1.
+     The discrete-time Kalman-filter algorithm is given in full in the appendix.
+     Specializing the algorithm to the present situation by setting the matrices
+     equal to A = 1, B = 0, C = 1, Q = 2 and R = 3, whilst initializing the
+     filter at E[x[0]] = 0, E[x[0]2 ] = 1, one has
+
+     Algorithm      Initialize at x̂− [0] = 0 and P − [0] = 1. Compute recursively:
+                      −
+                    P [k]
+       1. L[k] =    −
+                   P [k]+3
+
+       2. x̂[k] = x̂− [k] + L[k](y[k] − x̂− [k])
+
+       3. P [k] = (1 − L[k])2 P − [k] + 3L[k]2
+
+       4. x̂− [k + 1] = x̂[k],   P − [k + 1] = P [k] + 2
+     With the measurements y[0] = 1, y[1] = 2 and y[2] = 1, the algorithm is
+     iterated a couple of steps.
+
+                                          7
+
+               Step   0       1       2
+               x̂−    0       0.250   1.086
+               P−     1       2.750   3.435
+               y      1       2       1
+               L      0.250   0.478   0.534
+               x̂     0.250   1.086   1.040
+               P      0.750   1.435   1.601
+
+The sought estimate is thus x̂[2] = 1.040 whilst the covariance, which is
+the square of the expected deviation between estimate and state, follows
+from P [2] = 1.601.
+
+                                 8

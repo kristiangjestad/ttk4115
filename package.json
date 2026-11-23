@@ -11,7 +11,8 @@
     "build": "vite build",
     "preview": "npm run build && vite preview",
     "deploy": "npm run build && wrangler deploy",
-    "cf-typegen": "wrangler types"
+    "cf-typegen": "wrangler types",
+    "llms": "node scripts/build-llms.ts ../tekst"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",

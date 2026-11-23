@@ -1,0 +1,765 @@
+# Eksamen 2018 – TTK4115 Lineær systemteori
+
+Tekst hentet automatisk fra PDF. Matriser og brøker kan stå rotete over flere linjer.
+
+## Oppgavetekst
+
+Department of Engineering Cybernetics
+
+Examination paper for TTK4115 Linear Systems Theory
+
+Academic contact during examination: Morten D. Pedersen
+
+Examination date: 7. December 2018
+
+Examination time (from-to): 09:00–13:00
+
+Permitted examination support material: D: No printed or handwritten material allowed.
+Specific simple calculator allowed.
+
+Other information:
+
+   1. Note that no parts of this exam assume that you have solved any of the previous parts.
+      The given information from previous parts should be sufficient to move on.
+   2. You may answer in Norwegian or English. Du kan svare på norsk eller engelsk.
+
+Language: English
+Number of pages (front page excluded):              6
+Number of pages enclosed:                           4
+
+ Informasjon om trykking av eksamensoppgave
+                                                                                  Checked by:
+ Originalen er:
+
+ 1-sidig    □       2-sidig x
+                                                          ____________________________
+ sort/hvit x        farger □                                     Date               Signature
+
+ skal ha flervalgskjema □
+
+Students will find the examination results in Studentweb. Please contact the department if you
+have questions about your results. The Examinations Office will not be able to answer this.
+
+TTK4115 Linear Systems Theory - 7. December 2018                                                                     Page 1 of 6
+
+Problem 1 (10 %)
+
+Let a second-order homogenous differential equation be given by z̈ = 0. A measurement
+of the process is made with y = z. You are to design a Luenberger observer capable of
+estimating z and ż from the measurement y. The poles of the estimator are to be placed
+at ⁄ = ≠1.
+
+Supply the answer as the matrices A, c and l appearing in the estimator.
+
+                                               x̂˙ = Ax̂ + l(y ≠ cx̂)
+
+Make sure to indicate where the estimates ẑ and ẑ˙ are placed in x̂.
+
+Problem 2 (6 %)
+
+Three system matrices A for use in a dynamic model ẋ = Ax are shown below.
+                            C         D                 C                    D                   C              D
+                                0 1                         ≠1 ≠2                                    0 0
+                A1 =                      ,    A2 =                              ,        A3 =
+                                0 0                          2 ≠1                                    0 0
+
+What are the stability properties of the dynamics associated with each matrix?
+
+Problem 3 (9 %)
+Consider the system
+          C         D       C                 DC        D       C       D                                   C        D
+              ẋ1               ≠1 1               x1               1                     Ë             È       x1
+                        =                                   +               u,       y=       0.5 0.5
+              ẋ2                1 ≠1              x2               0                                           x2
+
+Find the eigenvalue matrix                    and the eigenvector matrix Q. Then, diagonalize the
+system.
+
+Page 2 of 6                       TTK4115 Linear Systems Theory - 7. December 2018
+
+Problem 4 (25 %)
+
+A PI cruise-control system for a car is to be designed. Let the car’s velocity v be modeled
+by the linear differential equation
+                                      mv̇ + dv = u                                     (1)
+Here, m is the car’s mass and d a positive damping constant. A throttle u serves as the
+control input. PI-controllers are often designed and analyzed in the Laplace-domain. Let
+r denote the reference velocity. The PI-controller may be given as the transfer-function
+relation shown below.
+                                                          K s + KI
+                     u(s) = K(s)(r(s) ≠ v(s)), K(s) = P                              (2)
+                                                               s
+
+a) (6 %) Find the transfer function from reference r(s) to velocity v(s) when (2) is used
+      to control (1).
+
+b) (4 %) How many states are necessary for the realization of (2)? What are the eigen-
+      value(s) of the PI-controller when expressed in the time-domain?
+
+c) (8 %) Express (1) and (2) on state-space form.
+                                    ẋ = Ax + br,    v = cx
+     The state vector x must have v as its first element.
+
+d) (7 %) Use the parameters KP and KI in the PI-controller (2) to place the poles of
+      the closed-loop plant at
+                                ⁄1 = ≠Êb , ⁄2 = ≠Êb                              (3)
+     Feel free to use the most expedient method to achieve this task. The answer is to
+     be supplied as analytical expressions for the controller parameters.
+
+TTK4115 Linear Systems Theory - 7. December 2018                              Page 3 of 6
+
+Problem 5 (25 %)
+
+         x1
+
+                                                           Water hose
+
+      TANK 1                 v1 = kx1
+
+                                                       u
+
+                                   x2
+
+                y
+
+                                TANK 2                 v2 = kx2
+
+              Level gauge
+                                                             x3
+         0
+
+                                                           TANK 3                 v3 = kx3
+
+The figure shows three similar water-tanks with level xi [m] (for i = 1 . . . 3) connected
+by pipes. All tanks are cylindrical with bottom area A[m2 ]. The flow through the
+connecting pipes vi [m3 /s] is modeled by vi = kxi where k[m2 /s] is a positive valve
+constant. A water hose can supply volume at the rate u[m3 /s] whilst the level-gauge
+y[m] is used to the measure water-level (such as x1 ) in a tank.
+
+Let a state-vector be defined by           S     T
+                                              x1
+                                            W    X
+                                        x = U x2 V
+                                              x3
+
+Page 4 of 6                       TTK4115 Linear Systems Theory - 7. December 2018
+
+a) (4 %) Use physical arguments to show that the tank-system (assuming u = 0) can
+      be modeled with ẋ = Ax where
+                                          S                   T
+                                         ≠1 0 0
+                                     k W         X
+                                  A = U 1 ≠1 0 V
+                                     A
+                                          0 1 ≠1
+
+b) (4 %) What are the eigenvalues of A?
+
+c) (4 %) You are allowed to place the water hose in one of the tanks. Place the hose so
+      that the state-vector x is controllable from u. Provide mathematical justification!
+
+d) (4 %) You are allowed to place the level gauge in one of the tanks. Place the gauge
+      so that the state-vector x is observable from y. Provide mathematical justification!
+
+e) (9 %) The level-gauge measurement y and the water hose influx u can be related in
+      the Laplace-domain with a transfer function.
+
+                                                              N (s)
+                               y(s) = G(s)u(s),      G(s) =
+                                                              D(s)
+
+     Since the gauge (y) and hose (u) can both be placed in one of several tanks, the
+     transfer-function will depend on this placement.
+     A polynomial denominator D(s) = an sn + an≠1 sn≠1 + . . . + a1 s + a0 (such as the
+     one in G(s)) is said to have order n. Fill in the order of D(s) for the tank system
+     in the following table. If G(s) = 0, fill in a zero.
+                               y at T.1   y at T.2     y at T.3
+                    u in T.1
+                    u in T.2
+                    u in T.3
+
+     The shorthand "y at T.1" implies that the level-gauge is placed in TANK 1. More-
+     over, "u in T.2" implies that the water hose is placed in TANK 2.
+     This task does not require mathematical justification, only a table that is filled in.
+
+TTK4115 Linear Systems Theory - 7. December 2018                              Page 5 of 6
+
+Problem 6 (25 %)
+
+Many (if not most) aircraft are equipped with pitot-tubes. The picture shows where
+these are located on an airliner. Pitot-tubes are used to measure the airspeed u. In
+this task, you will combine a GPS measurement of position x with a pitot-tube velocity
+measurement to arrive at a better estimate of an aircraft’s location.
+
+It is assumed that the aircraft is moving much faster than the wind so that we may use
+the following approximation.
+                                          u ¥ ẋ
+That is, the airspeed is more or less the same as the ground-speed.
+
+                                           ẋ
+
+                            x
+
+Pitot-tube measurements u[k] are taken with the sampling time t = 1. Accounting
+for turbulence (which perturbs the measurements of the airspeed) with an unbiased and
+normally distributed white disturbance w[k], one arrives at the following model for the
+location.
+
+          x[k + 1] = x[k] + u[k] + w[k],   E[w[k]] = 0,   E[w[k]w[l]] = ”[k, l]Q    (4a)
+
+Page 6 of 6                                TTK4115 Linear Systems Theory - 7. December 2018
+
+The GPS-measurements are denoted by y[k]. As is well-known, such measurements are
+polluted by noise v[k]. We shall therefore employ the following measurement model.
+                y[k] = x[k] + v[k],              E[v[k]] = 0,        E[v[k]v[l]] = ”[k, l]R      (4b)
+
+a) (8 %) Given the process model (4), show that the discrete-time Kalman-filter algo-
+      rithm simplifies as follows.
+      Algorithm: Initialize at x̂≠ [0] = E[x(0)] and P ≠ [0] = E[(x[0] ≠ x̂≠ [0])2 ].
+      Compute recursively:
+                    3             4              3     ≠
+                                                               4
+                                                      P [k]
+       1. x̂[k] =        ≠
+                           R
+                                      x̂ [k] +
+                                       ≠
+                                                      ≠            y[k]
+                        P [k]+R                      P [k]+R
+                        ≠
+       2. P [k] = P≠ [k]R
+                    P [k]+R
+
+       3. x̂≠ [k + 1] = x̂[k] + u[k],            P ≠ [k + 1] = P [k] + Q
+
+b) (7 %) The (a-posteriori) estimation error is defined by e[k] = x[k] ≠ x̂[k]. We now
+      consider two situations:
+        • Pitot-tubes and GPS measurements are used to find the estimate x̂.
+        • Only GPS measurements are used to find the estimate, so that x̂[k] = y[k].
+     The estimates generated in situation 1 leads to the error variance described by
+     P [k] = E[e[k]2 ]. Show that this is always lower than the error variance E[e[k]2 ]
+     generated in case 2, as long as R > 0.
+
+c) (10 %) The aircraft is cruising at a speed of ẋ = 100[m/s] and is located at x = 0[m]
+      at k = 0. GPS-measurements arrive with a standard-deviation ‡GPS = 5[m].
+      Pitot-tube measurements are accurate to a few percent, so the standard deviation
+      in these measurements is estimated by ‡pitot = 2[m/s]. You now receive the fol-
+      lowing measurements:
+
+                 Step                      k           0     1         2     3      4
+                 Pitot-tube           u[m/s]         100   105        92   105    102
+                 GPS                    y[m]          10    91       220   288    405
+
+     Let x̂≠ [0] = 0 and P ≠ [0] = 12.
+        • Compute the Kalman-filtered position estimate x̂ for k = 0 . . . 4.
+        • Compare these estimates to the raw GPS-measurements y[k] and the true
+          position x[k] in a table. Comment on the result.
+     You can use the simplified algorithm in subtask a). The sampling time is                 t = 1[s]
+     in units.
+
+TTK4115 Linear Systems Theory - 7. December 2018                         Page i of iv
+
+Formula sheet
+
+Solutions
+
+                                           ⁄ t
+                     x(t) = eAt x(0) +           eA(t≠· ) Bu(· )d·
+                                            0
+                                           k≠1
+                                           ÿ
+                     x[k] = Ak x[0] +            Ak≠1≠m Bu[m]
+                                        m=0
+
+Controllability/Observability
+
+                      C = [B, AB, A2 B, · · · , An≠1 B]
+                          S         T
+                              C
+                          W CA X
+                          W         X
+                          W       2 X
+                      O = W
+                          W  CA     X
+                                    X
+                          W    ..   X
+                          U     .   V
+                                CAn≠1
+
+Realization
+
+         G(s) = C(sI ≠ A)≠1 B + D
+         G(s) = G(Œ) + Gsp (s)
+          d(s) = sr + –1 sr≠1 + · · · + –r≠1 s + –r
+                     1
+        Gsp (s) =      [N sr≠1 + N2 sr≠2 + · · · + Nr≠1 s + Nr ]
+                   d(s) 1
+                   S                                         T    S    T
+                      ≠–1 Ip ≠–2 Ip · · · ≠–r≠1 Ip ≠–r Ip           Ip
+                   W
+                   W   Ip      0       ···      0        0   X
+                                                             X
+                                                                  W 0 X
+                                                                  W    X
+                   W                                         X    W    X
+              ẋ = W    0      Ip      ···      0        0   Xx + W 0 Xu
+                   W                                         X    W    X
+                   W    ..      ..     ..       ..       ..  X    W .. X
+                   U     .       .        .      .        .  V    U . V
+                        0       0    ···          Ip         0       0
+              y = [ N1 N2 · · · Nr≠1 Nr ]x + G(Œ)u
+
+Page ii of iv                       TTK4115 Linear Systems Theory - 7. December 2018
+
+LQR
+
+       ⁄ Œ
+  J=         xT (t)Qx(t) + uT (t)Ru(t) dt
+        0
+                           AT P + PA + Q ≠ PBR≠1 BT P = 0
+                                                                     u(t) = ≠R≠1 BT Px(t)
+
+Lyapunov equation
+
+                                     AT M + MA = ≠N
+
+Kalman filtering (Discrete time)
+
+Process model
+
+                x[k + 1] = Ad x[k] + Bd u[k] + w[k],      y[k] = Cx[k] + v[k]
+
+The noise and disturbance are unbiased (E[v[k]] = 0, E[w[k]] = 0) and white
+
+                    E[v[k]v[l]T ] = ”[k, l]Rd ,   E[w[k]w[l]T ] = ”[k, l]Qd
+
+Algorithm Initialize at x̂≠ [0] = E[x(0)] and P≠ [0] = E[(x[0] ≠ x̂≠ [0])(x[0] ≠ x̂≠ [0])T ].
+Compute recursively:
+
+   1. L[k] = P≠ [k]CT (CP≠ [k]CT + Rd )≠1
+
+   2. x̂[k] = x̂≠ [k] + L[k](y[k] ≠ Cx̂≠ [k])
+
+   3. P[k] = (I ≠ L[k]C)P≠ [k](I ≠ L[k]C)T + L[k]Rd L[k]T
+
+   4. x̂≠ [k + 1] = Ad x̂[k] + Bd u[k],   P≠ [k + 1] = Ad P[k]AT
+                                                               d + Qd
+
+TTK4115 Linear Systems Theory - 7. December 2018                             Page iii of iv
+
+Kalman filtering (Continuous time)
+
+Process model
+                          ẋ = Ax + Bu + Gw,         y = Cx + v
+The noise and disturbance are unbiased (E[v(t)] = 0, E[w(t)] = 0) and white
+
+                E[v(t)v(· )T ] = ”(t ≠ · )R,   E[w(· )w(t)T ] = ”(t ≠ · )Q
+
+Optimal gain     The Kalman gain is given by L(t) = P(t)CT R≠1 where
+
+                       Ṗ = AP + PAT + GQGT ≠ PCT R≠1 CP
+
+Set Ṗ = 0 to find stationary gain.
+
+Stationary processes
+
+Autocorrelation and power spectral density
+
+                     Ru (· ) = E[u(t)u(t + · )],   Su (Ê) = F{Ru (· )}
+
+With y(s) = H(s)w(s) where E[w(t)] = 0 and Rw (· ) = ”(· )q it holds that
+
+                                 Sy (Ê) = H(äÊ)H(≠äÊ)q
+
+Page iv of iv                 TTK4115 Linear Systems Theory - 7. December 2018
+
+Laplace transform pairs
+
+                           f (t)     ≈∆       F (s)
+
+                          ”(t)      ≈∆       1
+                                             1
+                             1      ≈∆
+                                             s
+                                                1
+                          e≠at      ≈∆
+                                              s+a
+                                              1
+                             t      ≈∆
+                                              s2
+                                              2
+                            t2      ≈∆
+                                              s3
+                                                   1
+                      te≠at         ≈∆
+                                              (s + a)2
+                                                 Ê
+                      sin Êt        ≈∆
+                                              s2 + Ê 2
+                                                 s
+                     cos Êt         ≈∆
+                                              s2 + Ê 2
+
+## Løsningsforslag
+
+Solution Suggestion
+     Exam - TTK4115 Linear System Theory
+              7. December, 2018
+                                    MDP
+                           November 28, 2018
+
+Problem 1
+We shall estimate z̈ = 0 measuring y = z. Let x = [x1 , x2 ]T with x1 = z and
+x2 = ż. Then,
+
+                    ẋ1     0 1      x1             0 1
+                         =                , A=                             (1)
+                    ẋ2     0 0      x2             0 0
+
+The measurement equation reads as
+
+                             x1
+                  y= 1 0               ,      c=       1   0               (2)
+                                  x2
+
+The estimation error is defined by e = x − x̂. Differentiation this error and
+using the Luenberger observer x̂˙ = Ax̂ + l(y − cx̂) yields
+
+                                 0 1         l1             −l1 1
+   ė = (A − lc)e, A − lc =             −           1 0 =                  (3)
+                                 0 0         l2               −l2 0
+
+The characteristic polynomial of the error dynamics is given by
+
+                                     λ + l1   −1
+           ∆(λ) = |λI − A + lc| =                      = λ2 + λl1 + l2     (4)
+                                       l2     λ
+
+Comparison to the "pole-placed" polynomial ∆0 (λ) = (λ + 1)2 with roots λ1 =
+λ2 = −1 shows that we must choose
+
+                                      2
+                                 l=                                       (5)
+                                      1
+
+                                      1
+
+Problem 2
+   • The dynamics associated with A1 are unstable; this matrix is a Jordan
+     block with dimension 2.
+   • The dynamics associated with A2 are asymptotically stable; the eigenval-
+     ues of this matrix are given by solutions to the following characteristic
+     polynomial:
+
+          λ+1        2
+                         = (λ + 1)2 + 4 = λ2 + 2λ + 5
+           −2       λ+1
+                             p           !            p          !
+                        −2 + 22 − 4 · 5          −2 − 22 − 4 · 5
+                =    λ−                      λ−
+                               2                       2
+                                     = (λ − (−1 + 2i)) (λ − (−1 − 2i)) = 0 (6)
+
+     Both roots are in the left half-plane, in fact λ1,2 = −1 ± 2i.
+   • The dynamics associated with A3 are stable in the sense of Lyapunov,
+     more specifically marginally stable. Solving ẋ = A3 x with x(0) = x0
+     yields x(t) = x0 . Since |x0 | < ∞ for finite initial conditions, marginal
+     stability has been ascertained.
+
+Problem 3
+We consider the system
+
+                     ẋ1     −1        1         x1               1
+                          =                               +               u
+                     ẋ2     1        −1         x2               0
+
+The eigenvalues of this system are found by solving the characteristic polyno-
+mial for A, viz.
+                         λ+1     −1
+                                       = λ(λ + 2) = 0                       (7)
+                          −1    λ+1
+One finds that λ1 = 0 and λ2 = −2. The eigenvalue matrix follows as
+
+                                     0 0
+                              Λ=                                              (8)
+                                     0 −2
+
+Recall that Aqi = λi qi implying that (A − λi I)qi = 0. The first q1 and second
+q2 eigenvectors are readily found by inspection.
+                                    1
+                    1      −1 1         q1        0        1      1
+         (A − λ1 I)q =                       =        ⇒q ∝                   (9)
+                            1 −1        q21       0               1
+                                    2
+                              1 1       q1        0                1
+             (A − λ2 I)q2 =                  =        ⇒  q 2
+                                                             ∝              (10)
+                              1 1       q22       0               −1
+
+                                        2
+
+With Q = [q1 , q2 ] and choosing a convenient length for the eigenvectors, we
+may write
+                            0 0                 1 1
+                      Λ=              , Q=                                (11)
+                            0 −2                1 −1
+Let a new state vector be introduced with x = Qz. This yields the transformed
+system
+                      z = Q−1 AQz + Q−1 bu, y = cQz                       (12)
+The eigenvector matrix inverts as
+
+                                 1               −1    −1           1       1    1
+                  Q−1 =                                         =                        (13)
+                          1 · (−1) − 1 · 1       −1     1           2       1   −1
+
+Hence the transformed matrices
+
+    0       −1                 0       −11 1 1       1     1 1
+  A =Q           AQ = Λ,     b =Q b=                    =       ,
+                                         2 1 −1      0     2 1
+
+                                         1       1 1
+                               c0 = cQ =
+
+                                             1 1           = 1 0    (14)
+                                         2          1 −1
+
+These matrices form the diagonalized plant, as requested.
+
+                                   z = Λz + b0 u,      y = c0 z                          (15)
+
+Problem 4
+A car model is supplied as
+                                        mv̇ + dv = u                                     (16)
+Moreover, a PI-controller is used to control the velocity v, viz.
+
+                                                                    KP s + KI
+                   u(s) = K(s)(r(s) − v(s)),           K(s) =                            (17)
+                                                                        s
+a) Laplace-transforming the car model and inserting the regulator yields
+
+                    1            K(s)               K s + KI
+         v(s) =          u(s) =        (r(s)−v(s)) = P 2     (r(s)−v(s)) (18)
+                  ms + d        ms + d               ms + ds
+        Solving for v(s) gives the transfer-function in question.
+
+                                                                KP s + KI
+                    v(s) = T (s)r(s),        T (s) =                                     (19)
+                                                       ms2 + (d + KP )s + KI
+
+b) One state suffices to realize K(s) in the time-domain; the denominator is of
+    order 1. The eigenvalue is of course equal to the only pole, namely zero.
+
+                                                 3
+
+c) Let a state be defined by
+                                                    v
+                                           x=                                                                 (20)
+                                                    uI
+     The PI-controller (17) may be decomposed into its P and I components.
+                                                                      KI
+           u(s) = uP (s) + uI (s) = KP (r(s) − v(s)) +                   (r(s) − v(s))                        (21)
+                                                                      s
+     Noting that suI (s) = KI (r(s) − v(s)), one finds the time-domain formu-
+     lation
+
+        u(t) = uP (t) + uI (t) = KP (r(t) − v(t)) + uI (t),
+                                                                 u̇I (t) = KI (r(t) − v(t))                   (22)
+     Accordingly, the car’s dynamics become
+                            d   1    (d + KP )    1    K
+                   v̇ = −     v+ u=−           v + uI + P r                                                   (23)
+                            m   m        m        m     m
+     It follows that
+               (d+K )         1
+                                                      K
+           v̇      − mP                    v                 P                                         v
+               =                 m                  +        m        r,     v=         1   0
+          u̇I        −KI         0         uI            KI                                              uI
+                                                                           (24)
+     It is noted that state-space representations are not unique, other similar
+     variations are allowed.
+d) There are several ways of placing poles. Using the transfer-function (19) is
+     probably the simplest. Let KI = mωb2 and KP = 2mωb − d. Then,
+
+                                KP s + KI                        (2ωb − d/m)s + ωb2
+                T (s) =                                  =                                                    (25)
+                          ms2 + (d + KP )s + KI                            (s + ωb )2
+     It is readily seen that the poles of the closed-loop response T (s) are found
+     at s1,2 = −ωb , and so are the eigenvalues.
+
+Problem 5
+a) We start by modeling the tank levels via conservation of volume. Verify that
+                Aẋ1 = −kx1 ,       Aẋ2 = kx1 − kx2 ,            Aẋ3 = kx2 − kx3                            (26)
+     In words, change in volume is equal to influx minus efflux. Arranging
+     these relations on state-space form yields
+
+                                                                                                 
+         ẋ1        −1          0      0     x1                          −1                  0        0
+                k                                                    k 
+        ẋ2  =  1           −1      0   x2  ,               A=      1                 −1        0 
+                A                                                    A
+         ẋ3        0           1     −1     x3                           0                  1       −1
+
+                                            4
+
+b) The eigenvalues of a triangular matrix (A is lower triangular) are found on
+     the diagonal. In this case, all eigenvalues are equal to
+
+                                               k
+                                         λ=−                                    (27)
+                                               A
+
+c) The only sensible place to put the water hose is in TANK 1. Otherwise,
+     there would be no way of affecting the upstream tanks. This choice cor-
+     responds to a b-matrix given by
+                                            
+                                           1
+                                       1 
+                                  b=       0                           (28)
+                                      A
+                                           0
+
+      Controllability is verified by checking the full rank of:
+                                                            2
+                                                               
+                                                1    k      k
+                                                       2      3
+                                            A       A      A 2
+                       C = [b, Ab, A2 b] = 
+                                                                   
+                                            0      − k2   − 2k3               (29)
+                                                      A      A2
+                                                                   
+                                                            k
+                                             0        0       3
+                                                            A
+
+d) The only sensible place to put the level gauge is in TANK 3. Otherwise,
+     there would be no way of measuring the upstream tanks. This choice
+     corresponds to a c-matrix given by
+
+                                 c= 0 0 1                             (30)
+
+      Observability is verified by checking the full rank of:
+                                                            
+                                             0      0     1
+                              
+                                 c
+                                                     k    k 
+                        O =  cA  =  02
+                                                 −A      A2                   (31)
+                                                       2
+                                   2         k
+                                cA             2 − 2k2 k 2
+                                               A      A     A
+
+e) In this task, a more informal methodology is requested. A table giving the
+      order of the transfer function relating u to y is to be filled in. In the cases
+      where this transfer function is zero, a zero is to be entered. Two insights
+      are needed to complete the task.
+        1. If the input cannot affect the output, the transfer-function is zero.
+           This is the case whenever the level-gauge is placed upstream from
+           the water hose.
+        2. The order of the transfer-function is equal to the number of states
+           necessary to relate u to y. If the gauge is in the same tank as the
+           hose, this number is one. Putting the gauge one tank downstream
+           from the hose requires the modeling of the two tanks, hence two
+           states.
+
+                                         5
+
+     With these ideas, the table follows as:
+
+                               y at T.1     y at T.2     y at T.3
+                   u in T.1           1            2            3
+                   u in T.2           0            1            2
+                   u in T.3           0            0            1
+
+Problem 6
+a) The discrete-time Kalman-filter algorithm is given in full as
+
+     Algorithm Initialize at x̂− [0] = E[x(0)] and P− [0] = E[(x[0]−x̂− [0])(x[0]−
+     x̂− [0])T ]. Compute recursively:
+
+        1. L[k] = P− [k]CT (CP− [k]CT + R)−1
+        2. x̂[k] = x̂− [k] + L[k](y[k] − Cx̂− [k])
+
+        3. P[k] = (I − L[k]C)P− [k](I − L[k]C)T + L[k]RL[k]T
+
+        4. x̂− [k + 1] = Ax̂[k] + Bu[k],        P− [k + 1] = AP[k]AT + Q
+     We set A = 1 and C = 1 in accordance with the supplied process model.
+     Changing notation to reflect that all variables are scalar yields
+
+        1. L[k] = P − [k]/(P − [k] + R)
+        2. x̂[k] = x̂− [k] + L[k](y[k] − x̂− [k])
+        3. P [k] = P − [k](1 − L[k])2 + RL[k]2
+        4. x̂− [k + 1] = x̂[k] + u[k],    P − [k + 1] = P [k] + Q
+     Next, observe that
+
+                                                       1−L[k]                   L[k]
+                                                 z
+                                              }| {           z }| {
+                          −                   R        −      P − [k]
+      x̂[k] = (1 − L[k])x̂ [k] + L[k]y[k] = −        x̂ [k] + −        y[k]
+                                           P [k] + R         P [k] + R
+                                                                        (32)
+     Moreover,
+
+                                                        R2 P − [k]            RP − [k]2
+        P [k] = P − [k](1 − L[k])2 + RL[k]2 =                         2 +
+                                                      (P − [k] + R)         (P − [k] + R)2
+                                                        R + P − [k]     P − [k]R
+                                         = RP − [k]                  =                       (33)
+                                                      (P − [k] + R)2   P − [k] + R
+
+                                            6
+
+     In summary, one arrives at:
+     Algorithm: Initialize at x̂− [0] = E[x(0)] and P − [0] = E[(x[0] − x̂− [0])2 ].
+     Compute recursively:
+                                      −
+       1. x̂[k] =   −
+                      R
+                             x̂− [k] +    P [k]
+                                          −        y[k]
+                    P [k]+R                P [k]+R
+
+                     −
+                     P [k]R
+       2. P [k] =     −
+                    P [k]+R
+
+       3. x̂− [k + 1] = x̂[k] + u[k],    P − [k + 1] = P [k] + Q
+b) The error-variance with the full measurement setup is equal to P [k]. Sup-
+     pose now that we use the estimate x̂[k] = y[k]. Recall the measurement
+     model
+
+               y[k] = x[k] + v[k],      E[v[k]] = 0,   E[v[k]v[l]] = δ[k, l]R     (34)
+
+     Now verify that
+
+      E[e[k]2 ] = E[(x[k] − x̂[k])2 ] = E[(x[k] − y[k])2 ] = E[v[k]2 ] = δ[k, k]R = R
+                                                                                   (35)
+     The task asks us to verify that P [k] < R. Using step 2 of the simplified
+     algorithm, this is the same as
+
+            P − [k]R
+                       <R       ⇒ P − [k]R < R(P − [k] + R)        ⇒0<R           (36)
+           P − [k] + R
+
+     We may assume that R > 0 and the claim has been verified.
+                2                  2
+c) We set R = σGPS  = 25 and Q = σpitot = 4. Running the simplified algorithm
+            −              −
+     with x̂ [0] = 0 and P [0] = 12 yields the table
+
+                 Step    0     1        2        3        4
+                 x       0     100      200      300      400
+                 x̂      3.2   99.2     209.4    297.0    405.0
+                 y       10    91       220      288      405
+
+     We show rounded values. It is clear that use of a pitot-tube to measure
+     velocity may improve position estimates. This is in accordance with the
+     answer in task b).
+
+                                           7

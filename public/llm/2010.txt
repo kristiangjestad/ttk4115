@@ -1,0 +1,987 @@
+# Eksamen 2010 – TTK4115 Lineær systemteori
+
+Tekst hentet automatisk fra PDF. Matriser og brøker kan stå rotete over flere linjer.
+
+## Oppgavetekst
+
+Side 1 av 8
+        Norges teknisk- naturvitenskapelige universitet
+        Institutt for teknisk kybernetikk
+
+Faglig kontakt / contact person:
+Navn: Esten Ingar Grøtli
+Tlf.: 920 99 036
+
+Eksamen - TTK 4115 Lineær systemteori
+Exam - TTK 4115 Linear system theory
+
+                   21. desember 2010, 15:00 – 19:00
+Hjelpemidler: D - Ingen trykte eller håndskrevne hjelpemidler tillatt. Bestemt, enkel
+kalkulator tillatt.
+
+Supporting materials: D - No printed or handwritten material allowed. Specific,
+simple calculator allowed.
+
+   Oppgave 1 (30 %)
+     Gitt det andre-ordens systemet:
+     Given the second-order system:
+                                      q̈ + ω02 q = u
+                                              y = q,
+     hvor q er posisjonen til en masse i bevegelse, og ω0 er en konstant.
+     where q is the position of a mass in motion, and ω0 is a constant.
+     a)
+     Bruk x = (x1 , x2 )> = (q, q̇/ω0 )> , og skriv systemet på tilstandsromform:
+     Use x = (x1 , x2 )> = (q, q̇/ω0 )> , and write the system on state space form:
+                                     ẋ = Ax + bu,
+                                     y = cx.
+     Hva er A, b og c?
+     What is A, b and c?
+
+                                                                     Side 2 av 8
+
+b)
+Finn egenverdiene og tilhørende egenvektorer til A.
+Find the eigenvalues and the corresponding eigenvectors of A.
+c)
+Forklar hvilke metoder du har lært for å finne matrise eksponentialfunksjonen
+eA .
+Explain what methods you have learned in order to find the matrix exponential
+function eA .
+d)
+Bruk en av metodene til å finne eAt . Avhengig av hvilken metode du velger,
+kan det hende du finner følgende formler nyttig:
+Use one of the methods eAt . Depending on the method you choose, you might
+find the following formulas useful:
+
+                             eix + e−ix               eix − e−ix
+                   cos x =              ,   sin x =              .
+                                  2                       2i
+e)
+Bruk
+Use
+                                             t2 2
+                         eAt = I + tA +         A + ...,
+                                             2!
+til å vise at:
+to show that:
+                                  d At
+                                     e = AeAt .                              (1)
+                                  dt
+f)
+Vis at svaret ditt for eAt i oppgave d) er riktig ved bruke uttrykket i (1).
+Show that your answer for eAt in exercise d) is correct by using the expression
+in (1).
+g)
+Anta at ω0 = 1, x(0) = (1, 1)> , og at u(t) = 1 for alle t ≥ 0. Hva er y(t = 1)?
+Assume that ω0 = 1, x(0) = (1, 1)> , and that u(t) = 1 for all t ≥ 0. What is
+y(t = 1)?
+h)
+Anta at u(t) = 0 for alle t. Er ẋ = Ax ustabilt, marginalt stabilt eller
+asymptotisk stabilt? Forklar!
+Assume that u(t) = 0 for all t. Is ẋ = Ax unstable, marginally stable or
+asymptotically stable? Explain!
+
+                                                                         Side 3 av 8
+
+Oppgave 2 (20 %)
+ a)
+ Gitt overføringsfunksjonen:
+ Given the transferfunction:
+                                              s−1
+                               ĝ(s) =
+                                          (s2 − 1)(s + 2)
+ Finn en tre-dimensjonal styrbar realisering ved å bruke likningene i vedlegget.
+ Find a three-dimensional controllable realization by using the equations in the
+ appendix.
+ b)
+ Hva karakteriserer en minimal realisering? Er realiseringen du fant i a) mini-
+ mal? Hvorfor/ Hvorfor ikke?
+ What characterizes a minimal realization? Is the realization you found i a)
+ minimal? Why/ Why not?
+ c)
+ Gitt en overføringsfunksjon:
+ Given a transferfunction:
+
+                                          ŷ(s)   N (s)
+                                ĝ(s) =         =       .
+                                          û(s)   D(s)
+
+ Vi ønsker en realisering på standardform: ẋ = Ax + bu, y = cx. Under
+ hvilken/hvilke betingelse/betingelser kan vi velge y(t) og dens deriverte som
+ tilstandsvariable?
+ We seek a realization on standard form: ẋ = Ax + bu, y = cx. Under what
+ condition/conditions can we choose y(t) and its derivatives as the state vari-
+ ables?
+
+Oppgave 3 (25 %)
+ Ta i betrakning et eksperiment der et legeme med masse m = 1 kg slippes
+ fra en viss høyde. Ta kun i betrakning gravitasjonskreftene, og anta at gravi-
+ tasjonskonstanten g er nøyaktig kjent. Anta at initiell posisjonen og hastighet
+ er tilfeldige variable beskrevet ved N (0, ρ2p ), og N (0, ρ2v ). La tilstandsvariab-
+ lene x1 og x2 være posisjon og hastigheten i retning nedover, og la målingene
+ av legemets posisjon finne sted med jevne intervaller ∆t med start fra t = 0.
+ Standardavviket til målefeilen er ξ.
+
+                                                                        Side 4 av 8
+
+ Consider an experiment where an object with mass m = 1 kg is released from
+ a certain height. Consider only the gravitational force, and assume that the
+ gravitational constant g is perfectly known. Assume that the initial position
+ and velocity are random variables described by N (0, ρ2p ), and N (0, ρ2v ). Let the
+ state variables x1 and x2 be position and velocity in the downward direction,
+ and let the measurements of the position of the object take place at uniform
+ intervals ∆t beginning at t = 0. The standard deviation of the measurement
+ error is ξ.
+ a)
+ Hva er tilstandslikningene (i kontinuerlig tid) som beskriver det fallende leg-
+ emet?
+ What are the (continuous time) state equations describing the falling object?
+ b)
+ Diskretiser tilstandslikningen fra a) ved å bruke nullte ordens holdeelement på
+ inngangen (eksakt diskretisering).
+ Discretize the state equations from a) using zero-order hold element on the
+ input (exact discretization).
+ c)
+ Finn nøkkelparameterene for Kalman filteret (i diskret tid) i vedlegget, det
+ vil si, finn Φk , Qk , H k , Rk og de initielle x̂−         −
+                                                    0 and P 0 . Rettferdiggjør alle
+ antakelser!
+ Find the key parameters for the (discrete time) Kalman filter in the appendix,
+ that is, find Φk , Qk , H k , Rk and the initial x̂−       −
+                                                    0 and P 0 . Justify any assump-
+ tions!
+
+Oppgave 4 (15 %)
+ Effektspektraltettheten (og tilsvarende autokorrelasjonen) av en Gauss-Markov
+ prosess er gitt av:
+ The power spectral density (and corresponding autocorrelation) of a Gauss-
+ Markov process is given by:
+                                    6
+                       Sx (s) =             ,   (Rx (τ ) = 3e−|τ | ).            (2)
+                                  −s2 + 1
+ a)
+ Finn filteret (”shaping filter”) Sx+ (s) for prosessen, og basert på filteret, finn
+ en realisering på formen ẋ = F x + Gu, hvor u er enhets hvit støy.
+ Find the filter (shaping filter) Sx+ (s) for the process, and based on the filter,
+ find a realization on the form ẋ = F x + Gu, where u is unity white noise.
+
+                                                                   Side 5 av 8
+
+ b)
+ Hva er middelverdien og variansen til prosessen?
+ What is the mean and the variance of the process?
+
+Oppgave 5 (10 %)
+ Kostfunksjonen til en lineær kvadratisk regulator er gitt av
+ The cost function of a linear quadratic regulator is given by
+                            Z ∞
+                    J(u) =       z > (t)Qz(t) + u> (t)Ru(t)dt,
+                             0
+ hvor z = M x.
+ where z = M x.
+ a)
+ Forklar kort hva Q og R gjør, hvilke egenskaper de må ha, og hvordan vi kan
+ undersøke disse egenskapene.
+ Explain briefly what Q and R do, what properties they must have, and how we
+ can inverstigate these properties.
+ b)
+ Diskuter kort eventuelle fordeler og ulemper med regulatordesign basert på
+ kostfunksjonen over og regulatordesign basert på polplasering.
+ Discuss briefly possible pros and cons for controller design based on the cost
+ function above and controller design based on pole placement.
+
+                                                                     Side 6 av 8
+
+Vedlegg til eksamen (noen nyttige formler og uttrykk):
+Appendix to the exam (some useful formulas and expressions):
+
+                            Z t
+                   At
+         x(t) = e x(0) +          eA(t−τ ) Bu(τ )dτ
+                             0
+                            k−1
+                            X
+        x(k) = Ak x(0) +          Ak−1−m Bu(m)
+                            m=0
+               adj(A)
+        A−1 =
+               det(A)
+               Xn
+      det(A) =    aij cij
+                   i=1
+      adj(A) = {cij }T
+          cij = (−1)i+j det(Aij ) (kofaktor), Aij = submatrix to A
+
+           C = (B AB A2 B · · · An−1 B)
+                        
+                   C
+                CA 
+                        
+                CA2 
+           O =          
+                  ..    
+                   .    
+                     n−1
+                 CA
+        G(s)   = C(sI − A)−1 B + D
+        G(z)   = C(zI − A)−1 B + D
+        G(s)   = G(∞) + Gsp (s)
+        d(s)   = sr + α1 sr−1 + · · · + αr−1 s + αr
+                   1
+      Gsp (s) =       [N1 sr−1 + N2 sr−2 + · · · + Nr−1 s + Nr ]
+                 d(s)
+                                                                    
+                    −α1 Ip −α2 Ip · · · −αr−1 Ip −αr Ip             Ip
+                  Ip
+                              0       ···      0        0  
+                                                                   0 
+                                                                      
+                  0
+            ẋ =              I p     · · ·    0        0         0 
+                                                             x + 
+                                                             
+                                                                       u
+                      ..       ..      ...      ..       ..      .. 
+                       .        .                .        .       . 
+                       0       0       ···      Ip       0          0
+           y = [ N1 N 2 · · ·        Nr−1 Nr ]x + G(∞)u
+
+                                                                          Side 7 av 8
+
+ Discrete-time Kalman filter:
+
+            xk+1 = Φk xk + wk
+               z k = Hk x k + v k
+
+                T       Qk , i = k
+        E[wk wi ] =
+                        0,    i 6= k
+
+                        Rk , i = k
+         E[vk viT ] =
+                        0,    i 6= k
+         E[wk viT ] = 0, ∀i, k
+              P− k  = E[e−     −T
+                          k ek ]
+              Pk = E[ek eTk ] = (I − Kk Hk )P−               T         T
+                                               k (I − Kk Hk ) + Kk Rk Kk
+                                              −1
+              Kk = P−        T     − T
+                        k Hk H k P k Hk + R k
+                P−            T
+                 k+1 = Φk Pk Φk + Qk
+
+ Continuous-time Kalman filter:
+
+                  ẋ     =   Fx + Gu
+                  z      =   Hx + v
+                 T
+      E[u(t)u(τ ) ]      =   Qδ(t − τ )
+      E[v(t)v(τ )T ]     =   Rδ(t − τ )
+      E[u(t)v(τ )T ]     =   0
+                 K       =   PHT R−1
+                 Ṗ      =   FP + PFT − PHT R−1 HP + GQGT ,         P(0) = P0
+
+ Auto-correlation:
+
+   RX (τ )      = E[X(t)X(t + τ )] (Stationary process)
+RX (t1 , t2 )   = E[X(t1 )X(t2 )] (Non-stationary process)
+     Y (s)      = G(s)U (s) ⇒
+Ry (t1 , t2 )   = E[y(t1 )y(t2 )]
+                  Z t2 Z t1
+                =           g(ξ)g(η)E [u(t1 − ξ)u(t2 − η)] dξdη (Transient analysis)
+                     0   0
+
+                                                   Side 8 av 8
+
+Laplace transform pairs:
+
+                           f (t)   ⇐⇒   F (s)
+
+                                        1
+                             1     ⇐⇒
+                                        s
+                                           1
+                       e−at        ⇐⇒
+                                        s+a
+                                        1
+                             t     ⇐⇒
+                                        s2
+                                        2
+                            t2     ⇐⇒
+                                        s3
+                                             1
+                       te−at       ⇐⇒
+                                        (s + a)2
+                                            ω
+                      sin ωt       ⇐⇒
+                                        s2 + ω 2
+                                            s
+                      cos ωt       ⇐⇒
+                                        s + ω2
+                                         2
+
+## Løsningsforslag
+
+Norges teknisk- naturvitenskapelige universitet
+       Institutt for teknisk kybernetikk
+
+                  TTK 4115 Linear System Theory
+                        Exam Fall 2010 – Solution Suggestion
+Question 1 (30%)
+   Given the second-order system:
+                                             q̈ + ω02 q = u                                             (1a)
+                                                       y = q,                                           (1b)
+   where q is the position of a mass in motion, and ω0 is a constant.
+    (a) Use x = (x1 , x2 )> = (q, q̇/ω0 )> , and write the system on state space form:
+                                              ẋ = Ax + bu,
+                                              y = cx.
+        What is A, b and c?
+                                         >                        >
+          Solution: Using x = x1 x2               = q q̇/ω0             , the system (1) can be written as
+
+                                              ẋ1 = ω0 x2
+                                                                        u
+                                              ẋ2 = −ω0 x1 +
+                                                                        ω0
+                                                  y = x1
+
+          or equivalently
+                                                      A                          b
+                                             z       }|      {        z }| {
+
+                                           0   ω0                         0
+                                      ẋ =        x+                         1       u                (3a)
+                                          −ω0 0                              ω0
+
+                                      y= 1 0 x                                                        (3b)
+                                        | {z }
+                                                  c
+
+    (b) Find the eigenvalues and the corresponding eigenvectors of A.
+
+          Solution: To calculate the eigenvalues of A the following equation has to be
+          solved:
+                                                     !
+                                        det (A − Iλ) = 0                            (4)
+          This yields
+
+                                                       −λ ω0
+                                    det (A − Iλ) = det
+                                                       −ω0 −λ
+                                                                             !
+                                                           = λ2 + ω02 = 0                              (5)
+
+          Solving the quadratic equation (5) to compute the eigenvalues of A results in
+
+                                                      λ1 = ω0                                        (6a)
+                                                      λ2 = −ω0                                       (6b)
+
+     The eigenvectors of A are determined by solving
+                                                           !
+                                         (A − Iλ) x = 0                                 (7)
+
+     for the two eigenvalues in (6). Using the first eigenvalue (6a), (7) is used to compute
+     the corresponding eigenvector
+
+                                             −ω0      ω0      !   0
+                           (A − Iλ1 ) x =                    x=                          (8)
+                                             −ω0 −ω0              0
+
+     This results in the first eigenvector
+
+                                                   −
+                                             q1 =                                       (9)
+                                                   1
+
+     Similarly for the second eigenvalue, inserting (6b) in (7) results in
+
+                                             ω0 ω0         !   0
+                            (A − Iλ2 ) x =               x=                            (10)
+                                             −ω0 ω0            0
+
+     Solving the above equation gives the second eigenvector
+
+                                               
+                                        q2 =                                           (11)
+                                               1
+
+(c) Explain what methods you have learned in order to find the matrix exponential function
+    eA .
+
+     Solution:
+
+        1. Definition of eAt :
+                                                     ∞
+                                                     X 1
+                                             eAt =              tk Ak
+                                                           k!
+                                                     k=0
+
+        2. Use the fact, that eAt = L−1 (sI − A)−1
+
+        3. Theorem 3.5 in Chen
+
+        4. Jordan form:
+                                             eAt = QeÂt Q−1 ,
+           where Â = Q−1 AQ is the Jordan (diagonal) form of A
+
+        5. Method based on Cayley-Hamiltons theorem.
+
+(d) Use one of the methods eAt . Depending on the method you choose, you might find
+    the following formulas useful:
+
+                                     eix + e−ix                   eix − e−ix
+                           cos x =              ,    sin x =                 .
+                                          2                           2i
+
+     Solution:
+
+                                         Page 2
+
+1. Using eAt = L−1 (sI − A)−1
+                                                       s         ω0
+                                                                         !
+                                                 s2 +ω02       s2 +ω02
+                         (sI − A)−1 =             −ω0             s           (12)
+                                                 s2 +ω02       s2 +ω02
+
+  Consequently:
+                         eAt = L−1 (sI − A)−1
+                                                s            ω0
+                                                                     !
+                                     −1      s2 +ω02       s2 +ω02
+                              =L              −ω0             s
+                                             s2 +ω02       s2 +ω02
+
+                                      cos (ω0 t) sin (ω0 t)
+                              =                                               (13)
+                                     − sin (ω0 t) cos (ω0 t)
+
+2. Using Theorem 3.5 in Chen
+  The characteristic polynomial is given by
+                           ∆ (λ) = (λ − λ1 ) (λ − λ2 )
+                                     = (λ − ω0 ) (λ + ω0 )                  (14)
+  Define
+                                    h (λ) := β0 + β1 λ                        (15)
+  The coefficients βi are determined by the following equations
+                                     f (λ1 ) = h (λ1 )                       (16a)
+                                     f (λ2 ) = h (λ2 )                       (16b)
+  where f (λ) = eλt . This yields two equations with two unknowns
+                                    eω0 t = β0 + ω0 β1                     (17a)
+                                    −ω0 t
+                                e            = β0 − ω0 β1                   (17b)
+  which can then be solved for the unknowns
+                              eω0 t − e−ω0 t
+                       β1 =                                                  (18a)
+                                    2ω0
+                                            eω0 t + e−ω0 t
+                       β0 = eω0 t − ω0 β1 =                            (18b)
+                                                    2
+  By using the Euler’s formula the expression for βi can be simplifed to
+                                          1
+                                    β1 =     sin (ω0 t)                      (19a)
+                                         ω0
+                                    β0 = cos (ω0 t)                          (19b)
+  Theorem 3.5 states the h (λ) is equal f (λ) on the spectrum of A, i.e. f (A) =
+  h (A). Thus eAt can be computed to
+                                           1
+            eAt = h (A) = cos (ω0 t) I +      sin (ω0 t) A
+                                           ω0
+
+                    cos (ω0 t)      0                  0      sin (ω0 t)
+                =                           +
+                        0       cos (ω0 t)       − sin (ω0 t)     0
+
+                     cos (ω0 t) sin (ω0 t)
+                =                                                             (20)
+                    − sin (ω0 t) cos (ω0 t)
+
+                               Page 3
+
+          3. Jordan form
+            The Jordan (diagonal) form of A is Â = Q−1 AQ. Q is given by
+
+                                          Q = q1 q 2                                        (21)
+
+            where q1 and q2 are the eigenvectors as computed in (9) and (11). Thus, Â
+            is calculated to
+
+                                   Â = Q−1 AQ
+                                                           !
+                                              1        1
+                                            − 2
+
+                                                       2     0 ω0       − 
+                                       =     1         1
+                                             2        2     ω0 0        1 1
+
+                                                       ω0    0
+                                       = ··· =                                              (22)
+                                                        0    −ω0
+
+            Then, eAt can be computed:
+
+                           eAt = QeÂt Q−1
+                                                                                  !
+                                          ω t              1               1
+                                                           − 2
+
+                                  −      e 0     0                          2
+                               =
+                                   1 1       0   e−ω0 t    1
+                                                            2
+                                                                              1
+                                                                              2
+                                                                                        !
+                                        1 ω0 t
+                                        2e      + 12 e−ω0 t      1 ω0 t
+                                                                  2 e
+                                                                             1 −ω0 t
+                                                                           − 2 e
+                               =         1 ω0 t     1 −ω0 t      1 ω0 t   1 −ω0 t
+                                       − 2 e    + 2 e            2 e     + 2 e
+
+                                     cos (ω0 t) sin (ω0 t)
+                               =                                                            (23)
+                                    − sin (ω0 t) cos (ω0 t)
+
+(e) Use
+                                                             t2 2
+                                    eAt = I + tA +              A + ...,
+                                                             2!
+   to show that:
+                                             d At
+                                                e = AeAt .                                   (24)
+                                             dt
+
+     Solution: Note that
+                                                                      ∞
+                            At             t2            X 1
+                           e     = I + tA + A2 + · · · =      tk Ak                         (25)
+                                           2!              k!
+                                                                   k=0
+
+                                             Page 4
+
+      Differentiating (25) w.r.t. time yields:
+                                           ∞
+                              d At X k k−1 k
+                                 e =    t A
+                              dt     k!
+                                        k=1
+                                        ∞
+                                        X         1
+                                    =                   tk−1 Ak
+                                               (k − 1)!
+                                        k=1
+                                               ∞
+                                                                  !
+                                               1
+                                               X
+                                    =A              tk−1 Ak−1
+                                           (k − 1)!
+                                       k=1
+                                        ∞
+                                                  !
+                                       X   1 k k
+                                    =A        t A
+                                           k!
+                                               k=0
+                                    = AeAt                                            (26)
+
+(f) Show that your answer for eAt in exercise (d) is correct by using the expression in (24).
+
+      Solution: In exercise (d) eAt was calculated to
+
+                                At     cos (ω0 t) sin (ω0 t)
+                               e =
+                                      − sin (ω0 t) cos (ω0 t)
+
+      Differentiating w.r.t. time yields
+
+                            d At   d    cos (ω0 t) sin (ω0 t)
+                               e =
+                            dt     dt − sin (ω0 t) cos (ω0 t)
+
+                                     −ω0 sin (ω0 t) ω0 cos (ω0 t)
+                                 =                                                    (27)
+                                    −ω0 cos (ω0 t) −ω0 sin (ω0 t)
+
+      Using the expression in (24) results in
+
+                         d At
+                            e = AeAt
+                         dt
+                                   0    ω0      cos (ω0 t) sin (ω0 t)
+                              =
+                                 −ω0 0         − sin (ω0 t) cos (ω0 t)
+
+                                  −ω0 sin (ω0 t) ω0 cos (ω0 t)
+                              =                                                       (28)
+                                 −ω0 cos (ω0 t) −ω0 sin (ω0 t)
+
+      It is easy to see that (27) and (28) are equivalent.
+
+(g) Assume that ω0 = 1, x(0) = (1, 1)> , and that u(t) = 1 for all t ≥ 0. What is y(t = 1)?
+
+                                           Page 5
+
+         Solution:
+                                      Z t
+                         At
+               y (t) = ce x (0) + c       eA(t−τ ) bu (τ ) dτ
+                                       0
+
+                             cos (ω0 t) sin (ω0 t)
+                     = 1 0                                  x (0)
+                                − sin (ω0 t) cos (ω0 t)
+                               t cos (ω0 (t − τ )) sin (ω0 (t − τ ))
+                                Z
+                                                                                    0
+                       + 1 0                                                        1    u (τ ) dτ
+                                 0    −  sin (ω 0 (t − τ ))  cos (ω 0 (t − τ ))    ω0
+                                                            Z t
+                                                         1
+                     = cos (ω0 t) sin (ω0 t) x (0) +            sin (ω0 (t − τ )) u (τ ) dτ        (29)
+                                                         ω0 0
+                                       >
+         With ω0 = 1, x (0) = 1 1           , and u (t) = 1 for all t ≥ 0, y (t = 1) is computed to
+                                                      Z 1
+                                                    1
+                        y (t = 1) = cos (1) sin (1)    +    sin ((1 − τ )) dτ
+                                                     1   0
+                                  = cos (1) + sin (1) + cos (0) − cos (1)
+                                  = sin (1) + 1
+                                  ≈ 1.84147                                                       (30)
+
+   (h) Assume that u(t) = 0 for all t. Is ẋ = Ax unstable, marginally stable or asymptotically
+       stable? Explain!
+
+         Solution: It is assumed that u (t) = 0 ∀t. The eigenvalues of A are given by (6):
+
+                                                    λ1 = ω0
+                                                    λ2 = −ω0
+
+         Theorem 5.4 in Chen states that the system given by ẋ = Ax is marginally stable
+         if and only if all eigenvalues of A have zero or negative real parts and those with
+         zero real parts are simple roots of the minimal polynomial of A. It can therefore
+         be concluded that the system ẋ = Ax is marginally stable.
+
+Question 2   (20%)
+   (a) Given the transferfunction:
+                                                           s−1
+                                            ĝ(s) =
+                                                      (s2 − 1)(s + 2)
+       Find a three-dimensional controllable realization by using the equations in the ap-
+       pendix.
+
+         Solution: The transfer function is given by
+                                                         s−1
+                                             ĝ =                                                 (31)
+                                                    (s2 − 1) (s + 2)
+
+         A realization is found by the equations in the appendix:
+
+                                     ĝ (s) = ĝ (∞) + ĝsp (s) = ĝsp (s)                        (32)
+
+                                               Page 6
+
+      The transfer function (31) is strictly proper (deg(num) < deg(den)) and conse-
+      quently ĝ (∞) = 0. Furthermore
+                                   1
+                                       N1 sr−1 + N2 sr−2 + · · · + Nr−1 s + Nr
+
+                       ĝsp (s) =                                                      (33a)
+                                 d (s)
+                         d (s) = sr + α1 sr−1 + · · · + αr−1 s + αr                    (33b)
+
+      where d (s) is the least common denominator of all entries of ĝsp (s) = ĝ (s). It
+      follows that for the transfer function (31)
+
+                                         d (s) = s3 + 2s2 − s − 2                       (34)
+
+      and thus
+
+                                                   α1 = 2                              (35a)
+                                                   α2 = −1                             (35b)
+                                                   α3 = −2                             (35c)
+
+      Consequently
+                                   1                                  s−1
+                                       N1 s2 + N2 s + N3 = ĝ (s) = 2
+
+                    ĝsp (s) =                                                          (36)
+                                 d (s)                             (s − 1) (s + 2)
+
+      This yields
+
+                                                   N1 = 0                              (37a)
+                                                   N2 = 1                              (37b)
+                                                   N3 = −1                             (37c)
+
+      Then, a realization of (31) is given by
+                                                                A             b
+                                     z   }|  { z }|{
+                                                     
+                  −α1 −α2 −α3        1     −2 1 2      1
+            ẋ =  1   0    0  x+ 0 u=
+                                         1 0 0 x + 0 u
+                                                                                     (38a)
+                   0   1    0        0      0 1 0      0
+
+            y = N1 N2 N3 x = 0 1 −1 x                                                  (38b)
+                              |   {z   }
+                                               c
+
+(b) What characterizes a minimal realization? Is the realization you found in (a) minimal?
+    Why/ Why not?
+
+      Solution: According to Chen, the following statements are equivalent for minimal
+      realizations:
+        1. A minimal realization is a realization with the smallest possible dimension.
+        2. A realization of ĝ (s) = N (s)
+                                     D(s) is a minimal realization if and only if it is
+           controllable and observable.
+        3. A realization of ĝ (s) = N (s)
+                                     D(s) is a minimal realization if and only if its dimen-
+           sion equals the degree of ĝ (s). The degree of ĝ (s) is defined as the degree of
+
+                                             Page 7
+
+                D (s) if the two polynomials D (s) and N (s) have no common factors or are
+                coprime, i.e. they have no common factor of degree at least 1. If they are
+                not coprime, then the degree is defined as the degree of its coprime fraction.
+
+          There are several possiblities to check whether the realization (38) is minimal:
+
+              • To check the controllability and the observability of the realization (38) it
+                is necessary to compute the controllability and the observability matrix, re-
+                spectively. Using A, b, and c as computed in (38) yields
+                                                                      
+                                                             1 −2 5
+                                   C = b Ab A2 b = 0 1 −2
+
+                                                                                        (39)
+                                                             0 0     1
+                                                               
+                                           c          0    1 −1
+                                   O = cA =
+                                                   1 −1 0                           (40)
+                                          cA 2       −3 1       2
+
+                The controllability matrix (39) has rank three, whereas the observability
+                matrix (40) has rank two. Therefore, the realization (38) is not minimal.
+
+              • To determine the degree of ĝ (s), it has to be reduced to its coprime fraction:
+                                         s−1                      1             1
+                             ĝ =                      =                   = 2             (41)
+                                    (s2 − 1) (s + 2)       (s + 1) (s + 2)  s + 3s + 2
+
+                The degree is therefore two and since the degree of A is three, it follows that
+                the realization (38) is not minimal.
+
+    (c) Given a transferfunction:
+                                                       ŷ(s)   N (s)
+                                            ĝ(s) =          =       .
+                                                       û(s)   D(s)
+        We seek a realization on standard form: ẋ = Ax + bu, y = cx. Under what condi-
+        tion/conditions can we choose y(t) and its derivatives as the state variables?
+
+          Solution: Given the transferfunction
+                                                       ŷ (s)   N (s)
+                                            ĝ (s) =          =                            (42)
+                                                       û (s)   D (s)
+
+          We can choose y (t) and its derivatives as the state variables if N (s) is not a
+          polynomial of degree 1 or higher (see Chen, page 186).
+
+Question 3 (25%)
+   Consider an experiment where an object with mass m = 1 kg is released from a certain
+   height. Consider only the gravitational force, and assume that the gravitational constant
+   g is perfectly known. Assume that the initial position and velocity are random variables
+   described by N (0, ρ2p ), and N (0, ρ2v ). Let the state variables x1 and x2 be position and
+   velocity in the downward direction, and let the measurements of the position of the object
+   take place at uniform intervals ∆t beginning at t = 0. The standard deviation of the
+   measurement error is ξ.
+
+                                               Page 8
+
+(a) What are the (continuous time) state equations describing the falling object?
+
+      Solution: With the state variables x1 and x2 being the the position and the
+      velocity downwards of the falling object and under the assumption that only the
+      gravitational force is acting on the object, the state equations can be written as
+
+                                                ẋ1 = x2                            (43a)
+                                                       g
+                                                ẋ2 =    =g                         (43b)
+                                                      m
+                                                  y = x1 + v                        (43c)
+
+      where the mass of the object is m = 1, and v denotes the measurement error. This
+      is equivalent to
+                                                  A            b
+                                           z }| {
+                                                     z}|{
+
+                                             0 1       0
+                                      ẋ =         x+      g                         (44)
+                                             0 0       1
+
+                                      y = 1 0 x+v                                    (45)
+                                           | {z }
+                                                 c
+
+(b) Discretize the state equations from a) using zero-order hold element on the input (exact
+    discretization).
+
+      Solution: The discrete-time state-space equation is
+
+                                     x [k + 1] = Ad x [k] + bd g                    (46a)
+                                            y [k] = cd x [k] + v [k]                (46b)
+
+      where
+
+                                       Ad = eA∆t                                    (47a)
+                                            Z ∆t
+                                                   Aτ
+                                       bd =       e dτ b                            (47b)
+                                                      0
+                                       cd = c                                       (47c)
+
+      Here, ∆t denotes the sampling time. The computation of Ad in (47a) can be done
+      in different ways. Here, it is calculated as
+
+                                Ad = eA∆t = L−1 (sI − A)−1
+                                        1 1
+                                      −1 s   s 2      1 ∆t
+                                   =L             =                                  (48)
+                                          0 1s        0 1
+
+      bd in (47b) then becomes
+                               Z ∆t                     Z ∆t
+                                           Aτ                       1 τ
+                        bd =           e    dτ b =                       dτ b
+                                 0                     0            0 1
+                                       1
+                                           2
+                                                  1 2
+                              ∆t       2 ∆t      0     ∆t
+                           =                       = 2                               (49)
+                               0         ∆t      1     ∆t
+
+(c) Find the key parameters for the (discrete time) Kalman filter in the appendix, that is,
+
+                                            Page 9
+
+        find Φk , Qk , Hk , Rk and the initial x̂−      −
+                                                 0 and P0 . Justify any assumptions!
+
+          Solution: The parameters of the Kalman filter are
+
+             • Φk = Ad : State transition matrix
+
+             • Qk = 0: Since there is no process noise.
+
+             • Hk = cd = c
+
+             • Rk = ξ 2 : Measurement error variance
+
+          The initial values are
+                               >
+             • x̂−
+                 0 = 0 0          : Initial estimates of the position and velocity are taken as
+               their respective mean.
+                       h 2 i
+                        ρp 0
+             • P−0  =    0 ρ2v
+                                : Initial error covariance matrix. Since the mean values of the
+               position and the velocity are zero, the diagonal elements can be taken as
+               their respective variances.
+
+Question 4 (15%)
+   The power spectral density (and corresponding autocorrelation) of a Gauss-Markov process
+   is given by:
+                                          6
+                             Sx (s) =    2
+                                             , (Rx (τ ) = 3e−|τ | ).                   (50)
+                                      −s + 1
+    (a) Find the filter (shaping filter) Sx+ (s) for the process, and based on the filter, find a
+        realization on the form ẋ = F x + Gu, where u is unity white noise.
+
+          Solution: For unity white noise, it holds that
+
+                                        Sx (s) = Sx+ (s) Sx+ (−s)                         (51)
+
+          To find the appropriate Sx+ (s) such that (51) becomes (50) the spectral factoriza-
+          tion of Sx (s) has to be found
+                                                         √    √
+                                                6          6    6
+                                    Sx (s) =         =                                  (52)
+                                             −s2 + 1   s + 1 −s + 1
+          Consequently, the shaping filter Sx+ (s) is given by
+                                                        √
+                                              +           6
+                                            Sx (s) =                                      (53)
+                                                       s+1
+          A realization can then be found as
+                                                                 √
+                                      ẋ = F x + Gu = −1x +          6u                   (54)
+
+    (b) What is the mean and the variance of the process?
+
+          Solution: Since Rx (∞) = 0 the mean of the process is zero. Furthermore it is
+          easy to see that the variance of the process is σ 2 = 3.
+
+                                           Page 10
+
+Question 5 (10%)
+   The cost function of a linear quadratic regulator is given by
+                                    Z ∞
+                             J(u) =      z > (t)Qz(t) + u> (t)Ru(t)dt,
+                                      0
+
+    where z = M x.
+    (a) Explain briefly what Q and R do, what properties they must have, and how we can
+        inverstigate these properties.
+
+          Solution: Q and R are the weight matrices for the state variables and the control
+          input, respectively. Q is used to keep the state errors small, whereas R corresponds
+          to a penalty of large control inputs. Q has to be real, symmetric and positive-
+          semidefinite and R real, symmetric and positive-definite.
+
+          Real: All the matrix elements consist of real numbers.
+
+          Symmetric: Q = Q> and R = R>
+
+          Positive-semidefinite: z > Qz ≥ 0 for all non-zero vectors z with real entries.
+               Test for example that all eigenvalues are non-negative.
+
+          Positive-definite: z > Rz > 0 for all non-zero vectors z with real entries. Test for
+               example that all eigenvalues are positive.
+
+    (b) Discuss briefly possible pros and cons for controller design based on the cost function
+        above and controller design based on pole placement.
+
+          Solution: There is more than one correct answer to this question. Below just
+          some possible comments:
+
+              • The linear quadratic regulator (LQR) is an optimal controller aimed at min-
+                imizing a defined cost function. It allows to weight the state errors and the
+                control input with respect to each other. A controller based on pole place-
+                ment (PP) on the other hand does not optimize a cost function.
+
+              • LQR is also straight-forward to use for (MIMO) systems. It allows the spec-
+                ification of the dynamical properties of the different outputs whereas using
+                PP only the pole locations can be specified.
+
+              • In the LQR design, the feedback matrix is computed by solving the Ricatti
+                equation. This may be computational expensive and normally numerical
+                approximations are used.
+
+              • It is not trivial to choose the weight matrices for the LQR controller and
+                LQR design often requires fine tuning of the weight matrices to achieve the
+                desired performance.
+
+                                           Page 11

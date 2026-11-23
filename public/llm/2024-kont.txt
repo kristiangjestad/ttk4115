@@ -1,0 +1,891 @@
+# Kont 2024 – TTK4115 Lineær systemteori
+
+Tekst hentet automatisk fra PDF. Matriser og brøker kan stå rotete over flere linjer.
+
+## Oppgavetekst
+
+Department of Engineering Cybernetics
+
+Examination paper for TTK4115 Linear Systems Theory
+
+Academic contact during examination: Morten O. Alver
+
+Examination date: 13 Aug 2024
+Examination time (from–to): 09:00–13:00
+Permitted examination support material: D: No printed or handwritten material allowed. Specific
+simple calculator allowed.
+
+Other information:
+
+  1. You may answer in Norwegian or English. Du kan svare på norsk eller engelsk.
+
+Language: English
+Number of pages: 6
+Number pages enclosed: 4
+
+                                                                                    Checked by:
+
+                                                              Date           Signature
+
+TTK4115 Linear Systems Theory - 13 Aug 2024                                  Page 1 of 6
+
+Problem 1 (28 %)
+
+Given this system:
+                                           A                   B
+                                      z"   }|    #{        z }| #{
+                                                           "
+                                           4 0                 2
+                               ẋ =                   x+             u                (1)
+                                           2 2                 0
+                                             h         i
+                                       y=        1 0       x
+                                             |    {z   }
+                                                  C
+
+a) (4 %) Show that the system is controllable but not observable.
+
+b) (5 %) Test the BIBO stability of the system in Eq. 1.
+
+c) (5 %) Let a control law for the system in Eq. 1 be given by u = −Kx. Find a value
+      of K that places the eigenvalues of the closed-loop system in −1 and −2.
+
+d) (4 %) Assume that Eq. 1 describes a physical system. Can we use the controller
+      designed in c) in practice?
+
+e) (4 %) Suggest a different way we could make the states reach a desired reference
+      value xr at a given time t1 (suggesting the approach is sufficient, you do not need
+      to give details). Discuss whether the approach is likely to work well in practice.
+
+f) (6 %) Transform the system of Eq. 1 into diagonal form if possible (or Jordan form
+      if not).
+
+Page 2 of 6                                      TTK4115 Linear Systems Theory - 13 Aug 2024
+
+Problem 2 (20 %)
+
+You are monitoring the position of a drifter in the ocean. For most of the time it drifts
+with the current at 250 m depth. Every 4 hours, it floats up to the surface where its GPS
+measures its position, and the position as well as a set of oceanographic measurements
+are transmitted to your server via satellite communication. After transmitting, it returns
+to 250 m depth. Since the trips up to the surface are relatively quick, you can assume
+that the floater’s drift is mainly determined by currents at 250 m depth.
+
+You want to estimate the current speeds along the path travelled by the drifter using a
+discrete time Kalman filter. For simplicity, we here only consider the motion along the
+east-west axis. The following discrete time model (with a time step of 4 hours) is used:
+                    "                #       "          #"            #       "            #
+                        x1 [k + 1]               1 1         x1 [k]               w1 [k]
+                                         =                                +                    (2)
+                        x2 [k + 1]               0 1         x2 [k]               w2 [k]
+
+                                         y[k] = x1 [k] + v[k]
+where the measurement y[k] is the measured position along the east-west axis at each
+surfacing event. Each position measurement is affected by Gaussian white noise with
+standard deviation 10 m.
+
+The disturbance term w1 [k] represents the effect on position of the current variability as
+the drifter visits the surface, and w2 [k] represents the changes in current speed at 250
+m encountered by the drifter. We assume that w[k] = [ w1 [k] w2 [k] ]T and v[k] are
+Gaussian disturbances with zero mean and
+                               "                  #
+                         T         100 0
+              E[w[k]w[l] ] =                          δ[k, l],   E[v[k]v[l]] = 100 · δ[k, l]
+                                    0 500
+
+a) (5 %) Check the internal stability of the system in Eq. 2. What behaviour does the
+      model describe in the case where w1 [k] = w2 [k] = 0?
+
+b) (5 %) At time 0 we estimate the position to be x1 [0] = 0 (m) and the velocity
+      " be x2 [0] #= 1000 (m per 4 hours). The initial covariance matrix is P[0] =
+      to
+         100 0
+                    .
+          0 900
+     At time 1 the drifter returns to the surface and the measurement is y[1] = 800.
+     Calculate the a priori and a posteriori estimate of the current speed at time 1.
+
+c) (5 %) When estimating the current speed in this way, what can be possible sources
+      of error (apart from the measurement noise v[k] and the disturbance w[k])?
+
+TTK4115 Linear Systems Theory - 13 Aug 2024                                  Page 3 of 6
+
+d) (5 %) The disturbance w1 [k] represents the effect on position of the drifter visiting
+      the surface. However, current speeds in the upper water column can be estimated
+      based on wind data and/or ocean models, thereby giving us a known variable
+      expectation value d[k] for w1 [k]. Assume that the variance of the offset in w1 [k]
+      from d[k] is 200. How would you change the model to account for this?
+
+Page 4 of 6                              TTK4115 Linear Systems Theory - 13 Aug 2024
+
+Problem 3 (20 %)
+You are designing the controller for the cruise control of a car. Let x(t) be the speed of
+the car. The following model describes how the speed changes with time:
+
+                               ẋ(t) = −0.1x(t) + u(t) + w(t)
+
+where u(t) is the input (from engine and/or brakes) and w(t) is a disturbance (accounting
+for wind and road condition and slope).
+
+Let the input be defined as:
+
+                                 u(t) = −kx(t) + kr rx (t)
+
+where k is the feedback gain and kr is a feed-forward.
+
+The purpose of the cruise control is to make the speed of the car follow the reference
+signal rx (t).
+
+a) (5 %) The feedback gain k is to be set using LRQ with weighting factors Q = q and
+      R = r. Find an expression for the value of k. Use your answer to show that it is
+      the ratio between q and r that influences the LQR gain rather than their absolute
+      values.
+
+b) (5 %) Assume that rx (t) equals a constant value r0 and that w(t) = 0. Find the value
+      of kr that makes x(t) approach r0 as t → ∞. You can express it as a function of k.
+
+c) (5 %) Assume now that w(t) is a slowly varying disturbance. Show that this will
+      cause the closed-loop system to get a steady state error proportional to the value
+      of w(t).
+
+d) (5 %) The speed x(t) is measured, but you can’t directly measure the disturbance
+      w(t) (which we still assume is slowly varying). There are two different ways you
+      could improve the control system so the steady state error is compensated for.
+      Which are they? Choose one of them and give the equations for the improved
+      control system.
+
+TTK4115 Linear Systems Theory - 13 Aug 2024                                Page 5 of 6
+
+Problem 4 (20 %)
+Given the system:
+                                 ẋ(t) = −2x(t) + 2w(t)                              (3)
+                                   y(t) = x(t) + v(t)
+where w(t) and v(t) are independent stochastic processes with autocorrelations
+
+                            Rw (τ ) = δ(τ ),   Rv (τ ) = 2δ(τ )
+
+a) (4 %) What type of stochastic processes are w(t) and v(t), and what properties do
+      they have?
+
+b) (4 %) Determine the power spectral density function Sw (jω) for the process w(t)
+      and Sv (jω) for the process v(t).
+                                                                  R∞       −jωt
+     Hint: The formula for the fourier transform is F{f (t)} =    −∞ f (t)e     dt
+
+c) (4 %) Determine the stationary power spectral density Sy (jω) of the output y(t).
+
+d) (4 %) We use a continuous-time Kalman filter to estimate the state x(t). Let the
+      associated error covariance matrix be denoted by P (t). Use Q = 1 and R = 2.
+      Show that P (t) satisfies the differential equation
+                                                  1
+                                Ṗ (t) = −4P (t) − P (t)2 + 4
+                                                  2
+
+e) (4 %) Determine the stationary value of the error covariance matrix P (t).
+
+Page 6 of 6                            TTK4115 Linear Systems Theory - 13 Aug 2024
+
+Problem 5 (12 %)
+The following questions are related to the helicopter lab. If any of the questions concern
+tests for which you don’t have direct experience, you should speculate based on your
+knowledge of the theory and the helicopter lab.
+
+                         Figure 1: Schematic of lab helicopter
+
+a) (6 %) In the helicopter lab, a linearized model is used to represent the system (see
+      sketch in Figure 1). Describe one way in which the real system is nonlinear. Reflect
+      on how this nonlinearity can lead to deviations affecting the performance of the
+      helicopter controller (you can refer to a particular lab exercise if necessary).
+
+b) (6 %) The helicopter’s encoders are used in the lab exercises as representing accurate
+      measurements (as opposed to the noisy IMU observations). Are encoder measure-
+      ments perfectly accurate? If not, how would you statistically model the error of
+      an encoder measurement?
+
+TTK4115 Linear Systems Theory - 13 Aug 2024                             Page i of iv
+
+Formula sheet
+
+Solutions
+
+                                          Z t
+                     x(t) = eAt x(0) +          eA(t−τ ) Bu(τ )dτ
+                                           0
+                                          k−1
+                     x[k] = Ak x[0] +           Ak−1−m Bu[m]
+                                          X
+
+                                          m=0
+
+Controllability/Observability
+
+                      C = [B, AB, A2 B, · · · , An−1 B]
+                                   
+                              C
+                           CA 
+                                   
+                                  2 
+                             CA
+                          
+                      O = 
+                                   
+                              ..   
+                                .
+                                    
+                                   
+                               CAn−1
+
+Realization
+
+         G(s) = C(sI − A)−1 B + D
+         G(s) = G(∞) + Gsp (s)
+         d(s) = sr + α1 sr−1 + · · · + αr−1 s + αr
+                    1
+       Gsp (s) =      [N sr−1 + N2 sr−2 + · · · + Nr−1 s + Nr ]
+                  d(s) 1
+                                                                   
+                     −α1 Ip −α2 Ip · · · −αr−1 Ip −αr Ip           Ip
+                  
+                     Ip      0       ···      0        0   
+                                                            
+                                                                  0 
+                                                                     
+                       0      Ip      ···      0        0   x +  0 u
+                                                                   
+             ẋ = 
+                  
+                       ..      ..     ..       ..       ..  
+                                                                  .. 
+                                                                     
+                                         .
+                  
+                        .       .               .        .
+                                                            
+                                                                . 
+                       0       0    ···          Ip         0       0
+              y = [ N1 N2 · · ·    Nr−1 Nr ]x + G(∞)u
+
+Page ii of iv                              TTK4115 Linear Systems Theory - 13 Aug 2024
+
+LQR
+
+       Z ∞
+  J=         xT (t)Qx(t) + uT (t)Ru(t) dt
+        0
+                            AT P + PA + Q − PBR−1 BT P = 0
+                                                                     u(t) = −R−1 BT Px(t)
+
+Lyapunov equation
+
+                                     AT M + MA = −N
+
+Kalman filtering (Discrete time)
+
+Process model
+
+                x[k + 1] = Ad x[k] + Bd u[k] + w[k],      y[k] = Cx[k] + v[k]
+
+The noise and disturbance are unbiased (E[v[k]] = 0, E[w[k]] = 0) and white
+
+                    E[v[k]v[l]T ] = δ[k, l]Rd ,   E[w[k]w[l]T ] = δ[k, l]Qd
+
+Algorithm Initialize at x̂− [0] = E[x(0)] and P− [0] = E[(x[0] − x̂− [0])(x[0] − x̂− [0])T ].
+Compute recursively:
+
+   1. L[k] = P− [k]CT (CP− [k]CT + Rd )−1
+
+   2. x̂[k] = x̂− [k] + L[k](y[k] − Cx̂− [k])
+
+   3. P[k] = (I − L[k]C)P− [k](I − L[k]C)T + L[k]Rd L[k]T
+
+   4. x̂− [k + 1] = Ad x̂[k] + Bd u[k],   P− [k + 1] = Ad P[k]AT
+                                                               d + Qd
+
+TTK4115 Linear Systems Theory - 13 Aug 2024                                  Page iii of iv
+
+Kalman filtering (Continuous time)
+
+Process model
+                          ẋ = Ax + Bu + Gw,         y = Cx + v
+The noise and disturbance are unbiased (E[v(t)] = 0, E[w(t)] = 0) and white
+
+                E[v(t)v(τ )T ] = δ(t − τ )R,   E[w(τ )w(t)T ] = δ(t − τ )Q
+
+Optimal gain     The Kalman gain is given by L(t) = P(t)CT R−1 where
+
+                       Ṗ = AP + PAT + GQGT − PCT R−1 CP
+
+Set Ṗ = 0 to find stationary gain.
+
+Stationary processes
+
+Autocorrelation and power spectral density
+
+                     Ru (τ ) = E[u(t)u(t + τ )],   Su (ω) = F{Ru (τ )}
+
+With y(s) = H(s)w(s) where E[w(t)] = 0 and Rw (τ ) = δ(τ )q it holds that
+
+                                 Sy (ω) = H(ȷω)H(−ȷω)q
+
+Page iv of iv                      TTK4115 Linear Systems Theory - 13 Aug 2024
+
+Laplace transform pairs
+
+                           f (t)     ⇐⇒        F (s)
+
+                          δ(t)      ⇐⇒         1
+                                               1
+                             1      ⇐⇒
+                                               s
+                                                 1
+                          e−at      ⇐⇒
+                                               s+a
+                                               1
+                             t      ⇐⇒
+                                               s2
+                                               2
+                            t2      ⇐⇒
+                                               s3
+                                                    1
+                        te−at       ⇐⇒
+                                               (s + a)2
+                                                  ω
+                       sin ωt       ⇐⇒
+                                               s2 + ω 2
+                                                  s
+                       cos ωt       ⇐⇒
+                                               s2 + ω 2
+
+Solution of second degree equation
+                                                        q
+                  2                            −b ±      b2 − 4ac
+                ax + bx + c = 0    =⇒     x=
+                                                        2a
+
+## Løsningsforslag
+
+Solution Suggestion
+   Exam - TTK4115 Linear System Theory
+                             Morten Omholt Alver
+
+                                 13. August 2024
+
+Problem 1
+Given this system:
+                                         A           B
+                                    z }| {    z }| {
+                                       4 0         2
+                               ẋ =          x+          u                          (1)
+                                       2 2         0
+
+                                      y= 1 0 x
+                                         | {z }
+                                             C
+
+a) Show that the system is controllable but not observable.
+     The controllability matrix is as follows:
+
+                                                           2 8
+                                C=       B AB        =
+                                                             0 4
+     The matrix is triangular and thus invertible, so the system is controllable.
+     The observability matrix is as follows:
+
+                                          C      1 0
+                                  C=          =
+                                         CA      4 0
+     As the second column equals the zero vector, the matrix is not invertible and the
+     system is not observable.
+b) Test the BIBO stability of the system in Eq. 1.
+     For BIBO stability we need to calculate the system’s transfer function:
+                                                                −1
+                                                 s−4        0         2
+               g(s) = C(sI − A)−1 B = 1 0
+
+                                                     −2 s − 2          0
+
+                      1          s−2     0        2      1         2        2
+       = 1 0                                           = s−4 0               =
+                  (s − 4)(s − 2)    2     s−4       0                   0      s−4
+
+                                             1
+
+     The transfer function has a single pole in +4, so the system is not BIBO stable.
+c) Let a control law for the system in Eq. 1 be given by u = −Kx. Find a value of K
+     that places the eigenvalues of the closed-loop system in −1 and −2
+     We want to find the coefficients of K = [ k1 k2 ]. The equation for the closed
+     loop system is:
+                                              4 − 2k1 −2k2
+                        ẋ = (A − BK)x =                     x
+                                                 2      2
+     so its eigenvalues are those of the matrix A − BK:
+
+                                λ − 4 + 2k1 2k2
+          |λI − (A − BK)| =                           = (λ − 4 + 2k1 )(λ − 2) + 4k2
+                                    −2      λ−2
+
+                             = λ2 + (2k1 − 6)λ + 4k2 − 4k1 + 8
+     We want the eigenvalues to be in -1 and -2, which means the desired characteristic
+     polynomial of the system is (λ + 1)(λ + 2) = λ2 + 3λ + 2. Comparing coefficients,
+     this means that we need:
+
+                                  2k1 − 6 = 3 =⇒ k1 = 4.5
+
+                         4k2 − 4k1 + 8 = 4k2 − 10 = 2 =⇒ k2 = 3
+     So the correct feedback gain is K = [ 4.5 3 ].
+d) Assume that Eq. 1 describes a physical system. Can we use the controller designed
+     in c) in practice?
+     No, since the system is not observable we don’t have access to the value of x, so
+     we can’t compute the input using this control law. We can’t use an estimator to
+     estimate the state vector since that requires observability.
+e) Suggest a different way we could make the states reach a desired reference value xr
+     at a given time t1 (suggesting the approach is sufficient, you do not need to give
+     details). Discuss whether the approach is likely to work well in practice.
+     Since the system is controllable, we can use the controllability gramian to compute
+     a series of input values to put the system in the right state at the right time.
+     However, this would only work well if the model was an exact representation of
+     the real system, and we knew the exact initial values. Since the system is internally
+     unstable, the approach is not likely to work in practice.
+f) Transform the system of Eq. 1 into diagonal form if possible (or Jordan form if not).
+     As A is a triangular matrix, we can see readily that its eigenvalues are 2 and 4.
+     We need to find corresponding eigenvectors:
+
+                                                       2 0
+                     λ1 = 2 : (A − 2I)q1 = 0 =⇒                q1 = 0
+                                                       2 0
+
+                                           2
+
+                        0
+meaning that q1 =               is a valid choice.
+                        1
+
+                                                          0 0
+               λ2 = 4 :         (A − 4I)q2 = 0 =⇒                    q2 = 0
+                                                          2 −2
+
+                        1
+meaning that q2 =               is a valid choice.
+                        1
+Diagonalization is based on expressing the state vector as a linear combination of
+the system’s eigenvectors. If we define Q = [ q1 q2 ], we can express the state
+vector x̄ of the diagonalized system by x = Qx̄. From the original state equation
+we have that:
+                              ẋ = Ax + Bu, y = Cx
+                                Qx̄˙ = AQx̄ + Bu,    y = CQx̄
+                        x̄˙ = Q−1 AQx̄ + Q−1 Bu,          y = CQx̄
+The matrices Q and Q−1 are as follows:
+
+                  0 1         −1     1   1 −1     −1 1
+            Q=           , Q =                 =
+                  1 1               −1 −1 0        1 0
+
+We can now calculate the matrices of the diagonalized system:
+
+      −1         −1 1       4 0       0 1         −2 2       0 1     2 0
+Λ = Q AQ =                                   =                    =
+                  1 0       2 2       1 1          4 0       1 1     0 4
+
+                                −1 1     2      −2
+                    B̄ = Q−1 B =             =
+                                 1 0     0      2
+
+                                  0 1
+                    C̄ = CQ = 1 0           = 0 1
+                                     1 1
+
+                                             3
+
+Problem 2
+You are monitoring the position of a drifter in the ocean. For most of the time it drifts
+with the current at 250 m depth. Every 4 hours, it floats up to the surface where its GPS
+measures its position, and the position as well as a set of oceanographic measurements
+are transmitted to your server via satellite communication. After transmitting, it returns
+to 250 m depth. Since the trips up to the surface are relatively quick, you can assume
+that the floater’s drift is mainly determined by currents at 250 m depth.
+You want to estimate the current speeds along the path travelled by the drifter using a
+discrete time Kalman filter. For simplicity, we here only consider the motion along the
+east-west axis. The following discrete time model (with a time step of 4 hours) is used:
+
+                       x1 [k + 1]       1 1     x1 [k]      w1 [k]
+                                   =                    +                            (2)
+                       x2 [k + 1]       0 1     x2 [k]      w2 [k]
+
+                                    y[k] = x1 [k] + v[k]
+where the measurement y[k] is the measured position along the east-west axis at each
+surfacing event. Each position measurement is affected by Gaussian white noise with
+standard deviation 10 m.
+The disturbance term w1 [k] represents the effect on position of the current variability as
+the drifter visits the surface, and w2 [k] represents the changes in current speed at 250
+m encountered by the drifter. We assume that w[k] = [ w1 [k] w2 [k] ]T and v[k] are
+Gaussian disturbances with zero mean and
+
+                         T       100 0
+              E[w[k]w[l] ] =                 δ[k, l], E[v[k]v[l]] = 100 · δ[k, l]
+                                  0 500
+
+a) Check the internal stability of the system in Eq. 2. What behaviour does the model
+     describe in the case where w1 [k] = w2 [k] = 0?
+     The system matrix is triangular, so the eigenvalues are found along its diagonal.
+     Since the system has two eigenvalues on the unit circle it is either unstable or
+     marginally stable, depending on whether there is a 2x2 Jordan block associated
+     with the repeated eigenvalue (in which case it is unstable). This can be checked
+     by finding the set of linearly independent eigenvectors for the eigenvalue:
+
+                                        (A − λI)q = 0
+
+                                          0 1
+                                                q=0
+                                          0 0
+
+     To satisfy this equation, the second element of q must be 0. So q = [ 1 0 ]T
+     is a valid eigenvector, and there are no other linearly independent eigenvectors.
+     Therefore there is a 2x2 Jordan block associated with this eigenvalues - as we can
+     in fact see from A directly since it is on Jordan form - and the system is unstable.
+
+                                             4
+
+      In the absence of disturbances, the system describes a behaviour where the speed
+      stays constant and the position changes according to the constant speed. In other
+      words, the drifter continues to travel at its current speed, which is consistent with
+      the system being internally unstable.
+b) At time 0 we estimate the position to be x1 [0] = 0 (m) and the velocity to be x2 [0] =
+                                                                              100 0
+     1000 (m per 4 hours). The initial covariance matrix is P[0] =                          .
+                                                                               0 900
+     At time 1 the drifter returns to the surface and the measurement is y[1] = 800.
+     Calculate the a priori and a posteriori estimate of the current speed at time 1.
+
+                                                        100 0
+     From the information given, we have Q =                        and R = 100. The
+                                                         0 500
+     posterior estimate at time 0 is x̂[0] = [ 0 1000 ]T . We first calculate the a priori
+     estimate at time 1:
+
+                        −                   1 1        0         1000
+                      x̂ [1] = Ax̂[0] =                     =
+                                            0 1     1000         1000
+
+      Then we calculate the a priori estimate of the covariance matrix at time 1:
+
+          −               T           1 1      100 0         1 0        100 0
+         P [1] = AP[0]A + Q =                                      +
+                                      0 1       0 900        1 1         0 500
+
+              100 900        1 0     100 0      1000 900     100 0      1100 900
+      =                           +          =            +          =
+               0 900         1 1      0 500     900 900       0 500     900 1400
+      Now we can calculate the Kalman gain at time 1:
+
+                                L[1] = P− [1]CT (CP− [1]CT + R)−1
+                                                            −1
+                1100 900      1           1100 900       1
+            =                       1 0                        + 100
+                 900 1400     0              900 1400      0
+                                    −1
+          1100                1                1100                       0.9167
+                                                       (1100 + 100)−1 =
+
+      =             1100 900       + 100     =
+          900                   0               900                         0.75
+      This allows the calculation of the a posteriori estimate x̂[1]:
+
+                −                 −         1000        0.9167               1000
+      x̂[1] = x̂ [1]+L[1](y[1]−Cx̂ [1]) =           +              800 − 1 0
+                                            1000         0.75                   1000
+
+                                                   816.7
+                                           =
+                                                    850
+      To summarize, the a priori estimate of the speed at time 1 is 1000 m per 4 hours,
+      and the a posteriori estimate is 850 m per 4 hours.
+
+                                               5
+
+c) When estimating the current speed in this way, what can be possible sources of error
+    (apart from the measurement noise v[k] and the disturbance w[k])?
+      These are two relevant issues:
+        • The current speed and direction along the drifter’s path will vary within each
+          4 hour interval, so the drifter may in fact have travelled further (and therefore
+          faster) than what is apparent from the observations.
+        • The depth may be less than 250 m, in which case the drifter will necessarily
+          drift at more shallow depths.
+d) The disturbance w1 [k] represents the effect on position of the drifter visiting the sur-
+     face. However, current speeds in the upper water column can be estimated based
+     on wind data and/or ocean models, thereby giving us a known variable expectation
+     value d[k] for w1 [k]. Assume that the variance of the offset in w1 [k] from d[k] is
+     200. How would you change the model to account for this?
+      As the disturbance w1 [k] is now Gaussian white noise with a known expectation
+      value d[k], we can write it as w1 [k] = d[k] + w3 [k], where we have introduced w3 [k]
+      as a zero-mean Gaussian white disturbance. We modify the state equation by using
+      w3 [k] as a disturbance term and d[k] as a deterministic input term:
+
+                     x1 [k + 1]      1 1       x1 [k]        1            w3 [k]
+                                 =                      +        d[k] +
+                     x2 [k + 1]      0 1       x2 [k]        0            w2 [k]
+
+      The original disturbance covariance matrix indicated that w1 [k] and w2 [k] were
+      independent (as the off-diagonal elements were 0), and this can still be assumed.
+      As the variance of w3 [k] has been given as 200, the Q matrix should now have the
+      value:
+                                              100 0
+                                       Q=
+                                               0 200
+
+                                             6
+
+Problem 3
+You are designing the controller for the cruise control of a car. Let x(t) be the speed of
+the car. The following model describes how the speed changes with time:
+                               ẋ(t) = −0.1x(t) + u(t) + w(t)
+where u(t) is the input (from engine and/or brakes) and w(t) is a disturbance (accounting
+for wind and road condition and slope).
+Let the input be defined as:
+                                 u(t) = −kx(t) + kr rx (t)
+where k is the feedback gain and kr is a feed-forward.
+The purpose of the cruise control is to make the speed of the car follow the reference
+signal rx (t).
+a) The feedback gain k is to be set using LRQ with weighting factors Q = q and R = r.
+     Find an expression for the value of k. Use your answer to show that it is the ratio
+     between q and r that influences the LQR gain rather than their absolute values.
+     We are to apply LQR for a system where A = −0.1, B = 1 and C = 1. The
+     first step is to solve the Riccati equation (found in the formula sheet). We use the
+     symbol p for the unknown value since it is scalar.
+                                 −0.1p − 0.1p + q − pr−1 p = 0
+                                     p2 + 0.2rp − rq = 0
+                                q                          r
+                    1                    2                      q
+               p=       −0.2r ± 0.04r + 4rq = r −0.1 ± 0.01 +
+                    2                                           r
+     The second step is to calculate the LQR gain based on p:
+                                                  r
+                                   −1                     q
+                             k = r p = −0.1 ± 0.01 +
+                                                          r
+     Now we can answer the second part of the problem. The only place q and r appear
+     in the expression for k is in the fraction qr . This fraction is the ratio of the two
+     parameters, so clearly it is only their ratio that affects the LQR gain.
+b) Assume that rx (t) equals a constant value r0 and that w(t) = 0. Find the value of kr
+     that makes x(t) approach r0 as t → ∞. You can express it as a function of k.
+     The LRQ value for k is guaranteed to stabilize the system. As the system is to
+     approach r0 asymptotically, we can find kr by requiring the equilibrium point of
+     the closed loop system to be at x = r0 :
+                                            ẋ(t) = 0
+                                    −0.1r0 − kr0 + kr r0 = 0
+                                          kr = k + 0.1
+
+                                             7
+
+c) Assume now that w(t) is a slowly varying disturbance. Show that this will cause the
+     closed-loop system to get a steady state error proportional to the value of w(t).
+     We assume the same controller, and check how its equilibrium point (now denoted
+     x∞ ) is affected by the now non-zero disturbance w(t):
+
+                                           ẋ(t) = 0
+
+                            −0.1x∞ − kx∞ + (k + 0.1)r0 + w(t) = 0
+                               (k + 0.1)x∞ = (k + 0.1)r0 + w(t)
+                                                 w(t)
+                                     x∞ = r0 +
+                                                k + 0.1
+     The disturbance will cause the system to get a steady state error equal to w(t)
+     divided by the constant value k + 0.1, so the error is proportional to the value of
+     w(t).
+d) The speed x(t) is measured, but you can’t directly measure the disturbance w(t) (which
+     we still assume is slowly varying). There are two different ways you could improve
+     the control system so the steady state error is compensated for. Which are they?
+     Choose one of them and give the equations for the improved control system.
+     The first approach is to introduce integral effect in the controller to remove steady
+     state error. The second approach is to introduce an estimator to estimate x(t) and
+     w(t), then design a controller that takes w(t) into account.
+     Integral effect: We introduce a new variable γ(t) that integrates the deviation
+     between the reference value and the current speed:
+
+                                      γ̇(t) = r(t) − x(t)
+
+     We can then set up an augmented system with x(t) and γ(t) as state variables:
+
+           ẋ(t)       −0.1 0     x(t)      1            0            1
+                  =                      +      u(t) +      r(t) +        w(t)
+           γ̇(t)        −1 0      γ(t)      0            1            0
+     We can then set the input according to the following equation:
+
+                                             x(t)
+                          u(t) = − k −ki                + kr r(t)
+                                                 γ(t)
+
+     Estimator approach: We introduce an estimated state vector containing x̂(t)
+     (estimate of x(t)) and ŵ(t) (estimate of w(t)). Using the formulation for a Luen-
+     berger observer, we get the following equation for the estimator:
+                                                                                      
+          ˙
+
+         x̂(t)       −0.1 1        x̂(t)      1                              x̂(t) 
+                =                         +        u(t) + L   y(t) −   1   0
+                                                            
+          ˙
+         ŵ(t)         0    0     ŵ(t)       0
+                                                            
+                                                                     | {z } ŵ(t)
+                                                                                       
+                  |      {z   }             | {z }                       C
+                        A                      B
+
+                                           8
+
+where the first row of the A matrix is set according to how the current value of
+the speed and the disturbance affect the acceleration, and the second row is set
+to 0 since we don’t have any information about how the disturbance is going to
+change. B has a 1 in the upper element only since the input affects the speed. The
+C matrix reflects that we measure the speed but not the disturbance. L must be
+chosen appropriately to tune the estimator.
+Armed with the estimates x̂(t) and ŵ(t), we can now compute an input with a
+feed-forward attempting to compensate for the disturbance, e.g.:
+
+                          u(t) = −kx̂(t) + kr r(t) − ŵ(t)
+
+                                      9
+
+Problem 4
+Given the system:
+                                   ẋ(t) = −2x(t) + 2w(t)                                         (3)
+                                     y(t) = x(t) + v(t)
+where w(t) and v(t) are independent stochastic processes with autocorrelations
+
+                            Rw (τ ) = δ(τ ),        Rv (τ ) = 2δ(τ )
+
+a) What type of stochastic processes are w(t) and v(t), and what properties do they
+    have?
+     The processes are called ’white noise’. They are characterized by having an auto-
+     correlation shaped as a delta function. They have a zero mean, an infinite variance
+     (in continuous time) and are stationary.
+b) Determine the power spectral density function Sw (jω) for the process w(t) and Sv (jω)
+                                                                                      R∞
+     for the process v(t). Hint: The formula for the fourier transform is F{f (t)} = −∞ f (t)e−jωt dt
+     The power spectral density function for w(t) is the Fourier transform of its auto-
+     correlation:
+                                 Z ∞                    Z ∞
+                                              −jωτ
+          Sw (jω) = F{Rw (τ )} =     Rw (τ )e      dτ =     δ(τ )e−jωτ dτ = e0 = 1
+                                     −∞                           −∞
+
+     And for v(t):
+                                   Z ∞                         Z ∞
+                                                −jωτ
+          Sv (jω) = F{Rv (τ )} =         Rv (τ )e       dτ =           2δ(τ )e−jωτ dτ = 2e0 = 2
+                                    −∞                          −∞
+
+c) Determine the stationary power spectral density Sy (jω) of the output y(t).
+     First we need to compute the frequency response of the output y(t). Since y(t) is
+     the sum of x(t) and v(t), the Laplace transform ŷ(s) = G(s)ŵ(s) + v̂(s).
+     G(s) is the transfer function of the system with w(t) as input and x(t) as output.
+     The system matrices are A = −2, B = 2, C = 1 and D = 0.
+                                                                  2
+                               G(s) = 2 · (s + 2)−1 · 1 =
+                                                                 s+2
+     The power spectral density can now be computed as:
+                                                            2       2            4
+       Sy (jω) = G(jω)G(−jω)Sw (jω) + Sv (jω) =                            +2= 2   +2
+                                                          jω + 2 (−jω) + 2    ω +4
+
+                                               10
+
+d) We use a continuous-time Kalman filter to estimate the state x(t). Let the associated
+    error covariance matrix be denoted by P (t). Use Q = 1 and R = 2. Show that
+    P (t) satisfies the differential equation
+                                                      1
+                                    Ṗ (t) = −4P (t) − P (t)2 + 4
+                                                      2
+
+     From the formula sheet we find the equation for Ṗ (t):
+
+                         Ṗ (t) = AP + P AT + GQGT − P CT R−1 CP
+
+     For this model we have that A = −2 and C = 1. The disturbance matrix G = 2.
+     This lead to
+                                                1
+                              Ṗ (t) = −4P (t) − P (t)2 + 4
+                                                2
+
+e) Determine the stationary value of the error covariance matrix P (t).
+     We find the stationary value by setting Ṗ (t) = 0:
+                                                   1
+                                 Ṗ (t) = −4P (t) − P (t)2 + 4 = 0
+                                                   2
+                              q
+                         4±    (−4)2 − 4 · (− 12 ) · 4            √                  √
+               P (t) =                                   = −4 ±       16 + 8 = −4 ± 2 6
+                                   2 · (− 21 )
+     Because the error covariance matrix is positive semidefinite by definition P (t) must
+     be larger than or equal to zero. Therefore, we have that the stationary value of
+     the error covariance matrix is given by:
+                                                √
+                                       P (t) = 2 6 − 4
+
+                                                 11
+
+Problem 5
+The following questions are related to the helicopter lab. If any of the questions concern
+tests for which you don’t have direct experience, you should speculate based on your
+knowledge of the theory and the helicopter lab.
+a) In the helicopter lab, a linearized model is used to represent the system. Describe one
+     way in which the real system is nonlinear. Reflect on how this nonlinearity can
+     lead to deviations affecting the performance of the helicopter controller (you can
+     refer to a particular lab exercise if necessary).
+     There are many nonlinearities. These are some examples:
+        • Motor saturation: The helicopter’s motors provide thrust approximately
+          linear with their input voltage, but only up to their maximum thrust. Motor
+          saturation is a nonlinearity, and it clearly affects helicopter performance in
+          cases where the controller attempts to change elevation rate or pitch quickly.
+          For instance, in the pitch controller of Lab 1, if the system poles are moved
+          too far into the left half plane, the controller typically attempts to use thrust
+          beyond the saturation level, leading to clear deviations and an unstable heli-
+          copter.
+        • Effect of pitch angle on horizontal and vertical thrust: Pitch angle
+          affects the direction of the motors’ thrust. If the elevation is 0 (meaning
+          the main arm of the helicopter is horizontal) and the pitch is 0, the motor
+          thrust is pointed straight upwards. For a non-zero pitch, the vertical thrust
+          component is modulated by the cosine of the pitch angle, and the horizontal
+          component by the sine of the pitch angle. These trigonometric relations are
+          nonlinear, and in the linear model they are replaced by linear approximations
+          for low pitch angles.
+           As the pitch angles can often reach values far from 0 in the operation of
+           the helicopters, these approximations frequently become highly inaccurate,
+           leading to the model misrepresenting the effect of the motor thrust both
+           on elevation rate and travel rate. One effect that is often observed, is that
+           when pitch deviates significantly from 0, the model’s overestimation of the lift
+           provided by the motors can lead to the elevation decreasing due to insufficient
+           thrust requested by the controller.
+        • Effects of elevation angle: First, the elevation angle affects the vertical
+          component of motor thrust similarly to the pich angle, and this effect is
+          ignored through linear approximation. This nonlinearity typically has less
+          visible effects than what is seen for pitch angle.
+           Second, due to the construction of the helicopter, the horizontal component
+           of the helicopter’s arm becomes longer for positive elevations and shorter for
+           negative elevations. This affects the angular moment provided by the motors
+
+                                            12
+
+           when controlling elevation rate, so the helicopter gets increased lift at negative
+           elevations and reduced lift at positive elevations. This is most easily seen in
+           the elevation rate control of Lab 2 without integral effect, where the helicopter
+           tends to stabilize around an elevation of 0, and the elevation rate controller
+           in practice can look like it is actually controlling the elevation.
+b) The helicopter’s encoders are used in the lab exercises as representing accurate mea-
+     surements (as opposed to the noisy IMU observations). Are encoder measurements
+     perfectly accurate? If not, how would you statistically model the error of an encoder
+     measurement?
+     No, encoder measurements are in principle not perfectly accurate, as the encoders
+     use a digital counter to measure motion. Each tick of the counter represents a
+     certain amount of angular rotation, which limits the resolution of the measurement
+     since the encoder cannot differentiate angles in between two ticks.
+     To model the encoder error, we assume that for any value of the encoder, the true
+     value is anywhere within the angular interval corresponding to that step of the
+     encoder. We have no reason to asssume that some values are more likely than others
+     within that interval, so a uniform distribution is a reasonable choice. Let’s assume
+     that the measurement is valued to correspond to the center of the angular interval.
+     If we denote the step size as δ and the measured value as y, the distribution of
+     the true value can be modelled as a uniform distribution U (y − 2δ , y + 2δ ), and the
+     distribution of the measurement error can be modelled as U (− 2δ , 2δ ).
+
+                                             13

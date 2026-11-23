@@ -1,0 +1,1653 @@
+# Eksamen 2020 – TTK4115 Lineær systemteori
+
+Tekst hentet automatisk fra PDF. Matriser og brøker kan stå rotete over flere linjer.
+
+## Oppgavetekst
+
+Examination paper for TTK4115 - Linear System Theory
+
+Department of Engineering Cybernetics
+
+Examination date: 30 November 2020
+
+Examination time (from-to): 0900-1300
+
+Permitted examination support material: A / All support material is allowed
+
+Other information
+
+Make your own assumptions: If a question is unclear/vague, make your own as-
+sumptions and specify them in your answer. Only contact academic contact in case of
+errors or insufficiencies in the question set.
+
+Saving: Answers written in Inspera Assessment are automatically saved every 15 sec-
+onds. If you are working in another program remember to save your answer regularly.
+
+Cheating/Plagiarism: The exam is an individual, independent work. Examination
+aids are permitted. During the exam it is not permitted to communicate with others
+about the exam questions, or distribute drafts for solutions. Such communication is
+regarded as cheating. All submitted answers will be subject to plagiarism control. Read
+more about cheating and plagiarism here.
+
+Notifications: If there is a need to send a message to the candidates during the exam
+(e.g. if there is an error in the question set), this will be done by sending a notification
+in Inspera. A dialogue box will appear. You can re-read the notification by clicking
+the bell icon in the top right-hand corner of the screen. All candidates will also receive
+an SMS to ensure that nobody misses out on important information. Please keep your
+phone available during the exam.
+
+Weighting: Each question has a weighting that is displayed in Inspera. The weightings
+sum up to 100 for the full exam.
+
+About submission
+
+The exam consists partly of questions that are answered directly in Inspera, and partly of
+questions where your answers are given as file uploads. There are 4 file upload questions.
+
+                                             1
+
+File upload: All files must be uploaded before the examination time expires. 30 minutes
+are added to the examination time to manage the sketches/calculations/files. (The
+additional time is included in the remaining examination time shown in the top left-
+hand corner.)
+
+NB! You are responsible to ensure that you upload the correct file(s) for all questions.
+Check the file(s) you have uploaded by clicking “Download” when viewing the question.
+All files can be removed or replaced as long as the test is open.
+
+The additional 30 minutes are reserved for submission. If you experience technical
+problems during upload/submission, you must contact technical support before the ex-
+amination time expires. If you can’t get through immediately, hold the line until you
+get an answer.
+
+Your answer will be submitted automatically when the examination time expires and
+the test closes, if you have answered at least one question. This will happen even if you
+do not click “Submit and return to dashboard” on the last page of the question set. You
+can reopen and edit your answer as long as the test is open. If no questions are answered
+by the time the examination time expires, your answer will not be submitted.
+
+Withdrawing from the exam: If you become ill, or wish to submit a blank test/withdraw
+from the exam for another reason, go to the menu in the top right-hand corner and click
+“Submit blank”. This cannot be undone, even if the test is still open.
+
+Accessing your answer post-submission: You will find your answer in Archive when
+the examination time has expired.
+
+                                           2
+
+Multiple choice 1 (problems 1–4)
+
+For each student, four of these questions were selected at random.
+
+Q1
+
+Given the following continuous time system :
+                                A                       B
+                     z         }|   {        z       }|       {                   C
+                         −1 0 a        1 0                                     zh     }|           i{
+                  ẋ =  0 0 0  x +  0 1  u,                          y=         1 0 0               x
+                                        
+                          0 0 0        0 0
+
+Is this system:
+
+a) Unstable (internally and in the input-output sense)
+
+b) Exponentially stable
+
+c) Marginally stable
+
+d) BIBO stable, but not internally stable
+
+e) Stability properties depend on a
+
+Q2
+
+Given the two continuous time systems:
+                            "             #         "        #
+                                −1 −1                   1                      h           i
+                     ẋ =                     x+                 u1 ,   y1 =        1 0        x
+                                0 −2                    0
+                            "             #        "         #
+                                −1 0                    1                      h           i
+                     ż =                     z+                 u2 ,   y2 =        1 1        z
+                                0 −2                    0
+
+Are these systems:
+
+a) Unrelated
+
+b) Algebraically equivalent (second system is diagonalization of first)
+
+c) Zero-state equivalent but not algebraically equivalent
+
+d) Dual systems
+
+Q3
+
+                                                        3
+
+Given the two continuous time systems:
+                                                              
+                         1 0 0          1                                            h                   i
+                  ẋ =  1 −1 0  x +  0  u1 ,                            y1 =         1 1 0               x
+                                       
+                         0 0 1          0
+                         "          #        "       #
+                             0 1                 1                          h            i
+                  ż =                  z+               u2 ,        y2 =       1 2          z
+                             1 0                 0
+
+Are these systems:
+
+a) Unrelated
+
+b) Algebraically equivalent
+
+c) Zero-state equivalent but not algebraically equivalent
+
+d) Dual systems
+
+Q4
+
+Given the continuous time system:
+                                "            #           "       #
+                                    −1 ω                     0                   h               i
+                         ẋ =                    x+                  u,     y=        1 0            x
+                                     0 1                     1
+                                        h            i
+Using a state feedback u = − k1 k2                        x, which values of k1 and k2 place the closed-
+loop system’s poles in -1 and -0.5?
+
+a) k1 = 0 and k2 = 1.5
+
+b) k1 = 0 and k2 = 1.5
+                    ω
+
+c) k1 = 0.5
+         ω and k2 = 1
+
+d) k1 = −1 and k2 = 0.5
+
+Q5
+
+Given the discrete time system:
+                                                                                              
+                               1 −0.5 0           1 0 1
+                  x[k + 1] =  0 0.5 1  x[k] +  0 0 0  u[k]
+                                                      
+                               0  0   1           0 1 −1
+
+What is the length of the shortest input sequence that can transfer the system from any
+state to any desired state?
+
+                                                             4
+
+a) 1
+
+b) 2
+
+c) 3
+
+d) 4
+
+d) No sequence of limited length can do this in general
+
+Q6
+
+Given the discrete time system:
+                                             A                         B                     G
+                                 z"          }|        #{            z }| #{
+                                                                     "                  z"   }|    #{
+                                       0.9 0.2                         1                     1 0
+                    x[k + 1] =                              x[k] +             u[k] +                   w[k]
+                                       −0.5 0.9                        0                     0 1
+                                        C
+                                 hz     }|    i{
+                        y[k] =        1 0          x[k] + v[k]
+
+with the following disturbance and noise properties:
+
+                                   E[w[k]] =0,              E[w[k]w[l]] = δ[k, l]Q
+                                      E[v[k]] =0,           E[v[k]v[l]] = δ[k, l]σ 2
+
+You are using a discrete time Kalman filter to estimate
+                                                 "      the states of the system. If the
+                                                        #
+                                                   2  1
+apriori covariance matrix at time k is P − [k] =         , what is the Kalman gain at
+                                                   1 2
+time k?
+
+                 1 + 2Q−1
+            "                    #
+a) L[k] =
+                0.5 + 2Q−1
+            "       #
+                1
+b) L[k] =
+                2
+            "                  #
+                1/(2 + σ 2 )
+c) L[k] =
+                2/(2 + σ 2 )
+            "                  #
+                2/(2 + σ 2 )
+d) L[k] =
+                1/(2 + σ 2 )
+
+Q7
+
+                                                               5
+
+Given the system matrix:                                            
+                                              0  0   0
+                                        A =  0 −0.1 0 
+                                                      
+                                              −1 1   0
+
+Which statement is correct about the internal stability and the input-output stability of
+the system?
+
+a) Unstable both internally and BIBO
+
+b) Internally unstable, but BIBO stable
+
+c) Stable both internally and BIBO
+
+d) Internally unstable, and we need more information to determine BIBO stability
+
+d) Internally stable, and we need more information to determine BIBO stability
+
+Q8
+
+Given the following continuous time system :
+                                   A                  B
+                              z
+                              "    }|     #{        z" }| #{                  C
+                                                                         zh   }|    i{
+                                  2 −1                 1
+                       ẋ =                    x+              u,   y=        0 1        x
+                                  0 −1                 1
+
+Is this system:
+
+a) Unstable (internally and in the input-output sense)
+
+b) Exponentially stable
+
+c) Marginally stable
+
+d) BIBO stable
+
+                                                       6
+
+Multiple choice 2 (problems 5–8)
+
+Each student received all these questions in random order.
+
+Q1
+                                                                                    2
+                                                                                    ω
+You need to model a noise process that has the spectral density function S(ω) =    2  2.
+                                                                                  ω +ω0
+Which of the following state space models, given a unity white noise input, will output
+a signal with the spectral density function matching S(ω)?
+
+a) ẋ = −ω0 x + u,   y = −ω0 x
+
+b) ẋ = −ω0 x + u,   y = −ω0 x − u
+
+c) ẋ = −ω0 x + u,   y = −ω0 x + u
+
+d) ẋ = −ω0 x,   y = −ω0 x + u
+
+Q2
+
+Given the following continuous time system :
+
+                             ẋ(t) = ax(t) + u(t),       a>0
+
+This system is to be controlled using a state feedback u = −kx. The feedback gain
+coefficient is to be chosen to minimize this objective function:
+                                      Z ∞
+                                 J=         qx(t)2 + ru(t)2 dt
+                                      0
+
+What (if any) eigenvalue does the closed-loop system approach when q stays constant
+and the input cost increases toward infinity, i.e. r → ∞?
+
+a) No value
+
+b) 0
+
+c) -a
+
+d) a
+
+e) -a(1-2/r)
+
+Q3
+
+                                               7
+
+Given the following continuous time system :
+                                                    A                               B
+                                     z"             }|                #{        z }| #{
+                                                                                "
+                                           −1 α                                     0
+                              ẋ =                                         x+               u
+                                           0 −0.5                                   1
+                                               C
+                                     hz        }|      i{
+                              y=          1 0               x
+
+where α 6= 0. You want to estimate the state values using an observer:
+
+                               ˆ = Ax̂ + Bu + L(y − Cx̂)
+                               ẋ
+
+What gain matrix L should you use for the estimation error dynamics to have both
+eigenvalues equal to -5?
+
+a) No choice of L will achieve this.
+         "                #
+               8.5
+b) L =
+             −4.75/α
+         "            #
+               8.5
+c) L =
+             20.25α
+         "                #
+               10.5
+d) L =
+             20.25/α
+         "             #
+               8.5
+e) L =
+             20.25/α
+
+Q4
+
+Given the following continuous time system :
+                                                    A                           B
+                                          z"        }|           #{         z" }| #{
+                                               −1 α                             0
+                               ẋ =                                   x+                u
+                                                0 β                             1
+                                                   C
+                                          zh    }|          i{
+                               y=              1 1               x
+
+What are the equations for this system on controllable canonical form?
+
+                                                                 8
+
+          "                  #           "           #
+              2 − β −1                       1                            h          i
+a) ẋ =                          x+                      u,       y=          1 α        x
+                1   0                        0
+          "                  #           "           #
+              1 − β −β                       1                            h          i
+b) ẋ =                          x+                      u,       y=           1 α       x
+                1    0                       0
+          "              #           "           #
+              β−1 β                      1                            h                  i
+c) ẋ =                      x+                      u,       y=          1 1+α              x
+               1  0                      0
+          "                      #           "           #
+              β − 1 −2α                          1                            h                  i
+d) ẋ =                              x+                      u,       y=          1 1+α              x
+                1    0                           0
+          "          #           "       #
+              β −1                   1                            h                  i
+e) ẋ =                  x+                  u,           y=          1+α 1              x
+              1 0                    0
+
+                                                                           9
+
+Problem 9
+
+Problem 9A or 9B was chosen at random for each student.
+
+Problem 9A
+
+a) Given the matrix A:                              "              #
+                                                          1 0
+                                              A=                                            (1)
+                                                          1 −2
+
+Find the exact value for eAt . Show the steps you use to find it.
+
+b) Given the system:
+                                   A                 B
+                              z"   }|    #{        z" }| #{                  C
+                                                                        zh   }|    i{
+                                   1 0                1
+                       ẋ =                   x+              u,   y=        0 1        x   (2)
+                                   2 1                0
+
+Find the diagonalized form of this system if possible, or its Jordan form otherwise. Show
+the steps you use to find it.
+
+c) Show that the system of Eq. (4) is controllable. Find the gain matrix K for a state
+feedback of the form u = −Kx that places both poles at -1 for the system. Show the
+steps you use to find it.
+
+d) For a state feedback for the system of Eq. (4) of the form u = −Kx, what are the
+conditions on K for the closed loop system to be asymptotically stable? Show how you
+find the answer.
+
+e) The system
+            h of Eq.i (4) is to be controlled using an input of the form u = Kr r − Kx,
+where K = 4 4 and r is a reference value. What value of Kr makes the system
+output equal to the reference value in steady state? Show the steps you use to find it.
+
+Problem 9B
+
+a) Given the matrix A:                              "              #
+                                                          1 2
+                                              A=                                            (3)
+                                                          0 −1
+
+Find the exact value for eAt . Show the steps you use to find it.
+
+b) Given the system:
+                                   A                 B
+                              z
+                              "    }|    #{        z" }| #{                  C
+                                                                        zh   }|    i{
+                                   2 0                1
+                       ẋ =                   x+              u,   y=        0 1        x   (4)
+                                   1 2                0
+
+                                                        10
+
+Find the diagonalized form of this system if possible, or its Jordan form otherwise. Show
+the steps you use to find it.
+
+c) Show that the system of Eq. (4) is controllable. Find the gain matrix K for a state
+feedback of the form u = −Kx that places both poles at -1 for the system. Show the
+steps you use to find it.
+
+d) For a state feedback for the system of Eq. (4) of the form u = −Kx, what are the
+conditions on K for the closed loop system to be asymptotically stable? Show how you
+find the answer.
+
+e) The system
+            h of Eq.i (4) is to be controlled using an input of the form u = Kr r − Kx,
+where K = 5 8 and r is a reference value. What value of Kr makes the system
+output equal to the reference value in steady state? Show the steps you use to find it.
+
+                                           11
+
+Problem 10
+
+Problem 10A or 10B was chosen at random for each student.
+
+Problem 10A
+
+Given the discrete time system:
+                                        A                          B                    G
+                            z"          }|        #{            z }| #{
+                                                                "                  z"   }|    #{
+                                  0.9 −0.5                         0                    1 0
+               x[k + 1] =                              x[k] +             u[k] +                   w[k]
+                                   0   1                           1                    0 1
+                                   C
+                            zh     }|    i{
+                   y[k] =        1 0          x[k] + v[k]
+
+with the following disturbance and noise properties:
+
+                             E[w[k]] =0,               E[w[k]w[l]] = δ[k, l]Q
+                                 E[v[k]] =0,           E[v[k]v[l]] = δ[k, l]σ 2
+
+a) Check the observability of the system. If there were no disturbance and measurement
+noise terms, how many time steps would you need to monitor the input and output
+values to uniquely determine the initial state of the system?
+
+b) The covariance matrix of the disturbance is:
+                                                         "         #
+                                                             4 1
+                                                Q=
+                                                             1 4
+
+implying that the two processes in w[k] are correlated. Show how you can express the
+Gw[k] term on a form G̃w̃[k], where w̃[k] consists of two mutually independent random
+processes.
+
+c) You want
+          "    to estimate# the states of the system using a Kalman filter. If σ 2 = 1 and
+             0.5 −0.5
+P− [k] =                   , what value will the Kalman gain L[k] have? If you replaced the
+            −0.5      5
+sensor measuring y[k] with a more accurate sensor, how would you modify the Kalman
+filter setup, and would the absolute values of the Kalman gain coefficients increase or
+decrease? Explain why this makes sense.
+
+d) Assume that Q is as given in b). When estimating states of the system using a
+Kalman filter, the sensor sometimes drops out for a few time steps before becoming
+available again. When data is missing, your estimator skips the correction step, setting
+a posteriori estimates equal to a priori estimates. If the measurement drops out for 10
+time steps in a row, what will happen to the values of P[k] in this interval, and how
+
+                                                          12
+
+will that affect the first correction step made when the sensor becomes available again?
+Clarification: here we are not asking for numbers, but a qualitative discussion of the
+described scenario.
+
+Problem 10B
+
+Given the discrete time system:
+                                       A                           B                     G
+                             z
+                             "         }|          #{            z }| #{
+                                                                 "                  z"   }|    #{
+                                  1 −0.5                           0                     1 0
+               x[k + 1] =                               x[k] +             u[k] +                   w[k]
+                                  0 0.9                            1                     0 1
+                                  C
+                             hz   }|        i{
+                    y[k] =        1 0            x[k] + v[k]
+
+with the following disturbance and noise properties:
+
+                          E[w[k]] =0,                    E[w[k]w[l]] = δ[k, l]Q
+                             E[v[k]] =0,                 E[v[k]v[l]] = δ[k, l]σ 2
+
+a) Check the observability of the system. If there were no disturbance and measurement
+noise terms, how many time steps would you need to monitor the input and output
+values to uniquely determine the initial state of the system?
+
+b) The covariance matrix of the disturbance is:
+                                                           "           #
+                                                               2 1
+                                                  Q=
+                                                               1 2
+
+implying that the two processes in w[k] are correlated. Show how you can express the
+Gw[k] term on a form G̃w̃[k], where w̃[k] consists of two mutually independent random
+processes.
+
+c) You want
+          "    to estimate# the states of the system using a Kalman filter. If σ 2 = 1 and
+              1     −0.5
+P− [k] =                   , what value will the Kalman gain L[k] have? If you replaced the
+            −0.5      5
+sensor measuring y[k] with a more accurate sensor, how would you modify the Kalman
+filter setup, and would the absolute values of the Kalman gain coefficients increase or
+decrease? Explain why this makes sense.
+
+d) Assume that Q is as given in b). When estimating states of the system using a
+Kalman filter, the sensor sometimes drops out for a few time steps before becoming
+available again. When data is missing, your estimator skips the correction step, setting
+a posteriori estimates equal to a priori estimates. If the measurement drops out for 10
+
+                                                            13
+
+time steps in a row, what will happen to the values of P[k] in this interval, and how
+will that affect the first correction step made when the sensor becomes available again?
+Clarification: here we are not asking for numbers, but a qualitative discussion of the
+described scenario.
+
+                                          14
+
+Problem 11
+
+Problem 11A or 11B was chosen at random for each student.
+
+Problem 11A
+
+Consider the system described by this equation:
+
+                                   ẋ(t) = ax(t) + β(t)
+
+where β(t) is a disturbance. You have access to a measurement m(t):
+
+                                m(t) = β(t) + v1 (t) + γ(t)
+
+where v1 (t) is zero-mean gaussian white measurement noise, and γ(t) is a slowly varying
+measurement bias.
+
+a) Write the equation for an estimator of x(t) utilizing the measurement m(t). If the
+measurement is perfect (v1 (t) = γ(t) = 0), under what conditions will the estimate
+converge towards the value of x(t)?
+
+b) You now have access to an additional measurement y(t):
+
+                                   y(t) = x(t) + v2 (t)
+
+where v2 (t) is zero-mean gaussian white measurement noise (independent from v1 (t)).
+Utilizing both measurements, how would you design an observer for this system? Give
+the full equations for the observer. Choose a reasonable observer gain through pole
+placement for the case where a = −1, and explain your reasoning.
+
+c) Because of the measurement noise terms, you suspect the Kalman filter might be a
+better way of finding the observer gain. Based on the information given initially and in
+b), are the conditions satisfied for using the Kalman filter to obtain the optimal observer
+gain? What additional information do you need to set up the Kalman filter?
+
+Problem 11B
+
+Consider the system described by this equation:
+
+                                   ẋ(t) = ax(t) + σ(t)
+
+where σ(t) is a disturbance. You have access to a measurement m(t):
+
+                               m(t) = σ(t) + v1 (t) + ω(t)
+
+where v1 (t) is zero-mean gaussian white measurement noise, and ω(t) is a slowly varying
+measurement bias.
+
+                                            15
+
+a) Write the equation for an estimator of x(t) utilizing the measurement m(t). If the
+measurement is perfect (v1 (t) = ω(t) = 0), under what conditions will the estimate
+converge towards the value of x(t)?
+
+b) You now have access to an additional measurement y(t):
+
+                                   y(t) = x(t) + v2 (t)
+
+where v2 (t) is zero-mean gaussian white measurement noise (independent from v1 (t)).
+Utilizing both measurements, how would you design an observer for this system? Give
+the full equations for the observer. Choose a reasonable observer gain through pole
+placement for the case where a = −2, and explain your reasoning.
+
+c) Because of the measurement noise terms, you suspect the Kalman filter might be a
+better way of finding the observer gain. Based on the information given initially and in
+b), are the conditions satisfied for using the Kalman filter to obtain the optimal observer
+gain? What additional information do you need to set up the Kalman filter?
+
+                                            16
+
+Problem 12
+
+Problem 12A or 12B was chosen at random for each student.
+
+Problem 12A
+
+Consider a system where a magnet with mass m is hovering below a stationary magnet,
+with the stationary magnet imposing an attractive force on the hovering magnet. Let z1
+be the vertical speed of the hovering magnet (positive downwards) and z2 its distance
+from the stationary magnet (positive downwards). The vertical magnetic force on the
+hovering magnet equals −(ku /z22 )f , where f is the input signal and ku is a constant.
+Neglecting air resistance, the vertical dynamics of the hovering magnet are described by
+the following nonlinear equations:
+                                                      ku f
+                                     ż1 = g −               ,    ż2 = z1
+                                                      mz22
+where g is the gravity constant.
+                                                                                          2
+We define a reference distance xr and a reference input u0 = gmx
+                                                              ku such that the magnet
+                                                                r
+
+is in equilibrium when z1 = 0 and z2 = xr . We then define state values x1 = z1 and
+x2 = z2 − xr and linearize the system around this equilibrium point. The equation for
+the linearized system (where u = f − u0 ) is:
+                                                 2g
+                                                                              − ku2
+                       "         #       "            #"          #       "           #
+                           ẋ1               0   xr          x1
+                                     =                                +        mxr        u
+                           ẋ2               1   0           x2                 0
+
+a) Check the internal stability of the linearized system, and show that it is controllable
+(given ku 6= 0).
+
+If the reference distance xr = g, give an example of an initial value x0 6= [0 0]T that
+will make the zero-input response of the linearized system converge to its equilibrium
+point. Show how you find this initial value. Explain why or why not this convergence is
+likely to occur in the real system.
+
+b) Assume the parameter values g = 9.8, m = h1, ku = 2 and
+                                                        i  xr = 1, and that the
+following stabilizing feedback law is used: u = − −3 −13 x
+
+Write down the equations to compute the exact and Euler discretizations for the closed-
+loop system for a time step T . What happens to the stability of the discretized system
+in those two cases if we change the time step T from a small value (e.g. 0.01) to a large
+value (above 1)? Explain this result for both discretization methods.
+
+c) Assume now that u cannot be set directly, but responds to an input signal v as
+
+                                                       17
+
+described by this transfer function:
+                                             u(s)   s+τ +1
+                                                  =
+                                             v(s)    s+τ
+
+Set up a state space equation that describes the (open loop) linearized system with v as
+the input.
+
+Problem 12B
+
+Consider a system where a magnet with mass m is hovering below a stationary magnet,
+with the stationary magnet imposing an attractive force on the hovering magnet. Let z1
+be the vertical speed of the hovering magnet (positive downwards) and z2 its distance
+from the stationary magnet (positive downwards). The vertical magnetic force on the
+hovering magnet equals −(kf /z22 )f , where f is the input signal and kf is a constant.
+Neglecting air resistance, the vertical dynamics of the hovering magnet are described by
+the following nonlinear equations:
+                                                      kf f
+                                     ż1 = g −               ,    ż2 = z1
+                                                      mz22
+where g is the gravity constant.
+                                                                                             2
+We define a reference distance xr and a reference input u0 = gmx
+                                                              kf such that the magnet
+                                                                r
+
+is in equilibrium when z1 = 0 and z2 = xr . We then define state values x1 = z1 and
+x2 = z2 − xr and linearize the system around this equilibrium point. The equation for
+the linearized system((where u = f − u0 ) is:
+                                                                                        
+                       "         #       "
+                                                 2g
+                                                      #"          #             kf
+                           ẋ1               0   xr          x1             −        2
+                                                                                         u
+                                     =                                +        mxr
+                           ẋ2               1   0           x2                 0
+
+a) Check the internal stability of the linearized system, and show that it is controllable
+(given kf 6= 0).
+
+If the reference distance xr = g/2, give an example of an initial value x0 6= [0 0]T that
+will make the zero-input response of the linearized system converge to its equilibrium
+point. Show how you find this initial value. Explain why or why not this convergence is
+likely to occur in the real system.
+
+b) Assume the parameter values g = 9.8, m = h1, kf = 1 and
+                                                       i
+                                                           xr = 1, and that the
+following stabilizing feedback law is used: u = −                     −6 −26             x
+
+Write down the equations to compute the exact and Euler discretizations for the closed-
+loop system for a time step T . What happens to the stability of the discretized system
+
+                                                       18
+
+in those two cases if we change the time step T from a small value (e.g. 0.01) to a large
+value (above 1)? Explain this result for both discretization methods.
+
+c) Assume now that u cannot be set directly, but responds to an input signal v as
+described by this transfer function:
+
+                                   u(s)   s+τ +1
+                                        =
+                                   v(s)    s+τ
+
+Set up a state space equation that describes the (open loop) linearized system with v as
+the input.
+
+                                           19
+
+## Løsningsforslag
+
+Solution Suggestion
+     Exam - TTK4115 Linear System Theory
+             30. November, 2020
+                                          MOA
+
+                                 December 10, 2020
+
+Multiple choice 1 (problems 1–4)
+Q1
+c) is correct since there is one pole in the left half plane and two poles in 0 with distinct
+eigenvectors, which are not associated with a Jordan block of 2x2.
+Q2
+
+                                                             1 1
+b) is correct since the transformation x = Tz with T =              constructed from the
+                                                             0 1
+eigenvectors of the first system matrix can be used to transform the first system into the
+second one.
+Q3
+c) is correct since the systems are clearly not algebraically equivalent (different dimen-
+sions), but both systems have the same transfer function g(s) = s+2 2  .
+                                                                     s −1
+
+Q4
+a) is correct, as can be verified by checking the eigenvalues of (A − BK) with these
+coefficients.
+Q5
+
+b) is correct. The controllability index of the system is 2 since the matrix B AB
+has full row rank (no need to include the A2 B term to get full rank), and for a discrete
+time system the controllability index gives the shortest length of such an input squence.
+Q6
+d) is correct.
+
+                                             1
+
+Q7
+d) is correct. The system matrix has two eigenvalues in origo, associated with a 2x2
+Jordan block, which means the system is internally unstable. However, it can be BIBO
+stable or unstable depending on the C matrix that is unknown tu us.
+Q8
+d) is correct. The system matrix has an eigenvalue with a positive real value, so the
+                                                                  s−2        1
+system is internally unstable. The transfer function is g(s) = (s−2)(s+1) = s+1 , so it is
+proper with all poles having a negative real part, meaning the system is BIBO stable.
+
+Multiple choice 2 (problems 5–8)
+Q1
+                                                               s
+c) is correct. The transfer function of the filter is g(s) = s+ω   (because this satisfies
+                                                                 0
+                                                                                ω0
+g(jω)g(−jω) = S(ω). Split into constant and strictly proper parts, g(s) = 1 − s+ω    , and
+                                                                                   0
+using the controllable canonical form we get A = −ω0 , B = 1, C = −ω0 and D = 1.
+Q2
+c) is correct. As r tends toward infinity, the LQR optimization gives a feedback coefficient
+approaching k = 2a. The eigenvalue a − k then approaches −a.
+Q3
+e) is correct.
+Q4
+c) is correct.
+
+                                             2
+
+Problem 9A
+a) Two approaches we can use to find eAt are through diagonalization and through the
+    general procedure for finding a function of a square matrix. We will here use the
+    first approach.
+     Since A is a triangular matrix, we easily see that its eigenvalues are 1 and -2. We
+                                     T            T
+     can use the eigenvectors 3 1         and 0 1        for these, respectively. We can
+     form a transformation matrix from the eigenvectors, and its inverse:
+
+                                  3 0                    1/3 0
+                           Q=              , Q−1 =                                    (1)
+                                  1 1                   −1/3 1
+     which gives us this transformation:
+
+                                             −1                1 0
+                                   Λ=Q            AQ =                                               (2)
+                                                               0 −2
+     Since Λ is a diagonal matrix, its matrix exponential is simply:
+                                            t
+                                       Λt     e   0
+                                     e =                                                             (3)
+                                              0 e−2t
+
+     and we can find eAt as
+                                           3et                                  et
+
+                At      Λt    −1               0              −1                            0
+               e     = Qe Q        =        t  −2t        Q        =       1 t      −2t    −2t       (4)
+                                           e e                             3 (e − e     ) e
+
+b) The characteristic polynomial of the system matrix is (λ − 1)(λ − 1) = 0, so the
+     system has a repeated pole at λ = 1. To find the eigenvectors, we set up the
+     equation Av = λv, which is equivalent to (A − λI)v = 0.
+
+                                                                            0 0
+     For the single eigenvalue of this system, the equation is (A − I)v =         v=
+                                                                            2 0
+     0. We can choose v1 = [0 1]T as eigenvector, and there are no other, linearly
+     independent eigenvectors. Therefore the system is not diagnonalizable, so we will
+     find the Jordan form.
+     To find a generalized eigenvector based on v1 , we use the equation (A − I)v2 = v1 .
+     Any vector [1/2 a]T for an arbitrary value of a solves the equation, so we choose
+     v2 = [1/2 0]T . We can then put together the transformation matrix:
+
+                                              0 1/2
+                                       Q=
+                                              1 0
+     We then find the inverse of Q using the formula for 2x2 matrices:
+
+                          −1       1       0 −1/2           0 1
+                        Q =                            =
+                                0 − 1/2 −1       0          2 0
+
+                                                  3
+
+     The Jordan form of the system matrix is found as:
+
+                                −1        2 1            1 1
+                         J = Q AQ =               Q=
+                                          2 0            0 1
+
+     The transformed system is as follows:
+                                 −1                      −1
+                             Q        AQ             Q        B
+                             z }| { Q−1 x z }| {                             CQ
+
+                               1 1 z}|{       0                         z }| {
+                        ż =          z +           u,                y= 1 0 z        (5)
+                               0 1            2
+
+c) The controllability matrix is found as:
+
+                                                                    1 1
+                                  C=           B AB           =
+                                                                      0 2
+
+     which clearly has full rank, so the system is controllable.
+     The equation for the feedback controlled system is:
+
+                                                1 − k1 −k2
+                           ẋ = (A − BK)x =                  x                        (6)
+                                                   2     1
+
+     so its characteristic equation is λ2 − (2 − k1 )λ + 1 − k1 + 2k2 = 0, with solutions:
+
+                            1
+                                         q
+                                                    2
+                       λ=       2 − k1 ± (2 − k1 ) − 4(1 − k1 + 2k2 )                  (7)
+                            2
+
+     To put both poles at -1 we first choose k1 = 4, and then choose the value k2 = 2
+     that makes the expression under
+                                      the
+                                         square root sign equal to 0. Therefore, the
+     correct gain matrix is K = 4 2 .
+d) For asymptotic stability, all eigenvalues of the system need to have negative real
+     parts. Based on Eq. (15), we can see that one requirement is that:
+
+                                                 k1 > 2
+
+     If not, at least one eigenvalue will have a non-negative real value. In addition, if
+     the expression under the square root sign is positive, we require its square root to
+     be less than |2 − k1 |, which equals (k1 − 2) because of our first requirement:
+                                        q
+                               k1 − 2 > (2 − k1 )2 − 4(1 − k1 + 2k2 )
+                        4 − 4k1 + k12 > 4 − 4k1 + k12 − 4(1 − k1 + 2k2 )
+                                        1
+                                  k2 > (k1 − 1)
+                                        2
+
+                                                 4
+
+e) The equation for the closed loop system is:
+
+                                 ẋ = (A − BK)x + BKr r                        (8)
+
+     In steady state, define r0 as the steady state reference, and y∞ = Cx∞ as the
+     steady state output. Steady state implies that ẋ = 0, which means that:
+
+                      (A − BK)x∞ + BKr r0 = 0
+                                            x∞ = (BK − A)−1 BKr r0
+                                            y∞ = C(BK − A)−1 BKr r0
+
+     which means that to ensure y∞ = r0 , we need to choose Kr as follows:
+
+                               −1           −1  !−1
+
+                                     3    4      1
+       Kr = C(BK − A)−1 B
+
+                            =    0 1                    =
+                                      −2 −1       0
+                              −1              −1
+                  −1/5 −4/5     1                1
+              0 1                     =    2/5 3/5         = 5/2
+                     2/5  3/5     0                  0
+
+                                            5
+
+Problem 9B
+a) Two approaches we can use to find eAt are through diagonalization and through the
+    general procedure for finding a function of a square matrix. We will here use the
+    first approach.
+     Since A is a triangular matrix, we easily see that its eigenvalues are 1 and -1. We
+                                    T              T
+     can use the eigenvectors 1 0       and −1 1           for these, respectively. We can
+     form a transformation matrix from the eigenvectors, and its inverse:
+
+                                    1 −1                    1 1
+                             Q=              , Q−1 =                                   (9)
+                                    0 1                     0 1
+     which gives us this transformation:
+
+                                                −1              1 0
+                                    Λ=Q              AQ =                                       (10)
+                                                                0 −1
+     Since Λ is a diagonal matrix, its matrix exponential is simply:
+                                             t
+                                       Λt     e   0
+                                      e =                                                       (11)
+                                              0 e−t
+
+     and we can find eAt as
+                                                et −e−t                       et et − e−t
+
+                      At      Λt   −1                            −1
+                  e        = Qe Q       =                       Q     =                         (12)
+                                                0 e−t                         0     e−t
+
+b) The characteristic polynomial of the system matrix is (λ − 2)(λ − 2) = 0, so the
+     system has a repeated pole at λ = 2. To find the eigenvectors, we set up the
+     equation Av = λv, which is equivalent to (A − λI)v = 0.
+
+                                                                             0 0
+     For the single eigenvalue of this system, the equation is (A − 2I)v =         v=
+                                                                             1 0
+     0. We can choose v1 = [0 1]T as eigenvector, and there are no other, linearly
+     independent eigenvectors. Therefore the system is not diagnonalizable, so we will
+     find the Jordan form.
+     To find a generalized eigenvector based on v1 , we use the equation (A−2I)v2 = v1 .
+     Any vector [1 a]T for an arbitrary value of a solves the equation, so we choose
+     v2 = [1 0]T . We can then put together the transformation matrix:
+
+                                               0 1
+                                        Q=
+                                               1 0
+     We then find the inverse of Q using the formula for 2x2 matrices:
+
+                            −1      1      0 −1           0 1
+                          Q =                       =
+                                  0 − 1 −1 0              1 0
+
+                                                     6
+
+     The Jordan form of the system matrix is found as:
+
+                                −1        1 2            2 1
+                         J = Q AQ =               Q=
+                                          2 0            0 2
+
+     The transformed system is as follows:
+                                 −1                      −1
+                             Q        AQ             Q        B
+                             z }| { Q−1 x z }| {                             CQ
+
+                               2 1 z}|{       0                         z }| {
+                        ż =          z +           u,                y= 1 0 z       (13)
+                               0 2            1
+
+c) The controllability matrix is found as:
+
+                                                                    1 2
+                                  C=           B AB           =
+                                                                      0 1
+
+     which clearly has full rank, so the system is controllable.
+     The equation for the feedback controlled system is:
+
+                                                2 − k1 −k2
+                           ẋ = (A − BK)x =                  x                       (14)
+                                                   1     2
+
+     so its characteristic equation is λ2 − (4 − k1 )λ + 4 − 2k1 + k2 = 0, with solutions:
+
+                            1
+                                         q
+                                                    2
+                       λ=       4 − k1 ± (4 − k1 ) − 4(4 − 2k1 + k2 )                 (15)
+                            2
+
+     To put both poles at -1 we first choose k1 = 6, and then choose the value k2 = 9
+     that makes the expression under
+                                      the
+                                         square root sign equal to 0. Therefore, the
+     correct gain matrix is K = 6 9 .
+d) For asymptotic stability, all eigenvalues of the system need to have negative real
+     parts. Based on Eq. (15), we can see that one requirement is that:
+
+                                                 k1 > 4
+
+     If not, at least one eigenvalue will have a non-negative real value. In addition, if
+     the expression under the square root sign is positive, we require its square root to
+     be less than |4 − k1 |, which equals (k1 − 4) because of our first requirement:
+                                        q
+                               k1 − 4 > (4 − k1 )2 − 4(4 − 2k1 + k2 )
+                      16 − 8k1 + k12 > 16 − 8k1 + k12 − 4(4 − 2k1 + k2 )
+                                      k2 > 2(k1 − 2)
+
+                                                 7
+
+e) The equation for the closed loop system is:
+
+                                 ẋ = (A − BK)x + BKr r                       (16)
+
+     In steady state, define r0 as the steady state reference, and y∞ = Cx∞ as the
+     steady state output. Steady state implies that ẋ = 0, which means that:
+
+                      (A − BK)x∞ + BKr r0 = 0
+                                            x∞ = (BK − A)−1 BKr r0
+                                            y∞ = C(BK − A)−1 BKr r0
+
+     which means that to ensure y∞ = r0 , we need to choose Kr as follows:
+
+                               −1              −1  !−1
+
+                                        3   8       1
+       Kr = C(BK − A)−1 B
+
+                             =    0 1                       =
+                                        −1 −2        0
+                                  −1               −1
+                      −1 −4        1                  1
+                  0 1                      =    1/2 3/2         =2
+                          1/2 3/2    0                    0
+
+                                            8
+
+Problem 10A
+a) The observability is checked using the observability matrix:
+
+                                       C          1      0
+                               O=            =
+                                       CA        0.9 −0.5
+
+     Since O has full rank, the system is observable. The system has observability index
+     2, so you need to monitor the input and output signals for 2 time steps to uniquely
+     determine the initial state of the system.
+                                                                         √       √ T
+b) The eigenvalues of Q are 3 and 5, and its unit-length eigenvectors −1/ 2 1/ 2
+           √         √ T
+     and 1/ 2 1/ 2 . Since Q is symmetric, T−1 = TT , so this equality is valid:
+                                            √     √
+                                          −1/√ 2 1/√2                 3 0
+                   Q = TΛTT ,    T=                    ,     Λ=
+                                          1/ 2 1/ 2                   0 5
+
+     If we define a vector w0 [k] of zero-mean white noise processes with covariance
+     matrix Λ (which is diagonal, implying the processes in w0 [k] are independent), the
+     covariance matrix of Tw0 [k] will be equal to Q:
+
+                   E[Tw0 [k]w0 [k]T TT ] = TE[w0 [k]w0 [k]T ]TT = TΛTT = Q
+
+     Therefore, the disturbance term can be rewritten as GTw0 [k], which is on the
+     requested form with two independent disturbance processes.
+c) Using the equation for the Kalman gain, we get:
+                                                         −1
+                0.5 −0.5      1             0.5 −0.5     1
+       L[k] =                        1 0                       +1
+                −0.5    5     0              −0.5    5     0
+                                       −1
+               0.5                1                1     0.5         1/3
+          =              0.5 −0.5       +1      =               =
+               −0.5                  0            0.5 + 1 −0.5        −1/3
+
+     A more accurate sensor means that a lower value of σ will be appropriate. If
+     the value of σ is reduced, the absolute values of the Kalman gain coefficients
+     increase. This makes sense because a more precise measurement should be given
+     more emphasis than a less precise one, as long as the uncertainty of the model
+     remains unchanged. Larger gain coefficients give stronger corrections based on the
+     measurement.
+d) The update equations for the covariance matrix are as follows:
+
+                                 P− [k + 1] = AP[k]AT + Q
+
+                     P[k] = (I − L[k]C)P− [k](I − L[k]C)T + L[k]Rd L[k]T
+
+                                           9
+
+The prediction step (first equation) will tend to give a higher value of the coeffi-
+cients in P− [k + 1] compared to P[k] due to the addition of Q. The correction step
+(second equation) will reduce the coefficients, since the Kalman gain is designed
+to give the optimal reduction of the trace of P. However, when the measurements
+are unavailable the correction step is omitted, and P[k] is set equal to P− [k]. So
+the value of P[k] will increase through the 10 time steps where the measurement
+drops out, representing the increasing uncertainty of the model estimates when
+they don’t get corrections from measurements.
+When the measurement becomes available again, the Kalman gain for the correc-
+tion step is calculated as:
+
+                       L[k] = P− [k]CT (CP− [k]CT + σ 2 )−1
+
+Higher values of the coefficients of P− [k] will lead to a Kalman gain that weighs
+the measurements higher compared to the model estimates. So the first correction
+after the 10 steps will be a stronger correction, relatively speaking, compared to
+the case where the measurements were always available. This leads the estimates
+to more rapidly approach the measurements after a measurement drop-out.
+
+                                     10
+
+Problem 10B
+a) The observability is checked using the observability matrix:
+
+                                       C          1      0
+                               O=            =
+                                       CA        1.0 −0.5
+
+     Since O has full rank, the system is observable. The system has observability index
+     2, so you need to monitor the input and output signals for 2 time steps to uniquely
+     determine the initial state of the system.
+                                                                         √       √ T
+b) The eigenvalues of Q are 1 and 3, and its unit-length eigenvectors −1/ 2 1/ 2
+           √         √ T
+     and 1/ 2 1/ 2 . Since Q is symmetric, T−1 = TT , so this equality is valid:
+                                            √     √
+                                          −1/√ 2 1/√2                 1 0
+                   Q = TΛTT ,    T=                    ,     Λ=
+                                          1/ 2 1/ 2                   0 3
+
+     If we define a vector w0 [k] of zero-mean white noise processes with covariance
+     matrix Λ (which is diagonal, implying the processes in w0 [k] are independent), the
+     covariance matrix of Tw0 [k] will be equal to Q:
+
+                   E[Tw0 [k]w0 [k]T TT ] = TE[w0 [k]w0 [k]T ]TT = TΛTT = Q
+
+     Therefore, the disturbance term can be rewritten as GTw0 [k], which is on the
+     requested form with two independent disturbance processes.
+c) Using the equation for the Kalman gain, we get:
+                                                         −1
+                  1   −0.5    1             1     −0.5   1
+       L[k] =                        1 0                       +1
+                −0.5   5      0              −0.5    5     0
+                                        −1
+                    1              1                1     1          1/2
+              =             1 −0.5       +1       =             =
+                  −0.5                0             1 + 1 −0.5        −1/4
+
+     A more accurate sensor means that a lower value of σ will be appropriate. If
+     the value of σ is reduced, the absolute values of the Kalman gain coefficients
+     increase. This makes sense because a more precise measurement should be given
+     more emphasis than a less precise one, as long as the uncertainty of the model
+     remains unchanged. Larger gain coefficients give stronger corrections based on the
+     measurement.
+d) The update equations for the covariance matrix are as follows:
+
+                                 P− [k + 1] = AP[k]AT + Q
+
+                     P[k] = (I − L[k]C)P− [k](I − L[k]C)T + L[k]Rd L[k]T
+
+                                           11
+
+The prediction step (first equation) will tend to give a higher value of the coeffi-
+cients in P− [k + 1] compared to P[k] due to the addition of Q. The correction step
+(second equation) will reduce the coefficients, since the Kalman gain is designed
+to give the optimal reduction of the trace of P. However, when the measurements
+are unavailable the correction step is omitted, and P[k] is set equal to P− [k]. So
+the value of P[k] will increase through the 10 time steps where the measurement
+drops out, representing the increasing uncertainty of the model estimates when
+they don’t get corrections from measurements.
+When the measurement becomes available again, the Kalman gain for the correc-
+tion step is calculated as:
+
+                       L[k] = P− [k]CT (CP− [k]CT + σ 2 )−1
+
+Higher values of the coefficients of P− [k] will lead to a Kalman gain that weighs
+the measurements higher compared to the model estimates. So the first correction
+after the 10 steps will be a stronger correction, relatively speaking, compared to
+the case where the measurements were always available. This leads the estimates
+to more rapidly approach the measurements after a measurement drop-out.
+
+                                     12
+
+Problem 11A
+In the solution, we will use the fact that β(t) = m(t) − γ(t) − v1 (t), and rewrite the
+system equation as:
+                           ẋ(t) = ax(t) + m(t) − γ(t) − v1 (t)
+where we treat m(t) as an input.
+a) Since we are treating m(t) as an input, the estimator will be on the form of an open
+     loop estimator:
+                                      ˙
+                                     x̂(t) = ax̂(t) + m(t)
+     If the measurement is perfect, the error dynamics of the open loop estimator are:
+                                             ˙ = ẋ(t) − x̂(t)
+                                           e(t)           ˙    = ae(t)
+
+     The time-domain solution of e is:
+
+                                                  e(t) = e0 eat
+
+     so the estimator will converge provided a < 0.
+b) To get an unbiased estimate of x(t) we need to also estimate the slowly varying
+     measurement bias γ(t). Therefore, we need to set up an expanded state space
+     system where γ(t) is treated as a state variable. The expanded system equation is
+     as follows:
+                                            A         x           B        G
+                                    z
+                                          }| { z }| { z }| {    z }| {
+                         ẋ               a −1      x        1           −1
+                                  =                      +         m+          v1   (17)
+                         γ̇               0 0       γ        0           0
+                                           C
+                                z }| {
+                                          x
+                              y= 1 0         + v2                                   (18)
+                                          γ
+
+     We can easily verify that the system is observable.
+     The equation for the observer is as follows:
+                                                             L
+                                                       z }| {
+                                                          l1
+                                      x̂˙ = Ax̂ + Bm +          (y − ŷ)            (19)
+                                                          l2
+                                      ŷ = Cx̂                                      (20)
+
+     The system equation can be rewritten as:
+
+                                          x̂˙ = (A − LC)x̂ + Bm + Ly                (21)
+
+     The error dynamics of the observer are given by:
+
+                                      ė = (A − LC)e + Gv1 − Lv2
+
+                                                    13
+
+     Since we are to choose L through pole placement with a = −1, this means choosing
+     the poles of (A − LC):
+
+                                              −1 − l1 −1
+                                A − LC =                                         (22)
+                                               −l2     0
+
+     The characteristic polynomial of this matrix is:
+
+                                   λ2 + (l1 + 1)λ − l2 = 0                       (23)
+
+     The eigenvalues for the system itself are 0 and -1. Generally, we choose error
+     dynamics that are 2-20 times faster than the system itself, although noisy plants
+     (such as the one we are dealing with here) call for slower observer dynamics. A
+     reasonable choice might be λ1 = −3 and λ2 = −5 (but a wide range of choices
+     are acceptable), which leads to the characteristic polynomial λ2 + 8λ + 15. By
+     comparison with the coefficients in Eq. (30), we see that this gives l1 = 7 and
+     l2 = −15.
+c) The system given in Eq. (24) has a zero-mean gaussian white noise disturbance and
+     a zero-mean gaussian white noise noise term, which satisfies the assumptions of
+     the Kalman filter. When estimating the slowly variable bias as a random walk,
+     we alse need to assume that the disturbance on the bias is white noise. (However,
+     answers not taking the disturbance on the bias into account are also accepted.)
+     We need to know the autocovariances of the disturbance and noise terms to set up
+     the Kalman filter.
+
+                                          14
+
+Problem 11B
+In the solution, we will use the fact that σ(t) = m(t) − ω(t) − v1 (t), and rewrite the
+system equation as:
+                           ẋ(t) = ax(t) + m(t) − ω(t) − v1 (t)
+where we treat m(t) as an input.
+a) Since we are treating m(t) as an input, the estimator will be on the form of an open
+     loop estimator:
+                                      ˙
+                                     x̂(t) = ax̂(t) + m(t)
+     If the measurement is perfect, the error dynamics of the open loop estimator are:
+                                             ˙ = ẋ(t) − x̂(t)
+                                           e(t)           ˙    = ae(t)
+
+     The time-domain solution of e is:
+
+                                                  e(t) = e0 eat
+
+     so the estimator will converge provided a < 0.
+b) To get an unbiased estimate of x(t) we need to also estimate the slowly varying
+     measurement bias ω(t). Therefore, we need to set up an expanded state space
+     system where ω(t) is treated as a state variable. The expanded system equation is
+     as follows:
+                                            A         x           B        G
+                                    z
+                                          }| { z }| { z }| {    z }| {
+                         ẋ               a −1      x        1           −1
+                                  =                      +         m+          v1   (24)
+                         ω̇               0 0       ω        0           0
+                                           C
+                                z }| {
+                                           x
+                              y= 1 0           + v2                                 (25)
+                                           ω
+
+     We can easily verify that the system is observable.
+     The equation for the observer is as follows:
+                                                             L
+                                                       z }| {
+                                                          l1
+                                      x̂˙ = Ax̂ + Bm +          (y − ŷ)            (26)
+                                                          l2
+                                      ŷ = Cx̂                                      (27)
+
+     The system equation can be rewritten as:
+
+                                          x̂˙ = (A − LC)x̂ + Bm + Ly                (28)
+
+     The error dynamics of the observer are given by:
+
+                                      ė = (A − LC)e + Gv1 − Lv2
+
+                                                    15
+
+     Since we are to choose L through pole placement with a = −2, this means choosing
+     the poles of (A − LC):
+
+                                              −2 − l1 −1
+                                A − LC =                                         (29)
+                                               −l2     0
+
+     The characteristic polynomial of this matrix is:
+
+                                   λ2 + (l1 + 2)λ − l2 = 0                       (30)
+
+     The eigenvalues for the system itself are 0 and -2. Generally, we choose error
+     dynamics that are 2-20 times faster than the system itself, although noisy plants
+     (such as the one we are dealing with here) call for slower observer dynamics. A
+     reasonable choice might be λ1 = −6 and λ2 = −10 (but a wide range of choices
+     are acceptable), which leads to the characteristic polynomial λ2 + 16λ + 60. By
+     comparison with the coefficients in Eq. (30), we see that this gives l1 = 14 and
+     l2 = −60.
+c) The system given in Eq. (24) has a zero-mean gaussian white noise disturbance and
+     a zero-mean gaussian white noise noise term, which satisfies the assumptions of
+     the Kalman filter. When estimating the slowly variable bias as a random walk,
+     we alse need to assume that the disturbance on the bias is white noise. (However,
+     answers not taking the disturbance on the bias into account are also accepted.)
+     We need to know the autocovariances of the disturbance and noise terms to set up
+     the Kalman filter.
+
+                                          16
+
+Problem 12A
+a) We can test for stability by checking the eigenvalues of the system matrix:
+                                           2g        1p
+                         |λI − A| = λ2 −      =0⇒λ=±   8g/xr
+                                           xr        2
+     Since the matrix has one positive and one negative real eigenvalue, it is unstable.
+     We test the controllability by computing the controllability matrix:
+                                                               
+                                                   ku
+                                                −    2     0
+                           C = B AB =  mxr
+
+                                                        − ku2
+                                                                
+                                                   0
+                                                             mxr
+
+     which has full rank as long as ku 6= 0.
+                                                                                       √
+     If xr = g, the
+                  √ upper right coefficient of A equals 2, and the eigenvalues are λ1 = 2
+     and λ2 = − 2. This means that the system has an unstable mode associated with
+     λ1 , and a stable mode associated with λ2 . For any state value that is a multiple
+     of the eigenvector v2 associated with λ2 , the solution will stay along multiples of
+     v2 , and since λ2 < 0 it will converge towards the equilibrium. The eigenvector v2
+     associated with λ2 is found by solving this equation:
+
+                               Av = λ2 v2 ⇒ (A − λ2 I)v2 = 0
+                                  √
+                                     2 √2             0
+                                              v2 =
+                                    1     2           0
+                                                             √
+     and we see that the eigenvector can be chosen as v2 = [− 2      1]T .
+     If we choose
+            √     x0 = v2 , the system equation in the absence of any input reduces to
+     ẋ = − 2x, which converges towards the equilibrium in 0.
+     This convergence depends on the initial value being exactly a multiple of v2 , and
+     the tinyest disturbance and model error (such as the model being a linear approx-
+     imation of the real system, and the air resistance that was neglected) can lead to
+     the non-stable mode being introduced into the system state. This convergence will
+     therefore not occur in the real system.
+b) The equation for the closed-loop system is ẋ = (A−BK)x. With the given parameter
+     values this equals:
+                                            −6 −6.4
+                                     ẋ =               x
+                                            1      0
+
+     The equation for the exact discretization of the closed-loop system is:
+                                                 Ad
+                                             z }| {
+                                  x[k + 1] = e(A−BK)T x[k]
+
+                                           17
+
+      The equation for the Euler discretization is:
+                                                       Ad
+                                          z       }|     {
+                               x[k + 1] = (I + (A − BK)T ) x[k]
+
+      As the closed-loop dynamics do not include an explicit input (the input implicitly
+      follows the control law), the exact discretization is equally valid for large T as
+      for small T . As the continuous time closed-loop system is stable, the exactly
+      discretized system will retain stability regardless of the value of T used.
+      The Euler discretized system follows the first order approximation of the rate of
+      change of the state values, so the approximation gets less accurate for higher values
+      of T . The value of Ad is:
+
+                                            1 − 6T −6.4T
+                                    Ad =
+                                              T        1
+      and it eigenvalues are given by:
+                             1          p              1
+                         λ = (2 − 6T ± 10.4T 2 ) = (2 − 6T ± 3.22T )
+                             2                         2
+      We can see that for small T , the absolute value of the eigenvalues will be below
+      1, indicating asymptotic stability. For larger T one or two eigenvalues will have
+      absolute value above 1, indicating that the system is unstable. This is expected, as
+      following the first order approximation for a too-long time step leads to an unstable
+      solution.
+c) We first find the realization of the transfer function u(s)
+                                                          v(s) using the controllable canon-
+    ical form, denoting the single state value for that system x3 . We need to separate
+    the transfer function into a constant and a strictly proper part:
+                                    s+τ +1          1
+                                             =1+
+                                      s+τ         s+τ
+      The constant part gives the value for D in the realized system, while we use
+      coefficients from the numerator and denominator to compose A and C:
+                         ẋ3 (t) = −τ x3 (t) + v(t),    u(t) = x3 (t) + v(t)
+      We then augment the original linearized system. The new state vector is x =
+                T
+        x1 x2 x3    , and v(t) is the input:
+                                                        
+                                0 x2g − ku2          − ku2
+                                     r    mxr      mxr 
+                        ẋ =  1 0        0 x +  0 v
+                             
+
+                                0 0      −τ            1
+      In this equation set, x3 + v plays the role of u in the original system, and the upper
+      right coefficient of the augmented system matrix connects x3 to x1 in the same
+      way as the input was connected in the original system.
+      Valid solutions on different forms can also be found.
+
+                                              18
+
+Problem 12B
+a) We can test for stability by checking the eigenvalues of the system matrix:
+                                           2g        1p
+                         |λI − A| = λ2 −      =0⇒λ=±   8g/xr
+                                           xr        2
+     Since the matrix has one positive and one negative real eigenvalue, it is unstable.
+     We test the controllability by computing the controllability matrix:
+                                                   kf
+                                                               
+                                                −     2    0
+                           C = B AB =  mxr
+
+                                                           k
+                                                                
+                                                   0    − f2
+                                                             mxr
+
+     which has full rank as long as kf 6= 0.
+     If xr = g/2, the upper right coefficient of A equals 4, and the eigenvalues are λ1 = 2
+     and λ2 = −2. This means that the system has an unstable mode associated with
+     λ1 , and a stable mode associated with λ2 . For any state value that is a multiple
+     of the eigenvector v2 associated with λ2 , the solution will stay along multiples of
+     v2 , and since λ2 < 0 it will converge towards the equilibrium. The eigenvector v2
+     associated with λ2 is found by solving this equation:
+
+                               Av = λ2 v2 ⇒ (A − λ2 I)v2 = 0
+
+                                     2 4           0
+                                             v2 =
+                                     1 2           0
+
+     and we see that the eigenvector can be chosen as v2 = [−2       1]T .
+     If we choose x0 = v2 , the system equation in the absence of any input reduces to
+     ẋ = −2x, which converges towards the equilibrium in 0.
+     This convergence depends on the initial value being exactly a multiple of v2 , and
+     the tinyest disturbance and model error (such as the model being a linear approx-
+     imation of the real system, and the air resistance that was neglected) can lead to
+     the non-stable mode being introduced into the system state. This convergence will
+     therefore not occur in the real system.
+b) The equation for the closed-loop system is ẋ = (A−BK)x. With the given parameter
+     values this equals:
+                                            −5 −6.4
+                                     ẋ =               x
+                                            1      0
+
+     The equation for the exact discretization of the closed-loop system is:
+                                                  Ad
+                                             z }| {
+                                  x[k + 1] = e(A−BK)T x[k]
+
+                                           19
+
+      The equation for the Euler discretization is:
+                                                       Ad
+                                          z       }|     {
+                               x[k + 1] = (I + (A − BK)T ) x[k]
+
+      As the closed-loop dynamics do not include an explicit input (the input implicitly
+      follows the control law), the exact discretization is equally valid for large T as
+      for small T . As the continuous time closed-loop system is stable, the exactly
+      discretized system will retain stability regardless of the value of T used.
+      The Euler discretized system follows the first order approximation of the rate of
+      change of the state values, so the approximation gets less accurate for higher values
+      of T . The value of Ad is:
+
+                                            1 − 5T −6.4T
+                                    Ad =
+                                              T        1
+      and it eigenvalues are given by:
+                             1          p              1
+                         λ = (2 − 6T ± 10.4T 2 ) = (2 − 6T ± 3.22T )
+                             2                         2
+      We can see that for small T , the absolute value of the eigenvalues will be below
+      1, indicating asymptotic stability. For larger T one or two eigenvalues will have
+      absolute value above 1, indicating that the system is unstable. This is expected, as
+      following the first order approximation for a too-long time step leads to an unstable
+      solution.
+c) We first find the realization of the transfer function u(s)
+                                                          v(s) using the controllable canon-
+    ical form, denoting the single state value for that system x3 . We need to separate
+    the transfer function into a constant and a strictly proper part:
+                                      s+τ +1             1
+                                                 =1+
+                                        s+τ             s+τ
+    The constant part gives the value for D in the realized system, while we use
+    coefficients from the numerator and denominator to compose A and C:
+                         ẋ3 (t) = −τ x3 (t) + v(t),    u(t) = x3 (t) + v(t)
+      We then augment the original linearized system. The new state vector is x =
+                T
+        x1 x2 x3    , and v(t) is the input:
+                                           k           k
+                                                        
+                                0 x2g − f 2          − f2
+                                     r    mxr      mxr 
+                        ẋ =  1 0        0 x +  0 v
+                             
+
+                                0 0      −τ            1
+      In this equation set, x3 + v plays the role of u in the original system, and the upper
+      right coefficient of the augmented system matrix connects x3 to x1 in the same
+      way as the input was connected in the original system.
+      Valid solutions on different forms can also be found.
+
+                                              20

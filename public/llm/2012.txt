@@ -1,0 +1,736 @@
+# Eksamen 2012 – TTK4115 Lineær systemteori
+
+Tekst hentet automatisk fra PDF. Matriser og brøker kan stå rotete over flere linjer.
+
+## Oppgavetekst
+
+Side 1 av 8
+        N ORGES TEKNISK - NATURVITENSKAPELIGE UNIVERSITET
+        I NSTITUTT FOR TEKNISK KYBERNETIKK
+
+Faglig kontakt / contact person:
+Navn: Tor Arne Johansen
+Tlf.: 917 22 765
+
+ Eksamen - TTK 4115 Lineær systemteori
+ Exam - TTK 4115 Linear systems theory
+
+                   17. desember 2012, 09:00 – 13:00
+Hjelpemidler: D - Ingen trykte eller håndskrevne hjelpemidler tillatt. Bestemt, enkel
+kalkulator tillatt.
+
+Supporting materials: D - No printed or handwritten material allowed. Specific, simple
+calculator allowed.
+
+Merk at ingen deloppgave avhenger av at du har greid å løse noen av de andre delopp-
+gavene. Oppgitt informasjon fra tidligere deloppgaver skal være tilstrekkelig for å komme
+videre.
+Note that no parts of this problem assume that you have solved any of the of previous
+parts. The given information from previous parts should be sufficient to move on.
+
+   Oppgave 1 (20 %)
+      Gitt systemet:
+      Given the system
+
+                                     −1 −1        −2
+                              ẋ =           x+        u
+                                      1 −3        −1
+
+                              y =    1 −2 x
+
+      a) (9%)
+      Transformer systemet til Jordanform:
+
+                                                                         Side 2 av 8
+
+ Transform the system to Jordan form:
+
+                                      x̂˙ = Jx̂ + b̂u
+                                      y = ĉx̂
+
+ b) (5%)
+ Hvilke av disse egenskapene innehar systemet? Forklar dine valg.
+ Which of these properties does the system possess? Explain your choice.
+
+ A Marginalt stabilt, Marginally stable
+ B Ustabilt, Unstable
+ C Asymptotisk stabilt, Asymptotically stable
+ D BIBO stabilt, BIBO stable
+
+ c) (3%)
+ Er systemet styrbart?
+ Is the system controllable?
+ d) (3%)
+ Er systemet observerbart?
+ Is the system observable?
+
+Oppgave 2 (5 %)
+ Finn en eksakt diskretisering av systemet nedenfor, med et tidssteg T = 1:
+ Find an exact discretization of the system below, using a timestep of T = 1:
+
+                                 ẋ = −2x + u,    y=x
+
+ Pådraget antas konstant over tidsintervallet.
+ The input is assumed piecewise constant.
+
+Oppgave 3 (20 %)
+ Transferfunksjonen h(s) er gitt som:
+ The transfer function h(s) is given as:
+
+                                      7s3 + 11s2 + 19s + 27
+                             h(s) =
+                                         s3 + s2 + 2s + 3
+
+                                                                            Side 3 av 8
+
+ a) (10%)
+ Finn den styrbare kanoniske realiseringen av h(s):
+ Find the controllable canonical realization of h(s):
+
+                                     x̄˙ = Āx̄ + b̄u
+                                     y = c̄x̄ + du
+
+ hvor Ā er gitt som:
+ where Ā is given as:                        
+                                      −1 −2 −3
+                               Ā =  1  0   0 
+                                       0 1   0
+
+ b) (3%)
+ Er realiseringen over minimal?
+ Is the realization above minimal?
+
+ c) (7%)
+ Bruk tilstandstilbakekoblingen u = −k̄x̄ til plassere polene slik at:
+ Use the state feedback u = −k̄x̄ to place the poles such that:
+
+                           λ1 = −1,      λ2 = −2,   λ3 = −3
+
+Oppgave 4 (13 %)
+ Gitt systemet:
+
+                                    ẋ = Ax + Bu
+                                    y = Cx
+
+ a) (2%)
+ Tegn blokkdiagrammet for systemet.
+ Draw the block diagram for the system.
+ b) (5%)
+ En lineær tilstandsestimator blir brukt til å estimerere tilstandene i systemet. Utvid
+ blokkdiagrammet i a) med blokkdiagrammet til en observer.
+ A linear state observer is used to estimate the states of the system. Augment the
+ blockdiagram of a) with the blockdiagram of an observer.
+
+                                                                        Side 4 av 8
+
+ c) (6%)
+ Gitt følgende matriser:
+ Given the following matrices:
+
+                               −1 1
+                         A=            ,       C=       1 0
+                                0 −2
+
+ Finn en observergain L som plasserer polene til estimatoren i:
+ Find an observer gain L, that places the poles of the estimator at:
+
+                                λ1 = −7,     λ2 = −6
+
+Oppgave 5 (10 %)
+ Lyapunovs ligning er:
+ The Lyapunov equation is:
+                                 AT M + MA = −N
+
+ a) (10%)
+ Bruk Lyapunovs ligning til vise at systemet nedenfor er asymptotisk stabilt.
+ Use the Lyapunov equation to show that the system below is asymptotically stable.
+
+                                               −5 2
+                         ẋ = Ax, A =
+                                                4 −3
+
+ Hint: Set N = I.
+
+Oppgave 6 (12 %)
+ Spektraltetthetsfunksjon til en stasjonær tilfeldig prosess X(t) er gitt ved:
+ The spectral density function of a stationary random process X(t) is given by:
+
+                                                 6
+                                SX ( jω) =
+                                              4 + ω2
+
+ a) (7%)
+ Finn autokorrelasjonsfunksjonen.
+ Find the autocorrelation function.
+
+                                                                            Side 5 av 8
+
+                 6
+ Hint: SX (s) = 4−s 2
+
+ b) (5%)
+ X(t) kan representeres som filtert hvitstøy W (t) der SW ( jω) = 1. Finn transfer-
+ funksjonen G(s) til dette filteret.
+ X(t) can be represented as filtered white noise W (t) where SW ( jω) = 1. Find the
+ transfer function G(s) of this filter.
+
+Oppgave 7 (20 %)
+ a) (10%)
+ Gitt følgende system:
+ Given the following system:
+
+                                 xk+1 = 0.8xk + wk
+                                   zk = xk + vk
+
+ der xk er en skalar tilstand, wk en diskret hvitstøy forstyrrelse med varians Qk = 4,
+ zk er en måling, og vk er diskret hvit målestøy med varians Rk = 0.1.
+ where xk is a scalar state, wk is discrete white noise disturbance with variance
+ Qk = 4, zk is a measurement, and vk is discrete white measurement noise with vari-
+ ance Rk = 0.1.
+
+ Anta initialbetingelser x̂0− = 1 og P0− = 1, og målinger z0 = 2.0, z1 = 2.4, z2 = 1.5.
+ Beregn Kalman-filter estimatene x̂0 , x̂1 , x̂2 .
+ Assume initial conditions x̂0− = 1 and P0− = 1, and measurements z0 = 2.0, z1 =
+ 2.4, z2 = 1.5. Compute the Kalman filter estimates x̂0 , x̂1 , x̂2 .
+ b) (10%)
+ Gitt følgende system:
+ Given the following system:
+
+                             xk+1 = 0.1xk3 + 0.7xk + wk
+                               zk = xk + vk
+
+ der xk er en skalar tilstand, wk en diskret hvitstøy forstyrrelse med varians Qk = 4,
+ zk er en måling, og vk er diskret hvit målestøy med varians Rk = 0.1.
+ where xk is a scalar state, wk is discrete white noise disturbance with variance
+
+                                                                             Side 6 av 8
+
+Qk = 4, zk is a measurement, and vk is discrete white measurement noise with vari-
+ance Rk = 0.1.
+
+Anta initialbetingelser x̂0− = 1 og P0− = 1, og målinger z0 = 2.0, z1 = 2.4, z2 = 1.5.
+Bruk et utvidet Kalman-filter (EKF) og beregn estimatene x̂0 , x̂1 , x̂2 .
+Assume initial conditions x̂0− = 1 and P0− = 1, and measurements z0 = 2.0, z1 =
+2.4, z2 = 1.5. Use an Extended Kalman filter (EKF) and compute estimates x̂0 , x̂1 , x̂2 .
+
+## Løsningsforslag
+
+Solution Suggestion
+                   Exam - TTK4115 Linear System Theory
+                            December 17, 2012
+                                          MDP (2012-12-06)
+
+Problem 1
+ a) We start by finding the eigenvalues of the system. The characteristic polynomial of A is:
+
+                                                            λ+1     1
+                            ∆(λ) = det(λI − A) =                             = λ2 + 4λ + 4
+                                                             −1    λ+3
+
+    The eigenvalues of A can be found solving the characteristic polynomial:
+
+                                          ∆(λ)      =       λ2 + 4λ + 4 = 0
+                                                   ⇒ λ1,2 = {−2, −2}
+
+    We have two similar eigenvalues. Now, the eigenvectors must be found. The first eigenvector(s) are
+    found by solving:
+
+                                                              Av    =    λv
+                                                  ⇒ (A − λI)v =          0
+
+                                              1   −1     v1                  0
+                                      ⇒                       =
+                                              1   −1     v2                  0
+
+    The rank of the matrix is:
+                                                   ρ(A − λI) = 1
+    It follows that the nullity is null(A − λI) = 1. We can therefore only find one linearly independent
+    eigenvector. This eigenvector, which is easily gleaned by inspection, is:
+
+                                                          1
+                                                  v=t
+                                                          1
+
+    where t 6= 0 may take any real value. Choose e.g. t = 1 to obtain the first eigenvector:
+
+                                                         1
+                                                v1 =
+                                                         1
+
+    The second eigenvector is of the generalized kind. We find this by solving the equation:
+
+                                                    (A − λI)v2       = v1
+
+                                              1   −1    v2,1              1
+                                      ⇒                              =
+                                              1   −1    v2,2              1
+
+                                                        1
+
+   We may use Gauss elimination to find the reduced row echelon form:
+
+                                                  1 −1 1
+                                                  1 −1 1
+
+                                                  1 −1 1
+                                           ⇒
+                                                  0 0 0
+
+   We find that:
+                                                  v2,1                1               1
+                                                             =                +               v2,2
+                                                  v2,2                0               1
+   Here v2,2 is a free variable. This is to be expected, as the vector [1, 1]T is an eigenvector! Letting e.g.
+   v2,2 = 0, the second eigenvector is:
+                                                          1
+                                                  v2 =
+                                                          0
+   Arraying the two eigenvectors in a matrix produces the eigenvector matrix:
+
+                                                           1 1
+                                        M = [v1 , v2 ] =
+                                                           1 0
+
+   The similarity transformation:
+
+                                            x̄˙     = M−1 AMx̄ + M−1 bu
+                                            y       = cMx̄
+
+   brings the system to Jordan form. The inverse of M may be found via Gaussian elimination or other
+   methods:
+                                                     0 1
+                                           M−1 =
+                                                     1 −1
+   The various items in the system on Jordan form are:
+
+                             −1         0 1        −1 −1      1                                      1               −2    1
+                  J = M AM =                                                                                 =
+                                        1 −1        1 −3      1                                      0                0   −2
+
+                                     0 1        −2       −1
+                  b̄ = M−1 b =                        =
+                                     1 −1       −1       −1
+
+                                         1 1
+                  c̄ = cM = 1 −2                    = −1 1
+                                             1 0
+
+   The system on Jordan form looks like:
+
+                                                         −2           1           −1
+                                      x̄˙       =                          x̄ +        u
+                                                         0           −2           −1
+
+                                      y         =        −1          1 x̄
+
+b) The system has eigenvalues with negative real parts. It is therefore marginally stable and asymptotically
+   stable. Because the eigenvalues correspond to the poles of the system, the poles of the system have
+   negative real parts. As a consequence, the system is BIBO stable. It is not unstable, as this would
+   require at least one pole with a positive real part or a pole with a zero real part that is not a simple
+   root of the minimal polynomial. Conclusion: Properties A, B and D match, whereas C does not.
+
+                                                                 2
+
+  c) The controllability of the system is examined via the controllability matrix:
+
+                                                            −2 3
+                                          C = b Ab =
+                                                              −1 1
+
+      We require full row rank, i.e. ρ(C) = 2. For a SISO system, one can simply ascertain whether the
+      determinant is 6= 0. In this case det(C) = 1. The system is therfore controllable. We note that this
+      may be done in both the original and Jordan form.
+  c) The observability of the system is examined via the observability matrix:
+
+                                                 c          1 −2
+                                          O=          =
+                                                cA         −3 5
+
+      We require full column rank, i.e. ρ(O) = 2. For a SISO system, one can simply ascertain whether the
+      determinant is 6= 0. In this case det(O) = −1. The system is therfore observable. We note that this
+      may be done in both the original and Jordan form.
+
+Problem 2
+The exact discretization of:
+                                              ẋ = −2x + u = ax + bu
+                                              y = x = cx
+is calculated as:
+                                            x[k + 1] = ad x[k] + bd u[k]
+                                                 y[k] = cd x[k]
+where:                                                    Z T
+                                    ad = eaT ,    bd =             eaτ b dτ,   cd = c
+                                                              0
+Inserting parameters yield:
+                                                        Z 1
+                                                                           1   1
+                    ad = eaT = e−2 ≃ 0.135,      bd =         e−2τ dτ =      −   ≃ 0.432,   cd = 1
+                                                         0                 2 2e2
+The discretized equation reads:
+                                         x[k + 1] = 0.135x[k] + 0.432u[k]
+                                              y[k] = x[k]
+
+Problem 3
+  a) To realize the transfer function:
+
+                                                        7s3 + 11s2 + 19s + 27
+                                            h(s) =
+                                                           s3 + s2 + 2s + 3
+      we must first separate out its strictly proper part, h(s) = hsp (s) + h(∞). Taking the limit:
+
+                                                 h(∞) = lim h(s) = 7
+                                                                  s→∞
+
+      yields the infinite frequency response. We note that d = h(∞). Subtracting this from h(s):
+
+                                                  7s3 + 11s2 + 19s + 27       6 + 5s + 4s2
+                       hsp (s) = h(s) − h(∞) =        3   2
+                                                                        −7=
+                                                     s + s + 2s + 3         3 + 2s + s2 + s3
+
+                                                              3
+
+   yields the strictly proper part. The denominator is monic and the formula in the appendix may be
+   applied:
+                                     n1 s2 + n2 s + n3    4s2 + 5s + 6
+                                   3       2
+                                                       = 3
+                                  s + α1 s + α2 s + α3  s + s2 + 2s + 3
+   Inserting gives:
+                                                               
+                  −α1    −α2     −α3     −1        −2          −3
+          Ā =  1        0       0 = 1           0           0 ,           c̄ =       n1      n2      n3       =       4   5   6
+                    0     1       0       0         1           0
+
+   Finally,                                                
+                                                          1
+                                                   b̄ =  0 
+                                                          0
+   The realization then reads:
+                                                                  
+                                                −1 −2 −3           1
+                                   x̄˙   =    1    0   0  x̄ +  0  u
+                                                0   1   0          0
+
+                                    y    =     4 5 6 x̄ + 7u
+
+b) The realization is minimal. The dimension of the system n = 3 is equal to the the order of the
+   denominator (the term in the denominator with highest power is s3 ). One may alternatively check
+   controllability and observability, where a controllable and observable system implies that the realization
+   is minimal.
+c) Pole placement proceeds by specifying a new denominator with the desired poles:
+
+                d(s) = (s − λ1 )(s − λ2 )(s − λ3 ) = (s + 1)(s + 2)(s + 3) = s3 + 6s2 + 11s + 6
+
+   The new coefficients read:
+
+                                  s3 + α10 s2 + α20 s + α30 = s3 + 6s2 + 11s + 6
+
+   Choosing a state feedback k̄ such that:
+
+                                   k̄ = α10 − α1           α20 − α2        α30 − α3
+
+   The altered system reads:
+                                         0
+                                                                α20 − α2            α30 − α3     −α10                      −α20    −α30
+                                                                                                                                     
+                     −α1 −α2       −α3    α1 − α1
+     (Ā − b̄k̄) =  1      0       0 −    0                      0                   0    = 1                          0       0 
+                      0     1       0        0                      0                   0         0                         1       0
+
+   The final statefeedback should be:
+
+                               k̄ = 6 − 1        11 − 2        6−3         =        5     9       3
+
+   Hence, we obtain:
+                                                 u=−       5    9    3         x̄
+
+                                                       4
+
+            u                               1         x                     y
+                   B                                               C
+                                            s
+                                                                                +
+                                           A                                L
+                                                                                     −
+                                            u                               1   x̂                ŷ
+                                                  B                                           C
+                                                                            s
+
+                                                                            A
+
+                                             Figure 1: Tasks a) and b).
+
+Problem 4
+a,b) The block diagrams should look like Figure 1. Task b) is added on via dashed lines.
+  c) For two states and one measurement, the correct form of L is:
+
+                                                     l1
+                                                     l2
+
+     The poles of the observer are placed by assigning the eigenvalues of:
+
+                                      −1 1            l1               −1 − l1         1
+                        A − LC =                 −          1 0 =
+                                       0 −2           l2                   −l2           −2
+
+     The eigenvalues are computed as:
+
+                              det(λI − A + LC) = λ2 + λ (3 + l1 ) + (2l1 + l2 + 2) = 0
+
+     The solution is:
+                                       p                                        p
+                        −(3 + l1 ) ±    (3 + l1 )2 − 4(2l1 + l2 + 2)   −3 − l1 ± l12 − 2l1 − 4l2 + 1
+                 λ=                                                  =
+                                             2                                      2
+     The elements of L are selected such that:
+                                                              p
+                                                       l12 − 2l1 − 4l2 + 1
+                                                 −3 − l1 ±
+                                   λ1 = −7 =
+                                                      p 2
+                                             −3 − l1 ± l12 − 2l1 − 4l2 + 1
+                                   λ2 = −6 =
+                                                          2
+     The solution to these are:
+                                                    l1 = 10,      l2 = 20
+     Thus, selecting the matrix:
+                                                                  10
+                                                       L=
+                                                                  20
+     will place the poles of the observer at the specified values.
+
+                                                          5
+
+Problem 5
+ a) The proof of asymptotic stability requires that there is a symmetric positive definite matrix M > 0,
+    for any symmetric positive definite matrix N > 0, that solves:
+
+                                              AT M + MA = −N
+
+    We choose N = I. Then the above equation reads:
+
+                  −5 4         m11 m12          m11            m12            −5    2                1   0
+                                           +                                                =−
+                   2 −3        m12 m22          m12            m22             4   −3                0   1
+
+    I.e.:
+                             −10m11 + 8m12      2 (m11 − 4m12 + 2m22 )                           1   0
+                                                                                        =−
+                         2 (m11 − 4m12 + 2m22 )      4m12 − 6m22                                 0   1
+    This is three equations in three unknowns. The matrix that solves this is:
+
+                                       m11 m12          2/7 13/56
+                                                   =
+                                       m12 m22         13/56 9/28
+
+    If this matrix is positive definite, the system ẋ = Ax is asymptotically stable. The check for positive
+    definiteness may be done by verifying that the leading principal minors are positive:
+
+                                             2/7     13/56            17
+                               2/7 > 0,                         =        ≃ 0.0379 > 0
+                                            13/56     9/28           448
+
+    One may also check that the eigenvalues of M are positive:
+                                          q
+                                     17       17 2    17
+                                     28 ±     28   − 112
+                            λ(M) =                       ≃ 0.3036 ± 0.2328 > 0
+                                              2
+
+Problem 6
+ a) We recognize that the process is a Gauss-Markov process, which means that the spectral density
+    function can be written in the following form:
+
+                                                            2σ 2 β
+                                               SX (jω) =
+                                                           ω2 + β 2
+    Comparing this with the given spectral density function in the problem description, we obtain:
+
+                                                  2σ 2 β = 6
+                                                     β2 = 4
+
+    From this, we get the values:
+                                                                     3
+                                                β = 2,     σ2 =
+                                                                     2
+    The corresponding autocorrelation function is:
+                                                                     3 −2|τ |
+                                          RX (τ ) = σ 2 e−β|τ | =      e
+                                                                     2
+
+                                                      6
+
+ b) The transfer function of the filter is defined as:
+                                                             X(s)
+                                                  G(s) =
+                                                             W (s)
+    Therefore, we have:
+                                                X(s) = G(s)W (s)
+    The spectral density function of X(t) in Laplace domain is given by
+
+                      SX (s) = X(s)X(−s) = G(s)G(−s)W (s)W (−s) = G(s)G(−s)SW (s)
+                           6
+    Substituting SX (s) = 4−s2 and SW (s) = 1 gives:
+
+                                                   √       √
+                                                       6     6     6
+                                      G(s)G(−s) =        ·     =
+                                                     2+s 2−s     4 − s2
+    Therefore, the transfer function of the filter is given by:
+                                                            √
+                                                              6
+                                                   G(s) =
+                                                           2+s
+
+Problem 7
+ a) The system can be written in the following form:
+
+                                                xk+1 = Φxk + vk
+                                                   zk = Hxk + wk
+    with Φ = 0.8 and H = 1. The Kalman filter estimates x̂0 , x̂1 , x̂2 are obtained by repeating the following
+    steps:
+
+    Step 1: Compute the Kalman gain
+
+                                           Kk = Pk− H(HPk− H + R)−1
+
+    Step 2: Update the estimate
+                                            x̂k = x̂−                −
+                                                    k + Kk (zk − H x̂k )
+    Step 3: Update the error covariance
+
+                                    Pk = (I − Kk H)Pk− (I − Kk H) + Kk RKk
+
+    Step 4: Project ahead to k + 1
+                                                x̂−
+                                                  k+1 = Φx̂0
+                                                 −
+                                                Pk+1 = ΦPk Φ + Q
+
+    For k = 0, we obtain:
+                      K0 = P0− H(HP0− H + R)−1 = 1 · 1(1 · 1 · 1 + 0.1)−1 ≃ 0.9091
+                       x̂0 = x̂−                −
+                               0 + K0 (z0 − H x̂0 ) ≃ 1 + 0.9091(2 − 1 · 1) = 1.9091
+                       P0 = (I − K0 H)P0− (I − K0 H) + K0 RK0
+                          ≃ (1 − 0.9091 · 1)1(1 − 0.9091 · 1) + 0.9091 · 0.1 · 0.9091 ≃ 0.0909
+                      x̂−
+                        1 = Φx̂0 ≃ 0.8 · 1.9091 ≃ 1.5273
+                      P1− = ΦP0 Φ + Q ≃ 0.8 · 0.0909 · 0.8 + 4 ≃ 4.0582
+
+                                                         7
+
+   Subsequently, for k = 1, we get:
+
+                  K1 = P1− H(HP1− H + R)−1 = 4.0582 · 1(1 · 4.0582 · 1 + 0.1)−1 ≃ 0.9760
+                   x̂1 = x̂−                −
+                           1 + K1 (z1 − H x̂1 ) ≃ 1.5273 + 0.9760(2.4 − 1 · 1.5273) ≃ 2.3790
+                   P1 = (I − K1 H)P1− (I − K1 H) + K1 RK1
+                      ≃ (1 − 0.9760 · 1)4.0582(1 − 0.9760 · 1) + 0.9760 · 0.1 · 0.9760 ≃ 0.0976
+                  x̂−
+                    2 = Φx̂1 ≃ 0.8 · 2.3790 ≃ 1.5097
+                    −
+                  P2 = ΦP1 Φ + Q ≃ 0.8 · 0.0976 · 0.8 + 4 ≃ 4.0625
+
+   Finally, for k = 2, we obtain:
+
+                   K2 = P2− H(HP2− H + R)−1 = 4.0625 · 1(1 · 4.0625 · 1 + 0.1)−1 ≃ 0.9760
+                    x̂2 = x̂−                −
+                            2 + K2 (z2 − H x̂2 ) ≃ 1.5097 + 0.9760(1.5 − 1 · 1.5097) ≃ 1.5097
+
+   To summarize, we have obtained:
+
+                                    x̂0 ≃ 1.9091,     x̂1 ≃ 2.3790,        x̂2 ≃ 1.5097
+
+b) The system can be written in the following form:
+
+                                                 xk+1 = f (xk ) + wk
+                                                     zk = h(xk ) + vk
+
+   with f (xk ) = 0.1x3k + 0.7xk and h(xk ) = xk . For the extended Kalman filter, the same equations as for
+   the Kalman filter are used. To obtain Φk and Hk , the functions f and h are linearized about the points
+   x̂k and x̂−
+             k , respectively. The extended Kalman filter estimates x̂0 , x̂1 , x̂2 are obtained by repeating the
+   following steps:
+
+   Step 1: Compute the Kalman gain
+
+                                                    dh
+                                          Hk =
+                                                    dxk xk =x̂−
+                                                               k
+
+                                          Kk = Pk− Hk (Hk Pk− Hk + R)−1
+
+   Step 2: Update the estimate
+                                           x̂k = x̂−                −
+                                                   k + Kk (zk − h(x̂k ))
+
+   Step 3: Update the error covariance
+
+                                    Pk = (I − Kk Hk )Pk− (I − Kk Hk ) + Kk RKk
+
+   Step 4: Project ahead to k + 1
+                                                              df
+                                                    Φk =
+                                                             dxk xk =x̂k
+                                               x̂−
+                                                 k+1 = f (x̂k )
+                                                −
+                                               Pk+1 = Φk Pk Φk + Q
+
+                                                         8
+
+For k = 0, we obtain:
+
+                         dh
+                 H0 =                =1
+                         dxk xk =x̂−
+                                     0
+
+                 K0 = P0− H0 (H0 P0− H0 + R)−1 = 1 · 1(1 · 1 · 1 + 0.1)−1 ≃ 0.9091
+                  x̂0 = x̂−                −
+                          0 + K0 (z0 − h(x̂0 )) ≃ 1 + 0.9091(2 − 1) = 1.9091
+                  P0 = (I − K0 H0 )P0− (I − K0 H0 ) + K0 RK0
+                      ≃ (1 − 0.9091 · 1)1(1 − 0.9091 · 1) + 0.9091 · 0.1 · 0.9091 ≃ 0.0909
+                          df
+                  Φ0 =               ≃ 0.3 · 1.90912 + 0.7 ≃ 1.7934
+                         dxk xk =x̂0
+                  x̂−                          3
+                    1 = f (x̂0 ) ≃ 0.1 · 1.9091 + 0.7 · 1.9091 ≃ 2.0322
+                 P1− = Φ0 P0 Φ0 + Q ≃ 1.7934 · 0.0909 · 1.7934 + 4 ≃ 4.2924
+
+Subsequently, for k = 1, we get:
+
+                      dh
+              H1 =                =1
+                      dxk xk =x̂−
+                                 1
+
+              K1 = P1− H1 (H1 P1− H1 + R)−1 = 4.2924 · 1(1 · 4.2924 · 1 + 0.1)−1 ≃ 0.9772
+              x̂1 = x̂−                −
+                      1 + K1 (z1 − h(x̂1 )) ≃ 3.4237 + 0.9772(2.4 − 2.0322) = 2.3916
+              P1 = (I − K1 H1 )P1− (I − K1 H1 ) + K1 RK1
+                  ≃ (1 − 0.9772 · 1)4.2924(1 − 0.9772 · 1) + 0.9772 · 0.1 · 0.9772 ≃ 0.0977
+                       df
+               Φ1 =               ≃ 0.3 · 2.42332 + 0.7 ≃ 2.4617
+                      dxk xk =x̂1
+               x̂−                          3
+                 2 = f (x̂1 ) ≃ 0.1 · 2.3916 + 0.7 · 2.3916 ≃ 3.0421
+              P2− = Φ1 P1 Φ1 + Q ≃ 2.4617 · 0.0977 · 2.4617 + 4 ≃ 4.5922
+
+Finally, for k = 2, we obtain:
+
+                      dh
+              H2 =                =1
+                      dxk xk =x̂−
+                                 2
+
+              K2 = P2− H2 (H2 P2− H2 + R)−1 = 4.5922 · 1(1 · 4.5922 · 1 + 0.1)−1 ≃ 0.9787
+               x̂2 = x̂−                −
+                       2 + K2 (z2 − h(x̂2 )) ≃ 5.9655 + 0.9787(1.5 − 3.0421) = 1.5330
+
+To summarize, we have obtained:
+
+                                 x̂0 ≃ 1.9091,   x̂1 ≃ 2.3916,   x̂2 ≃ 1.5330
+
+                                                   9

@@ -1,0 +1,1130 @@
+# Eksamen 2015 – TTK4115 Lineær systemteori
+
+Tekst hentet automatisk fra PDF. Matriser og brøker kan stå rotete over flere linjer.
+
+## Oppgavetekst
+
+Side 1 av 10
+        Norges teknisk- naturvitenskapelige universitet
+        Institutt for teknisk kybernetikk
+
+Faglig kontakt / contact person:
+Navn: Kristoffer Gryte
+Tlf.: 90070564
+
+ Eksamen - TTK 4115 Lineær systemteori
+   Exam - TTK 4115 Linear systems
+               theory
+
+                   16. desember 2015, 09:00 – 13:00
+Hjelpemidler: D - Ingen trykte eller håndskrevne hjelpemidler tillatt. Bestemt, enkel
+kalkulator tillatt.
+Supporting materials: D - No printed or handwritten material allowed. Specific,
+simple calculator allowed.
+
+Merk at ingen deloppgave avhenger av at du har greid å løse noen av de andre
+deloppgavene. Oppgitt informasjon fra tidligere deloppgaver skal være tilstrekkelig
+for å komme videre.
+Note that no parts of this problem assume that you have solved any of the previous
+parts. The given information from previous parts should be sufficient to move on.
+
+                                                                         Side 2 av 10
+
+  Oppgave 1 (8 %)
+   Forklar følgende begreper:
+   Explain the following concepts:
+   a) (4%)
+   Eksakt diskretisering.
+   Exact discretization.
+   b) (4%)
+   Realisering.
+   Realization.
+
+Oppgave 2 (21 %)
+   Gitt systemet:
+   Given the system
+
+                              1   2                   1
+                      ẋ =                   x+               u,   b∈R
+                             −3 −6                    b
+
+                      y =    1 1 x
+
+   a) (9%)
+   Transformer systemet til Jordanform:
+   Transform the system to Jordan form:
+
+                                     x̂˙ = Jx̂ + B̂u
+                                     y = Ĉx̂
+
+   b) (4%)
+   Hvilke av disse egenskapene innehar systemet? Forklar dine valg.
+   Which of these properties does the system possess? Explain your choice.
+
+   A Marginalt stabilt, Marginally stable
+   B Ustabilt, Unstable
+   C Asymptotisk stabilt, Asymptotically stable
+
+   c) (2%)
+   Er systemet observerbart?
+   Is the system observable?
+
+                                                                          Side 3 av 10
+
+   d) (6%)
+   Bestemme for hvilke verdier av b ∈ R systemet er: (Forklar dine valg)
+   Determine for which values of b ∈ R the system is: (Explain your choice)
+
+   1) styrbart, controllable
+   2) BIBO stabilt, BIBO stable
+
+Oppgave 3 (14 %)
+   Lyapunovs ligning er:
+   The Lyapunov equation is:
+
+                                  AT M + MA = −N
+
+   a) (14%)
+   Bruk Lyapunovs ligning til å vise at systemet nedenfor er asymptotisk stabilt.
+   Use the Lyapunov equation to show that the system below is asymptotically
+   stable.
+                                                          
+                                              −1 −2      0
+                      ẋ = Ax, A =  2 −4                0 
+                                               0    0 −1
+
+   Hint: Bruk en diagonal N (en mulighet er N = I)
+   Hint: Use a diagonal N (one possible choice is N = I)
+   Hint 2: Se etter en symmetrisk løsning M med samme blokkdiagonale struktur
+   som A
+   Hint 2: Look for a symmetric solution M with the same block-diagonal struc-
+   ture as A
+
+  Oppgave 4 (18 %)
+   Gitt følgende system
+   Consider the system
+
+                                          1 1                1
+                               ẋ =                 x+               u,
+                                          0 3                1
+
+                               y =        1 0       x
+
+                                                                      Side 4 av 10
+
+ a) (2%)
+ Sjekk om systemet er styrbart og observerbart
+ Check controllability and observability
+ b) (16%)
+ Gitt observeren
+ Given the observer
+                            x̂˙ = Ax̂ + Bu + L(y − Cx̂)
+ og tilbakekoblingen
+ and the feedback control
+                                    u = −Kx̂,
+ bestem forsterkningsmatrisene K, L slik at
+ determine the gains K, L such that
+
+ A) egenverdiene til lukket-sløyfe matrisen A − BK er λ1 = −1, λ2 = −2,
+     the eigenvalues of the closed-loop matrix A − BK are λ1 = −1, λ2 = −2,
+ B) egenverdien til feiltilstandssystemmatrisen A − LC er µ1 = −3, µ2 = −5.
+     the eigenvalues of the error system matrix A − LC are µ1 = −3, µ2 = −5.
+
+Oppgave 5 (17 %)
+ Spektraltetthetsfunksjonen til en stasjonær stokastisk prosess x (t) er gitt ved:
+ The spectral density function of a stationary random process x (t) is given by:
+                                               4
+                             Sx (jω) =
+                                         ω 4 + 5ω 2 + 4
+
+ a) (2%)
+ Vis at polene til Sx (s) er plassert i ±1 og ±2.
+ Show that the poles of Sx (s) are placed in ±1 and ±2.
+
+ b) (2%)
+ x (t) kan representeres som filtrert hvitstøy hvor spektraltettheten til hvitstøyen
+ på inngangen er Sv (jω) = 1.Finn transferfunksjonen G (s) til dette filteret.
+ x (t) can be represented as filtered white noise where the spectral density of the
+ white input noise is Sv (jω) = 1. Find the transfer function G (s) of this filter.
+
+                                                                     Side 5 av 10
+
+ c) (13%)
+ Gitt transferfunksjonen:
+ Given the transfer function:
+                         x (s)                  2
+                               = G (s) =
+                         v (s)           (s + 1) (s + 2)
+
+ La v (t) være en hvitstøyprosess med spektraltetthet Sv (jω) = 1 = Q̃. Finn
+ differensiallikninga som beskriver utviklinga av variansen til x (t) og finn sta-
+ sjonærverdien til variansen for x (t).
+ Let v (t) be a white noise process with spectral density Sv (jω) = 1 = Q̃.
+ Find the differential equation which describe the variance of x (t) and find the
+ stationary value of the variance of x (t).
+
+Oppgave 6 (22 %)
+ a) (2%)
+ Skriv opp likningene for systemet det diskrete kalmanfilteret er en optimalt
+ estimator for, og forklar hvilke antagelser som er gjort for støyen. Husk at
+ ligningene for det diskrete kalmanfilteret er oppgitt i vedlegget.
+ Write the system equations for which the discrete Kalman filter is an optimal
+ estimator and state which assumptions are made on the noise. Remember that
+ discrete Kalman Filter equations are given in Appendix.
+
+ b) (2%)
+ Skriv opp likningene for systemet det kontinuerlige kalmanfilteret er en opti-
+ malt estimator for, og forklar hvilke antagelser som er gjort for støyen. Husk
+ at ligningene for kalmanfilteret er oppgitt i vedlegget.
+ Write the system equations for which the continuous Kalman filter is an opti-
+ mal estimator and state which assumptions are made on the noise. Remember
+ that Kalman Filter equations are given in Appendix.
+
+ I resten av oppgaven vil kovariansmatrisen til støyen være gitt av R (diskret
+ system) og R̃ (tidskontinuerlig system).
+ For the remainder of this problem, the covariance matrix of the noise will be
+ denoted by R (discrete-time case) and R̃ (continuous-time case).
+
+                                                                   Side 6 av 10
+
+c) (4%)
+Gitt målingene
+Given the measurements
+
+                        zk = x + wk ;     wk ∼ N (0, R)
+
+av den ukjent konstanten x så kan vi beregne et estimatet ved
+of the unknown constant x. The estimate is then given by
+                                            k
+                                         1X
+                                 x̂k =         zi
+                                         k i=1
+
+Utled en tilsvarende rekursiv form av denne likninga som den vi har for det dis-
+krete kalmanfilteret (med likningene splittet i tidsoppdatering og måleoppdatering),
+dvs finn likningene for beregning av x̂k og Kk . Vis at estimatet kan skrives
+som ligning (1).
+
+Derive a comparable recursive equation to the discrete Kalman filter equa-
+tions (time and measurement update equations), i.e derive the equations for
+calculating x̂k and Kk . Show that the estimate can be expressed as Eq. (1).
+
+                                          1
+                          x̂k = x̂k−1 +     (zk − x̂k−1 )                    (1)
+                                          k
+d) (8%)
+Gitt systemet
+Given the system
+
+                     xk+1 = xk ;        x0 ∼ N x̂0 , P̂0
+                        zk = xk + wk ;          wk ∼ N (0, R)
+
+Finn formlene for P̂k og Kk fra likningene for det diskrete kalmanfilteret. Sam-
+menlikn kalmanfilterforsterkninga funnet i (6.d) med forsterkninga i ligning
+(1), og kommenter.
+
+Derive the formulas for P̂k and Kk from the discrete Kalman filter equations.
+Compare the Kalman filter gain found in (6.d) and the one given in Eq. (1),
+and give a comment.
+
+                                                                    Side 7 av 10
+
+e) (6%)
+Gitt systemet
+Given the system
+
+                     ẋ = 0;    x (0) ∼ N x̂ (0) , P̂ (0)
+
+                   z (t) = x (t) + w (t) ; w (t) ∼ N 0, R̃
+
+Skriv opp differentiallikninga for P̂ (t) og løs den. Finn K (t)
+Find the differential equation for P̂ (t) and solve it and calculate K (t) .
+
+                                                                      Side 8 av 10
+
+Vedlegg til eksamen (noen nyttige formler og uttrykk):
+Appendix to the exam (some useful formulas and expressions):
+Solutions:
+                                         Z t
+                                At
+                     x(t) = e x(0) +         eA(t−τ ) Bu(τ )dτ
+                                             0
+                                           k−1
+                                           X
+                        x[k] = Ak x[0] +         Ak−1−m Bu[m]
+                                           m=0
+
+Controllability/Observability:
+                         C = [B, AB, A2 B, · · · , An−1 B]
+                                        
+                                 C
+                              CA 
+                                        
+                                      2 
+                         O =  CA 
+                             
+                                 ..     
+                                  .     
+                                     n−1
+                               CA
+
+Realization:
+        G(s) = C(sI − A)−1 B + D
+        G(s) = G(∞) + Gsp (s)
+         d(s) = sr + α1 sr−1 + · · · + αr−1 s + αr
+                    1
+       Gsp (s) =       [N1 sr−1 + N2 sr−2 + · · · + Nr−1 s + Nr ]
+                  d(s)
+                                                                     
+                     −α1 Ip −α2 Ip · · · −αr−1 Ip −αr Ip             Ip
+                   Ip
+                               0     ···       0         0  
+                                                                    0 
+                                                                       
+                   0
+             ẋ =              I  p  ·  · ·    0         0   x + 
+                                                                   0  u
+                                                                        
+                       ..       ..    . .       ..       ..       .. 
+                        .        .        .      .        .       . 
+                        0       0     ···       Ip        0          0
+               y = [ N1 N2 · · ·      Nr−1 Nr ]x + G(∞)u
+LQR:
+          Z ∞
+ JLQR =         xT (t)Qx(t) + uT (t)Ru(t) dt
+           0
+                         AT P + PA + Q − PBR−1 BT P = 0
+                                                            u(t) = −R−1 BT Px(t)
+
+                                                                         Side 9 av 10
+
+Lyapunov equation:
+                                AT M + MA = −N
+Discrete-time Kalman filter:
+
+      x̄k+1 = Φx̂k ;       x̂0 given;
+      P̄k+1 = ΦP̂k Φ + ΓQΓT ; P̂0 given
+                       T
+
+         x̂k = x̄k + Kk (z k − H x̄k )
+         P̂k = (I − Kk H) P̄k (I − Kk H)T + Kk RKkT = (I − Kk H) P̄k
+                                       −1
+        Kk = P̄k H T H P̄k H T + R
+
+Continuous-time Kalman filter:
+
+ x̂˙ (t) = F x̂ (t) + K (t) (z (t) − H x̂ (t)) ; x̂ (t0 ) given
+ ˙
+P̂ (t) = F P̂ (t) + P̂ (t) F T + GQ̃GT − P̂ (t) H T R̃−1 H P̂ (t) ;   P̂ (t0 ) given
+K (t) = P̂ (t) H T R̃−1
+
+Auto-correlation:
+
+    RX (τ ) = E[X(t)X(t + τ )] (Stationary process)
+ RX (t1 , t2 ) = E[X(t1 )X(t2 )] (Non-stationary process)
+      Y (s) = G(s)U (s) ⇒
+                                   Z t2 Z t1
+ Ry (t1 , t2 ) = E[y(t1 )y(t2 )] =           g(ξ)g(η)E [u(t1 − ξ)u(t2 − η)] dξdη
+                                        0   0
+
+                                                   Side 10 av 10
+
+Laplace transform pairs:
+
+                           f (t)   ⇐⇒   F (s)
+
+                           δ(t)    ⇐⇒   1
+                                        1
+                             1     ⇐⇒
+                                        s
+                                           1
+                       e−at        ⇐⇒
+                                        s+a
+                                        1
+                              t    ⇐⇒
+                                        s2
+                                        2
+                             t2    ⇐⇒
+                                        s3
+                                             1
+                       te−at       ⇐⇒
+                                        (s + a)2
+                                            ω
+                      sin ωt       ⇐⇒
+                                        s2 + ω 2
+                                            s
+                      cos ωt       ⇐⇒
+                                        s + ω2
+                                         2
+
+## Løsningsforslag
+
+Side 1 av 17
+        Norges teknisk- naturvitenskapelige universitet
+        Institutt for teknisk kybernetikk
+
+Faglig kontakt / contact person:
+Navn: Andrea Cristofaro
+Tlf.: 73590244
+
+   Solution - TTK 4115 Linear systems
+                 theory
+
+                    16. desember 2015, 09:00 – 13:00
+
+   Oppgave 1 (8 %)
+     Forklar følgende begreper:
+     Explain the following concepts:
+     a) (4%)
+     Eksakt diskretisering.
+     Exact discretization.
+     b) (4%)
+     Realisering.
+     Realization.
+
+Solution
+
+    a) Observability is a structural property of systems that refers to the ability of
+reconstructing the initial state of a system x(t0 ) from the knowledge of inputs u(t)
+and outputs y(t) for t ≥ t0 . It corresponds to a geometric relationship between the
+system matrices (A, C), and it is a fundamental requirement for the design of state
+estimators.
+
+b) Discretization refers to the process of transforming a continuous-time system,
+described by differential equations, into a discrete-time system, described by diffe-
+rence equations. This is is typically done in the presence of sampled measurements
+
+                                                                           Side 2 av 17
+
+and digital controllers. Among several discretization methods, exact discretization
+is one of the most accurate and it consists in computing the general solution of the
+continuous-time system and then evaluating the exponential matrix and the convo-
+lution integral at the fixed sampling time T > 0 (under the assumption that inputs
+are constant on each sampling interval). The adjective “exact” is motivated by the
+fact the solution of the discretized system coincides with the one of the original
+continuous-time system at any time step tk = kT, k ≥ 0.
+
+c) Given a rational and proper matrix function Ĝ(s), a realization is any state-space
+model (A, B, C, D) such that Ĝ(s) is the corresponding transfer matrix, i.e.
+
+                             Ĝ(s) = C(sI − A)−1 B + D
+
+A realization is said to be minimal if its state has the least achievable dimension; in
+particular, this corresponds to the requirement that state-space model (A, B, C, D)
+is both controllable and observable.
+Oppgave 2 (21 %)
+     Gitt systemet:
+     Given the system
+
+                                1   2                   1
+                        ẋ =                   x+               u,   b∈R
+                               −3 −6                    b
+
+                        y =    1 1 x
+
+     a) (9%)
+     Transformer systemet til Jordanform:
+     Transform the system to Jordan form:
+
+                                      x̂˙ = Jx̂ + B̂u
+                                      y = Ĉx̂
+
+     b) (4%)
+     Hvilke av disse egenskapene innehar systemet? Forklar dine valg.
+     Which of these properties does the system possess? Explain your choice.
+
+     A Marginalt stabilt, Marginally stable
+     B Ustabilt, Unstable
+     C Asymptotisk stabilt, Asymptotically stable
+
+                                                                            Side 3 av 17
+
+      c) (2%)
+      Er systemet observerbart?
+      Is the system observable?
+      d) (6%)
+      Bestemme for hvilke verdier av b ∈ R systemet er: (Forklar dine valg)
+      Determine for which values of b ∈ R the system is: (Explain your choice)
+
+      1) styrbart, controllable
+      2) BIBO stabilt, BIBO stable
+
+   Solution
+
+a) The Jordan form of the system can be derived by means of a transformation
+matrix T such that
+
+                        J = T−1 AT,     B̂ = T−1 B,          Ĉ = CT
+
+Compute the characteristic polynomial of A:
+
+        pA (λ) = det(A − λI) = (1 − λ)(−6 − λ) + 6 = λ2 + 5λ = λ(λ + 5).
+
+We can easy compute the eigenvalues λ1 = 0 and λ2 = −5.
+To obtain the desired transformation matrix, we first need to compute the eigen-
+vectors v1 = [v1,1 v2,1 ]T and v2 = [v1,2 v2,2 ]T . The first eigenvector must satisfy the
+identity
+                                                     v1,1 + 2v2,1 = 0
+                   (A − 0I)v1 = 0 ⇔
+                                                   −3v1,1 − 6v2,1 = 0
+which gives
+                                                −2
+                                     v1 =                .
+                                                 1
+The second eigenvector must satisfy the identity
+
+                                                6v1,2 + 2v2,2 = 0
+               (A − (−5)I)v2 = 0 ⇔
+                                              −3v1,2 − 1v2,2 = 0
+
+which gives
+                                                −1
+                                     v2 =                .
+                                                 3
+
+                                                                                              Side 4 av 17
+
+Now one has
+
+                     t11 t12                          v1,1 v1,2               −2 −1
+            T=                     = [v1 v2 ] =                       =                   ,
+                     t21 t22                          v2,1 v2,2                1  3
+
+with
+                                                     3     1 
+                                                             
+                           1
+                                                       −        −
+                                   t22 −t12
+                 T−1 =                        = 5         5 
+                                                
+                         det T −t21     t11          1     2
+                                                             
+                                                     5     5
+The system matrices in the Jordan form are then readily obtained:
+                                               3 b 
+                                            − −
+                         0  0
+                J=                     B̂ =  5 5                Ĉ = [−1 2].
+                                                    
+                         0 −5                  1 2b
+                                                 +
+                                               5   5
+b) As found in the previous point, the eigenvalues of the system are λ1 = 0, λ2 = −5:
+since only one of them has strictly negative real part, the system turns out to be
+not asymptotically stable. However, as the Jordan block associated to the zero ei-
+genvalue λ1 is of dimension 1 × 1, the system is marginally stable. Hence, the correct
+answer is A.
+
+c) The observability matrix of the system is
+
+                                   C          1  1
+                          O=             =           ,
+                                  CA         −2 −4
+
+and hence det O = −2 6= 0 this proving system observability.
+
+d1) Compute the controllability matrix
+
+                                                      1  1 + 2b
+                           C = [B AB] =
+                                                      b −3 − 6b
+
+In order to check controllability, we look at the values of b such that det C = 0:
+
+                               det C = −2b2 − 7b − 3 = 0
+
+                                                  ⇓
+                               √
+                          7±       49 − 24
+                     b=                    ⇒ b1 = −3, b2 = −1/2.
+                                   −2
+
+                                                                        Side 5 av 17
+
+In conclusion, the system is controllable for any b ∈ R with b 6= −3, b 6= −1/2.
+
+d2) To investigate BIBO stability we need to check the poles of the transfer function
+of the system:
+                    ĝ(s) = C(sI − A)−1 B
+
+                                     6+s            2
+                                                        
+                                   5s + s2      5s + s2 
+                                                          1
+                          = [1 1] 
+                                  
+                                                            b
+                                                         
+                                   −3           −1 + s 
+                                    5s + s2      5s + s2
+
+                              3 + b + s(1 + b)   n(s)
+                          =              2
+                                               =
+                                  5s + s         d(s)
+The poles are p1 = 0, p2 = −5: in order to achieve BIBO stability, we need to cancel
+out the zero pole p1 , and hence we must require s to be a factor of the numerator
+n(s):
+                                           b = −3
+                         n(s) = s · c0 ⇒
+                                           c0 = 1 + b = −2
+With this choice, the transfer function becomes
+                                               −2
+                                    ĝ(s) =       .
+                                              5+s
+In conclusion, the system is BIBO stable only for b = −3.
+
+Oppgave 3 (14 %)
+     Lyapunovs ligning er:
+     The Lyapunov equation is:
+
+                                   AT M + MA = −N
+
+     a) (14%)
+     Bruk Lyapunovs ligning til å vise at systemet nedenfor er asymptotisk stabilt.
+     Use the Lyapunov equation to show that the system below is asymptotically
+     stable.
+                                                            
+                                                −1 −2      0
+                        ẋ = Ax, A =  2 −4                0 
+                                                 0    0 −1
+
+     Hint: Use a diagonal N (one possible choice is N = I)
+
+                                                                              Side 6 av 17
+
+Solution
+Two different methods can be used.
+♠ First method. Set N = I. We first note that the matrix A is block diagonal,
+and hence we can restrict to consider a block diagonal M matrix
+                                                   
+                                     m11 m12      0
+                             M =  m12 m22        0 
+                                        0    0 p33
+
+The corresponding Lyapunov reads as
+                                                            
+       −2m11 + 4m12      −2m11 − 5m12 + 2m22  0        −1 0  0
+  −2m11 − 5m12 + 2m22       −4m12 − 8m22     0  =  0 −1   0 
+             0                      0        −2p33      0 0 −1
+
+and we see immediately that m33 = 1/2. We have to solve the equations
+
+                              −2m11 + 4m12 = −1
+                              −2m11 − 5m12 + 2m22 = 0
+                              −4m12 − 8m22 = −1
+
+and verify that the solutions fulfill the positive definiteness constraints
+
+                            m11 > 0,    m11 m22 − m212 > 0.
+
+Using Gauss elimination method, the system can be rewritten in the equivalent
+triangular form
+                         −2m11 − 5m12 + 2m22 = 0
+                               −4m12 − 8m22 = −1
+                                        20m22 = 13
+                                                4
+
+and hence one gets
+                                 7                3             13
+                        m11 =      ,   m12 = −      ,   m22 =      .
+                                20               40             80
+          7
+Now m11 = 20 > 0 and
+                                                    41
+                              m11 m22 − m212 =         > 0,
+                                                   800
+that also implies
+                          det M = (m11 m22 − m212 )m33 > 0.
+
+                                                                           Side 7 av 17
+
+In conclusion, we have shown that the matrix
+                                      7      3
+                                                 
+                                  20 − 40 0 
+                                                 
+                                                 
+                                     3     13    
+                            M=     −
+                                  40           0 
+                                           80    
+                                                  
+                                                 
+                                               1 
+                                       0      0
+                                                2
+is positive definite and since by construction it satisfies the Lyapunov equation with
+a positive definite N, the asymptotic stability of the system has been proved.
+
+♣ Second method. Set                        
+                                     n1 0 0
+                                N =  0 n2 0 
+                                      0 0 n3
+with n` , ` = 1, 2, 3 to be specified. Accordingly, select a diagonal M
+                                                       
+                                         m1    0     0
+                                M =  0 m2           0 
+                                           0   0 m3
+
+and compute the corresponding Lyapunov equation
+                                                         
+             −2m1       −2m1 + 2m2     0        −n1   0   0
+        −2m1 + 2m2        −8m2        0 =      0 −n2   0 .
+               0             0       −2m3         0   0 −n3
+
+From the equation
+                                   −2m1 + 2m2 = 0
+we get m1 = m2 , and as long as we select n2 = 4n1 , any possible choice of coefficients
+m1 = m2 > 0 with m3 = n3 /2 will work well. The simplest choice is for instance
+n1 = 2nq2 = 8, n3 = 2, which leads to the positive definite diagonal matrix
+                                                
+                                         1 0 0
+                                M =  0 1 0 .
+                                         0 0 1
+
+                                                                                    Side 8 av 17
+
+   Oppgave 4 (18 %)
+     Gitt følgende system
+     Consider the system
+
+                                                   1 1                 1
+                               ẋ =                           x+               u,
+                                                   0 3                 1
+
+                               y =                 1 0       x
+
+     a) (2%)
+     Sjekk om systemet er kontrollerbart og styrbart
+     Check controllability and observability
+     b) (16%)
+     Gitt observeren
+     Given the observer
+                                   x̂˙ = Ax̂ + Bu + L(y − Cx̂)
+     og tilbakekoblingen
+     and the dynamic feedback control
+                                                   u = −Kx̂,
+     bestem forsterkningsmatrisene K, L slik at
+     determine the gains K, L such that
+     A) egenverdiene til lukket-sløyfe matrisen A − BK er λ1 = −1, λ2 = −2,
+         the eigenvalues of the closed-loop matrix A − BK are λ1 = −1, λ2 = −2,
+     B) egenverdien til feiltilstandssystemmatrisen A − LC er µ1 = −3, µ2 = −5.
+         the eigenvalues of the error system matrix A − LC are µ1 = −3, µ2 = −5.
+
+Solution
+
+a) We compute controllability and observability matrices and check that they have
+full-rank
+                                   1 2
+                 C = [B AB] =              ⇒ det C = 1 6= 0
+                                   1 3
+
+                               C               1 0
+                   O=                  =                      ⇒ det O = 1 6= 0
+                              CA               1 1
+b) The system is controllable and observable, and thanks to the separation principle
+the eigenvalues of the closed-loop system and the eigenvalues of the estimation error
+
+                                                                        Side 9 av 17
+
+system can be assigned independently. The desired characteristic polynomials for
+the two subsystems are
+                   p†A−BK (λ) = (λ − λ1 )(λ − λ2 ) = λ2 + 3λ + 2
+
+                   p†A−LC (λ) = (λ − µ1 )(λ − µ2 ) = λ2 + 8λ + 15
+Set K = [k1 k2 ] and compute the characteristic polynomial
+
+                                                  1 − k1 − λ   1 − k2
+       pA−BK (λ) = det(A − BK − λI) = det
+                                                     −k1     3 − k2 − λ
+
+                       = λ2 + (k1 + k2 − 4)λ − 2k1 − k2 + 3
+Imposing the equality
+                                pA−BK (λ) = p†A−BK (λ)
+yields the equations
+                                     k1 + k2 − 4 = 3
+                                   −2k1 − k2 + 3 = 2
+We obtain the coefficients k1 = −6, k2 = 13.
+Set L = [l1 l2 ]T and compute the characteristic polynomial
+
+                                                     1 − l1 − λ  1
+            pA−LC (λ) = det(A − LC − λI) = det
+                                                        −l2     3−λ
+
+                         = λ2 + (l1 − 4)λ − 3l1 + l2 + 3
+Imposing the equality
+                                 pA−LC (λ) = p†A−LC (λ)
+yields the equations
+                                            l1 − 4 = 8
+                                   −3l1 + l2 + 3 = 15
+We obtain the coefficients l1 = 12,    l2 = 48.
+
+   Oppgave 5 (17%)
+
+   a-b) (4%)
+   Spektraltetthetsfunksjonen til en stasjonær stokastisk prosess x (t) er gitt ved:
+   The spectral density function of a stationary random process x (t) is given by:
+                                                  4
+                                Sx (jω) =
+                                            ω 4 + 5ω 2 + 4
+
+                                                                         Side 10 av 17
+
+   Dette gir Sx (s) polene ±1 og ±2, vis dette.
+   This gives Sx (s) the poles ±1 and ±2, show this.
+   5
+Solution
+                                   4                         4
+           Sx (s) =                                 = 2
+                    (s + 1) (s − 1) (s + 2) (s − 2)   (s − 1) (s2 − 4)
+                          4                    4                  4
+                  = 4       2
+                                  =       4         2    = 4
+                    s − 5s + 4       (jω) − 5 (jω) + 4     ω + 5ω 2 + 4
+
+because
+                                   j 2 = −1;   j4 = 1
+     4
+     x (t) kan representeres som filtrert hvitstøy hvor spektraltettheten til hvitstøyen
+på inngangen er Sv (jω) = 1.Finn transferfunksjonen G (s) til dette filteret.
+     x (t) can be represented as filtered white noise where the spectral density of the
+white input noise is Sv (jω) = 1. Find the transfer function G (s) of this filter.
+     5
+Solution
+     From L9-S24 Shaping filter: If we can use spectral factorization on a given PSD,
+Sx (jω) , the part with poles and zeroes in the left half-plane, G (jω) , is the shaping
+filter for unit white noise, because
+
+                            Sx (jω) = G (jω) G (−jω) · 1
+
+   Here:
+                                         2             2
+                        G (s) =                   = 2
+                                  (s + 1) (s + 2)  s + 3s + 2
+   4
+   c) (13%)
+   Gitt transferfunksjonen:
+   Given the transfer function:
+                           x (s)                  2
+                                 = G (s) =
+                           v (s)           (s + 1) (s + 2)
+
+La v (t) være en hvitstøyprosess med spektraltetthet Sv (jω) = 1 = Q̃. Finn differen-
+siallikninga som beskriver utviklinga av variansen til x (t) og finn stasjonærverdien
+til variansen for x (t).
+    Let v (t) be a white noise process with spectral density Sv (jω) = 1 = Q̃. Find
+the differential equation which describe the variance of x (t) and find the stationary
+value of the variance of x (t).
+
+                                                                                    Side 11 av 17
+
+   5
+Solution
+                                             x (s)         2
+                                                   = 2
+                                             v (s)   s + 3s + 2
+                         2
+                        s x (s) + 3sx (s) + 2x (s) = 2v (s)
+
+This is equal to
+                             ẍ (t) + 3ẋ (t) + 2x (t) = 2v (t)
+in the time domain. Choosing x1 (t) = x (t) and x2 (t) = ẋ (t) we get the state space
+model
+
+                                ẋ1 = x2
+                                ẋ2 = −2x1 − 3x2 + 2v
+
+On vector form:
+                                      0    1        0
+                              ẋ =             x+        v
+                                     −2 −3          2
+                                   |    {z   }    | {z }
+                                           F                    G
+
+The covariance equation for this system is
+
+                           Ṗ = F P + P F T + GQ̃GT ;               P (t0 )
+
+where the variance of x (t) is element (1, 1) in the matrix P (t) . The initial covariance
+matrix P (t0 ) must be given in order to find the transient solution, but is not requisite
+for the stationary solution.
+    The stationary solution to this equation when Q̃ = 1 is given by
+
+                                                                          Ṗ (∞) = 0
+
+           0  1                            0 −2                 0                  0 0
+                       P (∞) + P (∞)                    +                 0 2    =
+           −2 −3                           1 −3                 2                    0 0
+
+   Defining (P is symmetric)
+
+                                                   p11 p12
+                                 P (∞) =
+                                                   p12 p22
+
+we get the component equations
+
+       p12          p22            p12 −2p11 − 3p12       0 0        0 0
+                               +                     +           =
+  −2p11 − 3p12 −2p12 − 3p22        p22 −2p12 − 3p22       0 4        0 0
+
+                                2p12        −2p11 − 3p12 + p22       0 0
+                                                                 =
+                         −2p11 − 3p12 + p22   −4p12 − 6p22           0 −4
+
+                                                                       Side 12 av 17
+
+   and the stationary solutions are
+
+                                    p12 = 0
+                                          4     2
+                                    p22 =    =
+                                          6     3
+                                          1       1
+                                    p11 =   p22 =
+                                          2       3
+The stationary variance of x (t) is therefor 13 .
+  4
+
+   Oppgave 6 (22%)
+
+    a) (2%)
+    Skriv opp likningene for systemet det diskrete kalmanfilteret er en optimalt es-
+timator for.
+    Write the system equations for which the discrete Kalman filter is an optimal
+estimator.
+    5
+Solution
+
+                    xk+1 = Φk xk + Λk uk + Γk v k
+                    z k = Hk xk + wk
+                                      n                        o
+                                                             T
+                    E {x0 } = x̄0   E (x0 − x̄0 ) (x0 − x̄0 ) = P̄0
+
+                    E {v k } = 0    E v k v Tl = δkl Qk
+                    E {wk } = 0     E wk wTl = δkl Rk
+                                    E x0 v Tk = 0
+                                    E x0 wTk = 0
+                                    E v k wTl = 0
+    4
+    b) (2%)
+    Skriv opp likningene for systemet det kontinuerlige kalmanfilteret er en optimalt
+estimator for.
+    Write the system equations for which the continuous Kalman filter is an optimal
+estimator.
+    5
+Solution
+
+                                                                             Side 13 av 17
+
+                 ẋ(t) = F (t)x(t) + L(t)u(t) + G(t)v(t)
+                 z(t) = H(t)x(t) + w(t)
+                                     n                              o
+                 E {x(t0 )} = x̄0 E (x(t0 ) − x̄0 ) (x(t0 ) − x̄0 )T = P̄0
+
+                 E {v(t)} = 0      E v(t)v T (τ ) = δ(t − τ )Q̃(t)
+                 E {w(t)} = 0      E w(t)wT (τ ) = δ(t − τ )R̃(t)
+                                   E x(t0 )v T (t) = 0
+                                   E x(t0 )wT (t) = 0
+                                   E v(t)wT (τ ) = 0
+   4
+   c) (6%)
+   Gitt målingene
+   Given the measurements
+
+                           zk = x + wk ;    wk ∼ N (0, R)                              (1)
+
+av den ukjent konstanten x så kan vi beregne et estimatet ved
+   of the unknown constant x. The estimate is then given by
+                                             k
+                                          1X
+                                    x̂k =       zi                                     (2)
+                                          k i=1
+
+Utled en tilsvarende rekursiv form av denne likninga som den vi har for det diskret
+kalmanfilteret (med likningene splittet i tidsoppdatering og måleoppdatering), dvs
+finn likningne for beregning av x̂k og Kk .
+    Derive a comparable recursive equation to the discrete Kalman filter equations
+(time and measurement update equations), i.e derive the equations for calculating
+x̂k and Kk .
+    5
+Solution
+                      k              k−1                    k−1
+                   1X        1     1X        1     k−1 1 X
+           x̂k =         zi = zk +       zi = zk +              zi
+                   k i=1     k     k i=1     k      k k − 1 i=1
+                                                      |   {z     }
+                                                                   x̂k−1
+                   1      k−1                1
+               =     zk +     x̂k−1 = x̂k−1 + (zk − x̂k−1 )
+                   k       k                 k
+Since the state is a constant we may set
+
+                                   xk+1 = xk = x
+
+                                                                        Side 14 av 17
+
+giving
+                                     x̄k+1 = x̂k
+Defining the gain
+                                            1
+                                      Kk =
+                                            k
+we may write the following recursive equation for estimating xk based on k measure-
+ments:
+
+                            x̄k+1 = x̂k ; x̂0 = 0
+                               x̂k = x̄k + Kk (zk − x̄k )
+                                     1
+                              Kk =
+                                     k
+   4
+   d) (6%)
+   Gitt systemet
+   Given the system
+
+                        xk+1 = xk ;      x0 ∼ N x̂0 , P̂0                         (3)
+                           zk = xk + wk ;     wk ∼ N (0, R)                       (4)
+
+Finn formlene for P̂k og Kk fra likningene for det diskrete kalmanfilteret. Sammenlikn
+kalmanfilterforsterkninga funnet i punktene (6.c) og (6.d) og kommenter.
+   Derive the formulas for P̂k and Kk from the discrete Kalman filter equations.
+Compare the Kalman filter gains found in (6.c) and (6.d) and give a comment.
+   5
+Solution
+   The discrete Kalman filter is
+
+          x̄k+1 = Φx̂k ;    x̂0 given; P̄k+1 = ΦP̂k ΦT + ΓQΓT ;    P̂0 given
+           x̂k = x̄k + Kk (z k − H x̄k ) ; P̂k = (I − Kk H) P̄k
+                                        −1
+           Kk = P̄k H T H P̄k H T + R
+
+   For our scalar system
+
+                            Φ = 1; Γ = 0; Q = 0; H = 1
+
+                                                                                          Side 15 av 17
+
+   giving the equations
+
+           P̄k+1 = P̂k
+                                −1       P̂k−1
+            Kk = P̂k−1 P̂k−1 + R      =
+                                        P̂k−1 + R
+                                 !
+                          P̂k−1                P̂k−1        P̂k−1
+            P̂k =  1−              P̂k−1 =            R=
+                       P̂k−1 + R            P̂k−1 + R    1 + P̂k−1 /R
+            Kk = P̂k /R
+
+Lets solve the rekursion for P̂k
+
+                            P̂0
+              P̂1 =
+                       1 + P̂0 /R
+                            P̂0
+                          1+P̂0 /R                      P̂o                   P̂0
+              P̂2 =                      =                          =
+                       1 + 1+P̂0P̂/R/R        1 + P̂0 /R + P̂0 /R       1 + 2P̂0 /R
+                                  0
+
+                            P̂0
+                          1+2P̂0 /R                         P̂0                 P̂0
+              P̂3 =                       =                             =
+                            P̂0 /R            1 + 2P̂0 /R + P̂0 /R          1 + 3P̂0 /R
+                       1 + 1+2 P̂0 /R
+
+From this sequence we find by induction that
+
+                                                            P̂0
+                                         P̂k =
+                                                   1 + k P̂0 /R
+                                                        P̂0 /R
+                                      Kk =
+                                                   1 + k P̂0 /R
+
+In B.c??? where we had no a priori information we found the gain
+                                                            1
+                                                 Kk =
+                                                            k
+this is the same as we get here when k → ∞. The effect of the a priori information
+diminish due to all the new informations in z1 , z2 , · · · , zk
+
+                             P̂0 /R                1     1
+                  Kk =                       =        R
+                                                        → when k is large
+                          1 + k P̂0 /R           k + P̂  k
+                                                        0
+
+   4
+
+                                                                                Side 16 av 17
+
+   e) (6%)
+   Gitt systemet
+   Given the system
+
+                         ẋ = 0;   x (0) ∼ N x̂ (0) , P̂ (0)                                   (5)
+
+                      z (t) = x (t) + w (t) ; w (t) ∼ N 0, R̃                                  (6)
+
+Skriv opp differentiallikninga for P̂ (t) og løs den. Finn K (t)
+   Find the differential equation for P̂ (t) and solve it and calculate K (t) .
+   5
+Solution
+   The continuous Kalman filter is
+
+     ·
+    x̂ (t) = F x̂ (t) + K (t) (z (t) − H x̂ (t)) ;         x̂ (t0 ) given
+    ·
+   P̂ (t) = F P̂ (t) + P̂ (t) F T + GQ̃GT − P̂ (t) H T R̃−1 H P̂ (t) ;        P̂ (t0 ) given
+   K (t) = P̂ (t) H T R̃−1
+For our scalar system
+                             F = 0; G = 0; Q̃ = 0; H = 1
+giving the differential equation
+                                           ·
+                                         P̂ 2
+                                           P̂ = −
+                                          R̃
+This equation can be solved by the method of separation of variables
+                                       ·
+                                               dP̂        P̂ 2
+                                      P̂ =            =−
+                                                dt         R̃
+                                    dP̂           dt
+                                           =   −
+                                    P̂ 2          R̃
+                           Z P̂ (t)               Z t
+                                    dP̂                dt
+                                          =    −
+                             P̂0     P̂ 2            0 R̃
+                                P̂ (t) 1           t
+                              −|P̂        =    −
+                                   0
+                                       P̂         R̃
+                            1          1           t
+                        −        +        =    −
+                          P̂ (t) P̂0              R̃
+                                     1          1      t
+                                          =          +
+                                 P̂ (t)        P̂0 R̃
+                                                    1              P̂o
+                                   P̂ (t) =     1          =
+                                               P̂0
+                                                   + R̃t       1 + tP̂0 /R̃
+
+                                    Side 17 av 17
+
+That is
+
+                         P̂o
+          P̂ (t) =
+                     1 + tP̂0 /R̃
+                       P̂o /R̃
+          K (t) =
+                     1 + tP̂0 /R̃
+
+   4

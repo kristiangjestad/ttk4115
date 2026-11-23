@@ -1,0 +1,1016 @@
+# Eksamen 2023 – TTK4115 Lineær systemteori
+
+Tekst hentet automatisk fra PDF. Matriser og brøker kan stå rotete over flere linjer.
+
+## Oppgavetekst
+
+Department of Engineering Cybernetics
+
+Examination paper for TTK4115 Linear Systems Theory
+
+Academic contact during examination: Morten O. Alver
+
+Examination date: 19 Dec 2023
+Examination time (from–to): 09:00–13:00
+Permitted examination support material: D: No printed or handwritten material allowed. Specific
+simple calculator allowed.
+
+Other information:
+
+  1. Note that no parts of this exam assume that you have solved any of the previous parts.
+     The given information from previous parts should be sufficient to move on.
+
+  2. You may answer in Norwegian or English. Du kan svare på norsk eller engelsk.
+
+Language: English
+Number of pages: 12
+Number pages enclosed: 4
+
+                                                                                      Checked by:
+
+                                                                Date           Signature
+
+TTK4115 Linear Systems Theory - 19 Dec 2023                                Page 1 of 12
+
+Problem 1 (6 %)
+
+Given the following continuous time system:
+                                    "            #         "       #
+                                        −2 0                   0
+                             ẋ =                    x+                u
+                                        −1 1                   1
+                                             h         i
+                                        y=       0 1       x
+
+Is this system:
+
+a) Not controllable, not observable
+
+b) Controllable, not observable
+
+c) Observable, not controllable
+
+d) Both controllable and observable
+
+e) Need more information to determine
+
+Page 2 of 12                            TTK4115 Linear Systems Theory - 19 Dec 2023
+
+Problem 2 (6 %)
+
+Given the following matrix:                "         #
+                                               2 3
+                                     A=                                               (1)
+                                               1 0
+
+What is the value of the upper left element of the matrix exponential eAt ?
+
+Hint 1: eAt equals the inverse Laplace transform of (sI − A)−1 .
+
+Hint 2: Another approach is to find eAt as β0 I + β1 A, where the β coefficients are found
+by matching the polynomial β0 + λβ1 to eλt for the eigenvalues of A.
+
+a) 3e3t + e−t
+
+b) 32 e−3t + 12 et
+
+c) 41 e3t + 34 et
+
+d) 34 e3t + 14 e−t
+
+e) 3e−3t − et
+
+TTK4115 Linear Systems Theory - 19 Dec 2023                                    Page 3 of 12
+
+Problem 3 (6 %)
+
+Given the following continuous time system :
+                          A               B
+                     z   }|    {    z   }|   {
+                                                               C
+                         −1 0 a        1 0               zh    }|     i{
+                  ẋ =  0 0 2  x +  0 1  u,     y=        1 0 0        x
+                                        
+                         0 0 0         0 0
+
+Is this system:
+
+a) Internally unstable
+
+b) Exponentially stable
+
+c) Marginally stable
+
+d) Stability properties depend on a
+
+Page 4 of 12                           TTK4115 Linear Systems Theory - 19 Dec 2023
+
+Problem 4 (6 %)
+
+For the following system:
+                                 ẋ(t) = 0.5x(t) + u(t)
+with a control law on the form
+
+                                 u(t) = −kx(t) + kr r0
+
+where r0 is a constant reference value, which set of control parameters will ensure the
+fastest convergence of x(t) toward r0 for any initial value of x?
+
+a) k = 2.5 and kr = 3
+
+b) k = 2 and kr = 1.5
+
+c) k = −2 and kr = 1.5
+
+d) k = 3 and kr = 3
+
+e) k = 1.5 and kr = 1
+
+f) k = −1.5 and kr = −2
+
+TTK4115 Linear Systems Theory - 19 Dec 2023                                              Page 5 of 12
+
+Problem 5 (6 %)
+
+Given the continuous time system:
+                           "          #        "       #
+                               1 −1                1                 h         i
+                    ẋ =                  x+               u,   y=       1 0       x
+                               ω 0                 0
+                                                   h            i
+where ω ̸= 0. Using a state feedback u = − k1 k2                    x, which values of k1 and k2 place
+the closed-loop system’s poles in -1 and -0.5?
+
+a) k1 = 2 and k2 = 0.5
+                    ω − 0.5
+
+b) k1 = 2.5 and k2 = 0.5
+                      ω −1
+
+c) k1 = 2.5 and k2 = −0.5
+
+d) k1 = 0.5
+         ω and k2 = 1
+
+e) k1 = − 0.5
+           ω and k2 = 2.5
+
+Page 6 of 12                                 TTK4115 Linear Systems Theory - 19 Dec 2023
+
+Problem 6 (6 %)
+
+Given the two continuous time systems:
+                            "           #        "       #
+                                −1 −1                1                     h         i
+                     ẋ =                   x+               u1 ,   y1 =       1 0       x
+                                 0 −2                0
+                            "           #        "       #
+                                −1 0                 1                     h         i
+                     ż =                   z+               u2 ,   y2 =       0 1       z
+                                 1 −2                0
+
+Are these systems:
+
+a) Unrelated
+
+b) Algebraically equivalent
+
+c) Zero-state equivalent but not algebraically equivalent
+
+d) Dual systems
+
+TTK4115 Linear Systems Theory - 19 Dec 2023                                    Page 7 of 12
+
+Problem 7 (6 %)
+
+                                                                                         2
+                                                                                      k
+You need to model a noise process that has the spectral density function S(ω) =      2  2.
+                                                                                    ω +ω0
+Which of the following state space models, given a unity white noise input, will output
+a signal with the spectral density function matching S(ω)?
+
+a) ẋ = −ω0 x + u,    y = k2 x
+
+b) ẋ = −ω0 x + ku,    y =x+u
+
+c) ẋ = −ω0 x,   y = kx + u
+
+d) ẋ = −ω0 x + ku,    y = kx
+
+e) ẋ = −ω0 x + u,    y = kx
+
+Problem 8 (25 %)
+
+You are working on the following system:
+                                        "             #        "       #
+                                            −0.5 α                 0
+                                 ẋ =                     x+               u             (2)
+                                             0   1                 1
+                                                 h         i
+                                            y=       1 0       x
+where the coefficient α can take on different values depending on the load on the system.
+
+a) Test whether it is possible for all values of α ∈ R to find a feedback gain that makes
+     the closed-loop system asymptotically stable.
+
+b) Assume that α = 1,"and that
+                            # you are asked to compute the LQR controller for the
+                       1 0
+    system with Q =            and R = 1.
+                       0 1
+     Verify" that the positive# definite solution of the Riccati equation is approximately
+             0.8473 0.3908
+     P=                        , and calculate the LQR feedback gain K.
+             0.3908 2.6678
+
+c) You want to make a controller that can deal with different system loads, by making
+     the feedback gain K dependent on α. Find a scalar function f (α) that makes the
+     gain matrix K = [f (α) 1] ensure asymptotic stability for all values of α ̸= 0.
+
+Page 8 of 12                          TTK4115 Linear Systems Theory - 19 Dec 2023
+
+d) Assume that α = 1, and transform the system in Eq. (2) into a new system with the
+    state"vector #x̄. The relation between the state vectors should be x = Tx̄, where
+           1 2
+    T=              . Which canonical form does the transformed system have?
+           0 3
+
+TTK4115 Linear Systems Theory - 19 Dec 2023                                  Page 9 of 12
+
+Problem 9 (20 %)
+
+You are working on estimation and control of an electric motor whose speed x(t) follows
+this equation:
+                               ẋ(t) = −0.1x(t) + u(t)                               (3)
+where u(t) is the input voltage and the unit of time is seconds.
+
+a) You want a discrete time model for the motor speed. Let T be the discretization
+     interval, and assume that the input u(t) is held constant through each discretization
+     interval. Show that the exact discretization is given by:
+
+                          x[k + 1] = e−0.1T x[k] + 10(1 − e−0.1T )u[k]                (4)
+
+     where u[k] is the input value for time step k.
+
+b) Let the discretization interval be 10 s, and use the following approximate discrete
+     time model:
+                             x[k + 1] = 0.37x[k] + 6.3u[k] + d[k]                  (5)
+                                       y[k] = x[k] + v[k]                             (6)
+     where the measurement noise v[k] is assumed to be a gaussian zero-mean white
+     noise process such that E[v[k]2 ] = R = 0.01. The process d[k] represents the
+     effect of the load on the variable load on the motor, and can be represented as the
+     following random process:
+
+                                    d[k + 1] = d[k] + w[k]                            (7)
+
+     where w[k] is a gaussian zero-mean white noise process such that E[w[k]2 ] = q.
+     Set up an augmented system that allows the speed x and the load factor d to be
+     estimated using a Kalman filter.
+
+c) Your colleague runs a test where the measurement error v[k] is evaluated by compar-
+     ison to a more accurate sensor. 2000 subsequent measurement errors are recorded,
+     and the results are summarized in Figure 1.
+     Discuss the assumptions made about v[k] in b) based on what is shown in the
+     figure.
+
+Page 10 of 12                       TTK4115 Linear Systems Theory - 19 Dec 2023
+
+            Figure 1: Measurement errors and computed autocorrelation.
+
+TTK4115 Linear Systems Theory - 19 Dec 2023                                 Page 11 of 12
+
+Problem 10 (8 %)
+
+Consider an LTI system given by the equations:
+
+                                      ẋ = Ax + Bu                                     (8)
+
+                                         y = Cx
+Its dual system is given by:
+                                     ż = AT z + CT ū                                 (9)
+                                        ȳ = BT z
+
+Show that the dual system is observable if and only if the original system is controllable.
+
+Page 12 of 12                          TTK4115 Linear Systems Theory - 19 Dec 2023
+
+Problem 11 (12 %)
+
+The following questions go into your experiences with the helicopter lab. If any of the
+questions concern tests for which you don’t have direct experience, you should speculate
+based on your knowledge of the theory and the helicopter lab.
+
+a) In the second lab assignment, how did the introduction of integral effect in the con-
+     troller affect the system? Comment on performance before and after introducing
+     integral effect, and problems that occurred with the controller, if any.
+
+b) In the third and fourth lab assignment you used state estimation based on IMU
+     measurements. What are the most important differences between using a standard
+     Luenberger observer and using the Kalman filter? Comment on the tuning process,
+     estimator and controller performance, and other aspects you would like to include.
+
+TTK4115 Linear Systems Theory - 19 Dec 2023                              Page i of iv
+
+Formula sheet
+
+Solutions
+
+                                           Z t
+                     x(t) = eAt x(0) +           eA(t−τ ) Bu(τ )dτ
+                                            0
+                                           k−1
+                     x[k] = Ak x[0] +            Ak−1−m Bu[m]
+                                           X
+
+                                           m=0
+
+Controllability/Observability
+
+                      C = [B, AB, A2 B, · · · , An−1 B]
+                                   
+                              C
+                           CA 
+                                   
+                                  2 
+                             CA
+                          
+                      O = 
+                                   
+                              ..   
+                                .
+                                    
+                                   
+                                CAn−1
+
+Realization
+
+         G(s) = C(sI − A)−1 B + D
+         G(s) = G(∞) + Gsp (s)
+          d(s) = sr + α1 sr−1 + · · · + αr−1 s + αr
+                     1
+        Gsp (s) =      [N sr−1 + N2 sr−2 + · · · + Nr−1 s + Nr ]
+                   d(s) 1
+                                                                    
+                      −α1 Ip −α2 Ip · · · −αr−1 Ip −αr Ip           Ip
+                   
+                      Ip      0       ···      0        0   
+                                                             
+                                                                   0 
+                                                                      
+                        0      Ip      ···      0        0   x +  0 u
+                                                                    
+              ẋ = 
+                   
+                        ..      ..     ..       ..       ..  
+                                                                   .. 
+                                                                      
+                                          .
+                   
+                         .       .               .        .
+                                                             
+                                                                 . 
+                        0      0     ···          Ip         0       0
+              y = [ N1 N2 · · ·    Nr−1 Nr ]x + G(∞)u
+
+Page ii of iv                               TTK4115 Linear Systems Theory - 19 Dec 2023
+
+LQR
+
+       Z ∞
+  J=         xT (t)Qx(t) + uT (t)Ru(t) dt
+        0
+                            AT P + PA + Q − PBR−1 BT P = 0
+                                                                     u(t) = −R−1 BT Px(t)
+
+Lyapunov equation
+
+                                     AT M + MA = −N
+
+Kalman filtering (Discrete time)
+
+Process model
+
+                x[k + 1] = Ad x[k] + Bd u[k] + w[k],      y[k] = Cx[k] + v[k]
+
+The noise and disturbance are unbiased (E[v[k]] = 0, E[w[k]] = 0) and white
+
+                    E[v[k]v[l]T ] = δ[k, l]Rd ,   E[w[k]w[l]T ] = δ[k, l]Qd
+
+Algorithm Initialize at x̂− [0] = E[x(0)] and P− [0] = E[(x[0] − x̂− [0])(x[0] − x̂− [0])T ].
+Compute recursively:
+
+   1. L[k] = P− [k]CT (CP− [k]CT + Rd )−1
+
+   2. x̂[k] = x̂− [k] + L[k](y[k] − Cx̂− [k])
+
+   3. P[k] = (I − L[k]C)P− [k](I − L[k]C)T + L[k]Rd L[k]T
+
+   4. x̂− [k + 1] = Ad x̂[k] + Bd u[k],   P− [k + 1] = Ad P[k]AT
+                                                               d + Qd
+
+TTK4115 Linear Systems Theory - 19 Dec 2023                                  Page iii of iv
+
+Kalman filtering (Continuous time)
+
+Process model
+                          ẋ = Ax + Bu + Gw,         y = Cx + v
+The noise and disturbance are unbiased (E[v(t)] = 0, E[w(t)] = 0) and white
+
+                E[v(t)v(τ )T ] = δ(t − τ )R,   E[w(τ )w(t)T ] = δ(t − τ )Q
+
+Optimal gain     The Kalman gain is given by L(t) = P(t)CT R−1 where
+
+                       Ṗ = AP + PAT + GQGT − PCT R−1 CP
+
+Set Ṗ = 0 to find stationary gain.
+
+Stationary processes
+
+Autocorrelation and power spectral density
+
+                     Ru (τ ) = E[u(t)u(t + τ )],   Su (ω) = F{Ru (τ )}
+
+With y(s) = H(s)w(s) where E[w(t)] = 0 and Rw (τ ) = δ(τ )q it holds that
+
+                                 Sy (ω) = H(ȷω)H(−ȷω)q
+
+Page iv of iv                      TTK4115 Linear Systems Theory - 19 Dec 2023
+
+Laplace transform pairs
+
+                           f (t)    ⇐⇒         F (s)
+
+                          δ(t)      ⇐⇒         1
+                                               1
+                             1      ⇐⇒
+                                               s
+                                                 1
+                          e−at      ⇐⇒
+                                               s+a
+                                               1
+                             t      ⇐⇒
+                                               s2
+                                               2
+                            t2      ⇐⇒
+                                               s3
+                                                    1
+                        te−at       ⇐⇒
+                                               (s + a)2
+                                                  ω
+                       sin ωt       ⇐⇒
+                                               s2 + ω 2
+                                                  s
+                       cos ωt       ⇐⇒
+                                               s2 + ω 2
+
+Solution of second degree equation
+                                                        q
+                  2                            −b ±      b2 − 4ac
+                ax + bx + c = 0    =⇒     x=
+                                                        2a
+
+## Løsningsforslag
+
+Solution Suggestion
+   Exam - TTK4115 Linear System Theory
+                              Morten Omholt Alver
+
+                                  19. December 2023
+
+Problem 1
+Given the following continuous time system:
+
+                                    −2 0         0
+                             ẋ =            x+     u
+                                    −1 1         1
+
+                                      y=       0 1       x
+Is this system:
+a) Not controllable, not observable
+b) Controllable, not observable
+c) Observable, not controllable
+d) Both controllable and observable
+e) Need more information to determine
+c) is correct, as seen from the observability and controllability matrices. We directly
+observe x2 , which in turn is affected by x1 , leading to observability. The input directly
+affects x2 , but x2 does not influence x1 , so the system is not controllable.
+
+                                               1
+
+Problem 2
+Given the following matrix:
+                                                 2 3
+                                        A=                                           (1)
+                                                 1 0
+
+What is the value of the upper left element of the matrix exponential eAt ?
+a) 3e3t + e−t
+b) 32 e−3t + 21 et
+
+c) 14 e3t + 43 et
+
+d) 34 e3t + 14 e−t
+
+e) 3e−3t − et
+d) is correct.
+If we solve based on fitting a matrix polynomial, we start by finding that A has two
+eigenvalues, λ1 = 3 and λ2 = −1. The function we want to find is f (A) = eAt , and its
+scalar version is f (λ) = eλt . We fit the polynomial h(λ) = β0 + β1 λ to f (λ) for both
+eigenvalues to find the β coefficients:
+
+                              β0 + 3β1 = e3t =⇒ β0 = e3t − 3β1
+                                                                 1
+               β0 − β1 = e−t =⇒ e3t − 3β1 − β1 = e−t =⇒ β1 = (e3t − e−t )
+                                                                 4
+                                        1              1     3
+                          β0 = e3t − 3 · (e3t − e−t ) = e3t + e−t
+                                        4              4     4
+Using these coefficients, we can find eAt as h(A):
+
+                                      h(A) = β0 I + β1 A
+
+The upper left element becomes:
+                               1     3         1              3     1
+                     β0 + 2β1 = e3t + e−t + 2 · (e3t − e−t ) = e3t + e−t
+                               4     4         4              4     4
+
+                                                 2
+
+Problem 3
+Given the following continuous time system :
+                           A                B
+                     z     }|  { z }| {
+                                                                 C
+                         −1 0 a      1 0                    z     }| {
+                  ẋ =   0 0 2 x + 0 1  u,
+                                                     y=        1 0 0 x
+                          0 0 0      0 0
+
+Is this system:
+a) Internally unstable
+b) Exponentially stable
+c) Marginally stable
+d) Stability properties depend on a
+a) is correct. Since A is triangular, we can see the eigenvalues along the diagonal; one
+in −1 and one in 0 with multiplicity 2. The system is therefore marginally stable if
+the repeated eigenvalue is associated with two linearly independent eigenvectors, and
+unstable otherwise. The equation for the eigenvectors of the 0 eigenvalues is as follows:
+                                                                
+                                    −1 0 a                          0
+                  Aq = λq =⇒        0 0 2 q = 0 =⇒ q ∼ 1 
+                                                                
+                                     0 0 0                          0
+
+The third element of q must be 0 to satisfy the second row of the product. Since the
+third element is 0, the first element must also be 0 to satisfy the first row. The second
+element can have any value.
+This means there is only one linearly independent eigenvector associated with the re-
+peated 0 eigenvalue, so the system is unstable. This is true for any value of a.
+
+                                           3
+
+Problem 4
+For the following system:
+                                  ẋ(t) = 0.5x(t) + u(t)
+with a control law on the form
+
+                                 u(t) = −kx(t) + kr r0
+
+where r0 is a constant reference value, which set of control parameters will ensure the
+fastest convergence of x(t) toward r0 for any initial value of x?
+a) k = 2.5 and kr = 3
+b) k = 2 and kr = 1.5
+c) k = −2 and kr = 1.5
+d) k = 3 and kr = 3
+e) k = 1.5 and kr = 1
+f) k = −1.5 and kr = −2
+b) is correct. We require kr = k − 0.5 to converge towards the reference value, which is
+only the case for b), e) and f). Of these, f) gives an unstable system, and b) has faster
+convergence rate than e).
+
+                                            4
+
+Problem 5
+Given the continuous time system:
+
+                           1 −1         1
+                    ẋ =            x+     u,        y=       1 0       x
+                           ω 0          0
+
+where ω ̸= 0. Using a state feedback u = − k1 k2 x, which values of k1 and k2 place
+the closed-loop system’s poles in -1 and -0.5?
+a) k1 = 2 and k2 = 0.5
+                    ω − 0.5
+
+b) k1 = 2.5 and k2 = 0.5
+                      ω −1
+
+c) k1 = 2.5 and k2 = −0.5
+d) k1 = 0.5
+         ω and k2 = 1
+
+e) k1 = − 0.5
+           ω and k2 = 2.5
+
+b) is correct. The equation for the closed-loop system is:
+
+                                      1 − k1 −1 − k2
+                               ẋ =                     x
+                                        ω        0
+
+So its characteristic polynomial becomes:
+
+                λ(λ + k1 − 1) + ω(1 + k2 ) = λ2 + (k1 − 1)λ + ω(1 + k2 )
+
+The characteristic polynomial we want is:
+
+                            (λ + 1)(λ + 0.5) = λ2 + 1.5λ + 0.5
+
+Setting each coefficient of the two polynomials equal, we get:
+
+                               k1 − 1 = 1.5 =⇒ k1 = 2.5
+                                                       0.5
+                            ω(1 + k2 ) = 0.5 =⇒ k2 =       −1
+                                                        ω
+
+                                            5
+
+Problem 6
+Given the two continuous time systems:
+
+                          −1 −1         1
+                   ẋ =             x+     u1 ,       y1 =       1 0       x
+                          0 −2          0
+
+                          −1 0          1
+                   ż =             z+     u2 ,       y2 =       0 1       z
+                          1 −2          0
+
+Are these systems:
+a) Unrelated
+b) Algebraically equivalent
+c) Zero-state equivalent but not algebraically equivalent
+d) Dual systems
+                                                                                  s+2
+a) is correct. The systems have different transfer functions (gx (s) =          2      and gz (s) =
+                                                                               s +3s+2
+   1
+ 2      ), and they are not dual systems since the transpose of the system matrix of the
+s +3s+2
+first system does not equal the one for the second system.
+
+                                             6
+
+Problem 7
+                                                                                        2
+                                                                                     k
+You need to model a noise process that has the spectral density function S(ω) =     2  2.
+                                                                                   ω +ω0
+Which of the following state space models, given a unity white noise input, will output a
+signal with the spectral density function matching S(ω)?
+a) ẋ = −ω0 x + u,    y = k2 x
+b) ẋ = −ω0 x + ku,    y =x+u
+c) ẋ = −ω0 x,   y = kx + u
+d) ẋ = −ω0 x + ku,    y = kx
+e) ẋ = −ω0 x + u,    y = kx
+                                                               k
+e) is correct. The transfer function of the filter is g(s) = s+ω   (because this satisfies
+                                                                 0
+g(jω)g(−jω) = S(ω). Using the controllable canonical form, we get A = −ω0 , B = 1,
+C = k and D = 0.
+
+                                            7
+
+Problem 8
+You are working on the following system:
+
+                                   −0.5 α        0
+                            ẋ =             x+     u                                 (2)
+                                     0   1       1
+
+                                     y=       1 0       x
+where the coefficient α can take on different values depending on the load on the system.
+a) Test whether it is possible for all values of α ∈ R to find a feedback gain that makes
+     the closed-loop system asymptotically stable.
+     If the system is controllable, such a feedback gain must exist. Therefore, we check
+     the controllability of the system:
+
+                                                     0 α
+                                   C = [B AB] =
+                                                     1 1
+
+     For all values of α ̸= 0, the system is controllable, so a stabilizing feedback gain
+     can be found.
+     If α = 0, the closed-loop system becoes (with K = [k1 k2 ]):
+
+                                     −0.5    0           0
+                              ẋ =                 x+      u
+                                     −k1 1 − k2          1
+
+     The eigenvalues are found as:
+
+       λ + 0.5     0
+                             = (λ + 0.5)(λ − 1 + k2 ) = 0 =⇒ λ1 = −0.5,      λ2 = 1 − k2
+         k1    λ − 1 + k2
+
+     So by the appropriate choice of k2 , the system will be asymptotically stable. For
+     this value of α, the system is not controllable, but it is stabilizable.
+     In conclusion, the system can be made stable for all values of α.
+b) Assume that α = 1, and that
+                               you are asked to compute the LQR controller for the
+                         1 0
+     system with Q =            and R = 1. Verify that the positive definite solution of
+                         0 1
+
+                                                 0.8473 0.3908
+     the Riccati equation is approximately P =                       , and calculate the
+                                                 0.3908 2.6678
+     LQR feedback gain K.
+     We need to check that P is a solution, and that it is positive definite. For the first
+     item, it is sufficient to insert it into the Riccati equation to verify:
+
+       T                      −1 T          −0.5 0       0.8473 0.3908        0.8473 0.3908    −0.5 1
+     A P+PA+Q−PBR B P =                                                    +
+                                              1    1     0.3908 2.6678        0.3908 2.6678     0   1
+
+                                              8
+
+                     1 0  0.8473 0.3908    0 0     0.8473 0.3908
+              +        −
+                     0 1  0.3908 2.6678    0 1     0.3908 2.6678
+
+         −0.4236 −0.1954      −0.4236 1.2381      1 0      0.1527 1.0427
+     =                    +                   +         −
+          1.2381 3.0587       −0.1954 3.0587      0 1      1.0427 7.1173
+
+                                       0 0
+                                   ≈
+                                       0 0
+     To check positive definiteness, since the upper left element of P is positive, we just
+     need to verify that its determinant is also positive:
+
+                               |P| = 0.8473 · 2.6678 − 0.39082 = 2.108
+
+c) You want to make a controller that can deal with different system loads, by making
+     the feedback gain K dependent on α. Find a scalar function f (α) that makes the
+     gain matrix K = [f (α) 1] ensure asymptotic stability for all values of α ̸= 0.
+     We need to find a suitable function f (α) that makes K stabilize the system. Our
+     first step is to write the expresion for A − BK:
+
+                               −0.5 α         0                −0.5 α
+                A − BK =                  −        f (α) 1 =                       (3)
+                                 0    1       1                 −f (α) 0
+     The eigenvalues of the closed-loop system will be:
+       λ + 0.5 −α                                                 1
+                      = λ2 + 0.5λ + αf (α) = 0 =⇒ λ =
+                                                                           p
+                                                                     −0.5 ± 0.25 − 4αf (α)
+        f (α)   λ                                                 2
+                                                                                         (4)
+     If we choose f (α) = 0, we get eigenvalues in -1 and 0 for all values of α. However,
+     this leads to marginal stability which does not meet our requirement.
+                                                                                  √
+     If we choose f (α) = α1 , we get complex conjugated eigenvalues in −0.25 ± 12 3.75i,
+     which means asymptotic stability. However, if |α| is close to 0, this gives a very
+     large coefficient in K, which is probably not a good idea. To avoid these problems,
+     we can limit the value in the denominator above some minimum value, for instance:
+                                                         1
+                                     f (α) =                                             (5)
+                                               sgn(α) · max(|α|, 0.1)
+     On the other hand, this gives the system very slow convergence towards its equi-
+     librium as α approaches 0, so the choice is a trade-off between maintaining fast
+     convergence and limiting the magnitude of the control input.
+     Note: other formulations of f (α) can also work.
+d) Assume that α = 1, and transform the system in Eq. (2) into a new system with
+     the state
+           vector
+                  x̄. The relation between the state vectors should be x = Tx̄, where
+             1 2
+     T=           . Which canonical form does the transformed system have?
+             0 3
+
+                                                  9
+
+Using the given relation, we can express the system in terms of x̄:
+
+                                 ẋ = Ax + Bu,                   y = Cx
+
+                               Tx̄˙ = ATx̄ + Bu,                 y = CTx̄
+                                 −1                     −1
+                         x̄˙ = T
+                               | {zAT} x̄ + T
+                                            | {z B} u,                y = |{z}
+                                                                          CT x̄
+                                     Ā                 B̄                C̄
+
+We need the inverse of T:
+
+                            −1     1          3 −2                   1 −2/3
+                          T̄     =                           =
+                                   3          0 1                    0 1/3
+
+           1 −2/3        −0.5 1               1 2                1 −2/3        −0.5 2               −0.5 0
+Ā =                                                    =                                   =
+           0 1/3          0   1               0 3                0 1/3          0   3                0   1
+
+                                1 −2/3    0       −2/3
+                          B̄ =                =
+                                0 1/3     1        1/3
+
+                                    1 2
+                           C̄ = 1 0           = 1 2
+                                        0 3
+The transformed system is the diagonalized form of the original system.
+
+                                                10
+
+Problem 9
+You are working on estimation and control of an electric motor whose speed x(t) follows
+this equation:
+                               ẋ(t) = −0.1x(t) + u(t)                               (6)
+where u(t) is the input voltage and the unit of time is seconds.
+a) You want a discrete time model for the motor speed. Let T be the discretization
+     interval, and assume that the input u(t) is held constant through each discretization
+     interval. Show that the exact discretization is given by:
+                           x[k + 1] = e−0.1T x[k] + 10(1 − e−0.1T )u[k]                      (7)
+     where u[k] is the input value for time step k.
+     If we see x[k] as the initial value and u[k] as the constant input value for the entire
+     time step, the value after time T is given as the general solution of an LTI system:
+                                Z T                                     Z T
+      x[k + 1] = e−0.1T x[k] +      e−0.1(t−τ ) u[k]dτ = |e−0.1T
+                                                            {z } x[k] +     e−0.1(T −τ ) dτ ·u[k]
+                                 0                          ad          |0     {z         }
+                                                                                bd
+
+     The value of ad is clearly as we were asked to show. Now we calculate the value of
+     bd :
+                                                 1 0.1(T −τ ) T
+                       Z T
+                             −0.1(T −τ )
+                 bd =      e             dτ =       e            = 10(1 − e−0.1T )
+                        0                       0.1            0
+     Which shows that the given discretization is correct.
+b) Let the discretization interval be 10 s, and use the following approximate discrete
+     time model:
+                             x[k + 1] = 0.37x[k] + 6.3u[k] + d[k]                  (8)
+                                         y[k] = x[k] + v[k]                                  (9)
+     where the measurement noise v[k] is assumed to be a gaussian zero-mean white
+     noise process such that E[v[k]2 ] = R = 0.01. The process d[k] represents the
+     effect of the load on the variable load on the motor, and can be represented as the
+     following random process:
+                                      d[k + 1] = d[k] + w[k]                                (10)
+     where w[k] is a gaussian zero-mean white noise process such that E[w[k]2 ] = q.
+     Set up an augmented system that allows the speed x and the load factor d to be
+     estimated using a Kalman filter.
+     We define an augmented state vector xa [k] = [x[k] d[k]]T , and set up the system
+     based on the given equations:
+
+                   x[k + 1]        0.37 1     x[k]      6.3
+                             =                       +         u[k] + w̄[k]
+                   d[k + 1]          0  1     d[k]       0
+
+                                              11
+
+                                                        x[k]
+                               y[k] =       1 0                      + v[k]
+                                                          d[k]
+     where the measurement noise v[k] is as given, and the disturbance
+                                                                     w̄[k] is zero-
+                                                              0 0
+     mean Gaussian white noise with covariance matrix Q =           .
+                                                              0 q
+c) Your colleague runs a test where the measurement error v[k] is evaluated by compar-
+     ison to a more accurate sensor. 2000 subsequent measurement errors are recorded,
+     and the results are summarized in Figure 1. Discuss the assumptions made about
+     v[k] in b) based on what is shown in the figure.
+     We consider each assumption made about v[k] in light of the given figure:
+        • Gaussian: The middle panel shows the observed distribution of measurement
+          errors. It looks very much like a normal distribution, indicating that the
+          assumption is correct.
+        • Zero-mean: The left panel shows the mean error, and it appears to be slightly
+          above 0, perhaps 0.02. Given the high number of measurements (2000), such a
+          deviation clearly indicates that the measurement has a positive bias, counter
+          to the assumption.
+        • White noise: The right panel shows the observed autocorrelation for the series
+          of measurements, which is an estimate of the true autocorrelation. All values
+          at a non-zero lag are close to 0, so this indicates that the measurement error
+          is white noise, or at least nearly white noise.
+        • R=0.01 : This R value corresponds to a standard deviation of 0.1. We can
+          get an impression of the standard deviation in the distribution in the middle
+          panel. However, we get a more precise value by looking at the autocorrelation
+          at 0 lag in the right panel, which is a direct estimate of the variance. As far
+          as we can see in the figure it is exactly 0.01, which means the assumed R
+          value is correct.
+
+                                             12
+
+Problem 10
+Consider an LTI system given by the equations:
+
+                                      ẋ = Ax + Bu                                    (11)
+
+                                         y = Cx
+Its dual system is given by:
+                                     ż = AT z + CT ū                                (12)
+                                        ȳ = BT z
+Show that the dual system is observable if and only if the original system is controllable.
+The original system being controllable is equivalent with its controllability matrix having
+full (row) rank. It is given by:
+
+                         Corig = B AB A2 B · · · An−1 B
+
+where n is the system’s number of states.
+The dual system being observable is equivalent with its observability matrix having full
+(column) rank. Using the matrices given in Eq. 12, it is given by:
+
+                                             BT
+                                                      
+
+                                            BT AT
+                                                      
+                                                      
+                             Odual =  BT (AT )2 
+                                                      
+                                              ···
+                                                      
+                                                      
+                                           T    T n−1
+                                         B (A )
+
+The rank of a matrix is equal to the rank of its transpose, so:
+                        T
+                           ) = rank B AB A2 B · · · An−1 B
+
+ rank(Odual ) = rank(Odual                                         = rank(Corig )
+
+Which shows that the dual system is observable if and only if the original system is
+controllable.
+
+                                            13
+
+Problem 11
+The following questions go into your experiences with the helicopter lab. If any of the
+questions concern tests for which you don’t have direct experience, you should speculate
+based on your knowledge of the theory and the helicopter lab.
+a) In the second lab assignment, how did the introduction of integral effect in the con-
+     troller affect the system? Comment on performance before and after introducing
+     integral effect, and problems that occurred with the controller, if any.
+     A good answer should comment on how stationary deviations are seen without in-
+     tegral effect. These are particularly visible in the elevation rate, where unmodelled
+     effects lead to a stationary deviation, for instance causing the helicopter to ascend
+     or descend to a horizontal position when the elevation rate reference is set to 0.
+     Properly applied, integral action can counter this stationary deviation, making the
+     helicopter better able to keep at its current elevation when give na 0 reference for
+     elevaton rate.
+     Groups may have seen a general improvement in performance and responsiveness
+     after adding integral effect.
+     The most important challenge that can occur is integrator wind-up. One way to
+     provoke wind-up is to run the helicopter at a high elevation, where the motors
+     are working near their saturation point, and may be unable to respond to varying
+     references for pitch and elevation rate, causing the helicopter to behave strangly
+     as the integrators get winded up.
+     Another issue that might be mentioned is the effect at initialization where the
+     integrator will accumulate errors as the helicopter moves up towards its equilibrium
+     position.
+b) In the third and fourth lab assignment you used state estimation based on IMU mea-
+     surements. What are the most important differences between using a standard
+     Luenberger observer and using the Kalman filter? Comment on the tuning pro-
+     cess, estimator and controller performance, and other aspects you would like to
+     include.
+     There are several differences that can be pointed out:
+        • The Luenberger uses a static estimator gain that is chosen based on pole
+          placement, while the Kalman filter uses a dynamic estimator gain chosen
+          based on minimizing the sum of the estimation error variances.
+        • The Kalman gain is chosen based on the statistical properties of the sys-
+          tem disturbances (specified using the Qd matrix) and the measurement noise
+          (specified using the Rd matrix), both of which are assumed to be white noise
+          processes.
+
+                                           14
+
+  • Since Rd can often be set based on analysing the measurement noise, while
+    the “true” value of Qd is hard to assess, Qd is typically used as a tuning
+    parameter. By tuning elements along the diagonal of Qd we can affect the
+    Kalman filter’s relative weighting of state estimates vs. measurements for
+    individual model states.
+  • The dynamic nature of the Kalman gain is not always important, since it will
+    approach a stationary value. However, if measurements arrive at irregular
+    intervals (measurements not being available at all time steps), the covariance
+    matrix P[k] will change accordingly, indicating increasing uncertainty as time
+    goes by without available measurements, and this will lead to the estimator
+    dynamically changing the Kalman gain to put more emphasis on measure-
+    ments after the estimator has gone for some time without measurements.
+  • In the case where you measure all the model states, the Kalman filter com-
+    putes posterior estimates that are a weighting between prior estimates and
+    the measurements, and if you let the elements of Qd approach infinity (indi-
+    cating a highly noisy process) the extreme case is that the posterior estimates
+    become equal to the measurements. The measurement noise will not be am-
+    plified, which can happen with a Luenberger observer of A − LC are placed
+    too far into the left half plane. Note that this distinction is not quite as clear
+    in the case where you measure only a subset of the states.
+It is not correct to state that the Luenberger is used in continuous time and the
+Kalman filter in discrete time, since both estimator types can be used in both
+cases.
+
+                                      15

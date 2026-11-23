@@ -1,0 +1,641 @@
+# TTK4115 Lineær systemteori (NTNU) – kontekst for eksamensøving
+
+> Til deg som er chatbot: Brukeren øver til skriftlig eksamen i TTK4115 (4 timer, hjelpemiddel D: bare enkel kalkulator og formelarket som følger med). Bruk dette dokumentet som pensumkart. Prioriter oppgavetypene i rekkefølgen under. Svar kort, på norsk, med samme notasjon som emnet ($\dot x=Ax+Bu$, $y=Cx$, $u=-Kx+K_r r$, Kalman med $P^-$, $L$, $Q_d$, $R_d$). Vis utregningen steg for steg, og si fra når du er usikker. Når brukeren spør om en gammel oppgave, hent teksten og løsningsforslaget fra lenken til eksamenen nedenfor, og løs den slik løsningsforslaget gjør. Lag gjerne nye varianter med nye tall av typene på nivå 1.
+
+## Eksamensformat (2023–2025, emneansvarlig Morten O. Alver)
+
+- ~33 %: 4–8 flervalgsoppgaver à 4–6 %. Samme typer hvert år med nye tall.
+- ~53 %: 2–3 lange oppgaver: tilstandsrom fra a til å, LQR med referanse og integralvirkning, Kalmanfilter for hånd.
+- 12–16 %: tekstspørsmål om helikopterlabben (2022, 2023, kont 2024, kont 2025; ikke ordinær 2024).
+- Formelarket (4 sider bakerst i settet) har: løsningsformelen for $x(t)$ og $x[k]$, $\mathcal C$ og $\mathcal O$, realisering på styrbar kanonisk form, LQR-kriteriet med Riccati-likningen og $u=-R^{-1}B^TPx$, Lyapunov-likningen, Kalmanfilteret (diskret og kontinuerlig), autokorrelasjon og spektraltetthet, Laplace-par og andregradsformelen. Stabilitetskriterier, rangtesten (full rang), $K_r$-formelen, integralvirkning, diskretisering ($A_d$, $B_d$, van Loan) og Bryson står IKKE der.
+
+## Prioritert liste: 33 oppgavetyper
+
+
+### Nivå 1: Må kunne
+
+På nesten hver eksamen siden 2021. Lær alle, i rekkefølge.
+
+#### 1. Diskret Kalmanfilter – ett steg for hånd
+
+Typisk oppgave: Gitt $\hat x[0], P[0], Q_d, R_d$ og en måling $y[1]$: regn ut $L[1]$, $\hat x[1]$ og $P[1]$.
+
+Hvorfor viktig: Kommer på hver eneste eksamen siden 2019, nesten alltid med 2×2-modellen posisjon/hastighet $A=\begin{bmatrix}1&1\\0&1\end{bmatrix}$, $C=[1\;0]$. Ordinær 2024, kont 2024, kont 2025, 2022 og kont 2021 er samme oppgave med nye tall.
+
+Metode:
+1. **Sjekk hvor du starter.** Er $\hat x[0], P[0]$ a posteriori (etter måling) må du først predikere: $\hat x^-[1]=A\hat x[0]+Bu[0]$, $P^-[1]=AP[0]A^T+Q_d$.
+2. **Kalman-gain:** $L = P^-C^T\,(CP^-C^T+R_d)^{-1}$. Med skalar måling er $CP^-C^T+R_d$ et tall – bare del på det. For $C=[1\;0]$: $L=\dfrac{1}{P^-_{11}+R}\begin{bmatrix}P^-_{11}\\P^-_{21}\end{bmatrix}$.
+3. **Oppdater estimat:** $\hat x[1]=\hat x^-[1]+L\,(y[1]-C\hat x^-[1])$. Innovasjonen $y-C\hat x^-$ er ett tall.
+4. **Oppdater kovarians:** $P=(I-LC)P^-$ (kortformen, raskest for hånd) – Joseph-formen på arket gir det samme med optimal $L$.
+5. **Neste steg (om de spør):** $\hat x^-[2]=A\hat x[1]+Bu[1]$, $P^-[2]=AP[1]A^T+Q_d$.
+6. Standardavvik oppgitt? Variansen er kvadratet: «± 5» → $P_{11}=25$, «σ = 10 m» → $R=100$.
+
+Feller:
+- Glemme prediksjonssteget før første måling (de fleste feil skjer her).
+- Bruke standardavvik i stedet for varians i $P$ eller $R$.
+- Uavhengige initialverdier ⇒ $P[0]$ diagonal.
+
+Formelark: Ja – hele algoritmen (steg 1–4) står på formelarket.
+
+Gitt på eksamen: Kont 2025 oppg. 7ab; Eksamen 2024 oppg. 10c; Kont 2024 oppg. 2b; Eksamen 2022 oppg. 3b; Kont 2021 oppg. 3e; Eksamen 2020 oppg. 10c; Eksamen 2019 oppg. 2; Kont 2019 oppg. 6b; Eksamen 2017 oppg. 5; Eksamen 2013 oppg. 4a; Eksamen 2012 oppg. 7a
+
+#### 2. Styrbarhet og observerbarhet (rangtest)
+
+Typisk oppgave: Er systemet styrbart/observerbart? For hvilke parameterverdier mister det styrbarhet?
+
+Hvorfor viktig: Står på hver eneste eksamen siden 2003. Siden 2023 er den oppgave 1 (flervalg), og i tillegg deloppgave a) i den store tilstandsromsoppgaven.
+
+Metode:
+1. $\mathcal C=[B\;AB\;\cdots\;A^{n-1}B]$, $\mathcal O=[C;\,CA;\,\dots;\,CA^{n-1}]$.
+2. For $n=2$ med én inngang/utgang: kvadratisk matrise ⇒ regn determinanten. $\det\neq0$ ⇔ full rang.
+3. For $n=3$: regn $AB$ og $A^2B$ (eller $CA$, $CA^2$), sett opp 3×3, sjekk determinant eller se etter lineært avhengige rader/kolonner.
+4. Parameter (α, β): sett $\det\mathcal C=0$ og løs for parameteren.
+5. Diskret tid: nøyaktig samme test – $A$ er bare $A_d$.
+6. Rask sjekk: diagonal $A$ med distinkte egenverdier ⇒ styrbar ⇔ ingen rad i $B$ er null; observerbar ⇔ ingen kolonne i $C$ er null.
+
+Feller:
+- Flervalg: les alternativene nøye – «Controllable, not observable» vs «Observable, not controllable».
+- Ikke-styrbar betyr ikke ustabil – sjekk stabiliserbarhet separat.
+
+Formelark: Ja – $\mathcal C$ og $\mathcal O$ står på arket. Testen (full rang) må du kunne.
+
+Gitt på eksamen: Kont 2025 oppg. 5a; Eksamen 2024 oppg. 1 (flervalg); Kont 2024 oppg. 1a; Eksamen 2023 oppg. 1 (flervalg); Eksamen 2022 oppg. 1a; Eksamen 2021 oppg. 1a; Kont 2021 oppg. 1a; Kont 2021 oppg. 4c; Eksamen 2020 oppg. 10a; Eksamen 2020 oppg. 12a; Eksamen 2019 oppg. 5b; Kont 2019 oppg. 4; Kont 2017 oppg. 3ab; Eksamen 2016 oppg. 1ac; Eksamen 2015 oppg. 4a; Eksamen 2014 oppg. 1ab; Eksamen 2013 oppg. 1a; Eksamen 2012 oppg. 1cd; Eksamen 2011 oppg. 3a; Eksamen 2008 oppg. 2c; Eksamen 2004 oppg. 3a; Eksamen 2003 oppg. 1a
+
+#### 3. Intern stabilitet vs. BIBO-stabilitet
+
+Typisk oppgave: Er systemet internt (asymptotisk/marginalt) stabilt? Er det BIBO-stabilt?
+
+Hvorfor viktig: Flervalg på 2023, 2024 og kont 2025 (alltid med «Internt ustabilt men BIBO-stabilt» som riktig eller fristende svar), og deloppgave i nesten alle lange oppgaver.
+
+Metode:
+1. **Intern stabilitet (kontinuerlig):** egenverdier til $A$. Alle $\text{Re}\,\lambda<0$ ⇒ asymptotisk stabil. $\text{Re}\,\lambda\le0$ og egenverdier på imaginæraksen er *enkle* (Jordanblokk 1×1) ⇒ marginalt stabil. Ellers ustabil.
+2. **Diskret tid:** samme, men med $|\lambda|<1$ (asymptotisk) og $|\lambda|=1$ enkle (marginal).
+3. **BIBO:** regn $G(s)=C(sI-A)^{-1}B+D$, forkort fellesfaktorer. BIBO ⇔ alle poler i $G(s)$ har $\text{Re}<0$.
+4. Asymptotisk stabil ⇒ alltid BIBO. Omvendt gjelder bare når realiseringen er minimal (styrbar + observerbar).
+5. Klassiker: ustabil egenverdi som er ustyrbar eller uobserverbar forsvinner i $G(s)$ ⇒ **internt ustabil, men BIBO-stabil**.
+6. Øvre triangulær $A$: egenverdiene står på diagonalen. 2×2: $\lambda^2-\text{tr}(A)\lambda+\det A=0$.
+7. Dobbel egenverdi i 0: sjekk om $A=0$ (marginal) eller Jordanblokk $\begin{bmatrix}0&1\\0&0\end{bmatrix}$ (ustabil, $x$ vokser som $t$).
+
+Feller:
+- Marginalt stabil ≠ BIBO-stabil: en pol i 0 i $G(s)$ gir ubegrenset utgang for et sprang.
+- Symmetrisk negativ definitt $A$ ⇒ alle egenverdier reelle og negative ⇒ asymptotisk stabil (2024 opg. 4).
+
+Formelark: Nei – kriteriene må pugges.
+
+Gitt på eksamen: Kont 2025 oppg. 1 (flervalg); Kont 2025 oppg. 5b; Eksamen 2024 oppg. 2 (flervalg); Eksamen 2024 oppg. 4 (flervalg); Eksamen 2024 oppg. 10a; Kont 2024 oppg. 1b; Kont 2024 oppg. 2a; Eksamen 2023 oppg. 3 (flervalg); Eksamen 2022 oppg. 1c; Eksamen 2022 oppg. 3d; Eksamen 2021 oppg. 3a; Kont 2021 oppg. 3c; Kont 2021 oppg. 4b; Eksamen 2020 oppg. 12a; Eksamen 2019 oppg. 3; Kont 2019 oppg. 2; Eksamen 2018 oppg. 2; Eksamen 2015 oppg. 2bd; Eksamen 2014 oppg. 3c; Eksamen 2013 oppg. 1c; Eksamen 2012 oppg. 1b; Eksamen 2011 oppg. 2b; Eksamen 2009 oppg. 2a; Eksamen 2008 oppg. 3; Eksamen 2004 oppg. 2; Eksamen 2003 oppg. 2cd
+
+#### 4. Polplassering med $u=-Kx$
+
+Typisk oppgave: Finn $K$ slik at $A-BK$ får gitte egenverdier (f.eks. −1 og −2).
+
+Hvorfor viktig: Flervalg i 2023 og 2024 (2×2 med parameter ω), deloppgave c) i den store tilstandsromsoppgaven i 2021, 2022, kont 2024 og kont 2025.
+
+Metode:
+1. Ønsket karakteristisk polynom: $(s-\lambda_1)(s-\lambda_2)$, f.eks. $(s+1)(s+2)=s^2+3s+2$.
+2. Sett $K=[k_1\;k_2]$, regn $A-BK$ og $\det(sI-(A-BK))$.
+3. Sammenlign koeffisienter og løs for $k_1,k_2$.
+4. Flervalg: det går ofte raskere å sette inn hvert alternativ og sjekke $\text{tr}(A-BK)=\lambda_1+\lambda_2$ og $\det(A-BK)=\lambda_1\lambda_2$.
+5. Styrbar kanonisk form (2021): $K$ leses rett ut av koeffisientdifferansen, og transformeres tilbake med $K=\bar K P^{-1}$ når $x=P\bar x$.
+
+Feller:
+- Fortegn: $u=-Kx$ ⇒ lukket sløyfe er $A-BK$, ikke $A+BK$.
+- Bare mulig for vilkårlige poler hvis $(A,B)$ er styrbar – si det!
+- Kont 2024: poler langt til venstre ⇒ store pådrag/metning – «kan vi bruke dette i praksis?»
+
+Formelark: Nei.
+
+Gitt på eksamen: Kont 2025 oppg. 5c; Eksamen 2024 oppg. 5 (flervalg); Kont 2024 oppg. 1cd; Eksamen 2023 oppg. 5 (flervalg); Eksamen 2022 oppg. 1d; Eksamen 2021 oppg. 1cd; Eksamen 2020 oppg. 9cd; Eksamen 2019 oppg. 3; Kont 2017 oppg. 3c; Eksamen 2016 oppg. 1a; Eksamen 2015 oppg. 4b; Eksamen 2014 oppg. 1c; Eksamen 2012 oppg. 3c; Eksamen 2011 oppg. 2d; Eksamen 2003 oppg. 1b
+
+#### 5. Referansefølging: $u=-Kx+K_r r$
+
+Typisk oppgave: Finn $K_r$ slik at $y\to r_0$ stasjonært / hvilken $(k,k_r)$ gir raskest konvergens?
+
+Hvorfor viktig: Flervalg i 2023 og kont 2025 (identisk oppgave med nye tall), del a) i 20 %-oppgavene i 2024 og kont 2024, del e) i 2022.
+
+Metode:
+1. Lukket sløyfe: $\dot x=(A-BK)x+BK_r r_0$. Stasjonært: $0=(A-BK)x_\infty+BK_rr_0$.
+2. $y_\infty=-C(A-BK)^{-1}BK_r\,r_0$. Krev $y_\infty=r_0$ ⇒ $$K_r=\big[-C(A-BK)^{-1}B\big]^{-1}$$
+3. Skalar $\dot x=ax+bu$: $K_r=\dfrac{k b-a}{b}$, dvs. $k_r = k - a/b$. For $b=1$: $k_r=k-a$.
+4. «Raskest konvergens»: lukket-sløyfe-pol $a-bk$ skal være mest negativ, *og* $k_r$ må stemme med formelen over. Sjekk begge!
+
+Feller:
+- Flervalgsalternativene har alltid ett med størst $k$ men feil $k_r$ – det er feil svar.
+- Med en ukjent konstant forstyrrelse gir $K_r$ alene stasjonært avvik ⇒ trenger integralvirkning (se «Integralvirkning»).
+
+Formelark: Nei.
+
+Gitt på eksamen: Kont 2025 oppg. 3 (flervalg); Eksamen 2024 oppg. 9a; Kont 2024 oppg. 3b; Eksamen 2023 oppg. 4 (flervalg); Eksamen 2022 oppg. 1e; Eksamen 2021 oppg. 4ab; Eksamen 2020 oppg. 9e; Eksamen 2013 oppg. 2c
+
+#### 6. Spektraltetthet og hvit støy
+
+Typisk oppgave: Finn $S_y(\omega)$ når hvit støy filtreres gjennom $H(s)$ / hvilken modell gir gitt $S(\omega)$?
+
+Hvorfor viktig: Flervalg i 2023 og 2024, egen oppgave i 2022 og kont 2024, deloppgave i 2021 og kont 2025. Har kommet på 14 eksamener totalt.
+
+Metode:
+1. Hvit støy: $R_w(\tau)=q\,\delta(\tau)$ ⇔ $S_w(\omega)=q$ (flat). Null middelverdi, uendelig varians, ukorrelert med seg selv ved alle $\tau\neq0$.
+2. **Hovedformelen:** $y=H(s)w$ ⇒ $S_y(\omega)=H(j\omega)H(-j\omega)\,S_w(\omega)=|H(j\omega)|^2S_w$.
+3. Fra ODE: $\ddot x-3\dot x+ax=u$ ⇒ $H(s)=\dfrac1{s^2-3s+a}$ ⇒ $|H(j\omega)|^2=\dfrac{1}{(a-\omega^2)^2+9\omega^2}$.
+4. Tilstandsrom til spektrum: $H(s)=C(sI-A)^{-1}B$ (+D). Eks: $\dot x=-\omega_0x+ku,\ y=x$ ⇒ $S_y=\dfrac{k^2}{\omega^2+\omega_0^2}$.
+5. **Formfilter (baklengs):** $S(\omega)=\dfrac{c}{\omega^2+a^2}$ ⇒ $H(s)=\dfrac{\sqrt c}{s+a}$ (polene i venstre halvplan).
+6. Autokorrelasjon ↔ spektrum: $\sigma^2e^{-\beta|\tau|}$ ⇔ $\dfrac{2\sigma^2\beta}{\omega^2+\beta^2}$ (Gauss–Markov). Varians $=R(0)$.
+7. To uavhengige bidrag (f.eks. $y=x+v$): spektrene adderes, $S_y=S_x+S_v$.
+
+Feller:
+- Glemme $q$ (intensiteten) eller kvadratet på forsterkningen $k$.
+- Spektraltetthet er alltid reell og ≥ 0 – alternativer med $j\omega$ i er feil.
+
+Formelark: Delvis – $S_y=H(j\omega)H(-j\omega)q$ står på arket. Fourierpar for $e^{-\beta|\tau|}$ gjør ikke.
+
+Gitt på eksamen: Kont 2025 oppg. 6c; Eksamen 2024 oppg. 7 (flervalg); Kont 2024 oppg. 4abc; Eksamen 2023 oppg. 7 (flervalg); Eksamen 2022 oppg. 2ab; Eksamen 2021 oppg. 3b; Eksamen 2015 oppg. 5ab; Eksamen 2014 oppg. 5abc; Eksamen 2013 oppg. 3ab; Eksamen 2012 oppg. 6; Eksamen 2010 oppg. 4; Eksamen 2009 oppg. 3a; Eksamen 2004 oppg. 4ac; Eksamen 2003 oppg. 6
+
+#### 7. Algebraisk ekvivalens, nulltilstands-ekvivalens, duale systemer
+
+Typisk oppgave: Gitt to tilstandsrommodeller: er de urelaterte, algebraisk ekvivalente, nulltilstands-ekvivalente eller duale?
+
+Hvorfor viktig: Nøyaktig samme flervalgsoppgave i 2023, 2024 og kont 2025 – bare nye matriser. Gratis poeng hvis du har en fast rekkefølge.
+
+Metode:
+1. **1. Dual?** Sjekk om $A_2=A_1^T$, $B_2=C_1^T$, $C_2=B_1^T$. Raskest – gjør den først.
+2. **2. Algebraisk ekvivalent** ($\bar A=PAP^{-1}$ osv.) krever samme egenverdier: sammenlign $\text{tr}(A)$ og $\det(A)$. Ulike ⇒ ikke ekvivalente.
+3. **3. Nulltilstands-ekvivalent** ⇔ samme transferfunksjon $G(s)$. Regn begge. Like $G(s)$ men ulik dimensjon/ulike egenverdier ⇒ «zero-state equivalent but not algebraically equivalent».
+4. Samme dimensjon, samme $G(s)$ og begge minimale ⇒ algebraisk ekvivalente.
+5. Ulike $G(s)$ og ikke dual ⇒ «Unrelated».
+6. Tips: $G(s)$ er bestemt av Markov-parametrene $D, CB, CAB, \dots$ og karakteristisk polynom. For 2×2 med $D=0$: like $CB$, $CAB$, $\text{tr}A$ og $\det A$ ⇒ samme $G(s)$.
+
+Feller:
+- Algebraisk ekvivalent ⇒ alltid også nulltilstands-ekvivalent (men ikke omvendt).
+
+Formelark: Nei.
+
+Gitt på eksamen: Kont 2025 oppg. 4 (flervalg); Eksamen 2024 oppg. 6 (flervalg); Eksamen 2023 oppg. 6 (flervalg); Eksamen 2021 oppg. 1e; Kont 2021 oppg. 1g
+
+#### 8. Egenverdier/-vektorer, diagonal-, Jordan- og modalform
+
+Typisk oppgave: Transformer systemet til diagonal- (eller Jordan-) form: finn $\Lambda$/$J$ og $Q$.
+
+Hvorfor viktig: Flervalg i 2024, deloppgave i kont 2024, kont 2025, kont 2021 og 2020. Har kommet på 14 eksamener.
+
+Metode:
+1. Egenverdier: $\det(\lambda I-A)=0$. Egenvektorer: løs $(A-\lambda I)q=0$.
+2. $Q=[q_1\;q_2]$, $\Lambda=Q^{-1}AQ$ ($AQ=Q\Lambda$). Nytt system: $\bar A=\Lambda$, $\bar B=Q^{-1}B$, $\bar C=CQ$.
+3. **Dobbel egenverdi:** færre egenvektorer enn multiplisitet ⇒ Jordanform $J=\begin{bmatrix}\lambda&1\\0&\lambda\end{bmatrix}$. Generalisert egenvektor: $(A-\lambda I)q_2=q_1$.
+4. **Komplekse egenverdier $\sigma\pm j\omega$:** modalform $\begin{bmatrix}\sigma&\omega\\-\omega&\sigma\end{bmatrix}$ med $Q=[\text{Re}\,q\;\;\text{Im}\,q]$ – alle koeffisienter reelle (kont 2021, kont 2025).
+5. Flervalg: sjekk $AQ=QJ$ direkte for hvert alternativ – raskere enn å regne selv.
+
+Feller:
+- Ved Jordanform: rekkefølgen i $Q$ betyr noe – $q_1$ er egenvektoren, $q_2$ den generaliserte.
+
+Formelark: Nei.
+
+Gitt på eksamen: Kont 2025 oppg. 5d; Eksamen 2024 oppg. 3 (flervalg); Kont 2024 oppg. 1f; Eksamen 2023 oppg. 8d; Kont 2021 oppg. 1b; Eksamen 2020 oppg. 9b; Eksamen 2018 oppg. 3; Eksamen 2015 oppg. 2a; Eksamen 2013 oppg. 1b; Eksamen 2012 oppg. 1a; Eksamen 2010 oppg. 1b; Eksamen 2009 oppg. 1bc; Eksamen 2008 oppg. 1a; Eksamen 2003 oppg. 2ab
+
+#### 9. Matriseeksponentialen $e^{At}$
+
+Typisk oppgave: Finn $e^{At}$ (eller ett element av den) eksakt.
+
+Hvorfor viktig: Flervalg i 2023 og kont 2025 (samme oppgave: «øvre venstre element av $e^{At}$»), egen deloppgave i kont 2021 og 2020.
+
+Metode:
+1. **Metode 1 (Cayley–Hamilton, 2×2):** $e^{At}=\beta_0I+\beta_1A$. Løs $e^{\lambda_it}=\beta_0+\beta_1\lambda_i$ for begge egenverdiene.
+2.   Øvre venstre element: $\beta_0+\beta_1a_{11}$.
+3.   Dobbel egenverdi: bruk i tillegg den deriverte, $te^{\lambda t}=\beta_1$.
+4. **Metode 2 (Laplace):** $e^{At}=\mathcal L^{-1}\{(sI-A)^{-1}\}$, delbrøkoppspalt hvert element.
+5. **Metode 3 (diagonal):** $e^{At}=Qe^{\Lambda t}Q^{-1}$.
+6. Triangulær $A$ med dobbel egenverdi 0, f.eks. $\begin{bmatrix}0&1\\0&0\end{bmatrix}$: $e^{At}=I+At$ (rekken stopper).
+7. Flervalg-sjekk: $e^{A\cdot0}=I$ ⇒ øvre venstre element må bli 1 ved $t=0$. Det stryker ofte halve alternativene.
+
+Formelark: Nei – men løsningsformelen $x(t)=e^{At}x(0)+\int e^{A(t-\tau)}Bu\,d\tau$ står der.
+
+Gitt på eksamen: Kont 2025 oppg. 2 (flervalg); Eksamen 2023 oppg. 2 (flervalg); Kont 2021 oppg. 5a; Eksamen 2020 oppg. 9a; Eksamen 2010 oppg. 1cd; Eksamen 2008 oppg. 1b; Eksamen 2004 oppg. 1a; Eksamen 2003 oppg. 2f
+
+#### 10. Utvidet tilstandsrom for Kalmanfilter (bias, last, farget støy)
+
+Typisk oppgave: Sett opp en utvidet modell slik at forstyrrelse/bias kan estimeres, og angi $Q_d$ og $R_d$.
+
+Hvorfor viktig: Del av Kalmanoppgaven i 2021, 2022, 2023, kont 2021 og kont 2024. Kalmanfilteret krever hvit støy – alt som ikke er hvitt må inn som en tilstand.
+
+Metode:
+1. **Saktevarierende last/bias (random walk):** $d[k+1]=d[k]+w_d[k]$ ⇒ legg $d$ til som tilstand: $\begin{bmatrix}x\\d\end{bmatrix}[k+1]=\begin{bmatrix}a&1\\0&1\end{bmatrix}\begin{bmatrix}x\\d\end{bmatrix}[k]+\dots$
+2. **Gauss–Markov-bias:** $\sigma[k+1]=0.9\sigma[k]+v_2[k]$ ⇒ tilstand med egenverdi 0.9. Målingen blir $y=x+\sigma+v_1$ ⇒ $C=[1\;1]$.
+3. **Farget støy med spektrum $S(\omega)$:** finn formfilter $H(s)$ (se «Spektraltetthet»), realiser det ($A_\beta,B_\beta,C_\beta$) og legg filtertilstandene inn: $\begin{bmatrix}\dot x\\\dot x_\beta\end{bmatrix}=\begin{bmatrix}A&GC_\beta\\0&A_\beta\end{bmatrix}\begin{bmatrix}x\\x_\beta\end{bmatrix}+\begin{bmatrix}0\\B_\beta\end{bmatrix}w$.
+4. $Q_d$ = kovariansen til den hvite støyen som driver hver tilstand (diagonal hvis uavhengige). $R_d$ = variansen til den hvite målestøyen.
+5. Kjent ikke-null middelverdi i en forstyrrelse (kont 2024 d): flytt middelverdien inn som et kjent pådrag $Bu$, og la variansen rundt den gå i $Q_d$.
+
+Feller:
+- Bias i målingen påvirker $C$, ikke $A$. Bias i prosessen påvirker $A$.
+
+Formelark: Nei.
+
+Gitt på eksamen: Kont 2024 oppg. 2d; Eksamen 2023 oppg. 9b; Eksamen 2022 oppg. 2d; Eksamen 2021 oppg. 5b; Kont 2021 oppg. 5d; Eksamen 2020 oppg. 11; Eksamen 2016 oppg. 3; Eksamen 2003 oppg. 5d
+
+#### 11. Tolke Kalmanfilteret (gain, Q/R, dropout, deteksjon)
+
+Typisk oppgave: Forklar hvorfor $L$ er liten/stor, hva som skjer med $P$ ved dropout, når filteret er optimalt, sannsynlighet fra $P$.
+
+Hvorfor viktig: Kalmanoppgavene avsluttes nesten alltid med én forklaringsdel (2020, 2022, 2024, kont 2021, kont 2025). Lette poeng hvis du har stikkordene klare.
+
+Metode:
+1. **Optimalitet:** lineær modell, $w$ og $v$ hvite, null middelverdi, Gaussiske, ukorrelerte med hverandre og med $x[0]$; kjente $Q_d,R_d$.
+2. **Liten $L$:** $P^-$ liten i forhold til $R$ ⇒ filteret stoler mer på modellen enn på målingen. Stor $R$ ⇒ mindre gain.
+3. **Øke et diagonalelement i $Q_d$:** mindre tillit til modellen for den tilstanden ⇒ større gain, raskere men mer støyfylt estimat.
+4. **Dropout (ingen måling):** hopp over korreksjon, $P^-$ vokser ($P^-=APA^T+Q$) for hvert steg ⇒ første nye måling får stor gain og stort hopp.
+5. **Stasjonær gain:** $(A,C)$ detekterbar og $(A,\sqrt Q)$ stabiliserbar ⇒ $P$ og $L$ konvergerer.
+6. **Sannsynlighet:** $x_1\sim\mathcal N(\hat x_1,P_{11})$ – tegn normalfordelingskurven, skraver arealet under grensen (2024 d).
+7. **Avviksdeteksjon:** se på innovasjonen $y-C\hat x^-$ i forhold til $\sqrt{CP^-C^T+R}$; mer enn ~2–3 σ ⇒ noe uventet skjedde (kont 2025 c).
+8. **Hvorfor estimator i stedet for å derivere målingen:** derivasjon forsterker støy; modellen filtrerer støy og gir estimater av umålte tilstander.
+
+Formelark: Nei.
+
+Gitt på eksamen: Kont 2025 oppg. 7c; Eksamen 2024 oppg. 10bd; Eksamen 2022 oppg. 3c; Kont 2021 oppg. 3d; Kont 2021 oppg. 5e; Eksamen 2020 oppg. 10cd; Eksamen 2015 oppg. 6; Eksamen 2003 oppg. 5bc
+
+#### 12. LQR for 1. ordens system (analytisk Riccati)
+
+Typisk oppgave: $\dot x=ax+bu$, $J=\int qx^2+ru^2\,dt$: finn $k$. Hva skjer når $r\to\infty$? Stabilt for alle $a$?
+
+Hvorfor viktig: Kommer på annenhver eksamen (2021, 2022, kont 2024, kont 2025) og er nesten ordrett lik hver gang.
+
+Metode:
+1. Riccati skalar: $2ap+q-\dfrac{b^2p^2}{r}=0$ ⇒ $$p=\frac{r}{b^2}\Big(a+\sqrt{a^2+\tfrac{b^2q}{r}}\Big)$$ (velg positiv rot).
+2. $k=\dfrac{bp}{r}=\dfrac{a+\sqrt{a^2+b^2q/r}}{b}$.
+3. Lukket sløyfe: $a-bk=-\sqrt{a^2+b^2q/r}<0$ ⇒ **alltid stabil**, uansett fortegn på $a$.
+4. Bare forholdet $q/r$ betyr noe (kont 2024 a).
+5. $r\to\infty$ (dyrt pådrag): stabilt $a<0$ ⇒ $k\to0$; ustabilt $a>0$ ⇒ $k\to 2a/b$ (speiler polen til $-a$).
+6. Usikker $a$ (2021 b), $b=1$: ekte $a'\le1.5a$ ⇒ $a'-k=a'-a-\sqrt{a^2+q/r}\le0.5a-\sqrt{a^2+q/r}<0$ ⇒ alltid stabil.
+
+Formelark: Ja – Riccatiligningen og $u=-R^{-1}B^TPx$ står på arket.
+
+Gitt på eksamen: Kont 2025 oppg. 6ab; Kont 2024 oppg. 3a; Eksamen 2022 oppg. 4a; Eksamen 2021 oppg. 2; Kont 2019 oppg. 1a; Kont 2017 oppg. 2a; Eksamen 2017 oppg. 3; Eksamen 2016 oppg. 4
+
+#### 13. LQR med matriser og tuning (Q, R, Bryson)
+
+Typisk oppgave: Gitt (deler av) $P$: regn $K=R^{-1}B^TP$. Hvordan endre $Q$/$R$ for å gjøre regulatoren raskere/roligere?
+
+Hvorfor viktig: I 2023 (gitt $P$, finn $K$), 2024 (Segway, off-diagonal i $P$ oppgitt), kont 2021 (Bryson og tuning). Pluss lab-spørsmål om LQR.
+
+Metode:
+1. $K=R^{-1}B^TP$. Med $B=[0;b]$ er det bare andre rad av $P$ som trengs: $K=\tfrac{b}{r}[p_{21}\;p_{22}]$.
+2. Oppgitt bare noe av $P$: sett inn i Riccati $A^TP+PA+Q-PBR^{-1}B^TP=0$ element for element og løs for resten (velg positiv definitt løsning).
+3. Verifisere en gitt $P$: sett inn i Riccati og sjekk ≈ 0.
+4. **Tuning:** større $Q_{ii}$ ⇒ tilstand $i$ straffes mer ⇒ raskere regulering av den. Større $R$ ⇒ mindre pådrag, roligere og tregere.
+5. **Brysons regel:** $Q_{ii}=1/x_{i,\max}^2$, $R_{jj}=1/u_{j,\max}^2$. Garanterer *ikke* $|u|\le u_{\max}$ – det er bare en startverdi for tuning.
+6. LQR med $Q>0$ og $(A,B)$ stabiliserbar ⇒ lukket sløyfe alltid asymptotisk stabil.
+
+Formelark: Ja – $J$, Riccati og $u=-R^{-1}B^TPx$. Bryson står ikke.
+
+Gitt på eksamen: Eksamen 2024 oppg. 11ab; Eksamen 2023 oppg. 8b; Kont 2021 oppg. 1f; Kont 2021 oppg. 5c; Kont 2017 oppg. 2a; Eksamen 2013 oppg. 2c; Eksamen 2010 oppg. 5; Eksamen 2009 oppg. 2b; Eksamen 2008 oppg. 4
+
+#### 14. Helikopterlab-spørsmål
+
+Typisk oppgave: Forklar hva du observerte i laben: PD/LQR, integralvirkning, IMU, Luenberger vs. Kalman, $Q_d$-tuning, ulineariteter.
+
+Hvorfor viktig: Egen oppgave på 12–16 % i 2022, 2023, kont 2024 og kont 2025. Spørsmålene går igjen nesten ordrett.
+
+Metode:
+1. **Poler langt til venstre (PD, lab 1):** modellen sier raskere, men i praksis: metning av motorene, umodellert dynamikk (motor, forsinkelse), støy forsterkes, oscillasjon/ustabilitet.
+2. **Integralvirkning (lab 2):** fjerner stasjonært avvik fra konstante forstyrrelser og modellfeil (f.eks. feil likevektspådrag). Ulemper: tregere, mer oversving, integrator-windup. Tunes via vekten på integraltilstandene i $Q$.
+3. **Hvorfor estimator med IMU (lab 3):** IMU måler vinkelhastigheter (gyro) og akselerasjon – ikke alle tilstander direkte, og målingene er støyfylte med bias. Estimatoren rekonstruerer tilstandene og filtrerer støy.
+4. **Luenberger vs. Kalman:** Luenberger – poler velges for hånd, ingen eksplisitt støymodell, tuning via polplassering. Kalman – gain beregnes optimalt fra $Q_d,R_d$, tidsvarierende gain, gir kovarians $P$ (usikkerhet), tuning via støykovarianser som kan måles (R) og justeres (Q). Begge kan brukes i kontinuerlig og diskret tid.
+5. **$Q_d$ diagonal:** større element ⇒ mindre tillit til modellen for den tilstanden ⇒ estimatet følger målingene mer (raskere, mer støy).
+6. **Ulinearitet:** linearisert rundt likevekt – store vinkler, $\sin/\cos$-ledd, motor-/thrust-ulinearitet, kobling mellom akser ⇒ dårligere ytelse langt fra likevekt.
+7. **Encoder-feil:** kvantisering (uniform fordeling, varians $\Delta^2/12$), evt. offset ved oppstart – ikke perfekt.
+
+Formelark: Nei.
+
+Gitt på eksamen: Kont 2025 oppg. 9; Kont 2024 oppg. 5; Eksamen 2023 oppg. 11; Eksamen 2022 oppg. 5
+
+
+### Nivå 2: Sannsynlig
+
+Omtrent annenhver eksamen. Ta dem når nivå 1 sitter.
+
+#### 15. Integralvirkning og stasjonært avvik
+
+Typisk oppgave: Konstant forstyrrelse gir stasjonært avvik – sett opp utvidet system med integraltilstand og vis at avviket forsvinner.
+
+Hvorfor viktig: Del b) i 2024 opg. 9, c–d) i kont 2024 opg. 3, steady-state-analysen i 2024 opg. 11 og kont 2021 opg. 5 – pluss lab-spørsmål.
+
+Metode:
+1. Ny tilstand $\dot z=r-y$ (eller $y-r$). Utvidet system: $\begin{bmatrix}\dot x\\\dot z\end{bmatrix}=\begin{bmatrix}A&0\\-C&0\end{bmatrix}\begin{bmatrix}x\\z\end{bmatrix}+\begin{bmatrix}B\\0\end{bmatrix}u+\begin{bmatrix}0\\1\end{bmatrix}r$.
+2. Regulator $u=-K_xx-K_zz$ (velg fortegn konsistent). Stasjonært: $\dot z=0$ ⇒ $y=r$ uansett konstant forstyrrelse – så lenge lukket sløyfe er stabil.
+3. Stasjonært avvik uten integralvirkning: sett $\dot x=0$ med $d=d_0$ og løs for $x_\infty$ – avviket er proporsjonalt med $d_0$.
+4. Alternativ (kont 2024 d): estimer forstyrrelsen med en observer/Kalman (utvidet modell) og kompenser i foroverkoblingen.
+
+Gitt på eksamen: Eksamen 2024 oppg. 9b; Eksamen 2024 oppg. 11cd; Kont 2024 oppg. 3cd; Kont 2021 oppg. 5b; Eksamen 2022 oppg. 5b (lab); Eksamen 2023 oppg. 11a (lab)
+
+#### 16. Realisering: styrbar kanonisk form og minimal realisering
+
+Typisk oppgave: Finn en (minimal) tilstandsromrealisering av $G(s)$ / hvilken kanonisk form er dette?
+
+Hvorfor viktig: Kommer på 15 eksamener totalt. Nyere: 2021, 2022, 2023 (gjenkjenne form), kont 2021, kont 2025.
+
+Metode:
+1. Skriv $G(s)=G(\infty)+G_{sp}(s)$ ($D=G(\infty)$, polynomdivisjon hvis teller har samme grad som nevner).
+2. Nevner $d(s)=s^r+\alpha_1s^{r-1}+\dots+\alpha_r$ (monisk!). Teller $N_1s^{r-1}+\dots+N_r$.
+3. SISO styrbar kanonisk: $A=\begin{bmatrix}-\alpha_1&-\alpha_2&\cdots\\1&0&\cdots\\0&1&\cdots\end{bmatrix}$, $B=[1;0;\dots]$, $C=[N_1\;N_2\;\dots]$ – formelen står på arket.
+4. Minimal ⇔ styrbar og observerbar ⇔ dimensjonen = grad av $G(s)$ etter forkorting. Forkort felles faktorer først!
+5. Tilstandsrom med flere tilstander enn den minimale realiseringen (kont 2021 d): de «ekstra» modusene er ikke-styrbare eller ikke-observerbare.
+
+Formelark: Ja – den generelle formelen for styrbar kanonisk form står på arket.
+
+Gitt på eksamen: Kont 2025 oppg. 8c; Eksamen 2023 oppg. 8d; Eksamen 2022 oppg. 2c; Eksamen 2021 oppg. 1c; Kont 2021 oppg. 4d; Kont 2019 oppg. 3b; Eksamen 2017 oppg. 2; Kont 2017 oppg. 1; Eksamen 2016 oppg. 2; Eksamen 2014 oppg. 3a; Eksamen 2012 oppg. 3ab; Eksamen 2010 oppg. 2; Eksamen 2009 oppg. 4bc; Eksamen 2008 oppg. 2abd; Eksamen 2003 oppg. 3
+
+#### 17. Transferfunksjon fra tilstandsrom
+
+Typisk oppgave: Finn $G(s)=C(sI-A)^{-1}B+D$ (ofte som del av BIBO/ekvivalens).
+
+Hvorfor viktig: Egen deloppgave i 2021, 2022 og kont 2025, men trengs i tillegg i alle BIBO- og ekvivalensoppgaver.
+
+Metode:
+1. 2×2: $(sI-A)^{-1}=\dfrac{1}{\det(sI-A)}\begin{bmatrix}s-a_{22}&a_{12}\\a_{21}&s-a_{11}\end{bmatrix}$.
+2. Med $C=[1\;0]$ og $B=[1;0]$ trenger du bare element (1,1): $\dfrac{s-a_{22}}{\det(sI-A)}$.
+3. Uobserverbar/ustyrbar del (2021 e): de modusene forkortes bort – du kan droppe dem før du regner.
+4. Lukket sløyfe med PI: $G_{cl}=\dfrac{K(s)G(s)}{1+K(s)G(s)}$.
+
+Formelark: Ja – $G(s)=C(sI-A)^{-1}B+D$.
+
+Gitt på eksamen: Kont 2025 oppg. 8a; Eksamen 2022 oppg. 1b; Eksamen 2021 oppg. 1b; Eksamen 2018 oppg. 4a; Eksamen 2009 oppg. 4a
+
+#### 18. Forventning og varians gjennom et system med hvit støy
+
+Typisk oppgave: Vis at $\dot m_x=a\,m_x$ og $\dot C_x=2aC_x+q$ / regn middel og varians av $x[2]$.
+
+Hvorfor viktig: Del c–d) i 2021 opg. 4 og 2024 opg. 9 er nesten identiske. Diskret variant i kont 2019.
+
+Metode:
+1. Kontinuerlig: $\dot x=ax+w$, $E[w(t)w(\tau)]=q\delta(t-\tau)$.
+2. Middelverdi: ta forventning ⇒ $\dot m_x=a\,m_x$ ⇒ $m_x(t)=e^{at}m_x(0)$.
+3. Varians: $x(t)=e^{at}x(0)+\int_0^te^{a(t-\tau)}w(\tau)d\tau$. Deriver $C_x=E[(x-m)^2]$ ⇒ $\dot C_x=2aC_x+q$.
+4. Delta-trikset: $\int_0^t\delta(t-\tau)d\tau=\tfrac12$ (impulsen ligger på integrasjonsgrensen) – det er her $\tfrac12$ kommer fra.
+5. Med forsterkning: $\dot x=ax+bw$ ⇒ $\dot C_x=2aC_x+b^2q$. Generelt $\dot P=AP+PA^T+GQG^T$.
+6. Diskret: $m[k+1]=am[k]$, $P[k+1]=a^2P[k]+Q$.
+
+Formelark: Nei (bare Kalman-versjonen med $-PC^TR^{-1}CP$-leddet).
+
+Gitt på eksamen: Eksamen 2024 oppg. 9cd; Eksamen 2021 oppg. 4cd; Kont 2019 oppg. 6a; Eksamen 2015 oppg. 5c; Eksamen 2013 oppg. 3c; Eksamen 2004 oppg. 4b
+
+#### 19. Korte bevis: dualitet, PBH, gramian, linearitet
+
+Typisk oppgave: Vis at dualt system er observerbart ⇔ originalt styrbart / PBH-testen / $W_o$ inverterbar ⇒ $x(0)$ kan finnes.
+
+Hvorfor viktig: Hver ordinære eksamen 2021–2023 hadde ett kort bevis (8–15 %). De er korte når du har sett dem én gang.
+
+Metode:
+1. **Dualitet (2023):** $\mathcal O_{\text{dual}}=[B^T;B^TA^T;\dots]=\mathcal C^T$, og $\text{rank}(M^T)=\text{rank}(M)$. Ferdig.
+2. **PBH (2022):** anta $A^Tv=\lambda v$ og $B^Tv=0$. Da $B^T(A^T)^kv=\lambda^kB^Tv=0$ for alle $k$ ⇒ $\mathcal C^Tv=0$ ⇒ $\mathcal C$ ikke full rang. Motsigelse.
+3. **Observerbarhetsgramian (2021):** $y=Ce^{At}x_0$. Multipliser med $e^{A^Tt}C^T$ og integrer: $\int_0^{t_1}e^{A^T\tau}C^Ty\,d\tau=W_o(t_1)x_0$ ⇒ $x_0=W_o^{-1}(\ldots)$.
+4. **$W_o$ inverterbar for alle $t>0$** ⇔ systemet er observerbart (2022 f).
+5. **Linearitet:** additivitet $G(u_1+u_2)=G(u_1)+G(u_2)$ og homogenitet $G(\alpha u)=\alpha G(u)$. $F(G(x))$ lineær, $F(x)G(x)$ ikke.
+6. **Separasjonsprinsippet:** med $e=x-\hat x$ blir lukket sløyfe blokktriangulær $\begin{bmatrix}A-BK&BK\\0&A-LC\end{bmatrix}$ ⇒ egenverdiene er de til $A-BK$ og $A-LC$ hver for seg.
+
+Gitt på eksamen: Eksamen 2023 oppg. 10; Eksamen 2022 oppg. 4b; Eksamen 2022 oppg. 1f; Eksamen 2021 oppg. 5a; Kont 2021 oppg. 2; Kont 2021 oppg. 1e; Kont 2019 oppg. 5; Eksamen 2009 oppg. 1a
+
+#### 20. Luenberger-observer og estimeringsfeil
+
+Typisk oppgave: Sett opp observeren, feildynamikken, og finn $L$ som gir gitte poler for $A-LC$.
+
+Hvorfor viktig: Fast innslag frem til 2021 (13 eksamener). Nyere eksamener spør heller om Luenberger vs. Kalman, men oppsettet trengs.
+
+Metode:
+1. $\dot{\hat x}=A\hat x+Bu+L(y-C\hat x)$. Feil $e=x-\hat x$: $\dot e=(A-LC)e$.
+2. Polplassering: $\det(sI-(A-LC))$ = ønsket polynom, løs for $L=[l_1;l_2]$. (Dual av $K$-design: $L^T$ for $(A^T,C^T)$.)
+3. Mulig ⇔ $(A,C)$ observerbar. Tommelfinger: observerpoler 2–6 ganger raskere enn reguleringspolene.
+4. For raske poler ⇒ stor $L$ ⇒ forsterker målestøy (2003 opg. 4: transferfunksjon fra målestøy til estimat).
+
+Gitt på eksamen: Eksamen 2021 oppg. 3d; Kont 2021 oppg. 1cd; Eksamen 2020 oppg. 11ab; Eksamen 2019 oppg. 5c; Eksamen 2018 oppg. 1; Kont 2017 oppg. 3d; Eksamen 2016 oppg. 1c; Eksamen 2015 oppg. 4b; Eksamen 2012 oppg. 4; Eksamen 2011 oppg. 3b; Eksamen 2004 oppg. 3b; Eksamen 2003 oppg. 4
+
+#### 21. Eksakt diskretisering (ZOH), Euler og Van Loan
+
+Typisk oppgave: Vis at $x[k+1]=e^{aT}x[k]+\frac{b}{a}(e^{aT}-1)u[k]$ / hva skjer med stabiliteten for stor $T$?
+
+Hvorfor viktig: Del a) i 2023 opg. 9, kont 2021 opg. 3, 2020 opg. 12.
+
+Metode:
+1. $A_d=e^{AT}$, $B_d=\int_0^Te^{A\tau}d\tau\,B$. Hvis $A$ inverterbar: $B_d=A^{-1}(e^{AT}-I)B$.
+2. Skalar $\dot x=ax+bu$: $A_d=e^{aT}$, $B_d=\frac ba(e^{aT}-1)$. Eks: $a=-0.1,b=1$ ⇒ $B_d=10(1-e^{-0.1T})$.
+3. Eksakt diskretisering bevarer stabilitet for alle $T$: $|e^{\lambda T}|<1$ ⇔ $\text{Re}\lambda<0$.
+4. Euler: $A_d=I+AT$ ⇒ ustabil for stor $T$ selv om kontinuerlig er stabil (egenverdi $1+\lambda T$ utenfor enhetssirkelen).
+5. Van Loan (støykovarians $Q_d$): sett opp $\begin{bmatrix}-A&GQG^T\\0&A^T\end{bmatrix}T$, ta matriseeksponential. Hvorfor gir én kontinuerlig støy kovarians i flere tilstander? Fordi den integreres gjennom dynamikken i løpet av samplingsintervallet.
+
+Gitt på eksamen: Eksamen 2023 oppg. 9a; Kont 2021 oppg. 3ab; Eksamen 2020 oppg. 12b; Eksamen 2012 oppg. 2; Eksamen 2004 oppg. 1b
+
+#### 22. PI/PID-regulator på tilstandsromform
+
+Typisk oppgave: Cruise control $m\dot v+dv=u$ med PI: lukket-sløyfe transferfunksjon, tilstandsrom, plassér polene i $-\omega_b$.
+
+Hvorfor viktig: Kont 2025 opg. 8 er ordrett lik 2018 opg. 4. PID-realisering også i 2016 og 2014.
+
+Metode:
+1. PI: $K(s)=K_P+\frac{K_I}{s}$ ⇒ én tilstand (integratoren), egenverdi i 0.
+2. Tilstander $x=[v;\;z]$ med $\dot z=r-v$: $u=K_P(r-v)+K_Iz$.
+3. $\dot v=\frac1m(-dv+K_P(r-v)+K_Iz)$, $\dot z=r-v$ ⇒ $A=\begin{bmatrix}-\frac{d+K_P}{m}&\frac{K_I}{m}\\-1&0\end{bmatrix}$.
+4. Karakteristisk polynom $s^2+\frac{d+K_P}{m}s+\frac{K_I}{m}=(s+\omega_b)^2$ ⇒ $K_P=2m\omega_b-d$, $K_I=m\omega_b^2$.
+5. Ren PID ($K_Ds$) er ikke propper ⇒ kan ikke realiseres. Med filter $\frac{K_Ds}{\tau s+1}$ går det.
+
+Gitt på eksamen: Kont 2025 oppg. 8; Eksamen 2018 oppg. 4; Kont 2019 oppg. 3b; Eksamen 2016 oppg. 2; Eksamen 2014 oppg. 2
+
+#### 23. Stabiliserbarhet og parameteravhengig regulator
+
+Typisk oppgave: Finnes det en stabiliserende $K$ for alle verdier av α? Finn $K=[f(\alpha)\;1]$ som stabiliserer for alle α.
+
+Hvorfor viktig: 2023 opg. 8 a og c, kont 2017.
+
+Metode:
+1. Stabiliserbar ⇔ alle ustyrbare moduser er stabile. Sjekk $\det\mathcal C$ som funksjon av parameteren; der den er 0, finn den ustyrbare egenverdien.
+2. PBH-variant: $\text{rank}[A-\lambda I\;\;B]=n$ for alle $\lambda$ med $\text{Re}\lambda\ge0$.
+3. Parameteravhengig $K$: regn karakteristisk polynom for $A-BK$, krev positive koeffisienter (2. orden: $\text{tr}<0$ og $\det>0$).
+4. Detekterbarhet er det duale: alle uobserverbare moduser stabile.
+
+Gitt på eksamen: Eksamen 2023 oppg. 8ac; Kont 2017 oppg. 3d; Eksamen 2011 oppg. 2d
+
+#### 24. Kontinuerlig Kalmanfilter – skalar Riccati og stasjonær P
+
+Typisk oppgave: Vis at $\dot P=-4P-\tfrac12P^2+4$ og finn stasjonær $P$.
+
+Hvorfor viktig: Kont 2024 opg. 4 (nesten identisk med 2014 opg. 5 og 2009 opg. 3).
+
+Metode:
+1. $\dot P=AP+PA^T+GQG^T-PC^TR^{-1}CP$. Skalar: $\dot P=2aP+g^2q-\frac{c^2}{r}P^2$.
+2. Stasjonær: sett $\dot P=0$, løs andregradsligningen, velg **positiv** rot.
+3. Gain $L=PC^TR^{-1}$.
+
+Formelark: Ja – kontinuerlig Kalman-Riccati og «sett $\dot P=0$» står på arket.
+
+Gitt på eksamen: Kont 2024 oppg. 4de; Eksamen 2014 oppg. 5d; Eksamen 2009 oppg. 3bc; Eksamen 2003 oppg. 5a
+
+#### 25. Vurdere støyantakelser fra en figur
+
+Typisk oppgave: Histogram og autokorrelasjon av målefeil: er støyen hvit, Gaussisk, null middelverdi, med riktig $R$?
+
+Hvorfor viktig: 2022 opg. 3e og 2023 opg. 9c – samme type figur begge år.
+
+Metode:
+1. **Null middelverdi:** histogrammet sentrert i 0.
+2. **Gaussisk:** klokkeformet histogram.
+3. **Hvit:** autokorrelasjonen er (nesten) null for alle lag ≠ 0 – bare en topp i 0.
+4. **Varians:** autokorrelasjonen ved lag 0 er variansen direkte – sammenlign med antatt $R$.
+5. Tydelig korrelasjon ved lag ≠ 0 ⇒ farget støy ⇒ må modelleres som en tilstand (se «Utvidet tilstandsrom»).
+
+Gitt på eksamen: Eksamen 2023 oppg. 9c; Eksamen 2022 oppg. 3e; Kont 2024 oppg. 5b; Eksamen 2011 oppg. 4ab
+
+
+### Nivå 3: Bør gjøre
+
+Kommer innimellom, ofte som deloppgave.
+
+#### 26. Lyapunov-ligningen
+
+Typisk oppgave: Løs $A^TM+MA=-N$ (ofte $N=I$) og avgjør stabilitet ut fra om $M>0$.
+
+Hvorfor viktig: Fast frem til 2016; sist i 2021 opg. 3c.
+
+Metode:
+1. Sett $M=\begin{bmatrix}m_1&m_2\\m_2&m_3\end{bmatrix}$ (symmetrisk), multipliser ut, få 3 lineære ligninger.
+2. Asymptotisk stabil ⇔ unik løsning $M$ positiv definitt: $m_1>0$ og $\det M>0$.
+
+Formelark: Ja – selve ligningen. Kriteriet ($M>0$) må du kunne.
+
+Gitt på eksamen: Eksamen 2021 oppg. 3c; Eksamen 2016 oppg. 1b; Eksamen 2015 oppg. 3; Eksamen 2014 oppg. 1d; Eksamen 2012 oppg. 5; Eksamen 2008 oppg. 3d; Eksamen 2003 oppg. 2e
+
+#### 27. Diskret tid: inputsekvens og antall steg
+
+Typisk oppgave: Finn $u[0],u[1]$ som tar $x[0]$ til ønsket $x[2]$ / hvor mange steg trengs for å bestemme $x[0]$?
+
+Hvorfor viktig: 2024 opg. 8 og 2020 opg. 10a.
+
+Metode:
+1. $x[2]=A^2x[0]+ABu[0]+Bu[1]$ ⇒ $[AB\;\;B]\begin{bmatrix}u[0]\\u[1]\end{bmatrix}=x[2]-A^2x[0]$. Løs 2×2-systemet.
+2. Observerbarhet i diskret tid: $n$ målinger (steg) er nok til å bestemme $x[0]$ når $\mathcal O$ har full rang.
+
+Formelark: Ja – $x[k]=A^kx[0]+\sum A^{k-1-m}Bu[m]$.
+
+Gitt på eksamen: Eksamen 2024 oppg. 8; Eksamen 2020 oppg. 10a
+
+#### 28. Modellering og linearisering
+
+Typisk oppgave: Sett opp tilstandsrommodell fra fysikk / linearisér rundt likevekt.
+
+Hvorfor viktig: Kont 2021 (ACC), 2020 (magnet), 2017, 2018 (tanker), 2019.
+
+Metode:
+1. Likevekt: sett $\dot x=0$, løs for $x^*,u^*$.
+2. Jacobi: $A=\partial f/\partial x$, $B=\partial f/\partial u$ i $(x^*,u^*)$. Nye variabler $\delta x=x-x^*$.
+3. Tolk resultatet: lineær modell gjelder bare nær likevekten.
+
+Gitt på eksamen: Kont 2021 oppg. 4a; Eksamen 2020 oppg. 12a; Eksamen 2019 oppg. 4; Eksamen 2019 oppg. 5a; Eksamen 2018 oppg. 5; Eksamen 2017 oppg. 1; Eksamen 2017 oppg. 4
+
+#### 29. Tidsrespons fra løsningsformelen
+
+Typisk oppgave: Finn $y(t)$ for sprang/initialverdi, impulsrespons.
+
+Hvorfor viktig: Eldre eksamener (2013–2019).
+
+Metode:
+1. $x(t)=e^{at}x(0)+\int_0^te^{a(t-\tau)}bu(\tau)d\tau$. Sprang: $\frac ba(e^{at}-1)$.
+2. Impulsrespons: $g(t)=Ce^{At}B+D\delta(t)$.
+
+Gitt på eksamen: Kont 2019 oppg. 3a; Eksamen 2014 oppg. 4; Eksamen 2014 oppg. 3b; Eksamen 2013 oppg. 2a
+
+#### 30. Sammenkobling av systemer (serie, parallell, tilbakekobling)
+
+Typisk oppgave: Finn $(A',B',C',D')$ for koblede systemer / legg til aktuator-dynamikk.
+
+Hvorfor viktig: 2019 opg. 1, 2020 opg. 12c.
+
+Metode:
+1. Stable tilstandene $[x_1;x_2]$, skriv ut hver ligning med koblingene ($u_2=y_1$ for serie osv.), les av blokkmatrisene.
+
+Gitt på eksamen: Eksamen 2019 oppg. 1; Eksamen 2020 oppg. 12c
+
+
+### Nivå 4: Hvis du har tid
+
+Ikke gitt de siste årene. Bare skum metoden.
+
+#### 31. Kalmans kanoniske dekomposisjon
+
+Typisk oppgave: Finn $T$ som splitter systemet i styrbar og ustyrbar del.
+
+Hvorfor viktig: Kont 2021 opg. 4e og 2011.
+
+Metode:
+1. Velg de første kolonnene i $T$ som lineært uavhengige kolonner fra $\mathcal C$, fyll ut med vilkårlige vektorer til $T$ er inverterbar.
+
+Gitt på eksamen: Kont 2021 oppg. 4e; Eksamen 2011 oppg. 1b
+
+#### 32. Extended Kalman Filter
+
+Typisk oppgave: Sett opp EKF for en ulineær modell.
+
+Hvorfor viktig: Pensum (uke 45), men ikke gitt som regneoppgave siden 2012.
+
+Metode:
+1. Prediker med den ulineære modellen: $\hat x^-[k+1]=f(\hat x[k],u[k])$.
+2. Lineariser rundt estimatet: $A_k=\partial f/\partial x|_{\hat x[k]}$, $C_k=\partial h/\partial x|_{\hat x^-[k]}$, og bruk dem i $P$- og $L$-ligningene.
+3. Innovasjonen bruker $h(\hat x^-)$, ikke $C\hat x^-$.
+
+Gitt på eksamen: Eksamen 2012 oppg. 7b
+
+#### 33. Utledninger: rekursiv minste kvadrat, dekorrelering av støy
+
+Typisk oppgave: Utled optimal $K$ i $\hat x=m+K(y-Cm)$ / skriv korrelert $Gw$ som $\tilde G\tilde w$ med uavhengige komponenter.
+
+Hvorfor viktig: Kont 2017, 2014 og 2020 opg. 10b.
+
+Metode:
+1. Dekorrelering: faktoriser $Q=SS^T$ (Cholesky eller egenverdier) ⇒ $w=S\tilde w$ med $E[\tilde w\tilde w^T]=I$, $\tilde G=GS$.
+2. Rekursivt gjennomsnitt: $\hat x_{k+1}=\hat x_k+\frac1{k+2}(z_{k+1}-\hat x_k)$, $P_k=R/(k+1)$.
+
+Gitt på eksamen: Eksamen 2020 oppg. 10b; Kont 2017 oppg. 4; Eksamen 2014 oppg. 6
+
+
+## Fasit flervalg (fra løsningsforslagene)
+
+- Eksamen 2023 oppg. 1: c (Styrbarhet og observerbarhet (rangtest))
+- Eksamen 2023 oppg. 2: d (Matriseeksponentialen $e^{At}$)
+- Eksamen 2023 oppg. 3: a (Intern stabilitet vs. BIBO-stabilitet)
+- Eksamen 2023 oppg. 4: b (Referansefølging: $u=-Kx+K_r r$)
+- Eksamen 2023 oppg. 5: b (Polplassering med $u=-Kx$)
+- Eksamen 2023 oppg. 6: a (Algebraisk ekvivalens, nulltilstands-ekvivalens, duale systemer)
+- Eksamen 2023 oppg. 7: e (Spektraltetthet og hvit støy)
+- Eksamen 2024 oppg. 1: b (Styrbarhet og observerbarhet (rangtest))
+- Eksamen 2024 oppg. 2: d (Intern stabilitet vs. BIBO-stabilitet)
+- Eksamen 2024 oppg. 3: d (Egenverdier/-vektorer, diagonal-, Jordan- og modalform)
+- Eksamen 2024 oppg. 4: b og e (Intern stabilitet vs. BIBO-stabilitet)
+- Eksamen 2024 oppg. 5: d (Polplassering med $u=-Kx$)
+- Eksamen 2024 oppg. 6: b (Algebraisk ekvivalens, nulltilstands-ekvivalens, duale systemer)
+- Eksamen 2024 oppg. 7: f (Spektraltetthet og hvit støy)
+- Kont 2025 oppg. 1: c (Intern stabilitet vs. BIBO-stabilitet)
+- Kont 2025 oppg. 2: b (Matriseeksponentialen $e^{At}$)
+- Kont 2025 oppg. 3: f (Referansefølging: $u=-Kx+K_r r$)
+- Kont 2025 oppg. 4: a (Algebraisk ekvivalens, nulltilstands-ekvivalens, duale systemer)
+
+## Eksamener med løsningsforslag (ren tekst)
+
+Nyeste først. 2021 og senere ligner mest på årets eksamen.
+
+- Kont 2025: https://raw.githubusercontent.com/kristiangjestad/ttk4115/main/public/llm/2025-kont.txt
+- Kont 2024: https://raw.githubusercontent.com/kristiangjestad/ttk4115/main/public/llm/2024-kont.txt
+- Eksamen 2024: https://raw.githubusercontent.com/kristiangjestad/ttk4115/main/public/llm/2024.txt
+- Eksamen 2023: https://raw.githubusercontent.com/kristiangjestad/ttk4115/main/public/llm/2023.txt
+- Eksamen 2022: https://raw.githubusercontent.com/kristiangjestad/ttk4115/main/public/llm/2022.txt
+- Kont 2021: https://raw.githubusercontent.com/kristiangjestad/ttk4115/main/public/llm/2021-kont.txt
+- Eksamen 2021: https://raw.githubusercontent.com/kristiangjestad/ttk4115/main/public/llm/2021.txt
+- Kont 2020: https://raw.githubusercontent.com/kristiangjestad/ttk4115/main/public/llm/2020-kont.txt
+- Eksamen 2020: https://raw.githubusercontent.com/kristiangjestad/ttk4115/main/public/llm/2020.txt
+- Kont 2019: https://raw.githubusercontent.com/kristiangjestad/ttk4115/main/public/llm/2019-kont.txt
+- Eksamen 2019: https://raw.githubusercontent.com/kristiangjestad/ttk4115/main/public/llm/2019.txt
+- Eksamen 2018: https://raw.githubusercontent.com/kristiangjestad/ttk4115/main/public/llm/2018.txt
+- Kont 2017: https://raw.githubusercontent.com/kristiangjestad/ttk4115/main/public/llm/2017-kont.txt
+- Eksamen 2017: https://raw.githubusercontent.com/kristiangjestad/ttk4115/main/public/llm/2017.txt
+- Eksamen 2016: https://raw.githubusercontent.com/kristiangjestad/ttk4115/main/public/llm/2016.txt
+- Eksamen 2015: https://raw.githubusercontent.com/kristiangjestad/ttk4115/main/public/llm/2015.txt
+- Eksamen 2014: https://raw.githubusercontent.com/kristiangjestad/ttk4115/main/public/llm/2014.txt
+- Eksamen 2013: https://raw.githubusercontent.com/kristiangjestad/ttk4115/main/public/llm/2013.txt
+- Eksamen 2012: https://raw.githubusercontent.com/kristiangjestad/ttk4115/main/public/llm/2012.txt
+- Eksamen 2011: https://raw.githubusercontent.com/kristiangjestad/ttk4115/main/public/llm/2011.txt
+- Eksamen 2010: https://raw.githubusercontent.com/kristiangjestad/ttk4115/main/public/llm/2010.txt
+- Eksamen 2009: https://raw.githubusercontent.com/kristiangjestad/ttk4115/main/public/llm/2009.txt
+- Eksamen 2008: https://raw.githubusercontent.com/kristiangjestad/ttk4115/main/public/llm/2008.txt
+- Eksamen 2004: https://raw.githubusercontent.com/kristiangjestad/ttk4115/main/public/llm/2004.txt
+- Eksamen 2003: https://raw.githubusercontent.com/kristiangjestad/ttk4115/main/public/llm/2003.txt

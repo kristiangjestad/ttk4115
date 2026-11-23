@@ -1,0 +1,1119 @@
+# Eksamen 2019 – TTK4115 Lineær systemteori
+
+Tekst hentet automatisk fra PDF. Matriser og brøker kan stå rotete over flere linjer.
+
+## Oppgavetekst
+
+Department of Engineering Cybernetics
+
+Examination paper for TTK4115 Linear Systems Theory
+
+Academic contact during examination: Morten D. Pedersen
+
+Examination date: 18. December 2019
+
+Examination time (from-to): 09:00–13:00
+
+Permitted examination support material: D: No printed or handwritten material allowed.
+Specific simple calculator allowed.
+
+Other information:
+
+   1. Note that no parts of this exam assume that you have solved any of the previous parts.
+      The given information from previous parts should be sufficient to move on.
+   2. You may answer in Norwegian or English. Du kan svare på norsk eller engelsk.
+
+Language: English
+Number of pages (front page excluded):              6
+Number of pages enclosed:                           4
+
+ Informasjon om trykking av eksamensoppgave
+                                                                                  Checked by:
+ Originalen er:
+
+ 1-sidig    □       2-sidig x
+                                                          ____________________________
+ sort/hvit x        farger □                                     Date               Signature
+
+ skal ha flervalgskjema □
+
+Students will find the examination results in Studentweb. Please contact the department if you
+have questions about your results. The Examinations Office will not be able to answer this.
+
+TTK4115 Linear Systems Theory - 18. December 2019                                                                              Page 1 of 6
+
+Problem 1 (20 %)
+
+                     a)
+                                                                                                                     c)
+               u1              y1
+                     Σ1
+                                                                                                         u1               y1
+                                                                                       v                             Σ1             z
+                                                                                                     −
+    v                                             z
+
+               u2              y2                                                                        y2               u2
+                     Σ2                                                                                              Σ2
+                                                                        b)
+
+                                    u1                             y1           u2                  y2
+                              v                  Σ1                                       Σ2                 z
+
+Let two state-space systems be given respectively by
+
+                     Σ1 :         ẋ1 = A1 x1 + B1 u1 ,                              y1 = C1 x1 + D1 u1                                 (1)
+                     Σ2 :         ẋ2 = A2 x2 + B2 u2 ,                              y2 = C2 x2 + D2 u2                                 (2)
+
+In this task, you are to derive state-space representations of the interconnections shown
+in the diagram. The interconnections can all be described by a system on the form
+                                                               0                                         0
+                                                        A                                            B
+                                            z"          }|                   #{ "                  z" }| #{
+                                                 A011 A012                                           B10
+                          "         #                                                      #
+                              ẋ1                                                    x1
+                                        =                                                      +                 v                      (3)
+                              ẋ2                A021 A022                           x2              B20
+                                                                            "         #
+                                            h                           i       x1
+                                    z=           C10           C20                        + D0 v                                        (4)
+                                            |          {z               }       x2
+                                                           0
+                                                       C
+
+Find the matrices (A0 , B 0 , C 0 , D 0 ) for each of the interconnections shown in the figure.
+
+a) (4 %) Parallel interconnection with
+
+                                             u1 = u2 = v,                            z = y1 + y2                                        (5)
+
+b) (7 %) Serial interconnection with
+
+                                            u 2 = y1 ,                  v = u1 ,               z = y2                                   (6)
+
+Page 2 of 6                          TTK4115 Linear Systems Theory - 18. December 2019
+
+c) (9 %) Feedback interconnection with
+                                 u1 = v − y2 ,             u2 = y1 ,            z = y1       (7)
+      You can assume that M = I + D2 D1 and N = I + D1 D2 are invertible matrices.
+      If you can’t make progress, set D1 = 0 and D2 = 0.
+
+Problem 2 (15 %)
+
+A Kalman filter has been running on a process with two states for a while. This process
+is described, in part, by the matrices
+                                             h         i
+                                     C=          1 0       ,    R = ρ2                       (8)
+
+The filter is now in time-step k and a measurement y[k] is about to arrive.
+
+Suppose that the a-priori estimate and covariance matrix at time-step k are given re-
+spectively by                "   #            "                #
+                      −        0       −          σ12   γσ1 σ2
+                    x̂ [k] =       , P [k] =                                      (9)
+                               0                γσ1 σ2    σ22
+Here, γ ∈ (−1, 1) is a so-called correlation coefficient.
+
+Find an analytical expression for the a-posteriori estimate x̂[k] in terms of y[k].
+
+What is the estimate in the limit ρ → ∞? How do you interpret your finding?
+
+Problem 3 (15 %)
+
+You have been fired from your job as a control engineer due to a management that does
+not appreciate the beautiful art and science of control engineering. It’s time for revenge.
+
+One of the company’s products is described by the (rather dull) system
+                           "         #       "         #"           #       "       #
+                               ẋ1               0 0           x1               1
+                                         =                              +               u   (10)
+                               ẋ2               0 0           x2               0
+
+Leave a nasty surprise for your former bosses with a controller u = −(k1 x1 + k2 x2 ) + r
+that makes the plant unstable without moving the eigenvalues (which would be noticed).
+
+First, show that the plant is stable (in the sense of Lyapunov) as it stands. Then, supply
+your gains k1 and k2 and argue mathematically that your plan of destabilizing the system
+will succeed.
+
+TTK4115 Linear Systems Theory - 18. December 2019                                Page 3 of 6
+
+Problem 4 (25 %)
+The figure illustrates a train of n + 1 carts, of which only three are shown. You may
+assume that n < ∞. The carts are connected with links of length ` > 0 which are
+attached to their rotation axes.
+
+                                                                            V2
+                                                                        `
+
+                                                             V1
+                                                        `
+               ϕ0
+                                          V0
+
+                    ϕ1
+
+                                                1
+                                                u
+
+                         ϕ2
+
+A kinematic analysis will show that the angular velocity of the lead cart satisfies
+
+                                         ϕ̇0 (t) = V0 u(t)                              (11)
+
+Here, V0 denotes the (constant) speed of the lead cart whilst u denotes a steering input
+which determines the curvature 1/u of the cart’s path.
+
+The trailing carts will be indexed with a number k = 1, 2, . . . n with n + 1 equal to the
+total number of carts. The speed of cart k + 1 can be determined recursively from the
+motion of the preceding cart k with the following relation:
+
+                              Vk+1 (t) = cos(ϕk+1 (t) − ϕk (t))Vk (t)                   (12)
+
+Moreover, the angular velocity of cart k + 1 can also be determined recursively from the
+motion of the preceding cart k. One finds that:
+
+                          `ϕ̇k+1 (t) = Vk (t) sin(ϕk (t) − ϕk+1 (t))                    (13)
+
+Page 4 of 6                     TTK4115 Linear Systems Theory - 18. December 2019
+
+If you find a subtask difficult, reduce the number of carts to n + 1 = 2.
+
+a) (4 %) Let ϕ̄k = 0 for all k denote a linearization point. Show that the nonlinear dy-
+      namics of the n-cart system can be approximated with the following linear system.
+
+          ϕ̇0          0 0  0 ··· 0    0  0       ϕ0        1
+                                                                        
+
+          ϕ̇1         1 −1 0 · · · 0  0  0   ϕ          0 
+                                                     1 
+                                                     
+                                                        
+          ϕ̇2         0 1 −1       0  0  0   ϕ2 
+                                                       0 
+                                                          
+           ..  = V0  ..              .. ..      .. 
+                           ..                          . 
+      
+            .           .         .     .
+                                                        .
+                                           .   .  + V0  .  u (14)
+                                                              
+                 ` 
+       ϕ̇n−2                      −1 0       ϕn−2 
+                   
+                      0 0  0             0 
+                                                       
+                                                           0 
+                                                              
+                                                      
+                                                          
+       ϕ̇n−1        0 0  0       1 −1 0   ϕn−1       0 
+          ϕ̇n          0 0  0 ··· 0    1 −1       ϕn        0
+
+b) (5 %) Given the state-space model (14) from the preceding task, demonstrate that
+      the following Laplace domain model holds under the assumption that ϕk (0) = 0
+      for all k.                           k
+                                      V0      V0
+
+                        ϕk (s) =                 u(s), k = 0, 1, . . . n        (15)
+                                   `s + V0    s
+
+c) (5 %) Is the linearized n-cart system stable in the sense of Lyapunov when the lead
+      cart is moving forward (V0 > 0)? What kind of stability properties does the system
+      have when the lead cart is reversing (V0 < 0)?
+
+d) (4 %) Assume that V0 > 0. Find a state-feedback controller
+                                               n
+                                               X
+                                    u(t) = −         Kk ϕk (t)                     (16)
+                                               k=0
+
+     so that the plant is made asymptotically stable. Supply your answer as a list of
+     gains K0 , K1 , . . . , Kn .
+
+e) (7 %) Assume now that V0 < 0. Is it, in principle, possible to find a state-feedback
+      controller                            n
+                                                     Kk0 ϕk (t)
+                                               X
+                                    u(t) = −                                       (17)
+                                               k=0
+
+     that would make the system asymptotically stable?
+
+TTK4115 Linear Systems Theory - 18. December 2019                                                            Page 5 of 6
+
+Problem 5 (25 %)
+
+A mass-spring damper system can be described by the following equation.
+
+                                             mẍ + dẋ + kx = f                                                     (18)
+
+We wish to estimate x and ẋ with two measurements:
+
+   • An accelerometer measuring ẍ. Let uacc denote the accelerometer reading.
+
+   • An encoder measuring x. Let yenc denote the encoder measurement.
+
+You may assume that the measurements are quite good so that uacc ≈ ẍ and yenc ≈ x.
+
+a) (4 %) Let
+                        "        #               "          #            "       #
+                            x                        0 1                     0                 h         i
+                 z=                  ,    A=                    ,   b=               ,   c=        1 0              (19)
+                            ẋ                       0 0                     1
+
+     Show that the measurement setup detailed above can be represented by the fol-
+     lowing state-space model.
+
+                                           ż = Az + buacc ,         yenc = cz                                      (20)
+
+b) (4 %) Is the system described by (19,20) observable from yenc ?
+
+c) (7 %) Let a Luenberger observer for z be given by
+
+                                          ẑ˙ = Aẑ + buacc + l(yenc − cẑ)                                         (21)
+
+     Choose l so that the transfer-function from measurements to estimates assumes
+     the following form:
+                  "           #                       "                                  #"              #
+                      x̂(s)                  1               1    2ωb s + ωb2                 uacc (s)
+                                  =                                                                                 (22)
+                      ˆ
+                      ẋ(s)              (s + ωb )2       s + 2ωb    sωb2                     yenc (s)
+
+d) (5 %) Assume that the measurements are perfect so that uacc = ẍ and yenc = x.
+      Find the transfer function h(s) appearing in
+
+                                                     x̂(s) = h(s)x(s)                                               (23)
+
+     You should use (22) in this subtask. What does your answer tell you?
+
+Page 6 of 6                    TTK4115 Linear Systems Theory - 18. December 2019
+
+e) (5 %) Accelerometer readings are often polluted by a constant bias β giving an inac-
+      curate reading uacc = ẍ + β 6= ẍ.
+     Let the mass-spring-damper be at rest with x = ẋ = ẍ = 0. Given an accelerometer
+     with constant bias β0 , estimate the final value
+
+                                       x̂∞ = lim x̂(t)                            (24)
+                                             t→∞
+
+     How does your result depend on the observer parameter ωb ?
+     You may employ the final value theorem in this task:
+
+                                    lim f (t) = lim sf (s)                        (25)
+                                    t→∞         s→0
+
+TTK4115 Linear Systems Theory - 18. December 2019                        Page i of iv
+
+Formula sheet
+
+Solutions
+
+                                           Z t
+                     x(t) = eAt x(0) +           eA(t−τ ) Bu(τ )dτ
+                                            0
+                                           k−1
+                     x[k] = Ak x[0] +            Ak−1−m Bu[m]
+                                           X
+
+                                        m=0
+
+Controllability/Observability
+
+                      C = [B, AB, A2 B, · · · , An−1 B]
+                                   
+                              C
+                           CA 
+                                   
+                                  2 
+                             CA
+                          
+                      O = 
+                                   
+                              ..   
+                                .
+                                    
+                                   
+                                CAn−1
+
+Realization
+
+         G(s) = C(sI − A)−1 B + D
+         G(s) = G(∞) + Gsp (s)
+          d(s) = sr + α1 sr−1 + · · · + αr−1 s + αr
+                     1
+        Gsp (s) =      [N sr−1 + N2 sr−2 + · · · + Nr−1 s + Nr ]
+                   d(s) 1
+                                                                    
+                      −α1 Ip −α2 Ip · · · −αr−1 Ip −αr Ip           Ip
+                   
+                      Ip      0       ···      0        0   
+                                                             
+                                                                   0 
+                                                                      
+                        0      Ip      ···      0        0   x +  0 u
+                                                                    
+              ẋ = 
+                   
+                        ..      ..     ..       ..       ..  
+                                                                   .. 
+                                                                      
+                                          .
+                   
+                         .       .               .        .
+                                                             
+                                                                 . 
+                        0       0    ···          Ip         0       0
+              y = [ N1 N2 · · · Nr−1 Nr ]x + G(∞)u
+
+Page ii of iv                      TTK4115 Linear Systems Theory - 18. December 2019
+
+LQR
+
+       Z ∞
+  J=         xT (t)Qx(t) + uT (t)Ru(t) dt
+        0
+                            AT P + PA + Q − PBR−1 BT P = 0
+                                                                     u(t) = −R−1 BT Px(t)
+
+Lyapunov equation
+
+                                     AT M + MA = −N
+
+Kalman filtering (Discrete time)
+
+Process model
+
+                x[k + 1] = Ad x[k] + Bd u[k] + w[k],      y[k] = Cx[k] + v[k]
+
+The noise and disturbance are unbiased (E[v[k]] = 0, E[w[k]] = 0) and white
+
+                    E[v[k]v[l]T ] = δ[k, l]Rd ,   E[w[k]w[l]T ] = δ[k, l]Qd
+
+Algorithm Initialize at x̂− [0] = E[x(0)] and P− [0] = E[(x[0] − x̂− [0])(x[0] − x̂− [0])T ].
+Compute recursively:
+
+   1. L[k] = P− [k]CT (CP− [k]CT + Rd )−1
+
+   2. x̂[k] = x̂− [k] + L[k](y[k] − Cx̂− [k])
+
+   3. P[k] = (I − L[k]C)P− [k](I − L[k]C)T + L[k]Rd L[k]T
+
+   4. x̂− [k + 1] = Ad x̂[k] + Bd u[k],   P− [k + 1] = Ad P[k]AT
+                                                               d + Qd
+
+TTK4115 Linear Systems Theory - 18. December 2019                            Page iii of iv
+
+Kalman filtering (Continuous time)
+
+Process model
+                          ẋ = Ax + Bu + Gw,         y = Cx + v
+The noise and disturbance are unbiased (E[v(t)] = 0, E[w(t)] = 0) and white
+
+                E[v(t)v(τ )T ] = δ(t − τ )R,   E[w(τ )w(t)T ] = δ(t − τ )Q
+
+Optimal gain     The Kalman gain is given by L(t) = P(t)CT R−1 where
+
+                       Ṗ = AP + PAT + GQGT − PCT R−1 CP
+
+Set Ṗ = 0 to find stationary gain.
+
+Stationary processes
+
+Autocorrelation and power spectral density
+
+                     Ru (τ ) = E[u(t)u(t + τ )],   Su (ω) = F{Ru (τ )}
+
+With y(s) = H(s)w(s) where E[w(t)] = 0 and Rw (τ ) = δ(τ )q it holds that
+
+                                 Sy (ω) = H(ω)H(−ω)q
+
+Page iv of iv               TTK4115 Linear Systems Theory - 18. December 2019
+
+Laplace transform pairs
+
+                           f (t)    ⇐⇒       F (s)
+
+                          δ(t)     ⇐⇒       1
+                                            1
+                             1     ⇐⇒
+                                            s
+                                               1
+                          e−at     ⇐⇒
+                                             s+a
+                                             1
+                             t     ⇐⇒
+                                             s2
+                                             2
+                            t2     ⇐⇒
+                                             s3
+                                                  1
+                      te−at        ⇐⇒
+                                             (s + a)2
+                                                ω
+                      sin ωt       ⇐⇒
+                                             s2 + ω 2
+                                                s
+                     cos ωt        ⇐⇒
+                                             s2 + ω 2
+
+## Løsningsforslag
+
+Solution Suggestion
+    Exam - TTK4115 Linear System Theory
+            18. December, 2019
+                                                            MDP
+
+                                       December 19, 2019
+
+Problem 1
+                     a)
+                                                                                                 c)
+               u1            y1
+                     Σ1
+                                                                                         u1           y1
+                                                                              v                  Σ1        z
+                                                                                     −
+    v                                       z
+
+               u2            y2                                                          y2           u2
+                     Σ2                                                                          Σ2
+                                                                 b)
+
+                                  u1                        y1         u2           y2
+                            v              Σ1                                  Σ2            z
+
+Let two state-space systems be given respectively by
+                     Σ1 :       ẋ1 = A1 x1 + B1 u1 ,                        y1 = Cx1 + D1 u1                  (1)
+                     Σ2 :       ẋ2 = A2 x2 + B2 u2 ,                        y2 = Cx2 + D2 u2                  (2)
+In this task, you are to derive state-space representations of the interconnections shown
+in the diagram. The interconnections can all be described by a system on the form
+                                                        0                                0
+                                                A                                    B
+                                       z        }|       z }|0 {   {
+                                      A011 A012
+
+                            ẋ1                      x1        B1
+                                  =                       +         v                                          (3)
+                            ẋ2       A021 A022      x2        B20
+
+                                                  x1
+                                                        + D0 v
+                                     0     0
+                                z = C1 C2                                                                      (4)
+                                    |    {z   } x2
+                                                    0
+                                                C
+
+Find the matrices (A0 , B 0 , C 0 , D 0 ) for each of the interconnections shown in the figure.
+
+                                                                 1
+
+a) Parallel interconnection with
+
+                                         u1 = u2 = v,                      z = y1 + y2                                              (5)
+
+     The output is described by
+
+                          z = y1 + y2 = C1 x1 + D1 u1 + C2 x2 + D2 u2                                                               (6)
+
+     Therefore,
+                                    z=           C1 C2                 x + (D1 + D2 )v                                              (7)
+     Moreover,
+                                                     ẋ1               A1 x1 + B1 u1
+                                    ẋ =                       =                                                                    (8)
+                                                     ẋ2               A2 x2 + B2 u2
+     Therefore,
+                                                      A1 0                            B1
+                                    ẋ =                                   x+                        v                              (9)
+                                                      0 A2                            B2
+     Hence the answer
+
+                                         A1 0                      B1
+         (Ap , Bp , Cp , Dp ) =                                 ,       , C 1 C 2 , D1 + D2                                        (10)
+                                         0 A2                      B2
+
+b) Serial interconnection with
+
+                                       u2 = y1 ,                v = u1 ,             z = y2                                        (11)
+
+     Consider,
+                     z = y2 = C2 x2 + D2 u2 = C2 x2 + D2 (C1 x1 + D1 u1 )                                                          (12)
+     Therefore,
+                                    z=               D2 C 1 C 2                x + D2 D1 v                                         (13)
+     Moreover,
+
+                ẋ1     A1 x1 + B1 u1           A1 x1 + B1 u1
+         ẋ =        =                 =                                                                                           (14)
+                ẋ2     A2 x2 + B2 u2     A2 x2 + B2 (C1 x1 + D1 u1 )
+
+     Therefore,
+                                              A1   0                                  B1
+                                ẋ =                                       x+                                v                     (15)
+                                             B2 C1 A 2                               B2 D1
+
+     Hence the answer
+
+                                     A1   0                             B1
+      (As , Bs , Cs , Ds ) =                                    ,                        ,       D2 C 1 C 2          , D2 D1       (16)
+                                    B2 C1 A2                           B 2 D1
+
+                                                               2
+
+c) Feedback interconnection with
+
+                                       u 1 = v − y2 ,          u2 = y1 ,          z = y1                                  (17)
+
+    You can assume that M = I + D2 D1 and N = I + D1 D2 are invertible matrices.
+    The first input u1 satisfies
+
+      u1 = v − y2 = v − (C2 x2 + D2 u2 ) = v − (Cx2 + D2 y1 )
+                                                               = v − (C2 x2 + D2 (C1 x1 + D1 u1 )) (18)
+
+    It must therefore be true that
+
+                 (I + D2 D1 )u1 = v − (C2 x2 + D2 C1 x1 ) = v −                             D2 C 1 C 2              x     (19)
+
+    Similarly,
+
+      u2 = y1 = C1 x1 + D1 u1 = C1 x1 + D1 (v − y2 )
+                                                               = C1 x1 + D1 (v − (C2 x2 + D2 u2 )) (20)
+
+    It must therefore be true that
+
+                            (I + D1 D2 )u2 = D1 v +                     C1 −D1 C2                   x                     (21)
+
+    Since the factors before u1 and u2 are invertible one finds that
+
+                        u1 = M −1 v − M −1 D2 C1 C2 x
+
+                                                                                                                          (22)
+                        u2 = N −1 D1 v + N −1 C1 −D1 C2 x
+
+                                                                                                                          (23)
+
+    The state-space dynamics follow from
+
+                 A1 0
+      ẋ =                    x
+                 0 A2
+                                                                        u1
+                                          z                          }|                     {
+                                    B1
+                                                 M −1 v − M −1
+
+                            +                                                D2 C 1 C 2      x
+                                    0
+                                                                        u2
+                                        z                            }|                  {
+                                  0                −1              −1
+                        +                      N        D1 v + N             C1    −D1 C2 x
+                                  B2
+                  A1 − B1 M −1 D2 C1    −B1 M −1 C2                                              B1 M −1
+
+         =                                                                             x+                               v (24)
+                      B2 N −1 C1     A2 − B2 N −1 D1 C2                                         B2 N −1 D1
+
+    The output equation is given by
+
+                       z = y1 = u2 = N −1 D1 v + N −1
+
+                                                                                 C1 −D1 C2                  x             (25)
+
+                                                           3
+
+     Hence the answer
+
+                                  A1 − B1 M −1 D2 C1    −B1 M −1 C2
+
+        (Af , Bf , Cf , Df ) =                                            ,
+                                       B2 N −1 C1    A2 − B2 N −1 D1 C2
+                                  B1 M −1
+
+                                                 −1      −1            −1
+                                              , N C1 −N D1 C2 , N D1          (26)
+                                 B2 N −1 D1
+
+     The simplified answer to the task with D1 = 0 and D2 = 0 (hence M = I and
+     N = I) is given by
+
+                                         A1   −B1 C2     B1
+          (A0f , Bf0 , Cf0 , Df0 ) =
+
+                                                      ,       , C1 0 , 0   (27)
+                                        B2 C1  A2        0
+
+Problem 2
+
+A Kalman filter has been running on a second order process for a while. This process is
+described, in part, by the matrices
+
+                                 C = 1 0 , R = ρ2
+
+                                                                                  (28)
+
+The filter is now in time-step k and a measurement y[k] is about to arrive.
+Suppose that the a-priori estimate and covariance matrix at time-step k are given re-
+spectively by
+                                                  σ12
+
+                      −        0        −               γσ1 σ2
+                    x̂ [k] =       , P [k] =                                     (29)
+                               0                 γσ1 σ2   σ22
+Here, γ ∈ (−1, 1) is a so-called correlation coefficient.   Find an analytical expression
+for the a-posteriori estimate x̂[k].
+What is the estimate in the limit ρ → ∞? How do you interpret your finding?
+Since it is a Kalman filter that has been running, the a-posteriori estimate x̂[k] must be
+given by
+                           x̂[k] = x̂− [k] + L[k](y[k] − C x̂− [k])                   (30)
+We thus need to recover the Kalman gain L[k], which is given by
+
+  L[k] = P − [k]C T (CP − [k]C T + R)−1
+                     σ12                             σ12
+
+                            γσ1 σ2    1
+                   γσ1 σ2    σ22      0            γσ1 σ2
+
+                                                                 σ1    σ1
+       =                                      =              = 2            (31)
+                        σ12                       σ12 + ρ2    σ1 + ρ2 γσ2
+
+                           γσ1 σ2     1   2
+           1 0                            +ρ
+                     γσ1 σ2     σ22     0
+
+                                            4
+
+We thus find the estimate
+
+                                           σ1           σ1
+                               x̂[k] =                               y[k]              (32)
+                                         σ12 + ρ2       γσ2
+
+In the limit ρ → ∞, it holds that
+
+                                                        0
+                                    lim x̂[k] =                 y[k]                   (33)
+                                  ρ→∞                   0
+
+A high ρ is associated with high measurement noise. The Kalman filter will thus rely
+primarily on the predicted state x̂− [k] when generating the estimate, and not on the
+measurement.
+
+Problem 3
+
+You have been fired from your job as a control engineer due to a management that does
+not appreciate the beautiful art and science of control engineering. It’s time for revenge.
+One of the company’s products is described by the (rather dull) system
+
+                          ẋ1        0 0      x1        1
+                                =                   +       u                          (34)
+                          ẋ2        0 0      x2        0
+
+Leave a nasty surprise for your former bosses with a controller u = −(k1 x1 + k2 x2 ) + b1 r
+that makes the plant unstable without moving the eigenvalues (which would be noticed).
+First, show that the plant is stable (in the sense of Lyapunov) as it stands. Then, supply
+your gains k1 and k2 and argue mathematically that your plan of destabilizing the system
+will succeed.
+Define
+                     x1               0 0              1
+              x=          , A=                , b=         , k = k1 k2                (35)
+                     x2               0 0              0
+
+The system matrix A has no poles in the right half-plane and no Jordan blocks for
+eigenvalues on the imaginary axis of dimension higher than 1; the plant is therefore
+Lyapunov stable.
+With u = −kx + r one has
+                                    ẋ = (A − bk)x + br                                (36)
+The closed-loop system matrix is given by
+
+                                           −k1 −k2
+                              A − bk =                                                 (37)
+                                            0   0
+
+                                                5
+
+The eigenvalues of this matrix are −k1 and 0. Since the eigenvalues were to be left
+unchanged, one must choose
+                                      k1 = 0                                  (38)
+Any non-zero value for k2 will now do the trick of destabilizing the system since
+
+                    ẋ1 = −k1 x2 + r               ⇒ ẍ1 = −k1 ẋ2 + ṙ = ẍ1 = 0 + ṙ      (39)
+
+The solution to the relation ẍ1 = ṙ is given generally by
+                                                   Z t
+                              x1 (t) = c1 t + c0 +     r(t0 ) dt0                           (40)
+                                                                0
+
+In the case of r(t) = 0 it is easy to see that there is no constant C such that
+
+                                               |x1 (t)| ≤ C|x(0)|                           (41)
+
+That is, a finite initial state will not lead to a bounded response.
+Another way of showing this is to bring the closed loop matrix to Jordan form with the
+similarity transform
+                                    0           1    0
+                           x = Qx , Q =                                           (42)
+                                                0 −1/k2
+One finds that
+                                ẋ01                          x01
+
+                                                   0 1                          1
+                                           =                            +               u   (43)
+                                ẋ02               0 0        x02               0
+Since this is a Jordan block for λ = 0 of dimension 2 > 1, the system is unstable.
+
+Problem 4
+
+The figure illustrates a train of n + 1 carts, of which only three are shown. You may
+assume that n < ∞. The carts are connected with links of length ` > 0 which are
+attached to their rotation axes.
+
+                                                         6
+
+                                                                            V2
+                                                                        `
+
+                                                             V1
+                                                        `
+               ϕ0
+                                          V0
+
+                    ϕ1
+
+                                                1
+                                                u
+
+                         ϕ2
+
+A kinematic analysis will show that the angular velocity of the lead cart satisfies
+                                         ϕ̇0 (t) = V0 u(t)                            (44)
+Here, V0 denotes the constant velocity of the lead cart whilst u denotes a steering input
+which determines the curvature 1/u of the cart’s path.
+The trailing carts will be indexed with a number k = 1, 2, . . . n with n + 1 equal to the
+total number of carts. The velocity of cart k + 1 can be determined recursively from the
+motion of the preceding cart k with the following relation:
+                              Vk+1 (t) = cos(ϕk+1 (t) − ϕk (t))Vk (t)                 (45)
+Moreover, the angular velocity of cart k + 1 can also be determined recursively from the
+motion of the preceding cart k. One finds that:
+                          `ϕ̇k+1 (t) = Vk (t) sin(ϕk (t) − ϕk+1 (t))                  (46)
+a) Assume that |ϕk (t) − ϕ0 (t)|  1 (very small) and show that the nonlinear n-cart
+     system can be approximated with the following linear system.
+                                                                     
+           ϕ̇0            0 0      0 ··· 0        0    0        ϕ0          1
+        ϕ̇1            1 −1 0 · · · 0          0    0    ϕ1          0 
+                                                                     
+        ϕ̇2            0 1 −1              0   0    0    ϕ2          0 
+        ..  V0  ..
+                                                                     
+                                        ..        .
+                                                  ..   .         .
+                                                       ..   ..  + V0     . 
+        . =                                                              ..  u
+                                                                 
+                         .                .
+                   `                                                 
+        ϕ̇n−2 
+              
+                         0 0
+                                  0         −1 0      0   ϕn−2 
+                                                                         0 
+                                                                           
+        ϕ̇n−1          0 0      0          1 −1 0   ϕn−1             0 
+           ϕ̇n            0 0      0 ··· 0        1 −1          ϕn          0
+                                                                                 (47)
+
+                                                7
+
+     The first angle is governed by
+                                          ϕ̇0 (t) =          V0         u(t)                           (48)
+                                                            |{z}
+                                                       First el. in b
+     This expression determines the input matrix b.
+     The statement |ϕk − ϕ0 |  1 implies
+        |ϕk+1 − ϕk | = |(ϕk+1 − ϕ0 ) − (ϕk − ϕ0 )| ≤ |ϕk+1 − ϕ0 | + |ϕk − ϕ0 |  2                     (49)
+     We may thus assume that the incremental angles ϕk+1 − ϕk are small. Hence the
+     approximate formulae
+                                       Vk+1 ≈ Vk ≈ Vk−1 ≈ · · · ≈ V0                                   (50)
+     With this result, one also finds that
+                                  `ϕ̇k+1 (t) ≈ V0 (ϕk (t) − ϕk+1 (t))                                  (51)
+     Rearranging this formula gives
+                                   V                                     V0
+             ϕ̇k+1 (t) =        − 0            ϕk+1 (t) +                              ϕk (t),   k>0   (52)
+                                | {z`}                                    `
+                                                                        |{z}
+                           On diagonal in A                   On subdiagonal in A
+
+     These formulae produce the system matrix A.
+b) Given the state-space model (47) from the preceding task, demonstrate that the fol-
+     lowing Laplace domain model holds under the assumption that ϕk (0) = 0 for all
+     k.                                   k
+                                      V0      V0
+                        ϕk (s) =                 u(s), k = 0, 1, . . . n         (53)
+                                   `s + V0    s
+
+     The formula `ϕ̇k+1 (t) = V0 (ϕk (t) − ϕk+1 (t)) Laplace transforms as
+                                                     V0
+                                 ϕk+1 (s) =              ϕ (s),            k>0                         (54)
+                                                  `s + V0 k
+     We thus find that
+                                            V0
+                            ϕ1 (s) =            ϕ (s)                                                  (55)
+                                         `s + V0 0
+                                                                              2
+                                            V0                          V0
+                            ϕ2 (s) =            ϕ (s) =                             ϕ0 (s)             (56)
+                                         `s + V0 1                   `s + V0
+                                                                              3
+                                            V0                          V0
+                            ϕ3 (s) =            ϕ (s) =                             ϕ0 (s)             (57)
+                                         `s + V0 2                   `s + V0
+                                  ..
+                                   .
+                                                      k
+                                                V0
+                            ϕk (s) =                        ϕ0 (s)                                     (58)
+                                             `s + V0
+
+                                                       8
+
+     Now, ϕ̇0 (t) = V0 u(t) yields
+                                                          V0
+                                           ϕ0 (s) =          u(s)                    (59)
+                                                          s
+     The desired result follows.
+                                                              k
+                                                       V0           V0
+                                     ϕk (s) =                          u(s)          (60)
+                                                    `s + V0         s
+
+c) Is the linearized n-cart system stable in the sense of Lyapunov when the lead cart is
+      moving forward (V0 > 0)? What kind of stability properties does the system have
+      when the lead cart is reversing (V0 < 0)?
+     The system matrix in the linearized n-cart system is lower triangular and the poles
+     λ0 = 0 and λk = −V0 ` may be found on the diagonal. There are no Jordan blocks
+     of dimension higher than one associated with the eigenvalue 0.
+     When V0 > 0 the system’s egenvalues are confined to the closed left half-plane, the
+     system is thus Lyapunov stable. When V0 < 0 there are n eigenvalues in the right
+     half-plane and the system is unstable.
+d) Assume that V0 > 0. Find a state-feedback controller
+                                                        n
+                                                        X
+                                        u(t) = −              Kk ϕk (t)              (61)
+                                                        k=0
+
+     so that the plant is made asymptotically stable. Supply your answer as a list of
+     gains K0 , K1 , . . . , Kn .
+     We only require a negative entry on the first element on the diagonal for the
+     system to be asymptotically stable. This is due to the triangular nature of the
+     system matrix. We thus choose
+
+                                   K0 = −1,          Kk = 0 for k > 0                (62)
+
+     All eigenvalues are now −1 rendering the system asymptotically stable.
+e) Assume now that V0 < 0. Is it, in principle, possible to find a state-feedback con-
+     troller
+                                           n
+                                              Kk0 ϕk (t)
+                                          X
+                                 u(t) = −                                         (63)
+                                                        k=0
+
+     that would make the system asymptotically stable?
+     This question is one of controllability which, if established, would permit arbitrary
+     pole placement. The transfer function (53) evaluated at k = n is given by
+                                                    n
+                                                V0       V0
+                                 ϕn (s) =                   u(s)                      (64)
+                                             `s + V0     s
+
+                                                    9
+
+     There are n + 1 poles in this transfer function, which match the number of eigen-
+     values in A. In other words,
+                                                                         
+                                            0 0      0 ··· 0       0    0
+                                      1 −1 0 · · · 0             0    0  
+                                                                         
+                   n              0 1 −1                 0   0    0  
+                V0      V0          V 
+                                     0  ..             .         .    .
+                                                                           
+     deg                    = dim   .                    ..      ..   .. 
+                                                                           
+                                                                             = n+1
+             `s + V0    s            `                                   
+                                      0 0
+                                                   0        −1 0      0  
+                                                                           
+                                      0 0          0         1 −1 0      
+                                            0 0      0 ··· 0       1 −1
+                                                                                  (65)
+     Let C = In+1×n+1 to reflect the case of full state feedback. We may conclude
+     that the system defined by the matrices (A, b, C, 0) is minimal. This implies
+     controllabilty (and observability). Since the system is controllable there must
+     exist a stabilizing feedback.
+
+Problem 5
+
+A mass-spring damper system can be described by the following equation.
+
+                                         mẍ + dẋ + kx = f                                            (66)
+
+We wish to estimate x and ẋ with two measurements:
+   • An accelerometer measuring ẍ. Let uacc denote the accelerometer reading.
+   • An encoder measuring x. Let yenc denote the encoder measurement.
+You may assume that the measurements are quite good so that uacc ≈ ẍ and yenc ≈ x.
+a) Let
+                           x                     0 1                    0
+                  z=                ,   A=                 ,   b=               ,   c=       1 0       (67)
+                           ẋ                    0 0                    1
+     Show that the measurement setup detailed above can be represented by the following
+     state-space model.
+                              ż = Az + buacc , yenc = cz                          (68)
+
+     Naturally,
+                                                   d
+                                                      x = ẋ                                           (69)
+                                                   dt
+     Moreover,
+                                                  d
+                                                     ẋ ≈ uacc                                         (70)
+                                                  dt
+
+                                                   10
+
+     These statements may be put on state-space form via
+                                 ż            A          z       b
+                             z }| { z }| { z }| { z }| {
+                              d x       0 1       x        0
+                                     =                 +         uacc             (71)
+                             dt ẋ      0 0       ẋ       1
+     Finally,
+                                               yenc ≈ x                           (72)
+     which implies
+                                                              z
+                                                   c   z }| {
+                                               z }| { x
+                                         yenc = 1 0                               (73)
+                                                          ẋ
+
+b) Is the system described by (67,68) observable from yenc ?
+     Yes, the observability matrix is given by
+
+                                           c      1 0
+                                  O=           =                                  (74)
+                                          cA      0 1
+     and has full rank.
+c) Let a Luenberger observer for z be given by
+
+                                  ẑ˙ = Aẑ + buacc + l(yenc − cẑ)               (75)
+
+     Choose l so that the transfer-function from measurements to estimates assumes
+     the following form:
+
+                                                 2ωb s + ωb2
+
+                    x̂(s)         1         1                   uacc (s)
+                            =                                                  (76)
+                     ˆ
+                    ẋ(s)     (s + ωb )2 s + 2ωb    sωb2        yenc (s)
+
+     The eigenvalues in the matrix A − lc must be equal to the poles of the preceding
+     expression, namely λ1 = λ2 = −ωb . Let
+
+                              2ωb                     −2ωb 1
+                        l=            =⇒ A − lc =                                (77)
+                              ωb2                      −ωb2 0
+     It is readily verified that this observer gain achieves the desired poles.
+
+                                      |λI − (A − lc)| = (λ + ωb )2                (78)
+
+     The transfer function from measurements to estimates follows as
+
+                          ẑ(s) = (sI − (A − lc))−1 (buacc (s) + lyenc (s))       (79)
+
+     Let a 2 × 2 matrix be given by
+
+                                                          0 2ωb
+                                       M = [b, l] =                               (80)
+                                                          1 ωb2
+
+                                               11
+
+     Now,
+                                                 −1
+                       −1           s + 2ωb −1          0 2ωb
+       (sI − (A − lc))      M=
+                                      ωb2      s        1 ωb2
+
+                                  1        s        1        0 2ωb
+                            =                2
+                              (s + ωb ) −ωb s + 2ωb          1 ωb2
+                                                                     2ωb s + ωb2
+
+                                                       1         1
+                                                 =                                 (81)
+                                                   (s + ωb ) s + 2ωb    sωb2
+
+     The statement has thus been demonstrated.
+d) Assume that the measurements are perfect so that uacc = ẍ and yenc = x. Find the
+     transfer function h(s) appearing in
+
+                                           x̂(s) = h(s)x(s)                        (82)
+
+     You should use (76) in this subtask. What does your answer tell you?
+     Excising the estimate x̂(s) from (76) gives
+
+                                         uacc (s) + (2ωb s + ωb2 )yenc (s)
+                               x̂(s) =                                             (83)
+                                                     (s + ωb )2
+
+     Perfect measurements implies uacc (s) = s2 x(s) and yenc (s) = x(s). Hence,
+
+                                       s2 x + 2ωb s + ωb2
+                             x̂(s) =                        x(s) = 1 · x(s)        (84)
+                                           (s + ωb )2
+
+     Thus the result
+                                                h(s) = 1                           (85)
+     Perfect measurements yields perfect estimates!
+e) Accelerometer readings are often polluted by a constant bias β giving an inaccurate
+     reading uacc = ẍ + β 6= ẍ.
+     Let the mass-spring-damper be at rest with x = ẋ = ẍ = 0. Given an accelerometer
+     with constant bias β0 , compute
+
+                                            x̂∞ = lim x̂(t)                        (86)
+                                                     t→∞
+
+     How does this value depend on the observer parameter ωb ?
+     Excising the estimate x̂(s) from (76) yet again gives
+
+                                         uacc (s) + (2ωb s + ωb2 )yenc (s)
+                               x̂(s) =                                             (87)
+                                                     (s + ωb )2
+
+                                                12
+
+With yenc = x = 0 and uacc = ẍ + β0 = β0 one has
+
+                                                            β0
+                             yenc (s) = 0,     uacc (s) =                            (88)
+                                                            s
+It follows that
+                                                 β0
+                                  x̂(s) =                                            (89)
+                                             s(s + ωb )2
+Utilizing the final value theorem gives
+                                                 β0                 β0         β0
+           lim x̂(t) = lim sx̂(s) = lim s             2 = s→0
+                                                          lim            2 =         (90)
+          t→∞         s→0           s→0      s(s + ωb )          (s + ωb )     ωb2
+
+Increasing the observer gain ωb will reduce the effect of the accelerometer bias.
+
+                                       13

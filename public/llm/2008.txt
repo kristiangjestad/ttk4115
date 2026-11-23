@@ -1,0 +1,817 @@
+# Eksamen 2008 – TTK4115 Lineær systemteori
+
+Tekst hentet automatisk fra PDF. Matriser og brøker kan stå rotete over flere linjer.
+
+## Oppgavetekst
+
+Side 1 av 9
+        Norges teknisk- naturvitenskapelige universitet
+        Institutt for teknisk kybernetikk
+
+Faglig kontakt / contact person:
+Navn: Tor Arne Johansen
+Tlf.: 917 22 765
+
+Eksamen - TTK 4115 Lineær systemteori
+Exam - TTK 4115 Linear system theory
+
+                   10. desember 2008, 09:00 – 13:00
+Hjelpemidler: D - Ingen trykte eller håndskrevne hjelpemidler tillatt. Bestemt, enkel
+kalkulator tillatt.
+
+Supporting materials: D - No printed or handwritten material allowed. Specific,
+simple calculator allowed.
+
+   Oppgave 1 (15 %)
+     Anta gitt følgende system:
+     Consider the following system:
+
+                               !                !         !           !
+                         ẋ1            1 1          x1           0
+                                   =                          +           u
+                         ẋ2           −1 −4         x2           2
+
+     NB! Det er ikke nødvendig med eksakte svar i denne oppgaven, så bruk gjerne
+     kalkulator.
+     NB! Exact numbers are not required in this part, so feel free to use a calculator.
+     a)
+     Transformer systemet til diagonal form ved hjelp av en similaritetstransfor-
+     masjon.
+     Transform this system into diagonal form using a similarity transform.
+
+                                                                      Side 2 av 9
+
+ b)
+ Beregn transisjonsmatrisen Φ(t) til det opprinnelige systemet.
+ Compute the transition matrix Φ(t) of the original system.
+
+Oppgave 2 (20 %)
+ Anta gitt følgende transferfunksjonsmatrise:
+ Consider the following transfer function matrix:
+
+                                      −5 s2 − 5s + 6
+                                                        !
+                        G(s) =           ,
+                                     s+1    s2 + s
+
+ a)
+ Forklar hvorfor G(s) er realiserbar.
+ Explain why G(s) is realizable.
+ b)
+ Finn en tilstandsromrealisasjon av G(s) i styrbar kanonisk form.
+ Find a state space realization of G(s) in controllable canonical form.
+ En annen realisasjon av G(s) er gitt av følgende matriser:
+ Another realization of G(s) is given by the following matrices:
+
+                                      
+         −1 0 0           1 0
+   A =  0 −1 0  , B =  0 2  , C = (−5, −3, 3) , D = (0, 1)
+                           
+
+         0  1 0           0 0
+
+ c)
+ Undersøk om realisasjonen (A, B, C, D) er både styrbar og observerbar.
+ Investigate if the realization (A, B, C, D) is both controllable and observable.
+ d)
+ Is (A, B, C, D) en minimal realisasjon? Begrunn.
+ Is (A, B, C, D) a minimal realization? Explain.
+
+                                                                        Side 3 av 9
+
+Oppgave 3 (20 %)
+ a)
+ Definer BIBO-stabilitet, Lyapunov-stabilitet (intern stabilitet), og asympto-
+ tisk stabilitet for lineære systemer.
+ Define BIBO stability, Lyapunov stability (internal stability), and asymptotic
+ stability for linear systems.
+ b)
+ Angi betingelser på A-matrisen som kan brukes for å undersøke Lyapunov-
+ stabilitet og/eller asymptotisk stabilitet.
+ Give conditions on the A matrix that can be used to check Lyapunov-stabilitet
+ and/or asymptotic stability.
+ c)
+ Undersøk om følgende system er Lyapunov-stabilt og/eller asymptotisk stabilt:
+ Investigate if the following system is Lyapunov stable and/or asymptotically
+ stable:
+
+                                                
+                                  −2 0 0
+                              A= 0 0 1 
+                                        
+
+                                   0 0 0
+
+ d)
+ Bruk Lyapunov-ligningen AT M + M A = −I for systemet definert av matrisen
+ A nedenfor, og konkluder hvorvidt dette systemet er asymptotisk stabilt eller
+ ikke.
+ Use the Lyapunov equation AT M + M A = −I for the system defined by the
+ matrix A below, and conclude if this system is asymptotically stable or not.
+
+                                                !
+                                        0 −2
+                               A=
+                                       −1 1
+
+Oppgave 4 (10 %)
+ a)
+ Gitt et kontinuerlig tid MIMO system beskrevet av matrisene (A, B) der vi
+ ønsker å regulere tilstanden x til en gitt referanse likevektstilstand x∗ . Forklar
+ kort prinsippet for LQR (Linear Quadratic Regulator) metoden og de viktigste
+
+                                                                     Side 4 av 9
+
+ stegene som er nødvendig for å designe en slik regulator, inkludert betydningen
+ og virkningen av de tilgjengelige tuning-parametrene (vektmatrisene i LQR
+ kriteriet).
+ Consider a continuous-time MIMO system described by the matrices (A, B)
+ where we want to control the state x to a given reference equilibrium state
+ x∗ . Explain briefly the principles of the LQR (Linear Quadratic Regulator)
+ method and the main steps required to design such a controller, including the
+ meaning and effect of the available tuning parameters (weight matrices in the
+ LQR criterion).
+
+Oppgave 5 (35 %)
+ a)
+ Beskriv de karakteristiske egenskapene til den normalfordelte/Gaussiske hvitstøy-
+ proesessen, inkludert dens varians, autokorrelasjonsfuksjon, effektspektrum,
+ stasjonæritet, og andre relevante egenskaper.
+ Describe the characteristics and properties of the normal/Guassian distributed
+ white noise process, including its variance, auto-correlation function, power
+ spectral density, stationarity, and other relevant properties.
+ b)
+ Beskriv de karakteristiske egenskapene til Wienerprosessen, og hvordan den er
+ relatert til hvitstøyprosessen.
+ Explain the characteristics and properties of the Wiener process, and how it
+ relates to the white noise process.
+
+ Et dynamisk system har følgende transferfunksjon fra inngang til utgang:
+ A dynamic system has the following transfer function from input to output:
+
+                                          10
+                                G(s) =
+                                         2+s
+
+ I tillegg til regulatorkommandoen, er det en ukjent saktevarierende forstyrrelse
+ som virker på inngangen til systemet som vi velger å modellere som en Wiener-
+ prosess med null middelverdi. På målingen av utgangen er det elektrisk støy
+ som vi velger å modellere som hvit støy. Målingen er antatt å være uten bias
+ eller drift.
+ In addition to the control command input, there is an unknown slowly time-
+ varying input disturbance which we choose to model as a Wiener process with
+
+                                                                    Side 5 av 9
+
+zero mean. The measurement of the output is corrupted by eletric noise, which
+we choose to model as white noise. The measurement is assumed to be without
+any bias or drift.
+c)
+Forklar med blokk diagram og tekst hvordan man kan komme frem til følgende
+tilstandsromsmodell av systemet beskrevet ovenfor:
+Explain with a block diagram and text how you can derive the following state
+space model of the system described above:
+
+                          ẋ1 = −2x1 + 10(u + x2 )
+                          ẋ2 = βw1
+                            y = x1 + γw2
+
+der w1 og w2 er enhets hvit-støy (Sw1 (ω) = Sw2 (ω) = 1 for alle ω), og symbo-
+lene er gitt ved:
+where w1 and w2 are unity white noise (Sw1 (ω) = Sw2 (ω) = 1 for all ω) and
+the symbols are:
+  x1 Tilstand i realiseringen av G(s) State in the realization of G(d)
+  x2 Tilstand i Wiener prosessen        State of the Wiener process
+  u   Regulatorkommando/inngang         Control command/input
+  w1 Inngang til Wiener prosessen       Input to Wiener process
+  w2 Målestøy                          Measurement noise
+  y   Måling av utgangen               Output measurement
+d)
+Forklar hvordan parametrene β og γ i denne modellen er relatert til målestøyen
+sin varians og den forventede variasjonsraten til forstyrrelsen på inngangen.
+Explain how the parameters β and γ in this model are related to the measure-
+ment noise variance and expected rate of variation of the input disturbance.
+e)
+Forklar med tekst, blokkdiagram, flyt-skjema, og/eller ligninger hvordan du
+vil bruke et diskret-tid Kalman-filter for å estimere forstyrrelsen på inngan-
+gen (x2 ). Du trenger ikke utlede de spesifikke uttrykkene eller ligningene for
+Kalman-filteret, men det forventes at du beskriver de viktigste stegene som er
+nødvendig for å designe og implementere Kalman-filteret i diskret tid.
+Explain with text, a block diagram, flow-chart and/or equations how you would
+use a discrete-time Kalman-filter to estimate the input disturbance (x2 ). You
+do not need to derive the specific expressions or equations for the Kalman fil-
+ter, but you are expected to describe the major steps required for the design
+and implementation of the discrete-time Kalman-filter.
+
+                                                                   Side 6 av 9
+
+f)
+Forklar kort mulige uønskede effekter av numerisk avrundingsfeil i implemen-
+tasjonen av Kalman-filteret i diskret tid, og hvordan de kan reduseres eller
+unngås.
+Discuss briefly the possible undesired effects of numerical round-off errors in
+the implementation of the discrete-time Kalman-filter, and how they can be
+reduced or avoided.
+
+                                                                      Side 7 av 9
+
+Vedlegg til eksamen (noen nyttige formler og uttrykk):
+Appendix to the exam (some useful formulas and expressions):
+
+                                    Z t
+                     At
+          x(t) = e x(0) +                 eA(t−τ ) Bu(τ )dτ
+                                     0
+                                    k−1
+         x(k) = Ak x(0) +                 Ak−1−m Bu(m)
+                                    X
+
+                                    m=0
+                  adj(A)
+          A−1   =
+                  det(A)
+                    n
+                    X
+       det(A) =           aij cij
+                    i=1
+       adj(A) = {cij }T
+           cij = (−1)i+j det(Aij ) (kofaktor), Aij = submatrix to A
+
+           C = (B AB A2 B · · · An−1 B)
+                       
+                   C
+                CA 
+                       
+                      2 
+                       
+                CA
+           O =         
+                  ..   
+               
+                   .   
+                        
+                      CAn−1
+         G(s)   = C(sI − A)−1 B + D
+         G(z)   = C(zI − A)−1 B + D
+         G(s)   = G(∞) + Gsp (s)
+         d(s)   = sr + α1 sr−1 + · · · + αr−1 s + αr
+                    1
+       Gsp (s) =       [N1 sr−1 + N2 sr−2 + · · · + Nr−1 s + Nr ]
+                  d(s)
+                                                                      
+                     −α1 Ip −α2 Ip · · · −αr−1 Ip −αr Ip             Ip
+                       Ip       0       ···      0       0         0 
+                                                                      
+                  
+                                                                      
+             ẋ = 
+                      0        Ip      ···      0       0   x +  0 u
+                                                                        
+                       ..       ..     ...       ..      ..  
+                                                                    ... 
+                                                                        
+                  
+                        .        .                .       .  
+                                                                       
+                       0        0       ···      Ip      0           0
+            y = [ N1 N2 · · · Nr−1 Nr ]x + G(∞)u
+
+                                                                                     Side 8 av 9
+
+ Discrete-time Kalman filter:
+
+           xk+1 = Φk xk + wk
+              z k = Hk x k + v k
+                    (
+              T       Qk , i = k
+        E[wk wi ] =
+                      0,     i 6= k
+                                  (
+                                      Rk , i = k
+         E[vk viT ]       =
+                                      0,   i=6 k
+        E[wk viT ] = 0, ∀i, k
+             P− k  = E[e−    −T
+                         k ek ]
+             Pk = E[ek eTk ] = (I − Kk Hk )P−             T         T
+                                            k (I − Kk Hk ) + Kk Rk Kk
+                                                          −1
+                 Kk = P−  T      − T
+                       k Hk Hk P k Hk + R k
+
+                P−
+                 k+1 = Φk Pk Φk + Qk
+
+ Continuous-time Kalman filter:
+
+                 ẋ           =       Fx + Gu
+                 z            =       Hx + v
+                T
+     E[u(t)u(τ ) ]            =       Qδ(t − τ )
+     E[v(t)v(τ )T ]           =       Rδ(t − τ )
+     E[u(t)v(τ )T ]           =       0
+                K             =       PHT R−1
+                Ṗ            =       FP + PFT − PHT R−1 HP + GQGT ,           P(0) = P0
+
+ Auto-correlation:
+
+   RX (τ )      =   E[X(t)X(t + τ )] (Stationary process)
+RX (t1 , t2 )   =   E[X(t1 )X(t2 )] (Non-stationary process)
+     Y (s)      =   G(s)U (s) ⇒
+Ry (t1 , t2 )   =   E[y(t1 )y(t2 )]
+                    Z t2 Z t1
+                =                     g(ξ)g(η)E [u(t1 − ξ)u(t2 − η)] dξdη (Transient analysis)
+                      0       0
+
+                                                   Side 9 av 9
+
+Laplace transform pairs:
+
+                           f (t)   ⇐⇒   F (s)
+
+                                        1
+                             1     ⇐⇒
+                                        s
+                                           1
+                       e−at        ⇐⇒
+                                        s+a
+                                        1
+                             t     ⇐⇒
+                                        s2
+                                        2
+                            t2     ⇐⇒
+                                        s3
+                                             1
+                       te−at       ⇐⇒
+                                        (s + a)2
+                                            ω
+                      sin ωt       ⇐⇒
+                                        s2 + ω 2
+                                            s
+                      cos ωt       ⇐⇒
+                                        s + ω2
+                                         2
+
+## Løsningsforslag
+
+Solution Suggestion
+                  Exam - TTK4115 Linear System Theory
+                           December 10, 2008
+                                           AAE (2008-12-05)
+
+Problem 1
+ a) We start by identifying the state and input matrices as:
+
+                                             1    1           0
+                                      A=                , B=
+                                             −1 −4            2
+
+   The eigenvalues of A can be found solving the characteristic polynomial:
+
+                                               λ−1     −1
+                     ∆(λ) = det(λI − A) =                       = λ2 + 3λ − 3 = 0
+                                                 1    λ+4
+
+   This yields:                                             √
+                                                       3      21
+                                               λ1,2 = − ±
+                                                       2      2
+                                                  λ1 = 0.7913
+                                                  λ2 = −3.791
+
+   We also need to find two eigenvectors for the matrix, to perform the similarity transform. This is
+   found using the expression:
+                                            (A − λi I)qi = 0
+   The first eigenvalue yields:
+                                       "              √                            #
+                                                        21
+                                           1 + 23 −
+
+                                                                       1                   q11
+                      (A − λ1 I)q1 =                    2                    √                       =0
+                                                −1               −4 + 23 −    21           q21
+                                                                              2
+
+   We can solve the above equation set by i.e. back substitution. Choosing
+
+                                                      q21 = 1
+
+   yields
+                                                  1                               2
+                                   q11 = −                √      · q21 = −        √
+                                             1 + 32 −       21
+                                                            2
+                                                                             5−       21
+   The second eigenvalue yields:
+                                       "              √                            #
+                                                        21
+                                           1 + 23 +
+
+                                                                       1                   q12
+                      (A − λ2 I)q2 =                    2                    √                       =0
+                                                −1               −4 + 23 +    21           q22
+                                                                              2
+
+   Choosing
+                                                      q22 = 1
+   yields
+                                                  1                               2
+                                   q12 = −                √      · q21 = −        √
+                                                            21
+                                             1 + 32 +       2
+                                                                             5+       21
+
+                                                        1
+
+    The eigenvector matrix can now be found as:
+                                         2                             2
+                                        − 5−√                         − 5+√
+
+                        q11 q12               21                            21
+                                                                                                 −4.791       −0.2087
+                  Q=               =                                                     =
+                        q21 q22            1                             1                       1.000         1.000
+
+    To perform the similarity transform, we need the inverse of Q:
+                                                      "                #
+                                                                  2
+                                                         1
+                                                               √
+
+       −1            1          q22 −q12          1            5+   21     −0.2182                                            −0.04554
+     Q =                                     = −√                  2    =
+             q11 q22 − q12 q21 −q21 q11            21 −1 − 5−√21            0.2182                                             1.046
+
+    The equivalent state equations can now be found as (see Def. 4.1, p. 95 in Chen):
+                                      " 3 √21                    #
+                  −1          λ1 0          −2 + 2          0√            0.7913      0
+            Ā = Q AQ =                 =                             =
+                               0 λ2             0       − 3 − 21             0     −3.791
+                                                                                 2           2
+                                              "                   #                 "                    #
+                                                          2                                   4
+                                                   1                                     − 5√21+21
+                                                          √
+
+                        −1         1                    5+ 21           0                                             −0.09109
+             B̄ = Q          B = −√                        2                     =            √ 4
+                                                                                                              =
+                                    21            −1   − 5−√ 21
+                                                                        2                    5 21−21
+                                                                                                                       2.091
+
+ b) To find the transition matrix for the (original) system, we can start by finding the transition matrix
+    for the transformed system as:
+                                                        λt
+                                                          e 1    0
+                                        Φ̄(t) = eĀt =
+                                                           0   eλ2 t
+
+    Now the transition matrix for the original system should be given by:
+
+                                                  2           2                          "            2
+                                                                                                             #
+                                                                             eλ1 t             1
+
+                                              − 5−√       − 5+√
+                                                                                                  √
+                 At          Āt   −1                                                 1      0      5+   21
+      Φ(t) = e        = Qe Q =                      21          21               −√                     2      =
+                                                 1           1          eλ2 t 0       21      −1 − 5−√    21
+                          "                                                                   #
+                            √ 2    e λ1 t
+                                          −  √ 2      e λ2 t      √1 eλ1 t − √1 eλ2 t
+                        = 5 21−21           5 21+21                 21          21              =
+                              − √121 eλ1 t + √121 eλ2 t           2
+                                                             − 5√21+21             2
+                                                                       eλ1 t + 5√21−21  eλ2 t
+                                                    1.046eλ1 t − 0.04554eλ2 t      0.2182eλ1 t − 0.2182eλ2 t
+
+                                             =
+                                                   −0.2182eλ1 t + 0.2182eλ2 t −0.04554eλ1 t + 1.046eλ2 t
+
+Problem 2
+ a) We are given the transfer matrix:
+
+                                                                              −5 s2 − 5s + 6
+
+                                        G(s) = (g11 (s), g12 (s)) =              ,
+                                                                             s+1    s2 + s
+
+    The numerator of g11 (s) has a degree of zero, and the denominator of g11 (s) has a degree of one,
+    the transfer function g11 (s) is therefore strictly proper. The numerator of g12 (s) has a degree of
+    two, and the denominator of g11 (s) has a degree of two, the transfer function g12 (s) is therefore
+    proper. The transfer matrix G(s) is therefore a proper rational matrix, and according to Theorem
+    4.2 (p. 101 in Chen), the transfer matrix is realizable.
+ b) To find a realization, we should decompose the transfer matrix as:
+
+                                                       G(s) = Gsp (s) + G(∞)
+
+    Using l’Hospital’s rule, we find:
+                                                         G(∞) = (0, 1) = D
+    The strictly proper transfer matrix in the above decomposition should be:
+
+                                                           −5 −6s + 6
+                               Gsp (s) = G(s) − G(∞) =         , 2
+                                                          s+1 s +s
+
+                                                                  2
+
+    The least common denominator for all the elements in Gsp (s) is
+
+                                                   d(s) = s2 + s
+
+    which yields:
+                                      1               1
+                         Gsp (s) =        (N (s)) = 2     −5 −6 s + 0                               6
+                                     d(s)          s +s
+    We now have everything needed to set up a realization in controllable canonical form:
+                                                                  
+                                     −1 0 0 0                  1 0
+                                    0 −1 0 0 
+                                                      x +  0 1 u
+                                                                    
+                              ẋ = 
+                                    1     0 0 0             0 0 
+                                      0    1 0 0               0 0
+
+                              y = −5 −6 0 6 x + 0 1 u
+
+ c) We can compute the controllability matrix as
+
+                                                                      A2 B
+
+                                        C= B                    AB
+
+    where                                                                                         
+                            1        0            −1              0              −1                  0
+                        B= 0        2  , AB =  0              −2  , A2 B =  0                   2 
+                            0        0             0              2              0                  −2
+    so                                                                                
+                                           1 0          −1        0       −1         0
+                                       C= 0 2           0       −2        0         2 
+                                           0 0           0        2        0        −2
+    where each row is linearly independent, so the rank is three, and therefore the system is controllable.
+    Next, we can compute the observability matrix as
+                                                            
+                                                        C
+                                               O =  CA 
+                                                      CA2
+
+    where
+                                                                              , A2 B =
+
+                    C=       −5   −3   3       , CA =       5    6    0                        −5   −6       0
+    so                                                                     
+                                                    −5           −3       3
+                                                O= 5             6       0 
+                                                    −5           −6       0
+    reduced to row echelon form is                                         
+                                                       −5        −3       3
+                                                O0 =  0          3       3 
+                                                        0         0       0
+    where we only have two non-zero rows, so the rank must be two, thus the system is not observable.
+ d) The system is not a minimal realization, since it is not both controllable and observable (see
+    Theorem 7.M2, p. 207 in Chen).
+
+Problem 3
+ a) BIBO stability: A bounded-input bounded-output (BIBO) system is a system where all bounded
+    inputs results in a bounded output. It is defined for the zero-state response, that is, it is applicable
+    only if the system is initially relaxed (see p. 122 in Chen).
+
+                                                        3
+
+    Lyapunov stability: A system is stable in the sense of Lyapunov if every finite initial state results
+    in a bounded response. This is therefore the stability of the zero-input response, that is, when no
+    forcing input is applied to the system (see p. 130 in Chen).
+    Asymptotic stability: A system is asymptotically stable if it is stable in the sense of Lyapunov,
+    and in addition, the response approaches zero as time goes to infinity (see p. 130 in Chen).
+ b) The answer is Theorem 5.4 p. 120 in Chen.
+    Lyapunov stability: Eigenvalues of A must have zero or negative real parts, and eigenvalues with
+    zero real parts must be simple roots (multiplicity one) of the minimal polynomial of A.
+    Asymptotic stability: Eigenvalues of A must have negative real parts.
+ c) The eigenvalues of A are:
+                                                             
+                                   λ+2             0       0
+             ∆(λ) = det(λI − A) =  0              λ       −1  = λ2 (λ + 2) ⇒ λ1,2 = 0, λ3 = −2
+                                    0              0       λ
+
+    The A matrix given in the problem is already on Jordan form, and the Jordan block for the repeated
+    eigenvalue is of order two. This means that the minimal polynomial of A has an eigenvalue with
+    zero real part of multiplicity two, and thus, the system is not stable in the sense of Lyapunov (or
+    asymptotically stable for that matter).
+ d) The usage of the Lyapunov equation, AT M + M A = −I, is straight forward (remember that M is
+    a symmetric matrix, that is m12 = m21 ):
+
+                  0 −1        m11 m12        m11 m12         0 −2           −1 0
+                                           +                            =
+                 −2 1         m12 m22        m12 m22        −1 1             0 −1
+
+    This yields an equation set such as:
+
+                                                               −2m12 = −1
+                                           −2m11 + m12 − m22 = 0
+                                           −2m11 + m12 − m22 = 0
+                                               −4m12 + 2m22 = −1
+
+    Solving the equation set yields
+                                                                       1         1
+                                      m11 = 0, m12 = m21 =               , m22 =
+                                                                       2         2
+    or
+                                                                   1
+
+                                                               0   2
+                                               M=              1   1
+                                                               2   2
+
+    which has principal minors 0 and − 14 , which are both not positive, and therefore the M matrix is
+    not positive definite (Sylvester criterion), and the system is not stable.
+
+Problem 4
+ a) The principle of the linear quadratic regulator (LQR) is to find the controller input u(t) which, for
+    the system ẋ = Ax + Bx, minimizes the cost function
+                                             Z ∞
+                                         J=       [xT Qx + uT Ru]dt
+                                               0
+
+    where x is the state vector, and u is the input vector. Q is the weight matrix for the state
+    variables, and R is the weight matrix for the inputs. The weight matrixes must be real, symmetric,
+    and positive definite. The relative size of the elements of Q and R enforces tradeoffs between the
+
+                                                       4
+
+    magnitude of the control action and the speed of response. The system must be controllable, and
+    all states must be available as measurements or estimates. The minimizing input will be given by
+
+                                                   u = −Kx
+
+    where K = R−1 B T Pc∗ and Pc∗ is found by solving the continuous time algebraic Riccati equation:
+
+                                   AT Pc∗ + Pc∗ A − Pc∗ BR−1 B T Pc∗ + Q = 0
+
+    Shifting the equilibrium to x∗ can be done using the controller u = P x∗ − Kx, where P is chosen
+    such that x(t → ∞) = x∗ .
+
+Problem 5
+ a) A white noise process, F (t), is a stationary random process with spectral density function
+
+                                                 SF (jω) = σ 2
+
+    and autocorrelation function
+                                               RF (τ ) = σ 2 δ(τ ).
+    The mean value is E[F (t)] = 0, and thus the variance is RF (0) = ∞. If the process is Gaussian,
+    the realizations of the random variable F (t) are drawn from a Gaussian distribution with a zero
+    mean and variance σ 2 .
+    Gaussian white noise can also be defined as the derivative of the Wiener process.
+                                                                                               Rt
+ b) The Wiener process, X(t), is the integral of a Gaussian white noise process, X(t) =         0
+                                                                                                    F (u)dt.
+    The mean value is
+                                              E[X(t)] = 0
+    the mean-square value, or the variance, since the mean value is zero, is
+
+                                                 E[X 2 (t)] = t
+
+    which means that it is not a stationary process (the variance is not independent of time). Since
+    the process is not stationary, the autocorrelation function is given in terms of t1 and t2 , not the
+    time difference τ = t2 − t1 , and is given as:
+
+                                                           t 2 , t1 ≥ t 2
+                                         RX (t1 , t2 ) =
+                                                           t1 , t2 < t1
+
+ c) See Fig. 1 for the block diagram. A realization of G(s) can be found as:
+
+                               (2 + s)X1 (s) = 10U (s) ⇒ ẋ1 = −2x1 + 10u
+
+    From the description of the system we know that an unknown, slowly time-varying disturbance is
+    affecting the input, and it is modeled as a Wiener process, thus the expression
+
+                                                   ẋ2 = βw1
+
+    is the Wiener process, since w1 is unity (Gaussian) white noise. The state x2 is thus the disturbance,
+    and is added to the input. The output is the state of the given system, x1 , and it is corrupted by
+    a white noise component, thus the output equation is:
+
+                                                y = x1 + γw2
+
+                                                    5
+
+                              w1
+
+                              β
+                                                                                               w2
+
+                                                                                               γ
+
+                                x2
+                                                                                      x1
+                    u                     10                                                        y
+                                                              -
+
+                                                                               2
+
+                              Figure 1: Block diagram for Problem 5 c).
+
+d) The parameters β and γ are scaling parameters for the standard deviations of the noise inputs.
+   This can be seen from
+                             E[y] = E[x1 + γw2 ] = x1 + γE[w2 ] = x1
+   and thus
+                           E[(y − E[y])2 ] = E[(x1 (t) + γw2 (t) − x1 )2 ] = γ 2 E[w2 2 ]
+   and, likewise:
+                             E[(ẋ2 − E[ẋ2 ])2 ] = E[(βw1 − βE[w1 ])2 ] = β 2 E[w1 2 ]
+   The parameter β will also determine the variation rate for the disturbance x2 , as E[(x2 (t))2 ] = β 2 t.
+   The higher the value of β is, the faster the variance of x2 will grow.
+e) First, we should check that the system is observable. The state matrix is
+
+                                                   −2 10
+                                           A=
+                                                    0    0
+   and the measurement matrix is
+                                                        C=        1   0
+   which means the observability matrix is
+
+                                                               1           0
+                                                    O=
+                                                              −2          10
+   which has full rank, and therefore the system is observable. Next, since we have a continuous
+   system, we must discretize the system using e.g. Euler discretization:
+                        x((k + 1)∆t) = (I + ∆tA)x(k∆t) + ∆tBu(k∆t) + ∆tGw1 (k∆t)
+                             y(k∆t) = Cx(k∆t) + Hw2 (k∆t)
+   where
+                                               10                     0
+                                     B=                 , G=                   , H=        γ
+                                               0                      β
+   ∆t is the sample time, and k is the time step.
+   Further we need to specify the process and noise covariance, which should in this case be
+
+                                 0                          0     0
+                                                                         = GQGT ∆t
+
+                 Qk = E                  0 ∆tβw1       =
+                              ∆tβw1                         0 ∆t2 β 2
+
+                                                          6
+
+  from Equation (7.1.9), and
+                                                                    1
+                                             Rk = [γ 2 ] = R
+                                                                    ∆t
+  from Equation (7.1.13).
+  Discuss... If we assume that we start from a relaxed state, we set the initial error covariance to
+
+                                                    0 0
+                                            P0 =
+                                                    0 0
+
+  and the initial state estimate to:
+                                                            0
+                                                x̂0 =
+                                                            0
+  Now we can estimate the system’s states using the following scheme. Entering with the initial
+  estimates and error covariance matrix, we compute:
+  I. The prediction step/time update
+  (1) Project the state ahead:
+                                            x̂−
+                                              k = Ax̂k−1 + Buk
+
+  (2) Project the error covariance ahead:
+
+                                           P̂k− = AP̂k−1 AT + Qk
+
+  II. The correction step/measurement update
+  (3) Compute the Kalman gain:
+
+                                       Kk = Pk− C T (CPk− C T + R)−1
+
+  (4) Update estimate with measurement yk :
+
+                                         x̂k = x̂−                −
+                                                 k + Kk (yk − C x̂k )
+
+  (5) Update the error covariance:
+                                            P̂k = (I − Kk C)P̂k−
+
+  The steps in part I and II are repeated until termination of the filter. We can also start with part
+  II instead of part I if we supply x−         −
+                                      0 and P0 instead of x0 and P0 . If the system is linear time
+  invariant, and the noise has stationary statistics, as in this case, the stationary Kalman filter can
+  be used, which simplifies the computation.
+
+f) Perhaps the most salient problem with roundoff errors in the context of Kalman filters, is the
+   possibility for the error covariance matrix P to become non-positive definite. If this happens,
+   the state estimates will diverge. One technique for improving numerical stability is to avoid zero
+   diagonal elements in the Q matrix. I.e. for the filter in part e) above, we should add a small
+   positive quantity to the upper left element of Qk . Other techniques that should reduce roundoff
+   problems are:
+
+     1. Using high-precision arithmetic.
+     2. Symmetrize the P and P − matrices, e.g. by only using the upper triangular parts in compu-
+        tations.
+     3. Use the U-D factorization form of the Kalman filter.
+
+  P ← 12 (P + P T )
+  Use symmetric formula in (5).
+
+                                                   7

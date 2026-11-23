@@ -1,0 +1,1103 @@
+# Eksamen 2003 – TTK4115 Lineær systemteori
+
+Tekst hentet automatisk fra PDF. Matriser og brøker kan stå rotete over flere linjer.
+
+## Oppgavetekst
+
+Side 1 av 6
+        Norges teknisk- naturvitenskapelige universitet
+        Institutt for teknisk kybernetikk
+
+Faglig kontakt under eksamen:
+Navn: Tor Arne Johansen
+Tlf.: 917 22 765
+
+                    Eksamen
+            TTK 4115 Lineær systemteori
+
+                               5. desember 2003
+                               Tid: 0900 – 1400
+Hjelpemidler: D - Ingen trykte eller håndskrevne hjelpemidler tillatt. Bestemt, enkel
+kalkulator tillatt.
+
+   Oppgave 1 (10 %)
+     Anta gitt et system ẋ = Ax + Bu der
+
+                                   1 0                     1
+                            A=            ,       B=
+                                  −1 2                     α
+
+     der α er en konstant.
+
+     a) For hvilke verdier av α er systemet styrbart?
+
+     b) Anta α = −4. Finn en tilstandstilbakekopling som plasserer egenverdiene
+     til systemet i λ = −2 ± i.
+
+   Oppgave 2 (25 %)
+     a) Anta gitt en n × n-matrise A. Vis at ved diagonalisering kan denne
+     uttrykkes på formen A = QAQ−1 , og angi hvordan matrisene A og Q kan
+     bestemmes.
+
+                                                                    Side 2 av 6
+
+ b) Hvilke forutsetninger må A tilfredstille for at den skal være diagonaliser-
+ bar?
+
+ c) Hvilke betingelser må A tilfredstille for at systemet ẋ = Ax skal være
+ stabilt?
+
+ d) Hvilke betingelser må A tilfredstille for at systemet ẋ = Ax skal være
+ asymptotisk stabilt?
+
+ e) Anta i det etterfølgende at A er gitt ved
+
+                                        −1 2
+                             A =
+                                         1 3
+
+ Finn en symmetrisk matrise M som er en løsning til Lyapunov-ligningen
+
+                             AT M + MA = −I
+
+ og benytt M til å bestemme hvorvidt systemet ẋ = Ax er asymptotisk stabilt.
+
+ f) Beregn eAt , når A er gitt som i punkt e).
+
+Oppgave 3 (15 %)
+ a) Hvilke egenskaper har en minimal realisasjon?
+
+ b) Er systemet deﬁnert ved transferfunksjonen
+
+                                         2(1 − s)
+                           G(s) =
+                                      (1 + s)(1 + 4s)
+
+ realiserbart? Begrunn.
+
+ c) Finn en tilstandsromrealisasjon for følgende transferfunksjonsmatrise
+
+                                       2         1+s
+                     G(s) =      −           ,
+                                   (1 + 2s)2    1 + 2s
+
+                                                                         Side 3 av 6
+
+Oppgave 4 (20 %)
+ Vi har et 1. ordens system på følgende form
+
+                          ẋ = ax + bu + v,      y =x+w
+
+ der x er tilstanden, u er pådraget, y er en måling, v er en ukjent forstyrrelse,
+ og w er målestøy. Parametrene a og b er skalare konstanter.
+ a) Anta det benyttes en tilstandsestimator på formen
+
+                             x̂˙ = ax̂ + bu,    x̂(0) = 0
+
+ Hvilke ulemper har denne tilstandsestimatoren?
+ b) Gitt tilstandsestimatoren x̂ = y, diskuter hvilke ulemper denne har.
+ c) Anta det benyttes en tilstandsestimator på formen
+
+                       x̂˙ = ax̂ + bu + (y − x̂),   x̂(0) = 0
+
+ Anta i de etterfølgende oppgaver at a = −2, b = 1 og  = 8. Vis at transfer-
+ funksjonen fra målestøyen w til tilstandsestimatet x̂ er gitt ved
+                                  x̂          8
+                                     (s) =
+                                  w        s + 10
+
+ d) Sammenlign fordeler og ulemper til estimatoren fra punkt c) med estima-
+ torene fra punktene a) og b).
+
+Oppgave 5 (15 %)
+ Følgende system er gitt
+
+                             ẋ = −0.4x + 0.1ud + u
+                             y = x + 0.1v
+
+ der x er tilstanden, ud er pådraget, y er en måling, og v og u er hvitstøyprosesser
+ der:
+
+                            E[u(t)u(τ )] = Qδ(t − τ )
+                            E[v(t)v(τ )] = Rδ(t − τ )
+                            E[u(t)v(τ )] = 0
+
+                                                                   Side 4 av 6
+
+ a) Sett opp ligningene for Kalman-ﬁlteret for dette systemet, og forklar
+ hvilken informasjon som er nødvendig for å beregne tilstandsestimatet.
+
+ b) Anta at Q økes. Hva skjer med Kalmanforsterkningen?
+
+ c) Anta at v får større varians på grunn av endringer i sensoren, men at R
+ holdes konstant i ﬁlteret fordi man ikke er klar over dette. Hva skjer nå med
+ Kalmanforsterkningen?
+
+ d) Ved nærmere analyse av spekteret til v, viser det seg at v ikke er hvit,
+ men har spektraltettheten:
+
+                                           1
+                                S(ω) =
+                                         ω2 + 1
+ Hva blir ligningene til Kalman-ﬁlteret nå?
+
+Oppgave 6 (15 %)
+ Signalet v(t) er et stasjonært signal deﬁnert ved V (s) = G(s)W (s), der w(t)
+ er et normalfordelt hvitstøy-signal med null middelverdi og varians 1. Trans-
+ ferfunksjonen G(s) er deﬁnert ved
+
+                                            K
+                               G(s) =
+                                          1 + Ts
+
+ a) Hva er autokorrelasjonsfunksjonen og eﬀektspektret for signalet w(t)?
+
+ b) Vis at eﬀektspektret for signalet v(t) er
+
+                                            K2
+                            Sv (jω) =
+                                         (ωT )2 + 1
+
+ Hva er autokorrelasjonsfunksjonen?
+
+ c) Anslå verdiene til K og T fra følgende estimerte eﬀektspektrum:
+
+                                                    Side 5 av 6
+
+               Pxx − X Power Spectral Density
+ 2
+10
+
+ 1
+10
+
+ 0
+10
+
+ −1
+10
+
+ −2
+10
+
+ −3
+10
+      0    1                                    2         3
+     10   10                                10          10
+                      Frequency (Hz)
+
+                                                                 Side 6 av 6
+
+Vedlegg til eksamen (Noen nyttige formler og uttrykk)
+
+                          t
+                At
+      x(t) = e x(0) +          eA(t−τ ) Bu(τ )dτ
+                          0
+
+                         k−1
+     x(k) = Ak x(0) +          Ak−1−m Bu(m)
+                         m=0
+            adj(A)
+     A−1 =
+            det(A)
+            n
+   det(A) =    aij cij
+                i=1
+   adj(A) = {cij }T
+       cij = (−1)i+j det(Aij ) (kofaktor), Aij = undermatrise til A
+
+        C = (B AB A2 B · · · An−1 B)
+                     
+                C
+             CA 
+                     
+             CA2 
+        O =          
+               ..    
+                .    
+                  n−1
+              CA
+     G(s)   = C(sI − A)−1 B + D
+     G(z)   = C(zI − A)−1 B + D
+     G(s)   = G(∞) + Gsp (s)
+     d(s)   = sr + α1 sr−1 + · · · + αr−1 s + αr
+                1
+   Gsp (s) =       [N1 sr−1 + N2 sr−2 + · · · + Nr−1 s + Nr ]
+              d(s)
+                                                                 
+                 −α1 Ip −α2 Ip · · · −αr−1 Ip −αr Ip             Ip
+               Ip          0       ···       0       0        0 
+                                                                 
+               0           I       · · ·     0       0        0 
+         ẋ =                p                           x +     u
+                   ..       ..      ..       ..       ..      .. 
+                    .        .         .      .        .       . 
+                    0       0       ···      Ip       0          0
+        y = [ N1 N2 · · · Nr−1 Nr ]x + G(∞)u
+
+                                                                          Side 7 av 6
+
+ Vedlegg til eksamen.
+
+ Diskret Kalman-ﬁlter:
+
+            xk+1 = Φk xk + wk
+               zk = Hk xk + vk
+
+                T       Qk , i = k
+        E[wk wi ] =
+                        0,   i = k
+
+                        Rk , i = k
+         E[vk viT ] =
+                        0,   i = k
+         E[wk viT ] = 0, ∀i, k
+              P− k  = E[e−     −T
+                          k ek ]
+              Pk = E[ek eTk ] = (I − Kk Hk )P−
+                                             k (I − Kk Hk ) + Kk Rk Kk
+                                                           T         T
+                                           −1
+              Kk = P −       T    − T
+                        k Hk Hk Pk Hk + Rk
+            P−k+1 = Φk Pk Φk + Qk
+
+ Kontinuerlig Kalman ﬁlter:
+
+                 ẋ      =       Fx + Gu
+                 z       =       Hx + v
+                T
+      E[u(t)u(t) ]       =       Qδ(t − τ )
+      E[v(t)v(t)T ]      =       Rδ(t − τ )
+      E[u(t)v(t)T ]      =       0
+                K        =       PHT R−1
+                Ṗ       =       FP + PFT − PHT R−1 HP + GQGT ,    P(0) = P0
+
+ Autokorrelasjon:
+
+   RX (τ )      = E[X(t)X(t + τ )] (Stajonær prosess)
+RX (t1 , t2 )   = E[X(t1 )X(t2 )] (Ikke stajonær prosess)
+     Y (s)      = G(s)U(s) ⇒
+Ry (t1 , t2 )   = E[y(t1 )y(t2 )]
+                   t1  t2
+                =           g(ξ)g(η)E [u(t1 − ξ)u(t2 − η)] dξdη (Transient analyse)
+                     0       0
+
+                                                             Side 8 av 6
+
+Minste kvadraters estimering:
+                             1
+                   V (θ̄) =     (YN − ΦN θ̄)T (YN − ΦN θ̄)
+                             2
+                 E[θ̂θ̂T ] = σ̂e2 (ΦTN ΦN )−1
+                                  2
+                      σ̂e2 =           V (θ̂)
+                             N −p
+
+                                                                    Side 1 av 6
+       Norges teknisk- naturvitenskapelige universitet
+       Institutt for teknisk kybernetikk
+
+Faglig kontakt under eksamen:
+Navn: Tor Arne Johansen
+Tlf.: 917 22 765
+
+                       Exam
+               TTK 4115 Linear systems
+
+                              5. December 2003
+                              Time: 0900 – 1400
+Supporting materials: D - No printed or handwritten material allowed. Speciﬁc,
+simple calculator allowed.
+
+   Oppgave 1 (10 %)
+     Given a system ẋ = Ax + Bu where
+
+                                 1 0                    1
+                          A=             ,     B=
+                                −1 2                    α
+
+     where α is a constant.
+
+     a) For what values of α is the system controllable?
+
+     b) Assume that α = −4. Find a state feedback control law that places the
+     systems eigenvalues in λ = −2 ± i.
+
+   Oppgave 2 (25 %)
+     a) Let A be a given n × n-matrix . Show that by diagonalization the matrix
+     can be represented as A = QAQ−1 , and state how the matrices A and Q can
+     be determined.
+
+                                                                   Side 2 av 6
+
+ b) Which conditions must A satisfy to ensure that the matrix is diagonaliz-
+ able?
+
+ c) Which conditions must A satisfy to ensure that the system ẋ = Ax is
+ stable?
+
+ d) Which conditions must A satisfy to ensure that the system ẋ = Ax is
+ asymptotically stable?
+
+ e) From now on let A be given by
+
+                                          −1 2
+                              A =
+                                           1 3
+
+ Find a symmetric matrix M that solves the Lyapunov-equation
+
+                             AT M + MA = −I
+
+ and use M to determine if the system ẋ = Ax is asymptotically stable.
+
+ f) Calculate eAt , where A is as deﬁned in e).
+
+Oppgave 3 (15 %)
+ a) What properties does minimal realization have?
+
+ b) Is the system deﬁned by the following transfer function
+
+                                        2(1 − s)
+                           G(s) =
+                                     (1 + s)(1 + 4s)
+
+ realizable? Justify your answer.
+
+ c) Find a state space representation of the following transfer function matrix
+
+                                        2          1+s
+                     G(s) =       −           ,
+                                    (1 + 2s)2     1 + 2s
+
+                                                                  Side 3 av 6
+
+Oppgave 4 (20 %)
+ Given the following ﬁrst order system
+                        ẋ = ax + bu + v,      y =x+w
+ where x is the state, u is the input, y is the measurement, v is an unknown
+ disturbance, and w is measurement noise. The parameters a and b er scalar
+ constants.
+ a) Assume that a state estimator on the form
+                           x̂˙ = ax̂ + bu,    x̂(0) = 0
+ is used. Which disadvantages does this estimator have?
+ b) Given the state estimator x̂ = y, discuss the disadvantages with this
+ approach.
+ c) Assume that a state estimator on the form
+                     x̂˙ = ax̂ + bu + (y − x̂),   x̂(0) = 0
+ is used. From now on, let a = −2, b = 1 and  = 8. Show that the transfer
+ function from the measurement noise w to the state estimate x̂ is given by
+                               x̂          8
+                                  (s) =
+                               w        s + 10
+ d) Compare advantages and disadvantages of the estimator from exercise c)
+ with the estimators from a) and b).
+
+Oppgave 5 (15 %)
+ Given the following system
+                           ẋ = −0.4x + 0.1ud + u
+                           y = x + 0.1v
+ where x is the state, ud is the input, y is the measurement, and v and u are
+ white noise processes where:
+
+                          E[u(t)u(τ )] = Qδ(t − τ )
+                          E[v(t)v(τ )] = Rδ(t − τ )
+                          E[u(t)v(τ )] = 0
+
+                                                                   Side 4 av 6
+
+ a) Deﬁne the Kalman ﬁlter equations for the system and explain what infor-
+ mation is needed to compute the state estimate.
+
+ b) Assume that Q is increased. How does this aﬀect the Kalman gain?
+
+ c) Assume that the variance in v increases due to changes in the sensor, and
+ since we are not aware of this, R is kept constant in the ﬁlter. How does this
+ aﬀect the Kalman gain?
+
+ d) Analyzes of the power spectrum of v reveals that v is no white noise
+ process, but has the following power spectral density:
+
+                                           1
+                                S(ω) =
+                                         ω2 + 1
+ Deﬁne the Kalman ﬁlter equations in this case.
+
+Oppgave 6 (15 %)
+ The signal v(t) is a stationary signal deﬁned by V (s) = G(s)W (s), where w(t)
+ is a Gaussian distributed white noise signal with zero mean and unit variance.
+ The transfer function G(s) is deﬁned by
+
+                                            K
+                               G(s) =
+                                          1 + Ts
+
+ a) Find the power spectral density function and the autocorrelation function
+ for the signal w(t).
+
+ b) Show that the power spectral density function for the signal v(t) is
+
+                                            K2
+                            Sv (jω) =
+                                         (ωT )2 + 1
+
+ Find the autocorrelation function.
+
+ c) Find approximate values of K and T from the following estimated eﬀect
+ spectrum:
+
+                                                    Side 5 av 6
+
+               Pxx − X Power Spectral Density
+ 2
+10
+
+ 1
+10
+
+ 0
+10
+
+ −1
+10
+
+ −2
+10
+
+ −3
+10
+      0    1                                    2         3
+     10   10                                10          10
+                      Frequency (Hz)
+
+                                                                   Side 6 av 6
+
+Attachment to the exam (Some useful formulas and expressions)
+
+                           t
+                At
+     x(t) = e x(0) +            eA(t−τ ) Bu(τ )dτ
+                           0
+
+                          k−1
+     x(k) = Ak x(0) +           Ak−1−m Bu(m)
+                          m=0
+            adj(A)
+     A−1 =
+            det(A)
+            n
+   det(A) =    aij cij
+                i=1
+   adj(A) = {cij }T
+       cij = (−1)i+j det(Aij ) (cofactor), Aij = sub matrix of A
+
+       C = (B AB A2 B · · · An−1 B)
+                    
+               C
+            CA 
+                    
+            CA2 
+       O =          
+              ..    
+               .    
+                 n−1
+             CA
+     G(s)   = C(sI − A)−1 B + D
+     G(z)   = C(zI − A)−1 B + D
+     G(s)   = G(∞) + Gsp (s)
+     d(s)   = sr + α1 sr−1 + · · · + αr−1 s + αr
+                1
+   Gsp (s) =       [N1 sr−1 + N2 sr−2 + · · · + Nr−1 s + Nr ]
+              d(s)
+                                                                 
+                 −α1 Ip −α2 Ip · · · −αr−1 Ip −αr Ip             Ip
+               Ip          0       ···       0       0        0 
+                                                                 
+               0           I       · · ·     0       0        0 
+         ẋ =                p                           x +     u
+                   ..       ..      ..       ..       ..      .. 
+                    .        .         .      .        .       . 
+                    0       0       ···      Ip       0          0
+        y = [ N1 N2 · · · Nr−1 Nr ]x + G(∞)u
+
+Attachment to the exam.
+
+                                                                          Side 7 av 6
+
+  Discrete Kalman-ﬁlter:
+             xk+1 = Φk xk + wk
+                zk = Hk xk + vk
+
+                 T       Qk , i = k
+         E[wk wi ] =
+                         0,   i = k
+
+                         Rk , i = k
+          E[vk viT ] =
+                         0,   i = k
+         E[wk viT ] = 0, ∀i, k
+              P− k  = E[e−     −T
+                          k ek ]
+              Pk = E[ek eTk ] = (I − Kk Hk )P−
+                                             k (I − Kk Hk ) + Kk Rk Kk
+                                                           T         T
+                                           −1
+              Kk = P −       T    − T
+                        k Hk Hk Pk Hk + Rk
+            P−k+1 = Φk Pk Φk + Qk
+
+  Continuous Kalman ﬁlter:
+                 ẋ      =    Fx + Gu
+                 z       =    Hx + v
+                T
+      E[u(t)u(t) ]       =    Qδ(t − τ )
+      E[v(t)v(t)T ]      =    Rδ(t − τ )
+      E[u(t)v(t)T ]      =    0
+                K        =    PHT R−1
+                Ṗ       =    FP + PFT − PHT R−1 HP + GQGT ,         P(0) = P0
+  Autocorrelation:
+   RX (τ )      = E[X(t)X(t + τ )] (Stationary process)
+RX (t1 , t2 )   = E[X(t1 )X(t2 )] (Non-stationary process)
+     Y (s)      = G(s)U(s) ⇒
+Ry (t1 , t2 )   = E[y(t1 )y(t2)]
+                   t1  t2
+                =           g(ξ)g(η)E [u(t1 − ξ)u(t2 − η)] dξdη (Transient analyzes)
+                     0   0
+
+  Least squares estimation:
+                                     1
+                             V (θ̄) =   (YN − ΦN θ̄)T (YN − ΦN θ̄)
+                                     2
+                         E[θ̂θ̂T ] = σ̂e2 (ΦTN ΦN )−1
+                                          2
+                              σ̂e2 =           V (θ̂)
+                                     N −p
+
+## Løsningsforslag
+
+JS, December 10, 2003
+                                                   Institutt for Teknisk Kybernetikk
+                                                                   NTNU, Trondheim
+
+          TTK 4115/SIE3015 - Linear Systems
+
+             Løsningsforslag til eksamen 5. Des, 2003
+
+Oppgave 1
+
+a)(5%) Styrbarhetsmatrisen er gitt ved:
+
+                                   1   1
+                         C = B AB =                                               (1)
+                                    α −1 + 2α
+For at systemet skal være styrbart må vektorene være lineært uavhengige. Krever
+da α = −1 + 2α ⇒ α = 1. Ekvivalent er å regne ut determinanten og kreve den
+ulik 0.
+
+b)(5%) Det karakteristiske polynomet blir:
+
+ (s + 2 − i)(s + 2 + i) = s2 + (2 + i)s + (2 − i)s + (2 + i)(2 − i) = s2 + 4s + 5 (2)
+
+Systemmatrisen med tilstandstilbakekoplingen blir:
+
+                                        1 − k1     −k2
+                   Ã = A − BK =                                                  (3)
+                                       −1 + 4k1 2 + 4k2
+
+Regner så ut det karakteristiske polynomet til Ã:
+
+ det(sI − Ã) =   (s − 1 + k1 )(s − 2 − 4k2 ) − k2 (1 − 4k1 )                       (4)
+                   2
+              =   s + (−1 + k1 )s + (−2 − 4k2 )s + (−1 + k1 )(−2 − 4k2 ) − k2 (1 − 4k1 )
+              =   s2 + (−3 + k1 − 4k2 )s + 2 − 2k1 + 3k2 ⇒
+−3 + k1 − 4k2 =   4 ⇒ k1 = 7 + 4k2
+                               17             33
+2 + 3k2 − 2k1   = 5 ⇒ k2 = − ⇒ k1 = −
+                                5              5
+                                           1
+
+TTK4115 Linear systems, løsningsforslag til eksamen, 5/12-2003      Page 2 of 11
+
+Oppgave 2
+
+a)(5%) Deﬁnisjonen på egenverdier og egenvectorer er:
+
+                                   Axi = λi xi                                 (5)
+
+hvor λi er egenverdien og xi er tilhørende egenvektor.
+
+Vi kan da skrive AQ som:
+                                                           
+                       | |       |      |       |          |
+          AQ = A x1 x2 . . . xn  = λ1 x1 λ2 x2 . . . λn xn                 (6)
+                       | |       |      |       |          |
+                                                  
+                                λ1
+                                    λ2            
+                                                
+                = x1 x2 . . . xn         .         = QĀ
+                                           . .    
+                                                λn
+
+Som ved å post multiplisere med Q−1 gir oss
+                                               −1
+                                  A = QĀQ                                     (7)
+
+Altså, Q er en matrise med egenvektorene som kolonner og Ā er en matrise med
+tilhørende egenverdier på diagonalen.
+
+b)(3%) For at A skal være diagonaliserbar må det eksistere n lineært uavhengige
+egenvektorer slik at Q er inverterbar.
+
+c)(4%) Systemet ẋ = Ax er stabilt hvis og bare hvis Re[λi (A)] ≤ 0, ∀i og alle
+egenverdier med realverdi lik null er enkle røtter i det minimale polynomet av A.
+
+Ekvivalent er: Systemet ẋ = Ax er stabilt hvis og bare hvis Re[λi (A)] ≤ 0, ∀i
+og for alle egenverdier med realverdi lik null og algebraisk multiplisitet qi ≥ 2,
+rank(A − λi ) = n − qi , hvor n er dimensjonen til x.
+
+Ekvivalent er: Jordan blokk argumenter, se side 130 i Chen.
+
+d)(3%) Systemet ẋ = Ax er asymptotisk stabilt hvis og bare hvis Re[λi (A)] <
+0, ∀i.
+
+                                        2
+
+TTK4115 Linear systems, løsningsforslag til eksamen, 5/12-2003       Page 3 of 11
+
+e)(5%) La M = MT siden det er en av betingelsene i teorem 5.5 i chen. Vi har
+ligningen:
+
+             −1 2 m11 m12     m11 m12 −1 1            −1 0
+                           +                       =                     (8)
+             1 3 m12 m22      m12 m22      2 3         0 −1
+
+Dette gir oss 3 likninger med 3 ukjente:
+
+          −2m11 + 4m12 = −1                                                     (9)
+      2m12 + 2m22 + m11 = 0
+            2m12 + 6m22 = −1 ⇒
+                          1
+                    m11 =   + 2m12
+                          2
+                            1 1
+                    m22 = − − m12 ⇒
+                            6 3
+                                    1 1        1
+      2m12 + 2m22 + m11 = 2m12 + 2 − − m12 + + 2m12 = 0 ⇒
+                                    6 3        2
+                             1        4            3
+                    m12 = − ⇒ m11 =     ⇒ m22 = −
+                            20       10           20
+M blir altså:
+                                  0.4 −0.05
+                              M=                                              (10)
+                                 −0.05 −0.15
+Dersom matrisen M er positiv deﬁnitt er alle egenverdiene til A i venstre halvplan.
+
+Hver og en av de 4 følgende tester er nødvendig og tilstrekkelig for at en matrise
+er p.d.:
+   1. xT Mx > 0, ∀x = 0
+
+   2. λi (M) > 0, ∀i
+
+   3. Alle øvre submatriser Mk har positive determinanter
+
+   4. Alle pivot elementene, uten rad bytter, er positive.
+Determinanten til M er ikke positiv og matrisen er ikke p.d. i følge punkt 3. Sys-
+temet er da ikke asymptotisk stabilt.
+
+f)(5%) Mange fremgangsmåter, men to mulige er:
+   1. La eAt = MeĀt M−1 hvor M og Ā er deﬁnert som i a)
+
+   2. eAt = L−1 (sI − A)−1
+
+                                           3
+
+TTK4115 Linear systems, løsningsforslag til eksamen, 5/12-2003                    Page 4 of 11
+
+Metode 1: Finner først egenverdiene til å bli:λ1 = −1.4495 og λ2 = 3.4495.
+
+Tilhørende egenvektorer blir:
+
+                              −0.9757                           −0.4100
+                     m1 =               ,                  m2 =                            (11)
+                               0.2193                           −0.9121
+
+Dette gir oss:
+
+     At      0.91 · e−1.4495·t + 0.09 · e3.4495·t 0.41 · e3.4495·t − 0.41 · e−1.4495·t
+   e =                                                                                     (12)
+            0.20 · e3.4495·t − 0.20 · e−1.4495·t 0.09 · e−1.4495·t + 0.91 · e3.4495·t
+
+Metode 2:
+                             s−3         2
+
+       At         −1        s2 −2s−5   s2 −2s−5
+     e      = L                 1         s+1                                              (13)
+                            s2 −2s−5   s2 −2s−5
+                            −1.4495·t
+
+                0.91 · e         + 0.09 · e3.4495·t 0.41 · e3.4495·t − 0.41 · e−1.4495·t
+            =
+               0.20 · e3.4495·t − 0.20 · e−1.4495·t 0.09 · e−1.4495·t + 0.91 · e3.4495·t
+
+Oppgave 3
+
+a)(4%) En minimal realisasjon på formen
+
+                                ẋ = Ax + Bu,              y = Cx + Du                     (14)
+
+har følgende egenskaper:
+
+   1. Det er ikke mulig å representere systemet ved bruk av færre tilstandsvariable.
+
+   2. (A,B) er et styrbart par.
+
+   3. (A,C) er et observerbart par.
+
+   4. Ekvivalent til de to foregående punktene er dim(A) = deg(G(s))
+
+b)(5%) En transferfunksjon G(s) er realiserbar hvis og bare hvis G(s) er en rasjonal
+proper matrise. I vårt tilfellet er graden i nevneren lik 2 og i telleren lik 1, funksjo-
+nen er strengt proper og dermed realiserbar. (Teorem 4.2 i Chen)
+
+c)(6%)Vi må splitte G(s) slik at G(s) = Gsp (s) + G(∞). Vi ser at element 1 er
+en strengt proper transferfunksjon. Element 2 derimot, må deles. Det er enkelt å
+
+                                                       4
+
+TTK4115 Linear systems, løsningsforslag til eksamen, 5/12-2003         Page 5 of 11
+
+se at G2 (∞) = 12 . Videre setter vi opp:
+
+                       G2 (s) = G2sp + G2 (∞) ⇒                                 (15)
+                       1+s        α      1    s + 12 + α
+                              =        + =               ⇒
+                      1 + 2s    1 + 2s 2        1 + 2s
+                                1
+                       1+s =      +α+s⇒
+                                2
+                                1
+                           α =
+                                2
+Vi setter videre opp utrykket for G(s) og bruker formlene i vedlegget til å sette
+opp tilstandsrommet, ẋ = Ax + Bu, y = Cx + Du:
+                     1            2          1
+
+          G(s) = 0 2 +        − 4s2 +4s+1    2(1+2s)                          (16)
+                                  1
+                 = 0 12 + 2                    −2 0.5(1 + 2s)
+                             4s + 4s + 1
+                     1          1
+                 = 0 2 + 2                 [0 0.25]s + [−0.5 0.125] ⇒
+                            s +s+1                           
+                      −1 0 −0.25            0              1 0
+                     0 −1        0     −0.25                 
+             A =                                 , B = 0 1 ,
+                    1     0      0         0            0 0
+                       0   1      0         0              0 0
+
+             C = 0 0.25 −0.5 0.125 , and D = 0 0.5
+
+En kan også sette opp en 3’de ordens realisasjon:
+                                                       
+                           −1 −0.25       0           1 0
+                  A = 1          0       0  , B = 0 0 ,                     (17)
+                            0     0    −0.25          0 1
+
+                  C = 0 −0.5 0.25 and D = 0 0.5
+
+Oppgave 4
+
+a)(4%) Dette er en åpen søyfe tilstandsestimator. Estimatoren bruker ikke utgan-
+gen til å korrigere estimater som er feil for eksempel pga av modellfeil. For å få
+nogenlunde tilfredstillende estimater fra denne fremgangmåten må modellen være
+svært nøyaktig. Legg også merke til at initialtilstandene i den faktiske prosessen
+og etsimatoren må være like.
+
+b)(4%) Her brukes utgangen som et direkte estimat av tilstanden. Vi vil alstå la
+støyen ha udempet eﬀekt på estimatet. Dette kan sees fra transferfunksjonen fra
+
+                                            5
+
+TTK4115 Linear systems, løsningsforslag til eksamen, 5/12-2003          Page 6 of 11
+
+støy til estimat.
+                                      x̂
+                                         (s) = 1                                 (18)
+                                      w
+c)(6%) Vi skriver systemet som
+
+                        x̂˙ = (a − l)x̂ + bu + l(x + w) ⇒                        (19)
+                                  1
+                        x̂ =            (bu + lx + lw)
+                              s−a+l
+Ved hjelp av superposisjon får vi:
+                            x̂         l        8
+                               (s) =       =                                     (20)
+                            w        s−a+l   s + 10
+d)(6%) Vi sammenligner først estimatoren i a) med den i c):
+
+   • c) bruker utgangen y til å korrigere estimatet slik at estimatet blir mindre
+     følsomt for modellfeil enn i a).
+
+   • I c) vil estimatet svinge seg inn til korrekt verdi selv om initialtilstandene er
+     forskjellige.
+
+   • I a) vil den ukjente forsyrrelsen v føre til at estimatet raskt avviker fra
+     virkelige verider.
+
+   • En teoretisk fordel med a) til fordel for c) er at hvis modellen er perfekt og
+     initialtilstanden kjent, vil ikke målestøyen ha noen innvirkning på estimatet,
+     men dette er er svært sjelden/aldri tilfellet.
+
+Vi ser så på estimatoren i b) sammenlignet med den i c):
+
+   • Vi ser av transferfunksjonen fra støyen til estimatet at støyen blir lavpass
+     ﬁltert i c). Dette er en fordel siden støy som regel er høyfrekvent.
+                                                 8
+   • Lavfrekvent støy vil dempes i c)( wx̂ (0) = 10 ) mot enhetsforsterkning i b).
+
+   • En teroretisk fordel med b) fremfor c) er at hvis støyen er neglisjerbar, vil vi
+     ikke ha noen dynamikk mellom mellom virkelig og estimert verdi, og derfor
+     ha et bedre estimat.
+
+   • (Kreves ikke) Utfall av målinger i b) vil ikke gi oss noe estimat av tilstanden,
+     men i c) kan l settes lik null og estimatoren kan kjøre en bergrenset periode
+     som åpen sløyfe estimator.
+
+                                          6
+
+TTK4115 Linear systems, løsningsforslag til eksamen, 5/12-2003        Page 7 of 11
+
+Oppgave 5
+
+a) (4%) Ligningene for kontinuerlig Kalman-ﬁlter er gitt i formelsamlingen. Vi må
+da deﬁnere matrisene som inngår i ﬁlteret: F = −0.4, B = 0.1, H = 1, Q er
+
+gitt, og R = 0.01R., G = 1 Ekstra informasjon som trengs er x(0) og P(0).
+
+b) (3%) Når Q økes øker forsterkningen.
+
+c) (3%) Ingenting skjer med forsterkningen.
+
+d) (5%) Faktorisering av spektraltettheten gir:
+                                               1
+                                  G(s) =
+                                             s+1
+Hvitstøy gjennom dette ﬁlteret gir derfor den ønskede spektraltettheten. Vi vil nå
+augmentere ligningene for å ta hensyn til modelleringen av den fargede støyprosessen.
+ligningene blir nå:
+
+                   ẋ1       1 0      x1       0.1        1 0 u
+                         =                  +       u +
+                   ẋ2       0 −1 x2            0 d       0 1 w
+
+                                F               B          G
+
+                                   x1                       Q 0
+                       y = 1 0.1           , R = 0, Q =
+                              x2                           0 1
+                              H
+
+Har man kommet hit vil man få hele oppgaven riktig. Legg likevel merke til at
+R = 0. En må da enten legge til en kunstig målestøy slik at R ikke er singulær
+eller kjøre en lineær transformasjon på systemet slik at utgangen vil inneholde w.
+
+Oppgave 6
+
+a) (4%) Et normalfordelt hvitsstøy signal med middelverdi 0 og varians 1 har
+følgende autokorrelasjonsfunksjon og eﬀektspekter.
+
+                                  Rw (τ ) = δ(τ )                               (21)
+                                  Sw (s) = 1
+
+                                         7
+
+TTK4115 Linear systems, løsningsforslag til eksamen, 5/12-2003         Page 8 of 11
+
+b) (6%) For å ﬁnne eﬀektspekteret gjør vi som på side 130 i H&B:
+
+                                               K         K
+               Sv (s) = G(s)G(−s)Sw (s) =           ·           ·1              (22)
+                                             1 + T s 1 + T (−s)
+                                        K 2
+                           K2
+                      =            =     T
+                                            2 ⇒
+                        1 − T 2 s2   −s + T1
+                                       2
+                           K 2
+                               T
+             Sv (jω) =              1 2
+                           ω2 +     T
+
+Vi ﬁnner den inverse laplace transformen til transferfunksjonen
+                                                 K −t
+                                        g(t) =     e T                          (23)
+                                                 T
+Autokorrelasjonsfunksjonen er gitt ved følgende utrykk der vi har antatt t2 > t1
+og brukt at z = y + t2 − t1 = y + τ (for at diracen skal bli lik 1) :
+                            t1  t2
+           Rv (t1 , t2 ) =           g(y)g(z)Rw (y − z + t2 − t1 )dydz      (24)
+                            0    0
+
+                           K 2 t1 t2 − y − z
+                         =               e T e T δ(y − z + t2 − t1 )dydz
+                           T2 0 0
+
+                           K 2 t1 − y −y−τ
+                         =           e T e T dy
+                           T2 0
+
+                           K 2 − τ t1 − 2y           K 2 − τ  − 2t1
+                         =     e  T      e T dy = −     e  T   e  T − 1
+                           T2         0              2T
+Vi får tilsvarende svar for t1 > t2 og utrykket for autokorrelasjonen dersom vi ikke
+har antatt at V er stasjonær er gitt ved:
+                                    
+                                     − K 2 e− Tτ e− 2tT1 − 1 t2 ≥ t1
+                                        2T
+                    Rv (t1 , t2 ) =                                            (25)
+                                     − K 2 e− Tτ e− 2tT2 − 1 t2 < t1
+                                        2T
+
+Siden vi vet at V er stasjonær kan vi la t1 , t2 → ∞ og få følgende utrykk for
+autokorrelasjonen:
+                                         K2 − τ
+                               Rv (τ ) =    e T                            (26)
+                                         2T
+Dette er i overenstemmelse med at mean square verdien til V er:
+
+                                                     K2
+                                    E[v(t)v(t)] =                               (27)
+                                                     2T
+
+                                             8
+
+TTK4115 Linear systems, løsningsforslag til eksamen, 5/12-2003                Page 9 of 11
+
+c) (5%) Grafen knekker ved ca 8Hz = 50.3 rad/s. Fra utrykket kan vi da regne
+ut T
+                                   1       1
+                           T =√ =              ≈ 0.02                   (28)
+                                    ω2   50.3
+                                                       √
+K kan ﬁnnes fra utrykket ved å sette ω = 0 slik at K ≈ 10.
+
+Oppgave 5 og 6 for SIE3015-vesjonen
+
+Oppgave 5
+
+a) Transfer funksjonen i s-planet blir:
+
+                                          1 − e−T s 1 + Ti s
+                              H(s) = Kp            ·                                  (29)
+                                             s        Ti s
+H(z) er gitt av Z-transformen:
+
+                                    −T s 1 + Ti s
+            H(z) = Z Kp (1 − e )                                                      (30)
+                                             Ti s2
+
+                                −1          1      1
+                  = Kp (1 − z )Z                +
+                                         Ti s2 s
+                                       1        T z −1          1
+                  = Kp (1 − z −1 )         ·             +
+                                      Ti (1 − z −1 )2 1 − z −1
+                            Kp      T z −1         Kp (Ti − Ti z −1 ) + T z −1 )
+                  = Kp +         ·              =
+                            Ti (1 − z −1 )                Ti (1 − z −1 )
+                         Ti + (T − Ti )z −1
+                  = Kp
+                            Ti (1 − z −1 )
+
+b) Algoritmen blir:
+
+                                                        T
+                  u(k) = u(k − 1) + Kp e(k) + Kp           − 1 e(k − 1)               (31)
+                                                        Ti
+
+Oppgave 6
+
+a) Frekvensresponsen H(jω) er gitt ved:
+                                        1 1 −jωh 1 −2jωh
+                            H(jω) =      + e    + e                                   (32)
+                                        4 2      4
+
+                                              9
+
+TTK4115 Linear systems, løsningsforslag til eksamen, 5/12-2003                                                                 Page 10 of 11
+
+                                                                              Bode Diagram
+
+                                         0
+
+                                      −10
+
+                                      −20
+
+                                      −30
+
+                     Magnitude (dB)
+                                      −40
+
+                                      −50
+
+                                      −60
+
+                                      −70
+
+                                      −80
+                                          0                                               1
+                                        10                                            10
+                                                                            Frequency (rad/sec)
+
+                                                        Figure 1: Frekvensrespons
+
+b) Impulseresponsen er gitt av den inverse z-transformen:
+            1                      1
+      h(k) = Z −1 1 + 2z −1 + z −2 = (δ(k) + 2δ(k − 1) + δ(k − 2))                                                                      (33)
+            4                       4
+h(0)=0.25, h(1)=0.5, h(2)=0.25, h(k>2)=0.
+
+                                                                            Impulse Response
+
+                                       0.5
+
+                                       0.4
+
+                                       0.3
+                 Amplitude
+
+                                       0.2
+
+                                       0.1
+
+                                        0
+
+                                      −0.1
+                                             0   0.05    0.1   0.15   0.2          0.25        0.3   0.35   0.4   0.45   0.5
+                                                                                Time (sec)
+
+                                                        Figure 2: Impulsrespons
+
+                                                                              10
+
+TTK4115 Linear systems, løsningsforslag til eksamen, 5/12-2003   Page 11 of 11
+
+c) Transferfunksjonen er gitt ved:
+
+                                      1   z 2 + 2z + 1
+                             H(z) =                                       (34)
+                                      4        z2
+
+Proper transferfunksjon og dobbel pol i origo gir stabilitet.
+
+Dobbelt nullpunkt i -1
+
+                                          11

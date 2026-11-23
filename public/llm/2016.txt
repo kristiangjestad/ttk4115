@@ -1,0 +1,763 @@
+# Eksamen 2016 – TTK4115 Lineær systemteori
+
+Tekst hentet automatisk fra PDF. Matriser og brøker kan stå rotete over flere linjer.
+
+## Oppgavetekst
+
+Department of Engineering Cybernetics
+
+Examination paper for TTK4115 Linear Systems Theory
+
+Academic contact during examination: Morten D. Pedersen
+
+Examination date: 2. December 2016
+Examination time (from–to): 09:00–13:00
+Permitted examination support material: D: No printed or handwritten material allowed. Specific
+simple calculator allowed.
+
+Other information:
+Note that no parts of this problem assume that you have solved any of the previous parts. The given
+information from previous parts should be sufficient to move on.
+
+Language: English
+Number of pages: 6
+Number pages enclosed: 4
+
+                                                                                     Checked by:
+
+                                                               Date           Signature
+
+TT4115 Linear Systems Theory - 2. December 2016                                                                 Page 1 of 6
+
+Problem 1 (30 %)
+A linear plant is modeled by
+       "             #       "         #"            #       "       #                                  "            #
+           ẋ1 (t)               0 1        x1 (t)               0                        h         i       x1 (t)
+                         =                               +               u(t),   y(t) =       1 0                         (1)
+           ẋ2 (t)               0 1        x2 (t)               1                                          x2 (t)
+
+a) (5 %) Demonstrate that plant is controllable and design a state-feedback control
+
+                                       u(t) = −kx(t),            x(t) = [x1 (t), x2 (t)]T                                 (2)
+
+     that places the poles of the closed loop plant at λ1 = −1 and λ2 = −1.
+
+b) (5 %) Suppose now that an unspecified state-feedback u = −k0 x has been used to
+      bring forth the closed loop system matrix
+                                                                          "            #
+                                                                     0         0 1
+                                            Acl = A − bk =                                                                (3)
+                                                                              −2 −2
+
+     Utilize Lyapunov’s theorem AT   cl M + MAcl + N = 0 to demonstrate that the
+     unspecified feedback results in stable operation.
+
+c) (5 %) First demonstrate that the plant is observable. This implies that a Luenberger
+      observer can be utilized. Proceed to give the general form of the Luenberger
+      observer equation
+                                           x̂˙ = . . .                              (4)
+     The right hand side consists of several terms. Give an informal and brief account
+     of their function. Would it be possible to utilize an open loop observer with the
+     plant (1)? Write down the general form of this observer type x̂˙ ol = . . . along with
+     your answer.
+
+d) (10 %) Output feedback control can be accomplished using state feedback in series
+     with a Luenberger estimator. Let a very simple first order process be described by
+
+                                               ẋ(t) = u(t),             y(t) = x(t)                                      (5)
+
+     Sometimes it is not possible measure all the states in the model (in this example
+     you can). In this case output feedback can be used. An output feedback controller
+     utilizing feedback from estimated states can be given by
+                                               ˙
+                                              x̂(t) = −(k + l)x̂(t) + ly(t)                                              (6a)
+                                              u(t) = −kx̂(t)                                                             (6b)
+
+     where k > 0 is the feedback gain and l > 0 is the observer gain. Demonstrate that
+     k > 0 can be chosen independently of l > 0 when the aim is overall stability. Does
+     your result generalize to state feedback from estimated states in general?
+
+Page 2 of 6                       TT4115 Linear Systems Theory - 2. December 2016
+
+e) (5 %) Clearly, an output feedback
+
+                                       u(t) = −ky(t)                                 (7)
+
+     will stabilize the simple process (5) as long as k > 0. Suppose now the measurement
+     is polluted by high-frequency noise so that y(t) = x(t) + n(t). Derive the transfer
+     functions from y(s) to u(s) for (7) and (6). Comparing the two, which will tend
+     to give a smoother input u(t)? Explain your reasoning.
+
+TT4115 Linear Systems Theory - 2. December 2016                                  Page 3 of 6
+
+Problem 2 (20 %)
+PID regulators, exemplified by
+                                               K
+
+                             u(s) = Kp + Kd s + i e(s)                                   (8)
+                                                s
+are ubiquitous in process control. The preceding equation is given in the Laplace-domain.
+For implementation, a time-domain formulation must be used.
+
+a) (5 %) Explain why the following formulation is preferable for time-domain impleme-
+      nation
+                                            Kd s     K
+
+                             u(s) = Kp +           + i e(s)                       (9)
+                                           τs + 1     s
+     Here τ > 0 is a small time-constant. In particular, give reasons why (8) cannot be
+     implemented as a state-space model and why (9) does not suffer from this problem.
+
+b) (10 %) Find the matrices A, b, c and the scalar d in the plant
+
+                                      ẋ(t) = Ax(t) + be(t)                             (10)
+                                      u(t) = cx(t) + de(t)                              (11)
+
+     such that the system realizes the PID regulator. That is
+                                                          Kd s   K
+                            c(sI − A)−1 b + d = Kp +            + i                     (12)
+                                                         τs + 1   s
+     Is there more than one correct answer to this problem? Explain.
+
+c) (5 %) At times, it is sufficient to employ a PI-regulator. If the PI-regulator is to be
+      implemented on a computer, a discrete formulation is desirable. Show that the
+      state-space implementation
+
+                             ẋ(t) = e(t),   u(t) = Ki x(t) + Kp e(t)                   (13)
+
+     gives rise to the transfer function
+                                             u           K
+                                    K(s) =     (s) = Kp + i                             (14)
+                                             e            s
+     Assume now that the error e(t) is approximately constant over a time interval
+     t ∈ [kT, (k + 1)T ] where T represents the sampling time and k = 0, 1, 2 . . . n.
+     Derive a discretization of (13) on the form
+
+                      x[k + 1] = ad x[k] + bd e[k],   u[k] = cd x[k] + dd e[k]          (15)
+
+     You are here to produce the scalar model coefficients ad , bd , cd , dd taking care to
+     show your work.
+
+Page 4 of 6                            TT4115 Linear Systems Theory - 2. December 2016
+
+Problem 3 (25 %)
+Modern cellular phones are equipped with accelerometers and GPS. Much improved
+position estimates are possible through combination of sensor data, known as sensor
+fusion. For simplicity, only the horizontal position x(t) along one direction is considered
+here.
+
+GPS measurements of the true position are subject to noise caused by a variety of effects.
+This is modeled by
+
+                 y[k] = x[k] + v[k],     E[v[k]] = 0,   E[v[k]v[l]] = δ[k, l]σ 2           (16)
+
+where σ describes the standard-deviation of the position measurement error. The ac-
+celerometer produces a signal α(t) that measures ẍ(t), but the reading is often influenced
+by a slowly varying unknown bias β(t), so that
+
+                                       α(t) = ẍ(t) + β(t)                                 (17)
+
+a) (5 %) The accelerometer produces continuous readings whereas the GPS measure-
+      ments arrives at discrete intervals. In order to fuse the two sensors it is necessary to
+      discretize (17). Assume that bias varies so slowly that it can be considered constant
+      over a sampling interval. This permits the simplification
+                                                 Z (k+1)T
+                                             1
+                                    β[k] ≃                  β(t0 ) dt0                     (18)
+                                             T    kT
+
+      Define also an averaged accelerometer reading as
+                                                 Z (k+1)T
+                                            1
+                                    ᾱ[k] ,                 α(t0 ) dt0                     (19)
+                                            T     kT
+
+      Show that (17) can be used to produce the exact discretization
+
+                                 ẋ[k + 1] = ẋ[k] + T ᾱ[k] − T β[k]                      (20)
+
+b) (8 %) It will be assumed that the sample interval is small enough (T 2 ∼ 0) to permit
+      the simplification
+                                   x[k + 1] ≃ x[k] + T ẋ[k]                        (21)
+      Suppose now that the bias is well modeled by a random walk
+
+                 β[k + 1] = β[k] + w[k],      E[w[k]] = 0,        E[w[k]w[l]] = δ[k, l]q   (22)
+
+      where q represents the intensity of the white noise driving the random walk, (typ-
+      ically a tuning parameter). Let the random process describing the sensor fusion
+      problem be represented by the discrete-time state-space model
+
+                  x[k + 1] = Ad x[k] + bd ᾱ[k] + gd w[k],         y[k] = cx[k] + v[k]     (23)
+
+TT4115 Linear Systems Theory - 2. December 2016                                       Page 5 of 6
+
+        where the state vector reads as
+                                                           
+                                                    β[k]
+                                           x[k] =  ẋ[k]                                   (24)
+                                                         
+                                                    x[k]
+
+        Identify the system matrices Ad , bd , gd and c using the equations (16,20,21,22).
+        Observability in discrete time can be established if the following matrix has full
+        column rank                                    
+                                                  C
+                                              CA       
+                                                     d 
+                                                      2 
+                                                 CAd 
+                                             
+                                        Od =                                        (25)
+                                             
+                                                  ..   
+                                                    .
+                                                        
+                                                       
+                                                   CAdn−1
+        Is it, in principle, possible to determine the accelerometer bias β[k], velocity ẋ[k]
+        and position x[k] from the measurement y[k]?
+
+c) (12 %) Let x̂[k] denote an estimate minimizing the mean-square error
+
+                         MSE = tr(P[k]),   P[k] = E[(x[k] − x̂[k])(x[k] − x̂[k])T ]          (26)
+
+        Given the optimal estimate x̂[k − 1] and covariance matrix P[k − 1] from the
+        previous time-step. Produce a sequence of operations giving the optimal estimate
+        x̂[k] using the process model given in 1 (23) and the known sequence of accelerom-
+        eter readings ᾱ[k]. Make sure to illustrate where the standard deviation σ enters
+        the computation. (Do not use the explicit expressions for Ad , bd , gd and c found
+        above).
+
+  1                 T
+      Hint: Qd = qgg .
+
+Page 6 of 6                        TT4115 Linear Systems Theory - 2. December 2016
+
+Problem 4 (25 %)
+The Linear Quadratic Regulator is a powerful tool in control design. Let a simple plant
+be given by the low-pass filter
+
+                                   τ ẋ(t) + x(t) = u(t)                            (27)
+
+Here, τ 6= 0 represents the time constant of the model, not necessarily positive!
+
+a) (10 %) Suppose that the following cost function is to be minimized using u(t).
+                                       Z ∞
+                                  J=          x(t)2 + ρu(t)2 dt                     (28)
+                                         0
+
+     Here ρ describes the input cost. Show that the optimal feedback gain k, to be used
+     as u(t) = −kx(t), is given by
+                                                      s
+                                                                1
+                                  k = −1 + sign(τ ) 1 +                             (29)
+                                                                ρ
+
+     Show furthermore that the closed loop dynamics read as
+                                              s       !
+                                                   1
+                                |τ |ẋ(t) +     1+   x(t) = 0                       (30)
+                                                   ρ
+
+b) (5 %) Suppose that τ < 0, rendering (27) unstable. One might imagine that an
+      infinitely large input cost ρ → ∞ would hinder the LQR-regulator from producing
+      an input that is sufficiently large to stabilize the system. Based on (30,29), give
+      an account of what actually happens! Explain your finding using (28).
+
+c) (5 %) Let x(0) = x0 . Find x(t) from (30). What happens to the solution x(t) as the
+      control is made cheap ρ → 0? Please supply a small sketch comparing x(t) using
+      cheap control vs. x(t) using expensive control ρ → ∞.
+
+d) (5 %) The LQR regulator designed for (27) relied solely on the proportional effect.
+      Explain how a PI feedback regulator
+                                                      Z t
+                                u(t) = −kx(t) − ki          x(t0 ) dt0              (31)
+                                                       0
+
+     can be designed using the LQR method. Give an example of an appropriate A
+     and B matrix to be used with the method. Also indicate any modifications to the
+     cost functions in terms of the weighting matrix Q, (given the value Q = 1 above).
+
+TT4115 Linear Systems Theory - 2. December 2016                          Page i of iv
+
+Formula sheet
+
+Solutions
+
+                                           Z t
+                     x(t) = eAt x(0) +           eA(t−τ ) Bu(τ )dτ
+                                            0
+                                           k−1
+                     x[k] = Ak x[0] +            Ak−1−m Bu[m]
+                                           X
+
+                                           m=0
+
+Controllability/Observability
+
+                      C = [B, AB, A2 B, · · · , An−1 B]
+                                   
+                              C
+                           CA 
+                                   
+                                  2 
+                             CA
+                          
+                      O = 
+                                   
+                              ..   
+                                .
+                                    
+                                   
+                                CAn−1
+
+Realization
+
+         G(s) = C(sI − A)−1 B + D
+         G(s) = G(∞) + Gsp (s)
+          d(s) = sr + α1 sr−1 + · · · + αr−1 s + αr
+                     1
+        Gsp (s) =      [N sr−1 + N2 sr−2 + · · · + Nr−1 s + Nr ]
+                   d(s) 1
+                                                                    
+                      −α1 Ip −α2 Ip · · · −αr−1 Ip −αr Ip           Ip
+                   
+                      Ip      0       ···      0        0   
+                                                             
+                                                                   0 
+                                                                      
+                        0      Ip      ···      0        0   x +  0 u
+                                                                    
+              ẋ = 
+                   
+                        ..      ..     ..       ..       ..  
+                                                                   .. 
+                                                                      
+                                          .
+                   
+                         .       .               .        .
+                                                             
+                                                                 . 
+                        0      0     ···          Ip         0       0
+              y = [ N1 N2 · · ·    Nr−1 Nr ]x + G(∞)u
+
+Page ii of iv                         TT4115 Linear Systems Theory - 2. December 2016
+
+LQR
+
+       Z ∞
+  J=         xT (t)Qx(t) + uT (t)Ru(t) dt
+        0
+                            AT P + PA + Q − PBR−1 BT P = 0
+                                                                     u(t) = −R−1 BT Px(t)
+
+Lyapunov equation
+
+                                     AT M + MA = −N
+
+Kalman filtering (Discrete time)
+
+Process model
+
+                x[k + 1] = Ad x[k] + Bd u[k] + w[k],      y[k] = Cx[k] + v[k]
+
+The noise and disturbance are unbiased (E[v[k]] = 0, E[w[k]] = 0) and white
+
+                    E[v[k]v[l]T ] = δ[k, l]Rd ,   E[w[k]w[l]T ] = δ[k, l]Qd
+
+Algorithm Initialize at x̂− [0] = E[x(0)] and P− [0] = E[(x[0] − x̂− [0])(x[0] − x̂− [0])T ].
+Compute recursively:
+
+   1. L[k] = P− [k]CT (CP− [k]CT + Rd )−1
+
+   2. x̂[k] = x̂− [k] + L[k](y[k] − Cx̂− [k])
+
+   3. P[k] = (I − L[k]C)P− [k](I − L[k]C)T + L[k]Rd L[k]T
+
+   4. x̂− [k + 1] = Ad x̂[k] + Bd u[k],   P− [k + 1] = Ad P[k]AT
+                                                               d + Qd
+
+TT4115 Linear Systems Theory - 2. December 2016                              Page iii of iv
+
+Kalman filtering (Continuous time)
+
+Process model
+                          ẋ = Ax + Bu + Gw,         y = Cx + v
+The noise and disturbance are unbiased (E[v(t)] = 0, E[w(t)] = 0) and white
+
+                E[v(t)v(τ )T ] = δ(t − τ )R,   E[w(τ )w(t)T ] = δ(t − τ )Q
+
+Optimal gain     The Kalman gain is given by L(t) = P(t)CT R−1 where
+
+                       Ṗ = AP + PAT + GQGT − PCT R−1 CP
+
+Set Ṗ = 0 to find stationary gain.
+
+Stationary processes
+
+Autocorrelation and power spectral density
+
+                     Ru (τ ) = E[u(t)u(t + τ )],   Su (ω) = F{Ru (τ )}
+
+With y(s) = H(s)w(s) where E[w(t)] = 0 and Rw (τ ) = δ(τ )q it holds that
+
+                                 Sy (ω) = H(ω)H(−ω)q
+
+Page iv of iv                      TT4115 Linear Systems Theory - 2. December 2016
+
+Laplace transform pairs
+
+                           f (t)        ⇐⇒        F (s)
+
+                          δ(t)         ⇐⇒        1
+                                                 1
+                             1         ⇐⇒
+                                                 s
+                                                   1
+                          e−at         ⇐⇒
+                                                 s+a
+                                                 1
+                             t         ⇐⇒
+                                                 s2
+                                                 2
+                            t2         ⇐⇒
+                                                 s3
+                                                      1
+                      te−at            ⇐⇒
+                                                 (s + a)2
+                                                    ω
+                      sin ωt           ⇐⇒
+                                                 s2 + ω 2
+                                                    s
+                     cos ωt            ⇐⇒
+                                                 s2 + ω 2
+
+## Løsningsforslag
+
+Solution Suggestion
+                     Exam - TTK4115 Linear System Theory
+                              2. December, 2016
+
+                                             November 22, 2016
+
+Problem 1
+The plant is given by
+
+                   ẋ1 (t)     0   1        x1 (t)                   0                                                  x1 (t)
+                            =                                +               u(t),       y(t) =           1   0                             (1)
+                   ẋ2 (t)     0   1        x2 (t)                   1                                                    x2 (t)
+
+a) We check for controllability by checking rank
+
+                                                                                       0   1
+                                            C=           B       AB              =
+                                                                                         1   1
+
+     The rank of this matrix is 2, which is full rank. The plant is controllable. Let the state feedback be
+     given by u = −[k1 , k2 ]x so that
+                                                        0      1
+                                          A − bk =                                                      (2)
+                                                       −k1 1 − k2
+     The characteristic polynomial can be computed as
+
+                                                     λ              −1
+                          |λI − (A − bk)| =                                              = λ2 + (k2 − 1)λ + k1                              (3)
+                                                     k1          λ + k2 − 1
+
+     Comparison to the desired polynomial (λ + 1)2 = λ2 + 2λ + 1 yields the appropriate gains k1 = 1 and
+     k2 = 3.
+b) The system matrix whose stability is in question reads as
+
+                                                             0                                1
+                                        Acl = A − bk0 =                                                                                     (4)
+                                                             −2                              −2
+
+     Choose N = I  0 and define a symmetric, but as yet unknown, matrix
+
+                                                   m11 m12
+                                          M=                                                                                                (5)
+                                                   m12 m22
+
+     Verify that
+
+                                                     1 − 4m12        m11 − 2 (m12 + m22 )
+                   AT
+                    cl M + MAcl + N =                                                                                                  =0   (6)
+                                                m11 − 2 (m12 + m22 )  2m12 − 4m22 + 1
+
+                                                                     1
+
+        Simple arithmetic yields the answer m12 = 1/4 ⇒ m22 = 3/8 ⇒ m22 = 3/8 ⇒ m11 = 5/4. This
+        leaves the verification of whether M is positive definite or not. The method of principle minors gives
+        an answer in the affirmative1
+                                                                       2
+                                      m11 m12          5/4 1/4          1     10 2      26    13
+                  m11 = 5/4 > 0,                  =                 =                =     =     >0        (7)
+                                      m12 m22          1/4 3/8          8      2 3      64    32
+        The system is asymptotically stable!
+c) The plant is observable, verify full rank below
+
+                                                     C     1                 0
+                                             O=         =                                                    (8)
+                                                    CA     0                 1
+
+        Observability implies that a Luenberger observer with arbitrary convergence rate can be designed
+
+                                          x̂˙ =       Ax̂ + Bu            + L(y − ŷ)                        (9)
+                                                      | {z }                | {z }
+                                                  Simulation/Prediction     Correction
+
+        The estimator combines simulation based prediction with a correction term garnered by comparing the
+        true output with the estimated one. It is not possible to use an open loop observer for the given plant.
+        The observer
+                                                    x̂˙ = Ax̂ + Bu                                          (10)
+        would be unstable since A is equipped with eigenvalues λ1 = 0 and λ2 = 1.
+d) A simple first order process is supplied as
+
+                                                        ẋ = u,   y=x                                      (11)
+
+        along with an output feedback controller
+
+                                                     x̂˙ = −(k + l)x̂ + ly                                (12a)
+                                                     u = −kx̂                                             (12b)
+
+        Define the estimation error as
+                                                           e = x − x̂                                      (13)
+        Expressing the equations in terms of the error yields the plant equation
+
+                                                  ẋ = −kx + ke,      ė = −le                             (14)
+
+        One eigenvalue is located at −k whereas the other is found at −l. The lack of a coupling indicates
+        the the observer gain can be chosen independently of the feedback gain k. The result extends to state
+        feedback from estimated states in general, and is known as the separation principle.
+e) The output feedback
+                                                          u = −kyr                                         (15)
+        is to be compared to (12). The respective transfer functions are readily computed as
+                                          u                  u             lk
+                                            (s) = −k,          (s) = −                                     (16)
+                                          y                  y         s + (k + l)
+
+        The transfer function describing the dynamics of (12) introduces low-pass action, and can hence be
+        expected to yield a smoother output when y is polluted by high-frequency noise.
+  1          n
+      |cA| = c |A|
+
+                                                            2
+
+Problem 2
+This task considers PID regulators, exemplified by
+
+                                                        K
+                                      u(s) = Kp + Kd s + i e(s)                                                                             (17)
+                                                         s
+
+a) The following formulation is preferable for time-domain implemenation
+
+                                                       Kd s    K
+                                       u(s) = Kp +           + i e(s)                                                                       (18)
+                                                      τs + 1    s
+
+     since it is proper, as opposed to (17). It is not possible to realize improper transfer functions on a
+     standard state-space formulation.
+
+b) A rewriting of (18) yields the transfer function
+
+                                                 (Ki − Kd /τ 2 )s + Ki /τ
+
+                                          u                                      Kd
+                                    G(s) = (s) =                          + Kp +                                                            (19)
+                                          e            s2 + s/τ                  τ
+
+     Using the standard realization formula supplied in the appendix, one has
+
+                                                       ẋ = Ax + be,                u = cx + de                                             (20)
+
+     where
+                               − τ1
+
+                                       0                      1                     h                         i                   Kd
+                      A=                       ,     b=               ,    c=           Ki − K2d         Ki
+                                                                                                         τ         ,   d = Kp +             (21)
+                                1      0                      0                                  τ                                τ
+
+c) The state-space implementation
+
+                                                   ẋ(t) = e(t),          u(t) = Ki x(t) + Kp e(t)                                          (22)
+
+     Laplace transforms as x(s) = e(s)/s leading to
+
+                                                      K
+                                           u(s) = Kp + i e(s)                                                                               (23)
+                                                       s
+
+     This is a PI-regulator, as desired. The system (22) is to be discretized. Under the assumption that
+     e(t) is approximately constant over the time interval t ∈ [(k − 1)T, kT ] integration yields
+                Z (k+1)T                                                   Z (k+1)T                       Z (k+1)T
+                                0     0                                                      0       0
+                           ẋ(t ) dt = x[k + 1] − x[k] =                                  e(t ) dt ≃                    e[k] dt0 = T e[k]   (24)
+                 kT                                                            kT                             kT
+
+     Hence the discretized model
+
+                                      x[k + 1] = x[k] + T e[k],                     u[k] = Ki x[k] + Kp e[k]                                (25)
+
+     Comparison to
+                                      x[k + 1] = ad x[k] + bd e[k],                     u[k] = cd x[k] + dd e[k]                            (26)
+     shows that ad = 1, bd = T, cd = Ki and dd = KP .
+
+                                                                           3
+
+Problem 3
+a) The continuous measurement equation for the accelerometer reads as
+
+                                                 α(t) = ẍ(t) + β(t)                                   (27)
+
+     Integrating both sides over the sampling interval yields
+                            Z (k+1)T            Z (k+1)T             Z (k+1)T
+                                        0    0               0    0
+                                     α(t ) dt =          ẍ(t ) dt +          β(t0 ) dt0               (28)
+                             kT                        kT                      kT
+
+     Using the definition and approximation
+
+                                    1 (k+1)T
+                                     Z                                        Z (k+1)T
+                                                                          1
+                            ᾱ[k] ,          α(t0 ) dt0 ,        β[k] ≃                  β(t0 ) dt0    (29)
+                                    T kT                                  T    kT
+
+     allows
+                                         T ᾱ[k] = ẋ[k + 1] − ẋ[k] + T β[k]                          (30)
+     Rearranging this relation yields the desired result.
+b) The equations describing the discrete dynamics are summarized by
+
+                                         β[k + 1] = β[k] + w[k]                                        (31)
+                                         ẋ[k + 1] = ẋ[k] − T β[k] + T ᾱ[k]                          (32)
+                                         x[k + 1] = x[k] + T ẋ[k]                                     (33)
+
+     Here ᾱ[k] is a deterministic, known, input. With this proviso, the appropriate state-space formulation
+     reads as
+                                                                                         
+                                 1     0 0            0              1                     β[k]
+                  x[k + 1] =  −T 1 0  x[k] +  T  ᾱ[k] +  0  w[k], x[k] =  ẋ[k]                (34)
+                                 0    T 1             0              0                     x[k]
+                             |       {z     }      | {z }         | {z }
+                                   Ad                       bd                gd
+
+     where the measurement is obtained from
+
+                                          y[k] =       0    0 1 x[k] + v[k]                            (35)
+                                                   |        {z }
+                                                            cd
+
+     The discrete process is observable, which is verified by full column rank of
+                                                                    
+                                                        0     0 1
+                                            Od =  0          T 1                                     (36)
+                                                          2
+                                                     −T      2T 1
+
+     This implies that the state-vector x[k] can, in principle, be determined from the measurement.
+c) In this problem, the Kalman filter must used to obtain the optimal estimate x̂[k]. The optimal estimate
+     x̂[k − 1] and covariance matrix P[k − 1] from the previous time-step are available.
+     The a-priori estimate at t = kT is given by
+
+                                         x̂− [k] = Ad x̂[k − 1] + bd ᾱ[k − 1]                         (37)
+
+     whereas the a-priori covariance matrix follows from
+
+                                         P− [k] = Ad P[k − 1]AT
+                                                              d + qgg
+                                                                      T
+                                                                                                       (38)
+
+                                                            4
+
+     Note here that Qd = qggT .
+     Since Rd = σ 2 , the Kalman gain follows as
+                                       L[k] = P− [k]cT (cP− [k]cT + σ 2 )−1                             (39)
+     The optimal estimate can now be found through the computation
+                                       x̂[k] = x̂− [k] + L[k](y[k] − cx̂− [k])                          (40)
+
+Problem 5
+a) The system matrices (here scalar) of τ ẋ + x = u are given by
+                                                   1                1
+                                                A=− ,        B=                                         (41)
+                                                   τ                τ
+     Letting Q = 1 and R = ρ, the Riccati equation (found in the appendix) reduces, after slight rearrange-
+     ment, to
+                                             2
+                                          1 P           P
+                                                  +2         −1=0                                      (42)
+                                          ρ τ           τ
+     The ABC-formula gives the two solutions
+                                           q
+                                     −2 ± 22 + 4/ρ
+                                                          r
+                                P                               1
+                                  =                = ρ −1 ± 1 +                                         (43)
+                                τ         2(1/ρ)                ρ
+     The matrix P must be positive definite, in the scalar case P > 0. Two cases are of importance namely
+     τ < 0 and τ > 0. By picking the solution depending on the sign of τ , one has
+                                                      q
+                                           τ ρ −1 + 1 + 1         τ >0
+                                                               ρ
+                                    P =                q                                           (44)
+                                           τ ρ −1 − 1 +       1
+                                                               ρ   τ <0
+
+     Simplifying, this is equal to                        r
+                                                                1
+                                      P = τ ρ −1 + sign(τ ) 1 +     >0                                  (45)
+                                                                ρ
+     The optimal gain (found in the appendix) can now be furnished by
+                                                              r
+                                           P                       1
+                                       k=      = −1 + sign(τ ) 1 +                                      (46)
+                                           τρ                      ρ
+     The closed loop dynamics follows by inserting the optimal feedback into the dynamic model
+                                                              r
+                                                                    1
+                                    τ ẋ + x = −kx ⇒ |τ |ẋ +    1+     x                               (47)
+                                                                    ρ
+
+b) When the cost ρ is made vary large ρ → ∞, the dynamics reduce to
+                                                   |τ |ẋ + x = 0                                       (48)
+     whereas the input becomes
+                                               u = (1 − sign(τ )) x                                     (49)
+     A stable system yields the expected result u = 0 whereas an unstable system will produce the feedback
+     u = −2x capable of stabilizing the plant. The reason is that the cost associated with an unstable plant,
+     whose solution grows to infinity, is far larger than the cost associated with an expensive input. The
+     LQR will always render the closed loop dynamics stable.
+
+                                                      5
+
+c) The solution of the closed loop dynamics are given by
+                                                           r
+                                                        t        1
+                                        y(t) = exp −          1+     y0                                (50)
+                                                       |τ |      ρ
+
+     As the input is made cheap, the solution will converge very fast to zero. Expensive control will yield
+     the slower response shown in the figure.
+
+d) Integral effect can be included by augmenting the state-space. Let an additional state be equipped with
+     the dynamics                                          Z                 t
+                                 ẋa (t) = x(t)          ⇒ xa (t) =              x(t0 ) dt0 + xa (0)   (51)
+                                                                         0
+     An augmented state-space model reads as
+                                                             A                             b
+                                                  z
+                                                          }|   {      z }| {
+                                       ẋ               −1/τ 0       x       1/τ
+                                                =                        +         u                   (52)
+                                      ẋa                1    0      xa       0
+
+     Since the integral represented by xa must be weighted to produce a nonzero integral gain, the cost
+     function could read as                   Z ∞
+                                            JPI =                x2 + qa x2a + ρu2 dt                  (53)
+                                                         0
+
+     The appropriate Q matrix would read as diag[1, qa ].
+
+                                                                 6

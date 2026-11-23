@@ -1,0 +1,816 @@
+# Eksamen 2022 – TTK4115 Lineær systemteori
+
+Tekst hentet automatisk fra PDF. Matriser og brøker kan stå rotete over flere linjer.
+
+## Oppgavetekst
+
+Department of Engineering Cybernetics
+
+Examination paper for TTK4115 Linear Systems Theory
+
+Academic contact during examination: Morten O. Alver
+
+Examination date: 12. Dec 2022
+Examination time (from–to): 15:00–19:00
+Permitted examination support material: D: No printed or handwritten material allowed. Specific
+simple calculator allowed.
+
+Other information:
+
+  1. Note that no parts of this exam assume that you have solved any of the previous parts.
+     The given information from previous parts should be sufficient to move on.
+
+  2. You may answer in Norwegian or English. Du kan svare på norsk eller engelsk.
+
+Language: English
+Number of pages: 6
+Number pages enclosed: 4
+
+                                                                                      Checked by:
+
+                                                                Date           Signature
+
+TTK4115 Linear Systems Theory - 12. Dec 2022                                      Page 1 of 6
+
+Problem 1 (30 %)
+
+Given this system:
+                                           A                            B
+                                    z"    }|           #{           z }| #{
+                                                                    "
+                                         2 −1                           1
+                             ẋ =                           x+                u           (1)
+                                         −4 −1                          2
+                                              h                 i
+                                         y=       1 0               x
+                                              |       {z        }
+                                                      C
+
+a) (5 %) Show that the system is observable and controllable.
+
+b) (5 %) Find the transfer function of the system (from u to y).
+
+c) (5 %) Check the internal stability of the system.
+
+d) (5 %) You will use the control law u = −Kx to control the system. Find the value
+      of K that puts the closed loop system’s eigenvalues in −1 and −2.
+
+e) (5 %) In some cases it is desirable for the system’s output to converge towards a
+      reference value r0 instead of x converging towards 0. For this purpose you will
+      introduce the control law u = −Kx + Kr r0 . Find the value of Kr that makes y
+      converge towards r0 as a function of K and the system matrices. You can assume
+      that K stabilizes the system.
+
+f) (5 %) The system’s observability gramian Wo (t) is defined by:
+                                               Z t          T
+                                Wo (t) =              eA τ CT CeAτ dτ                     (2)
+                                                  0
+
+     The gramian is a matrix that depends on t. For the system of Eq. 1, is it invertible
+     for any or all values of t > 0?
+
+Page 2 of 6                           TTK4115 Linear Systems Theory - 12. Dec 2022
+
+Problem 2 (20 %)
+A noise process has been modelled as β(s) = H(s)w(s) where E[w(t)] = 0, the autocor-
+relation function for w(t) is Rw (τ ) = δ(τ ), and
+                                              s+1
+                                 H(s) =                                               (3)
+                                          (s + 2)(s + 3)
+
+a) (5 %) What kind of process is w(t)? Calculate its power spectral density function
+      Sw (ω).
+      Note: the formula for the Fourier transform is fˆ(ω) = ∞ f (τ )e−jωτ dτ
+                                                            R
+                                                                −∞
+
+b) (5 %) What is the power spectral density function Sβ (ω) of the modelled noise pro-
+      cess?
+
+c) (5 %) Give a realization of the transfer function H(s) on controllable canonical form.
+
+d) (5 %) Consider a process on which β(t) acts as a disturbance:
+
+                          ẋ(t) = ax(t) + bu(t) + β(t),    y(t) = x(t)                (4)
+
+     Set up an augmented system for x(t) and β(t). The augmented system should have
+     u(t) as input, w(t) as disturbance and y(t) as output. You can use the symbols
+     Aβ , Bβ and Cβ to represent the realization of H(s).
+
+TTK4115 Linear Systems Theory - 12. Dec 2022                                                     Page 3 of 6
+
+Problem 3 (24 %)
+
+When fermenting beer, yeast is metabolizing sugar in the wort and producing ethanol.
+The reduction in sugar content causes the density of the wort to decrease, and the
+addition of ethanol causes a further decrease in density. Therefore, the brewer can
+monitor the fermentation by measuring the density of the wort. The rate of decrease in
+density is also useful to know, since the brewer wants to know when the fermentation is
+nearing completion.
+
+Assume that you get measurements of the density each hour, The density is given in
+points ranging from around 80 for a high density wort down to around 10 for a completed
+fermentation, and the measurement is affected by zero-mean gaussian white measure-
+ment noise with a standard deviation of 2 points.
+
+a) (3 %) You want to set up a Kalman filter to estimate the rate of change of the density,
+      so you set up the following discrete time state space system with a time step of
+      one hour:
+                      "                #       "          #"            #       "            #
+                          x1 [k + 1]               1 −1        x1 [k]               w1 [k]
+                                           =                                +
+                          x2 [k + 1]               0 1         x2 [k]               w2 [k]
+                                  y[k] = x1 [k] + v[k]
+
+     where w[k] = [ w1 [k] w2 [k] ]T and v[k] are Gaussian disturbances with zero mean
+     and
+                    E[w[k]w[l]T ] = Qδ[k, l], E[v[k]v[l]] = 22 · δ[k, l]
+     Which of the two states x1 and x2 represents the rate of decrease in density? What
+     is the unit of that state value?
+
+b) (6 %) Let the initial estimates at time k = 0 be x̂1 [0] =" 80 and x̂#
+                                                                        2 [0] = 0.2.
+                                                                0.2 0
+      The initial estimate of the covariance matrix is P[0] =             . Let also
+                                                                 0 0.2
+            "             #
+                0.01 0
+     Q =                 .
+                  0  0.1
+     At time k ="1 you measure
+                          #    the density y[1] = 78.5. Show that the Kalman gain
+                   0.093
+     at time 1 is          , and compute the a posteriori estimate x̂[1] of the states
+                  −0.0454
+     at time 1.
+
+c) (5 %) The first coefficient of the Kalman gain at time 1 is 0.093, implying that the
+      a posteriori estimate of x1 will be much closer to the a priori estimate than to the
+      measured value. Explain why the Kalman gain has a value of this magnitude.
+
+Page 4 of 6                            TTK4115 Linear Systems Theory - 12. Dec 2022
+
+d) (5 %) It is a reasonable approximation that the density decrease rate itself decreases
+      exponentially. To better correspond to the real system, which number would you
+      change in the state space system, and in which direction? Test if this change affects
+      the internal stability of the modelled system.
+
+e) (5 %) You want to test the assumptions made for the measurement noise, so a col-
+      league runs a test where 10000 density measurements are made for a liquid with
+      exactly known density. He computes the measurement error for all measurements,
+      and gives you the following figure showing the results. Can you use the figure to
+      verify the assumptions that were given above for the measurement noise? Explain
+      your reasoning.
+
+TTK4115 Linear Systems Theory - 12. Dec 2022                                   Page 5 of 6
+
+Problem 4 (10 %)
+
+a) (5 %) You want to control the following system:
+
+                                      ẋ = ax + u,   y=x                               (5)
+
+     with a control law on the form u = −kx. Use LQR with Q = R = 1 to find the
+     value of k as a function of a. Show that the closed-loop system is stable regardless
+     of the value of a.
+
+b) (5 %) The Popov-Belevitch-Hautus test for controllability is based on the fact that
+      controllability of the pair (A, B) is only possible if every eigenvector of AT is not
+      in the null-space of BT . Show that this is the case.
+     Hint: use the fact that if the controllability matrix has full rank, there is no non-
+     zero vector v such that C T v = 0. Use also the definition of an eigenvector.
+
+Page 6 of 6                            TTK4115 Linear Systems Theory - 12. Dec 2022
+
+Problem 5 (16 %)
+
+The following questions go into your experiences with the helicopter lab. If any of the
+questions concern tests for which you don’t have direct experience, you should speculate
+based on your knowledge of the theory and the helicopter lab.
+
+a) (4 %) In the first lab assignment you tested a PD pitch controller for the helicopter.
+      What happened when using real eigenvalues and you tried to move the eigenvalues
+      far into the left half plane to get fast response? Did your observations match the
+      theoretical model? If not, what could be the reasons?
+
+b) (4 %) In the second lab assignment you used LQR in combination with integral effect.
+      In this setup, describe how you can tune the strength of the integral effect in the
+      controller.
+
+c) (4 %) In the third lab assignment you had to disregard the accurate encoder mea-
+      surements and control the helicopter based on accelerometer and gyroscope mea-
+      surements from an IMU. Why is a state estimator an important tool for controlling
+      the helicopter in this case?
+
+d) (4 %) In the fourth lab assignment a discrete time Kalman filter was used to estimate
+      states. For the Kalman filter, you may have used a diagonal Qd matrix. When
+      the matrix has this structure, what is the effect of increasing or decreasing one of
+      the elements along the diagonal?
+
+TTK4115 Linear Systems Theory - 12. Dec 2022                             Page i of iv
+
+Formula sheet
+
+Solutions
+
+                                           Z t
+                     x(t) = eAt x(0) +           eA(t−τ ) Bu(τ )dτ
+                                            0
+                                           k−1
+                     x[k] = Ak x[0] +            Ak−1−m Bu[m]
+                                           X
+
+                                           m=0
+
+Controllability/Observability
+
+                      C = [B, AB, A2 B, · · · , An−1 B]
+                                   
+                              C
+                           CA 
+                                   
+                                  2 
+                             CA
+                          
+                      O = 
+                                   
+                              ..   
+                                .
+                                    
+                                   
+                                CAn−1
+
+Realization
+
+         G(s) = C(sI − A)−1 B + D
+         G(s) = G(∞) + Gsp (s)
+          d(s) = sr + α1 sr−1 + · · · + αr−1 s + αr
+                     1
+        Gsp (s) =      [N sr−1 + N2 sr−2 + · · · + Nr−1 s + Nr ]
+                   d(s) 1
+                                                                    
+                      −α1 Ip −α2 Ip · · · −αr−1 Ip −αr Ip           Ip
+                   
+                      Ip      0       ···      0        0   
+                                                             
+                                                                   0 
+                                                                      
+                        0      Ip      ···      0        0   x +  0 u
+                                                                    
+              ẋ = 
+                   
+                        ..      ..     ..       ..       ..  
+                                                                   .. 
+                                                                      
+                                          .
+                   
+                         .       .               .        .
+                                                             
+                                                                 . 
+                        0      0     ···          Ip         0       0
+              y = [ N1 N2 · · ·    Nr−1 Nr ]x + G(∞)u
+
+Page ii of iv                             TTK4115 Linear Systems Theory - 12. Dec 2022
+
+LQR
+
+       Z ∞
+  J=         xT (t)Qx(t) + uT (t)Ru(t) dt
+        0
+                            AT P + PA + Q − PBR−1 BT P = 0
+                                                                     u(t) = −R−1 BT Px(t)
+
+Lyapunov equation
+
+                                     AT M + MA = −N
+
+Kalman filtering (Discrete time)
+
+Process model
+
+                x[k + 1] = Ad x[k] + Bd u[k] + w[k],      y[k] = Cx[k] + v[k]
+
+The noise and disturbance are unbiased (E[v[k]] = 0, E[w[k]] = 0) and white
+
+                    E[v[k]v[l]T ] = δ[k, l]Rd ,   E[w[k]w[l]T ] = δ[k, l]Qd
+
+Algorithm Initialize at x̂− [0] = E[x(0)] and P− [0] = E[(x[0] − x̂− [0])(x[0] − x̂− [0])T ].
+Compute recursively:
+
+   1. L[k] = P− [k]CT (CP− [k]CT + Rd )−1
+
+   2. x̂[k] = x̂− [k] + L[k](y[k] − Cx̂− [k])
+
+   3. P[k] = (I − L[k]C)P− [k](I − L[k]C)T + L[k]Rd L[k]T
+
+   4. x̂− [k + 1] = Ad x̂[k] + Bd u[k],   P− [k + 1] = Ad P[k]AT
+                                                               d + Qd
+
+TTK4115 Linear Systems Theory - 12. Dec 2022                                 Page iii of iv
+
+Kalman filtering (Continuous time)
+
+Process model
+                          ẋ = Ax + Bu + Gw,         y = Cx + v
+The noise and disturbance are unbiased (E[v(t)] = 0, E[w(t)] = 0) and white
+
+                E[v(t)v(τ )T ] = δ(t − τ )R,   E[w(τ )w(t)T ] = δ(t − τ )Q
+
+Optimal gain     The Kalman gain is given by L(t) = P(t)CT R−1 where
+
+                       Ṗ = AP + PAT + GQGT − PCT R−1 CP
+
+Set Ṗ = 0 to find stationary gain.
+
+Stationary processes
+
+Autocorrelation and power spectral density
+
+                     Ru (τ ) = E[u(t)u(t + τ )],   Su (ω) = F{Ru (τ )}
+
+With y(s) = H(s)w(s) where E[w(t)] = 0 and Rw (τ ) = δ(τ )q it holds that
+
+                                 Sy (ω) = H(ȷω)H(−ȷω)q
+
+Page iv of iv                      TTK4115 Linear Systems Theory - 12. Dec 2022
+
+Laplace transform pairs
+
+                           f (t)     ⇐⇒        F (s)
+
+                          δ(t)      ⇐⇒         1
+                                               1
+                             1      ⇐⇒
+                                               s
+                                                 1
+                          e−at      ⇐⇒
+                                               s+a
+                                               1
+                             t      ⇐⇒
+                                               s2
+                                               2
+                            t2      ⇐⇒
+                                               s3
+                                                    1
+                        te−at       ⇐⇒
+                                               (s + a)2
+                                                  ω
+                       sin ωt       ⇐⇒
+                                               s2 + ω 2
+                                                  s
+                       cos ωt       ⇐⇒
+                                               s2 + ω 2
+
+Solution of second degree equation
+                                                        q
+                  2                            −b ±      b2 − 4ac
+                ax + bx + c = 0     =⇒    x=
+                                                        2a
+
+## Løsningsforslag
+
+Solution Suggestion
+   Exam - TTK4115 Linear System Theory
+                             Morten Omholt Alver
+
+                               12. December 2022
+
+Problem 1
+Given this system:
+                                                  A                        B
+                                    z        }|          {
+                                                   z }| {
+                                          2 −1        1
+                             ẋ =               x+          u                          (1)
+                                         −4 −1        2
+
+                                         y= 1 0 x
+                                            | {z }
+                                                          C
+
+a) Show that the system is observable and controllable.
+     The controllability matrix for the system is:
+
+                                                                         1 0
+                               C=             B AB                 =
+                                                                           2 −6
+     The observability matrix is:
+
+                                                   C                   1 0
+                                 O=                            =
+                                                  CA                   2 −1
+     Both matrices have full rank, so the system is both controllable and observable.
+b) Find the transfer function of the system (from u to y).
+     The transfer function is calculated as:
+                                                                −1
+                                         −1          s−2
+                                                            1      1
+                G(s) = C(sI − B) C = 1 0
+                                                       4   s+1       2
+
+                                     1            s + 1 −1      1
+                   = 1 0
+                              (s − 2)(s + 1) − 4     −4 s − 2     2
+
+                            1                    1         s−1
+                      = 2            s + 1 −1            = 2
+                        s −s−6                       2    s −s−6
+
+                                                      1
+
+c) Check the internal stability of the system. Since the system is controllable and ob-
+     servable, it is sufficient to check the poles of the transfer function:
+
+                                 s2 − s − 6 = (s + 2)(s − 3)
+
+     The system has one pole in -2 and one in 3, so it is unstable.
+d) You will use the control law u = −Kx to control the system. Find the value of K
+     that puts the closed loop system’s eigenvalues in −1 and −2.
+
+     We want to choose K = k1 k2 . The state equation for the closed loop system
+     is:
+                                               2 − k1    −1 − k2
+                        ẋ = (A − BK)x =                            x
+                                             −4 − 2k1 −1 − 2k2
+     The characteristic polynomial of the closed loop system matrix is:
+
+           s + k1 − 2    k2 + 1
+                                     = (s + k1 − 2)(s + 2k2 + 1) − (2k1 + 4)(k2 + 1)
+             2k1 + 4  s + 2k2 + 1
+
+           = s2 + (k1 − 2 + 2k2 + 1)s + (k1 − 2)(2k2 + 1) − 2k1 k2 − 2k1 − 4k2 − 4
+                         = s2 + (k1 − 2 + 2k2 + 1)s + −k1 − 8k2 − 6
+     We want the system to have the following characteristic polynomial:
+
+                                (s + 1)(s + 2) = s2 + 3s + 2
+
+     Matching these polynomials gives two equations:
+
+                          k1 − 2 + 2k2 + 1 = 3 =⇒ k1 = −2k2 + 4
+
+                     −k1 − 8k2 − 6 = 2 =⇒ −(−2k2 + 4) − 8k2 − 6 = 2
+     The second equation gives k2 = −2. Inserting
+                                                 into the first equation gives k1 = 8,
+     so the appropriate feedback gain is K = 8 −2 .
+e) In some cases it is desirable for the system’s output to converge towards a reference
+     value r0 instead of x converging towards 0. For this purpose you will introduce the
+     control law u = −Kx + Kr r0 . Find the value of Kr that makes y converge towards
+     r0 as a function of K and the system matrices. You can assume that K stabilizes
+     the system.
+     We insert the control law into the state equation and set ẋ = 0 to find the equi-
+     librium point of the closed loop system (now using x∞ to denote the equilibrium
+     value of x):
+                               Ax∞ + B(−Kx∞ + Kr r0 ) = 0
+                                  (A − BK)x∞ = −BKr r0
+                     x∞ = −(A − BK)−1 BKr r0 = (BK − A)−1 BKr r0
+
+                                           2
+
+                            y∞ = Cx∞ = C(BK − A)−1 BKr r0
+     From this equation we see that y∞ = r0 if we choose:
+
+                                 Kr = [C(BK − A)−1 B]−1
+
+f) The system’s observability gramian Wo (t) is defined by:
+                                           Z t     T
+                                Wo (t) =         eA τ CT CeAτ dτ                      (2)
+                                            0
+
+     The gramian is a matrix that depends on t. For the system of Eq. 1, is it invertible
+     for any or all values of t > 0?
+     We know from problem 1 a) that the system is observable. The observability
+     gramian being invertible for all t > 0 is a necessary and sufficient condition for
+     observability. Therefore, the observability gramian for this system is invertible for
+     all t > 0.
+
+                                             3
+
+Problem 2
+A noise process has been modelled as β(s) = H(s)w(s) where E[w(t)] = 0, the autocor-
+relation function for w(t) is Rw (τ ) = δ(τ ), and
+                                                  s+1
+                                 H(s) =                                                (3)
+                                              (s + 2)(s + 3)
+
+a) What kind of process is w(t)? Calculate its power spectral
+                                                           R ∞density function Sw (ω).
+    Note: the formula for the Fourier transform is fˆ(ω) = −∞ f (τ )e−jωτ dτ
+     We see from the autocorrelation function that w(t) is a white noise process. We
+     can find power spectral density function by using the Fourier transform:
+                        Z ∞                     Z ∞
+                                      −jωτ
+               Sw (ω) =      Rw (τ )e      dτ =     δ(τ )e−jωτ dτ = e−jω·0 = 1
+                          −∞                             −∞
+
+     where we have used the property that an integral of an expression containing a
+     delta function as a factor is equal to the other factors of the integrand evaluated
+     at the point where the argument to the delta function is 0 (provided that point is
+     between the integration limits).
+b) What is the power spectral density function Sβ (ω) of the modelled noise process?
+     The spectral density function of white noise (with spectral density function Sw (ω) =
+     1) filtered through a system with transfer function H(s) can be found by:
+
+                                                  jω + 1           −jω + 1
+             Sβ (ω) = H(jω)H(−jω) =                          ·
+                                             (jω + 2)(jω + 3) (−jω + 2)(−jω + 3)
+
+                                    ω2 + 1                       ω2 + 1
+                           =                            =
+                               (ω 2 + 4)(ω 2 + 9)            ω 4 + 13ω 2 + 36
+
+c) Give a realization of the transfer function H(s) on controllable canonical form.
+     The transfer function can be written as:
+                                                        s+1
+                                       H(s) =       2
+                                                    s + 5s + 6
+     Inserting the coefficients into the standard form for controllable form, we get the
+     following system:
+                                              Aβ                   Bβ
+                                       z     }|        {
+                                                        z }| {
+                                            −5 −6          1
+                               ẋβ =               xβ +          w
+                                             1   0         0
+
+                                            β = 1 1 xβ
+                                               | {z }
+                                                    Cβ
+
+                                                4
+
+d) Consider a process on which β(t) acts as a disturbance:
+
+                          ẋ(t) = ax(t) + bu(t) + β(t),   y(t) = x(t)                  (4)
+
+     Set up an augmented system for x(t) and β(t). The augmented system should have
+     u(t) as input, w(t) as disturbance and y(t) as output. You can use the symbols Aβ ,
+     Bβ and Cβ to represent the realization of H(s).
+
+                                                        x
+     We introduce the augmented state vector xa =             containing the state variable
+                                                        xβ
+     x as well as the state variables of the noise shaping filter. The augmented system
+     becomes:
+                                   a Cβ            b           0
+                          ẋa =              x+        u+            w
+                                   0 Aβ            0          Bβ
+     where Aβ , Bβ and Cβ are the matrices found in problem c). The upper right
+     block of the augmented system matrix represents how β affects the process in Eq.
+     4. The input u only affects the x state, and the white noise disturbance w only
+     directly affects the states xβ of the noise shaping filter.
+
+                                            5
+
+Problem 3
+When fermenting beer, yeast is metabolizing sugar in the wort and producing ethanol.
+The reduction in sugar content causes the density of the wort to decrease, and the addi-
+tion of ethanol causes a further decrease in density. Therefore, the brewer can monitor
+the fermentation by measuring the density of the wort. The rate of decrease in density
+is also useful to know, since the brewer wants to know when the fermentation is nearing
+completion. Assume that you get measurements of the density each hour, The density is
+given in points ranging from around 80 for a high density wort down to around 10 for
+a completed fermentation, and the measurement is affected by zero-mean gaussian white
+measurement noise with a standard deviation of 2 points.
+a) You want to set up a Kalman filter to estimate the rate of change of the density, so
+     you set up the following discrete time state space system:
+
+                        x1 [k + 1]       1 −1       x1 [k]      w1 [k]
+                                    =                       +
+                        x2 [k + 1]       0 1        x2 [k]      w2 [k]
+                                  y[k] = x1 [k] + v[k]
+
+      where w[k] = [ w1 [k] w2 [k] ]T and v[k] are Gaussian disturbances with zero mean
+      and
+                      E[w[k]w[l]T ] = Qδ[k, l], E[v[k]v[l]] = 22 · δ[k, l]
+      Which of the two states x1 and x2 represents the rate of decrease in density? What
+      is the unit of that state value?
+      In this system, x1 get a negative contribution in each time step, proportional to
+      the value of x2 , while x2 is not affected by the value of x1 . Therefore, x2 must
+      represent the rate of decrease. The decrease is equal to the value of x2 through
+      each time step of 1 hour, so its unit must be points/hour.
+b) Let the initial estimates at time k = 0 be x̂1[0] = 80 and
+                                                              x̂2 [0] = 0.2. The initial esti-
+                                                    0.2 0                           0.01 0
+     mate of the covariance matrix is P[0] =                   . Let also Q =                     .
+                                                      0 0.2                           0    0.1
+     At time k= 1 you measure
+                                  the density y[1] = 78.5. Show that the Kalman gain at
+                    0.093
+     time 1 is                , and compute the a posteriori estimate x̂[1] of the states at
+                   −0.0454
+     time 1.
+      We have the a posteriori estimates at time 0. Our first step is to calculate the a
+      priori estimates at time 1:
+
+                              −        1 −1     80         79.8
+                             x [1] =                 =
+                                       0 1      0.2        0.2
+
+                                         1 −1        0.2 0         1 0                0.01 0
+        P− [1] = AP[k]AT + Q =                                                +
+                                         0 1          0 0.2        −1 1                 0  0.1
+
+                                                6
+
+                               0.4 −0.2                 0.01 0                    0.41 −0.2
+                      =                         +                         =
+                              −0.2 0.2                   0   0.1                  −0.2 0.3
+      We can then calculate the Kalman gain at time 1:
+
+                                L[1] = P− [1]CT (CP− [1]CT + Rd )−1
+                                                                  −1
+                      0.41 −0.2         1             0.41 −0.2
+                                                                    1
+              =                                         1 0             +4
+                      −0.2 0.3          0              −0.2 0.3      0
+
+                                     0.41                  0.093
+                                 =          (4.41)−1 =
+                                     −0.2                 −0.0454
+      Using the Kalman gain and the measurement at time 1 we can calculate the a
+      posteriori estimate at time 1:
+
+               −                  −        79.8      0.093                    79.679
+      x[1] = x̂ [1]+L[1](y[1]−Cx̂ [1]) =         +            (78.5−79.8) =
+                                           0.2      −0.0454                   0.259
+
+c) The first coefficient of the Kalman gain at time 1 is 0.093, implying that the a posteri-
+     ori estimate of x1 will be much closer to the a priori estimate than to the measured
+     value. Explain why the Kalman gain has a value of this magnitude.
+      The Kalman gain has low values because the values in P−1 [1] are small relative
+      to the value of Rd . This means that the measurement noise is high compared to
+      the uncertainty of the a priori estimate, so the Kalman filter weights the a priori
+      estimate higher than the measurement.
+      P−1 [1] has low values primarily due to its initialization in this case. Over many
+      time steps the values of Q will have a gradually greater influence pver P.
+d) It is a reasonable approximation that the density decrease rate itself decreases expo-
+      nentially. To better correspond to the real system, which number would you change
+      in the state space system, and in which direction? Test if this change affects the
+      internal stability of the modelled system.
+      The second state represents the decrease rate. By reducing the lower right coef-
+      ficient of the A matrix to a value between 0 and 1, we get a model where the
+      decrease rate exponentially approaches 0.
+      To check if the change affects internal stability, we need to check the stability of
+      the original system:
+
+                                 λ−1  1
+                                                         = 0 =⇒ (λ − 1)2 = 0
+                                  0  λ−1
+
+      The original system has two eigenvalues in 1. For a discrete time system, two coin-
+      ciding eigenvalues on the unit circle mean that the system is unstable. Intuitively,
+
+                                                        7
+
+     this makes sense, as the model in the absence of disturbances will have a constant
+     decrease rate in x1 given by the value of x2 .
+     When setting the lower right coefficient of A to a value γ which is lower than 1
+     and greater than 0, we get:
+
+                          λ−1  1
+                                         = 0 =⇒ (λ − 1)(λ − γ) = 0
+                           0  λ−γ
+
+     which gives one eigenvalue at the unit circle and one inside, implying marginal
+     stability. This also makes intuitive sense, since the model now in the absence of
+     disturbances will predict x2 decreasing exponentially towards 0, so the decrease
+     rate in x1 will be reduced until it asymptotically approaches a stationary value
+     which in general will be different from 0.
+e) You want to test the assumptions made for the measurement noise, so a colleague
+     runs a test where 10000 density measurements are made for a liquid with exactly
+     known density. He computes the measurement error for all measurements, and
+     gives you the following figure showing the results. Can you use the figure to verify
+     the assumptions that were given above for the measurement noise? Explain your
+     reasoning.
+     The following assumptions were given for the measurements:
+       1. Zero mean
+       2. Gaussian distribution with standard deviation of 2
+       3. White noise
+     By inspecting the distribution shown in the figure, we see that the mean seems to
+     be very close or equal to 0, so the first assumption looks correct. The distribution
+     looks like a standard distribution, and although we can’t test it properly, it seems
+     that the standard deviation could well be equal to 2. The assumption of white
+     noise can only be verified by looking at how measurement errors vary over time,
+     by checking the autocorrelation or spectral density of the measurement noise. The
+     figure gives only the distribution of noise values, so there is no way to test that
+     assumption by using this figure.
+
+                                           8
+
+Problem 4
+a) You want to control the following system:
+                                      ẋ = ax + u,   y=x                               (5)
+     with a control law on the form u = −kx. Use LQR with Q = R = 1 to find the
+     value of k as a function of a. Show that the closed-loop system is stable regardless
+     of the value of a.
+     First we need to solve the Riccati equation (denoting the unknown p since it is
+     scalar):
+                                                   q               q
+                                            1
+                             2
+              ap + pa + 1 − p = 0 =⇒ p = (2a ± 4a + 4) = a ± a2 + 1
+                                                       2
+                                                                                 (6)
+                                            2
+                                                  p
+     Choosing the positive solution gives p = a + a2 + 1. The value of k becomes
+     equal to p since R = B = 1.
+     The equation for the closed-lop system is:
+                                       q           q
+                        ẋ = (a − (a + a + 1))x = − a2 + 1 · x
+                                          2
+                                                                                       (7)
+
+     Since a2 + 1 > 0 for any value of a, the closed-loop system has a single negative
+     real eigenvalue, which implies exponential stability.
+b) The Popov-Belevitch-Hautus test for controllability is based on the fact that control-
+     lability of the pair (A, B) is only possible if every eigenvector of AT is not in the
+     null-space of BT . Show that this is the case. Hint: use the fact that if the control-
+     lability matrix has full rank, there is no non-zero vector v such that C T v = 0. Use
+     also the definition of an eigenvector.
+     If the system is controllable, its controllability matrix C = [ B AB ... An−1 B ]
+     must be invertible, and no non-zero vector v can exist such that:
+                                                         
+                                                 BT
+                                               BT AT
+                                                         
+                                  T
+                                 C v=                    v = 0                   (8)
+                                                         
+                                                 ...     
+                                            BT (AT )n−1
+     Therefore, if we can find a vector v that satisfies the above equation, the system
+     can’t be controllable.
+     Let v be an eigenvector of AT . That implies that AT v = λv, where λ is an
+     eigenvalue of AT . In this case, C T v becomes:
+                                                        
+                                                 BT v
+                                                    T
+                                              λB v 
+                                                        
+                                      T
+                                    C v=                                    (9)
+                                                  ...
+                                                         
+                                                        
+                                               λn−1 BT v
+
+                                            9
+
+If v is not only an eigenvector of AT , but also in the null space of BT , then
+BT v = 0, so C T v = 0. This rules out controllability, thus showing what we were
+asked to show.
+
+                                    10
+
+Problem 5
+The following questions go into your experiences with the helicopter lab. If any of the
+questions concern tests for which you don’t have direct experience, you should speculate
+based on your knowledge of the theory and the helicopter lab.
+a) In the first lab assignment you tested a PD pitch controller for the helicopter. What
+     happened when using real eigenvalues and you tried to move the eigenvalues far into
+     the left half plane to get fast response? Did your observations match the theoretical
+     model? If not, what could be the reasons?
+     Although the linear model gives faster response the further you move the eigenval-
+     ues into the left half plane, the helicopter starts showing oscillations and unstable
+     behaviour when the magnitude of the eigenvalues becomes too large. This is caused
+     by several factors, among them the limitations on how strong force that can be
+     generated by the propellers, time delays in the physical system, and model error
+     due to linearization and simpliciations.
+b) In the second lab assignment you used LQR in combination with integral effect. In
+     this setup, describe how you can tune the strength of the integral effect in the
+     controller.
+     To introduce integral effect, the system is augmented with two additional inte-
+     grator states. LQR is then applied to the augmented system, meaning that the
+     optimization is calculated with penalties for deviations from 0 in the integrator
+     states as well as in the system’s original state values. If a diagonal Q matrix is
+     used, the coefficients for the two integrator states determine how strongly these
+     are penalized. High values for these coefficients will imply a higher cost for hav-
+     ing integrator values deviating from 0, and will therefore make the controller act
+     more strongly to reduce integrator levels, implying stronger integration terms in
+     the controller.
+c) In the third lab assignment you had to disregard the accurate encoder measurements
+     and control the helicopter based on accelerometer and gyroscope measurements from
+     an IMU. Why is a state estimator an important tool for controlling the helicopter
+     in this case?
+     The main reason a state estimator is important here is that the IMU measurements
+     are noisy, so controlling the helicopter using the measurements directly for state
+     feedback does not work well. A well tuned state estimator gives significantly less
+     noisy state estimates, allowing better control.
+     State estimators also allow estimation of states that cannot be directly measured.
+d) In the fourth lab assignment a discrete time Kalman filter was used to estimate states.
+     For the Kalman filter, you may have used a diagonal Qd matrix. When the matrix
+     has this structure, what is the effect of increasing or decreasing one of the elements
+     along the diagonal?
+
+                                            11
+
+Each element along the diagonal of Qd represents the variance of the (discrete
+time white noise) disturbance affecting one particular state value. Increasing one
+diagonal element means that we assume a higher variance of that disturbance
+signal. This makes the estimated variance (in P) of that state higher, which will
+lead to the Kalman filter weighting the a priori estimate of that state less compared
+to measurements. Measurements will therefore affect that state more strongly, and
+measurement noise will will be suppressed to a lower degree for that state.
+
+                                      12

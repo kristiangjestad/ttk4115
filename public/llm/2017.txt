@@ -1,0 +1,741 @@
+# Eksamen 2017 – TTK4115 Lineær systemteori
+
+Tekst hentet automatisk fra PDF. Matriser og brøker kan stå rotete over flere linjer.
+
+## Oppgavetekst
+
+Department of Engineering Cybernetics
+
+Examination paper for TTK4115 Linear Systems Theory
+
+Academic contact during examination: Morten D. Pedersen
+
+Examination date: 9. December 2017
+Examination time (from–to): 09:00–13:00
+Permitted examination support material: D: No printed or handwritten material allowed. Specific
+simple calculator allowed.
+
+Other information:
+
+  1. Note that no parts of this exam assume that you have solved any of the previous parts.
+     The given information from previous parts should be sufficient to move on.
+
+  2. You may answer in Norwegian or English. Du kan svare på norsk eller engelsk.
+
+Language: English
+Number of pages: 7
+Number pages enclosed: 4
+
+                                                                                      Checked by:
+
+                                                                Date           Signature
+
+TTK4115 Linear Systems Theory - 9. December 2017                                                Page 1 of 7
+
+Problem 1 (30 %)
+
+Fin stabilizers are an effective way of reducing roll motion (φ) on ships, granted that
+the ship is traveling sufficiently fast (V > 0). The figure shown below depicts the idea
+in a simplified fashion. By controlling the angle of the fins, a torque τ = V 2 u can be
+generated.
+
+The goal of this task is to undertake the initial design steps for an output-feedback
+controller capable of suppressing rolling motion.
+
+The equation of motion for the system is given as a nonlinear mass-spring-damper.
+
+                           j φ̈(t) + d|φ̇(t)|φ̇(t) + kφ(t) = V 2 u(t)                                   (1)
+
+Here, (j, d, k, V ) are positive constants. It is reasonable to assume that the roll rate φ̇ is
+small.
+
+                                                                                            φ
+
+                                           τ
+
+a) (5 %) Demonstrate that the nonlinear dynamics described by (1) can be written on
+      the following approximate form.
+                             "         #       "          #"        #       "       #
+                                 ẋ1                0 1        x1               0
+                                           =                            +               u               (2)
+                                 ẋ2               −a 0        x2               b
+
+      You must here specify the positive constants a and b.
+
+b) (4 %) Is the linear plant (2) controllable? Is it stable, and in what sense? Motivate
+      your answer mathematically.
+
+Page 2 of 7                       TTK4115 Linear Systems Theory - 9. December 2017
+
+c) (4 %) Consider the linear plant (2). State-feedback from estimates is to be used. For
+      the measurement y = cx, it is possible to use a gyroscope measuring x2 , or an
+      inclinometer measuring x1 . This leads to the respective measurement matrices
+                                                   h            i
+                                       cgyro. =         0 1                           (3a)
+                                                   h            i
+                                        cincl. =        1 0                           (3b)
+
+     Is it, in principle, possible to estimate x1 and x2 with the respective sensors (3a)
+     and (3b)? Motivate your answer mathematically.
+
+d) (5 %) Consider the linear plant (2). Assume (for simplicity) that a = b = 1. Find
+      an input signal u that places the closed-loop poles at λ1 = −1 and λ2 = −2.
+
+e) (8 %) Consider again the linear plant (2). Assume (for simplicity) that a = 1. Fur-
+      thermore, let the gyroscope be used as sensor with measurement matrix (3a). Let
+      x̂ = [x̂1 , x̂2 ]T denote estimates of the true states described by x = [x1 , x2 ]T .
+      Write up the equation for a Luenberger observer (x̂˙ = . . .). Then, choose the gain
+     matrix                                     "           #
+                                                       l1
+                                           l=
+                                                       l2
+
+     so that the observer poles are placed at λ01 = λ02 = −2.
+
+f) (4 %) When using output-feedback, estimated states are fed back instead of the states
+      themselves.
+     Suppose now that a feedback from the states (u = −Kx) has been found that
+     renders a plant (ẋ = Ax + Bu) stable. Now suppose, that one replaces the states
+     in the control signal with estimates (u = −Kx̂) from a stable observer. Should
+     one, in theory, be concerned with stability of the closed loop system?
+
+TTK4115 Linear Systems Theory - 9. December 2017                                 Page 3 of 7
+
+Problem 2 (10 %)
+
+Find a minimal state-space realization of the transfer-function g(s) relating a scalar
+input u(s) to a vectorial output y(s) = [y1 (s), y2 (s)]T so that y(s) = g(s)u(s).
+                                               "           #
+                                                      1
+                                      g(s) =       τ s+1
+                                                     τs
+                                                   τ s+1
+
+Is the resulting state-space realization observable from the output y 0 (t) = y1 (t) + y2 (t)?
+
+Problem 3 (10 %)
+
+Let a simple dynamic system with two inputs be described by
+
+                                      ẋ + x = u1 + u2
+
+It will be desirable to minimize the following cost function.
+                                     Z ∞
+                                J=         x2 + ru21 + ru22 dt
+                                      0
+
+where r > 0. Identify the feedback gain k in u = −kx that minimizes J.
+
+Does the optimal feedback prefer one of the inputs (u1 , u2 ) over the other? What would
+happen if the cost ru21 + ru22 was replaced with r1 u21 + r2 u22 in J, where r2  r1 > 0?
+An informal answer will suffice.
+
+Page 4 of 7                              TTK4115 Linear Systems Theory - 9. December 2017
+
+Problem 4 (20 %)
+Norbert Wiener coined the term "Cybernetics" in his famous book Cybernetics: Or
+Control and Communication in the Animal and the Machine published in 1948.
+
+In engineering cybernetics (teknisk kybernetikk), we most often consider machines. How-
+ever, Wiener’s scope was broader. This task considers the cybernetics of biological sys-
+tems.
+
+An ecosystem often contains prey and predators. Let x1 quantify the number of prey
+animals in the ecosystem, for example rabbits. Let x2 quantify the number of predators
+in the ecosystem, say foxes. The interaction between predator and prey is governed by
+the Lotka-Volterra model shown below
+                                           ẋ1 = αx1 − βx1 x2                         (4a)
+                                           ẋ2 = δx1 x2 − γx2                         (4b)
+Here, (α, β, γ, δ) are positive constants.
+
+a) (7 %) Find the nontrivial 1 equilibrium of the predator-prey model (4) and denote it
+      by x̄1 and x̄2 . Let x̃1 = x1 − x̄1 and x2 = x̃2 − x̄2 denote perturbations away from
+      the equilibrium. Then, show that the following linearized model holds true.
+                                                x̃˙ 1 = −(βγ/δ)x̃2                    (5a)
+                                                x̃˙ 2 = (αδ/β)x̃1                     (5b)
+  1
+      The trivial solution x1 = x2 = 0 is also an equilibrium.
+
+TTK4115 Linear Systems Theory - 9. December 2017                                Page 5 of 7
+
+b) (5 %) Is the system (5) stable, and in what sense? Set all constants to unity so that
+      α = β = γ = δ = 1. Then, compute and sketch a solution2 to the equations. A
+      rough sketch is sufficient.
+
+c) (5 %) Consider (5). Is it, in principle, possible to compute the number of predators
+      by counting the prey animals? Find the appropriate principle from linear systems
+      theory and make your case.
+
+d) (3 %) Consider (5). Suppose now that the number of predators can be altered by
+      hunting (to reduce x̃2 ) or by introducing animals (to increase x̃2 ). This alteration
+      can be included by writing
+
+                                              x̃˙ 1 = −x̃2                             (6a)
+                                              x̃˙ 2 = x̃1 + u                          (6b)
+
+        Is it, in principle, possible to control the number of animals in the ecosystem
+        through the alterations represented by u?
+
+  2
+      Any nontrivial solution will suffice.
+
+Page 6 of 7                         TTK4115 Linear Systems Theory - 9. December 2017
+
+Problem 5 (30 %)
+
+GPS measurements can be used to determine static positions with high precision. An
+antenna system for surveying purposes is shown below.
+
+In this task, a static location x = [x1 , x2 ]T in the horizontal plane is to be estimated
+through noisy GPS measurements with a discrete time Kalman filter.
+
+It is assumed that the measurements are approximately normally distributed around
+the true position x with a standard deviation σv ∼ 5[m]. A discrete-time measurement
+model is thus                                           "      #!
+                                                      2   1 0
+                    y[k] = x[k] + v[k], v[k] ∼ N 0, σv                           (7)
+                                                          0 1
+
+a) (15 %) Choose the process model x[k + 1] = Ax[k] + w[k] so that it represents a
+      GPS antenna that is standing perfectly still.
+     The index k runs as 0, 1, 2, . . . Let the Kalman filter be initialized at
+                                                                 "         #
+                                −                −                   1 0
+                               x̂ [0] = 0,   P       [0] = σv2
+                                                                     0 1
+
+     With R = E[v[k]v[k]T ] = σv2 I, show that for k ≥ 0, one has
+                                                     I
+                                             L[k] =                                  (8a)
+                                                    k+2
+                                                     R
+                                             P[k] =                                  (8b)
+                                                    k+2
+                                                     R
+                                       P− [k + 1] =                                  (8c)
+                                                    k+2
+
+TTK4115 Linear Systems Theory - 9. December 2017                              Page 7 of 7
+
+b) (5 %) How many measurements does it take to reduce the standard deviation of the
+      estimation error by 50% from the a-priori value at k = 0?
+
+c) (10 %) You now receive the following measurements:
+
+                       k     0   1    2    3    4    5
+                       y1   10   6    1    1   11   −3
+                       y2    4   0    1   16    8    8
+
+     Compute the optimal estimate x̂ for k = 0 . . . 5. Then make a rough sketch that
+     includes the following elements:
+
+       1. The measurements y[k] labeled with k.
+       2. The estimates x[k] labeled with k.
+       3. The initial a-priori estimate x̂− [0] = 0 surrounded by a circle with radius
+          equal to the standard deviation σv .
+       4. The final a-posteriori estimate x̂[5] surrounded by a circle with radius equal
+          to the standard deviation of the estimation error e = x − x̂ at k = 5.
+
+     It is convenient to use the gridlines on the supplied paper for this task.
+
+TTK4115 Linear Systems Theory - 9. December 2017                         Page i of iv
+
+Formula sheet
+
+Solutions
+
+                                           Z t
+                     x(t) = eAt x(0) +           eA(t−τ ) Bu(τ )dτ
+                                            0
+                                           k−1
+                     x[k] = Ak x[0] +            Ak−1−m Bu[m]
+                                           X
+
+                                           m=0
+
+Controllability/Observability
+
+                      C = [B, AB, A2 B, · · · , An−1 B]
+                                   
+                              C
+                           CA 
+                                   
+                                  2 
+                             CA
+                          
+                      O = 
+                                   
+                              ..   
+                                .
+                                    
+                                   
+                                CAn−1
+
+Realization
+
+         G(s) = C(sI − A)−1 B + D
+         G(s) = G(∞) + Gsp (s)
+          d(s) = sr + α1 sr−1 + · · · + αr−1 s + αr
+                     1
+        Gsp (s) =      [N sr−1 + N2 sr−2 + · · · + Nr−1 s + Nr ]
+                   d(s) 1
+                                                                    
+                      −α1 Ip −α2 Ip · · · −αr−1 Ip −αr Ip           Ip
+                   
+                      Ip      0       ···      0        0   
+                                                             
+                                                                   0 
+                                                                      
+                        0      Ip      ···      0        0   x +  0 u
+                                                                    
+              ẋ = 
+                   
+                        ..      ..     ..       ..       ..  
+                                                                   .. 
+                                                                      
+                                          .
+                   
+                         .       .               .        .
+                                                             
+                                                                 . 
+                        0      0     ···          Ip         0       0
+              y = [ N1 N2 · · ·    Nr−1 Nr ]x + G(∞)u
+
+Page ii of iv                       TTK4115 Linear Systems Theory - 9. December 2017
+
+LQR
+
+       Z ∞
+  J=         xT (t)Qx(t) + uT (t)Ru(t) dt
+        0
+                            AT P + PA + Q − PBR−1 BT P = 0
+                                                                     u(t) = −R−1 BT Px(t)
+
+Lyapunov equation
+
+                                     AT M + MA = −N
+
+Kalman filtering (Discrete time)
+
+Process model
+
+                x[k + 1] = Ad x[k] + Bd u[k] + w[k],      y[k] = Cx[k] + v[k]
+
+The noise and disturbance are unbiased (E[v[k]] = 0, E[w[k]] = 0) and white
+
+                    E[v[k]v[l]T ] = δ[k, l]Rd ,   E[w[k]w[l]T ] = δ[k, l]Qd
+
+Algorithm Initialize at x̂− [0] = E[x(0)] and P− [0] = E[(x[0] − x̂− [0])(x[0] − x̂− [0])T ].
+Compute recursively:
+
+   1. L[k] = P− [k]CT (CP− [k]CT + Rd )−1
+
+   2. x̂[k] = x̂− [k] + L[k](y[k] − Cx̂− [k])
+
+   3. P[k] = (I − L[k]C)P− [k](I − L[k]C)T + L[k]Rd L[k]T
+
+   4. x̂− [k + 1] = Ad x̂[k] + Bd u[k],   P− [k + 1] = Ad P[k]AT
+                                                               d + Qd
+
+TTK4115 Linear Systems Theory - 9. December 2017                             Page iii of iv
+
+Kalman filtering (Continuous time)
+
+Process model
+                          ẋ = Ax + Bu + Gw,         y = Cx + v
+The noise and disturbance are unbiased (E[v(t)] = 0, E[w(t)] = 0) and white
+
+                E[v(t)v(τ )T ] = δ(t − τ )R,   E[w(τ )w(t)T ] = δ(t − τ )Q
+
+Optimal gain     The Kalman gain is given by L(t) = P(t)CT R−1 where
+
+                       Ṗ = AP + PAT + GQGT − PCT R−1 CP
+
+Set Ṗ = 0 to find stationary gain.
+
+Stationary processes
+
+Autocorrelation and power spectral density
+
+                     Ru (τ ) = E[u(t)u(t + τ )],   Su (ω) = F{Ru (τ )}
+
+With y(s) = H(s)w(s) where E[w(t)] = 0 and Rw (τ ) = δ(τ )q it holds that
+
+                                 Sy (ω) = H(ω)H(−ω)q
+
+Page iv of iv                 TTK4115 Linear Systems Theory - 9. December 2017
+
+Laplace transform pairs
+
+                           f (t)     ⇐⇒       F (s)
+
+                          δ(t)      ⇐⇒       1
+                                             1
+                             1      ⇐⇒
+                                             s
+                                                1
+                          e−at      ⇐⇒
+                                              s+a
+                                              1
+                             t      ⇐⇒
+                                              s2
+                                              2
+                            t2      ⇐⇒
+                                              s3
+                                                   1
+                      te−at         ⇐⇒
+                                              (s + a)2
+                                                 ω
+                      sin ωt        ⇐⇒
+                                              s2 + ω 2
+                                                 s
+                     cos ωt         ⇐⇒
+                                              s2 + ω 2
+
+## Løsningsforslag
+
+Solution Suggestion
+                       Exam - TTK4115 Linear System Theory
+                                9. December, 2017
+                                                       MDP
+                                                December 4, 2017
+
+Problem 1
+The equation of motion for the system is given as a nonlinear mass-spring-damper.
+
+                                      j φ̈(t) + d|φ̇(t)|φ̇(t) + kφ(t) = V 2 u(t)                           (1)
+
+Here, (j, d, k, V ) are positive constants. It assumed that the roll rate φ̇ is small.
+
+a) The nonlinear relation (1) linearizes as
+
+                                                 j φ̈(t) + kφ(t) ≃ V 2 u(t)                                (2)
+
+      Define
+                                                    x1 = φ,     x2 = φ̇                                    (3)
+      Next, verify that
+
+                                ẋ1 = φ̇ = x2                                                              (4)
+                                                           2                                     2
+                                ẋ2 = φ̈ = −(k/j)φ + (V /j)u = −(k/j)x1 + (V /j)u                          (5)
+
+      On a matrix-vector format, this is
+
+                                    ẋ1       0            1        x1                    0
+                                          =                                     +                    u     (6)
+                                    ẋ2      −k/j          0        x2                  V 2 /j
+
+      In simplified notation with a = k/j and b = V 2 /j this is
+
+                                        ẋ1       0 1          x1    0
+                                             =                     +    u                                  (7)
+                                        ẋ2      −a 0          x2    b
+
+b) The controllability of (6) is given by
+                                                                        0       b
+                                                 C = [b, Ab] =                                             (8)
+                                                                        b       0
+      This matrix has full rank, so the system is controllable. It is readily seen that the eigenvalues of the
+      plant are imaginary.
+                                             λ −1                                √
+                               |λI − A| =            = λ2 + a = 0 ⇒ λ = ±i a                               (9)
+                                             a λ
+      This result qualifies the plant as marginally stable, or stable in the sense of Lyapunov.
+
+                                                          1
+
+c) Two measurement matrices are given by
+
+                                                    cgyro. =        0   1                               (10a)
+
+                                                     cincl. =       1   0                               (10b)
+
+     If the plant is observable with a given measurement matrix, it is in principle possible to estimate the
+     states giving rise to the measurement. In our case, the respective observability matrices read as
+
+                                                    cgyro.         0 1
+                                       Ogyro. =               =                                        (11a)
+                                                   cgyro. A       −a 0
+
+                                                    cincl.       1 0
+                                        Oincl. =              =                                        (11b)
+                                                   cincl. A      0 1
+
+     Since the observability matrices both have full rank, one may use an inclinometer or a gyroscope. Both
+     will permit stable estimation of x.
+d) We are to place poles in the simplified system shown below.
+
+                                        ẋ1       0 1       x1    0
+                                             =                  +    u                                   (12)
+                                        ẋ2      −1 0       x2    1
+
+     Letting u = −[k1 , k2 ]x one finds the closed loop dynamics.
+
+                                          ẋ1           0      1     x1
+                                                =                                                        (13)
+                                          ẋ2        −1 − k1 −k2     x2
+
+     The eigenvalues of A − bk are readily found as
+                                       λ          −1
+                                                          = λ2 + k2 λ + (1 + k1 ) = 0                    (14)
+                                     1 + k1     λ + k2
+
+     The desired characteristic polynomial is given by
+
+                                              (λ + 1)(λ + 2) = λ2 + 3λ + 2                               (15)
+
+     Letting k1 = 1 and k2 = 3 yields the correct feedback gain k = [1, 3].
+e) The Luenberger observer follows from the general equation
+
+                                              x̂˙ = Ax̂ + Bu + L(y − Cx̂)                                (16)
+
+     In our case, one finds that
+                                            x̂˙ = Ax̂ + bu + l(y − cgyro. x̂)                            (17)
+     The observer poles specicy the dynamics of the estimation error e = x − x̂). Id est
+
+                                                    ė = (A − lcgyro. )e                                 (18)
+
+     Let l = [l1 , l2 ]T . Now verify the following characteristic polynomial
+
+                                                     λ0   −1 + l1
+                        |λ0 I − (A − lcgyro. )| =                       = λ02 + l2 λ0 + (1 − l1 ) = 0    (19)
+                                                     1    λ 0 + l2
+
+     The desired polynomial reads as (λ0 + 2)2 = λ02 + 4λ0 + 4 = 0. Comparison fixes the entries in l as
+     l1 = −3 and l2 = 4.
+f ) Due to the separation principle, one can in theory design the state-feedback in complete independence
+      from the observer. Granted, of course, that both A − BK and A − LC are stable matrices.
+
+                                                          2
+
+Problem 2
+We are given y(s) = g(s)u(s) and                              1
+                                               g(s) =       τ s+1
+                                                              τs
+                                                            τ s+1
+A minimal realization is to be found. Inspecting the common denominator τ s + 1, one state is seen to suffice.
+As a start, consider
+                                                        x        1
+                                       τ ẋ + x = u ⇒ (s) =                                              (20)
+                                                        u      τs + 1
+This yields an appropriate common denominator. The transfer function g(s) is not strictly proper. The
+feedthrough term can be identified thus
+
+                                                             0
+                                             d = lim g(s) =                                              (21)
+                                                 s→∞         1
+This leaves a strictly proper transfer function described by
+
+                                                                  1           1
+                                     gsp (s) = g(s) − d =                                                (22)
+                                                                τs + 1       −1
+The output equation (of appropriate dimension) can now be chosen as
+
+                                       y1         1         0
+                                            =          x+       u                                        (23)
+                                       y2        −1         1
+Summarizing, the (non-unique) minimal realization is described by the system matrices
+
+                                  1         1            1              0
+                            a=− , b= , c=                     , d=                                       (24)
+                                  τ         τ           −1              1
+
+Problem 3
+A simple dynamic system with two inputs is described by
+                                                ẋ + x = u1 + u2
+It will be desirable to minimize the following cost function.
+                                              Z ∞
+                                          J=       x2 + ru21 + ru22 dt
+                                                0
+where r > 0. We are to identify the feedback gain k in u = −kx that minimizes J. The LQR is the clearly
+an appropriate tool.
+   First note that the system matrices follow from a = −1 and b = [1, 1]. The weights read as q = 1 and
+R = rI. One may proceed to solve the Riccati equation for p, viz.
+                                ap + pa + q − pbRbT p = −2rp2 − 2p + 1 = 0                               (25)
+With the ABC-formula, it holds that
+                                               p                         √
+                                          2±    22 + 8r         −1 ±       1 + 2r
+                                     p=             2       =                                            (26)
+                                               −2 r                      2r
+                            √
+The positive solution p+ = ( 1 + 2r − 1)/(2r) is now chosen. The desired gain-matrix reads as
+                                                       √
+                                        −1 T              1 + 2r − 1
+                                  k = R b p = [1, 1]                                                     (27)
+                                                             2r2
+   If the second input had been assigned a higher cost through r1 u21 + r2 u22 with r2  r1 > 0, the control
+system would prefer the use of u1 relative to u2 . In practice, one would observe lower values for u2 when
+compared to u1 .
+
+                                                        3
+
+Problem 4
+The Lotka-Volterra model shown below is to be analyzed.
+
+                                               ẋ1 = αx1 − βx1 x2                                        (28a)
+                                               ẋ2 = δx1 x2 − γx2                                        (28b)
+
+Here, (α, β, γ, δ) are positive constants.
+
+a) The nontrivial equilibrium of (28) is found be setting ẋ1 = ẋ2 = 0. This leads to the equations
+                                                                          α
+                                              αx̄1 − β x̄1 x̄2 = 0 x̄2 =                                 (29a)
+                                                                          β
+                                                                          γ
+                                              δ x̄1 x̄2 − γ x̄2 = 0 x̄1 =                                (29b)
+                                                                          δ
+      The Lotka-Volterra model is now perturbed around the equilibrium. Let
+
+                                                    αx1 − βx1 x2
+                                          f (x) =                                                         (30)
+                                                    δx1 x2 − γx2
+
+      A first order expansion about x = x̄ with x(t) = x̃(t) + x̄ is given by
+                                                              ∂f                ∂f
+                                  ẋ = x̃˙ = f (x) ≃ f (x̄) +    (x̄)(x − x̄) =    (x̄)x̃                 (31)
+                                                              ∂x                ∂x
+      Here, f (x̄) vanishes since x̄ is an equilibrium. One may proceed to find that
+
+                                                               α −βα    −β γδ               − βγ
+
+                         ∂f           α − β x̄2 −β x̄1              β                0         δ
+                    A=      (x̄) =                          =     α      γ        = αδ                    (32)
+                         ∂x              δ x̄2   δ x̄1 − γ       δβ    δδ −γ         β       0
+
+      This leads to the following perturbed model, which upon expansion, solves the problem.
+
+                                                         x̃˙ = Ax̃                                        (33)
+
+b) The system matrix A has imaginary eigenvalues, as seen from its structure. The linearized predator-prey
+    model is therefore marginally stable. With unity constants, one must solve
+
+                                           x̃˙ 1
+
+                                                     0 −1       x̃1
+                                                  =                                                   (34)
+                                           x̃˙ 2     1 0        x̃2
+
+      Clearly, a solution is given by x̃1 = cos(t) and x̃2 = sin(t).
+c) It is indeed possible to observe the animal populations described by (33). With cprey = [1, 0] and A as
+      identified above, the observability matrix becomes
+
+                                                       1    0
+                                                 O=                                                   (35)
+                                                       0 − βγδ
+
+      Full rank implies that the number of predators can be be estimated.
+c) This task suggests the input matrix b = [0, 1]T . Controllability is the appropriate quality to examine.
+     With A as identified above, The controllability matrix reads as
+
+                                                      0 − βγ
+
+                                              C=            δ                                          (36)
+                                                      1    0
+
+      With full rank, it appears possible to actively control the animal populations in the ecosystem.
+
+                                                         4
+
+Problem 5
+In this task, a static location x = [x1 , x2 ]T in the horizontal plane is to be estimated through noisy GPS
+measurements with a discrete time Kalman filter. It is assumed that the measurements are approximately
+normally distributed around the true position x with a standard deviation σv ∼ 5[m]. A discrete-time
+measurement model is thus
+
+                                                                         1 0
+                               y[k] = x[k] + v[k], v[k] ∼ N 0, σv2                                       (37)
+                                                                         0 1
+
+a) A process model representing the fact that the GPS antenna is perfectly stationary reads as
+
+                                                        x[k + 1] = x[k]                                  (38)
+
+     In terms of the general model x[k + 1] = Ax[k] + Bu[k] + w[k] with w[k] ∼ N (0, Q), one finds that
+
+                                               A = I,       B = 0,      Q=0                              (39)
+
+     The measurement equation y[k] = Cx[k] + v[k] is represented by
+
+                                                       C = I,   R = σv2 I                                (40)
+
+     The Kalman filter is initialized at
+
+                                                                                    1   0
+                                        x̂− [0] = 0,     P− [0] = R = σv2
+                                                                                    0   1
+     Using the formula sheet, this implies the following, simplified, algorithm:
+
+     Algorithm      Initialize at x̂− [0] = 0 and P− [0] = R. Compute recursively:
+       1. L[k] = P− [k](P− [k] + R)−1
+       2. x̂[k] = x̂− [k] + L[k](y[k] − x̂− [k])
+
+       3. P[k] = (I − L[k])P− [k](I − L[k])T + L[k]RL[k]T
+
+       4. x̂− [k + 1] = x̂[k],   P− [k + 1] = P[k]
+     It must be shown that
+
+                                                          1         1   0            1
+                                              L[k] =                            =       I               (41a)
+                                                         k+2        0   1           k+2
+                                                          σv2
+
+                                                                    1   0            1
+                                              P[k] =                            =       R               (41b)
+                                                         k+2        0   1           k+2
+                                                     σv2
+
+                                          −                         1   0            1
+                                        P [k + 1] =                             =       R               (41c)
+                                                    k+2             0   1           k+2
+
+     In the very first time step k = 0, the Kalman gain reads as
+                                                                             1
+                                              L[0] = R(R + R)−1 =               I                        (42)
+                                                                            2+0
+     The update covariance matrix becomes
+                                                                                                 1
+                             P[0] = (I − L[0])P− [0](I − L[0])T + L[0]RL[0]T =                      R    (43)
+                                                                                                2+0
+
+                                                            5
+
+     Finally, the predicted covariance for the next step k = 1 becomes
+                                                                  1
+                                                     P− [1] =        R                                              (44)
+                                                                 2+0
+     These work out as expected.
+     Having demonstrated the case for k = 0, let us now try to insert the general items to be demonstrated
+     into the algorithm and prove equality for k > 0. First, the Kalman gain:
+                                                          −1                       −1
+                                      1           1                   1          k+2         1
+                          L[k] =         R           R+R         =       R           R    =     I                   (45)
+                                     k+1         k+1                 k+1         k+1        k+2
+
+     This is correct. Next, the updated covariance matrix:
+                                                T
+                          1           1        1           1
+       P[k] =       I−       I           R I−     I   +          R
+                         k+2         k+1      k+2       (k + 2)2
+                                                                             k+1               1             1
+                                                                        =              R+              R=       R   (46)
+                                                                            (k + 2)2        (k + 2)2        k+2
+
+     The last step is self-evident from the simplifed algorithm.
+
+b) The standard deviation of the measurement error is found by taking the square-root of the covariance.
+                                         s
+                                            σv2
+
+                               p                   1 0            σv     1 0
+                                  P[k] =                     =√                                      (47)
+                                           k+2 0 1               k+2 0 1
+                                                                                     q
+    The a-priori error covariance at k = 0 was P− [0] = σv2 I with standard deviation P− [0] = σv I. This
+                                                   p
+    deviation is down 50% when k = 2, since then P[k] = (σv /2)I. At k = 2, three measurements have
+    been absorbed.
+                                                           c)
+
+                                                           6
+
+7
